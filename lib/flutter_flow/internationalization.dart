@@ -23442,14 +23442,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    '070illy0': {
-      'en': 'Vehicle No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '5wgrl6ql': {
+    'nwxw8c86': {
       'en': 'Time Parked',
       'hi': '',
       'kn': '',
@@ -23465,13 +23458,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3zthfnde': {
       'en': 'Out Time',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '1qmr4jse': {
-      'en': 'Total Amount',
       'hi': '',
       'kn': '',
       'mr': '',
