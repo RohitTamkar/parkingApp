@@ -23457,7 +23457,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'v258x165': {
-      'en': 'Sale Date :',
+      'en': 'Park Date :',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23526,13 +23526,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'sk46ehl7': {
-      'en': 'Vehicle No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     '7szih0bf': {
       'en': 'Time Parked',
       'hi': '',
@@ -23554,22 +23547,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'czzdr1ui': {
-      'en': 'Total Amount',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     '613pdhtk': {
       'en': '4 Wheeler',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '7g5xvh0k': {
-      'en': 'Vehicle No',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23591,13 +23570,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7h8s7aff': {
       'en': 'Out Time',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'jdgjwzha': {
-      'en': 'Total Amount',
       'hi': '',
       'kn': '',
       'mr': '',
