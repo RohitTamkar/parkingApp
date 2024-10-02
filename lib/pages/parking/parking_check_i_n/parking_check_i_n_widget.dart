@@ -235,19 +235,19 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         ScanMode.QR,
                                       );
 
+                                      _model.getinvout =
+                                          await queryMonthlyPassRecordOnce(
+                                        parent: FFAppState().outletIdRef,
+                                        queryBuilder: (monthlyPassRecord) =>
+                                            monthlyPassRecord.where(
+                                          'id',
+                                          isEqualTo: _model.qrResult,
+                                        ),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
                                       if (getCurrentTimestamp
                                               .millisecondsSinceEpoch <=
                                           _model.getinvout!.passEndDate) {
-                                        _model.getinvout =
-                                            await queryMonthlyPassRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (monthlyPassRecord) =>
-                                              monthlyPassRecord.where(
-                                            'id',
-                                            isEqualTo: _model.qrResult,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
                                         _model.invoiceParty =
                                             await queryPartyRecordOnce(
                                           parent: FFAppState().outletIdRef,
