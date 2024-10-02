@@ -265,7 +265,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 FFAppState().outletIdRef!);
                                         await invoiceRecordReference
                                             .set(createInvoiceRecordData(
-                                          party: _model.getinvout?.custRef?.id,
+                                          party: _model.invoiceParty?.id,
                                           vechicleNo:
                                               _model.invoiceParty?.vehicleNo,
                                           vechicleType:
@@ -279,8 +279,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         _model.invoice =
                                             InvoiceRecord.getDocumentFromData(
                                                 createInvoiceRecordData(
-                                                  party: _model
-                                                      .getinvout?.custRef?.id,
+                                                  party:
+                                                      _model.invoiceParty?.id,
                                                   vechicleNo: _model
                                                       .invoiceParty?.vehicleNo,
                                                   vechicleType: _model
