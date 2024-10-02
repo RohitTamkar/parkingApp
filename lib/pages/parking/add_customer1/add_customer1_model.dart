@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'add_customer1_widget.dart' show AddCustomer1Widget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,15 +42,12 @@ class AddCustomer1Model extends FlutterFlowModel<AddCustomer1Widget> {
   TextEditingController? textAddressTextController;
   String? Function(BuildContext, String?)? textAddressTextControllerValidator;
   // State field(s) for TextVehicleNo widget.
-  FocusNode? textVehicleNoFocusNode1;
-  TextEditingController? textVehicleNoTextController1;
-  String? Function(BuildContext, String?)?
-      textVehicleNoTextController1Validator;
-  // State field(s) for TextVehicleNo widget.
-  FocusNode? textVehicleNoFocusNode2;
-  TextEditingController? textVehicleNoTextController2;
-  String? Function(BuildContext, String?)?
-      textVehicleNoTextController2Validator;
+  FocusNode? textVehicleNoFocusNode;
+  TextEditingController? textVehicleNoTextController;
+  String? Function(BuildContext, String?)? textVehicleNoTextControllerValidator;
+  // State field(s) for TextVehicletype widget.
+  String? textVehicletypeValue;
+  FormFieldController<String>? textVehicletypeValueController;
   // State field(s) for Text widget.
   FocusNode? textFocusNode;
   TextEditingController? textTextController;
@@ -86,11 +85,8 @@ class AddCustomer1Model extends FlutterFlowModel<AddCustomer1Widget> {
     textAddressFocusNode?.dispose();
     textAddressTextController?.dispose();
 
-    textVehicleNoFocusNode1?.dispose();
-    textVehicleNoTextController1?.dispose();
-
-    textVehicleNoFocusNode2?.dispose();
-    textVehicleNoTextController2?.dispose();
+    textVehicleNoFocusNode?.dispose();
+    textVehicleNoTextController?.dispose();
 
     textFocusNode?.dispose();
     textTextController?.dispose();

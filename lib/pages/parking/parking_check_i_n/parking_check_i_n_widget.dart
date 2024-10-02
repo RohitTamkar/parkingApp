@@ -276,6 +276,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               .millisecondsSinceEpoch,
                                           orderType: 'MONTHLYPASS',
                                           checkOutTime: 0,
+                                          finalBillAmt: 0.0,
+                                          billAmt: 0.0,
                                         ));
                                         _model.invoice =
                                             InvoiceRecord.getDocumentFromData(
@@ -293,6 +295,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                       .millisecondsSinceEpoch,
                                                   orderType: 'MONTHLYPASS',
                                                   checkOutTime: 0,
+                                                  finalBillAmt: 0.0,
+                                                  billAmt: 0.0,
                                                 ),
                                                 invoiceRecordReference);
 

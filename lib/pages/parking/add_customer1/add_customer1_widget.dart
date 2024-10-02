@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -45,11 +47,8 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
     _model.textAddressTextController ??= TextEditingController();
     _model.textAddressFocusNode ??= FocusNode();
 
-    _model.textVehicleNoTextController1 ??= TextEditingController();
-    _model.textVehicleNoFocusNode1 ??= FocusNode();
-
-    _model.textVehicleNoTextController2 ??= TextEditingController();
-    _model.textVehicleNoFocusNode2 ??= FocusNode();
+    _model.textVehicleNoTextController ??= TextEditingController();
+    _model.textVehicleNoFocusNode ??= FocusNode();
 
     _model.textTextController ??= TextEditingController();
     _model.textFocusNode ??= FocusNode();
@@ -906,9 +905,9 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                         ),
                                         child: TextFormField(
                                           controller: _model
-                                              .textVehicleNoTextController1,
+                                              .textVehicleNoTextController,
                                           focusNode:
-                                              _model.textVehicleNoFocusNode1,
+                                              _model.textVehicleNoFocusNode,
                                           autofocus: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -986,7 +985,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                                             .titleMediumFamily),
                                               ),
                                           validator: _model
-                                              .textVehicleNoTextController1Validator
+                                              .textVehicleNoTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1022,102 +1021,102 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 15.0),
-                                      child: Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
+                                      child: StreamBuilder<List<ProductRecord>>(
+                                        stream: queryProductRecord(
+                                          parent: FFAppState().outletIdRef,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 40.0,
+                                                height: 40.0,
+                                                child: SpinKitFadingCircle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  size: 40.0,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<ProductRecord>
+                                              containerProductRecordList =
+                                              snapshot.data!;
+
+                                          return Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
                                                 0.92,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
                                                 0.055,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: TextFormField(
-                                          controller: _model
-                                              .textVehicleNoTextController2,
-                                          focusNode:
-                                              _model.textVehicleNoFocusNode2,
-                                          autofocus: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'svo213k3' /* Vehicle Type */,
-                                            ),
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmallFamily,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmallFamily),
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
+                                            decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(0.0),
+                                                  BorderRadius.circular(8.0),
                                             ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
+                                            child: FlutterFlowDropDown<String>(
+                                              controller: _model
+                                                      .textVehicletypeValueController ??=
+                                                  FormFieldController<String>(
+                                                      null),
+                                              options:
+                                                  containerProductRecordList
+                                                      .map((e) => e.name)
+                                                      .toList(),
+                                              onChanged: (val) => safeSetState(
+                                                  () => _model
+                                                          .textVehicletypeValue =
+                                                      val),
+                                              width: 200.0,
+                                              height: 40.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                              hintText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'vcbt2zud' /* Select Vechicle Type */,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                fontFamily:
+                                              icon: Icon(
+                                                Icons
+                                                    .keyboard_arrow_down_rounded,
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMediumFamily),
+                                                        .secondaryText,
+                                                size: 24.0,
                                               ),
-                                          validator: _model
-                                              .textVehicleNoTextController2Validator
-                                              .asValidator(context),
-                                        ),
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              elevation: 2.0,
+                                              borderColor: Colors.transparent,
+                                              borderWidth: 0.0,
+                                              borderRadius: 8.0,
+                                              margin: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 0.0, 12.0, 0.0),
+                                              hidesUnderline: true,
+                                              isOverButton: false,
+                                              isSearchable: false,
+                                              isMultiSelect: false,
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ),
                                     Padding(
@@ -1598,8 +1597,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           adharCardNo:
                                               _model.textTextController.text,
                                           vehicleNo: _model
-                                              .textVehicleNoTextController1
-                                              .text,
+                                              .textVehicleNoTextController.text,
                                           address: _model
                                               .textAddressTextController.text,
                                           creditLimit: int.tryParse(_model
@@ -1608,9 +1606,8 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           oldBalance: int.tryParse(_model
                                               .textOldBalanceTextController
                                               .text),
-                                          vehicleType: _model
-                                              .textVehicleNoTextController2
-                                              .text,
+                                          vehicleType:
+                                              _model.textVehicletypeValue,
                                         ));
                                         _model.custDoc =
                                             PartyRecord.getDocumentFromData(
@@ -1630,7 +1627,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                                   adharCardNo: _model
                                                       .textTextController.text,
                                                   vehicleNo: _model
-                                                      .textVehicleNoTextController1
+                                                      .textVehicleNoTextController
                                                       .text,
                                                   address: _model
                                                       .textAddressTextController
@@ -1642,8 +1639,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                                       .textOldBalanceTextController
                                                       .text),
                                                   vehicleType: _model
-                                                      .textVehicleNoTextController2
-                                                      .text,
+                                                      .textVehicletypeValue,
                                                 ),
                                                 partyRecordReference);
                                         _shouldSetState = true;
@@ -1669,9 +1665,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                               ?.clear();
                                           _model.textMobileTextController
                                               ?.clear();
-                                          _model.textVehicleNoTextController2
-                                              ?.clear();
-                                          _model.textVehicleNoTextController1
+                                          _model.textVehicleNoTextController
                                               ?.clear();
                                         });
                                       } else {

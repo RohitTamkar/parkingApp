@@ -529,6 +529,36 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                                                             FlutterFlowTheme.of(context).headlineSmallFamily),
                                                                   ),
                                                             ),
+                                                            if (parkingCustomersVarItem
+                                                                        .orderType !=
+                                                                    null &&
+                                                                parkingCustomersVarItem
+                                                                        .orderType !=
+                                                                    '')
+                                                              Text(
+                                                                parkingCustomersVarItem
+                                                                    .orderType,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
+                                                              ),
                                                           ],
                                                         ),
                                                         Divider(

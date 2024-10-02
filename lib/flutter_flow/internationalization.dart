@@ -23146,8 +23146,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'svo213k3': {
-      'en': 'Vehicle Type',
+    'cx6m0kkn': {
+      'en': 'Option 1',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'vsyf8ddo': {
+      'en': 'Option 2',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'zgqdry4e': {
+      'en': 'Option 3',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'vcbt2zud': {
+      'en': 'Select Vechicle Type',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'wfo0na8g': {
+      'en': 'Search...',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23470,13 +23498,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'dl1f00jc': {
-      'en': 'Vehicle No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'hzqz9pcj': {
       'en': 'Time Parked',
       'hi': '',
@@ -23493,13 +23514,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'al1bwg4n': {
       'en': 'Out Time',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'sj8syyjy': {
-      'en': 'Total Amount',
       'hi': '',
       'kn': '',
       'mr': '',
