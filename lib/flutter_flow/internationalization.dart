@@ -20264,7 +20264,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'zjspreu8': {
-      'en': 'Product Sale             ',
+      'en': 'Vehicle Sale Report ',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23245,7 +23245,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'rwjmkffc': {
-      'en': 'Add',
+      'en': 'Add Customer',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23492,7 +23492,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'dxnf4spa': {
-      'en': '2 Wheeler',
+      'en': '2 Wheelere',
       'hi': '',
       'kn': '',
       'mr': '',

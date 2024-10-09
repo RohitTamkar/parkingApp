@@ -169,7 +169,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                       context.pushNamed('NumberPlateScanner');
                                     },
                                   ),
-                                  if (!FFAppState().showDiscount)
+                                  if (false)
                                     FlutterFlowIconButton(
                                       borderColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -189,7 +189,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         FFAppState().update(() {});
                                       },
                                     ),
-                                  if (!FFAppState().showCustomer)
+                                  if (FFAppState().showDiscount)
                                     FlutterFlowIconButton(
                                       borderColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -205,7 +205,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        FFAppState().showCustomer = true;
+                                        FFAppState().showDiscount = false;
                                         FFAppState().update(() {});
                                       },
                                     ),
@@ -278,6 +278,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           checkOutTime: 0,
                                           finalBillAmt: 0.0,
                                           billAmt: 0.0,
+                                          dayId: functions.getDayId(),
                                         ));
                                         _model.invoice =
                                             InvoiceRecord.getDocumentFromData(
@@ -297,6 +298,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                   checkOutTime: 0,
                                                   finalBillAmt: 0.0,
                                                   billAmt: 0.0,
+                                                  dayId: functions.getDayId(),
                                                 ),
                                                 invoiceRecordReference);
 
@@ -391,7 +393,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                 ].divide(SizedBox(width: 10.0)),
                               ),
                             ),
-                            if (FFAppState().showCustomer)
+                            if (!FFAppState().showDiscount)
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
@@ -1015,112 +1017,121 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 30.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.advanceAmtTextController,
-                                      focusNode: _model.advanceAmtFocusNode,
-                                      autofocus: false,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'acc6fkb9' /* Advance Amount */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumFamily),
-                                            ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumFamily),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent3,
-                                            width: 2.0,
+                                if (false)
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 30.0),
+                                      child: TextFormField(
+                                        controller:
+                                            _model.advanceAmtTextController,
+                                        focusNode: _model.advanceAmtFocusNode,
+                                        autofocus: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'acc6fkb9' /* Advance Amount */,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily,
-                                            letterSpacing: 1.5,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent3,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
-                                      textAlign: TextAlign.center,
-                                      keyboardType:
-                                          const TextInputType.numberWithOptions(
-                                              decimal: true),
-                                      validator: _model
-                                          .advanceAmtTextControllerValidator
-                                          .asValidator(context),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMediumFamily,
+                                              letterSpacing: 1.5,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMediumFamily),
+                                            ),
+                                        textAlign: TextAlign.center,
+                                        keyboardType: const TextInputType
+                                            .numberWithOptions(decimal: true),
+                                        validator: _model
+                                            .advanceAmtTextControllerValidator
+                                            .asValidator(context),
+                                      ),
                                     ),
                                   ),
-                                ),
                               ],
                             ),
-                            if (!FFAppState().showDiscount)
+                            if (false)
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -1243,14 +1254,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     var _shouldSetState = false;
-                                    if ((_model.textController1.text != null &&
-                                            _model.textController1.text !=
-                                                '') &&
-                                        (_model.advanceAmtTextController.text !=
-                                                null &&
-                                            _model.advanceAmtTextController
-                                                    .text !=
-                                                '')) {
+                                    if (_model.textController1.text != null &&
+                                        _model.textController1.text != '') {
                                       _model.countdatagetPRINT =
                                           await queryInvoiceRecordOnce(
                                         parent: FFAppState().outletIdRef,
@@ -1690,14 +1695,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     var _shouldSetState = false;
-                                    if ((_model.textController1.text != null &&
-                                            _model.textController1.text !=
-                                                '') &&
-                                        (_model.advanceAmtTextController.text !=
-                                                null &&
-                                            _model.advanceAmtTextController
-                                                    .text !=
-                                                '')) {
+                                    if (_model.textController1.text != null &&
+                                        _model.textController1.text != '') {
                                       _model.countdataget =
                                           await queryInvoiceRecordOnce(
                                         parent: FFAppState().outletIdRef,

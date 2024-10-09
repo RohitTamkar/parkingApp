@@ -479,59 +479,71 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        0.9,
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.06,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
+                                                  StreamBuilder<
+                                                      List<
+                                                          ProductMasterRecord>>(
+                                                    stream:
+                                                        queryProductMasterRecord(
+                                                      queryBuilder:
+                                                          (productMasterRecord) =>
+                                                              productMasterRecord
+                                                                  .where(
+                                                        'categoryRef',
+                                                        isEqualTo: FFAppState()
+                                                            .catRefMaster,
+                                                      ),
                                                     ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        StreamBuilder<
-                                                            List<
-                                                                ProductMasterRecord>>(
-                                                          stream:
-                                                              queryProductMasterRecord(),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  child:
-                                                                      SpinKitFadingCircle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    size: 40.0,
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            List<ProductMasterRecord>
-                                                                productDropDownProductMasterRecordList =
-                                                                snapshot.data!;
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 40.0,
+                                                            height: 40.0,
+                                                            child:
+                                                                SpinKitFadingCircle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 40.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<ProductMasterRecord>
+                                                          containerProductMasterRecordList =
+                                                          snapshot.data!;
 
-                                                            return FlutterFlowDropDown<
+                                                      return Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.06,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            FlutterFlowDropDown<
                                                                 String>(
                                                               controller: _model
                                                                       .productDropDownValueController ??=
@@ -542,7 +554,7 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                                         ?.name,
                                                               ),
                                                               options:
-                                                                  productDropDownProductMasterRecordList
+                                                                  containerProductMasterRecordList
                                                                       .map((e) =>
                                                                           e.name)
                                                                       .toList(),
@@ -593,11 +605,11 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                                   false,
                                                               isMultiSelect:
                                                                   false,
-                                                            );
-                                                          },
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
-                                                    ),
+                                                      );
+                                                    },
                                                   ),
                                                 ],
                                               ),

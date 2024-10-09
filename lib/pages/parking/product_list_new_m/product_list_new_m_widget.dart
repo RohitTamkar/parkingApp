@@ -502,7 +502,44 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                             onPressed:
                                                                 () async {
                                                               context.pushNamed(
-                                                                  'editproductNewM');
+                                                                'editproductNewM',
+                                                                queryParameters:
+                                                                    {
+                                                                  'codeLen':
+                                                                      serializeParam(
+                                                                    listItem
+                                                                        .code,
+                                                                    ParamType
+                                                                        .int,
+                                                                  ),
+                                                                  'proRef':
+                                                                      serializeParam(
+                                                                    listItem
+                                                                        .reference,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                  'id':
+                                                                      serializeParam(
+                                                                    listItem.id,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'productDocument':
+                                                                      serializeParam(
+                                                                    containerProductRecordList
+                                                                        .first,
+                                                                    ParamType
+                                                                        .Document,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                                extra: <String,
+                                                                    dynamic>{
+                                                                  'productDocument':
+                                                                      containerProductRecordList
+                                                                          .first,
+                                                                },
+                                                              );
                                                             },
                                                           ),
                                                         ],

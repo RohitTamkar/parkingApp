@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/parking/today_yest_report/today_yest_report_widget.dart';
+import '/pages/parking/report_calender/report_calender_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -202,7 +202,7 @@ class _VehicleWiseSaleReportWidgetState
                                                         MediaQuery.viewInsetsOf(
                                                             context),
                                                     child:
-                                                        TodayYestReportWidget(),
+                                                        ReportCalenderWidget(),
                                                   ),
                                                 );
                                               },
@@ -351,7 +351,7 @@ class _VehicleWiseSaleReportWidgetState
                                           Tab(
                                             text: FFLocalizations.of(context)
                                                 .getText(
-                                              'dxnf4spa' /* 2 Wheeler */,
+                                              'dxnf4spa' /* 2 Wheelere */,
                                             ),
                                           ),
                                           Tab(
@@ -466,9 +466,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          bicyleListItemItem
-                                                                              .finalBillAmt
-                                                                              .toString(),
+                                                                          '₹ ${bicyleListItemItem.finalBillAmt.toString()}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -491,6 +489,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                             .spaceEvenly,
                                                                     children: [
                                                                       Expanded(
+                                                                        flex: 4,
                                                                         child:
                                                                             Column(
                                                                           mainAxisSize:
@@ -524,6 +523,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                         ),
                                                                       ),
                                                                       Expanded(
+                                                                        flex: 6,
                                                                         child:
                                                                             Column(
                                                                           mainAxisSize:
@@ -557,6 +557,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                         ),
                                                                       ),
                                                                       Expanded(
+                                                                        flex: 6,
                                                                         child:
                                                                             Column(
                                                                           mainAxisSize:
@@ -712,6 +713,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                           .spaceEvenly,
                                                                   children: [
                                                                     Expanded(
+                                                                      flex: 4,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -750,6 +752,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                       ),
                                                                     ),
                                                                     Expanded(
+                                                                      flex: 6,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -788,6 +791,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                       ),
                                                                     ),
                                                                     Expanded(
+                                                                      flex: 6,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -947,6 +951,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                           .spaceEvenly,
                                                                   children: [
                                                                     Expanded(
+                                                                      flex: 4,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -985,6 +990,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                       ),
                                                                     ),
                                                                     Expanded(
+                                                                      flex: 6,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -1023,6 +1029,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                       ),
                                                                     ),
                                                                     Expanded(
+                                                                      flex: 6,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -1182,6 +1189,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                           .spaceEvenly,
                                                                   children: [
                                                                     Expanded(
+                                                                      flex: 4,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -1220,6 +1228,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                       ),
                                                                     ),
                                                                     Expanded(
+                                                                      flex: 6,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -1258,6 +1267,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                       ),
                                                                     ),
                                                                     Expanded(
+                                                                      flex: 6,
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:

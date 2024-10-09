@@ -3410,7 +3410,7 @@ class FFAppState extends ChangeNotifier {
     _deviceRef = value;
   }
 
-  bool _showCustomer = false;
+  bool _showCustomer = true;
   bool get showCustomer => _showCustomer;
   set showCustomer(bool value) {
     _showCustomer = value;

@@ -344,7 +344,7 @@ Report */
                                             AutoSizeText(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'zjspreu8' /* Product Sale              */,
+                                                'zjspreu8' /* Vehicle Sale Report  */,
                                               ),
                                               textAlign: TextAlign.center,
                                               style:

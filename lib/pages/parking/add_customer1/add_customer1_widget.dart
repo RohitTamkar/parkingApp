@@ -1668,6 +1668,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           _model.textVehicleNoTextController
                                               ?.clear();
                                         });
+                                        context.safePop();
                                       } else {
                                         if (_shouldSetState)
                                           safeSetState(() {});
@@ -1681,7 +1682,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                     if (_shouldSetState) safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    'rwjmkffc' /* Add */,
+                                    'rwjmkffc' /* Add Customer */,
                                   ),
                                   options: FFButtonOptions(
                                     height: 40.0,
@@ -1698,6 +1699,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmallFamily,
                                           color: Colors.white,
+                                          fontSize: 15.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
