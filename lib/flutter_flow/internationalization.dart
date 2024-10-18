@@ -19263,7 +19263,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'soda0c0v': {
-      'en': 'Remaining Cost',
+      'en': 'Final Cost',
       'hi': '',
       'kn': '',
       'mr': '',

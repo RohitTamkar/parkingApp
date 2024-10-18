@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/kiosk/kiosk_header/kiosk_header_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -125,81 +123,6 @@ class _KioskAdvertisingWidgetState extends State<KioskAdvertisingWidget> {
                         Expanded(
                           child: Stack(
                             children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 25.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final kioskAdvertisingVar =
-                                          kioskAdvertisingAdvertisementRecordList
-                                              .toList();
-
-                                      return Container(
-                                        width: double.infinity,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.9,
-                                        child: CarouselSlider.builder(
-                                          itemCount: kioskAdvertisingVar.length,
-                                          itemBuilder: (context,
-                                              kioskAdvertisingVarIndex, _) {
-                                            final kioskAdvertisingVarItem =
-                                                kioskAdvertisingVar[
-                                                    kioskAdvertisingVarIndex];
-                                            return ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 500),
-                                                imageUrl:
-                                                    valueOrDefault<String>(
-                                                  kioskAdvertisingVarItem
-                                                      .imageUrl,
-                                                  'https://images.unsplash.com/photo-1511920170033-f8396924c348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwyfHxjb2ZmZWV8ZW58MHx8fHwxNzE0MTAxNTg5fDA&ixlib=rb-4.0.3&q=80&w=1080',
-                                                ),
-                                                width: 300.0,
-                                                height: 200.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            );
-                                          },
-                                          carouselController:
-                                              _model.carouselController ??=
-                                                  CarouselController(),
-                                          options: CarouselOptions(
-                                            initialPage: max(
-                                                0,
-                                                min(
-                                                    1,
-                                                    kioskAdvertisingVar.length -
-                                                        1)),
-                                            viewportFraction: 0.9,
-                                            disableCenter: true,
-                                            enlargeCenterPage: true,
-                                            enlargeFactor: 0.45,
-                                            enableInfiniteScroll: true,
-                                            scrollDirection: Axis.horizontal,
-                                            autoPlay: true,
-                                            autoPlayAnimationDuration:
-                                                Duration(milliseconds: 600),
-                                            autoPlayInterval: Duration(
-                                                milliseconds: (600 + 5000)),
-                                            autoPlayCurve: Curves.linear,
-                                            pauseAutoPlayInFiniteScroll: true,
-                                            onPageChanged: (index, _) => _model
-                                                .carouselCurrentIndex = index,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
                               Align(
                                 alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(

@@ -30,7 +30,6 @@ dependencies:
   bluetooth_print:
   cached_network_image: 3.3.1
   camera: 0.10.4
-  carousel_slider: 4.2.1
   client_information: ^2.1.4
   cloud_firestore: 4.17.3
   cloud_firestore_platform_interface: 6.2.3

@@ -1201,7 +1201,6 @@ double? calculateParkingCharges12hours(
   if (checkInTimeMillisecond != null && checkoutTimeMillisecond != null) {
     durationInHours =
         ((checkoutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60 * 60))
-            .floor()
             .toDouble();
     print('Duration in hours: $durationInHours');
   }
@@ -1209,48 +1208,72 @@ double? calculateParkingCharges12hours(
   // Initialize parking charges
   double? parkingCharges = 0;
 
-  // Calculate parking charges based on vehicle type and duration
+  // Calculate parking charges based on vehicle type and duration in 24-hour cycles
   if (vehicleType != null && durationInHours != null) {
+    // Calculate number of 24-hour periods
+    int fullDays = (durationInHours / 24).floor();
+    double remainingHours = durationInHours % 24;
+
+    // Apply charges for each 24-hour period
+    for (int day = 0; day < fullDays; day++) {
+      switch (vehicleType.toUpperCase()) {
+        case 'BICYCLE':
+          parkingCharges = (parkingCharges ?? 0) + 20; // Maximum charge per day
+          break;
+
+        case 'TWO WHEELER':
+          parkingCharges = (parkingCharges ?? 0) + 50; // Maximum charge per day
+          break;
+
+        case 'THREE WHEELER':
+          parkingCharges =
+              (parkingCharges ?? 0) + 100; // Maximum charge per day
+          break;
+
+        case 'FOUR WHEELER':
+          parkingCharges =
+              (parkingCharges ?? 0) + 100; // Maximum charge per day
+          break;
+
+        default:
+          print('Invalid vehicle type');
+          return null; // Invalid vehicle type
+      }
+    }
+
+    // Apply charges for the remaining hours of the last incomplete day
     switch (vehicleType.toUpperCase()) {
       case 'BICYCLE':
-        if (durationInHours <= 12) {
-          parkingCharges = 10;
-        } else if (durationInHours > 12 && durationInHours <= 24) {
-          parkingCharges = 20;
+        if (remainingHours <= 12) {
+          parkingCharges = (parkingCharges ?? 0) + 10;
         } else {
-          parkingCharges = 20; // Maximum charge for 24 hours
+          parkingCharges = (parkingCharges ?? 0) + 20;
         }
         break;
 
       case 'TWO WHEELER':
-        if (durationInHours <= 1) {
-          parkingCharges = 10;
-        } else if (durationInHours > 1 && durationInHours <= 14) {
-          parkingCharges = 30;
-        } else if (durationInHours > 14 && durationInHours <= 24) {
-          parkingCharges = 50;
+        if (remainingHours <= 1) {
+          parkingCharges = (parkingCharges ?? 0) + 10;
+        } else if (remainingHours > 1 && remainingHours <= 14) {
+          parkingCharges = (parkingCharges ?? 0) + 30;
         } else {
-          parkingCharges = 50; // Maximum charge for 24 hours
+          parkingCharges = (parkingCharges ?? 0) + 50;
         }
         break;
 
       case 'THREE WHEELER':
-        if (durationInHours <= 12) {
-          parkingCharges = 60;
-        } else if (durationInHours > 12 && durationInHours <= 24) {
-          parkingCharges = 100;
+        if (remainingHours <= 12) {
+          parkingCharges = (parkingCharges ?? 0) + 60;
         } else {
-          parkingCharges = 100; // Maximum charge for 24 hours
+          parkingCharges = (parkingCharges ?? 0) + 100;
         }
         break;
 
       case 'FOUR WHEELER':
-        if (durationInHours <= 12) {
-          parkingCharges = 60;
-        } else if (durationInHours > 12 && durationInHours <= 24) {
-          parkingCharges = 100;
+        if (remainingHours <= 12) {
+          parkingCharges = (parkingCharges ?? 0) + 60;
         } else {
-          parkingCharges = 100; // Maximum charge for 24 hours
+          parkingCharges = (parkingCharges ?? 0) + 100;
         }
         break;
 
