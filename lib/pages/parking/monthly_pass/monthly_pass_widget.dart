@@ -1958,7 +1958,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                           .reference
                                                           .update(
                                                               createMonthlyPassRecordData(
-                                                        id: _model.passDoc
+                                                        id: _model.passDocCopy
                                                             ?.reference.id,
                                                       ));
                                                       _model.partydetails2 =
