@@ -1954,8 +1954,8 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                                   ),
                                                                   monthlyPassRecordReference);
 
-                                                      await _model
-                                                          .passDoc!.reference
+                                                      await _model.passDocCopy!
+                                                          .reference
                                                           .update(
                                                               createMonthlyPassRecordData(
                                                         id: _model.passDoc
