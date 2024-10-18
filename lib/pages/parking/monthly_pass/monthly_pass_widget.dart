@@ -1970,10 +1970,9 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                                 partyRecord
                                                                     .where(
                                                           'id',
-                                                          isEqualTo:
-                                                              FFAppState()
-                                                                  .setCustRef
-                                                                  ?.id,
+                                                          isEqualTo: _model
+                                                              .selectedParty
+                                                              ?.id,
                                                         ),
                                                         singleRecord: true,
                                                       ).then((s) =>
@@ -1982,7 +1981,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                           await actions
                                                               .generateParkingPassPdf(
                                                         _model.partydetails2,
-                                                        _model.passDoc,
+                                                        _model.passDocCopy,
                                                       );
                                                       _model.apiResult6yc22 =
                                                           await SendMailCall
