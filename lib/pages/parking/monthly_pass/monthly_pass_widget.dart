@@ -1758,309 +1758,289 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                           16.0),
                                                 ),
                                               ),
-                                              if (false)
-                                                Builder(
-                                                  builder: (context) =>
-                                                      FlutterFlowIconButton(
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderRadius: 8.0,
-                                                    buttonSize: 50.0,
-                                                    fillColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryBackground,
-                                                    icon: Icon(
-                                                      Icons.mail_outline,
-                                                      color: Color(0xE2C42D3F),
-                                                      size: 40.0,
-                                                    ),
-                                                    onPressed: () async {
-                                                      if ((_model.dropDownValue != null && _model.dropDownValue != '') &&
-                                                          (_model.paymentValue !=
-                                                                  null &&
-                                                              _model.paymentValue !=
-                                                                  '') &&
-                                                          (_model.passValue !=
-                                                                  null &&
-                                                              _model.passValue !=
-                                                                  '') &&
-                                                          (_model.textFieldAmtTextController
-                                                                      .text !=
-                                                                  null &&
-                                                              _model.textFieldAmtTextController
-                                                                      .text !=
-                                                                  '')) {
-                                                        FFAppState()
-                                                                .emailForReport =
-                                                            currentUserEmail;
-                                                        safeSetState(() {});
+                                              Builder(
+                                                builder: (context) =>
+                                                    FlutterFlowIconButton(
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderRadius: 8.0,
+                                                  buttonSize: 50.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  icon: Icon(
+                                                    Icons.mail_outline,
+                                                    color: Color(0xE2C42D3F),
+                                                    size: 40.0,
+                                                  ),
+                                                  onPressed: () async {
+                                                    if ((_model.dropDownValue !=
+                                                                null &&
+                                                            _model.dropDownValue !=
+                                                                '') &&
+                                                        (_model.paymentValue !=
+                                                                null &&
+                                                            _model.paymentValue !=
+                                                                '') &&
+                                                        (_model.passValue !=
+                                                                null &&
+                                                            _model.passValue !=
+                                                                '') &&
+                                                        (_model.textFieldAmtTextController
+                                                                    .text !=
+                                                                null &&
+                                                            _model.textFieldAmtTextController
+                                                                    .text !=
+                                                                '')) {
+                                                      FFAppState()
+                                                              .emailForReport =
+                                                          currentUserEmail;
+                                                      safeSetState(() {});
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () =>
+                                                                  FocusScope.of(
+                                                                          dialogContext)
+                                                                      .unfocus(),
+                                                              child:
+                                                                  EmailInputWidget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+
+                                                      var monthlyPassRecordReference =
+                                                          MonthlyPassRecord
+                                                              .createDoc(
+                                                                  FFAppState()
+                                                                      .outletIdRef!);
+                                                      await monthlyPassRecordReference
+                                                          .set(
+                                                              createMonthlyPassRecordData(
+                                                        planName: _model
+                                                            .selectedMessage,
+                                                        remark: _model
+                                                            .textFieldDurationTextController
+                                                            .text,
+                                                        status: true,
+                                                        validityDays: () {
+                                                          if (_model
+                                                                  .selectedMessage ==
+                                                              'Weekly Pass') {
+                                                            return 7;
+                                                          } else if (_model
+                                                                  .selectedMessage ==
+                                                              'Monthly Pass') {
+                                                            return 30;
+                                                          } else if (_model
+                                                                  .selectedMessage ==
+                                                              'Half Month Pass') {
+                                                            return 15;
+                                                          } else {
+                                                            return 0;
+                                                          }
+                                                        }(),
+                                                        createdBy: FFAppState()
+                                                            .logedInUserDetail,
+                                                        updatedBy:
+                                                            currentUserReference,
+                                                        custRef: _model
+                                                            .selectedParty
+                                                            ?.reference,
+                                                        amount: double.tryParse(
+                                                            _model
+                                                                .textFieldAmtTextController
+                                                                .text),
+                                                        paymentType: _model
+                                                            .selectedPaymentType,
+                                                        passStartDate:
+                                                            getCurrentTimestamp
+                                                                .millisecondsSinceEpoch,
+                                                        passEndDate: functions
+                                                            .renewalOnSelection(
+                                                                _model
+                                                                    .selectedMessage,
+                                                                getCurrentTimestamp
+                                                                    .millisecondsSinceEpoch),
+                                                        passStartDayId: functions
+                                                            .milisecToTimestamp(
+                                                                getCurrentTimestamp
+                                                                    .millisecondsSinceEpoch),
+                                                        passEndDayId: functions
+                                                            .milisecToTimestamp(
+                                                                functions.renewalOnSelection(
+                                                                    _model
+                                                                        .selectedMessage,
+                                                                    getCurrentTimestamp
+                                                                        .millisecondsSinceEpoch)),
+                                                      ));
+                                                      _model.passDocCopy =
+                                                          MonthlyPassRecord
+                                                              .getDocumentFromData(
+                                                                  createMonthlyPassRecordData(
+                                                                    planName: _model
+                                                                        .selectedMessage,
+                                                                    remark: _model
+                                                                        .textFieldDurationTextController
+                                                                        .text,
+                                                                    status:
+                                                                        true,
+                                                                    validityDays:
+                                                                        () {
+                                                                      if (_model
+                                                                              .selectedMessage ==
+                                                                          'Weekly Pass') {
+                                                                        return 7;
+                                                                      } else if (_model
+                                                                              .selectedMessage ==
+                                                                          'Monthly Pass') {
+                                                                        return 30;
+                                                                      } else if (_model
+                                                                              .selectedMessage ==
+                                                                          'Half Month Pass') {
+                                                                        return 15;
+                                                                      } else {
+                                                                        return 0;
+                                                                      }
+                                                                    }(),
+                                                                    createdBy:
+                                                                        FFAppState()
+                                                                            .logedInUserDetail,
+                                                                    updatedBy:
+                                                                        currentUserReference,
+                                                                    custRef: _model
+                                                                        .selectedParty
+                                                                        ?.reference,
+                                                                    amount: double
+                                                                        .tryParse(_model
+                                                                            .textFieldAmtTextController
+                                                                            .text),
+                                                                    paymentType:
+                                                                        _model
+                                                                            .selectedPaymentType,
+                                                                    passStartDate:
+                                                                        getCurrentTimestamp
+                                                                            .millisecondsSinceEpoch,
+                                                                    passEndDate: functions.renewalOnSelection(
+                                                                        _model
+                                                                            .selectedMessage,
+                                                                        getCurrentTimestamp
+                                                                            .millisecondsSinceEpoch),
+                                                                    passStartDayId:
+                                                                        functions
+                                                                            .milisecToTimestamp(getCurrentTimestamp.millisecondsSinceEpoch),
+                                                                    passEndDayId: functions.milisecToTimestamp(functions.renewalOnSelection(
+                                                                        _model
+                                                                            .selectedMessage,
+                                                                        getCurrentTimestamp
+                                                                            .millisecondsSinceEpoch)),
+                                                                  ),
+                                                                  monthlyPassRecordReference);
+
+                                                      await _model
+                                                          .passDoc!.reference
+                                                          .update(
+                                                              createMonthlyPassRecordData(
+                                                        id: _model.passDoc
+                                                            ?.reference.id,
+                                                      ));
+                                                      _model.partydetails2 =
+                                                          await queryPartyRecordOnce(
+                                                        parent: FFAppState()
+                                                            .outletIdRef,
+                                                        queryBuilder:
+                                                            (partyRecord) =>
+                                                                partyRecord
+                                                                    .where(
+                                                          'id',
+                                                          isEqualTo:
+                                                              FFAppState()
+                                                                  .setCustRef
+                                                                  ?.id,
+                                                        ),
+                                                        singleRecord: true,
+                                                      ).then((s) =>
+                                                              s.firstOrNull);
+                                                      _model.base64Link2 =
+                                                          await actions
+                                                              .generateParkingPassPdf(
+                                                        _model.partydetails2,
+                                                        _model.passDoc,
+                                                      );
+                                                      _model.apiResult6yc22 =
+                                                          await SendMailCall
+                                                              .call(
+                                                        mobileNo: _model
+                                                            .partydetails2
+                                                            ?.mobile,
+                                                        username: _model
+                                                            .partydetails2
+                                                            ?.name,
+                                                        toEmail: FFAppState()
+                                                            .emailForReport,
+                                                        fileName:
+                                                            'Monthly Pass',
+                                                        outletName:
+                                                            containerOutletRecord
+                                                                ?.name,
+                                                        branchName:
+                                                            containerOutletRecord
+                                                                ?.branch,
+                                                        file:
+                                                            _model.base64Link2,
+                                                        reportType:
+                                                            'Monthly Pass',
+                                                        roll: FFAppState()
+                                                            .currentUserRole,
+                                                      );
+
+                                                      if ((_model.apiResult6yc22
+                                                              ?.succeeded ??
+                                                          true)) {
                                                         await showDialog(
                                                           context: context,
                                                           builder:
-                                                              (dialogContext) {
-                                                            return Dialog(
-                                                              elevation: 0,
-                                                              insetPadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              alignment: AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () =>
-                                                                    FocusScope.of(
-                                                                            dialogContext)
-                                                                        .unfocus(),
-                                                                child:
-                                                                    EmailInputWidget(),
-                                                              ),
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              content: Text(
+                                                                  'Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
                                                             );
                                                           },
                                                         );
-
-                                                        var monthlyPassRecordReference =
-                                                            MonthlyPassRecord
-                                                                .createDoc(
-                                                                    FFAppState()
-                                                                        .outletIdRef!);
-                                                        await monthlyPassRecordReference
-                                                            .set(
-                                                                createMonthlyPassRecordData(
-                                                          planName: _model
-                                                              .selectedMessage,
-                                                          remark: _model
-                                                              .textFieldDurationTextController
-                                                              .text,
-                                                          status: true,
-                                                          validityDays: () {
-                                                            if (_model
-                                                                    .selectedMessage ==
-                                                                'Weekly Pass') {
-                                                              return 7;
-                                                            } else if (_model
-                                                                    .selectedMessage ==
-                                                                'Monthly Pass') {
-                                                              return 30;
-                                                            } else if (_model
-                                                                    .selectedMessage ==
-                                                                'Half Month Pass') {
-                                                              return 15;
-                                                            } else {
-                                                              return 0;
-                                                            }
-                                                          }(),
-                                                          createdBy: FFAppState()
-                                                              .logedInUserDetail,
-                                                          updatedBy:
-                                                              currentUserReference,
-                                                          custRef: _model
-                                                              .selectedParty
-                                                              ?.reference,
-                                                          amount: double
-                                                              .tryParse(_model
-                                                                  .textFieldAmtTextController
-                                                                  .text),
-                                                          paymentType: _model
-                                                              .selectedPaymentType,
-                                                          passStartDate:
-                                                              getCurrentTimestamp
-                                                                  .millisecondsSinceEpoch,
-                                                          passEndDate: functions
-                                                              .renewalOnSelection(
-                                                                  _model
-                                                                      .selectedMessage,
-                                                                  getCurrentTimestamp
-                                                                      .millisecondsSinceEpoch),
-                                                          passStartDayId: functions
-                                                              .milisecToTimestamp(
-                                                                  getCurrentTimestamp
-                                                                      .millisecondsSinceEpoch),
-                                                          passEndDayId: functions
-                                                              .milisecToTimestamp(
-                                                                  functions.renewalOnSelection(
-                                                                      _model
-                                                                          .selectedMessage,
-                                                                      getCurrentTimestamp
-                                                                          .millisecondsSinceEpoch)),
-                                                        ));
-                                                        _model.passDocCopy =
-                                                            MonthlyPassRecord
-                                                                .getDocumentFromData(
-                                                                    createMonthlyPassRecordData(
-                                                                      planName:
-                                                                          _model
-                                                                              .selectedMessage,
-                                                                      remark: _model
-                                                                          .textFieldDurationTextController
-                                                                          .text,
-                                                                      status:
-                                                                          true,
-                                                                      validityDays:
-                                                                          () {
-                                                                        if (_model.selectedMessage ==
-                                                                            'Weekly Pass') {
-                                                                          return 7;
-                                                                        } else if (_model.selectedMessage ==
-                                                                            'Monthly Pass') {
-                                                                          return 30;
-                                                                        } else if (_model.selectedMessage ==
-                                                                            'Half Month Pass') {
-                                                                          return 15;
-                                                                        } else {
-                                                                          return 0;
-                                                                        }
-                                                                      }(),
-                                                                      createdBy:
-                                                                          FFAppState()
-                                                                              .logedInUserDetail,
-                                                                      updatedBy:
-                                                                          currentUserReference,
-                                                                      custRef: _model
-                                                                          .selectedParty
-                                                                          ?.reference,
-                                                                      amount: double.tryParse(_model
-                                                                          .textFieldAmtTextController
-                                                                          .text),
-                                                                      paymentType:
-                                                                          _model
-                                                                              .selectedPaymentType,
-                                                                      passStartDate:
-                                                                          getCurrentTimestamp
-                                                                              .millisecondsSinceEpoch,
-                                                                      passEndDate: functions.renewalOnSelection(
-                                                                          _model
-                                                                              .selectedMessage,
-                                                                          getCurrentTimestamp
-                                                                              .millisecondsSinceEpoch),
-                                                                      passStartDayId:
-                                                                          functions
-                                                                              .milisecToTimestamp(getCurrentTimestamp.millisecondsSinceEpoch),
-                                                                      passEndDayId: functions.milisecToTimestamp(functions.renewalOnSelection(
-                                                                          _model
-                                                                              .selectedMessage,
-                                                                          getCurrentTimestamp
-                                                                              .millisecondsSinceEpoch)),
-                                                                    ),
-                                                                    monthlyPassRecordReference);
-
-                                                        await _model
-                                                            .passDoc!.reference
-                                                            .update(
-                                                                createMonthlyPassRecordData(
-                                                          id: _model.passDoc
-                                                              ?.reference.id,
-                                                        ));
-                                                        _model.partydetails2 =
-                                                            await queryPartyRecordOnce(
-                                                          parent: FFAppState()
-                                                              .outletIdRef,
-                                                          queryBuilder:
-                                                              (partyRecord) =>
-                                                                  partyRecord
-                                                                      .where(
-                                                            'id',
-                                                            isEqualTo:
-                                                                FFAppState()
-                                                                    .setCustRef
-                                                                    ?.id,
-                                                          ),
-                                                          singleRecord: true,
-                                                        ).then((s) =>
-                                                                s.firstOrNull);
-                                                        _model.base64Link2 =
-                                                            await actions
-                                                                .generateParkingPassPdf(
-                                                          _model.partydetails2,
-                                                          _model.passDoc,
-                                                        );
-                                                        _model.apiResult6yc22 =
-                                                            await SendMailCall
-                                                                .call(
-                                                          mobileNo: _model
-                                                              .partydetails2
-                                                              ?.mobile,
-                                                          username: _model
-                                                              .partydetails2
-                                                              ?.name,
-                                                          toEmail: FFAppState()
-                                                              .emailForReport,
-                                                          fileName:
-                                                              'Monthly Pass',
-                                                          outletName:
-                                                              containerOutletRecord
-                                                                  ?.name,
-                                                          branchName:
-                                                              containerOutletRecord
-                                                                  ?.branch,
-                                                          file: _model
-                                                              .base64Link2,
-                                                          reportType:
-                                                              'Monthly Pass',
-                                                          roll: FFAppState()
-                                                              .currentUserRole,
-                                                        );
-
-                                                        if ((_model
-                                                                .apiResult6yc22
-                                                                ?.succeeded ??
-                                                            true)) {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                content: Text(
-                                                                    'Email Sent Successfully. Wait 5-8 Minutes..'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                        } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                content: Text(
-                                                                    'Email Not Sent ! Try Again'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                        }
                                                       } else {
                                                         await showDialog(
                                                           context: context,
                                                           builder:
                                                               (alertDialogContext) {
                                                             return AlertDialog(
-                                                              title:
-                                                                  Text('Error'),
                                                               content: Text(
-                                                                  'Fill Required Fields'),
+                                                                  'Email Not Sent ! Try Again'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -2074,11 +2054,34 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                           },
                                                         );
                                                       }
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title:
+                                                                Text('Error'),
+                                                            content: Text(
+                                                                'Fill Required Fields'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    }
 
-                                                      safeSetState(() {});
-                                                    },
-                                                  ),
+                                                    safeSetState(() {});
+                                                  },
                                                 ),
+                                              ),
                                             ],
                                           ),
                                         ),
