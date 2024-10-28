@@ -393,7 +393,7 @@ class _ImsProductionWidgetState extends State<ImsProductionWidget>
                                                   .primary,
                                           unselectedLabelColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryText,
+                                                  .primary,
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium

@@ -4082,31 +4082,34 @@ class _UpdateProductNewWidgetState extends State<UpdateProductNewWidget> {
                                                                           crossAxisAlignment:
                                                                               CrossAxisAlignment.start,
                                                                           children: [
-                                                                            Theme(
-                                                                              data: ThemeData(
-                                                                                unselectedWidgetColor: Color(0xFF95A1AC),
-                                                                              ),
-                                                                              child: CheckboxListTile(
-                                                                                value: _model.checkboxListTileValue1 ??= FFAppState().productHiveput.weightable == true,
-                                                                                onChanged: (newValue) async {
-                                                                                  safeSetState(() => _model.checkboxListTileValue1 = newValue!);
-                                                                                },
-                                                                                title: Text(
-                                                                                  FFLocalizations.of(context).getText(
-                                                                                    '6tjlv2x9' /* Weightable */,
-                                                                                  ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        fontSize: 11.0,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
+                                                                            Material(
+                                                                              color: Colors.transparent,
+                                                                              child: Theme(
+                                                                                data: ThemeData(
+                                                                                  unselectedWidgetColor: Color(0xFF95A1AC),
                                                                                 ),
-                                                                                tileColor: Color(0xFFF5F5F5),
-                                                                                activeColor: Color(0xFF3B58FF),
-                                                                                dense: true,
-                                                                                controlAffinity: ListTileControlAffinity.leading,
+                                                                                child: CheckboxListTile(
+                                                                                  value: _model.checkboxListTileValue1 ??= FFAppState().productHiveput.weightable == true,
+                                                                                  onChanged: (newValue) async {
+                                                                                    safeSetState(() => _model.checkboxListTileValue1 = newValue!);
+                                                                                  },
+                                                                                  title: Text(
+                                                                                    FFLocalizations.of(context).getText(
+                                                                                      '6tjlv2x9' /* Weightable */,
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                          fontSize: 11.0,
+                                                                                          letterSpacing: 0.0,
+                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        ),
+                                                                                  ),
+                                                                                  tileColor: Color(0xFFF5F5F5),
+                                                                                  activeColor: Color(0xFF3B58FF),
+                                                                                  dense: true,
+                                                                                  controlAffinity: ListTileControlAffinity.leading,
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ],
@@ -4134,32 +4137,35 @@ class _UpdateProductNewWidgetState extends State<UpdateProductNewWidget> {
                                                                         crossAxisAlignment:
                                                                             CrossAxisAlignment.start,
                                                                         children: [
-                                                                          Theme(
-                                                                            data:
-                                                                                ThemeData(
-                                                                              unselectedWidgetColor: Color(0xFF95A1AC),
-                                                                            ),
+                                                                          Material(
+                                                                            color:
+                                                                                Colors.transparent,
                                                                             child:
-                                                                                CheckboxListTile(
-                                                                              value: _model.checkboxListTileValue2 ??= FFAppState().productHiveput.stockable == true,
-                                                                              onChanged: (newValue) async {
-                                                                                safeSetState(() => _model.checkboxListTileValue2 = newValue!);
-                                                                              },
-                                                                              title: Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  '3n22dr19' /* Stockable */,
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).headlineSmall.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                                      fontSize: 12.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                                    ),
+                                                                                Theme(
+                                                                              data: ThemeData(
+                                                                                unselectedWidgetColor: Color(0xFF95A1AC),
                                                                               ),
-                                                                              tileColor: Color(0xFFF5F5F5),
-                                                                              activeColor: Color(0xFF3B58FF),
-                                                                              dense: true,
-                                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                                              child: CheckboxListTile(
+                                                                                value: _model.checkboxListTileValue2 ??= FFAppState().productHiveput.stockable == true,
+                                                                                onChanged: (newValue) async {
+                                                                                  safeSetState(() => _model.checkboxListTileValue2 = newValue!);
+                                                                                },
+                                                                                title: Text(
+                                                                                  FFLocalizations.of(context).getText(
+                                                                                    '3n22dr19' /* Stockable */,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                                        fontSize: 12.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                      ),
+                                                                                ),
+                                                                                tileColor: Color(0xFFF5F5F5),
+                                                                                activeColor: Color(0xFF3B58FF),
+                                                                                dense: true,
+                                                                                controlAffinity: ListTileControlAffinity.leading,
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ],

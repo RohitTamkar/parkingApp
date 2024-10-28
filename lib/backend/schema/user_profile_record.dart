@@ -186,6 +186,11 @@ class UserProfileRecord extends FirestoreRecord {
   int get code => _code ?? 0;
   bool hasCode() => _code != null;
 
+  // "userAccess" field.
+  UserListStruct? _userAccess;
+  UserListStruct get userAccess => _userAccess ?? UserListStruct();
+  bool hasUserAccess() => _userAccess != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _name = snapshotData['name'] as String?;
@@ -227,6 +232,7 @@ class UserProfileRecord extends FirestoreRecord {
     _isDealer = snapshotData['isDealer'] as bool?;
     _dealerCode = snapshotData['dealerCode'] as String?;
     _code = castToType<int>(snapshotData['code']);
+    _userAccess = UserListStruct.maybeFromMap(snapshotData['userAccess']);
   }
 
   static CollectionReference get collection =>
@@ -294,6 +300,7 @@ Map<String, dynamic> createUserProfileRecordData({
   bool? isDealer,
   String? dealerCode,
   int? code,
+  UserListStruct? userAccess,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -327,8 +334,12 @@ Map<String, dynamic> createUserProfileRecordData({
       'isDealer': isDealer,
       'dealerCode': dealerCode,
       'code': code,
+      'userAccess': UserListStruct().toMap(),
     }.withoutNulls,
   );
+
+  // Handle nested data for "userAccess" field.
+  addUserListStructData(firestoreData, userAccess, 'userAccess');
 
   return firestoreData;
 }
@@ -372,7 +383,8 @@ class UserProfileRecordDocumentEquality implements Equality<UserProfileRecord> {
         e1?.pincode == e2?.pincode &&
         e1?.isDealer == e2?.isDealer &&
         e1?.dealerCode == e2?.dealerCode &&
-        e1?.code == e2?.code;
+        e1?.code == e2?.code &&
+        e1?.userAccess == e2?.userAccess;
   }
 
   @override
@@ -410,7 +422,8 @@ class UserProfileRecordDocumentEquality implements Equality<UserProfileRecord> {
         e?.pincode,
         e?.isDealer,
         e?.dealerCode,
-        e?.code
+        e?.code,
+        e?.userAccess
       ]);
 
   @override

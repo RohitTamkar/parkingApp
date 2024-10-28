@@ -4332,48 +4332,48 @@ class _EditCustomerWidgetState extends State<EditCustomerWidget> {
                                                                             context)
                                                                         .secondaryBackground,
                                                                   ),
-                                                                  child: Theme(
-                                                                    data:
-                                                                        ThemeData(
-                                                                      unselectedWidgetColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .secondaryText,
-                                                                    ),
+                                                                  child:
+                                                                      Material(
+                                                                    color: Colors
+                                                                        .transparent,
                                                                     child:
-                                                                        CheckboxListTile(
-                                                                      value: _model
-                                                                              .checkboxListTileCreditValue ??=
-                                                                          false,
-                                                                      onChanged:
-                                                                          (newValue) async {
-                                                                        safeSetState(() =>
-                                                                            _model.checkboxListTileCreditValue =
-                                                                                newValue!);
-                                                                      },
-                                                                      title:
-                                                                          Text(
-                                                                        containerPartyRecord!
-                                                                            .credit
-                                                                            .toString(),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .titleMedium
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                              letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                            ),
+                                                                        Theme(
+                                                                      data:
+                                                                          ThemeData(
+                                                                        unselectedWidgetColor:
+                                                                            FlutterFlowTheme.of(context).secondaryText,
                                                                       ),
-                                                                      tileColor:
-                                                                          Color(
-                                                                              0xFFF5F5F5),
-                                                                      activeColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                      dense:
-                                                                          true,
-                                                                      controlAffinity:
-                                                                          ListTileControlAffinity
-                                                                              .leading,
+                                                                      child:
+                                                                          CheckboxListTile(
+                                                                        value: _model.checkboxListTileCreditValue ??=
+                                                                            false,
+                                                                        onChanged:
+                                                                            (newValue) async {
+                                                                          safeSetState(() =>
+                                                                              _model.checkboxListTileCreditValue = newValue!);
+                                                                        },
+                                                                        title:
+                                                                            Text(
+                                                                          containerPartyRecord!
+                                                                              .credit
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                letterSpacing: 0.0,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                              ),
+                                                                        ),
+                                                                        tileColor:
+                                                                            Color(0xFFF5F5F5),
+                                                                        activeColor:
+                                                                            FlutterFlowTheme.of(context).primary,
+                                                                        dense:
+                                                                            true,
+                                                                        controlAffinity:
+                                                                            ListTileControlAffinity.leading,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),

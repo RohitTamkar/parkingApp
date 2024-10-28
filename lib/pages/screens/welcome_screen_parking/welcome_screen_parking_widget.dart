@@ -24,10 +24,12 @@ class WelcomeScreenParkingWidget extends StatefulWidget {
     super.key,
     this.deviceDoc,
     this.appSettings,
+    this.mobile,
   });
 
   final DeviceRecord? deviceDoc;
   final AppSettingsRecord? appSettings;
+  final String? mobile;
 
   @override
   State<WelcomeScreenParkingWidget> createState() =>

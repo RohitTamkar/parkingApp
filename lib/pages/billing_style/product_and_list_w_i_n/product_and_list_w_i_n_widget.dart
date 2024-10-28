@@ -2335,7 +2335,9 @@ class _ProductAndListWINWidgetState extends State<ProductAndListWINWidget>
                                                                                                       getJsonField(
                                                                                                         productListItem,
                                                                                                         r'''$.name''',
-                                                                                                      ).toString().maybeHandleOverflow(maxChars: 25),
+                                                                                                      ).toString().maybeHandleOverflow(
+                                                                                                            maxChars: 25,
+                                                                                                          ),
                                                                                                       textAlign: TextAlign.center,
                                                                                                       style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -2767,7 +2769,9 @@ class _ProductAndListWINWidgetState extends State<ProductAndListWINWidget>
                                                                                                         getJsonField(
                                                                                                           productListItem,
                                                                                                           r'''$.name''',
-                                                                                                        ).toString().maybeHandleOverflow(maxChars: 25),
+                                                                                                        ).toString().maybeHandleOverflow(
+                                                                                                              maxChars: 25,
+                                                                                                            ),
                                                                                                         textAlign: TextAlign.center,
                                                                                                         style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,

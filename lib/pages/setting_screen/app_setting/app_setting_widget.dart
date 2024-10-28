@@ -524,43 +524,47 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTileenablePaymentMenuValue ??=
-                                                                              containerAppSettingsRecord!.paymentMenu,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTileenablePaymentMenuValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'pktyai8b' /* 1.ENABLE PAYMENT MENU */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTileenablePaymentMenuValue ??=
+                                                                                containerAppSettingsRecord!.paymentMenu,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTileenablePaymentMenuValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'pktyai8b' /* 1.ENABLE PAYMENT MENU */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
-                                                                          ),
-                                                                          subtitle:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '3v64prfx' /* (NOTE: ADD EXPENSES, ADVANCE,C... */,
+                                                                            subtitle:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '3v64prfx' /* (NOTE: ADD EXPENSES, ADVANCE,C... */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    color: Color(0xFF3B58FF),
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  color: Color(0xFF3B58FF),
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                FlutterFlowTheme.of(context).primaryBackground,
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              FlutterFlowTheme.of(context).primaryBackground,
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -572,31 +576,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilegoodsReceiveMenuValue ??=
-                                                                              containerAppSettingsRecord!.goodsReceivedMenu,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilegoodsReceiveMenuValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'jgkace19' /* 2.ENABLE GOODS RECEIVE MENU */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilegoodsReceiveMenuValue ??=
+                                                                                containerAppSettingsRecord!.goodsReceivedMenu,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilegoodsReceiveMenuValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'jgkace19' /* 2.ENABLE GOODS RECEIVE MENU */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -608,31 +616,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilestockOutMenuValue ??=
-                                                                              containerAppSettingsRecord!.stockOutMenu,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilestockOutMenuValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '9io92bn9' /* 3.ENABLE STOCK OUT MENU */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilestockOutMenuValue ??=
+                                                                                containerAppSettingsRecord!.stockOutMenu,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilestockOutMenuValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '9io92bn9' /* 3.ENABLE STOCK OUT MENU */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -644,31 +656,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTileEnableBarodeMenuValue ??=
-                                                                              containerAppSettingsRecord!.barcodeMenu,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTileEnableBarodeMenuValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'rrb0ymsd' /* 4.ENABLE BARCODE MENU */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTileEnableBarodeMenuValue ??=
+                                                                                containerAppSettingsRecord!.barcodeMenu,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTileEnableBarodeMenuValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'rrb0ymsd' /* 4.ENABLE BARCODE MENU */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -751,34 +767,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileenableOpeningBalanceValue ??=
-                                                                            containerAppSettingsRecord!.openingBalancePopup,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileenableOpeningBalanceValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'if9393w3' /* 1.ENABLE OPENING BALANCE */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileenableOpeningBalanceValue ??=
+                                                                              containerAppSettingsRecord!.openingBalancePopup,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileenableOpeningBalanceValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'if9393w3' /* 1.ENABLE OPENING BALANCE */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -790,34 +808,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileflottingKeyboardButtonValue ??=
-                                                                            containerAppSettingsRecord!.floatingKeyboard,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileflottingKeyboardButtonValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'anwqivpc' /* 2.ENABLE FLOATING KEYBOARD BUT... */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileflottingKeyboardButtonValue ??=
+                                                                              containerAppSettingsRecord!.floatingKeyboard,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileflottingKeyboardButtonValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'anwqivpc' /* 2.ENABLE FLOATING KEYBOARD BUT... */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -829,49 +849,48 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileshowOpeningAmountValue ??=
-                                                                            containerAppSettingsRecord!.openingBalancePopup,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileshowOpeningAmountValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'uqarwren' /* 3.ENABLE SHOW OPENING AMOUNT */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileshowOpeningAmountValue ??=
+                                                                              containerAppSettingsRecord!.openingBalancePopup,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileshowOpeningAmountValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'uqarwren' /* 3.ENABLE SHOW OPENING AMOUNT */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
-                                                                        ),
-                                                                        subtitle:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'j8ek2x6y' /* (NOTE: YESTURDAY CASH IN HAND ... */,
+                                                                          subtitle:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'j8ek2x6y' /* (NOTE: YESTURDAY CASH IN HAND ... */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  color: Color(0xFF3B58FF),
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                color: Color(0xFF3B58FF),
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -883,34 +902,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTiledisableSaveButtonValue ??=
-                                                                            containerAppSettingsRecord!.saveButton,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTiledisableSaveButtonValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'nrfy7bca' /* 4.DISABLE SAVE BUTTON */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTiledisableSaveButtonValue ??=
+                                                                              containerAppSettingsRecord!.saveButton,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTiledisableSaveButtonValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'nrfy7bca' /* 4.DISABLE SAVE BUTTON */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -922,34 +943,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileshowHoldListBtnValue ??=
-                                                                            containerAppSettingsRecord!.showHoldListButton,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileshowHoldListBtnValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'isyhl1yo' /* 5.ENABLE SHOW HOLD LIST BUTTON */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileshowHoldListBtnValue ??=
+                                                                              containerAppSettingsRecord!.showHoldListButton,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileshowHoldListBtnValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'isyhl1yo' /* 5.ENABLE SHOW HOLD LIST BUTTON */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -1033,31 +1056,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilecustomerDetailsValue ??=
-                                                                              false,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilecustomerDetailsValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '01h5ilk9' /* 1.ENABLE CUSTOMER DETAILS */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilecustomerDetailsValue ??=
+                                                                                false,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilecustomerDetailsValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '01h5ilk9' /* 1.ENABLE CUSTOMER DETAILS */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1069,31 +1096,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilecustomerAdvValue ??=
-                                                                              containerAppSettingsRecord!.customerAdvance,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilecustomerAdvValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'bhfl7f3v' /* 2.ENABLE CUSTOMER ADVANCE */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilecustomerAdvValue ??=
+                                                                                containerAppSettingsRecord!.customerAdvance,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilecustomerAdvValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'bhfl7f3v' /* 2.ENABLE CUSTOMER ADVANCE */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1105,31 +1136,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilecustometForcefullyBillValue ??=
-                                                                              containerAppSettingsRecord!.customerforcefully,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilecustometForcefullyBillValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '3dkhz2iw' /* 3.ENABLE CUSTOMER FORCEFULLY(B... */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilecustometForcefullyBillValue ??=
+                                                                                containerAppSettingsRecord!.customerforcefully,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilecustometForcefullyBillValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '3dkhz2iw' /* 3.ENABLE CUSTOMER FORCEFULLY(B... */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1141,31 +1176,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTileaddVehicleNoValue ??=
-                                                                              containerAppSettingsRecord!.vehicleNumber,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTileaddVehicleNoValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '14k1hd43' /* 4.ENABLE ADD VEHICLE NUMBER */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTileaddVehicleNoValue ??=
+                                                                                containerAppSettingsRecord!.vehicleNumber,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTileaddVehicleNoValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '14k1hd43' /* 4.ENABLE ADD VEHICLE NUMBER */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1177,31 +1216,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTileloyaltyPointValue ??=
-                                                                              containerAppSettingsRecord!.loyaltyPoints,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTileloyaltyPointValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'dcag8atv' /* 5.ENABLE LOYATY POINTS */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTileloyaltyPointValue ??=
+                                                                                containerAppSettingsRecord!.loyaltyPoints,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTileloyaltyPointValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'dcag8atv' /* 5.ENABLE LOYATY POINTS */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1213,31 +1256,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilesendbillSmsValue ??=
-                                                                              containerAppSettingsRecord!.sendSMS,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilesendbillSmsValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'ym9a682z' /* 6.SEND BILL SMS */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilesendbillSmsValue ??=
+                                                                                containerAppSettingsRecord!.sendSMS,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilesendbillSmsValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'ym9a682z' /* 6.SEND BILL SMS */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1249,31 +1296,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilestockRequestOutletWiseValue ??=
-                                                                              containerAppSettingsRecord!.itemStockRequestSent,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilestockRequestOutletWiseValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'x028lusr' /* 7.ENABLE STOCK REQUEST  */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilestockRequestOutletWiseValue ??=
+                                                                                containerAppSettingsRecord!.itemStockRequestSent,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilestockRequestOutletWiseValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'x028lusr' /* 7.ENABLE STOCK REQUEST  */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -1285,31 +1336,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilestockRequestAcceptValue ??=
-                                                                              containerAppSettingsRecord!.stockRequestAccept,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilestockRequestAcceptValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '73t15n6o' /* 8.ENABLE STOCK REQUEST ACCEPT */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilestockRequestAcceptValue ??=
+                                                                                containerAppSettingsRecord!.stockRequestAccept,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilestockRequestAcceptValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '73t15n6o' /* 8.ENABLE STOCK REQUEST ACCEPT */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1394,31 +1449,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTileSearchonlyWithBarcodeValue ??=
-                                                                              containerAppSettingsRecord!.searchWithOnlyBarcode,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTileSearchonlyWithBarcodeValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '6wjnkype' /* 1.SEARCH ONLY WITH BARCODE */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTileSearchonlyWithBarcodeValue ??=
+                                                                                containerAppSettingsRecord!.searchWithOnlyBarcode,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTileSearchonlyWithBarcodeValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '6wjnkype' /* 1.SEARCH ONLY WITH BARCODE */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1471,52 +1530,55 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTileregionalLanguageValue ??=
-                                                              containerAppSettingsRecord!
-                                                                  .regionalLanguage,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTileregionalLanguageValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '95sz191k' /* 1.REGIONAL LANGUAGE ENABLE/DIS... */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTileregionalLanguageValue ??=
+                                                                containerAppSettingsRecord!
+                                                                    .regionalLanguage,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTileregionalLanguageValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '95sz191k' /* 1.REGIONAL LANGUAGE ENABLE/DIS... */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
+                                                            tileColor: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                          tileColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
+                                                                .primaryBackground,
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
                                                           ),
                                                         ),
                                                         Divider(
@@ -1526,46 +1588,49 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           color:
                                                               Color(0xFFD4D1D1),
                                                         ),
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTilecalculateReverseQtyValue ??=
-                                                              containerAppSettingsRecord!
-                                                                  .calculateReverseQuantity,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTilecalculateReverseQtyValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'a3i2hflc' /* 2. CALCULATE REVERSE QUNTITY */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTilecalculateReverseQtyValue ??=
+                                                                containerAppSettingsRecord!
+                                                                    .calculateReverseQuantity,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTilecalculateReverseQtyValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'a3i2hflc' /* 2. CALCULATE REVERSE QUNTITY */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
+                                                            tileColor: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
+                                                                .primaryBackground,
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
                                                           ),
-                                                          tileColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
                                                         ),
                                                         Divider(
                                                           thickness: 0.5,
@@ -1574,49 +1639,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           color:
                                                               Color(0xFFD4D1D1),
                                                         ),
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTilesortingInHotKeyValue ??=
-                                                              containerAppSettingsRecord!
-                                                                  .sortHotKeys,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTilesortingInHotKeyValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'epnvoq5m' /* 3.DISABLE SORTING IN HOT KEY */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTilesortingInHotKeyValue ??=
+                                                                containerAppSettingsRecord!
+                                                                    .sortHotKeys,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTilesortingInHotKeyValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'epnvoq5m' /* 3.DISABLE SORTING IN HOT KEY */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
                                                           ),
                                                         ),
                                                         Divider(
@@ -1769,48 +1837,51 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           color:
                                                               Color(0xFFD4D1D1),
                                                         ),
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTileopenSoftKeywordValue ??=
-                                                              false,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTileopenSoftKeywordValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              't0mbyax8' /* 5.OPEN SOFT KEYBOARD */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTileopenSoftKeywordValue ??=
+                                                                false,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTileopenSoftKeywordValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                't0mbyax8' /* 5.OPEN SOFT KEYBOARD */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0.0),
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          0.0),
+                                                            ),
                                                           ),
                                                         ),
                                                         Divider(
@@ -1820,49 +1891,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           color:
                                                               Color(0xFFD4D1D1),
                                                         ),
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTileprintBtnAfterPayValue ??=
-                                                              containerAppSettingsRecord!
-                                                                  .showPrintButtonsAfterPay,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTileprintBtnAfterPayValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'mas3z14e' /* 6.SHOW PRINT BUTTON AFTER PAY */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTileprintBtnAfterPayValue ??=
+                                                                containerAppSettingsRecord!
+                                                                    .showPrintButtonsAfterPay,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTileprintBtnAfterPayValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'mas3z14e' /* 6.SHOW PRINT BUTTON AFTER PAY */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
                                                           ),
                                                         ),
                                                         Divider(
@@ -1872,49 +1946,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           color:
                                                               Color(0xFFD4D1D1),
                                                         ),
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTileenableUpiBtnValue ??=
-                                                              containerAppSettingsRecord!
-                                                                  .upiButton,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTileenableUpiBtnValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'ebs07t7g' /* 7.ENABLE UPI BUTTON */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTileenableUpiBtnValue ??=
+                                                                containerAppSettingsRecord!
+                                                                    .upiButton,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTileenableUpiBtnValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'ebs07t7g' /* 7.ENABLE UPI BUTTON */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
                                                           ),
                                                         ),
                                                         Divider(
@@ -1924,49 +2001,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                           color:
                                                               Color(0xFFC1C1C1),
                                                         ),
-                                                        SwitchListTile(
-                                                          value: _model
-                                                                  .switchListTilethreeCharValue ??=
-                                                              containerAppSettingsRecord!
-                                                                  .threeCharSearch,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.switchListTilethreeCharValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'dj3gmh3z' /* 8.ENABLE THREE CHARECTER  SEAR... */,
+                                                        Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: SwitchListTile(
+                                                            value: _model
+                                                                    .switchListTilethreeCharValue ??=
+                                                                containerAppSettingsRecord!
+                                                                    .threeCharSearch,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.switchListTilethreeCharValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'dj3gmh3z' /* 8.ENABLE THREE CHARECTER  SEAR... */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                          dense: false,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .trailing,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
                                                           ),
                                                         ),
                                                       ],
@@ -2080,34 +2160,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileincluOrReverseTaxValue ??=
-                                                                            containerAppSettingsRecord!.inclusiveTax,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileincluOrReverseTaxValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            's8smze4l' /* 1.INCLUSIVE / REVERSE TAX */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileincluOrReverseTaxValue ??=
+                                                                              containerAppSettingsRecord!.inclusiveTax,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileincluOrReverseTaxValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              's8smze4l' /* 1.INCLUSIVE / REVERSE TAX */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2119,34 +2201,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileSaleWithTaxValue ??=
-                                                                            containerAppSettingsRecord!.allowSaleWithoutTax,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileSaleWithTaxValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'je8fmovo' /* 2.ALLOW SALE WITHOUT TAX */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileSaleWithTaxValue ??=
+                                                                              containerAppSettingsRecord!.allowSaleWithoutTax,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileSaleWithTaxValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'je8fmovo' /* 2.ALLOW SALE WITHOUT TAX */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -2224,34 +2308,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileenableTableValue ??=
-                                                                            containerAppSettingsRecord!.tables,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileenableTableValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'g9d51xrs' /* 1.ENABLE TABLE */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileenableTableValue ??=
+                                                                              containerAppSettingsRecord!.tables,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileenableTableValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'g9d51xrs' /* 1.ENABLE TABLE */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2263,34 +2349,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileCaptonDetailAtBillCreationValue ??=
-                                                                            containerAppSettingsRecord!.captainDetails,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileCaptonDetailAtBillCreationValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '3p6obccu' /* 2.ADD CAPTAIN DETAILS AT BILL ... */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileCaptonDetailAtBillCreationValue ??=
+                                                                              containerAppSettingsRecord!.captainDetails,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileCaptonDetailAtBillCreationValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '3p6obccu' /* 2.ADD CAPTAIN DETAILS AT BILL ... */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2302,34 +2390,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileenabletableForcefullyValue ??=
-                                                                            containerAppSettingsRecord!.tableForcefully,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileenabletableForcefullyValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            's8wurnms' /* 3.ENABLE TABLE FORCEFULLY */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileenabletableForcefullyValue ??=
+                                                                              containerAppSettingsRecord!.tableForcefully,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileenabletableForcefullyValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              's8wurnms' /* 3.ENABLE TABLE FORCEFULLY */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2341,34 +2431,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileCaptonReqestValue ??=
-                                                                            containerAppSettingsRecord!.captainRequest,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileCaptonReqestValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'a3lhpbds' /* 4.CAPTAIN REQUEST */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileCaptonReqestValue ??=
+                                                                              containerAppSettingsRecord!.captainRequest,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileCaptonReqestValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'a3lhpbds' /* 4.CAPTAIN REQUEST */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2380,34 +2472,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilewLanCommunicationValue ??=
-                                                                            containerAppSettingsRecord!.wlanCommunication,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilewLanCommunicationValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            's6nw0z2p' /* 5. ENABLE WLAN COMMUNICATION */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilewLanCommunicationValue ??=
+                                                                              containerAppSettingsRecord!.wlanCommunication,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilewLanCommunicationValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              's6nw0z2p' /* 5. ENABLE WLAN COMMUNICATION */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2419,34 +2513,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilecheckInOutValue ??=
-                                                                            containerAppSettingsRecord!.checkInCheckOut,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilecheckInOutValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'dzrawbej' /* 6.ENABLE CHECK-IN/CHECK-OUT */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilecheckInOutValue ??=
+                                                                              containerAppSettingsRecord!.checkInCheckOut,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilecheckInOutValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'dzrawbej' /* 6.ENABLE CHECK-IN/CHECK-OUT */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -2527,31 +2623,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTileenableSmanValue ??=
-                                                                              containerAppSettingsRecord!.salesman,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTileenableSmanValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'vmsod1xm' /* 1.ENABLE SALESMAN */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTileenableSmanValue ??=
+                                                                                containerAppSettingsRecord!.salesman,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTileenableSmanValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'vmsod1xm' /* 1.ENABLE SALESMAN */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -2563,31 +2663,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilesalesmanForcefullyValue ??=
-                                                                              containerAppSettingsRecord!.salesmanForcefully,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilesalesmanForcefullyValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              '91vws20w' /* 2.ENABLE SALESMAN FORCEFULLY */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilesalesmanForcefullyValue ??=
+                                                                                containerAppSettingsRecord!.salesmanForcefully,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilesalesmanForcefullyValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                '91vws20w' /* 2.ENABLE SALESMAN FORCEFULLY */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -2599,31 +2703,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilesalesmanProductWiseValue ??=
-                                                                              containerAppSettingsRecord!.salesmanProductWise,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilesalesmanProductWiseValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'mtxv3zt7' /* 3.ENABLE SALESMAN PRODUCT-WISE */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilesalesmanProductWiseValue ??=
+                                                                                containerAppSettingsRecord!.salesmanProductWise,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilesalesmanProductWiseValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'mtxv3zt7' /* 3.ENABLE SALESMAN PRODUCT-WISE */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -2705,31 +2813,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilecouponSaveBillValue ??=
-                                                                              containerAppSettingsRecord!.couponSaveBill,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilecouponSaveBillValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'h7rbgnjm' /* 1.ENABLE COUPON SAVE BILL */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilecouponSaveBillValue ??=
+                                                                                containerAppSettingsRecord!.couponSaveBill,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilecouponSaveBillValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'h7rbgnjm' /* 1.ENABLE COUPON SAVE BILL */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -2741,31 +2853,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilecouponPrintBillValue ??=
-                                                                              containerAppSettingsRecord!.couponPrintBill,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilecouponPrintBillValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'vh4hv06e' /* 2.ENABLE COUPON PRINT BILL */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilecouponPrintBillValue ??=
+                                                                                containerAppSettingsRecord!.couponPrintBill,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilecouponPrintBillValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'vh4hv06e' /* 2.ENABLE COUPON PRINT BILL */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                         Divider(
                                                                           thickness:
@@ -2777,31 +2893,35 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                           color:
                                                                               Color(0xFFD4D1D1),
                                                                         ),
-                                                                        SwitchListTile(
-                                                                          value: _model.switchListTilecouponOrKotHeaderValue ??=
-                                                                              containerAppSettingsRecord!.couponKotHeader,
-                                                                          onChanged:
-                                                                              (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.switchListTilecouponOrKotHeaderValue = newValue!);
-                                                                          },
-                                                                          title:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'ww6q9i4z' /* 3.ENABLE COUPON/KOT HEADER ON ... */,
+                                                                        Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              SwitchListTile(
+                                                                            value: _model.switchListTilecouponOrKotHeaderValue ??=
+                                                                                containerAppSettingsRecord!.couponKotHeader,
+                                                                            onChanged:
+                                                                                (newValue) async {
+                                                                              safeSetState(() => _model.switchListTilecouponOrKotHeaderValue = newValue!);
+                                                                            },
+                                                                            title:
+                                                                                Text(
+                                                                              FFLocalizations.of(context).getText(
+                                                                                'ww6q9i4z' /* 3.ENABLE COUPON/KOT HEADER ON ... */,
+                                                                              ),
+                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                    letterSpacing: 0.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                  ),
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                                ),
+                                                                            tileColor:
+                                                                                Color(0xFFF5F5F5),
+                                                                            dense:
+                                                                                true,
+                                                                            controlAffinity:
+                                                                                ListTileControlAffinity.trailing,
                                                                           ),
-                                                                          tileColor:
-                                                                              Color(0xFFF5F5F5),
-                                                                          dense:
-                                                                              true,
-                                                                          controlAffinity:
-                                                                              ListTileControlAffinity.trailing,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -2880,34 +3000,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilekotRePrintValue ??=
-                                                                            containerAppSettingsRecord!.kotReprint,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilekotRePrintValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'pkncjtkq' /* 1.ENABLE KOT RE-PRINT */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilekotRePrintValue ??=
+                                                                              containerAppSettingsRecord!.kotReprint,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilekotRePrintValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'pkncjtkq' /* 1.ENABLE KOT RE-PRINT */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2919,34 +3041,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilekotPrintAmountColumnValue ??=
-                                                                            containerAppSettingsRecord!.kotPrintAmountColumn,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilekotPrintAmountColumnValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '87clnngp' /* 2.ENABLE KOT PRINT-AMOUNT COLU... */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilekotPrintAmountColumnValue ??=
+                                                                              containerAppSettingsRecord!.kotPrintAmountColumn,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilekotPrintAmountColumnValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '87clnngp' /* 2.ENABLE KOT PRINT-AMOUNT COLU... */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2958,34 +3082,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilekotRemarkValue ??=
-                                                                            containerAppSettingsRecord!.kotRemark,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilekotRemarkValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '01o7lw52' /* 3.ENABLE KOT REMARK */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilekotRemarkValue ??=
+                                                                              containerAppSettingsRecord!.kotRemark,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilekotRemarkValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '01o7lw52' /* 3.ENABLE KOT REMARK */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -2997,34 +3123,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTiledisableSaveKotValue ??=
-                                                                            containerAppSettingsRecord!.saveKot,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTiledisableSaveKotValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '1nd21t1p' /* 4.DISABLE SAVE KOT */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTiledisableSaveKotValue ??=
+                                                                              containerAppSettingsRecord!.saveKot,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTiledisableSaveKotValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '1nd21t1p' /* 4.DISABLE SAVE KOT */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -3102,34 +3230,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilerfidMasterReadValue ??=
-                                                                            containerAppSettingsRecord!.rfidMasterRead,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilerfidMasterReadValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'zwt8bkek' /* 1.ENABLE RFID MASTER(READ) */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilerfidMasterReadValue ??=
+                                                                              containerAppSettingsRecord!.rfidMasterRead,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilerfidMasterReadValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'zwt8bkek' /* 1.ENABLE RFID MASTER(READ) */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -3141,34 +3271,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilerfidmasterWrtValue ??=
-                                                                            containerAppSettingsRecord!.rfidMasterWrite,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilerfidmasterWrtValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'miskluib' /* 2.ENABLE RFID MASTER(WRITE) */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilerfidmasterWrtValue ??=
+                                                                              containerAppSettingsRecord!.rfidMasterWrite,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilerfidmasterWrtValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'miskluib' /* 2.ENABLE RFID MASTER(WRITE) */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -3249,34 +3381,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileshowProductImgValue ??=
-                                                                            containerAppSettingsRecord!.showProductImage,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileshowProductImgValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '33vp99mm' /* 1.SHOW PRODUCT IMAGE */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileshowProductImgValue ??=
+                                                                              containerAppSettingsRecord!.showProductImage,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileshowProductImgValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '33vp99mm' /* 1.SHOW PRODUCT IMAGE */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -3288,34 +3422,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilehideProductSearchCodeValue ??=
-                                                                            containerAppSettingsRecord!.hideProductSearchCode,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilehideProductSearchCodeValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'hvy2v6iu' /* 2.HIDE PRODUCT SEARCH CODE */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilehideProductSearchCodeValue ??=
+                                                                              containerAppSettingsRecord!.hideProductSearchCode,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilehideProductSearchCodeValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'hvy2v6iu' /* 2.HIDE PRODUCT SEARCH CODE */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -3327,34 +3463,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileproductListTypeEnableValue ??=
-                                                                            false,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileproductListTypeEnableValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '55obatei' /* 3.PRODUCT LIST TYPE ENABLE */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileproductListTypeEnableValue ??=
+                                                                              false,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileproductListTypeEnableValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '55obatei' /* 3.PRODUCT LIST TYPE ENABLE */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -3366,34 +3504,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileproductSuggREportValue ??=
-                                                                            containerAppSettingsRecord!.productSuggestionRemove,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileproductSuggREportValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'htzgmw8v' /* 4.PRODUCT SUGGESION REMOVE */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileproductSuggREportValue ??=
+                                                                              containerAppSettingsRecord!.productSuggestionRemove,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileproductSuggREportValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'htzgmw8v' /* 4.PRODUCT SUGGESION REMOVE */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -3484,34 +3624,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileestBillSettlementValue ??=
-                                                                            containerAppSettingsRecord!.billSettlement,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileestBillSettlementValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'r9wkmivd' /* 1.ESTIMATE BILL SETTELEMENT */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileestBillSettlementValue ??=
+                                                                              containerAppSettingsRecord!.billSettlement,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileestBillSettlementValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'r9wkmivd' /* 1.ESTIMATE BILL SETTELEMENT */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -3602,34 +3744,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTilesendbillFormatToEmailValue ??=
-                                                                            containerAppSettingsRecord!.billFormatSendToEmail,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTilesendbillFormatToEmailValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            'bxcoz6zz' /* 3.SEND BILL FORMAT TO EMAIL */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTilesendbillFormatToEmailValue ??=
+                                                                              containerAppSettingsRecord!.billFormatSendToEmail,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTilesendbillFormatToEmailValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'bxcoz6zz' /* 3.SEND BILL FORMAT TO EMAIL */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                       Divider(
                                                                         thickness:
@@ -3641,34 +3785,36 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                                         color: Color(
                                                                             0xFFD4D1D1),
                                                                       ),
-                                                                      SwitchListTile(
-                                                                        value: _model.switchListTileEnableDisToDirectlyAddBillValue ??=
-                                                                            containerAppSettingsRecord!.discountToBill,
-                                                                        onChanged:
-                                                                            (newValue) async {
-                                                                          safeSetState(() =>
-                                                                              _model.switchListTileEnableDisToDirectlyAddBillValue = newValue!);
-                                                                        },
-                                                                        title:
-                                                                            Text(
-                                                                          FFLocalizations.of(context)
-                                                                              .getText(
-                                                                            '6ra55ec7' /* 4.ENABLE DISCOUNT TO DIRECTLY ... */,
+                                                                      Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        child:
+                                                                            SwitchListTile(
+                                                                          value: _model.switchListTileEnableDisToDirectlyAddBillValue ??=
+                                                                              containerAppSettingsRecord!.discountToBill,
+                                                                          onChanged:
+                                                                              (newValue) async {
+                                                                            safeSetState(() =>
+                                                                                _model.switchListTileEnableDisToDirectlyAddBillValue = newValue!);
+                                                                          },
+                                                                          title:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              '6ra55ec7' /* 4.ENABLE DISCOUNT TO DIRECTLY ... */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                ),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodySmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                              ),
+                                                                          tileColor:
+                                                                              Color(0xFFF5F5F5),
+                                                                          dense:
+                                                                              true,
+                                                                          controlAffinity:
+                                                                              ListTileControlAffinity.trailing,
                                                                         ),
-                                                                        tileColor:
-                                                                            Color(0xFFF5F5F5),
-                                                                        dense:
-                                                                            true,
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.trailing,
                                                                       ),
                                                                     ],
                                                                   ),
@@ -3707,49 +3853,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTilemanualPriceValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .manualPrice,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTilemanualPriceValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'lzq7q90q' /* 9.ENABLE MANUAL PRICE */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTilemanualPriceValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .manualPrice,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTilemanualPriceValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'lzq7q90q' /* 9.ENABLE MANUAL PRICE */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -3758,49 +3907,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileestimateModeValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .estimateMode,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileestimateModeValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '11rcddij' /* 10.ESTIMATE MODE ENABLE/DISABL... */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileestimateModeValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .estimateMode,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileestimateModeValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '11rcddij' /* 10.ESTIMATE MODE ENABLE/DISABL... */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -3809,49 +3961,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileeditingInSettelementValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .editingSettlement,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileeditingInSettelementValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '21tqnevj' /* 11.ENABLE EDITING IN SETTELEME... */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileeditingInSettelementValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .editingSettlement,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileeditingInSettelementValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '21tqnevj' /* 11.ENABLE EDITING IN SETTELEME... */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -3860,49 +4015,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileopenPriceValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .openPrice,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileopenPriceValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'm8d64umv' /* 12.ENABLE OPEN PRICE */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileopenPriceValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .openPrice,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileopenPriceValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'm8d64umv' /* 12.ENABLE OPEN PRICE */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -4045,49 +4203,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTilecomboPriceUpdateValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .comboPriceUpdate,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTilecomboPriceUpdateValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'im4lja6i' /* 15.ENABLE COMBO PRICE UPDATE */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTilecomboPriceUpdateValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .comboPriceUpdate,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTilecomboPriceUpdateValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'im4lja6i' /* 15.ENABLE COMBO PRICE UPDATE */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -4096,49 +4257,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileonlineOrderSystemValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .onlineOrderSystem,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileonlineOrderSystemValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'gmicrari' /* 16.ENABLE ONLINE ORDER SYSTEM */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileonlineOrderSystemValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .onlineOrderSystem,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileonlineOrderSystemValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'gmicrari' /* 16.ENABLE ONLINE ORDER SYSTEM */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -4147,94 +4311,45 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTilebillModificationValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .billModificationtoUser,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTilebillModificationValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '53flgvwx' /* 17.BILL MODIFICATION (USER) */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTilebillModificationValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .billModificationtoUser,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTilebillModificationValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '53flgvwx' /* 17.BILL MODIFICATION (USER) */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                    ),
-                                                    Divider(
-                                                      thickness: 0.5,
-                                                      indent: 10.0,
-                                                      endIndent: 10.0,
-                                                      color: Color(0xFFD4D1D1),
-                                                    ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileenableStoreValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .store,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileenableStoreValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'uxhcdqey' /* 18. ENABLE STORE */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
                                                       ),
                                                     ),
                                                     Divider(
@@ -4243,49 +4358,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileweightMinusValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .weightMinus,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileweightMinusValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'b25kik9g' /* 19. ENABLE WEGHT MINUS */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileenableStoreValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .store,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileenableStoreValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'uxhcdqey' /* 18. ENABLE STORE */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -4294,49 +4412,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTilestockgettinginminusValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .stockGettingMinus,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTilestockgettinginminusValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'pyf3e69s' /* 20. ENABLE STOCK GETTING IN MI... */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileweightMinusValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .weightMinus,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileweightMinusValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'b25kik9g' /* 19. ENABLE WEGHT MINUS */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -4345,49 +4466,52 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileDeliveryDateValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .deliveryNote,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileDeliveryDateValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '8l08tex1' /* 21.ENABLE A4 DELIVERY NOTE */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTilestockgettinginminusValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .stockGettingMinus,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTilestockgettinginminusValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'pyf3e69s' /* 20. ENABLE STOCK GETTING IN MI... */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                     Divider(
@@ -4396,49 +4520,106 @@ class _AppSettingWidgetState extends State<AppSettingWidget> {
                                                       endIndent: 10.0,
                                                       color: Color(0xFFD4D1D1),
                                                     ),
-                                                    SwitchListTile(
-                                                      value: _model
-                                                              .switchListTileHideKeybordValue ??=
-                                                          containerAppSettingsRecord!
-                                                              .deliveryNote,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        safeSetState(() => _model
-                                                                .switchListTileHideKeybordValue =
-                                                            newValue!);
-                                                      },
-                                                      title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'wgwzb8zd' /* 22.HIDE KEYBOARD */,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileDeliveryDateValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .deliveryNote,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileDeliveryDateValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '8l08tex1' /* 21.ENABLE A4 DELIVERY NOTE */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
-                                                      dense: false,
-                                                      controlAffinity:
-                                                          ListTileControlAffinity
-                                                              .trailing,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 0.5,
+                                                      indent: 10.0,
+                                                      endIndent: 10.0,
+                                                      color: Color(0xFFD4D1D1),
+                                                    ),
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      child: SwitchListTile(
+                                                        value: _model
+                                                                .switchListTileHideKeybordValue ??=
+                                                            containerAppSettingsRecord!
+                                                                .deliveryNote,
+                                                        onChanged:
+                                                            (newValue) async {
+                                                          safeSetState(() =>
+                                                              _model.switchListTileHideKeybordValue =
+                                                                  newValue!);
+                                                        },
+                                                        title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'wgwzb8zd' /* 22.HIDE KEYBOARD */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                        ),
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
                                                       ),
                                                     ),
                                                   ],

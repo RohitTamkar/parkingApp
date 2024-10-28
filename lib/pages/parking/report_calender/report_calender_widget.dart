@@ -43,6 +43,8 @@ class _ReportCalenderWidgetState extends State<ReportCalenderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -118,6 +120,22 @@ class _ReportCalenderWidgetState extends State<ReportCalenderWidget> {
                             FFAppState().filterDate = functions.selectedDayId(
                                 _model.calendarSelectedDay!.start);
                             FFAppState().update(() {});
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('OK'),
+                                  content: Text(FFAppState().filterDate),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                             Navigator.pop(context);
                           },
                           text: FFLocalizations.of(context).getText(

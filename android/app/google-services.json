@@ -367,6 +367,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:401022448274:android:1b443e6dcdce35f8762c4b",
+        "android_client_info": {
+          "package_name": "com.sensibleconnect.parkingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfaYoVSSiTIhv9AC19tpHWkM59fX_wrI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401022448274-bb0ohhb258t2nqmsp0mfjimuffff4huv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401022448274-4ppc8hrnk24ag7drh5q5844dlgllp6d4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sensibleconnect.sensiblebizpro"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:401022448274:android:07cdb04898a9e63f762c4b",
         "android_client_info": {
           "package_name": "com.sensibleconnect.sensiblebizpos"

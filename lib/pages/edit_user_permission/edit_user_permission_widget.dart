@@ -378,597 +378,565 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           children: [
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue1 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Edit Bill')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue1 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '0ycoa4cp' /* Edit Bill */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'veixn0px' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue1 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Edit Bill').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue1 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    '0ycoa4cp' /* Edit Bill */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'veixn0px' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue2 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Goods Received')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue2 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'eg5fop2e' /* Goods Received */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'fg5wuwz2' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue2 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Goods Received').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue2 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    'eg5fop2e' /* Goods Received */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'fg5wuwz2' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue3 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Reports')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue3 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'h36mmqdv' /* Reports */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'hg33q0k3' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue3 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Reports').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue3 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    'h36mmqdv' /* Reports */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'hg33q0k3' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue4 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Settings')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue4 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'ib7r67fy' /* Settings */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'dgsalk64' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue4 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Settings').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue4 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    'ib7r67fy' /* Settings */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'dgsalk64' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue5 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Shift Report')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue5 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '9oc3syqe' /* Shift Report */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'z0t1g5zf' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue5 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Shift Report').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue5 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    '9oc3syqe' /* Shift Report */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'z0t1g5zf' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue6 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Stock Out')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue6 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'r7lh7xd0' /* Stock Out */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '5cuq025o' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue6 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Stock Out').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue6 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    'r7lh7xd0' /* Stock Out */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    '5cuq025o' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue7 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Payment')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue7 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'j6o4zeb8' /* Payment */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '6x4fun33' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue7 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Payment').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue7 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    'j6o4zeb8' /* Payment */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    '6x4fun33' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
-                                                            SwitchListTile(
-                                                              value: _model
-                                                                  .switchListTileValue8 ??= functions
-                                                                          .userDocToJsonNew(
-                                                                              containerUserProfileRecord!,
-                                                                              'Barcode')
-                                                                          .toString() !=
-                                                                      '0'
-                                                                  ? true
-                                                                  : false,
-                                                              onChanged:
-                                                                  (newValue) async {
-                                                                safeSetState(() =>
-                                                                    _model.switchListTileValue8 =
-                                                                        newValue!);
-                                                              },
-                                                              title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'zu0uvp2l' /* Barcode */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'plel3qnc' /* Show Report on device */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryBtnText,
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
+                                                            Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  SwitchListTile(
+                                                                value: _model
+                                                                        .switchListTileValue8 ??=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Barcode').toString() !=
+                                                                            '0'
+                                                                        ? true
+                                                                        : false,
+                                                                onChanged:
+                                                                    (newValue) async {
+                                                                  safeSetState(() =>
+                                                                      _model.switchListTileValue8 =
+                                                                          newValue!);
+                                                                },
+                                                                title: Text(
+                                                                  FFLocalizations.of(
                                                                           context)
-                                                                      .secondary,
-                                                              activeTrackColor:
-                                                                  FlutterFlowTheme.of(
+                                                                      .getText(
+                                                                    'zu0uvp2l' /* Barcode */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .customColor1,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                subtitle: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'plel3qnc' /* Show Report on device */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                                tileColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                activeColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                activeTrackColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                dense: false,
+                                                                controlAffinity:
+                                                                    ListTileControlAffinity
+                                                                        .trailing,
+                                                              ),
                                                             ),
                                                           ],
                                                         ),
@@ -2786,7 +2754,7 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                                                     .bodySmallFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .customColor3,
+                                                                    .customColor1,
                                                                 fontSize: 11.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -3451,47 +3419,51 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                                               ),
                                                         )),
                                                       ),
-                                                      SwitchListTile(
-                                                        value: _model
-                                                                .switchListTileValue9 ??=
-                                                            true,
-                                                        onChanged:
-                                                            (newValue) async {
-                                                          safeSetState(() =>
-                                                              _model.switchListTileValue9 =
-                                                                  newValue!);
-                                                        },
-                                                        title: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '537fsnzm' /* Allow back dated entries */,
+                                                      Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: SwitchListTile(
+                                                          value: _model
+                                                                  .switchListTileValue9 ??=
+                                                              true,
+                                                          onChanged:
+                                                              (newValue) async {
+                                                            safeSetState(() =>
+                                                                _model.switchListTileValue9 =
+                                                                    newValue!);
+                                                          },
+                                                          title: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '537fsnzm' /* Allow back dated entries */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .customColor3,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
                                                           ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .customColor3,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                          tileColor:
+                                                              Color(0xFFF5F5F5),
+                                                          dense: true,
+                                                          controlAffinity:
+                                                              ListTileControlAffinity
+                                                                  .trailing,
                                                         ),
-                                                        tileColor:
-                                                            Color(0xFFF5F5F5),
-                                                        dense: true,
-                                                        controlAffinity:
-                                                            ListTileControlAffinity
-                                                                .trailing,
                                                       ),
                                                     ],
                                                   ),

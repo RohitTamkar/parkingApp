@@ -1318,3 +1318,7 @@ String getDayIdAndTime(int milliseconds) {
   // Combine date and time
   return '$formattedDate $formattedTime';
 }
+
+int addOneIndexAhead(int start) {
+  return start + 1;
+}

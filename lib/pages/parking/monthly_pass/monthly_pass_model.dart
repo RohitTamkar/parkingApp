@@ -77,6 +77,14 @@ class MonthlyPassModel extends FlutterFlowModel<MonthlyPassWidget> {
   String? base64Link2;
   // Stores action output result for [Backend Call - API (sendMail)] action in IconButton widget.
   ApiCallResponse? apiResult6yc22;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  MonthlyPassRecord? passDocCopyCopy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  PartyRecord? partydetails2Copy;
+  // Stores action output result for [Custom Action - generateParkingPassPdf] action in Button widget.
+  String? base64Link2Copy;
+  // Stores action output result for [Backend Call - API (sendMail)] action in Button widget.
+  ApiCallResponse? apiResult6yc22Copy;
 
   @override
   void initState(BuildContext context) {

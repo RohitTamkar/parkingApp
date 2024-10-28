@@ -2330,7 +2330,9 @@ class _ShiftEndNew2WidgetState extends State<ShiftEndNew2Widget>
                                                                                         valueOrDefault<String>(
                                                                                           FFAppState().shiftDetails.discount.toString(),
                                                                                           '0',
-                                                                                        ).maybeHandleOverflow(maxChars: 8),
+                                                                                        ).maybeHandleOverflow(
+                                                                                          maxChars: 8,
+                                                                                        ),
                                                                                         style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                               fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                               letterSpacing: 0.0,

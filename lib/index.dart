@@ -126,7 +126,8 @@ export '/pages/parking/edit_busines_profile/edit_busines_profile_widget.dart'
 export '/pages/parking/account/account_widget.dart' show AccountWidget;
 export '/pages/parking/edit_userprofile/edit_userprofile_widget.dart'
     show EditUserprofileWidget;
-export '/pages/masters_new/masters_new_widget.dart' show MastersNewWidget;
+export '/pages/parking/masters_new/masters_new_widget.dart'
+    show MastersNewWidget;
 export '/pages/parking/categories/categories_widget.dart' show CategoriesWidget;
 export '/pages/parking/product_list_new_m/product_list_new_m_widget.dart'
     show ProductListNewMWidget;
@@ -210,7 +211,7 @@ export '/pages/parking/category_wise_sale_report/category_wise_sale_report_widge
     show CategoryWiseSaleReportWidget;
 export '/pages/parking/product_wise_sale_report/product_wise_sale_report_widget.dart'
     show ProductWiseSaleReportWidget;
-export '/pages/parking/day_wise_sale_report/day_wise_sale_report_widget.dart'
+export '/pages/day_wise_sale_report/day_wise_sale_report_widget.dart'
     show DayWiseSaleReportWidget;
 export '/pages/parking/bill_details/bill_details_widget.dart'
     show BillDetailsWidget;
@@ -225,3 +226,8 @@ export '/pages/parking/pass_details/pass_details_widget.dart'
     show PassDetailsWidget;
 export '/pages/parking/vehicle_wise_sale_report/vehicle_wise_sale_report_widget.dart'
     show VehicleWiseSaleReportWidget;
+export '/pages/parking/user_list/user_list_widget.dart' show UserListWidget;
+export '/pages/parking/add_user/add_user_widget.dart' show AddUserWidget;
+export '/pages/parking/edit_user/edit_user_widget.dart' show EditUserWidget;
+export '/pages/parking/parking_login/parking_login_widget.dart'
+    show ParkingLoginWidget;

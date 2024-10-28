@@ -2208,7 +2208,9 @@ class _ShiftEndNewWidgetState extends State<ShiftEndNewWidget>
                                                                                             ),
                                                                                           ),
                                                                                           Text(
-                                                                                            containerShiftRecord!.discount.toString().maybeHandleOverflow(maxChars: 8),
+                                                                                            containerShiftRecord!.discount.toString().maybeHandleOverflow(
+                                                                                                  maxChars: 8,
+                                                                                                ),
                                                                                             style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                   fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
                                                                                                   letterSpacing: 0.0,

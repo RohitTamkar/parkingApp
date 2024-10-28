@@ -38,7 +38,8 @@ Future<dynamic> getPlatformDetails(String target) async {
         "deviceId": information.deviceId,
         "platform": 'ANDROID',
         'displaySizeInches':
-            ((build.displayMetrics.sizeInches * 10).roundToDouble() / 10),
+            // ((build.displayMetrics.sizeInches * 10).roundToDouble() / 10),
+            "",
       };
 
       return data;

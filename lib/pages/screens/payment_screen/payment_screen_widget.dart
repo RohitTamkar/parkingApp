@@ -1289,7 +1289,7 @@ class _PaymentScreenWidgetState extends State<PaymentScreenWidget>
                                 labelColor:
                                     FlutterFlowTheme.of(context).primary,
                                 unselectedLabelColor:
-                                    FlutterFlowTheme.of(context).primaryText,
+                                    FlutterFlowTheme.of(context).primary,
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .headlineSmall
                                     .override(

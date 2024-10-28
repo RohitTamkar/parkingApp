@@ -1819,122 +1819,130 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     Expanded(
-                                                      child: Theme(
-                                                        data: ThemeData(
-                                                          unselectedWidgetColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .customColor1,
-                                                        ),
-                                                        child: CheckboxListTile(
-                                                          value: _model
-                                                                  .wightCheckboValue ??=
-                                                              containerProductRecord!
-                                                                  .weightable,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.wightCheckboValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '13rc0n85' /* Weightable */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
-                                                                ),
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: Theme(
+                                                          data: ThemeData(
+                                                            unselectedWidgetColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .customColor1,
                                                           ),
-                                                          tileColor:
-                                                              FlutterFlowTheme.of(
+                                                          child:
+                                                              CheckboxListTile(
+                                                            value: _model
+                                                                    .wightCheckboValue ??=
+                                                                containerProductRecord!
+                                                                    .weightable,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.wightCheckboValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
                                                                       context)
-                                                                  .customColor1,
-                                                          activeColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .parkingSecondaryBackground,
-                                                          checkColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryBtnText,
-                                                          dense: true,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .leading,
+                                                                  .getText(
+                                                                '13rc0n85' /* Weightable */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                  ),
+                                                            ),
+                                                            tileColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .customColor1,
+                                                            activeColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .parkingSecondaryBackground,
+                                                            checkColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                            dense: true,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .leading,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
                                                     Expanded(
-                                                      child: Theme(
-                                                        data: ThemeData(
-                                                          unselectedWidgetColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .customColor1,
-                                                        ),
-                                                        child: CheckboxListTile(
-                                                          value: _model
-                                                                  .stockCheckboxValue ??=
-                                                              containerProductRecord!
-                                                                  .stockable,
-                                                          onChanged:
-                                                              (newValue) async {
-                                                            safeSetState(() =>
-                                                                _model.stockCheckboxValue =
-                                                                    newValue!);
-                                                          },
-                                                          title: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'ayn5thev' /* Stockable */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
-                                                                ),
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: Theme(
+                                                          data: ThemeData(
+                                                            unselectedWidgetColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .customColor1,
                                                           ),
-                                                          tileColor:
-                                                              FlutterFlowTheme.of(
+                                                          child:
+                                                              CheckboxListTile(
+                                                            value: _model
+                                                                    .stockCheckboxValue ??=
+                                                                containerProductRecord!
+                                                                    .stockable,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              safeSetState(() =>
+                                                                  _model.stockCheckboxValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              FFLocalizations.of(
                                                                       context)
-                                                                  .customColor1,
-                                                          activeColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .parkingSecondaryBackground,
-                                                          checkColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryBtnText,
-                                                          dense: true,
-                                                          controlAffinity:
-                                                              ListTileControlAffinity
-                                                                  .leading,
+                                                                  .getText(
+                                                                'ayn5thev' /* Stockable */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                  ),
+                                                            ),
+                                                            tileColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .customColor1,
+                                                            activeColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .parkingSecondaryBackground,
+                                                            checkColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                            dense: true,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .leading,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),

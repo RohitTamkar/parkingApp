@@ -527,7 +527,7 @@ class _PrinterSelectionScreenWidgetState
                                                   .primary,
                                           unselectedLabelColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primaryText,
+                                                  .primary,
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall

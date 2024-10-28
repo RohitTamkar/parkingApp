@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
 set(BINARY_NAME "ParkingAPP")
-set(APPLICATION_ID "com.sensibleconnect.sensiblebizpos")
+set(APPLICATION_ID "com.sensibleconnect.parkingapp")
 
 cmake_policy(SET CMP0063 NEW)
 

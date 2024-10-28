@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -79,18 +80,47 @@ class FFLocalizations {
   };
 }
 
+/// Used if the locale is not supported by GlobalMaterialLocalizations.
+class FallbackMaterialLocalizationDelegate
+    extends LocalizationsDelegate<MaterialLocalizations> {
+  const FallbackMaterialLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<MaterialLocalizations> load(Locale locale) async =>
+      SynchronousFuture<MaterialLocalizations>(
+        const DefaultMaterialLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackMaterialLocalizationDelegate old) => false;
+}
+
+/// Used if the locale is not supported by GlobalCupertinoLocalizations.
+class FallbackCupertinoLocalizationDelegate
+    extends LocalizationsDelegate<CupertinoLocalizations> {
+  const FallbackCupertinoLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<CupertinoLocalizations> load(Locale locale) =>
+      SynchronousFuture<CupertinoLocalizations>(
+        const DefaultCupertinoLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackCupertinoLocalizationDelegate old) => false;
+}
+
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
   const FFLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) {
-    final language = locale.toString();
-    return FFLocalizations.languages().contains(
-      language.endsWith('_')
-          ? language.substring(0, language.length - 1)
-          : language,
-    );
-  }
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
 
   @override
   Future<FFLocalizations> load(Locale locale) =>
@@ -106,6 +136,15 @@ Locale createLocale(String language) => language.contains('_')
         scriptCode: language.split('_').last,
       )
     : Locale(language);
+
+bool _isSupportedLocale(Locale locale) {
+  final language = locale.toString();
+  return FFLocalizations.languages().contains(
+    language.endsWith('_')
+        ? language.substring(0, language.length - 1)
+        : language,
+  );
+}
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // welcomeScreen
@@ -23401,6 +23440,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    '3d6rzj9a': {
+      'en': 'Send Mail',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'p5s012xm': {
       'en': 'Home',
       'hi': '',
@@ -23418,21 +23464,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'db7vj9nn': {
+    '37dsqgu6': {
       'en': 'Created : ',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'gy6iocrj': {
+    '152d5rhw': {
       'en': 'Renewal : ',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'l3jh2m7e': {
+    'y8q5qomi': {
       'en': 'Pass status : ',
       'hi': '',
       'kn': '',
@@ -23470,21 +23516,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'nwxw8c86': {
+    'qeurjyet': {
       'en': 'Time Parked',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'x9zk4nxa': {
+    '76sxoo9i': {
       'en': 'In Time',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '3zthfnde': {
+    'h2w1x15t': {
       'en': 'Out Time',
       'hi': '',
       'kn': '',
@@ -23498,21 +23544,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'hzqz9pcj': {
+    'b0rlht1q': {
       'en': 'Time Parked',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'ney57bzl': {
+    'mud4hi9v': {
       'en': 'In Time',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'al1bwg4n': {
+    't8snaa3g': {
       'en': 'Out Time',
       'hi': '',
       'kn': '',
@@ -23576,6 +23622,543 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'vg73veb1': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // UserList
+  {
+    '5sj5wksw': {
+      'en': 'Users List',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'qjs6bilf': {
+      'en': '+',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'fu317b7g': {
+      'en': '1',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'hahoe8xp': {
+      'en': 'Starters',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'q6i5wre1': {
+      'en': '+',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'tt1tceky': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // addUser
+  {
+    '8kvrs1tj': {
+      'en': 'Add User ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'opamzp7y': {
+      'en': 'User Name',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '3vndaoyo': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'se8a7dai': {
+      'en': 'Mob. No.',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '6vhnfn6l': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'onw8utc9': {
+      'en': 'Email ID',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '2fakf29w': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '1hvxqzsz': {
+      'en': 'Password',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'eddmnu09': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'h2096wgd': {
+      'en': 'Password',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '0p8rcffa': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'r5brm6ym': {
+      'en': 'Quick PIN',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'p3fm5uyl': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '9fs5w60g': {
+      'en': 'Area',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'rk07wjgd': {
+      'en': 'Save & Next',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '3ra21bqd': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'xh77lqen': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '1n8mcp2r': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '7teph8q1': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'w09ewk7v': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'yzcfcoph': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'egnwbznf': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'eqo6mdw5': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '5etad476': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '0h0y9p13': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'bjcg2b4d': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // editUser
+  {
+    'z5utdexo': {
+      'en': 'User Profile user',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'fy5t7ylz': {
+      'en': 'Name *',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'favj8sn7': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'sf6nlsbo': {
+      'en': 'Email ID',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'gs5wfanq': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'y2o8qsnk': {
+      'en': 'Password',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'pr35q2k9': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'mz3ehxvq': {
+      'en': 'Quick PIN (4 Digit Only)',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'wha9mz81': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'uegoms2e': {
+      'en': 'View User settings and access',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ie0a270w': {
+      'en': 'UPDATE',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    's18khrnk': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'pwf6fffw': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'otdjm8rl': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '4tmcxvyj': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '9896mz7i': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ir3u35qw': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    's5n6h2y2': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ze1dt0y6': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ff807bd6': {
+      'en': 'Field is required',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'cydjnct2': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '1jeptb5i': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // parkingLogin
+  {
+    'b97osn7t': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'l7ffjy5p': {
+      'en': 'Rohit',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'l7ufw34f': {
+      'en': 'Amrut',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'fp73ytmm': {
+      'en': 'Piyush',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'z83helkp': {
+      'en': 'Please select...',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'qjjs6yyp': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'u58njo5r': {
+      'en': '1',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'hgfsuh5d': {
+      'en': '7',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'u2174mue': {
+      'en': '2',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '8q5zqsgn': {
+      'en': '5',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'e4i4dj44': {
+      'en': '8',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'mokv41ef': {
+      'en': '0',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '0euwn4ot': {
+      'en': '3',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'mw8rxv1e': {
+      'en': '6',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'bvox9yqu': {
+      'en': '9',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '5kha7alq': {
+      'en': 'Subscription Due Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '441c5imu': {
+      'en': 'Remaining Days',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'tdfvul83': {
+      'en': '@copyright reserved ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '3nf62p4j': {
+      'en': 'SENSIBLE CONNECT SOLUTIONS PRIVATE LIMITED ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'jng2t6e9': {
+      'en': '2024 All rights reserved',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'sj2dg2dj': {
       'en': 'Home',
       'hi': '',
       'kn': '',
@@ -25702,6 +26285,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'c0tsq8sj': {
       'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '3uve1f9c': {
+      'en': 'This app requires permission to access the location',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ksuyq7nw': {
+      'en': 'This app requires permission to access the bluetooth',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ziw5w33s': {
+      'en': 'This app requires permission to access the Notification',
       'hi': '',
       'kn': '',
       'mr': '',

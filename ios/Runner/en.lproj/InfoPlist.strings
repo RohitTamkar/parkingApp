@@ -1,1 +1,3 @@
-
+NSLocationWhenInUseUsageDescription = "This app requires permission to access the location";
+NSBluetoothAlwaysUsageDescription = "This app requires permission to access the bluetooth";
+PermissionGroupNotification = "This app requires permission to access the Notification";

@@ -49,54 +49,57 @@ class _AppsettingWidgetState extends State<AppsettingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SwitchListTile(
-      value: _model.switchListTilecheckInOutValue ??= widget!.struct!.value,
-      onChanged: (newValue) async {
-        safeSetState(() => _model.switchListTilecheckInOutValue = newValue!);
-        if (newValue!) {
-          _model.appsttingupdate = await actions.appSettingUpdate(
-            AppSettingsStruct(
-              title: widget!.struct?.title,
-              value: _model.switchListTilecheckInOutValue,
-              display: widget!.struct?.display,
-              isDeleted: widget!.struct?.isDeleted,
-            ),
-            widget!.alldoc!.toList(),
-          );
-          FFAppState().appSettings =
-              _model.appsttingupdate!.toList().cast<AppSettingsStruct>();
-          safeSetState(() {});
+    return Material(
+      color: Colors.transparent,
+      child: SwitchListTile(
+        value: _model.switchListTilecheckInOutValue ??= widget!.struct!.value,
+        onChanged: (newValue) async {
+          safeSetState(() => _model.switchListTilecheckInOutValue = newValue!);
+          if (newValue!) {
+            _model.appsttingupdate = await actions.appSettingUpdate(
+              AppSettingsStruct(
+                title: widget!.struct?.title,
+                value: _model.switchListTilecheckInOutValue,
+                display: widget!.struct?.display,
+                isDeleted: widget!.struct?.isDeleted,
+              ),
+              widget!.alldoc!.toList(),
+            );
+            FFAppState().appSettings =
+                _model.appsttingupdate!.toList().cast<AppSettingsStruct>();
+            safeSetState(() {});
 
-          safeSetState(() {});
-        } else {
-          _model.appsttingupdateCopy = await actions.appSettingUpdate(
-            AppSettingsStruct(
-              title: widget!.struct?.title,
-              value: _model.switchListTilecheckInOutValue,
-              display: widget!.struct?.display,
-              isDeleted: widget!.struct?.isDeleted,
-            ),
-            widget!.alldoc!.toList(),
-          );
-          FFAppState().appSettings =
-              _model.appsttingupdateCopy!.toList().cast<AppSettingsStruct>();
-          safeSetState(() {});
+            safeSetState(() {});
+          } else {
+            _model.appsttingupdateCopy = await actions.appSettingUpdate(
+              AppSettingsStruct(
+                title: widget!.struct?.title,
+                value: _model.switchListTilecheckInOutValue,
+                display: widget!.struct?.display,
+                isDeleted: widget!.struct?.isDeleted,
+              ),
+              widget!.alldoc!.toList(),
+            );
+            FFAppState().appSettings =
+                _model.appsttingupdateCopy!.toList().cast<AppSettingsStruct>();
+            safeSetState(() {});
 
-          safeSetState(() {});
-        }
-      },
-      title: Text(
-        widget!.struct!.display,
-        style: FlutterFlowTheme.of(context).bodySmall.override(
-              fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
-              letterSpacing: 0.0,
-              useGoogleFonts: GoogleFonts.asMap()
-                  .containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-            ),
+            safeSetState(() {});
+          }
+        },
+        title: Text(
+          widget!.struct!.display,
+          style: FlutterFlowTheme.of(context).bodySmall.override(
+                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                letterSpacing: 0.0,
+                useGoogleFonts: GoogleFonts.asMap()
+                    .containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+              ),
+        ),
+        tileColor: Color(0xFFF5F5F5),
+        dense: true,
+        controlAffinity: ListTileControlAffinity.trailing,
       ),
-      tileColor: Color(0xFFF5F5F5),
-      dense: true,
-      controlAffinity: ListTileControlAffinity.trailing,
     );
   }
 }

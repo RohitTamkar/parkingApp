@@ -323,6 +323,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             );
                                           },
                                         );
+                                        Navigator.pop(context);
+
+                                        context.goNamed('ParkingCustomers');
                                       } else {
                                         await showDialog(
                                           context: context,

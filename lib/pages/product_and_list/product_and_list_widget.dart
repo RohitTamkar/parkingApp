@@ -2593,7 +2593,9 @@ class _ProductAndListWidgetState extends State<ProductAndListWidget>
                                                                                                       Padding(
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                                                                                                         child: Text(
-                                                                                                          gridViewProductRecord.regionalName.maybeHandleOverflow(maxChars: 25),
+                                                                                                          gridViewProductRecord.regionalName.maybeHandleOverflow(
+                                                                                                            maxChars: 25,
+                                                                                                          ),
                                                                                                           textAlign: TextAlign.center,
                                                                                                           style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
@@ -2712,7 +2714,9 @@ class _ProductAndListWidgetState extends State<ProductAndListWidget>
                                                                                                       Padding(
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                                                                                                         child: Text(
-                                                                                                          gridViewProductRecord.name.maybeHandleOverflow(maxChars: 25),
+                                                                                                          gridViewProductRecord.name.maybeHandleOverflow(
+                                                                                                            maxChars: 25,
+                                                                                                          ),
                                                                                                           textAlign: TextAlign.center,
                                                                                                           maxLines: 2,
                                                                                                           style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -2954,7 +2958,9 @@ class _ProductAndListWidgetState extends State<ProductAndListWidget>
                                                                                                       Padding(
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 7.0),
                                                                                                         child: Text(
-                                                                                                          gridViewProductRecord.name.maybeHandleOverflow(maxChars: 25),
+                                                                                                          gridViewProductRecord.name.maybeHandleOverflow(
+                                                                                                            maxChars: 25,
+                                                                                                          ),
                                                                                                           textAlign: TextAlign.center,
                                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,

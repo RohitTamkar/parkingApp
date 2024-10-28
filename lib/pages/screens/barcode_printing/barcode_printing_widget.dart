@@ -1218,51 +1218,57 @@ class _BarcodePrintingWidgetState extends State<BarcodePrintingWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Theme(
-                                                data: ThemeData(
-                                                  unselectedWidgetColor:
-                                                      Color(0xFF95A1AC),
-                                                ),
-                                                child: CheckboxListTile(
-                                                  value: _model
-                                                          .checkboxListTileValue ??=
-                                                      false,
-                                                  onChanged: (newValue) async {
-                                                    safeSetState(() => _model
-                                                            .checkboxListTileValue =
-                                                        newValue!);
-                                                  },
-                                                  title: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '4k9sfx6b' /* Weightable Barcode */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineSmallFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
-                                                        ),
+                                              Material(
+                                                color: Colors.transparent,
+                                                child: Theme(
+                                                  data: ThemeData(
+                                                    unselectedWidgetColor:
+                                                        Color(0xFF95A1AC),
                                                   ),
-                                                  tileColor: Color(0xFFF5F5F5),
-                                                  activeColor:
-                                                      FlutterFlowTheme.of(
+                                                  child: CheckboxListTile(
+                                                    value: _model
+                                                            .checkboxListTileValue ??=
+                                                        false,
+                                                    onChanged:
+                                                        (newValue) async {
+                                                      safeSetState(() => _model
+                                                              .checkboxListTileValue =
+                                                          newValue!);
+                                                    },
+                                                    title: Text(
+                                                      FFLocalizations.of(
                                                               context)
-                                                          .secondary,
-                                                  dense: true,
-                                                  controlAffinity:
-                                                      ListTileControlAffinity
-                                                          .leading,
+                                                          .getText(
+                                                        '4k9sfx6b' /* Weightable Barcode */,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
+                                                    ),
+                                                    tileColor:
+                                                        Color(0xFFF5F5F5),
+                                                    activeColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                    dense: true,
+                                                    controlAffinity:
+                                                        ListTileControlAffinity
+                                                            .leading,
+                                                  ),
                                                 ),
                                               ),
                                             ],

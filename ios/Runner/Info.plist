@@ -36,7 +36,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.401022448274-an2lpor6qav6kpjl2s4tanv9q7t1esbn</string>
+                <!--FF_REVERSED_CLIENT_ID-->
                 
             </array>
         </dict>
@@ -63,7 +63,12 @@
 
 	<key>NSCameraUsageDescription</key>
     <string>In order to scan for barcodes and QR codes, this app requires permission to access the camera.</string>
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app requires permission to access the location</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+    <string>This app requires permission to access the bluetooth</string>
+	<key>PermissionGroupNotification</key>
+    <string>This app requires permission to access the Notification</string>
 
 
 	<key>UILaunchStoryboardName</key>

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,7 +6,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -568,11 +572,49 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                                                     FFAppState()
                                                                         .update(
                                                                             () {});
+                                                                    _model.devicenew =
+                                                                        await actions
+                                                                            .getPlatformDetails(
+                                                                      isWeb
+                                                                          .toString(),
+                                                                    );
+                                                                    _model.devicedetails2 =
+                                                                        await queryDeviceRecordOnce(
+                                                                      queryBuilder:
+                                                                          (deviceRecord) =>
+                                                                              deviceRecord.where(
+                                                                        'deviceId',
+                                                                        isEqualTo:
+                                                                            getJsonField(
+                                                                          _model
+                                                                              .devicenew,
+                                                                          r'''$.deviceId''',
+                                                                        ).toString(),
+                                                                      ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
                                                                     if (listViewOutletRecord
                                                                             .active ==
                                                                         true) {
-                                                                      context.goNamed(
-                                                                          'welcomeScreenParking');
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'welcomeScreenParking',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'deviceDoc':
+                                                                              serializeParam(
+                                                                            _model.devicedetails2,
+                                                                            ParamType.Document,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                        extra: <String,
+                                                                            dynamic>{
+                                                                          'deviceDoc':
+                                                                              _model.devicedetails2,
+                                                                        },
+                                                                      );
                                                                     } else {
                                                                       await showDialog(
                                                                         context:
@@ -581,7 +623,7 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                                                             (alertDialogContext) {
                                                                           return AlertDialog(
                                                                             content:
-                                                                                Text('Outlet Is Not Active !'),
+                                                                                Text('Outlet is Not Active ! Contact Admin'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
@@ -592,6 +634,9 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                                                         },
                                                                       );
                                                                     }
+
+                                                                    safeSetState(
+                                                                        () {});
                                                                   },
                                                                   child:
                                                                       Container(
@@ -868,6 +913,9 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                         ScanMode.QR,
                                       );
 
+                                      FFAppState().qrCodeResult =
+                                          _model.result!;
+                                      FFAppState().update(() {});
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
@@ -883,6 +931,16 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                             ],
                                           );
                                         },
+                                      );
+
+                                      context.pushNamed(
+                                        'addOutletPage',
+                                        queryParameters: {
+                                          'mobile': serializeParam(
+                                            FFAppState().currentMobile,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
                                       );
 
                                       safeSetState(() {});

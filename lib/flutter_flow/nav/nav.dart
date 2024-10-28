@@ -1064,6 +1064,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'appSettings',
                   ParamType.Document,
                 ),
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -1529,6 +1533,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'vehicleWiseSaleReport',
               path: 'vehicleWiseSaleReport',
               builder: (context, params) => VehicleWiseSaleReportWidget(),
+            ),
+            FFRoute(
+              name: 'UserList',
+              path: 'userList',
+              builder: (context, params) => UserListWidget(
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'addUser',
+              path: 'addUser',
+              builder: (context, params) => AddUserWidget(),
+            ),
+            FFRoute(
+              name: 'editUser',
+              path: 'editUser',
+              asyncParams: {
+                'docRef':
+                    getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+              },
+              builder: (context, params) => EditUserWidget(
+                docRef: params.getParam(
+                  'docRef',
+                  ParamType.Document,
+                ),
+                nextP: params.getParam(
+                  'nextP',
+                  ParamType.int,
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'parkingLogin',
+              path: 'parkingLogin',
+              builder: (context, params) => ParkingLoginWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

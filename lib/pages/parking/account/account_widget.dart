@@ -367,10 +367,7 @@ class _AccountWidgetState extends State<AccountWidget>
                 stream: queryUserProfileRecord(
                   queryBuilder: (userProfileRecord) => userProfileRecord.where(
                     'mobile',
-                    isEqualTo: valueOrDefault<String>(
-                      FFAppState().currentMobileString,
-                      '0',
-                    ),
+                    isEqualTo: FFAppState().currentMobileString,
                   ),
                   singleRecord: true,
                 ),
@@ -390,6 +387,10 @@ class _AccountWidgetState extends State<AccountWidget>
                   }
                   List<UserProfileRecord> containerUserProfileRecordList =
                       snapshot.data!;
+                  // Return an empty Container when the item does not exist.
+                  if (snapshot.data!.isEmpty) {
+                    return Container();
+                  }
                   final containerUserProfileRecord =
                       containerUserProfileRecordList.isNotEmpty
                           ? containerUserProfileRecordList.first
@@ -447,7 +448,8 @@ class _AccountWidgetState extends State<AccountWidget>
                                                   size: 24.0,
                                                 ),
                                                 onPressed: () async {
-                                                  context.safePop();
+                                                  context.pushNamed(
+                                                      'ParkingCustomers');
                                                 },
                                               ),
                                             ),
@@ -812,25 +814,23 @@ class _AccountWidgetState extends State<AccountWidget>
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
                                                       FFAppState()
-                                                          .currentMobileString,
+                                                          .currentMobile,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
                                                 );
                                               } else {
                                                 context.pushNamed(
-                                                  'businessProfileAdminfinal',
+                                                  'outletlistPage',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
                                                       FFAppState()
-                                                          .currentMobileString,
+                                                          .currentMobile,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
                                                 );
                                               }
-
-                                              return;
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -858,21 +858,18 @@ class _AccountWidgetState extends State<AccountWidget>
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
                                                       FFAppState()
-                                                          .currentMobileString,
+                                                          .currentMobile,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
                                                 );
                                               } else {
                                                 context.pushNamed(
-                                                  'businessProfileAdminfinal',
+                                                  'outletlistPage',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
-                                                      valueOrDefault<String>(
-                                                        FFAppState()
-                                                            .currentMobileString,
-                                                        '7066998333',
-                                                      ),
+                                                      FFAppState()
+                                                          .currentMobile,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
@@ -1042,33 +1039,8 @@ class _AccountWidgetState extends State<AccountWidget>
                                                                 .forward(
                                                                     from: 0.0));
                                               }
-                                              if (containerUserProfileRecord
-                                                      ?.role ==
-                                                  'admin') {
-                                                context.pushNamed('mastersNew');
-                                              } else {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'User Permission Is Not Authorised',
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                    ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .error,
-                                                  ),
-                                                );
-                                                return;
-                                              }
+
+                                              context.pushNamed('mastersNew');
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -1259,6 +1231,8 @@ class _AccountWidgetState extends State<AccountWidget>
                                             if (containerUserProfileRecord
                                                     ?.role ==
                                                 'admin') {
+                                              context.pushNamed(
+                                                  'subscriptionNew2');
                                             } else {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
@@ -1368,28 +1342,14 @@ class _AccountWidgetState extends State<AccountWidget>
                                                     ],
                                                   ),
                                                 ),
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                        'subscriptionNew2');
-                                                  },
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0x4C989FDE),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                    ),
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
                                                   ),
                                                 ).animateOnActionTrigger(
                                                     animationsMap[

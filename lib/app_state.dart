@@ -3435,6 +3435,18 @@ class FFAppState extends ChangeNotifier {
     _startDatePass = value;
     prefs.setInt('ff_startDatePass', value);
   }
+
+  String _shift = '';
+  String get shift => _shift;
+  set shift(String value) {
+    _shift = value;
+  }
+
+  String _qrCodeResult = '';
+  String get qrCodeResult => _qrCodeResult;
+  set qrCodeResult(String value) {
+    _qrCodeResult = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

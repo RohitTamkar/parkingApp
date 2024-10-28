@@ -278,40 +278,45 @@ class _ResetDataWidgetState extends State<ResetDataWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 5.0, 0.0, 0.0),
-                                child: Theme(
-                                  data: ThemeData(
-                                    unselectedWidgetColor: Color(0xFF95A1AC),
-                                  ),
-                                  child: CheckboxListTile(
-                                    value: _model.checkboxListTileValue ??=
-                                        false,
-                                    onChanged: (newValue) async {
-                                      safeSetState(() => _model
-                                          .checkboxListTileValue = newValue!);
-                                    },
-                                    title: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '1xvx8ggm' /* Remove Header ( Print Setting ... */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
-                                          ),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor: Color(0xFF95A1AC),
                                     ),
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    checkColor: Color(0xFF6BC39A),
-                                    dense: true,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading,
+                                    child: CheckboxListTile(
+                                      value: _model.checkboxListTileValue ??=
+                                          false,
+                                      onChanged: (newValue) async {
+                                        safeSetState(() => _model
+                                            .checkboxListTileValue = newValue!);
+                                      },
+                                      title: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '1xvx8ggm' /* Remove Header ( Print Setting ... */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallFamily),
+                                            ),
+                                      ),
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      checkColor: Color(0xFF6BC39A),
+                                      dense: true,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                    ),
                                   ),
                                 ),
                               ),
