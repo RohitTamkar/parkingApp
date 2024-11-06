@@ -577,24 +577,6 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                         return;
                                                       }
 
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text('otp'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
                                                       _model.docUID =
                                                           await queryUserProfileRecordOnce(
                                                         queryBuilder:
@@ -608,25 +590,6 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                         singleRecord: true,
                                                       ).then((s) =>
                                                               s.firstOrNull);
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title:
-                                                                Text('otp 1'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
                                                       _model.docId =
                                                           await queryUserProfileRecordOnce(
                                                         queryBuilder:
@@ -640,25 +603,6 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                         singleRecord: true,
                                                       ).then((s) =>
                                                               s.firstOrNull);
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title:
-                                                                Text('otp 3'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
                                                       if (_model.docId !=
                                                           null) {
                                                         await _model
@@ -668,25 +612,6 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                           uid: _model
                                                               .docUID?.uid,
                                                         ));
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title:
-                                                                  Text('otp 4'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
                                                         if (_model
                                                                 .docId?.role ==
                                                             'admin') {

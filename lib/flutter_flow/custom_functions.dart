@@ -1322,3 +1322,11 @@ String getDayIdAndTime(int milliseconds) {
 int addOneIndexAhead(int start) {
   return start + 1;
 }
+
+double returntoatlamt(List<double> listamt) {
+  double tt = 0;
+  for (var td in listamt) {
+    tt += td;
+  }
+  return tt;
+}

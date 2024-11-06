@@ -164,12 +164,12 @@ class _PassDetailsWidgetState extends State<PassDetailsWidget> {
                                   buttonSize: 45.0,
                                   icon: Icon(
                                     Icons.add_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
+                                    color: FlutterFlowTheme.of(context)
+                                        .parkingPrimary,
                                     size: 30.0,
                                   ),
-                                  onPressed: () async {
-                                    context.goNamed('MonthlyPass');
+                                  onPressed: () {
+                                    print('IconButton pressed ...');
                                   },
                                 ),
                               ],

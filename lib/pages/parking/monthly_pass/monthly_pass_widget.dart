@@ -151,8 +151,8 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 22,
+                Flexible(
+                  flex: 20,
                   child: StreamBuilder<List<OutletRecord>>(
                     stream: queryOutletRecord(
                       queryBuilder: (outletRecord) => outletRecord.where(
@@ -188,7 +188,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
 
                       return Container(
                         width: double.infinity,
-                        height: 100.0,
+                        height: double.infinity,
                         decoration: BoxDecoration(),
                         child: Padding(
                           padding: EdgeInsets.all(10.0),

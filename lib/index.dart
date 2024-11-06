@@ -188,14 +188,6 @@ export '/pages/app_setting_new_pos/app_setting_new_pos_widget.dart'
     show AppSettingNewPosWidget;
 export '/grocery_windows/purchase_grocery/purchase_grocery_widget.dart'
     show PurchaseGroceryWidget;
-export '/pages/kiosk/mini_kiosk/mini_kiosk_dine_parcel/mini_kiosk_dine_parcel_widget.dart'
-    show MiniKioskDineParcelWidget;
-export '/pages/kiosk/mini_kiosk/kiosk_dine_parcel_copy/kiosk_dine_parcel_copy_widget.dart'
-    show KioskDineParcelCopyWidget;
-export '/pages/kiosk/mini_kiosk/mini_kiosk_token/mini_kiosk_token_widget.dart'
-    show MiniKioskTokenWidget;
-export '/pages/kiosk/mini_kiosk/m_k_printer_setting/m_k_printer_setting_widget.dart'
-    show MKPrinterSettingWidget;
 export '/pages/kiosk/response_page_copy/response_page_copy_widget.dart'
     show ResponsePageCopyWidget;
 export '/phone_pe_qr/phone_pe_qr_widget.dart' show PhonePeQrWidget;
@@ -226,8 +218,14 @@ export '/pages/parking/pass_details/pass_details_widget.dart'
     show PassDetailsWidget;
 export '/pages/parking/vehicle_wise_sale_report/vehicle_wise_sale_report_widget.dart'
     show VehicleWiseSaleReportWidget;
-export '/pages/parking/user_list/user_list_widget.dart' show UserListWidget;
-export '/pages/parking/add_user/add_user_widget.dart' show AddUserWidget;
-export '/pages/parking/edit_user/edit_user_widget.dart' show EditUserWidget;
-export '/pages/parking/parking_login/parking_login_widget.dart'
-    show ParkingLoginWidget;
+export '/pages/parking/vehicle_entry/vehicle_entry_widget.dart'
+    show VehicleEntryWidget;
+export '/pages/parking/bill_entry/bill_entry_widget.dart' show BillEntryWidget;
+export '/unbilled/unbilled_widget.dart' show UnbilledWidget;
+export '/pages/parking/unbilled2/unbilled2_widget.dart' show Unbilled2Widget;
+export '/pages/parking/parking_report_new/parking_report_new_widget.dart'
+    show ParkingReportNewWidget;
+export '/pages/parking/vehicle_wise_sale2/vehicle_wise_sale2_widget.dart'
+    show VehicleWiseSale2Widget;
+export '/pages/parking/unbilled2_copy/unbilled2_copy_widget.dart'
+    show Unbilled2CopyWidget;

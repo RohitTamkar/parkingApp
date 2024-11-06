@@ -1141,7 +1141,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                     _shouldSetState = true;
                                                     if (true) {
                                                       context.pushNamed(
-                                                        'ParkingCustomers',
+                                                        'VehicleEntry',
                                                         queryParameters: {
                                                           'shiftDoc':
                                                               serializeParam(
@@ -1253,7 +1253,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                     _shouldSetState = true;
                                                     if (true) {
                                                       context.pushNamed(
-                                                        'ParkingCustomers',
+                                                        'VehicleEntry',
                                                         queryParameters: {
                                                           'shiftDoc':
                                                               serializeParam(

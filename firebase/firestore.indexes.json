@@ -47,16 +47,16 @@
       ]
     },
     {
-      "collectionGroup": "USER_PROFILE",
+      "collectionGroup": "INVOICE",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "isDeleted",
+          "fieldPath": "checkOutTime",
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "outlets",
-          "arrayConfig": "CONTAINS"
+          "fieldPath": "dayId",
+          "order": "ASCENDING"
         }
       ]
     }

@@ -38,6 +38,8 @@ class WelcomeScreenParkingModel
   UserProfileRecord? userProfile;
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
   List<ShiftRecord>? shiftdetailfirebase;
+  // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
+  OutletRecord? devicedetails23;
   // Stores action output result for [Custom Action - checkInternetConnection] action in welcomeScreenParking widget.
   bool? internetconnection;
   // Stores action output result for [Custom Action - shiftDetailNewpark] action in welcomeScreenParking widget.

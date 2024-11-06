@@ -14,7 +14,7 @@ import 'index.dart'; // Imports other custom widgets
 import 'dart:typed_data';
 import 'dart:convert';
 import 'dart:async';
-import 'package:another_flutter_usb_write/another_flutter_usb_write.dart';
+//import 'package:another_flutter_usb_write/another_flutter_usb_write.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';

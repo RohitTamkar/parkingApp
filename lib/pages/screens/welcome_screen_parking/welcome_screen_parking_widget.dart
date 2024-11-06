@@ -138,14 +138,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ));
       }
 
-      FFAppState().screenSize = valueOrDefault<double>(
-        getJsonField(
-          _model.docRes,
-          r'''$.displaySizeInches''',
-        ),
-        0.0,
-      );
-      safeSetState(() {});
       if (true == true) {
         _model.userProfile = await queryUserProfileRecordOnce(
           queryBuilder: (userProfileRecord) => userProfileRecord.where(
@@ -157,8 +149,15 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         _model.shiftdetailfirebase = await queryShiftRecordOnce(
           parent: FFAppState().outletIdRef,
         );
+        _model.devicedetails23 = await queryOutletRecordOnce(
+          queryBuilder: (outletRecord) => outletRecord.where(
+            'id',
+            isEqualTo: FFAppState().outletIdRef?.id,
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
         FFAppState().userName = _model.userProfile!.name;
-        FFAppState().outletName = widget!.deviceDoc!.outletName;
+        FFAppState().outletName = _model.devicedetails23!.name;
         safeSetState(() {});
         _model.internetconnection = await actions.checkInternetConnection();
         if (true == true) {

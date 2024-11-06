@@ -628,6 +628,13 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _startDatePass = prefs.getInt('ff_startDatePass') ?? _startDatePass;
     });
+    _safeInit(() {
+      _startDateParking =
+          prefs.getInt('ff_startDateParking') ?? _startDateParking;
+    });
+    _safeInit(() {
+      _EndDateParking = prefs.getInt('ff_EndDateParking') ?? _EndDateParking;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -3446,6 +3453,20 @@ class FFAppState extends ChangeNotifier {
   String get qrCodeResult => _qrCodeResult;
   set qrCodeResult(String value) {
     _qrCodeResult = value;
+  }
+
+  int _startDateParking = 0;
+  int get startDateParking => _startDateParking;
+  set startDateParking(int value) {
+    _startDateParking = value;
+    prefs.setInt('ff_startDateParking', value);
+  }
+
+  int _EndDateParking = 0;
+  int get EndDateParking => _EndDateParking;
+  set EndDateParking(int value) {
+    _EndDateParking = value;
+    prefs.setInt('ff_EndDateParking', value);
   }
 }
 

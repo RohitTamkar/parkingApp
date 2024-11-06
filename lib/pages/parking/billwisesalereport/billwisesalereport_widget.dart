@@ -7,10 +7,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/parking/email_input/email_input_widget.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
-import '/pages/parking/report_calender/report_calender_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -43,6 +43,8 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
       FFAppState().filterDate = getCurrentTimestamp.toString();
       FFAppState().update(() {});
       FFAppState().filterDate = functions.getDayId();
+      FFAppState().startDate = getCurrentTimestamp;
+      FFAppState().endDate = getCurrentTimestamp;
       FFAppState().update(() {});
     });
 
@@ -63,11 +65,24 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
     return StreamBuilder<List<InvoiceRecord>>(
       stream: queryInvoiceRecord(
         parent: FFAppState().outletIdRef,
-        queryBuilder: (invoiceRecord) => invoiceRecord.where(
-          'dayId',
-          isEqualTo:
-              FFAppState().filterDate != '' ? FFAppState().filterDate : null,
-        ),
+        queryBuilder: (invoiceRecord) => invoiceRecord
+            .where(
+              'dayId',
+              isGreaterThanOrEqualTo: FFAppState()
+                          .startDate
+                          ?.millisecondsSinceEpoch
+                          ?.toString() !=
+                      ''
+                  ? FFAppState().startDate?.millisecondsSinceEpoch?.toString()
+                  : null,
+            )
+            .where(
+              'dayId',
+              isLessThanOrEqualTo:
+                  FFAppState().endDate?.millisecondsSinceEpoch?.toString() != ''
+                      ? FFAppState().endDate?.millisecondsSinceEpoch?.toString()
+                      : null,
+            ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -177,7 +192,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                   0.0, 0.0, 15.0, 0.0),
                                           child: AutoSizeText(
                                             FFLocalizations.of(context).getText(
-                                              '32zgov2x' /* Bill Wise Sale Report */,
+                                              '32zgov2x' /* Bill Summary */,
                                             ),
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
@@ -199,49 +214,6 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 30.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              icon: Icon(
-                                                Icons.calendar_today_sharp,
-                                                color: Color(0xFF0D0801),
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  barrierColor:
-                                                      Color(0x00000000),
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(context)
-                                                              .unfocus(),
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child:
-                                                            ReportCalenderWidget(),
-                                                      ),
-                                                    );
-                                                  },
-                                                ).then((value) =>
-                                                    safeSetState(() {}));
-                                              },
-                                            ),
-                                          ],
-                                        ),
                                         Builder(
                                           builder: (context) =>
                                               FlutterFlowIconButton(
@@ -251,7 +223,9 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                             buttonSize: 40.0,
                                             icon: Icon(
                                               Icons.email,
-                                              color: Color(0xFF0D0801),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .parkingPrimary,
                                               size: 24.0,
                                             ),
                                             onPressed: () async {
@@ -384,8 +358,258 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                             ),
                           ),
                           child: Column(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              Container(
+                                width: double.infinity,
+                                height: 100.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          dateTimeFormat(
+                                            "yMd",
+                                            FFAppState().startDate,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
+                                              ),
+                                        ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final _datePicked1Date =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: getCurrentTimestamp,
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime(2050),
+                                              builder: (context, child) {
+                                                return wrapInMaterialDatePickerTheme(
+                                                  context,
+                                                  child!,
+                                                  headerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  headerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  headerTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeFamily,
+                                                            fontSize: 32.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLargeFamily),
+                                                          ),
+                                                  pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  pickerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  selectedDateTimeBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  selectedDateTimeForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  iconSize: 24.0,
+                                                );
+                                              },
+                                            );
+
+                                            if (_datePicked1Date != null) {
+                                              safeSetState(() {
+                                                _model.datePicked1 = DateTime(
+                                                  _datePicked1Date.year,
+                                                  _datePicked1Date.month,
+                                                  _datePicked1Date.day,
+                                                );
+                                              });
+                                            }
+                                            FFAppState().startDate =
+                                                _model.datePicked1;
+                                            safeSetState(() {});
+                                          },
+                                          child: Icon(
+                                            Icons.calendar_month,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 20.0)),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          dateTimeFormat(
+                                            "yMd",
+                                            FFAppState().endDate,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
+                                              ),
+                                        ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final _datePicked2Date =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: getCurrentTimestamp,
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime(2050),
+                                              builder: (context, child) {
+                                                return wrapInMaterialDatePickerTheme(
+                                                  context,
+                                                  child!,
+                                                  headerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  headerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  headerTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeFamily,
+                                                            fontSize: 32.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLargeFamily),
+                                                          ),
+                                                  pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  pickerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  selectedDateTimeBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  selectedDateTimeForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  iconSize: 24.0,
+                                                );
+                                              },
+                                            );
+
+                                            if (_datePicked2Date != null) {
+                                              safeSetState(() {
+                                                _model.datePicked2 = DateTime(
+                                                  _datePicked2Date.year,
+                                                  _datePicked2Date.month,
+                                                  _datePicked2Date.day,
+                                                );
+                                              });
+                                            }
+                                            FFAppState().endDate =
+                                                _model.datePicked2;
+                                            safeSetState(() {});
+                                          },
+                                          child: Icon(
+                                            Icons.calendar_month,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 20.0)),
+                                    ),
+                                  ].divide(SizedBox(width: 50.0)),
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 40.0, 7.0, 0.0),
@@ -421,7 +645,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'mwwbxkrw' /* Sr.no */,
+                                                  'mwwbxkrw' /* No */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -463,7 +687,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'wvc8zgie' /* Bill No */,
+                                                  'wvc8zgie' /* vehicle No */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -505,7 +729,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'uucq102f' /* Date */,
+                                                  'uucq102f' /* Out Date */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -727,7 +951,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                 children: [
                                                                   Text(
                                                                     billWiseSaleReportVarItem
-                                                                        .invoice,
+                                                                        .vechicleNo,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -770,7 +994,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                   Text(
                                                                     functions.milisecToTimestamp(
                                                                         billWiseSaleReportVarItem
-                                                                            .invoiceDate),
+                                                                            .checkOutTime),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium

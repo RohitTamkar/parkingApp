@@ -257,20 +257,16 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 .update(createInvoiceRecordData(
                               checkOutTime:
                                   getCurrentTimestamp.millisecondsSinceEpoch,
-                              billAmt: valueOrDefault<double>(
-                                functions.calculateParkingCharges(
-                                    widget!.invdoc?.billAmt,
-                                    widget!.invdoc?.checkInTime,
-                                    getCurrentTimestamp.millisecondsSinceEpoch),
-                                0.0,
-                              ),
-                              finalBillAmt: valueOrDefault<double>(
-                                functions.calculateParkingCharges(
-                                    widget!.invdoc?.billAmt,
-                                    widget!.invdoc?.checkInTime,
-                                    getCurrentTimestamp.millisecondsSinceEpoch),
-                                0.0,
-                              ),
+                              billAmt: functions.calculateParkingCharges12hours(
+                                  widget!.invdoc?.vechicleType,
+                                  widget!.invdoc?.checkInTime,
+                                  getCurrentTimestamp.millisecondsSinceEpoch),
+                              finalBillAmt:
+                                  functions.calculateParkingCharges12hours(
+                                      widget!.invdoc?.vechicleType,
+                                      widget!.invdoc?.checkInTime,
+                                      getCurrentTimestamp
+                                          .millisecondsSinceEpoch),
                               duration: valueOrDefault<double>(
                                 functions.calculateHour(
                                     widget!.invdoc?.checkInTime,
@@ -431,20 +427,16 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 .update(createInvoiceRecordData(
                               checkOutTime:
                                   getCurrentTimestamp.millisecondsSinceEpoch,
-                              billAmt: valueOrDefault<double>(
-                                functions.calculateParkingCharges(
-                                    widget!.invdoc?.billAmt,
-                                    widget!.invdoc?.checkInTime,
-                                    getCurrentTimestamp.millisecondsSinceEpoch),
-                                0.0,
-                              ),
-                              finalBillAmt: valueOrDefault<double>(
-                                functions.calculateParkingCharges(
-                                    widget!.invdoc?.billAmt,
-                                    widget!.invdoc?.checkInTime,
-                                    getCurrentTimestamp.millisecondsSinceEpoch),
-                                0.0,
-                              ),
+                              billAmt: functions.calculateParkingCharges12hours(
+                                  widget!.invdoc?.vechicleType,
+                                  widget!.invdoc?.checkInTime,
+                                  getCurrentTimestamp.millisecondsSinceEpoch),
+                              finalBillAmt:
+                                  functions.calculateParkingCharges12hours(
+                                      widget!.invdoc?.vechicleType,
+                                      widget!.invdoc?.checkInTime,
+                                      getCurrentTimestamp
+                                          .millisecondsSinceEpoch),
                               duration: valueOrDefault<double>(
                                 functions.calculateHour(
                                     widget!.invdoc?.checkInTime,

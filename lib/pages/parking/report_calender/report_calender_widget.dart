@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -117,8 +116,8 @@ class _ReportCalenderWidgetState extends State<ReportCalenderWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            FFAppState().filterDate = functions.selectedDayId(
-                                _model.calendarSelectedDay!.start);
+                            FFAppState().startDate = getCurrentTimestamp;
+                            FFAppState().endDate = getCurrentTimestamp;
                             FFAppState().update(() {});
                             await showDialog(
                               context: context,

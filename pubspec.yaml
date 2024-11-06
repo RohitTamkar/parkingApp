@@ -27,7 +27,6 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  another_flutter_usb_write:
   auto_size_text: 3.0.0
   bluetooth_print:
   cached_network_image: 3.4.1

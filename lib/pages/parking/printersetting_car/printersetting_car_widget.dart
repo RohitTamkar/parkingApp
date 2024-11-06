@@ -82,7 +82,7 @@ class _PrintersettingCarWidgetState extends State<PrintersettingCarWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.goNamed('account');
+                                  context.safePop();
                                 },
                               ),
                               Text(

@@ -80,14 +80,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? AccountWidget() : StartScreenWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? WelcomeScreenParkingWidget()
+          : StartScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? AccountWidget() : StartScreenWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? WelcomeScreenParkingWidget()
+              : StartScreenWidget(),
           routes: [
             FFRoute(
               name: 'welcomeScreen',
@@ -1098,7 +1100,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'parkingReport',
               path: 'parkingReport',
-              builder: (context, params) => ParkingReportWidget(),
+              builder: (context, params) => ParkingReportWidget(
+                quickPin: params.getParam(
+                  'quickPin',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'responsePage',
@@ -1292,78 +1299,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => PurchaseGroceryWidget(),
             ),
             FFRoute(
-              name: 'MiniKioskDineParcel',
-              path: 'miniKioskDineParcel',
-              asyncParams: {
-                'appSetting': getDoc(
-                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
-                'taxcollection':
-                    getDocList(['TAX_MASTER'], TaxMasterRecord.fromSnapshot),
-              },
-              builder: (context, params) => MiniKioskDineParcelWidget(
-                userdoc: params.getParam(
-                  'userdoc',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['USER_PROFILE'],
-                ),
-                shiftdoc: params.getParam(
-                  'shiftdoc',
-                  ParamType.JSON,
-                ),
-                appSetting: params.getParam(
-                  'appSetting',
-                  ParamType.Document,
-                ),
-                taxcollection: params.getParam<TaxMasterRecord>(
-                  'taxcollection',
-                  ParamType.Document,
-                  isList: true,
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'KioskDineParcelCopy',
-              path: 'kioskDineParcelCopy',
-              asyncParams: {
-                'appSetting': getDoc(
-                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
-                'taxcollection':
-                    getDocList(['TAX_MASTER'], TaxMasterRecord.fromSnapshot),
-              },
-              builder: (context, params) => KioskDineParcelCopyWidget(
-                userdoc: params.getParam(
-                  'userdoc',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['USER_PROFILE'],
-                ),
-                shiftdoc: params.getParam(
-                  'shiftdoc',
-                  ParamType.JSON,
-                ),
-                appSetting: params.getParam(
-                  'appSetting',
-                  ParamType.Document,
-                ),
-                taxcollection: params.getParam<TaxMasterRecord>(
-                  'taxcollection',
-                  ParamType.Document,
-                  isList: true,
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'miniKioskToken',
-              path: 'miniKioskToken',
-              builder: (context, params) => MiniKioskTokenWidget(),
-            ),
-            FFRoute(
-              name: 'MKPrinterSetting',
-              path: 'mKPrinterSetting',
-              builder: (context, params) => MKPrinterSettingWidget(),
-            ),
-            FFRoute(
               name: 'responsePageCopy',
               path: 'responsePageCopy',
               asyncParams: {
@@ -1535,50 +1470,66 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => VehicleWiseSaleReportWidget(),
             ),
             FFRoute(
-              name: 'UserList',
-              path: 'userList',
-              builder: (context, params) => UserListWidget(
-                mobile: params.getParam(
-                  'mobile',
+              name: 'VehicleEntry',
+              path: 'vehicleEntry',
+              builder: (context, params) => VehicleEntryWidget(
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.JSON,
+                ),
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'BillEntry',
+              path: 'billEntry',
+              builder: (context, params) => BillEntryWidget(
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.JSON,
+                ),
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'Unbilled',
+              path: 'unbilled1',
+              builder: (context, params) => UnbilledWidget(),
+            ),
+            FFRoute(
+              name: 'Unbilled2',
+              path: 'Unbilled',
+              builder: (context, params) => Unbilled2Widget(),
+            ),
+            FFRoute(
+              name: 'parkingReportNew',
+              path: 'parkingReportNew',
+              builder: (context, params) => ParkingReportNewWidget(
+                quickPin: params.getParam(
+                  'quickPin',
                   ParamType.String,
                 ),
               ),
             ),
             FFRoute(
-              name: 'addUser',
-              path: 'addUser',
-              builder: (context, params) => AddUserWidget(),
+              name: 'vehicleWiseSale2',
+              path: 'vehicleWiseSale2',
+              builder: (context, params) => VehicleWiseSale2Widget(),
             ),
             FFRoute(
-              name: 'editUser',
-              path: 'editUser',
-              asyncParams: {
-                'docRef':
-                    getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
-              },
-              builder: (context, params) => EditUserWidget(
-                docRef: params.getParam(
-                  'docRef',
-                  ParamType.Document,
-                ),
-                nextP: params.getParam(
-                  'nextP',
-                  ParamType.int,
-                ),
-                id: params.getParam(
-                  'id',
-                  ParamType.String,
-                ),
-                mobile: params.getParam(
-                  'mobile',
-                  ParamType.String,
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'parkingLogin',
-              path: 'parkingLogin',
-              builder: (context, params) => ParkingLoginWidget(),
+              name: 'Unbilled2Copy',
+              path: 'Unbilled',
+              builder: (context, params) => Unbilled2CopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
