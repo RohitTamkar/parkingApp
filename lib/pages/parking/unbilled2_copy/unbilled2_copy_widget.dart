@@ -214,7 +214,7 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                   children: [
                                     Text(
                                       dateTimeFormat(
-                                        "yMd",
+                                        "d/M/y",
                                         FFAppState().startDate,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
@@ -321,7 +321,7 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                   children: [
                                     Text(
                                       dateTimeFormat(
-                                        "yMd",
+                                        "d/M/y",
                                         FFAppState().endDate,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
@@ -778,9 +778,15 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                                                           0.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    functions.milisecToTimestamp(
-                                                                        billWiseSaleReportVarItem
-                                                                            .checkInTime),
+                                                                    dateTimeFormat(
+                                                                      " h:mm a",
+                                                                      DateTime.fromMillisecondsSinceEpoch(
+                                                                          billWiseSaleReportVarItem
+                                                                              .checkInTime),
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium

@@ -23827,43 +23827,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // parkingReportNew
   {
-    'e29e0elc': {
+    'cunxzywe': {
       'en': 'Vehicle Wise Report',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '9zxe43t4': {
+    'hqcj4zau': {
       'en': 'Unbilled Receipts',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '6qbxsie9': {
+    '30hlh3sh': {
       'en': 'Daily Collection Report',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'itkf0twt': {
+    '13p2te3m': {
       'en': 'Bill Summary',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '4r0s2e1x': {
+    'pjk8h3oq': {
       'en': 'Today Summary Report',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'b66213r1': {
+    'h1uk5mv9': {
       'en': 'In \\ Out Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'pxqj0jku': {
+      'en': 'Reports',
       'hi': '',
       'kn': '',
       'mr': '',
