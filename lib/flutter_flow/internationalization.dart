@@ -23834,22 +23834,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'hqcj4zau': {
-      'en': 'Unbilled Receipts',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '30hlh3sh': {
-      'en': 'Daily Collection Report',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '13p2te3m': {
-      'en': 'Bill Summary',
+    'h1uk5mv9': {
+      'en': 'In \\ Out Report',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23862,8 +23848,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'h1uk5mv9': {
-      'en': 'In \\ Out Report',
+    '13p2te3m': {
+      'en': 'Bill Summary',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '30hlh3sh': {
+      'en': 'Daily Collection Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'hqcj4zau': {
+      'en': 'Unbilled Receipts',
       'hi': '',
       'kn': '',
       'mr': '',
