@@ -182,8 +182,8 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .titleSmallFamily,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(

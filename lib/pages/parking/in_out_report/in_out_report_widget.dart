@@ -550,10 +550,6 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                             ?.millisecondsSinceEpoch,
                                       )
                                       .where(
-                                        'checkOutTime',
-                                        isEqualTo: 0,
-                                      )
-                                      .where(
                                         'invoiceDate',
                                         isLessThanOrEqualTo: FFAppState()
                                             .endDate
