@@ -549,34 +549,20 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                   parent: FFAppState().outletIdRef,
                                   queryBuilder: (invoiceRecord) => invoiceRecord
                                       .where(
-                                        'dayId',
+                                        'invoiceDate',
                                         isGreaterThanOrEqualTo: FFAppState()
-                                                    .startDate
-                                                    ?.millisecondsSinceEpoch
-                                                    ?.toString() !=
-                                                ''
-                                            ? FFAppState()
-                                                .startDate
-                                                ?.millisecondsSinceEpoch
-                                                ?.toString()
-                                            : null,
+                                            .startDate
+                                            ?.millisecondsSinceEpoch,
                                       )
                                       .where(
                                         'checkOutTime',
                                         isEqualTo: 0,
                                       )
                                       .where(
-                                        'dayId',
+                                        'invoiceDate',
                                         isLessThanOrEqualTo: FFAppState()
-                                                    .endDate
-                                                    ?.millisecondsSinceEpoch
-                                                    ?.toString() !=
-                                                ''
-                                            ? FFAppState()
-                                                .endDate
-                                                ?.millisecondsSinceEpoch
-                                                ?.toString()
-                                            : null,
+                                            .endDate
+                                            ?.millisecondsSinceEpoch,
                                       ),
                                 ),
                                 builder: (context, snapshot) {
