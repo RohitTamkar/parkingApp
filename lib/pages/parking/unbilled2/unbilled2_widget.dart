@@ -137,26 +137,36 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                         context.pop();
                                       },
                                     ),
-                                    AutoSizeText(
-                                      FFLocalizations.of(context).getText(
-                                        '8scsuyoo' /* Unbilled */,
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed('Unbilled2Copy');
+                                      },
+                                      child: AutoSizeText(
+                                        FFLocalizations.of(context).getText(
+                                          '8scsuyoo' /* Unbilled */,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMediumFamily,
+                                              color: Color(0xFF0D0801),
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(FlutterFlowTheme
+                                                          .of(context)
+                                                      .headlineMediumFamily),
+                                            ),
                                       ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMediumFamily,
-                                            color: Color(0xFF0D0801),
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMediumFamily),
-                                          ),
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.max,

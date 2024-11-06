@@ -67,21 +67,13 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
         parent: FFAppState().outletIdRef,
         queryBuilder: (invoiceRecord) => invoiceRecord
             .where(
-              'dayId',
-              isGreaterThanOrEqualTo: FFAppState()
-                          .startDate
-                          ?.millisecondsSinceEpoch
-                          ?.toString() !=
-                      ''
-                  ? FFAppState().startDate?.millisecondsSinceEpoch?.toString()
-                  : null,
+              'invoiceDate',
+              isGreaterThanOrEqualTo:
+                  FFAppState().startDate?.millisecondsSinceEpoch,
             )
             .where(
-              'dayId',
-              isLessThanOrEqualTo:
-                  FFAppState().endDate?.millisecondsSinceEpoch?.toString() != ''
-                      ? FFAppState().endDate?.millisecondsSinceEpoch?.toString()
-                      : null,
+              'invoiceDate',
+              isLessThanOrEqualTo: FFAppState().endDate?.millisecondsSinceEpoch,
             ),
       ),
       builder: (context, snapshot) {
