@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -162,8 +163,8 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 20.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed('vehicleWiseSale2');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'cunxzywe' /* Vehicle Wise Report */,
@@ -198,40 +199,53 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                 ),
                               ),
                             ),
-                            FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'h1uk5mv9' /* In \ Out Report */,
-                              ),
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).secondary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .titleSmallFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 20.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  FFAppState().filterDate =
+                                      getCurrentTimestamp.toString();
+                                  FFAppState().update(() {});
+                                  FFAppState().filterDate =
+                                      functions.getDayId();
+                                  FFAppState().startDate = getCurrentTimestamp;
+                                  FFAppState().endDate = getCurrentTimestamp;
+                                  FFAppState().update(() {});
+
+                                  context.pushNamed('InOutReport');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'h1uk5mv9' /* In \ Out Report */,
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
                               ),
                             ),
                             Padding(
@@ -359,7 +373,16 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                   0.0, 0.0, 0.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  context.pushNamed('Unbilled2Copy');
+                                  FFAppState().filterDate =
+                                      getCurrentTimestamp.toString();
+                                  FFAppState().update(() {});
+                                  FFAppState().filterDate =
+                                      functions.getDayId();
+                                  FFAppState().startDate = getCurrentTimestamp;
+                                  FFAppState().endDate = getCurrentTimestamp;
+                                  FFAppState().update(() {});
+
+                                  context.pushNamed('Unbilled2');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'hqcj4zau' /* Unbilled Receipts */,

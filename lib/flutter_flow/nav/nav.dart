@@ -1507,11 +1507,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => UnbilledWidget(),
             ),
             FFRoute(
-              name: 'Unbilled2',
-              path: 'Unbilled',
-              builder: (context, params) => Unbilled2Widget(),
-            ),
-            FFRoute(
               name: 'parkingReportNew',
               path: 'parkingReportNew',
               builder: (context, params) => ParkingReportNewWidget(
@@ -1527,9 +1522,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => VehicleWiseSale2Widget(),
             ),
             FFRoute(
-              name: 'Unbilled2Copy',
+              name: 'Unbilled2',
               path: 'Unbilled5',
-              builder: (context, params) => Unbilled2CopyWidget(),
+              builder: (context, params) => Unbilled2Widget(),
+            ),
+            FFRoute(
+              name: 'InOutReport',
+              path: 'inOut',
+              builder: (context, params) => InOutReportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

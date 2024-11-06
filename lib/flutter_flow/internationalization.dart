@@ -23780,51 +23780,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
-  // Unbilled2
-  {
-    '8scsuyoo': {
-      'en': 'Unbilled',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '9te5w189': {
-      'en': 'Recipt',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'xs37g9tc': {
-      'en': 'Veh No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'or6hkybh': {
-      'en': ' In Date',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'p2f7iwj2': {
-      'en': 'In Time',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'zilpcjpi': {
-      'en': 'Home',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-  },
   // parkingReportNew
   {
     'cunxzywe': {
@@ -24013,7 +23968,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
-  // Unbilled2Copy
+  // Unbilled2
   {
     'z86o131o': {
       'en': 'Unbilled',
@@ -24051,6 +24006,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'gtwwj3j9': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // InOutReport
+  {
+    '8fagmnxs': {
+      'en': 'In \\ Out Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '63v53jxw': {
+      'en': 'Recipt',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '2219olqj': {
+      'en': 'Veh No',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    's5s6s18s': {
+      'en': ' In Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'mpq5n1ye': {
+      'en': 'Out Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'xtt5ae51': {
       'en': 'Home',
       'hi': '',
       'kn': '',

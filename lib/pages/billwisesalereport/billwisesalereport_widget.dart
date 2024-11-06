@@ -827,9 +827,15 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    functions.milisecToTimestamp(
-                                                                        billWiseSaleReportVarItem
-                                                                            .checkOutTime),
+                                                                    dateTimeFormat(
+                                                                      "d/M/y",
+                                                                      DateTime.fromMillisecondsSinceEpoch(
+                                                                          billWiseSaleReportVarItem
+                                                                              .checkOutTime),
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium

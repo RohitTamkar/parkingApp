@@ -12,26 +12,26 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'unbilled2_copy_model.dart';
-export 'unbilled2_copy_model.dart';
+import 'in_out_report_model.dart';
+export 'in_out_report_model.dart';
 
-class Unbilled2CopyWidget extends StatefulWidget {
+class InOutReportWidget extends StatefulWidget {
   /// Parking
-  const Unbilled2CopyWidget({super.key});
+  const InOutReportWidget({super.key});
 
   @override
-  State<Unbilled2CopyWidget> createState() => _Unbilled2CopyWidgetState();
+  State<InOutReportWidget> createState() => _InOutReportWidgetState();
 }
 
-class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
-  late Unbilled2CopyModel _model;
+class _InOutReportWidgetState extends State<InOutReportWidget> {
+  late InOutReportModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Unbilled2CopyModel());
+    _model = createModel(context, () => InOutReportModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -58,7 +58,7 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'Unbilled2Copy',
+        title: 'InOutReport',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -140,7 +140,7 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                     ),
                                     AutoSizeText(
                                       FFLocalizations.of(context).getText(
-                                        'z86o131o' /* Unbilled */,
+                                        '8fagmnxs' /* In \ Out Report */,
                                       ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -440,7 +440,7 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                     Expanded(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'qwvql5ss' /* Recipt */,
+                                          '63v53jxw' /* Recipt */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -460,9 +460,36 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                       ),
                                     ),
                                     Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 50.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '2219olqj' /* Veh No */,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'j0ohhbcm' /* Veh No */,
+                                          's5s6s18s' /*  In Date */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -485,30 +512,7 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                     Expanded(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'dapujzyl' /*  In Date */,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumFamily),
-                                            ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'ixpiwbuh' /* In Time */,
+                                          'mpq5n1ye' /* Out Date */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -706,44 +710,53 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                                         ),
                                                         Expanded(
                                                           flex: 3,
-                                                          child: Container(
-                                                            width: 100.0,
-                                                            height: MediaQuery
-                                                                        .sizeOf(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        20.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: 100.0,
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  0.06,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    functions.milisecToTimestamp(
+                                                                        billWiseSaleReportVarItem
+                                                                            .checkInTime),
+                                                                    style: FlutterFlowTheme.of(
                                                                             context)
-                                                                    .height *
-                                                                0.06,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Text(
-                                                                  functions.milisecToTimestamp(
-                                                                      billWiseSaleReportVarItem
-                                                                          .checkInTime),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
-                                                                ),
-                                                              ],
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -773,20 +786,14 @@ class _Unbilled2CopyWidgetState extends State<Unbilled2CopyWidget> {
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          5.0,
                                                                           0.0,
                                                                           0.0,
+                                                                          20.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    dateTimeFormat(
-                                                                      " h:mm a",
-                                                                      DateTime.fromMillisecondsSinceEpoch(
-                                                                          billWiseSaleReportVarItem
-                                                                              .checkInTime),
-                                                                      locale: FFLocalizations.of(
-                                                                              context)
-                                                                          .languageCode,
-                                                                    ),
+                                                                    functions.milisecToTimestamp(
+                                                                        billWiseSaleReportVarItem
+                                                                            .checkOutTime),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
