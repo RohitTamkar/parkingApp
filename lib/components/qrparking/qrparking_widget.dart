@@ -351,7 +351,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                               Navigator.pop(context);
 
                               context.pushNamed(
-                                'ParkingCustomers',
+                                'VehicleEntry',
                                 queryParameters: {
                                   'shiftDoc': serializeParam(
                                     widget!.shiftdoc,
@@ -462,7 +462,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                             Navigator.pop(context);
 
                             context.pushNamed(
-                              'ParkingCustomers',
+                              'VehicleEntry',
                               queryParameters: {
                                 'shiftDoc': serializeParam(
                                   widget!.shiftdoc,

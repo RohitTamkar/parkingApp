@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
@@ -402,20 +403,29 @@ class _DaillyCollectionReportWidgetState
                                             );
                                           });
                                         }
-                                        FFAppState().endDate =
-                                            _model.datePicked2;
+                                        _model.datenext =
+                                            await actions.returnDateNextday(
+                                          _model.datePicked2!,
+                                        );
+                                        FFAppState().endDate = _model.datenext;
+                                        FFAppState().filterDate =
+                                            dateTimeFormat(
+                                          "d/M/y",
+                                          _model.datePicked2,
+                                          locale: FFLocalizations.of(context)
+                                              .languageCode,
+                                        );
+                                        safeSetState(() {});
+
                                         safeSetState(() {});
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            dateTimeFormat(
-                                              "d/M/y",
-                                              FFAppState().endDate,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
+                                            valueOrDefault<String>(
+                                              FFAppState().filterDate,
+                                              '0',
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

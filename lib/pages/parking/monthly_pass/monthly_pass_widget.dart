@@ -1483,7 +1483,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               _model.selectedParty!.vehicleType,
                                             );
 
-                                            context.pushNamed('PassDetails');
+                                            context.pushNamed('VehicleEntry');
                                           } else {
                                             await showDialog(
                                               context: context,
@@ -2082,7 +2082,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                 },
                                               );
 
-                                              context.pushNamed('PassDetails');
+                                              context.pushNamed('VehicleEntry');
                                             } else {
                                               await showDialog(
                                                 context: context,

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -235,112 +236,115 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                     ),
                                   ].divide(SizedBox(width: 20.0)),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      dateTimeFormat(
-                                        "d/M/y",
-                                        FFAppState().endDate,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            fontSize: 20.0,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    final _datePicked2Date =
+                                        await showDatePicker(
+                                      context: context,
+                                      initialDate: getCurrentTimestamp,
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2050),
+                                      builder: (context, child) {
+                                        return wrapInMaterialDatePickerTheme(
+                                          context,
+                                          child!,
+                                          headerBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          headerForegroundColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          headerTextStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
-                                          ),
-                                    ),
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        final _datePicked2Date =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: getCurrentTimestamp,
-                                          firstDate: DateTime(1900),
-                                          lastDate: DateTime(2050),
-                                          builder: (context, child) {
-                                            return wrapInMaterialDatePickerTheme(
-                                              context,
-                                              child!,
-                                              headerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              headerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              headerTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLargeFamily,
-                                                        fontSize: 32.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLargeFamily),
-                                                      ),
-                                              pickerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              pickerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              selectedDateTimeBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              selectedDateTimeForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              actionButtonForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconSize: 24.0,
-                                            );
-                                          },
+                                                        .headlineLargeFamily,
+                                                fontSize: 32.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(FlutterFlowTheme
+                                                            .of(context)
+                                                        .headlineLargeFamily),
+                                              ),
+                                          pickerBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          pickerForegroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          selectedDateTimeBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          selectedDateTimeForegroundColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          actionButtonForegroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          iconSize: 24.0,
                                         );
-
-                                        if (_datePicked2Date != null) {
-                                          safeSetState(() {
-                                            _model.datePicked2 = DateTime(
-                                              _datePicked2Date.year,
-                                              _datePicked2Date.month,
-                                              _datePicked2Date.day,
-                                            );
-                                          });
-                                        }
-                                        FFAppState().endDate =
-                                            _model.datePicked2;
-                                        safeSetState(() {});
                                       },
-                                      child: Icon(
+                                    );
+
+                                    if (_datePicked2Date != null) {
+                                      safeSetState(() {
+                                        _model.datePicked2 = DateTime(
+                                          _datePicked2Date.year,
+                                          _datePicked2Date.month,
+                                          _datePicked2Date.day,
+                                        );
+                                      });
+                                    }
+                                    _model.datenext =
+                                        await actions.returnDateNextday(
+                                      _model.datePicked2!,
+                                    );
+                                    FFAppState().endDate = _model.datenext;
+                                    FFAppState().filterDate = dateTimeFormat(
+                                      "d/M/y",
+                                      _model.datePicked2,
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
+                                    );
+                                    safeSetState(() {});
+
+                                    safeSetState(() {});
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFAppState().filterDate,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 20.0,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                      Icon(
                                         Icons.calendar_month,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         size: 24.0,
                                       ),
-                                    ),
-                                  ].divide(SizedBox(width: 20.0)),
+                                    ].divide(SizedBox(width: 20.0)),
+                                  ),
                                 ),
                               ].divide(SizedBox(width: 50.0)),
                             ),
@@ -709,39 +713,43 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                                         context)
                                                                     .secondaryBackground,
                                                               ),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
-                                                                            30.0,
+                                                                            20.0,
                                                                             0.0),
-                                                                    child: Text(
-                                                                      functions.getDayIdAndTime(
-                                                                          billWiseSaleReportVarItem
-                                                                              .checkOutTime),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                          ),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          30.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        functions
+                                                                            .getDayIdAndTime(billWiseSaleReportVarItem.checkOutTime),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            ),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           ),

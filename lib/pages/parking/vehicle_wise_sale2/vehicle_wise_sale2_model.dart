@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'vehicle_wise_sale2_widget.dart' show VehicleWiseSale2Widget;
 import 'package:flutter/foundation.dart';
@@ -17,6 +18,8 @@ class VehicleWiseSale2Model extends FlutterFlowModel<VehicleWiseSale2Widget> {
 
   DateTime? datePicked1;
   DateTime? datePicked2;
+  // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
+  DateTime? datenext;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>

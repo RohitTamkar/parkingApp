@@ -1197,24 +1197,6 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                           onTap: () async {
                                             await showDialog(
                                               context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  content: Text(
-                                                      containerUserProfileRecord!
-                                                          .quickPin),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                            await showDialog(
-                                              context: context,
                                               builder: (dialogContext) {
                                                 return Dialog(
                                                   elevation: 0,
