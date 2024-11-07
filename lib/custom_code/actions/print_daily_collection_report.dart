@@ -70,8 +70,32 @@ Future printDailyCollectionReport(
 
       bytes += generator.text("Day collection Report",
           styles: PosStyles(
-              height: PosTextSize.size2,
-              width: PosTextSize.size2,
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              align: PosAlign.center));
+      bytes += generator.text(" DHULE BUS STAND ",
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+              align: PosAlign.center));
+      bytes += generator.text("PAY & PARK ",
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+              align: PosAlign.center));
+      bytes += generator.text(" MSRTC APPROVED ",
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+              align: PosAlign.center));
+      bytes += generator.text(" CONTACT 9172676376 ",
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
               align: PosAlign.center));
 
       String printLine = '';
