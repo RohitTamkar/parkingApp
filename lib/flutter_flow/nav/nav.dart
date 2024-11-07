@@ -1530,6 +1530,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'InOutReport',
               path: 'inOut',
               builder: (context, params) => InOutReportWidget(),
+            ),
+            FFRoute(
+              name: 'TodaysSummaryReport',
+              path: 'todaysSummaryReport',
+              builder: (context, params) => TodaysSummaryReportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

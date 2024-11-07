@@ -229,3 +229,5 @@ export '/pages/parking/vehicle_wise_sale2/vehicle_wise_sale2_widget.dart'
 export '/pages/parking/unbilled2/unbilled2_widget.dart' show Unbilled2Widget;
 export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
+export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
+    show TodaysSummaryReportWidget;
