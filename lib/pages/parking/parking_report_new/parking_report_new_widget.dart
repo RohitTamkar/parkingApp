@@ -164,6 +164,12 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                   0.0, 20.0, 0.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  FFAppState().filterDate =
+                                      functions.getDayId();
+                                  FFAppState().startDate = getCurrentTimestamp;
+                                  FFAppState().endDate = getCurrentTimestamp;
+                                  FFAppState().update(() {});
+
                                   context.pushNamed('vehicleWiseSale2');
                                 },
                                 text: FFLocalizations.of(context).getText(
@@ -293,6 +299,12 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                   0.0, 0.0, 0.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  FFAppState().filterDate =
+                                      functions.getDayId();
+                                  FFAppState().startDate = getCurrentTimestamp;
+                                  FFAppState().endDate = getCurrentTimestamp;
+                                  FFAppState().update(() {});
+
                                   context.pushNamed('billwisesalereport');
                                 },
                                 text: FFLocalizations.of(context).getText(
