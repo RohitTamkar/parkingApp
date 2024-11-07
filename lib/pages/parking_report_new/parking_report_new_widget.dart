@@ -258,8 +258,14 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 20.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  FFAppState().filterDate =
+                                      functions.getDayId();
+                                  FFAppState().startDate = getCurrentTimestamp;
+                                  FFAppState().endDate = getCurrentTimestamp;
+                                  FFAppState().update(() {});
+
+                                  context.pushNamed('TodaysSummaryReport');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'pjk8h3oq' /* Today Summary Report */,
