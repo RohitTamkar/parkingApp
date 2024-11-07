@@ -109,53 +109,8 @@ class _DaillyCollectionReportWidgetState
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                     child: FloatingActionButton.extended(
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        _model.resDevice1 = await actions.scanPrinter(
-                          FFAppState().posMode,
-                        );
-                        _shouldSetState = true;
-                        if (!_model.resDevice1!) {
-                          _model.rd1 = await actions.scanPrinter(
-                            FFAppState().posMode,
-                          );
-                          _shouldSetState = true;
-                        }
-                        await actions.connectDevice(
-                          FFAppState().printerDevice,
-                          '0',
-                        );
-                        if (FFAppState().printerName != null &&
-                            FFAppState().printerName != '') {
-                          await actions.printDailyCollectionReport(
-                            FFAppState().printerDevice,
-                            FFAppState().isPrinterConnected,
-                            FFAppState().printerName,
-                            FFAppState().paperSize,
-                            daillyCollectionReportInvoiceRecordList.toList(),
-                          );
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('printer connection'),
-                                content: Text('printer not connected'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          if (_shouldSetState) safeSetState(() {});
-                          return;
-                        }
-
-                        if (_shouldSetState) safeSetState(() {});
+                      onPressed: () {
+                        print('FloatingActionButton pressed ...');
                       },
                       backgroundColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
@@ -175,8 +130,55 @@ class _DaillyCollectionReportWidgetState
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 20.0,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  _model.resDevice1 = await actions.scanPrinter(
+                                    FFAppState().posMode,
+                                  );
+                                  _shouldSetState = true;
+                                  if (!_model.resDevice1!) {
+                                    _model.rd1 = await actions.scanPrinter(
+                                      FFAppState().posMode,
+                                    );
+                                    _shouldSetState = true;
+                                  }
+                                  await actions.connectDevice(
+                                    FFAppState().printerDevice,
+                                    '0',
+                                  );
+                                  if (FFAppState().printerName != null &&
+                                      FFAppState().printerName != '') {
+                                    await actions.printDailyCollectionReport(
+                                      FFAppState().printerDevice,
+                                      FFAppState().isPrinterConnected,
+                                      FFAppState().printerName,
+                                      FFAppState().paperSize,
+                                      daillyCollectionReportInvoiceRecordList
+                                          .toList(),
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('printer connection'),
+                                          content:
+                                              Text('printer not connected'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+
+                                  if (_shouldSetState) safeSetState(() {});
                                 },
                               ),
                               Text(

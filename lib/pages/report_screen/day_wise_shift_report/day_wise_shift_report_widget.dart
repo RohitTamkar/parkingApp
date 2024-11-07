@@ -97,57 +97,7 @@ class _DayWiseShiftReportWidgetState extends State<DayWiseShiftReportWidget> {
                 floatingActionButton: Visibility(
                   visible: FFAppState().fabButtonHide == true,
                   child: FloatingActionButton.extended(
-                    onPressed: () async {
-                      var _shouldSetState = false;
-                      _model.resDevice1 = await actions.scanPrinter(
-                        FFAppState().posMode,
-                      );
-                      _shouldSetState = true;
-                      if (!_model.resDevice!) {
-                        _model.rd1 = await actions.scanPrinter(
-                          FFAppState().posMode,
-                        );
-                        _shouldSetState = true;
-                      }
-                      await actions.connectDevice(
-                        FFAppState().printerDevice,
-                        '0',
-                      );
-                      if (FFAppState().printerName != null &&
-                          FFAppState().printerName != '') {
-                        await actions.printDayWiseSalesReport(
-                          FFAppState().printerDevice,
-                          FFAppState().isPrinterConnected,
-                          FFAppState().printerName,
-                          FFAppState().paperSize,
-                          functions
-                              .shiftDocToJsonListCopy(
-                                  dayWiseShiftReportShiftRecordList.toList())
-                              .toList(),
-                        );
-                      } else {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('printer connection'),
-                              content: Text('printer not connected'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                        if (_shouldSetState) safeSetState(() {});
-                        return;
-                      }
-
-                      if (_shouldSetState) safeSetState(() {});
-                    },
+                    onPressed: () async {},
                     backgroundColor:
                         FlutterFlowTheme.of(context).secondaryBackground,
                     elevation: 8.0,
@@ -165,8 +115,57 @@ class _DayWiseShiftReportWidgetState extends State<DayWiseShiftReportWidget> {
                                 color: FlutterFlowTheme.of(context).primary,
                                 size: 20.0,
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
+                              onPressed: () async {
+                                var _shouldSetState = false;
+                                _model.resDevice1 = await actions.scanPrinter(
+                                  FFAppState().posMode,
+                                );
+                                _shouldSetState = true;
+                                if (!_model.resDevice!) {
+                                  _model.rd1 = await actions.scanPrinter(
+                                    FFAppState().posMode,
+                                  );
+                                  _shouldSetState = true;
+                                }
+                                await actions.connectDevice(
+                                  FFAppState().printerDevice,
+                                  '0',
+                                );
+                                if (FFAppState().printerName != null &&
+                                    FFAppState().printerName != '') {
+                                  await actions.printDayWiseSalesReport(
+                                    FFAppState().printerDevice,
+                                    FFAppState().isPrinterConnected,
+                                    FFAppState().printerName,
+                                    FFAppState().paperSize,
+                                    functions
+                                        .shiftDocToJsonListCopy(
+                                            dayWiseShiftReportShiftRecordList
+                                                .toList())
+                                        .toList(),
+                                  );
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('printer connection'),
+                                        content: Text('printer not connected'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  if (_shouldSetState) safeSetState(() {});
+                                  return;
+                                }
+
+                                if (_shouldSetState) safeSetState(() {});
                               },
                             ),
                             Text(
