@@ -70,7 +70,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
               body: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(
+                  Flexible(
                     flex: 4,
                     child: StreamBuilder<List<OutletRecord>>(
                       stream: queryOutletRecord(
@@ -727,21 +727,23 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                                   MainAxisAlignment
                                                                       .center,
                                                               children: [
-                                                                Text(
-                                                                  functions.milisecToTimestamp(
-                                                                      billWiseSaleReportVarItem
-                                                                          .checkInTime),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
+                                                                Flexible(
+                                                                  child: Text(
+                                                                    functions.milisecToTimestamp(
+                                                                        billWiseSaleReportVarItem
+                                                                            .checkInTime),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -770,34 +772,35 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                                   MainAxisAlignment
                                                                       .center,
                                                               children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    dateTimeFormat(
-                                                                      " h:mm a",
-                                                                      DateTime.fromMillisecondsSinceEpoch(
-                                                                          billWiseSaleReportVarItem
-                                                                              .checkInTime),
-                                                                      locale: FFLocalizations.of(
+                                                                Flexible(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      dateTimeFormat(
+                                                                        " h:mm a",
+                                                                        DateTime.fromMillisecondsSinceEpoch(
+                                                                            billWiseSaleReportVarItem.checkInTime),
+                                                                        locale:
+                                                                            FFLocalizations.of(context).languageCode,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .languageCode,
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                        ),
                                                                   ),
                                                                 ),
                                                               ],

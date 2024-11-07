@@ -74,7 +74,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
             body: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Expanded(
+                Flexible(
                   flex: 3,
                   child: Container(
                     width: double.infinity,

@@ -71,7 +71,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
               body: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(
+                  Flexible(
                     flex: 4,
                     child: StreamBuilder<List<OutletRecord>>(
                       stream: queryOutletRecord(
