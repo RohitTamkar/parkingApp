@@ -1,6 +1,6 @@
 export 'check_platform.dart' show checkPlatform;
 export 'print_billnewhive.dart' show printBillnewhive;
-export 'print_daily_collection_report.dart' show printDailyCollectionReport;
+export 'print_vehicle_in_out_report.dart' show printVehicleInOutReport;
 export 'print_bill_format_two.dart' show printBillFormatTwo;
 export 'delete_allinvoice.dart' show deleteAllinvoice;
 export 'shift_detail_new.dart' show shiftDetailNew;
@@ -103,6 +103,7 @@ export 'delete_allshift.dart' show deleteAllshift;
 export 'hivegetinvbyday_id.dart' show hivegetinvbydayId;
 export 'hive_get_invoicestoday.dart' show hiveGetInvoicestoday;
 export 'print_for_web_windows.dart' show printForWebWindows;
+export 'print_daily_collection_report.dart' show printDailyCollectionReport;
 export 'shift_detail_newpark.dart' show shiftDetailNewpark;
 export 'calculate_tax.dart' show calculateTax;
 export 'new_custom_action4.dart' show newCustomAction4;

@@ -139,7 +139,7 @@ class _DaillyCollectionReportWidgetState
                           );
                           _shouldSetState = true;
                           if (_model.printer!) {
-                            await actions.printDailyCollectionReport(
+                            await actions.printVehicleInOutReport(
                               FFAppState().printerDevice,
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
