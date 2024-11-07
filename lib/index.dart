@@ -231,3 +231,5 @@ export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
 export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
     show TodaysSummaryReportWidget;
+export '/pages/report_screen/dailly_collection_report/dailly_collection_report_widget.dart'
+    show DaillyCollectionReportWidget;

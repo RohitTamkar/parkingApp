@@ -1535,6 +1535,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'TodaysSummaryReport',
               path: 'todaysSummaryReport',
               builder: (context, params) => TodaysSummaryReportWidget(),
+            ),
+            FFRoute(
+              name: 'DaillyCollectionReport',
+              path: 'daillyCollectionReport',
+              builder: (context, params) => DaillyCollectionReportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
