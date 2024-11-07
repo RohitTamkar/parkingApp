@@ -18,16 +18,10 @@ class TodaysSummaryReportModel
 
   DateTime? datePicked1;
   DateTime? datePicked2;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    tabBarController?.dispose();
-  }
+  void dispose() {}
 }

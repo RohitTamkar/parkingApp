@@ -197,7 +197,7 @@ export '/pages/kiosk/kiosk_payment_copy/kiosk_payment_copy_widget.dart'
     show KioskPaymentCopyWidget;
 export '/pages/parking/number_plate_scanner/number_plate_scanner_widget.dart'
     show NumberPlateScannerWidget;
-export '/pages/billwisesalereport/billwisesalereport_widget.dart'
+export '/pages/report_screen/billwisesalereport/billwisesalereport_widget.dart'
     show BillwisesalereportWidget;
 export '/pages/parking/category_wise_sale_report/category_wise_sale_report_widget.dart'
     show CategoryWiseSaleReportWidget;

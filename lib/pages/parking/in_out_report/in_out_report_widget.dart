@@ -657,7 +657,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                                   Text(
                                                                     functions.getDayIdAndTime(
                                                                         billWiseSaleReportVarItem
-                                                                            .checkOutTime),
+                                                                            .checkInTime),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
