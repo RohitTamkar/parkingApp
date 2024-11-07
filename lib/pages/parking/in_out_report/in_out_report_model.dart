@@ -21,6 +21,10 @@ class InOutReportModel extends FlutterFlowModel<InOutReportWidget> {
   DateTime? datePicked2;
   // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
   DateTime? datenext;
+  // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
+  bool? resDevice2;
+  // Stores action output result for [Custom Action - connectDevice] action in IconButton widget.
+  bool? printer;
 
   @override
   void initState(BuildContext context) {}
