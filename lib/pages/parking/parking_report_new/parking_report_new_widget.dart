@@ -105,7 +105,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('VehicleEntry');
+                  context.safePop();
                 },
               ),
               title: Text(
@@ -161,7 +161,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 20.0),
+                                  10.0, 20.0, 10.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().filterDate =
@@ -207,7 +207,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
+                                  10.0, 0.0, 10.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().filterDate =
@@ -256,7 +256,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
+                                  10.0, 0.0, 10.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().filterDate =
@@ -302,7 +302,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
+                                  10.0, 0.0, 10.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().filterDate =
@@ -348,7 +348,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
+                                  10.0, 0.0, 10.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().filterDate =
@@ -394,7 +394,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
+                                  10.0, 0.0, 10.0, 20.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().filterDate =

@@ -13,28 +13,27 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'dailly_collection_report_model.dart';
-export 'dailly_collection_report_model.dart';
+import 'billwisesalereport_model.dart';
+export 'billwisesalereport_model.dart';
 
-class DaillyCollectionReportWidget extends StatefulWidget {
+class BillwisesalereportWidget extends StatefulWidget {
   /// parking app
-  const DaillyCollectionReportWidget({super.key});
+  const BillwisesalereportWidget({super.key});
 
   @override
-  State<DaillyCollectionReportWidget> createState() =>
-      _DaillyCollectionReportWidgetState();
+  State<BillwisesalereportWidget> createState() =>
+      _BillwisesalereportWidgetState();
 }
 
-class _DaillyCollectionReportWidgetState
-    extends State<DaillyCollectionReportWidget> {
-  late DaillyCollectionReportModel _model;
+class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
+  late BillwisesalereportModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DaillyCollectionReportModel());
+    _model = createModel(context, () => BillwisesalereportModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -91,11 +90,11 @@ class _DaillyCollectionReportWidgetState
             ),
           );
         }
-        List<InvoiceRecord> daillyCollectionReportInvoiceRecordList =
+        List<InvoiceRecord> billwisesalereportInvoiceRecordList =
             snapshot.data!;
 
         return Title(
-            title: 'DaillyCollectionReport',
+            title: 'billwisesalereport',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -148,7 +147,7 @@ class _DaillyCollectionReportWidgetState
                                           0.0, 0.0, 15.0, 0.0),
                                       child: AutoSizeText(
                                         FFLocalizations.of(context).getText(
-                                          '8ox03xzb' /* Dailly Collection Report */,
+                                          '32zgov2x' /* Bill Summary */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -423,10 +422,7 @@ class _DaillyCollectionReportWidgetState
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            valueOrDefault<String>(
-                                              FFAppState().filterDate,
-                                              '0',
-                                            ),
+                                            FFAppState().filterDate,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -458,7 +454,7 @@ class _DaillyCollectionReportWidgetState
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 40.0, 7.0, 0.0),
+                                    5.0, 0.0, 7.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   height:
@@ -491,7 +487,7 @@ class _DaillyCollectionReportWidgetState
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'vu9wbfaq' /* No */,
+                                                  'mwwbxkrw' /* No */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -533,7 +529,49 @@ class _DaillyCollectionReportWidgetState
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'lhkc22re' /*  Date&time */,
+                                                  'wvc8zgie' /* vehicle No */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 3,
+                                        child: Container(
+                                          width: 100.0,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.1,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'uucq102f' /* Out Date */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -575,7 +613,7 @@ class _DaillyCollectionReportWidgetState
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'wvoz9myr' /*  Amt */,
+                                                  'e5hdgmdg' /* Net Amt */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -631,7 +669,9 @@ class _DaillyCollectionReportWidgetState
                                       child: Builder(
                                         builder: (context) {
                                           final billWiseSaleReportVar =
-                                              daillyCollectionReportInvoiceRecordList
+                                              billwisesalereportInvoiceRecordList
+                                                  .where((e) =>
+                                                      e.checkOutTime != 0)
                                                   .toList();
                                           if (billWiseSaleReportVar.isEmpty) {
                                             return Center(
@@ -710,8 +750,9 @@ class _DaillyCollectionReportWidgetState
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    billWiseSaleReportVarItem
-                                                                        .count
+                                                                    functions
+                                                                        .genSrno(
+                                                                            billWiseSaleReportVarIndex)
                                                                         .toString(),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -752,27 +793,69 @@ class _DaillyCollectionReportWidgetState
                                                                     MainAxisAlignment
                                                                         .center,
                                                                 children: [
-                                                                  Flexible(
-                                                                    child: Text(
-                                                                      dateTimeFormat(
-                                                                        "d/M/y h:mm a",
-                                                                        DateTime.fromMillisecondsSinceEpoch(
-                                                                            billWiseSaleReportVarItem.invoiceDate),
-                                                                        locale:
-                                                                            FFLocalizations.of(context).languageCode,
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
+                                                                  Text(
+                                                                    billWiseSaleReportVarItem
+                                                                        .vechicleNo,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 3,
+                                                            child: Container(
+                                                              width: 100.0,
+                                                              height: MediaQuery
+                                                                          .sizeOf(
                                                                               context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                          ),
+                                                                      .height *
+                                                                  0.06,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    dateTimeFormat(
+                                                                      "d/M/y",
+                                                                      DateTime.fromMillisecondsSinceEpoch(
+                                                                          billWiseSaleReportVarItem
+                                                                              .checkOutTime),
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
                                                                     ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -812,7 +895,7 @@ class _DaillyCollectionReportWidgetState
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        'dfynh1ze' /* ₹ */,
+                                                                        'vg87jncc' /* ₹ */,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)

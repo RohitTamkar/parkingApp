@@ -121,7 +121,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pushNamed('VehicleEntry');
+                                      context.safePop();
                                     },
                                   ),
                                   InkWell(

@@ -143,14 +143,14 @@ export '/pages/parking/parking_check_i_n/parking_check_i_n_widget.dart'
     show ParkingCheckINWidget;
 export '/pages/parking/parking_customers/parking_customers_widget.dart'
     show ParkingCustomersWidget;
-export '/pages/parking_product/parking_product_widget.dart'
+export '/pages/parking/parking_product/parking_product_widget.dart'
     show ParkingProductWidget;
 export '/pages/dummytest/dummytest_widget.dart' show DummytestWidget;
 export '/pages/edit_user_permission/edit_user_permission_widget.dart'
     show EditUserPermissionWidget;
 export '/pages/parking/parking_product_copy/parking_product_copy_widget.dart'
     show ParkingProductCopyWidget;
-export '/pages/screens/welcome_screen_parking/welcome_screen_parking_widget.dart'
+export '/pages/parking/welcome_screen_parking/welcome_screen_parking_widget.dart'
     show WelcomeScreenParkingWidget;
 export '/pages/demo/demo_widget.dart' show DemoWidget;
 export '/pages/parking/printersetting_car/printersetting_car_widget.dart'
@@ -197,7 +197,7 @@ export '/pages/kiosk/kiosk_payment_copy/kiosk_payment_copy_widget.dart'
     show KioskPaymentCopyWidget;
 export '/pages/parking/number_plate_scanner/number_plate_scanner_widget.dart'
     show NumberPlateScannerWidget;
-export '/pages/report_screen/billwisesalereport/billwisesalereport_widget.dart'
+export '/pages/parking/billwisesalereport/billwisesalereport_widget.dart'
     show BillwisesalereportWidget;
 export '/pages/parking/category_wise_sale_report/category_wise_sale_report_widget.dart'
     show CategoryWiseSaleReportWidget;
@@ -221,8 +221,8 @@ export '/pages/parking/vehicle_wise_sale_report/vehicle_wise_sale_report_widget.
 export '/pages/parking/vehicle_entry/vehicle_entry_widget.dart'
     show VehicleEntryWidget;
 export '/pages/parking/bill_entry/bill_entry_widget.dart' show BillEntryWidget;
-export '/unbilled/unbilled_widget.dart' show UnbilledWidget;
-export '/pages/parking_report_new/parking_report_new_widget.dart'
+export '/pages/parking/unbilled/unbilled_widget.dart' show UnbilledWidget;
+export '/pages/parking/parking_report_new/parking_report_new_widget.dart'
     show ParkingReportNewWidget;
 export '/pages/parking/vehicle_wise_sale2/vehicle_wise_sale2_widget.dart'
     show VehicleWiseSale2Widget;
@@ -231,5 +231,5 @@ export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
 export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
     show TodaysSummaryReportWidget;
-export '/pages/report_screen/dailly_collection_report/dailly_collection_report_widget.dart'
+export '/pages/parking/dailly_collection_report/dailly_collection_report_widget.dart'
     show DaillyCollectionReportWidget;

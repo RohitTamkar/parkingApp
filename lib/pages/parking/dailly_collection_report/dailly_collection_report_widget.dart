@@ -13,27 +13,28 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'billwisesalereport_model.dart';
-export 'billwisesalereport_model.dart';
+import 'dailly_collection_report_model.dart';
+export 'dailly_collection_report_model.dart';
 
-class BillwisesalereportWidget extends StatefulWidget {
+class DaillyCollectionReportWidget extends StatefulWidget {
   /// parking app
-  const BillwisesalereportWidget({super.key});
+  const DaillyCollectionReportWidget({super.key});
 
   @override
-  State<BillwisesalereportWidget> createState() =>
-      _BillwisesalereportWidgetState();
+  State<DaillyCollectionReportWidget> createState() =>
+      _DaillyCollectionReportWidgetState();
 }
 
-class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
-  late BillwisesalereportModel _model;
+class _DaillyCollectionReportWidgetState
+    extends State<DaillyCollectionReportWidget> {
+  late DaillyCollectionReportModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BillwisesalereportModel());
+    _model = createModel(context, () => DaillyCollectionReportModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -90,11 +91,11 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
             ),
           );
         }
-        List<InvoiceRecord> billwisesalereportInvoiceRecordList =
+        List<InvoiceRecord> daillyCollectionReportInvoiceRecordList =
             snapshot.data!;
 
         return Title(
-            title: 'billwisesalereport',
+            title: 'DaillyCollectionReport',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -147,7 +148,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                           0.0, 0.0, 15.0, 0.0),
                                       child: AutoSizeText(
                                         FFLocalizations.of(context).getText(
-                                          '32zgov2x' /* Bill Summary */,
+                                          '8ox03xzb' /* Dailly Collection Report */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -422,7 +423,10 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Text(
-                                            FFAppState().filterDate,
+                                            valueOrDefault<String>(
+                                              FFAppState().filterDate,
+                                              '0',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -454,7 +458,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 40.0, 7.0, 0.0),
+                                    5.0, 0.0, 7.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   height:
@@ -487,7 +491,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'mwwbxkrw' /* No */,
+                                                  'vu9wbfaq' /* No */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -529,49 +533,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'wvc8zgie' /* vehicle No */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmallFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        flex: 3,
-                                        child: Container(
-                                          width: 100.0,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.1,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'uucq102f' /* Out Date */,
+                                                  'lhkc22re' /*  Date&time */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -613,7 +575,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'e5hdgmdg' /* Net Amt */,
+                                                  'wvoz9myr' /*  Amt */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -669,9 +631,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                       child: Builder(
                                         builder: (context) {
                                           final billWiseSaleReportVar =
-                                              billwisesalereportInvoiceRecordList
-                                                  .where((e) =>
-                                                      e.checkOutTime != 0)
+                                              daillyCollectionReportInvoiceRecordList
                                                   .toList();
                                           if (billWiseSaleReportVar.isEmpty) {
                                             return Center(
@@ -750,9 +710,8 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    functions
-                                                                        .genSrno(
-                                                                            billWiseSaleReportVarIndex)
+                                                                    billWiseSaleReportVarItem
+                                                                        .count
                                                                         .toString(),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -793,69 +752,27 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                     MainAxisAlignment
                                                                         .center,
                                                                 children: [
-                                                                  Text(
-                                                                    billWiseSaleReportVarItem
-                                                                        .vechicleNo,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 3,
-                                                            child: Container(
-                                                              width: 100.0,
-                                                              height: MediaQuery
-                                                                          .sizeOf(
+                                                                  Flexible(
+                                                                    child: Text(
+                                                                      dateTimeFormat(
+                                                                        "d/M/y h:mm a",
+                                                                        DateTime.fromMillisecondsSinceEpoch(
+                                                                            billWiseSaleReportVarItem.invoiceDate),
+                                                                        locale:
+                                                                            FFLocalizations.of(context).languageCode,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
-                                                                      .height *
-                                                                  0.06,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                              ),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Text(
-                                                                    dateTimeFormat(
-                                                                      "d/M/y",
-                                                                      DateTime.fromMillisecondsSinceEpoch(
-                                                                          billWiseSaleReportVarItem
-                                                                              .checkOutTime),
-                                                                      locale: FFLocalizations.of(
-                                                                              context)
-                                                                          .languageCode,
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                        ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -895,7 +812,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                       FFLocalizations.of(
                                                                               context)
                                                                           .getText(
-                                                                        'vg87jncc' /* ₹ */,
+                                                                        'dfynh1ze' /* ₹ */,
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
