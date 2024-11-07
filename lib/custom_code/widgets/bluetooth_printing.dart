@@ -45,7 +45,7 @@ class _BluetoothPrintingState extends State<BluetoothPrinting> {
     WidgetsBinding.instance.addPostFrameCallback((_) => initBluetooth());
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
+  // Plkjnkljlatform messages are asynchronous, so we initialize in an async method.
   Future<void> initBluetooth() async {
     bluetoothPrint.startScan(timeout: Duration(seconds: 4));
 

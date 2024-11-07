@@ -105,8 +105,9 @@ class _DaillyCollectionReportWidgetState
                   key: scaffoldKey,
                   backgroundColor:
                       FlutterFlowTheme.of(context).primaryBackground,
-                  floatingActionButton: Visibility(
-                    visible: FFAppState().fabButtonHide == true,
+                  floatingActionButton: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                     child: FloatingActionButton.extended(
                       onPressed: () async {
                         var _shouldSetState = false;
