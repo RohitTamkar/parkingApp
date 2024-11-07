@@ -13,6 +13,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -66,72 +68,19 @@ Future printDailyCollectionReport(
     if (dataDocument!.isNotEmpty) {
       obj = dataDocument[0];
 
-      bytes += generator.text("Day Wise collection ",
+      bytes += generator.text("Day collection Report",
           styles: PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              align: PosAlign.center));
-      bytes += generator.text(" DHULE BUS STAND ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      bytes += generator.text("PAY & PARK ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      bytes += generator.text(" MSRTC APPROVED ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      bytes += generator.text(" CONTACT 9172676376 ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-
-      bytes += generator.text("--------------------------------",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
+              height: PosTextSize.size2,
+              width: PosTextSize.size2,
               align: PosAlign.center));
 
       String printLine = '';
       String dateString = '';
       String dateString1 = '';
+      String dateStringend = '';
+      double totalAmt = 0;
 
-      final DateTime now = DateTime.now();
-
-      final DateFormat formatter = DateFormat('dd-MM-yyyy');
-      final String formatted = formatter.format(now);
-      dateString = formatted.toString();
-
-      printLine += dateString;
-
-      final DateFormat formatter1 = DateFormat(' hh:mm:ss');
-      final String formatted1 = formatter1.format(now);
-      String dateTimeString = formatted1.toString();
-
-      for (int i = 1;
-          i <= (size - (dateString.length + dateTimeString.length));
-          i++) {
-        printLine += " ";
-      }
-      printLine += dateTimeString;
-
-      bytes += generator.text(printLine,
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false));
-      printLine = '';
+      final DateTime? now = FFAppState().startDate;
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
@@ -140,11 +89,11 @@ Future printDailyCollectionReport(
               bold: false,
               align: PosAlign.center));
 
-      String title = "Sale on Date";
+      String title = "Start Date";
 
       printLine += title;
-      final DateFormat formatter2 = DateFormat('yyyy-MM-dd');
-      final String formatted2 = formatter2.format(now);
+      final DateFormat formatter2 = DateFormat('dd/MM/yyyy');
+      final String formatted2 = formatter2.format(now!);
       dateString1 = formatted2.toString();
 
       for (int i = 1; i <= (size - (title.length + dateString1.length)); i++) {
@@ -160,12 +109,36 @@ Future printDailyCollectionReport(
               bold: false));
       printLine = '';
 
+      String title2 = "End Date";
+      final DateTime? now2 = FFAppState().endDate;
+
+      printLine += title2;
+      final DateFormat formatter22 = DateFormat('yyyy-MM-dd');
+      final String formatted22 = formatter2.format(now2!);
+      dateStringend = FFAppState().filterDate.toString();
+
+      for (int i = 1;
+          i <= (size - (title2.length + dateStringend.length));
+          i++) {
+        printLine += " ";
+      }
+
+      printLine += dateStringend;
+
+      bytes += generator.text(printLine,
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false));
+      printLine = '';
+
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: false,
               align: PosAlign.center));
+
 //row1
       bytes += generator.row([
         PosColumn(
@@ -178,19 +151,15 @@ Future printDailyCollectionReport(
               bold: false,
               align: PosAlign.left),
         ),
-        // PosColumn(
-        //   text: obj["totalSale"].toString(),
-        //   width: 6,
-        //   styles: PosStyles(
-        //       fontType: PosFontType.fontA,
-        //       height: PosTextSize.size1,
-        //       width: PosTextSize.size1,
-        //       bold: false,
-        //       align: PosAlign.right),
-        // )
       ]);
-
+      bytes += generator.text("--------------------------------",
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+              align: PosAlign.center));
       for (var invoice in dataDocument) {
+        totalAmt += invoice.finalBillAmt;
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
@@ -204,7 +173,7 @@ Future printDailyCollectionReport(
           ),
           PosColumn(
               text: invoice.dayId.toString(),
-              width: 4,
+              width: 6,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
@@ -212,7 +181,7 @@ Future printDailyCollectionReport(
               )),
           PosColumn(
             text: invoice.finalBillAmt.toString(),
-            width: 4,
+            width: 2,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -221,233 +190,36 @@ Future printDailyCollectionReport(
           ),
         ]);
       }
-      /*     bytes += generator.text(
-         " Total Sale :" + invoiceDetails.paymentMode.toString(),
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left));
 
- */
       //row2
-      bytes += generator.row([
-        PosColumn(
-          text: "Total Bill:",
-          width: 12,
-          styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left),
-        ),
-        // PosColumn(
-        //   text: obj["billCount"].toString(),
-        //   width: 6,
-        //   styles: PosStyles(
-        //       fontType: PosFontType.fontA,
-        //       height: PosTextSize.size1,
-        //       width: PosTextSize.size1,
-        //       bold: false,
-        //       align: PosAlign.right),
-        // )
-      ]);
-
-/*      bytes += generator.text(
-          " Total Bill :" + invoiceDetails.paymentMode.toString(),
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left));
-
-
-      bytes += generator.row([
-        PosColumn(
-          text: "Bill Total Amt:",
-          width: 6,
-          styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left),
-        ),
-        PosColumn(
-          text: "0",
-          width: 6,
-          styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
-        )
-      ]);*/
-
-/*      bytes += generator.text(
-          " Bill Total Amt :" + invoiceDetails.paymentMode.toString(),
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left));
-
-*/
-//row4
-      /*
-      bytes += generator.row([
-        PosColumn(
-          text: "Refund Amount :",
-          width: 6,
-          styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left),
-        ),
-        PosColumn(
-          text: obj.toString(),
-          width: 6,
-          styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
-        )
-      ]);
-*/
-/*      bytes += generator.text(
-          " Refund Amount  :" + invoiceDetails.paymentMode.toString(),
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left));
-
-*/
-//row5
-      // bytes += generator.row([
-      //   PosColumn(
-      //     text: "Tax Amount (All Exc.):",
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.left),
-      //   ),
-      //   PosColumn(
-      //     text: obj["tax"].toString(),
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.right),
-      //   )
-      // ]);
-
-/*      bytes += generator.text(
-          " Tax Amount (All Exc.):" + invoiceDetails.paymentMode.toString(),
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left));
-
-*/
-//row6
-      // bytes += generator.row([
-      //   PosColumn(
-      //     text: "Discount :",
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.left),
-      //   ),
-      //   PosColumn(
-      //     text: obj["discount"].toString(),
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.right),
-      //   )
-      // ]);
-
-/*      bytes += generator.text(
-          " Discount  :" + invoiceDetails.paymentMode.toString(),
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left));
-
-*/
-//row7
-      // bytes += generator.row([
-      //   PosColumn(
-      //     text: "Delivery Charges :",
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.left),
-      //   ),
-      //   PosColumn(
-      //     text: obj["deliveryCharges"].toString(),
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.right),
-      //   )
-      // ]);
-
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: false,
               align: PosAlign.center));
-
-      // bytes += generator.row([
-      //   PosColumn(
-      //     text: "Net Amount:",
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.left),
-      //   ),
-      //   PosColumn(
-      //     text: obj["totalSale"].toString(),
-      //     width: 6,
-      //     styles: PosStyles(
-      //         fontType: PosFontType.fontA,
-      //         height: PosTextSize.size1,
-      //         width: PosTextSize.size1,
-      //         bold: false,
-      //         align: PosAlign.right),
-      //   )
-      // ]);
+      bytes += generator.row([
+        PosColumn(
+          text: "Total Bill:",
+          width: 6,
+          styles: PosStyles(
+              fontType: PosFontType.fontA,
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: true,
+              align: PosAlign.left),
+        ),
+        PosColumn(
+          text: totalAmt.toString(),
+          width: 6,
+          styles: PosStyles(
+              fontType: PosFontType.fontA,
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+              align: PosAlign.right),
+        )
+      ]);
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(

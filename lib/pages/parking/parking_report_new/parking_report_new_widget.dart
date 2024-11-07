@@ -105,7 +105,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.safePop();
+                  context.pushNamed('VehicleEntry');
                 },
               ),
               title: Text(

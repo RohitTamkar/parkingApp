@@ -10,6 +10,7 @@ export 'print_pass_parking.dart' show printPassParking;
 export 'm_k_print_token.dart' show mKPrintToken;
 export 'cal_sub_total_for_hold_list2.dart' show calSubTotalForHoldList2;
 export 'update_shift_summary_for_e_b.dart' show updateShiftSummaryForEB;
+export 'prin_vehicle_in_out_report.dart' show prinVehicleInOutReport;
 export 'add_to_hold_list_copy.dart' show addToHoldListCopy;
 export 'create_device_copy.dart' show createDeviceCopy;
 export 'add_to_hold_listprd_grocery.dart' show addToHoldListprdGrocery;
