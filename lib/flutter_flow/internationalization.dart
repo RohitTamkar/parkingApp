@@ -23841,13 +23841,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // vehicleWiseSale2
   {
-    'zwbmtyxd': {
-      'en': 'Vehicle Parking Report',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'o0zvnam0': {
       'en': 'Bicycle',
       'hi': '',
@@ -23946,6 +23939,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'orb6t51y': {
+      'en': 'Vehicle Parking Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'ngz0rte2': {
       'en': 'Home',
       'hi': '',
@@ -23956,13 +23956,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Unbilled2
   {
-    'z86o131o': {
-      'en': 'Unbilled',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'qwvql5ss': {
       'en': 'Recipt',
       'hi': '',
@@ -23991,6 +23984,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    '7qdeun8g': {
+      'en': 'Unbilled',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'gtwwj3j9': {
       'en': 'Home',
       'hi': '',
@@ -24001,13 +24001,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // InOutReport
   {
-    '8fagmnxs': {
-      'en': 'In \\ Out Report',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     '63v53jxw': {
       'en': 'Recipt',
       'hi': '',
@@ -24031,6 +24024,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'mpq5n1ye': {
       'en': 'Out Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'zvj76iyi': {
+      'en': 'In \\ Out Report',
       'hi': '',
       'kn': '',
       'mr': '',

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -67,124 +66,44 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              appBar: AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.pop();
+                  },
+                ),
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'zvj76iyi' /* In \ Out Report */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 22.0,
+                        letterSpacing: 0.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
+                ),
+                actions: [],
+                centerTitle: true,
+                elevation: 2.0,
+              ),
               body: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(
-                    flex: 4,
-                    child: StreamBuilder<List<OutletRecord>>(
-                      stream: queryOutletRecord(
-                        queryBuilder: (outletRecord) => outletRecord.where(
-                          'id',
-                          isEqualTo: FFAppState().outletId,
-                        ),
-                        singleRecord: true,
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: SpinKitFadingCircle(
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 40.0,
-                              ),
-                            ),
-                          );
-                        }
-                        List<OutletRecord> containerOutletRecordList =
-                            snapshot.data!;
-                        // Return an empty Container when the item does not exist.
-                        if (snapshot.data!.isEmpty) {
-                          return Container();
-                        }
-                        final containerOutletRecord =
-                            containerOutletRecordList.isNotEmpty
-                                ? containerOutletRecordList.first
-                                : null;
-
-                        return Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFFAC47),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 45.0,
-                                      icon: Icon(
-                                        Icons.chevron_left,
-                                        color: Color(0xFF0D0801),
-                                        size: 30.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pop();
-                                      },
-                                    ),
-                                    AutoSizeText(
-                                      FFLocalizations.of(context).getText(
-                                        '8fagmnxs' /* In \ Out Report */,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMediumFamily,
-                                            color: Color(0xFF0D0801),
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMediumFamily),
-                                          ),
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        FlutterFlowIconButton(
-                                          borderWidth: 1.0,
-                                          buttonSize: 45.0,
-                                          icon: Icon(
-                                            Icons.calendar_today_sharp,
-                                            color: FlutterFlowTheme.of(context)
-                                                .parkingPrimary,
-                                          ),
-                                          onPressed: () {
-                                            print('IconButton pressed ...');
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
                   Expanded(
                     flex: 24,
                     child: Container(
@@ -736,7 +655,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    functions.milisecToTimestamp(
+                                                                    functions.getDayIdAndTime(
                                                                         billWiseSaleReportVarItem
                                                                             .checkInTime),
                                                                     style: FlutterFlowTheme.of(
@@ -787,7 +706,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                                           20.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    functions.milisecToTimestamp(
+                                                                    functions.getDayIdAndTime(
                                                                         billWiseSaleReportVarItem
                                                                             .checkOutTime),
                                                                     style: FlutterFlowTheme.of(
