@@ -143,7 +143,7 @@ export '/pages/parking/parking_check_i_n/parking_check_i_n_widget.dart'
     show ParkingCheckINWidget;
 export '/pages/parking/parking_customers/parking_customers_widget.dart'
     show ParkingCustomersWidget;
-export '/pages/parking/parking_product/parking_product_widget.dart'
+export '/pages/parking_product/parking_product_widget.dart'
     show ParkingProductWidget;
 export '/pages/dummytest/dummytest_widget.dart' show DummytestWidget;
 export '/pages/edit_user_permission/edit_user_permission_widget.dart'
@@ -222,7 +222,7 @@ export '/pages/parking/vehicle_entry/vehicle_entry_widget.dart'
     show VehicleEntryWidget;
 export '/pages/parking/bill_entry/bill_entry_widget.dart' show BillEntryWidget;
 export '/unbilled/unbilled_widget.dart' show UnbilledWidget;
-export '/pages/parking/parking_report_new/parking_report_new_widget.dart'
+export '/pages/parking_report_new/parking_report_new_widget.dart'
     show ParkingReportNewWidget;
 export '/pages/parking/vehicle_wise_sale2/vehicle_wise_sale2_widget.dart'
     show VehicleWiseSale2Widget;
