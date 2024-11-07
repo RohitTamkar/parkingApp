@@ -24,10 +24,18 @@ class DayWiseShiftReportModel
   bool? resDevice;
   // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
   bool? rd;
+  // Stores action output result for [Custom Action - scanPrinter] action in FloatingActionButton widget.
+  bool? resDevice1f;
+  // Stores action output result for [Custom Action - scanPrinter] action in FloatingActionButton widget.
+  bool? rd1f;
+  // Stores action output result for [Custom Action - connectDevice] action in FloatingActionButton widget.
+  bool? posf;
   // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
   bool? resDevice1;
   // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
   bool? rd1;
+  // Stores action output result for [Custom Action - connectDevice] action in IconButton widget.
+  bool? xxxzc;
 
   @override
   void initState(BuildContext context) {

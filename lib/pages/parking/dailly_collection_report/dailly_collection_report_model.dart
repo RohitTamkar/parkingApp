@@ -24,9 +24,9 @@ class DaillyCollectionReportModel
   // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
   DateTime? datenext;
   // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
-  bool? resDevice1;
-  // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
-  bool? rd1;
+  bool? resDevice2;
+  // Stores action output result for [Custom Action - connectDevice] action in IconButton widget.
+  bool? printer;
 
   @override
   void initState(BuildContext context) {}

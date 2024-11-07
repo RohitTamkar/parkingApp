@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-const qs = require('qs');
+const qs = require("qs");
 
 async function _getDaywiseShiftsCall(context, ffVariables) {
   var outletId = ffVariables["outletId"];
@@ -7,7 +7,7 @@ async function _getDaywiseShiftsCall(context, ffVariables) {
 
   var url = `https://asia-south1-sensiblebizpro.cloudfunctions.net/getShiftDayWise`;
   var headers = {};
-  var params = {'outletId': outletId,'dayId': dayId,};
+  var params = { outletId: outletId, dayId: dayId };
   var ffApiRequestBody = undefined;
 
   return makeApiRequest({
@@ -20,7 +20,6 @@ async function _getDaywiseShiftsCall(context, ffVariables) {
   });
 }
 
-
 /// Helper functions to route to the appropriate API Call.
 
 async function makeApiCall(context, data) {
@@ -28,7 +27,7 @@ async function makeApiCall(context, data) {
   var variables = data["variables"] || {};
 
   const callMap = {
-    "GetDaywiseShiftsCall": _getDaywiseShiftsCall,
+    GetDaywiseShiftsCall: _getDaywiseShiftsCall,
   };
 
   if (!(callName in callMap)) {
@@ -58,7 +57,7 @@ async function makeApiRequest({
       url: url,
       headers: headers,
       params: params,
-      responseType: (isStreamingApi ? 'stream' : 'json'),
+      responseType: isStreamingApi ? "stream" : "json",
       ...(body && { data: body }),
     })
     .then((response) => {

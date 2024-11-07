@@ -132,22 +132,20 @@ class _DaillyCollectionReportWidgetState
                                 ),
                                 onPressed: () async {
                                   var _shouldSetState = false;
-                                  _model.resDevice1 = await actions.scanPrinter(
-                                    FFAppState().posMode,
-                                  );
-                                  _shouldSetState = true;
-                                  if (!_model.resDevice1!) {
-                                    _model.rd1 = await actions.scanPrinter(
+                                  if (!functions.isPrinterSelected(
+                                      FFAppState().printerDevice)!) {
+                                    _model.resDevice2 =
+                                        await actions.scanPrinter(
                                       FFAppState().posMode,
                                     );
                                     _shouldSetState = true;
                                   }
-                                  await actions.connectDevice(
+                                  _model.printer = await actions.connectDevice(
                                     FFAppState().printerDevice,
-                                    '0',
+                                    FFAppState().printerIndex,
                                   );
-                                  if (FFAppState().printerName != null &&
-                                      FFAppState().printerName != '') {
+                                  _shouldSetState = true;
+                                  if (_model.printer!) {
                                     await actions.printDailyCollectionReport(
                                       FFAppState().printerDevice,
                                       FFAppState().isPrinterConnected,

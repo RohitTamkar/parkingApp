@@ -97,7 +97,58 @@ class _DayWiseShiftReportWidgetState extends State<DayWiseShiftReportWidget> {
                 floatingActionButton: Visibility(
                   visible: FFAppState().fabButtonHide == true,
                   child: FloatingActionButton.extended(
-                    onPressed: () async {},
+                    onPressed: () async {
+                      var _shouldSetState = false;
+                      _model.resDevice1f = await actions.scanPrinter(
+                        FFAppState().posMode,
+                      );
+                      _shouldSetState = true;
+                      if (!_model.resDevice!) {
+                        _model.rd1f = await actions.scanPrinter(
+                          FFAppState().posMode,
+                        );
+                        _shouldSetState = true;
+                      }
+                      _model.posf = await actions.connectDevice(
+                        FFAppState().printerDevice,
+                        '0',
+                      );
+                      _shouldSetState = true;
+                      if (FFAppState().printerName != null &&
+                          FFAppState().printerName != '') {
+                        await actions.printDayWiseSalesReport(
+                          FFAppState().printerDevice,
+                          FFAppState().isPrinterConnected,
+                          FFAppState().printerName,
+                          FFAppState().paperSize,
+                          functions
+                              .shiftDocToJsonListCopy(
+                                  dayWiseShiftReportShiftRecordList.toList())
+                              .toList(),
+                        );
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('printer connection'),
+                              content: Text('printer not connected'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        if (_shouldSetState) safeSetState(() {});
+                        return;
+                      }
+
+                      if (_shouldSetState) safeSetState(() {});
+                    },
                     backgroundColor:
                         FlutterFlowTheme.of(context).secondaryBackground,
                     elevation: 8.0,
@@ -127,10 +178,11 @@ class _DayWiseShiftReportWidgetState extends State<DayWiseShiftReportWidget> {
                                   );
                                   _shouldSetState = true;
                                 }
-                                await actions.connectDevice(
+                                _model.xxxzc = await actions.connectDevice(
                                   FFAppState().printerDevice,
-                                  '0',
+                                  FFAppState().printerIndex,
                                 );
+                                _shouldSetState = true;
                                 if (FFAppState().printerName != null &&
                                     FFAppState().printerName != '') {
                                   await actions.printDayWiseSalesReport(
