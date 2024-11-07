@@ -1,5 +1,6 @@
 export 'check_platform.dart' show checkPlatform;
 export 'print_billnewhive.dart' show printBillnewhive;
+export 'print_daily_collection_report.dart' show printDailyCollectionReport;
 export 'print_bill_format_two.dart' show printBillFormatTwo;
 export 'delete_allinvoice.dart' show deleteAllinvoice;
 export 'shift_detail_new.dart' show shiftDetailNew;

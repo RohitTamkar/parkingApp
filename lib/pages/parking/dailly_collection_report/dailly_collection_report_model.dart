@@ -23,6 +23,10 @@ class DaillyCollectionReportModel
   DateTime? datePicked2;
   // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
   DateTime? datenext;
+  // Stores action output result for [Custom Action - scanPrinter] action in FloatingActionButton widget.
+  bool? resDevice1;
+  // Stores action output result for [Custom Action - scanPrinter] action in FloatingActionButton widget.
+  bool? rd1;
 
   @override
   void initState(BuildContext context) {}

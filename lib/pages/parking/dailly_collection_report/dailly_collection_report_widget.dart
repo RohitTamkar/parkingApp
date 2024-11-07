@@ -105,6 +105,102 @@ class _DaillyCollectionReportWidgetState
                   key: scaffoldKey,
                   backgroundColor:
                       FlutterFlowTheme.of(context).primaryBackground,
+                  floatingActionButton: Visibility(
+                    visible: FFAppState().fabButtonHide == true,
+                    child: FloatingActionButton.extended(
+                      onPressed: () async {
+                        var _shouldSetState = false;
+                        _model.resDevice1 = await actions.scanPrinter(
+                          FFAppState().posMode,
+                        );
+                        _shouldSetState = true;
+                        if (!_model.resDevice1!) {
+                          _model.rd1 = await actions.scanPrinter(
+                            FFAppState().posMode,
+                          );
+                          _shouldSetState = true;
+                        }
+                        await actions.connectDevice(
+                          FFAppState().printerDevice,
+                          '0',
+                        );
+                        if (FFAppState().printerName != null &&
+                            FFAppState().printerName != '') {
+                          await actions.printDailyCollectionReport(
+                            FFAppState().printerDevice,
+                            FFAppState().isPrinterConnected,
+                            FFAppState().printerName,
+                            FFAppState().paperSize,
+                            daillyCollectionReportInvoiceRecordList.toList(),
+                          );
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('printer connection'),
+                                content: Text('printer not connected'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
+                        }
+
+                        if (_shouldSetState) safeSetState(() {});
+                      },
+                      backgroundColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 8.0,
+                      label: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                buttonSize: 30.0,
+                                icon: Icon(
+                                  Icons.print,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 20.0,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'tr7tj6i1' /* Print */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   body: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [

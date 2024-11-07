@@ -168,7 +168,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                       functions.getDayId();
                                   FFAppState().startDate = getCurrentTimestamp;
                                   FFAppState().endDate = getCurrentTimestamp;
-                                  FFAppState().update(() {});
+                                  safeSetState(() {});
 
                                   context.pushNamed('vehicleWiseSale2');
                                 },
