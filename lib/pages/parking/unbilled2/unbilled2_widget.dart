@@ -361,7 +361,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Expanded(
+                                    Flexible(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'qwvql5ss' /* Recipt */,
@@ -383,10 +383,10 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                             ),
                                       ),
                                     ),
-                                    Expanded(
+                                    Flexible(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'j0ohhbcm' /* Veh No */,
+                                          'j0ohhbcm' /* Vehicle No */,
                                         ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
@@ -406,7 +406,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                             ),
                                       ),
                                     ),
-                                    Expanded(
+                                    Flexible(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'dapujzyl' /*  In Date */,
@@ -429,7 +429,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                             ),
                                       ),
                                     ),
-                                    Expanded(
+                                    Flexible(
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'ixpiwbuh' /* In Time */,
@@ -459,7 +459,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 15.0, 0.0, 0.0),
+                                5.0, 15.0, 5.0, 0.0),
                             child: StreamBuilder<List<InvoiceRecord>>(
                               stream: queryInvoiceRecord(
                                 parent: FFAppState().outletIdRef,
@@ -500,8 +500,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                     snapshot.data!;
 
                                 return Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.95,
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.78,
                                   decoration: BoxDecoration(),
@@ -542,6 +541,9 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
                                                       Expanded(
                                                         child: Container(
@@ -678,7 +680,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Expanded(
+                                                      Flexible(
                                                         flex: 2,
                                                         child: Container(
                                                           width: 100.0,
