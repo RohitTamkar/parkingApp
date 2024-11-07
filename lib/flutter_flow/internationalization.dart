@@ -24009,7 +24009,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     '2219olqj': {
-      'en': 'Veh No',
+      'en': 'Vehicle No',
       'hi': '',
       'kn': '',
       'mr': '',
