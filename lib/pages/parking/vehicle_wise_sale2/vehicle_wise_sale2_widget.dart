@@ -1107,7 +1107,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                             ),
                                                                       ),
                                                                       Text(
-                                                                        '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == 'BICYCLE').toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                        '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
