@@ -15,10 +15,6 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
-import 'index.dart'; // Imports other custom actions
-
-import 'index.dart'; // Imports other custom actions
-
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -27,7 +23,7 @@ import 'package:flutter_pos_printer_platform_image_3_sdt/flutter_pos_printer_pla
 
 import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 
-Future printUnbilledReport(
+Future printVehicleWiseReport(
   List<dynamic> selectedPrinter,
   bool status,
   String statusName,
@@ -66,13 +62,13 @@ Future printUnbilledReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "TOKEN   VEHNO    INDATE  INTIME"; //(32)
+    billColumn3 = "TOKEN    DATE & TIME     AMOUNT "; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {
       obj = dataDocument[0];
 
-      bytes += generator.text("Unbilled Report",
+      bytes += generator.text("Day collection Report",
           styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -191,7 +187,7 @@ Future printUnbilledReport(
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
-            width: 2,
+            width: 4,
             styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -200,28 +196,15 @@ Future printUnbilledReport(
             ),
           ),
           PosColumn(
-              text: invoice.vechicleNo.toString(),
-              width: 4,
+              text: invoice.dayId.toString(),
+              width: 6,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 bold: false,
               )),
           PosColumn(
-            text: DateFormat('dd/MM/yyyy').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
-            ),
-            width: 4,
-            styles: PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-            ),
-          ),
-          PosColumn(
-            text: DateFormat('hh:mm a').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
-            ),
+            text: invoice.finalBillAmt.toString(),
             width: 2,
             styles: PosStyles(
               height: PosTextSize.size1,

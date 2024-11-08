@@ -58,108 +58,307 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Title(
-        title: 'vehicleWiseSale2',
-        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 30.0,
-                ),
-                onPressed: () async {
-                  context.pop();
-                },
-              ),
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  'orb6t51y' /* Vehicle Parking Report */,
-                ),
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily:
-                          FlutterFlowTheme.of(context).headlineMediumFamily,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 22.0,
-                      letterSpacing: 0.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).headlineMediumFamily),
-                    ),
-              ),
-              actions: [],
-              centerTitle: true,
-              elevation: 2.0,
+    return StreamBuilder<List<InvoiceRecord>>(
+      stream: queryInvoiceRecord(
+        parent: FFAppState().outletIdRef,
+        queryBuilder: (invoiceRecord) => invoiceRecord
+            .where(
+              'invoiceDate',
+              isGreaterThanOrEqualTo:
+                  FFAppState().startDate?.millisecondsSinceEpoch,
+            )
+            .where(
+              'invoiceDate',
+              isLessThanOrEqualTo: FFAppState().endDate?.millisecondsSinceEpoch,
             ),
-            body: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  flex: 24,
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: 100.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(40.0),
-                        topRight: Radius.circular(40.0),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: SpinKitFadingCircle(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 40.0,
+                ),
+              ),
+            ),
+          );
+        }
+        List<InvoiceRecord> vehicleWiseSale2InvoiceRecordList = snapshot.data!;
+
+        return Title(
+            title: 'vehicleWiseSale2',
+            color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+            child: GestureDetector(
+              onTap: () => FocusScope.of(context).unfocus(),
+              child: Scaffold(
+                key: scaffoldKey,
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                floatingActionButton: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: FloatingActionButton.extended(
+                    onPressed: () {
+                      print('FloatingActionButton pressed ...');
+                    },
+                    backgroundColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    elevation: 8.0,
+                    label: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 50.0,
+                      buttonSize: 50.0,
+                      icon: Icon(
+                        Icons.print,
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 30.0,
                       ),
+                      onPressed: () async {
+                        var _shouldSetState = false;
+                        if (!functions
+                            .isPrinterSelected(FFAppState().printerDevice)!) {
+                          _model.resDevice2 = await actions.scanPrinter(
+                            FFAppState().posMode,
+                          );
+                          _shouldSetState = true;
+                        }
+                        _model.printer = await actions.connectDevice(
+                          FFAppState().printerDevice,
+                          FFAppState().printerIndex,
+                        );
+                        _shouldSetState = true;
+                        if (_model.printer!) {
+                          await actions.printVehicleWiseReport(
+                            FFAppState().printerDevice,
+                            FFAppState().isPrinterConnected,
+                            FFAppState().printerName,
+                            FFAppState().paperSize,
+                            vehicleWiseSale2InvoiceRecordList.toList(),
+                          );
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('printer connection'),
+                                content: Text('printer not connected'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
+                        }
+
+                        if (_shouldSetState) safeSetState(() {});
+                      },
                     ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
+                  ),
+                ),
+                appBar: AppBar(
+                  backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
+                  automaticallyImplyLeading: false,
+                  leading: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30.0,
+                    borderWidth: 1.0,
+                    buttonSize: 60.0,
+                    icon: Icon(
+                      Icons.arrow_back_rounded,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      context.pop();
+                    },
+                  ),
+                  title: Text(
+                    FFLocalizations.of(context).getText(
+                      'orb6t51y' /* Vehicle Parking Report */,
+                    ),
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).headlineMediumFamily,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          fontSize: 22.0,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context)
+                                  .headlineMediumFamily),
+                        ),
+                  ),
+                  actions: [],
+                  centerTitle: true,
+                  elevation: 2.0,
+                ),
+                body: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      flex: 24,
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(0.0),
+                            topLeft: Radius.circular(40.0),
+                            topRight: Radius.circular(40.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Row(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          dateTimeFormat(
-                                            "d/M/y",
-                                            FFAppState().startDate,
-                                            locale: FFLocalizations.of(context)
-                                                .languageCode,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize: 20.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              dateTimeFormat(
+                                                "d/M/y",
+                                                FFAppState().startDate,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final _datePicked1Date =
+                                                    await showDatePicker(
+                                                  context: context,
+                                                  initialDate:
+                                                      getCurrentTimestamp,
+                                                  firstDate: DateTime(1900),
+                                                  lastDate: DateTime(2050),
+                                                  builder: (context, child) {
+                                                    return wrapInMaterialDatePickerTheme(
+                                                      context,
+                                                      child!,
+                                                      headerBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      headerForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      headerTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineLarge
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeFamily,
+                                                                fontSize: 32.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily),
+                                                              ),
+                                                      pickerBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryBackground,
+                                                      pickerForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      selectedDateTimeBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      selectedDateTimeForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      actionButtonForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      iconSize: 24.0,
+                                                    );
+                                                  },
+                                                );
+
+                                                if (_datePicked1Date != null) {
+                                                  safeSetState(() {
+                                                    _model.datePicked1 =
+                                                        DateTime(
+                                                      _datePicked1Date.year,
+                                                      _datePicked1Date.month,
+                                                      _datePicked1Date.day,
+                                                    );
+                                                  });
+                                                }
+                                                FFAppState().startDate =
+                                                    _model.datePicked1;
+                                                safeSetState(() {});
+                                              },
+                                              child: Icon(
+                                                Icons.calendar_month,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 20.0)),
                                         ),
                                         InkWell(
                                           splashColor: Colors.transparent,
@@ -167,7 +366,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            final _datePicked1Date =
+                                            final _datePicked2Date =
                                                 await showDatePicker(
                                               context: context,
                                               initialDate: getCurrentTimestamp,
@@ -230,189 +429,75 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                               },
                                             );
 
-                                            if (_datePicked1Date != null) {
+                                            if (_datePicked2Date != null) {
                                               safeSetState(() {
-                                                _model.datePicked1 = DateTime(
-                                                  _datePicked1Date.year,
-                                                  _datePicked1Date.month,
-                                                  _datePicked1Date.day,
+                                                _model.datePicked2 = DateTime(
+                                                  _datePicked2Date.year,
+                                                  _datePicked2Date.month,
+                                                  _datePicked2Date.day,
                                                 );
                                               });
                                             }
-                                            FFAppState().startDate =
-                                                _model.datePicked1;
+                                            _model.datenext =
+                                                await actions.returnDateNextday(
+                                              _model.datePicked2!,
+                                            );
+                                            FFAppState().endDate =
+                                                _model.datenext;
+                                            FFAppState().filterDate =
+                                                dateTimeFormat(
+                                              "d/M/y",
+                                              _model.datePicked2,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            );
+                                            safeSetState(() {});
+
                                             safeSetState(() {});
                                           },
-                                          child: Icon(
-                                            Icons.calendar_month,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                FFAppState().filterDate,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                              Icon(
+                                                Icons.calendar_month,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 24.0,
+                                              ),
+                                            ].divide(SizedBox(width: 20.0)),
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 20.0)),
+                                      ].divide(SizedBox(width: 50.0)),
                                     ),
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        final _datePicked2Date =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: getCurrentTimestamp,
-                                          firstDate: DateTime(1900),
-                                          lastDate: DateTime(2050),
-                                          builder: (context, child) {
-                                            return wrapInMaterialDatePickerTheme(
-                                              context,
-                                              child!,
-                                              headerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              headerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              headerTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLargeFamily,
-                                                        fontSize: 32.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLargeFamily),
-                                                      ),
-                                              pickerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              pickerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              selectedDateTimeBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              selectedDateTimeForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              actionButtonForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconSize: 24.0,
-                                            );
-                                          },
-                                        );
-
-                                        if (_datePicked2Date != null) {
-                                          safeSetState(() {
-                                            _model.datePicked2 = DateTime(
-                                              _datePicked2Date.year,
-                                              _datePicked2Date.month,
-                                              _datePicked2Date.day,
-                                            );
-                                          });
-                                        }
-                                        _model.datenext =
-                                            await actions.returnDateNextday(
-                                          _model.datePicked2!,
-                                        );
-                                        FFAppState().endDate = _model.datenext;
-                                        FFAppState().filterDate =
-                                            dateTimeFormat(
-                                          "d/M/y",
-                                          _model.datePicked2,
-                                          locale: FFLocalizations.of(context)
-                                              .languageCode,
-                                        );
-                                        safeSetState(() {});
-
-                                        safeSetState(() {});
-                                      },
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            FFAppState().filterDate,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 20.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                          Icon(
-                                            Icons.calendar_month,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
-                                          ),
-                                        ].divide(SizedBox(width: 20.0)),
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(width: 50.0)),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 15.0, 0.0, 0.0),
-                            child: StreamBuilder<List<InvoiceRecord>>(
-                              stream: queryInvoiceRecord(
-                                parent: FFAppState().outletIdRef,
-                                queryBuilder: (invoiceRecord) => invoiceRecord
-                                    .where(
-                                      'invoiceDate',
-                                      isGreaterThanOrEqualTo: FFAppState()
-                                          .startDate
-                                          ?.millisecondsSinceEpoch,
-                                    )
-                                    .where(
-                                      'invoiceDate',
-                                      isLessThanOrEqualTo: FFAppState()
-                                          .endDate
-                                          ?.millisecondsSinceEpoch,
-                                    ),
                               ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 40.0,
-                                      height: 40.0,
-                                      child: SpinKitFadingCircle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 40.0,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<InvoiceRecord> containerInvoiceRecordList =
-                                    snapshot.data!;
-
-                                return Container(
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 0.0),
+                                child: Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.95,
                                   height:
@@ -582,7 +667,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                                         ),
                                                                                   ),
                                                                                   Text(
-                                                                                    containerInvoiceRecordList.where((e) => e.vechicleType == 'BICYCLE').toList().length.toString(),
+                                                                                    vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == 'BICYCLE').toList().length.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           fontSize: 12.0,
@@ -612,7 +697,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                                         ),
                                                                                   ),
                                                                                   Text(
-                                                                                    '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == 'BICYCLE').toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                                    '₹ ${functions.returntoatlamt(vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == 'BICYCLE').toList().map((e) => e.finalBillAmt).toList()).toString()}',
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                           fontSize: 12.0,
@@ -703,7 +788,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                                       ),
                                                                                 ),
                                                                                 Text(
-                                                                                  containerInvoiceRecordList.where((e) => e.vechicleType == 'TWO WHEELER').toList().length.toString(),
+                                                                                  vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == 'TWO WHEELER').toList().length.toString(),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         fontSize: 12.0,
@@ -738,7 +823,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                                       ),
                                                                                 ),
                                                                                 Text(
-                                                                                  '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == 'TWO WHEELER').toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                                  '₹ ${functions.returntoatlamt(vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == 'TWO WHEELER').toList().map((e) => e.finalBillAmt).toList()).toString()}',
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                         fontSize: 12.0,
@@ -824,7 +909,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          containerInvoiceRecordList
+                                                                          vehicleWiseSale2InvoiceRecordList
                                                                               .where((e) => e.vechicleType == 'THREE WHEELER')
                                                                               .toList()
                                                                               .length
@@ -872,7 +957,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == 'THREE WHEELER').toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                          '₹ ${functions.returntoatlamt(vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == 'THREE WHEELER').toList().map((e) => e.finalBillAmt).toList()).toString()}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -956,7 +1041,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          containerInvoiceRecordList
+                                                                          vehicleWiseSale2InvoiceRecordList
                                                                               .where((e) => e.vechicleType == 'FOUR WHEELER')
                                                                               .toList()
                                                                               .length
@@ -1004,7 +1089,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                               ),
                                                                         ),
                                                                         Text(
-                                                                          '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == 'FOUR WHEELER').toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                          '₹ ${functions.returntoatlamt(vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == 'FOUR WHEELER').toList().map((e) => e.finalBillAmt).toList()).toString()}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -1040,7 +1125,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                               child: Builder(
                                                 builder: (context) {
                                                   final list =
-                                                      containerInvoiceRecordList
+                                                      vehicleWiseSale2InvoiceRecordList
                                                           .unique((e) =>
                                                               e.vechicleType)
                                                           .toList();
@@ -1145,7 +1230,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                             ),
                                                                       ),
                                                                       Text(
-                                                                        containerInvoiceRecordList
+                                                                        vehicleWiseSale2InvoiceRecordList
                                                                             .where((e) =>
                                                                                 e.vechicleType ==
                                                                                 listItem.vechicleType)
@@ -1195,7 +1280,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                                             ),
                                                                       ),
                                                                       Text(
-                                                                        '₹ ${functions.returntoatlamt(containerInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                        '₹ ${functions.returntoatlamt(vehicleWiseSale2InvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
@@ -1224,18 +1309,18 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                       ],
                                     ),
                                   ),
-                                );
-                              },
-                            ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        ));
+              ),
+            ));
+      },
+    );
   }
 }

@@ -25,6 +25,11 @@ class VehicleWiseSale2Model extends FlutterFlowModel<VehicleWiseSale2Widget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
+  // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.
+  bool? resDevice2;
+  // Stores action output result for [Custom Action - connectDevice] action in IconButton widget.
+  bool? printer;
+
   @override
   void initState(BuildContext context) {}
 

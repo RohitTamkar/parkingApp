@@ -64,13 +64,13 @@ Future printbillsummaryReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "TOKEN   VEHNO    OUTDATE  AMOUNT"; //(32)
+    billColumn3 = "TOKEN  VEHNO    OUTDATE  AMOUNT"; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {
       obj = dataDocument[0];
 
-      bytes += generator.text("In-Out Report",
+      bytes += generator.text("Bill Summary Report",
           styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -199,7 +199,7 @@ Future printbillsummaryReport(
           ),
           PosColumn(
               text: invoice.vechicleNo.toString(),
-              width: 4,
+              width: 3,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
@@ -209,7 +209,7 @@ Future printbillsummaryReport(
             text: DateFormat('dd/MM/yyyy').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
             ),
-            width: 4,
+            width: 5,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
