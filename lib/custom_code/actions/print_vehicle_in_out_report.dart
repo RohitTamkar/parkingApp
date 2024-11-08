@@ -139,7 +139,7 @@ Future printVehicleInOutReport(
       final DateTime? now2 = FFAppState().endDate;
 
       printLine += title2;
-      final DateFormat formatter22 = DateFormat('yyyy-MM-dd');
+      final DateFormat formatter22 = DateFormat('dd/MM/yyyy');
       final String formatted22 = formatter2.format(now2!);
       dateStringend = FFAppState().filterDate.toString();
 
@@ -206,7 +206,7 @@ Future printVehicleInOutReport(
                 bold: false,
               )),
           PosColumn(
-            text: DateFormat('dd/MM/yyyy').format(
+            text: DateFormat('dd/MM/yy').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
             width: 4,
@@ -217,7 +217,7 @@ Future printVehicleInOutReport(
             ),
           ),
           PosColumn(
-            text: DateFormat('dd/MM/yyyy').format(
+            text: DateFormat('dd/MM/yy').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
             ),
             width: 3,
@@ -267,7 +267,7 @@ Future printVehicleInOutReport(
               bold: false,
               align: PosAlign.center));
 
-      bytes += generator.text("** THANK YOU ! HAVE A NICE DAY  **",
+      bytes += generator.text("** THANK YOU! HAVE A NICE DAY **",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,

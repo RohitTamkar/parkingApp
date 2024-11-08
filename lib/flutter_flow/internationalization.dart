@@ -24046,21 +24046,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TodaysSummaryReport
   {
-    's0gd3ka6': {
+    't9cuprp5': {
       'en': 'Total Check In',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'di7a7gyz': {
+    'ivhh3sw3': {
       'en': 'Total Check out',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'lxuch0lp': {
+    'bgzi373b': {
       'en': 'Total Amt',
       'hi': '',
       'kn': '',

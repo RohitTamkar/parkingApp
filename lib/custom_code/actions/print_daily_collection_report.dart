@@ -252,7 +252,7 @@ Future printDailyCollectionReport(
               bold: false,
               align: PosAlign.center));
 
-      bytes += generator.text("** THANK YOU ! HAVE A NICE DAY  **",
+      bytes += generator.text("** THANK YOU! HAVE A NICE DAY **",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
