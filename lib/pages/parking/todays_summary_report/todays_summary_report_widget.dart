@@ -134,6 +134,9 @@ class _TodaysSummaryReportWidgetState extends State<TodaysSummaryReportWidget> {
                             FFAppState().printerName,
                             FFAppState().paperSize,
                             todaysSummaryReportInvoiceRecordList.toList(),
+                            todaysSummaryReportInvoiceRecordList
+                                .unique((e) => e.vechicleType)
+                                .toList(),
                           );
                         } else {
                           await showDialog(

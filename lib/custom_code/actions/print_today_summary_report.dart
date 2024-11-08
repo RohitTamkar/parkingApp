@@ -29,6 +29,7 @@ Future printTodaySummaryReport(
   String statusName,
   String printerSize,
   List<InvoiceRecord> dataDocument,
+  List<InvoiceRecord> uniquelist,
 ) async {
   // Add your function code here!
   int size = 32;
