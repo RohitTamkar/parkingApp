@@ -32,6 +32,8 @@ class WelcomeScreenParkingModel
   String? platform;
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
   DeviceRecord? deiviceexistnew;
+  // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
+  InvoiceRecord? invcode;
   // Stores action output result for [Backend Call - Create Document] action in welcomeScreenParking widget.
   DeviceRecord? refnew;
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.

@@ -635,6 +635,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _EndDateParking = prefs.getInt('ff_EndDateParking') ?? _EndDateParking;
     });
+    _safeInit(() {
+      _newcount = prefs.getInt('ff_newcount') ?? _newcount;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -3467,6 +3470,13 @@ class FFAppState extends ChangeNotifier {
   set EndDateParking(int value) {
     _EndDateParking = value;
     prefs.setInt('ff_EndDateParking', value);
+  }
+
+  int _newcount = 0;
+  int get newcount => _newcount;
+  set newcount(int value) {
+    _newcount = value;
+    prefs.setInt('ff_newcount', value);
   }
 }
 

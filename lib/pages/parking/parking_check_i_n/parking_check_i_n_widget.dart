@@ -1329,10 +1329,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         )) {
                                           FFAppState().count =
                                               FFAppState().count + 1;
+                                          FFAppState().newcount =
+                                              FFAppState().newcount + 1;
                                           safeSetState(() {});
                                         } else {
                                           FFAppState().count =
                                               FFAppState().count + 1;
+                                          FFAppState().newcount =
+                                              FFAppState().newcount + 1;
                                           safeSetState(() {});
                                         }
 
@@ -1352,7 +1356,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         await invoiceRecordReference.set({
                                           ...createInvoiceRecordData(
                                             invoice: functions.genInvoiceNum(
-                                                FFAppState().count,
+                                                FFAppState().newcount,
                                                 FFAppState().shiftCount),
                                             invoiceDate:
                                                 functions.timestampToMili(
@@ -1393,7 +1397,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 .advanceAmtTextController.text),
                                             vechicleType:
                                                 _model.dropDownvechicleValue,
-                                            count: FFAppState().count,
+                                            count: FFAppState().newcount,
                                             checkOutTime: 0,
                                           ),
                                           ...mapToFirestore(
@@ -1409,7 +1413,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             InvoiceRecord.getDocumentFromData({
                                           ...createInvoiceRecordData(
                                             invoice: functions.genInvoiceNum(
-                                                FFAppState().count,
+                                                FFAppState().newcount,
                                                 FFAppState().shiftCount),
                                             invoiceDate:
                                                 functions.timestampToMili(
@@ -1450,7 +1454,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 .advanceAmtTextController.text),
                                             vechicleType:
                                                 _model.dropDownvechicleValue,
-                                            count: FFAppState().count,
+                                            count: FFAppState().newcount,
                                             checkOutTime: 0,
                                           ),
                                           ...mapToFirestore(
@@ -1794,10 +1798,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         )) {
                                           FFAppState().count =
                                               FFAppState().count + 1;
+                                          FFAppState().newcount =
+                                              FFAppState().newcount + 1;
                                           safeSetState(() {});
                                         } else {
                                           FFAppState().count =
                                               FFAppState().count + 1;
+                                          FFAppState().newcount =
+                                              FFAppState().newcount + 1;
                                           safeSetState(() {});
                                         }
 
@@ -1817,7 +1825,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         await invoiceRecordReference.set({
                                           ...createInvoiceRecordData(
                                             invoice: functions.genInvoiceNum(
-                                                FFAppState().count,
+                                                FFAppState().newcount,
                                                 FFAppState().shiftCount),
                                             invoiceDate:
                                                 functions.timestampToMili(
@@ -1858,7 +1866,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 .advanceAmtTextController.text),
                                             vechicleType:
                                                 _model.dropDownvechicleValue,
-                                            count: FFAppState().count,
+                                            count: FFAppState().newcount,
                                             checkOutTime: 0,
                                           ),
                                           ...mapToFirestore(
@@ -1874,7 +1882,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             InvoiceRecord.getDocumentFromData({
                                           ...createInvoiceRecordData(
                                             invoice: functions.genInvoiceNum(
-                                                FFAppState().count,
+                                                FFAppState().newcount,
                                                 FFAppState().shiftCount),
                                             invoiceDate:
                                                 functions.timestampToMili(
@@ -1915,7 +1923,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 .advanceAmtTextController.text),
                                             vechicleType:
                                                 _model.dropDownvechicleValue,
-                                            count: FFAppState().count,
+                                            count: FFAppState().newcount,
                                             checkOutTime: 0,
                                           ),
                                           ...mapToFirestore(

@@ -73,6 +73,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      _model.invcode = await queryInvoiceRecordOnce(
+        parent: FFAppState().outletIdRef,
+        queryBuilder: (invoiceRecord) =>
+            invoiceRecord.orderBy('invoiceDate', descending: true),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      if (_model.invcode != null) {
+        FFAppState().newcount = _model.invcode!.count;
+        safeSetState(() {});
+      } else {
+        FFAppState().newcount = 0;
+        safeSetState(() {});
+      }
+
       if (_model.deiviceexistnew?.deviceId ==
           getJsonField(
             _model.docRes,
