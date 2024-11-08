@@ -197,7 +197,7 @@ Future printVehicleInOutReport(
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
-            width: 1,
+            width: 2,
             styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -207,14 +207,14 @@ Future printVehicleInOutReport(
           ),
           PosColumn(
               text: invoice.vechicleNo.toString(),
-              width: 5,
+              width: 4,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 bold: false,
               )),
           PosColumn(
-            text: DateFormat('dd/MM/yy').format(
+            text: DateFormat('dd/MM').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
             width: 3,

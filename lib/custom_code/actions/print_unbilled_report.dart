@@ -211,7 +211,7 @@ Future printUnbilledReport(
             text: DateFormat('dd/MM').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
-            width: 4,
+            width: 3,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -222,7 +222,7 @@ Future printUnbilledReport(
             text: DateFormat('hh:mm').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
-            width: 2,
+            width: 3,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
