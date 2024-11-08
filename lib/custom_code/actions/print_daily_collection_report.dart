@@ -225,7 +225,7 @@ Future printDailyCollectionReport(
       bytes += generator.row([
         PosColumn(
           text: "Total Bill:",
-          width: 6,
+          width: 9,
           styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -235,13 +235,13 @@ Future printDailyCollectionReport(
         ),
         PosColumn(
           text: totalAmt.toString(),
-          width: 6,
+          width: 3,
           styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: false,
+          ),
         )
       ]);
 

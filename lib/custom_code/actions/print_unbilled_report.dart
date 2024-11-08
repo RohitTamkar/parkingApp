@@ -208,7 +208,7 @@ Future printUnbilledReport(
                 bold: false,
               )),
           PosColumn(
-            text: DateFormat('dd/MM/yy').format(
+            text: DateFormat('dd/MM').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
             width: 4,
@@ -219,7 +219,7 @@ Future printUnbilledReport(
             ),
           ),
           PosColumn(
-            text: DateFormat('hh:mm a').format(
+            text: DateFormat('hh:mm').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
             width: 2,
@@ -242,7 +242,7 @@ Future printUnbilledReport(
       bytes += generator.row([
         PosColumn(
           text: "Total Bill:",
-          width: 6,
+          width: 9,
           styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -252,13 +252,13 @@ Future printUnbilledReport(
         ),
         PosColumn(
           text: totalAmt.toString(),
-          width: 6,
+          width: 3,
           styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: false,
+          ),
         )
       ]);
 

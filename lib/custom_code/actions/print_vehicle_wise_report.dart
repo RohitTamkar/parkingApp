@@ -9,13 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom actions
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'index.dart'; // Imports other custom actions
-
-import 'index.dart'; // Imports other custom actions
-
-import 'index.dart'; // Imports other custom actions
 
 import 'dart:async';
 import 'dart:developer';
@@ -71,7 +65,7 @@ Future printVehicleWiseReport(
     if (dataDocument!.isNotEmpty) {
       obj = dataDocument[0];
 
-      bytes += generator.text("Day collection Report",
+      bytes += generator.text("Vehicle Wise Report",
           styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -270,7 +264,7 @@ Future printVehicleWiseReport(
               bold: false,
               align: PosAlign.center));
 
-      bytes += generator.text("** THANK YOU ! HAVE A NICE DAY  **",
+      bytes += generator.text("** THANK YOU! HAVE A NICE DAY **",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,

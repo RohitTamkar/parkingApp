@@ -72,7 +72,7 @@ Future printTodaySummaryReport(
     if (dataDocument!.isNotEmpty) {
       obj = dataDocument[0];
 
-      bytes += generator.text("Day collection Report",
+      bytes += generator.text("Today Summary Report",
           styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -389,7 +389,7 @@ Future printTodaySummaryReport(
               bold: false,
               align: PosAlign.center));
 
-      bytes += generator.text("** THANK YOU ! HAVE A NICE DAY  **",
+      bytes += generator.text("** THANK YOU! HAVE A NICE DAY **",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,

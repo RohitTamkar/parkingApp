@@ -17,6 +17,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -186,10 +188,16 @@ Future printVehicleInOutReport(
               align: PosAlign.center));
       for (var invoice in dataDocument) {
         totalAmt += invoice.finalBillAmt;
+
+        String date = 'No Out';
+        if (invoice.checkOutTime != 0) {
+          String date = DateFormat('dd/MM/yy').format(
+              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime));
+        }
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
-            width: 2,
+            width: 1,
             styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -199,7 +207,7 @@ Future printVehicleInOutReport(
           ),
           PosColumn(
               text: invoice.vechicleNo.toString(),
-              width: 3,
+              width: 5,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
@@ -209,7 +217,7 @@ Future printVehicleInOutReport(
             text: DateFormat('dd/MM/yy').format(
               DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
             ),
-            width: 4,
+            width: 3,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -217,9 +225,7 @@ Future printVehicleInOutReport(
             ),
           ),
           PosColumn(
-            text: DateFormat('dd/MM/yy').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
-            ),
+            text: date,
             width: 3,
             styles: PosStyles(
               height: PosTextSize.size1,
@@ -239,8 +245,8 @@ Future printVehicleInOutReport(
               align: PosAlign.center));
       bytes += generator.row([
         PosColumn(
-          text: "Total Bill:",
-          width: 6,
+          text: "Total Amt:",
+          width: 9,
           styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -250,13 +256,13 @@ Future printVehicleInOutReport(
         ),
         PosColumn(
           text: totalAmt.toString(),
-          width: 6,
+          width: 3,
           styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: false,
+          ),
         )
       ]);
 
