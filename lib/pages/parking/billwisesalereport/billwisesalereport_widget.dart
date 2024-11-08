@@ -817,9 +817,8 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    functions
-                                                                        .genSrno(
-                                                                            billWiseSaleReportVarIndex)
+                                                                    billWiseSaleReportVarItem
+                                                                        .count
                                                                         .toString(),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
