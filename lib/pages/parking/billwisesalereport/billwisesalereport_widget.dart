@@ -104,6 +104,73 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                   key: scaffoldKey,
                   backgroundColor:
                       FlutterFlowTheme.of(context).primaryBackground,
+                  floatingActionButton: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                    child: FloatingActionButton.extended(
+                      onPressed: () {
+                        print('FloatingActionButton pressed ...');
+                      },
+                      backgroundColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 8.0,
+                      label: FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 50.0,
+                        buttonSize: 50.0,
+                        icon: Icon(
+                          Icons.print,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 30.0,
+                        ),
+                        onPressed: () async {
+                          var _shouldSetState = false;
+                          if (!functions
+                              .isPrinterSelected(FFAppState().printerDevice)!) {
+                            _model.resDevice2 = await actions.scanPrinter(
+                              FFAppState().posMode,
+                            );
+                            _shouldSetState = true;
+                          }
+                          _model.printer = await actions.connectDevice(
+                            FFAppState().printerDevice,
+                            FFAppState().printerIndex,
+                          );
+                          _shouldSetState = true;
+                          if (_model.printer!) {
+                            await actions.printVehicleInOutReport(
+                              FFAppState().printerDevice,
+                              FFAppState().isPrinterConnected,
+                              FFAppState().printerName,
+                              FFAppState().paperSize,
+                              billwisesalereportInvoiceRecordList.toList(),
+                            );
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('printer connection'),
+                                  content: Text('printer not connected'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            if (_shouldSetState) safeSetState(() {});
+                            return;
+                          }
+
+                          if (_shouldSetState) safeSetState(() {});
+                        },
+                      ),
+                    ),
+                  ),
                   body: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [

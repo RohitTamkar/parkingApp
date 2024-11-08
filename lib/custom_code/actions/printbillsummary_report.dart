@@ -15,8 +15,6 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
-import 'index.dart'; // Imports other custom actions
-
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -25,7 +23,7 @@ import 'package:flutter_pos_printer_platform_image_3_sdt/flutter_pos_printer_pla
 
 import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 
-Future printVehicleInOutReport(
+Future printbillsummaryReport(
   List<dynamic> selectedPrinter,
   bool status,
   String statusName,
@@ -64,7 +62,7 @@ Future printVehicleInOutReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "TOKEN  VEHNO   INDATE   OUTDATE"; //(32)
+    billColumn3 = "TOKEN   VEH NO   INDATE  OUTDATE "; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {
@@ -189,7 +187,7 @@ Future printVehicleInOutReport(
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
-            width: 2,
+            width: 4,
             styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -198,29 +196,16 @@ Future printVehicleInOutReport(
             ),
           ),
           PosColumn(
-              text: invoice.vechicleNo.toString(),
-              width: 3,
+              text: invoice.dayId.toString(),
+              width: 6,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 bold: false,
               )),
           PosColumn(
-            text: DateFormat('dd/MM/yyyy').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkInTime),
-            ),
-            width: 4,
-            styles: PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-            ),
-          ),
-          PosColumn(
-            text: DateFormat('dd/MM/yyyy').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
-            ),
-            width: 3,
+            text: invoice.finalBillAmt.toString(),
+            width: 2,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
