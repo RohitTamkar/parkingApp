@@ -15,6 +15,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -62,7 +64,7 @@ Future printbillsummaryReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "TOKEN   VEH NO   INDATE  OUTDATE "; //(32)
+    billColumn3 = "TOKEN   VEHNO    OUTDATE  AMOUNT"; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {
@@ -187,7 +189,7 @@ Future printbillsummaryReport(
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
-            width: 4,
+            width: 2,
             styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -196,13 +198,24 @@ Future printbillsummaryReport(
             ),
           ),
           PosColumn(
-              text: invoice.dayId.toString(),
-              width: 6,
+              text: invoice.vechicleNo.toString(),
+              width: 4,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 bold: false,
               )),
+          PosColumn(
+            text: DateFormat('dd/MM/yyyy').format(
+              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
+            ),
+            width: 4,
+            styles: PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+            ),
+          ),
           PosColumn(
             text: invoice.finalBillAmt.toString(),
             width: 2,

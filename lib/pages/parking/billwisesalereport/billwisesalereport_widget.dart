@@ -138,7 +138,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                           );
                           _shouldSetState = true;
                           if (_model.printer!) {
-                            await actions.printVehicleInOutReport(
+                            await actions.printbillsummaryReport(
                               FFAppState().printerDevice,
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
