@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
@@ -63,7 +65,7 @@ Future printVehicleWiseReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "VEHICLE TYPE     QTY      TOTAL"; //(32)
+    billColumn3 = "VehicleType     Qty    Amt "; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {
@@ -104,7 +106,7 @@ Future printVehicleWiseReport(
       String dateString1 = '';
       String dateStringend = '';
       double totalAmt = 0;
-
+      double totalAmt2 = 0;
       final DateTime? now = FFAppState().startDate;
 
       bytes += generator.text("--------------------------------",
@@ -183,12 +185,24 @@ Future printVehicleWiseReport(
               width: PosTextSize.size1,
               bold: false,
               align: PosAlign.center));
-      for (var invoice in dataDocument) {
-        totalAmt += invoice.finalBillAmt;
+      for (var inv in uniquelist) {
+        String Vechicltype = '';
+        totalAmt2 += functions.returntoatlamt(dataDocument
+            .where((e) => e.vechicleType == inv.vechicleType)
+            .toList()
+            .map((e) => e.finalBillAmt)
+            .toList());
+        totalAmt = functions.returntoatlamt(dataDocument
+            .where((e) => e.vechicleType == inv.vechicleType)
+            .toList()
+            .map((e) => e.finalBillAmt)
+            .toList());
+        Vechicltype = inv.vechicleType;
+
         bytes += generator.row([
           PosColumn(
-            text: invoice.count.toString(),
-            width: 4,
+            text: Vechicltype.toString(),
+            width: 7,
             styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -197,26 +211,29 @@ Future printVehicleWiseReport(
             ),
           ),
           PosColumn(
-              text: invoice.dayId.toString(),
-              width: 6,
-              styles: PosStyles(
-                height: PosTextSize.size1,
-                width: PosTextSize.size1,
-                bold: false,
-              )),
-          PosColumn(
-            text: invoice.finalBillAmt.toString(),
+            text: dataDocument
+                .where((e) => e.vechicleType == inv.vechicleType)
+                .toList()
+                .length
+                .toString(),
             width: 2,
             styles: PosStyles(
+              fontType: PosFontType.fontA,
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: false,
             ),
           ),
+          PosColumn(
+              text: totalAmt.toString(),
+              width: 3,
+              styles: PosStyles(
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: false,
+              )),
         ]);
       }
-
-      //row2
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
               height: PosTextSize.size1,
@@ -225,8 +242,8 @@ Future printVehicleWiseReport(
               align: PosAlign.center));
       bytes += generator.row([
         PosColumn(
-          text: "Total Bill:",
-          width: 6,
+          text: "TotalAmt:",
+          width: 9,
           styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -235,14 +252,14 @@ Future printVehicleWiseReport(
               align: PosAlign.left),
         ),
         PosColumn(
-          text: totalAmt.toString(),
-          width: 6,
+          text: totalAmt2.toString(),
+          width: 3,
           styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: false,
+          ),
         )
       ]);
 

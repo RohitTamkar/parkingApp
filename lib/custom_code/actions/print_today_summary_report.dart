@@ -15,6 +15,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -22,6 +24,7 @@ import 'dart:io';
 import 'package:flutter_pos_printer_platform_image_3_sdt/flutter_pos_printer_platform_image_3_sdt.dart';
 
 import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 Future printTodaySummaryReport(
   List<dynamic> selectedPrinter,
@@ -63,7 +66,7 @@ Future printTodaySummaryReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "TOKEN    DATE & TIME     AMOUNT "; //(32)
+    billColumn3 = "VechicleType     Qty    Amt "; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {
@@ -104,7 +107,10 @@ Future printTodaySummaryReport(
       String dateString1 = '';
       String dateStringend = '';
       double totalAmt = 0;
+      double totalAmt2 = 0;
 
+      double totalcheckin = 0;
+      double totalcheckout = 0;
       final DateTime? now = FFAppState().startDate;
 
       bytes += generator.text("--------------------------------",
@@ -165,68 +171,154 @@ Future printTodaySummaryReport(
               align: PosAlign.center));
 
 //row1
-      bytes += generator.row([
-        PosColumn(
-          text: billColumn3,
-          width: 12,
-          styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.left),
-        ),
-      ]);
-      bytes += generator.text("--------------------------------",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      for (var invoice in dataDocument) {
-        totalAmt += invoice.finalBillAmt;
+
+      for (var inv in uniquelist) {
+        String Vechicltype = '';
+        totalAmt2 += functions.returntoatlamt(dataDocument
+            .where((e) => e.vechicleType == inv.vechicleType)
+            .toList()
+            .map((e) => e.finalBillAmt)
+            .toList());
+        totalAmt = functions.returntoatlamt(dataDocument
+            .where((e) => e.vechicleType == inv.vechicleType)
+            .toList()
+            .map((e) => e.finalBillAmt)
+            .toList());
+        Vechicltype = inv.vechicleType;
+        totalcheckin += dataDocument
+            .where((e) =>
+                (e.vechicleType == inv.vechicleType) &&
+                ((e.checkInTime >=
+                        FFAppState().startDate!.millisecondsSinceEpoch) &&
+                    (e.checkInTime <=
+                        FFAppState().endDate!.millisecondsSinceEpoch)))
+            .toList()
+            .length;
+        totalcheckout += dataDocument
+            .where((e) =>
+                (e.vechicleType == inv.vechicleType) &&
+                ((e.checkOutTime >=
+                        FFAppState().startDate!.millisecondsSinceEpoch) &&
+                    (e.checkOutTime <=
+                        FFAppState().endDate!.millisecondsSinceEpoch)))
+            .toList()
+            .length;
         bytes += generator.row([
           PosColumn(
-            text: invoice.count.toString(),
-            width: 4,
+            text: Vechicltype.toString(),
+            width: 12,
             styles: PosStyles(
-              fontType: PosFontType.fontA,
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-            ),
+                fontType: PosFontType.fontA,
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: true,
+                align: PosAlign.center),
           ),
-          PosColumn(
-              text: invoice.dayId.toString(),
-              width: 6,
-              styles: PosStyles(
+        ]);
+        bytes += generator.text("--------------------------------",
+            styles: const PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 bold: false,
-              )),
+                align: PosAlign.center));
+        bytes += generator.row([
           PosColumn(
-            text: invoice.finalBillAmt.toString(),
-            width: 2,
+            text: "Total Check In",
+            width: 9,
             styles: PosStyles(
+                fontType: PosFontType.fontA,
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: true,
+                align: PosAlign.left),
+          ),
+          PosColumn(
+            text: dataDocument
+                .where((e) =>
+                    (e.vechicleType == inv.vechicleType) &&
+                    ((e.checkInTime >=
+                            FFAppState().startDate!.millisecondsSinceEpoch) &&
+                        (e.checkInTime <=
+                            FFAppState().endDate!.millisecondsSinceEpoch)))
+                .toList()
+                .length
+                .toString(),
+            width: 3,
+            styles: PosStyles(
+              fontType: PosFontType.fontA,
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: false,
             ),
           ),
         ]);
-      }
-
-      //row2
-      bytes += generator.text("--------------------------------",
-          styles: const PosStyles(
+        bytes += generator.row([
+          PosColumn(
+            text: "Total Check Out",
+            width: 9,
+            styles: PosStyles(
+                fontType: PosFontType.fontA,
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: true,
+                align: PosAlign.left),
+          ),
+          PosColumn(
+            text: dataDocument
+                .where((e) =>
+                    (e.vechicleType == inv.vechicleType) &&
+                    ((e.checkOutTime >=
+                            FFAppState().startDate!.millisecondsSinceEpoch) &&
+                        (e.checkOutTime <=
+                            FFAppState().endDate!.millisecondsSinceEpoch)))
+                .toList()
+                .length
+                .toString(),
+            width: 3,
+            styles: PosStyles(
+              fontType: PosFontType.fontA,
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: false,
-              align: PosAlign.center));
+            ),
+          ),
+        ]);
+
+        bytes += generator.row([
+          PosColumn(
+            text: "Total Amt",
+            width: 9,
+            styles: PosStyles(
+                fontType: PosFontType.fontA,
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: true,
+                align: PosAlign.left),
+          ),
+          PosColumn(
+            text: totalAmt.toString(),
+            width: 3,
+            styles: PosStyles(
+              fontType: PosFontType.fontA,
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: false,
+            ),
+          ),
+        ]);
+
+        bytes += generator.text("--------------------------------",
+            styles: const PosStyles(
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: false,
+                align: PosAlign.center));
+      }
+
       bytes += generator.row([
         PosColumn(
-          text: "Total Bill:",
-          width: 6,
+          text: "TotalCheckIn:",
+          width: 9,
           styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
@@ -235,14 +327,58 @@ Future printTodaySummaryReport(
               align: PosAlign.left),
         ),
         PosColumn(
-          text: totalAmt.toString(),
-          width: 6,
+          text: totalcheckin.toString(),
+          width: 3,
+          styles: PosStyles(
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: true,
+          ),
+        )
+      ]);
+      bytes += generator.row([
+        PosColumn(
+          text: "TotalCheckOut:",
+          width: 9,
           styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
               width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.right),
+              bold: true,
+              align: PosAlign.left),
+        ),
+        PosColumn(
+          text: totalcheckout.toString(),
+          width: 3,
+          styles: PosStyles(
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: true,
+          ),
+        )
+      ]);
+      bytes += generator.row([
+        PosColumn(
+          text: "Total Amt:",
+          width: 9,
+          styles: PosStyles(
+              fontType: PosFontType.fontA,
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: true,
+              align: PosAlign.left),
+        ),
+        PosColumn(
+          text: totalAmt2.toString(),
+          width: 3,
+          styles: PosStyles(
+            fontType: PosFontType.fontA,
+            height: PosTextSize.size1,
+            width: PosTextSize.size1,
+            bold: true,
+          ),
         )
       ]);
 
