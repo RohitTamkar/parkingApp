@@ -1378,7 +1378,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             ),
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
-                                              FFAppState().shiftDetailsJson,
+                                              widget!.shiftDoc,
                                               r'''$.shiftId''',
                                             ).toString(),
                                             vechicleNo:
@@ -1435,7 +1435,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             ),
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
-                                              FFAppState().shiftDetailsJson,
+                                              widget!.shiftDoc,
                                               r'''$.shiftId''',
                                             ).toString(),
                                             vechicleNo:
@@ -1843,7 +1843,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             ),
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
-                                              FFAppState().shiftDetailsJson,
+                                              widget!.shiftDoc,
                                               r'''$.shiftId''',
                                             ).toString(),
                                             vechicleNo:
@@ -1900,7 +1900,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             ),
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
-                                              FFAppState().shiftDetailsJson,
+                                              widget!.shiftDoc,
                                               r'''$.shiftId''',
                                             ).toString(),
                                             vechicleNo:
