@@ -29,6 +29,7 @@ Future printVehicleWiseReport(
   String statusName,
   String printerSize,
   List<InvoiceRecord> dataDocument,
+  List<InvoiceRecord> uniquelist,
 ) async {
   // Add your function code here!
   int size = 32;
@@ -62,7 +63,7 @@ Future printVehicleWiseReport(
   // changes according to size
   if (size == 46) {
   } else if (size == 32) {
-    billColumn3 = "TOKEN    DATE & TIME     AMOUNT "; //(32)
+    billColumn3 = "VEHICLE TYPE     QTY      TOTAL"; //(32)
     //
 
     if (dataDocument!.isNotEmpty) {

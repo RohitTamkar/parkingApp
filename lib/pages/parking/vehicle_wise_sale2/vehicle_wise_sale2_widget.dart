@@ -138,6 +138,9 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                             FFAppState().printerName,
                             FFAppState().paperSize,
                             vehicleWiseSale2InvoiceRecordList.toList(),
+                            vehicleWiseSale2InvoiceRecordList
+                                .unique((e) => e.vechicleType)
+                                .toList(),
                           );
                         } else {
                           await showDialog(
