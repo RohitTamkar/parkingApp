@@ -24206,28 +24206,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'xkbbchik': {
-      'en': 'Remarks',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    't67v1a46': {
-      'en': 'Enter Any Remark',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'ywai00mt': {
+    'e6p8vl56': {
       'en': 'Amount ',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'auws5wu8': {
+    'q2u5wpv0': {
       'en': '0',
       'hi': '',
       'kn': '',

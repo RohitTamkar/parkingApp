@@ -39,11 +39,6 @@ class MonthlyPass2Model extends FlutterFlowModel<MonthlyPass2Widget> {
   // State field(s) for pass widget.
   String? passValue;
   FormFieldController<String>? passValueController;
-  // State field(s) for TextFieldDuration widget.
-  FocusNode? textFieldDurationFocusNode;
-  TextEditingController? textFieldDurationTextController;
-  String? Function(BuildContext, String?)?
-      textFieldDurationTextControllerValidator;
   // State field(s) for TextFieldAmt widget.
   FocusNode? textFieldAmtFocusNode;
   TextEditingController? textFieldAmtTextController;
@@ -70,9 +65,6 @@ class MonthlyPass2Model extends FlutterFlowModel<MonthlyPass2Widget> {
 
   @override
   void dispose() {
-    textFieldDurationFocusNode?.dispose();
-    textFieldDurationTextController?.dispose();
-
     textFieldAmtFocusNode?.dispose();
     textFieldAmtTextController?.dispose();
   }
