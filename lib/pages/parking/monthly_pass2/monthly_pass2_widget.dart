@@ -254,7 +254,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                         .first;
                                                 safeSetState(() {});
                                               },
-                                              width: 350.0,
+                                              width: 0.0,
                                               height: 50.0,
                                               searchHintTextStyle:
                                                   FlutterFlowTheme.of(context)
