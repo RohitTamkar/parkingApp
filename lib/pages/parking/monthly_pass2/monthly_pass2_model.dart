@@ -10,7 +10,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/pages/parking/email_input/email_input_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'monthly_pass_widget.dart' show MonthlyPassWidget;
+import 'monthly_pass2_widget.dart' show MonthlyPass2Widget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -19,7 +19,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MonthlyPassModel extends FlutterFlowModel<MonthlyPassWidget> {
+class MonthlyPass2Model extends FlutterFlowModel<MonthlyPass2Widget> {
   ///  Local state fields for this page.
 
   String selectedPaymentType = 'Cash';

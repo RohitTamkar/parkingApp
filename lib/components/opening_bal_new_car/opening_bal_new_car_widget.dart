@@ -1140,6 +1140,12 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                     );
                                                     _shouldSetState = true;
                                                     if (true) {
+                                                      FFAppState()
+                                                              .shiftDetailsNEw =
+                                                          _model
+                                                              .shiftDetailsNew2!;
+                                                      safeSetState(() {});
+
                                                       context.pushNamed(
                                                         'VehicleEntry',
                                                         queryParameters: {
@@ -1252,6 +1258,12 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                     );
                                                     _shouldSetState = true;
                                                     if (true) {
+                                                      FFAppState()
+                                                              .shiftDetailsNEw =
+                                                          _model
+                                                              .shiftdetailds23!;
+                                                      safeSetState(() {});
+
                                                       context.pushNamed(
                                                         'VehicleEntry',
                                                         queryParameters: {

@@ -17,25 +17,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'monthly_pass_model.dart';
-export 'monthly_pass_model.dart';
+import 'monthly_pass2_model.dart';
+export 'monthly_pass2_model.dart';
 
-class MonthlyPassWidget extends StatefulWidget {
-  const MonthlyPassWidget({super.key});
+class MonthlyPass2Widget extends StatefulWidget {
+  const MonthlyPass2Widget({super.key});
 
   @override
-  State<MonthlyPassWidget> createState() => _MonthlyPassWidgetState();
+  State<MonthlyPass2Widget> createState() => _MonthlyPass2WidgetState();
 }
 
-class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
-  late MonthlyPassModel _model;
+class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
+  late MonthlyPass2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MonthlyPassModel());
+    _model = createModel(context, () => MonthlyPass2Model());
 
     _model.textFieldDurationTextController ??= TextEditingController();
     _model.textFieldDurationFocusNode ??= FocusNode();
@@ -46,7 +46,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
           _model.textFieldAmtTextController?.text =
               FFLocalizations.of(context).getText(
-            'fmav8aco' /* 0 */,
+            'auws5wu8' /* 0 */,
           );
         }));
   }
@@ -87,17 +87,17 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
             ),
           );
         }
-        List<OutletRecord> monthlyPassOutletRecordList = snapshot.data!;
+        List<OutletRecord> monthlyPass2OutletRecordList = snapshot.data!;
         // Return an empty Container when the item does not exist.
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final monthlyPassOutletRecord = monthlyPassOutletRecordList.isNotEmpty
-            ? monthlyPassOutletRecordList.first
+        final monthlyPass2OutletRecord = monthlyPass2OutletRecordList.isNotEmpty
+            ? monthlyPass2OutletRecordList.first
             : null;
 
         return Title(
-            title: 'MonthlyPass',
+            title: 'MonthlyPass2',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -123,38 +123,41 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                   ),
                   title: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'pxqj0jku' /* Monthly Pass */,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'l2q22mw7' /* Monthly Pass */,
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineSmallFamily,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily),
+                              ),
                         ),
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: FlutterFlowTheme.of(context)
-                                  .headlineMediumFamily,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 22.0,
-                              letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily),
-                            ),
                       ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
+                      FlutterFlowIconButton(
+                        borderRadius: 8.0,
+                        buttonSize: 40.0,
+                        fillColor: FlutterFlowTheme.of(context).parkingPrimary,
+                        icon: Icon(
+                          Icons.person_add,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
                           context.pushNamed('addCustomer1');
                         },
-                        child: Icon(
-                          Icons.group_add,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 30.0,
-                        ),
                       ),
                     ],
                   ),
@@ -162,10 +165,8 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                   centerTitle: true,
                   elevation: 2.0,
                 ),
-                body: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(),
+                body: SafeArea(
+                  top: true,
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: SingleChildScrollView(
@@ -301,12 +302,12 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'drej0p4k' /* Select Customer */,
+                                                'cvas4zrn' /* Select Customer */,
                                               ),
                                               searchHintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'xn775pq2' /* Select Customer */,
+                                                'pli5ta7j' /* Select Customer */,
                                               ),
                                               icon: Icon(
                                                 Icons
@@ -355,7 +356,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'mhkmvvj2' /* Customer Name */,
+                                                  'gmgyd7fi' /* Customer Name */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -449,7 +450,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '28yvg1cy' /* Vehicle No */,
+                                                  'hxrqccky' /* Vehicle No */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -504,7 +505,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'srv7sdzb' /* Vehicle Type */,
+                                                  'yo13zeln' /* Vehicle Type */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -634,7 +635,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    '69b8u8x5' /* Payment Type */,
+                                                    'h9lajfzj' /* Payment Type */,
                                                   ),
                                                   icon: Icon(
                                                     Icons.keyboard_arrow_down,
@@ -678,22 +679,22 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               options: [
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '0dn1yg2l' /* Weekly Pass */,
+                                                  'wek99r60' /* Weekly Pass */,
                                                 ),
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '7h84zqgb' /* Monthly Pass */,
+                                                  'wafe39sa' /* Monthly Pass */,
                                                 ),
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '7te0eciy' /* Half Month Pass */,
+                                                  'j5ggx463' /* Half Month Pass */,
                                                 )
                                               ],
                                               onChanged: (val) async {
                                                 safeSetState(() =>
                                                     _model.passValue = val);
                                                 _model.selectedMessage =
-                                                    _model.passValue!;
+                                                    _model.selectedMessage;
                                                 safeSetState(() {});
                                               },
                                               width: 180.0,
@@ -717,7 +718,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '40543i3b' /* Message */,
+                                                'n3o5r36k' /* Message */,
                                               ),
                                               icon: Icon(
                                                 Icons.keyboard_arrow_down,
@@ -763,7 +764,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '7slympd9' /* Created Date */,
+                                                  'rwersw2j' /* Created Date */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -820,7 +821,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'vf9siwoq' /* Renewed Date */,
+                                                  '14utlzx5' /* Renewed Date */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -912,7 +913,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '4ksaeywi' /* Remarks */,
+                                            'xkbbchik' /* Remarks */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
@@ -952,7 +953,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'c6v5siav' /* Enter Any Remark */,
+                                                  't67v1a46' /* Enter Any Remark */,
                                                 ),
                                                 enabledBorder:
                                                     UnderlineInputBorder(
@@ -1040,7 +1041,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                       children: [
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'whq7ohfc' /* Amount  */,
+                                            'ywai00mt' /* Amount  */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall
@@ -1388,7 +1389,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                     safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
-                                    'pxgkvnwj' /* Create Pass */,
+                                    '9zja9z2u' /* Create Pass */,
                                   ),
                                   options: FFButtonOptions(
                                     width: 150.0,
@@ -1605,9 +1606,9 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                           toEmail: FFAppState().emailForReport,
                                           fileName: 'Monthly Pass',
                                           outletName:
-                                              monthlyPassOutletRecord?.name,
+                                              monthlyPass2OutletRecord?.name,
                                           branchName:
-                                              monthlyPassOutletRecord?.branch,
+                                              monthlyPass2OutletRecord?.branch,
                                           file: _model.base64Link2Copy,
                                           reportType: 'Monthly Pass',
                                           roll: FFAppState().currentUserRole,
@@ -1678,7 +1679,7 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                       safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      '3d6rzj9a' /* Send Mail */,
+                                      'pxcxlkcm' /* Send Mail */,
                                     ),
                                     options: FFButtonOptions(
                                       width: 150.0,

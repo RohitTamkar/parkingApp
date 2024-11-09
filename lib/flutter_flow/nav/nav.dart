@@ -1540,6 +1540,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'DaillyCollectionReport',
               path: 'daillyCollectionReport',
               builder: (context, params) => DaillyCollectionReportWidget(),
+            ),
+            FFRoute(
+              name: 'MonthlyPass2',
+              path: 'monthlyPass2',
+              builder: (context, params) => MonthlyPass2Widget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

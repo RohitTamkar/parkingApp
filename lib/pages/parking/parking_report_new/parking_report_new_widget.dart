@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -105,12 +106,24 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('VehicleEntry');
+                  context.pushNamed(
+                    'VehicleEntry',
+                    queryParameters: {
+                      'shiftDoc': serializeParam(
+                        FFAppState().shiftDetailsNEw,
+                        ParamType.JSON,
+                      ),
+                      'userRef': serializeParam(
+                        currentUserReference,
+                        ParamType.DocumentReference,
+                      ),
+                    }.withoutNulls,
+                  );
                 },
               ),
               title: Text(
                 FFLocalizations.of(context).getText(
-                  'pxqj0jku' /* Reports */,
+                  '5uwkc8cf' /* Reports */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily:

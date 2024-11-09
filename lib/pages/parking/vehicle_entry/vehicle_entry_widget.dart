@@ -1354,7 +1354,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed('MonthlyPass');
+                                          context.pushNamed('MonthlyPass2');
                                         },
                                         child: Container(
                                           width:

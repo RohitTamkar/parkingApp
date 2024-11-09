@@ -374,14 +374,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             ),
                                             onPressed: () async {
                                               context.pushNamed(
-                                                'ParkingCustomers',
+                                                'VehicleEntry',
                                                 queryParameters: {
                                                   'shiftDoc': serializeParam(
                                                     widget!.shiftDoc,
                                                     ParamType.JSON,
                                                   ),
                                                   'userRef': serializeParam(
-                                                    currentUserReference,
+                                                    widget!.userRef,
                                                     ParamType.DocumentReference,
                                                   ),
                                                 }.withoutNulls,
@@ -1655,21 +1655,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           FFAppState().count =
                                               FFAppState().count;
                                           FFAppState().cartItem = [];
+                                          FFAppState().shiftDetailsNEw =
+                                              _model.shiftSummarRkiosk!;
                                           FFAppState().update(() {});
-
-                                          context.pushNamed(
-                                            'ParkingCustomers',
-                                            queryParameters: {
-                                              'shiftDoc': serializeParam(
-                                                _model.shiftSummarRkiosk,
-                                                ParamType.JSON,
-                                              ),
-                                              'userRef': serializeParam(
-                                                widget!.userRef,
-                                                ParamType.DocumentReference,
-                                              ),
-                                            }.withoutNulls,
-                                          );
 
                                           context.pushNamed(
                                             'VehicleEntry',
@@ -2031,6 +2019,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           FFAppState().count =
                                               FFAppState().count;
                                           FFAppState().cartItem = [];
+                                          FFAppState().shiftDetailsNEw =
+                                              _model.shiftSummarRkiosk2!;
                                           FFAppState().update(() {});
 
                                           context.pushNamed(
