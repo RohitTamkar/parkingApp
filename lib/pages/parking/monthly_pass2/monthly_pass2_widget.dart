@@ -697,7 +697,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                 safeSetState(() =>
                                                     _model.passValue = val);
                                                 _model.selectedMessage =
-                                                    _model.selectedMessage;
+                                                    _model.passValue!;
                                                 safeSetState(() {});
                                               },
                                               width: 180.0,
