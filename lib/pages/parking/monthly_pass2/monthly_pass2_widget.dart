@@ -121,45 +121,50 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                       context.pop();
                     },
                   ),
-                  title: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'l2q22mw7' /* Monthly Pass */,
+                  title: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'l2q22mw7' /* Monthly Pass */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineSmallFamily,
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily),
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineSmallFamily,
-                                fontSize: 20.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineSmallFamily),
-                              ),
                         ),
-                      ),
-                      FlutterFlowIconButton(
-                        borderRadius: 8.0,
-                        buttonSize: 40.0,
-                        fillColor: FlutterFlowTheme.of(context).parkingPrimary,
-                        icon: Icon(
-                          Icons.person_add,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 40.0,
+                          fillColor:
+                              FlutterFlowTheme.of(context).parkingPrimary,
+                          icon: Icon(
+                            Icons.person_add,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            context.pushNamed('addCustomer1');
+                          },
                         ),
-                        onPressed: () async {
-                          context.pushNamed('addCustomer1');
-                        },
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   actions: [],
                   centerTitle: true,

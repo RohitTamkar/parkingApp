@@ -72,9 +72,6 @@ class _EmailInputWidgetState extends State<EmailInputWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        FFAppState().emailForReport =
-                            _model.textController.text;
-                        safeSetState(() {});
                         Navigator.pop(context);
                       },
                       child: Icon(
