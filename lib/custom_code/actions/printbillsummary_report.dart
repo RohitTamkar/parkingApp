@@ -17,6 +17,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -75,30 +77,125 @@ Future printbillsummaryReport(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               align: PosAlign.center));
-      bytes += generator.text(" DHULE BUS STAND ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      bytes += generator.text("PAY & PARK ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      bytes += generator.text(" MSRTC APPROVED ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
-      bytes += generator.text(" CONTACT 9172676376 ",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
+      QuerySnapshot querySnapshot;
+      querySnapshot = await FirebaseFirestore.instance
+          .collection('OUTLET')
+          .doc(FFAppState().outletIdRef?.id)
+          .collection('HEADER')
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        print(doc);
+
+/*      if (doc["recepitLogoUrl"] != null && doc["recepitLogoUrl"].isNotEmpty) {
+        final ByteData data =
+            await NetworkAssetBundle(Uri.parse(doc["recepitLogoUrl"])).load("");
+        final Uint8List imgBytes = data.buffer.asUint8List();
+        final img.Image image = img.decodeImage(imgBytes)!;
+
+        //   bytes += generator.imageRaster(image, imageFn: PosImageFn.graphics);
+        bytes += generator.image(image);
+        // bytes += generator.imageRaster(image);
+      }*/
+        if (doc["title"] != null && doc["title"].isNotEmpty) {
+          bytes += generator.text(doc["title"],
+              styles: PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  align: PosAlign.center));
+        }
+        if (doc["address"] != null && doc["address"].isNotEmpty) {
+          bytes += generator.text(doc["address"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["subtitleAddress"] != null &&
+            doc["subtitleAddress"].isNotEmpty) {
+          bytes += generator.text(doc["subtitleAddress"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+
+        if (doc["gstNo"] != null && doc["gstNo"].isNotEmpty) {
+          bytes += generator.text(doc["gstNo"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["contactNo"] != null && doc["contactNo"].isNotEmpty) {
+          bytes += generator.text(doc["contactNo"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["email"] != null && doc["email"].isNotEmpty) {
+          bytes += generator.text(doc["email"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["serialNo"] != null && doc["serialNo"].isNotEmpty) {
+          bytes += generator.text(doc["serialNo"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["taxInvoice"] != null && doc["taxInvoice"].isNotEmpty) {
+          bytes += generator.text(doc["taxInvoice"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["bankName"] != null && doc["bankName"].isNotEmpty) {
+          bytes += generator.text(doc["bankName"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["bankBranch"] != null && doc["bankBranch"].isNotEmpty) {
+          bytes += generator.text(doc["bankBranch"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+
+        if (doc["accountNumber"] != null && doc["accountNumber"].isNotEmpty) {
+          bytes += generator.text(doc["accountNumber"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+        if (doc["ifscCode"] != null && doc["ifscCode"].isNotEmpty) {
+          bytes += generator.text(doc["ifscCode"],
+              styles: const PosStyles(
+                  height: PosTextSize.size1,
+                  width: PosTextSize.size1,
+                  bold: true,
+                  align: PosAlign.center));
+        }
+      }
 
       String printLine = '';
       String dateString = '';
@@ -186,6 +283,15 @@ Future printbillsummaryReport(
               align: PosAlign.center));
       for (var invoice in dataDocument) {
         totalAmt += invoice.finalBillAmt;
+
+        String date;
+        if (invoice.checkOutTime != 0) {
+          date = DateFormat('dd/MM').format(
+              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime));
+        } else {
+          date = 'No Out';
+        }
+
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
@@ -199,17 +305,15 @@ Future printbillsummaryReport(
           ),
           PosColumn(
               text: invoice.vechicleNo.toString(),
-              width: 3,
+              width: 5,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 bold: false,
               )),
           PosColumn(
-            text: DateFormat('dd/MM/yy').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
-            ),
-            width: 5,
+            text: date,
+            width: 3,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,

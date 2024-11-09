@@ -331,7 +331,19 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           );
                                           Navigator.pop(context);
 
-                                          context.goNamed('ParkingCustomers');
+                                          context.goNamed(
+                                            'VehicleEntry',
+                                            queryParameters: {
+                                              'shiftDoc': serializeParam(
+                                                widget!.shiftDoc,
+                                                ParamType.JSON,
+                                              ),
+                                              'userRef': serializeParam(
+                                                widget!.userRef,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
                                         } else {
                                           await showDialog(
                                             context: context,

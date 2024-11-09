@@ -716,20 +716,7 @@ class _DaillyCollectionReportWidgetState
                                                       Colors.transparent,
                                                   highlightColor:
                                                       Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      'billDetails',
-                                                      queryParameters: {
-                                                        'docRef':
-                                                            serializeParam(
-                                                          billWiseSaleReportVarItem
-                                                              .reference,
-                                                          ParamType
-                                                              .DocumentReference,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
+                                                  onTap: () async {},
                                                   child: Material(
                                                     color: Colors.transparent,
                                                     elevation: 1.0,
