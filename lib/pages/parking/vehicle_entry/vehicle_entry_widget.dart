@@ -1960,8 +1960,8 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                             );
                           },
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.8,
-                            height: MediaQuery.sizeOf(context).height * 0.075,
+                            width: MediaQuery.sizeOf(context).width * 0.6,
+                            height: MediaQuery.sizeOf(context).height * 0.1,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).info,
                               boxShadow: [
@@ -1976,42 +1976,45 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                               ],
                               borderRadius: BorderRadius.circular(30.0),
                             ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Icon(
-                                    Icons.receipt_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                    size: 20.0,
-                                  ).animateOnPageLoad(animationsMap[
-                                      'iconOnPageLoadAnimation1']!),
-                                ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'vuikjnjv' /* Receipt Entry */,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineLarge
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLargeFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLargeFamily),
-                                        ),
+                            child: Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Icon(
+                                      Icons.receipt_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      size: 30.0,
+                                    ).animateOnPageLoad(animationsMap[
+                                        'iconOnPageLoadAnimation1']!),
                                   ),
-                                ),
-                              ],
+                                  Expanded(
+                                    flex: 3,
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'vuikjnjv' /* Receipt Entry */,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineLargeFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLargeFamily),
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -2058,8 +2061,8 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                             );
                           },
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.8,
-                            height: MediaQuery.sizeOf(context).height * 0.075,
+                            width: MediaQuery.sizeOf(context).width * 0.6,
+                            height: MediaQuery.sizeOf(context).height * 0.1,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).info,
                               boxShadow: [
@@ -2086,7 +2089,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                         FontAwesomeIcons.moneyBillWaveAlt,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBtnText,
-                                        size: 20.0,
+                                        size: 30.0,
                                       ).animateOnPageLoad(animationsMap[
                                           'iconOnPageLoadAnimation2']!),
                                     ),
