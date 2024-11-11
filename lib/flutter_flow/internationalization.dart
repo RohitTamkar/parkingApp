@@ -23493,27 +23493,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // VehicleEntry
   {
-    'vuikjnjv': {
-      'en': 'Receipt Entry',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'w60jae91': {
-      'en': 'OR',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '55i9w879': {
-      'en': 'Bill Entry',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'girymwqa': {
       'en': 'Outlet List',
       'hi': '',
@@ -23558,6 +23537,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vr2lhcdy': {
       'en': 'Logout',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'vuikjnjv': {
+      'en': 'Receipt Entry',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'w60jae91': {
+      'en': 'OR',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '55i9w879': {
+      'en': 'Bill Entry',
       'hi': '',
       'kn': '',
       'mr': '',

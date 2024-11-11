@@ -94,50 +94,6 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
     });
 
     animationsMap.addAll({
-      'iconOnPageLoadAnimation1': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.35, 1.35),
-          ),
-          TintEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            color: Color(0xFFFFDD42),
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'iconOnPageLoadAnimation2': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.35, 1.35),
-          ),
-          TintEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            color: Color(0xFFFFDD42),
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'containerOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: false,
@@ -373,6 +329,50 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
             duration: 375.0.ms,
             begin: Offset(1.2, 1.2),
             end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.35, 1.35),
+          ),
+          TintEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            color: Color(0xFFFFDD42),
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.35, 1.35),
+          ),
+          TintEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            color: Color(0xFFFFDD42),
+            begin: 0.0,
+            end: 1.0,
           ),
         ],
       ),
