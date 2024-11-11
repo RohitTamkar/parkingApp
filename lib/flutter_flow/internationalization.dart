@@ -23684,6 +23684,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // parkingReportNew
   {
+    '5uwkc8cf': {
+      'en': 'Reports',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'cunxzywe': {
       'en': 'Vehicle Wise Report',
       'hi': '',
@@ -23721,13 +23728,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hqcj4zau': {
       'en': 'Unbilled Receipts',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '5uwkc8cf': {
-      'en': 'Reports',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -24160,27 +24160,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // VehicleEntryCopy
   {
-    'v50dusrr': {
-      'en': 'Receipt Entry',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '4jilxxsu': {
-      'en': 'OR',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'faryueeg': {
-      'en': 'Bill Entry',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'b1rnijvv': {
       'en': 'Outlet List',
       'hi': '',
@@ -24225,6 +24204,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tvo53wtm': {
       'en': 'Logout',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'v50dusrr': {
+      'en': 'Receipt Entry',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '4jilxxsu': {
+      'en': 'OR',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'faryueeg': {
+      'en': 'Bill Entry',
       'hi': '',
       'kn': '',
       'mr': '',

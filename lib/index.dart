@@ -131,7 +131,7 @@ export '/pages/parking/masters_new/masters_new_widget.dart'
 export '/pages/parking/categories/categories_widget.dart' show CategoriesWidget;
 export '/pages/parking/product_list_new_m/product_list_new_m_widget.dart'
     show ProductListNewMWidget;
-export '/pages/parking/editproduct_new_m/editproduct_new_m_widget.dart'
+export '/pages/editproduct_new_m/editproduct_new_m_widget.dart'
     show EditproductNewMWidget;
 export '/pages/parking/addproduct_a_p_p/addproduct_a_p_p_widget.dart'
     show AddproductAPPWidget;
@@ -148,7 +148,7 @@ export '/pages/parking/parking_product/parking_product_widget.dart'
 export '/pages/dummytest/dummytest_widget.dart' show DummytestWidget;
 export '/pages/edit_user_permission/edit_user_permission_widget.dart'
     show EditUserPermissionWidget;
-export '/pages/parking/parking_product_copy/parking_product_copy_widget.dart'
+export '/pages/parking_product_copy/parking_product_copy_widget.dart'
     show ParkingProductCopyWidget;
 export '/pages/parking/welcome_screen_parking/welcome_screen_parking_widget.dart'
     show WelcomeScreenParkingWidget;

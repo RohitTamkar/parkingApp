@@ -101,113 +101,113 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
               child: Scaffold(
                 key: scaffoldKey,
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                appBar: AppBar(
-                  backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
-                  automaticallyImplyLeading: false,
-                  leading: FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30.0,
-                    borderWidth: 1.0,
-                    buttonSize: 60.0,
-                    icon: Icon(
-                      Icons.arrow_back_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
-                    ),
-                    onPressed: () async {
-                      context.pop();
-                    },
-                  ),
-                  title: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
+                body: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).parkingPrimary,
+                        ),
+                        child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'l2q22mw7' /* Monthly Pass */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineSmallFamily,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineSmallFamily),
+                              15.0, 0.0, 15.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                icon: Icon(
+                                  Icons.arrow_back_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 30.0,
                                 ),
+                                onPressed: () async {
+                                  context.pop();
+                                },
+                              ),
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'l2q22mw7' /* Monthly Pass */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily,
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily),
+                                    ),
+                              ),
+                              FlutterFlowIconButton(
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).parkingPrimary,
+                                icon: Icon(
+                                  Icons.person_add,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  context.pushNamed('addCustomer1');
+                                },
+                              ),
+                            ],
                           ),
                         ),
-                        FlutterFlowIconButton(
-                          borderRadius: 8.0,
-                          buttonSize: 40.0,
-                          fillColor:
-                              FlutterFlowTheme.of(context).parkingPrimary,
-                          icon: Icon(
-                            Icons.person_add,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            context.pushNamed('addCustomer1');
-                          },
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  actions: [],
-                  centerTitle: true,
-                  elevation: 2.0,
-                ),
-                body: SafeArea(
-                  top: true,
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 8.0,
-                                  color: FlutterFlowTheme.of(context).accent2,
-                                  offset: Offset(
-                                    2.0,
-                                    5.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(15.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 15.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        StreamBuilder<List<PartyRecord>>(
+                    Expanded(
+                      flex: 10,
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 8.0,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      offset: Offset(
+                                        2.0,
+                                        5.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(15.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 15.0),
+                                        child: StreamBuilder<List<PartyRecord>>(
                                           stream: queryPartyRecord(
                                             parent: FFAppState().outletIdRef,
                                           ),
@@ -252,7 +252,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                         .first;
                                                 safeSetState(() {});
                                               },
-                                              width: 300.0,
+                                              width: double.infinity,
                                               height: 50.0,
                                               searchHintTextStyle:
                                                   FlutterFlowTheme.of(context)
@@ -294,6 +294,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMediumFamily,
+                                                        fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
@@ -335,196 +336,33 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                             );
                                           },
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 15.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 3.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'gmgyd7fi' /* Customer Name */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLargeFamily),
-                                                      ),
-                                                ),
-                                              ),
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  _model.selectedParty?.name,
-                                                  '-',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 20.0, 0.0),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              _model.selectedParty?.mobile,
-                                              '-',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 15.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 3.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'hxrqccky' /* Vehicle No */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLargeFamily),
-                                                      ),
-                                                ),
-                                              ),
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  _model
-                                                      .selectedParty?.vehicleNo,
-                                                  '-',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily),
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 15.0),
+                                        child: Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.center,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 3.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'yo13zeln' /* Vehicle Type */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 3.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'gmgyd7fi' /* Customer Name */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyLarge
                                                         .override(
                                                           fontFamily:
@@ -539,94 +377,330 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                                           context)
                                                                       .bodyLargeFamily),
                                                         ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  _model.selectedParty
-                                                      ?.vehicleType,
-                                                  '-',
+                                                  ),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    _model.selectedParty?.name,
+                                                    '-',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily),
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              valueOrDefault<String>(
+                                                _model.selectedParty?.mobile,
+                                                '-',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily),
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 15.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 3.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'hxrqccky' /* Vehicle No */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
                                                         .override(
                                                           fontFamily:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .titleMediumFamily,
+                                                                  .bodyLargeFamily,
                                                           letterSpacing: 0.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .titleMediumFamily),
+                                                                      .bodyLargeFamily),
                                                         ),
-                                              ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    _model.selectedParty
+                                                        ?.vehicleNo,
+                                                    '-',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily),
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 3.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'yo13zeln' /* Vehicle Type */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLargeFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLargeFamily),
+                                                        ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    _model.selectedParty
+                                                        ?.vehicleType,
+                                                    '-',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily),
+                                                      ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 15.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4.0, 0.0, 4.0, 0.0),
-                                            child: StreamBuilder<
-                                                List<PaymentModeRecord>>(
-                                              stream: queryPaymentModeRecord(),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 40.0,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 15.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 4.0, 0.0),
+                                                child: StreamBuilder<
+                                                    List<PaymentModeRecord>>(
+                                                  stream:
+                                                      queryPaymentModeRecord(),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 40.0,
+                                                          height: 40.0,
+                                                          child:
+                                                              SpinKitFadingCircle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            size: 40.0,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<PaymentModeRecord>
+                                                        paymentPaymentModeRecordList =
+                                                        snapshot.data!;
+
+                                                    return FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .paymentValueController ??=
+                                                          FormFieldController<
+                                                              String>(null),
+                                                      options:
+                                                          paymentPaymentModeRecordList
+                                                              .map(
+                                                                  (e) => e.name)
+                                                              .toList(),
+                                                      onChanged: (val) async {
+                                                        safeSetState(() =>
+                                                            _model.paymentValue =
+                                                                val);
+                                                        _model.selectedPaymentType =
+                                                            _model
+                                                                .paymentValue!;
+                                                        safeSetState(() {});
+                                                      },
+                                                      width: 180.0,
                                                       height: 40.0,
-                                                      child:
-                                                          SpinKitFadingCircle(
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily),
+                                                              ),
+                                                      hintText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'h9lajfzj' /* Payment Type */,
+                                                      ),
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
-                                                        size: 40.0,
+                                                                .tertiary,
+                                                        size: 20.0,
                                                       ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<PaymentModeRecord>
-                                                    paymentPaymentModeRecordList =
-                                                    snapshot.data!;
-
-                                                return FlutterFlowDropDown<
-                                                    String>(
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                      borderWidth: 0.0,
+                                                      borderRadius: 10.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  4.0,
+                                                                  12.0,
+                                                                  4.0),
+                                                      hidesUnderline: true,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 0.0, 0.0, 0.0),
+                                                child:
+                                                    FlutterFlowDropDown<String>(
                                                   controller: _model
-                                                          .paymentValueController ??=
+                                                          .passValueController ??=
                                                       FormFieldController<
                                                           String>(null),
-                                                  options:
-                                                      paymentPaymentModeRecordList
-                                                          .map((e) => e.name)
-                                                          .toList(),
+                                                  options: [
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'wek99r60' /* Weekly Pass */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'wafe39sa' /* Monthly Pass */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'j5ggx463' /* Half Month Pass */,
+                                                    )
+                                                  ],
                                                   onChanged: (val) async {
-                                                    safeSetState(() => _model
-                                                        .paymentValue = val);
-                                                    _model.selectedPaymentType =
-                                                        _model.paymentValue!;
+                                                    safeSetState(() =>
+                                                        _model.passValue = val);
+                                                    _model.selectedMessage =
+                                                        _model.passValue!;
                                                     safeSetState(() {});
                                                   },
                                                   width: 180.0,
@@ -651,7 +725,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                   hintText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'h9lajfzj' /* Payment Type */,
+                                                    'n3o5r36k' /* Message */,
                                                   ),
                                                   icon: Icon(
                                                     Icons.keyboard_arrow_down,
@@ -677,694 +751,672 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                   hidesUnderline: true,
                                                   isSearchable: false,
                                                   isMultiSelect: false,
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4.0, 0.0, 0.0, 0.0),
-                                            child: FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .passValueController ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              options: [
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'wek99r60' /* Weekly Pass */,
                                                 ),
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'wafe39sa' /* Monthly Pass */,
-                                                ),
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'j5ggx463' /* Half Month Pass */,
-                                                )
-                                              ],
-                                              onChanged: (val) async {
-                                                safeSetState(() =>
-                                                    _model.passValue = val);
-                                                _model.selectedMessage =
-                                                    _model.passValue!;
-                                                safeSetState(() {});
-                                              },
-                                              width: 180.0,
-                                              height: 40.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMediumFamily),
-                                                      ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'n3o5r36k' /* Message */,
                                               ),
-                                              icon: Icon(
-                                                Icons.keyboard_arrow_down,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                size: 20.0,
-                                              ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 2.0,
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              borderWidth: 0.0,
-                                              borderRadius: 10.0,
-                                              margin: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 4.0, 12.0, 4.0),
-                                              hidesUnderline: true,
-                                              isSearchable: false,
-                                              isMultiSelect: false,
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 10.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 4.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'rwersw2j' /* Created Date */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLargeFamily),
-                                                      ),
-                                                ),
-                                                Text(
-                                                  functions.milisecToTimestamp(
-                                                      getCurrentTimestamp
-                                                          .millisecondsSinceEpoch),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMediumFamily),
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4.0, 0.0, 0.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '14utlzx5' /* Renewed Date */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLargeFamily),
-                                                      ),
-                                                ),
-                                                Text(
-                                                  functions.milisecToTimestamp(
-                                                      functions.renewalOnSelection(
-                                                          _model
-                                                              .selectedMessage,
-                                                          getCurrentTimestamp
-                                                              .millisecondsSinceEpoch)),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMediumFamily),
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'e6p8vl56' /* Amount  */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily,
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 10.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 4.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  3.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
                                                                 context)
-                                                            .bodySmallFamily),
-                                              ),
-                                        ),
-                                        Expanded(
-                                          child: TextFormField(
-                                            controller: _model
-                                                .textFieldAmtTextController,
-                                            focusNode:
-                                                _model.textFieldAmtFocusNode,
-                                            onChanged: (_) =>
-                                                EasyDebounce.debounce(
-                                              '_model.textFieldAmtTextController',
-                                              Duration(milliseconds: 2000),
-                                              () => safeSetState(() {}),
-                                            ),
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
-                                              ),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelLargeFamily,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
+                                                            .getText(
+                                                          'rwersw2j' /* Created Date */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLargeFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyLargeFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      functions.milisecToTimestamp(
+                                                          getCurrentTimestamp
+                                                              .millisecondsSinceEpoch),
+                                                      style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelLargeFamily),
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ],
                                                 ),
-                                            validator: _model
-                                                .textFieldAmtTextControllerValidator
-                                                .asValidator(context),
-                                          ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  3.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '14utlzx5' /* Renewed Date */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyLargeFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyLargeFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      functions.milisecToTimestamp(
+                                                          functions.renewalOnSelection(
+                                                              _model
+                                                                  .selectedMessage,
+                                                              getCurrentTimestamp
+                                                                  .millisecondsSinceEpoch)),
+                                                      textAlign: TextAlign.end,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'e6p8vl56' /* Amount  */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmallFamily,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily),
+                                                      ),
+                                            ),
+                                            Expanded(
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .textFieldAmtTextController,
+                                                focusNode: _model
+                                                    .textFieldAmtFocusNode,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.textFieldAmtTextController',
+                                                  Duration(milliseconds: 2000),
+                                                  () => safeSetState(() {}),
+                                                ),
+                                                autofocus: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(4.0),
+                                                      topRight:
+                                                          Radius.circular(4.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLargeFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeFamily),
+                                                        ),
+                                                validator: _model
+                                                    .textFieldAmtTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 50.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    if ((_model.dropDownValue != null &&
-                                            _model.dropDownValue != '') &&
-                                        (_model.paymentValue != null &&
-                                            _model.paymentValue != '') &&
-                                        (_model.passValue != null &&
-                                            _model.passValue != '') &&
-                                        (_model.textFieldAmtTextController
-                                                    .text !=
-                                                null &&
-                                            _model.textFieldAmtTextController
-                                                    .text !=
-                                                '')) {
-                                      var monthlyPassRecordReference =
-                                          MonthlyPassRecord.createDoc(
-                                              FFAppState().outletIdRef!);
-                                      await monthlyPassRecordReference
-                                          .set(createMonthlyPassRecordData(
-                                        planName: _model.selectedMessage,
-                                        status: true,
-                                        validityDays: () {
-                                          if (_model.selectedMessage ==
-                                              'Weekly Pass') {
-                                            return 7;
-                                          } else if (_model.selectedMessage ==
-                                              'Monthly Pass') {
-                                            return 30;
-                                          } else if (_model.selectedMessage ==
-                                              'Half Month Pass') {
-                                            return 15;
-                                          } else {
-                                            return 0;
-                                          }
-                                        }(),
-                                        createdBy:
-                                            FFAppState().logedInUserDetail,
-                                        updatedBy: currentUserReference,
-                                        custRef:
-                                            _model.selectedParty?.reference,
-                                        amount: double.tryParse(_model
-                                            .textFieldAmtTextController.text),
-                                        paymentType: _model.selectedPaymentType,
-                                        passStartDate: getCurrentTimestamp
-                                            .millisecondsSinceEpoch,
-                                        passEndDate:
-                                            functions.renewalOnSelection(
-                                                _model.selectedMessage,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch),
-                                        passStartDayId:
-                                            functions.milisecToTimestamp(
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch),
-                                        passEndDayId:
-                                            functions.milisecToTimestamp(
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 50.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    FFButtonWidget(
+                                      onPressed: () async {
+                                        if ((_model.dropDownValue != null &&
+                                                _model.dropDownValue != '') &&
+                                            (_model.paymentValue != null &&
+                                                _model.paymentValue != '') &&
+                                            (_model.passValue != null &&
+                                                _model.passValue != '') &&
+                                            (_model.textFieldAmtTextController
+                                                        .text !=
+                                                    null &&
+                                                _model.textFieldAmtTextController
+                                                        .text !=
+                                                    '')) {
+                                          var monthlyPassRecordReference =
+                                              MonthlyPassRecord.createDoc(
+                                                  FFAppState().outletIdRef!);
+                                          await monthlyPassRecordReference
+                                              .set(createMonthlyPassRecordData(
+                                            planName: _model.selectedMessage,
+                                            status: true,
+                                            validityDays: () {
+                                              if (_model.selectedMessage ==
+                                                  'Weekly Pass') {
+                                                return 7;
+                                              } else if (_model
+                                                      .selectedMessage ==
+                                                  'Monthly Pass') {
+                                                return 30;
+                                              } else if (_model
+                                                      .selectedMessage ==
+                                                  'Half Month Pass') {
+                                                return 15;
+                                              } else {
+                                                return 0;
+                                              }
+                                            }(),
+                                            createdBy:
+                                                FFAppState().logedInUserDetail,
+                                            updatedBy: currentUserReference,
+                                            custRef:
+                                                _model.selectedParty?.reference,
+                                            amount: double.tryParse(_model
+                                                .textFieldAmtTextController
+                                                .text),
+                                            paymentType:
+                                                _model.selectedPaymentType,
+                                            passStartDate: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            passEndDate:
                                                 functions.renewalOnSelection(
                                                     _model.selectedMessage,
                                                     getCurrentTimestamp
-                                                        .millisecondsSinceEpoch)),
-                                      ));
-                                      _model.passDoc =
-                                          MonthlyPassRecord.getDocumentFromData(
-                                              createMonthlyPassRecordData(
-                                                planName:
-                                                    _model.selectedMessage,
-                                                status: true,
-                                                validityDays: () {
-                                                  if (_model.selectedMessage ==
-                                                      'Weekly Pass') {
-                                                    return 7;
-                                                  } else if (_model
-                                                          .selectedMessage ==
-                                                      'Monthly Pass') {
-                                                    return 30;
-                                                  } else if (_model
-                                                          .selectedMessage ==
-                                                      'Half Month Pass') {
-                                                    return 15;
-                                                  } else {
-                                                    return 0;
-                                                  }
-                                                }(),
-                                                createdBy: FFAppState()
-                                                    .logedInUserDetail,
-                                                updatedBy: currentUserReference,
-                                                custRef: _model
-                                                    .selectedParty?.reference,
-                                                amount: double.tryParse(_model
-                                                    .textFieldAmtTextController
-                                                    .text),
-                                                paymentType:
-                                                    _model.selectedPaymentType,
-                                                passStartDate:
+                                                        .millisecondsSinceEpoch),
+                                            passStartDayId:
+                                                functions.milisecToTimestamp(
                                                     getCurrentTimestamp
-                                                        .millisecondsSinceEpoch,
-                                                passEndDate: functions
+                                                        .millisecondsSinceEpoch),
+                                            passEndDayId: functions
+                                                .milisecToTimestamp(functions
                                                     .renewalOnSelection(
                                                         _model.selectedMessage,
                                                         getCurrentTimestamp
-                                                            .millisecondsSinceEpoch),
-                                                passStartDayId: functions
-                                                    .milisecToTimestamp(
+                                                            .millisecondsSinceEpoch)),
+                                          ));
+                                          _model.passDoc = MonthlyPassRecord
+                                              .getDocumentFromData(
+                                                  createMonthlyPassRecordData(
+                                                    planName:
+                                                        _model.selectedMessage,
+                                                    status: true,
+                                                    validityDays: () {
+                                                      if (_model
+                                                              .selectedMessage ==
+                                                          'Weekly Pass') {
+                                                        return 7;
+                                                      } else if (_model
+                                                              .selectedMessage ==
+                                                          'Monthly Pass') {
+                                                        return 30;
+                                                      } else if (_model
+                                                              .selectedMessage ==
+                                                          'Half Month Pass') {
+                                                        return 15;
+                                                      } else {
+                                                        return 0;
+                                                      }
+                                                    }(),
+                                                    createdBy: FFAppState()
+                                                        .logedInUserDetail,
+                                                    updatedBy:
+                                                        currentUserReference,
+                                                    custRef: _model
+                                                        .selectedParty
+                                                        ?.reference,
+                                                    amount: double.tryParse(_model
+                                                        .textFieldAmtTextController
+                                                        .text),
+                                                    paymentType: _model
+                                                        .selectedPaymentType,
+                                                    passStartDate:
                                                         getCurrentTimestamp
-                                                            .millisecondsSinceEpoch),
-                                                passEndDayId: functions
-                                                    .milisecToTimestamp(functions
+                                                            .millisecondsSinceEpoch,
+                                                    passEndDate: functions
                                                         .renewalOnSelection(
                                                             _model
                                                                 .selectedMessage,
                                                             getCurrentTimestamp
-                                                                .millisecondsSinceEpoch)),
-                                              ),
-                                              monthlyPassRecordReference);
+                                                                .millisecondsSinceEpoch),
+                                                    passStartDayId: functions
+                                                        .milisecToTimestamp(
+                                                            getCurrentTimestamp
+                                                                .millisecondsSinceEpoch),
+                                                    passEndDayId: functions
+                                                        .milisecToTimestamp(functions
+                                                            .renewalOnSelection(
+                                                                _model
+                                                                    .selectedMessage,
+                                                                getCurrentTimestamp
+                                                                    .millisecondsSinceEpoch)),
+                                                  ),
+                                                  monthlyPassRecordReference);
 
-                                      await _model.passDoc!.reference
-                                          .update(createMonthlyPassRecordData(
-                                        id: _model.passDoc?.reference.id,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .clearSnackBars();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Pass Created Successfully.',
-                                            style: TextStyle(
+                                          await _model.passDoc!.reference
+                                              .update(
+                                                  createMonthlyPassRecordData(
+                                            id: _model.passDoc?.reference.id,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .clearSnackBars();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Pass Created Successfully.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 1100),
+                                              backgroundColor:
+                                                  Color(0xFF67EA11),
+                                            ),
+                                          );
+                                          if (!functions.isPrinterSelected(
+                                              FFAppState().printerDevice)!) {
+                                            _model.resDevice3 =
+                                                await actions.scanPrinter(
+                                              FFAppState().posMode,
+                                            );
+                                          }
+                                          await actions.connectDevice(
+                                            FFAppState().printerDevice,
+                                            FFAppState().printerIndex,
+                                          );
+                                          if (FFAppState().printerName !=
+                                                  null &&
+                                              FFAppState().printerName != '') {
+                                            _model.device3 =
+                                                await actions.newCustomAction(
+                                              FFAppState().printerIndex,
+                                            );
+                                            _model.outletdoc2 =
+                                                await queryOutletRecordOnce(
+                                              queryBuilder: (outletRecord) =>
+                                                  outletRecord.where(
+                                                'id',
+                                                isEqualTo: FFAppState()
+                                                    .outletIdRef
+                                                    ?.id,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            await actions.printPassParking(
+                                              _model.device3!.toList(),
+                                              FFAppState().isPrinterConnected,
+                                              FFAppState().printerName,
+                                              getJsonField(
+                                                functions.outletDocToJson(
+                                                    _model.outletdoc2!),
+                                                r'''$''',
+                                              ),
+                                              _model.passDoc!,
+                                              FFAppState().paperSize,
+                                              _model.selectedParty!.name,
+                                              _model.selectedParty!.mobile,
+                                              _model.selectedParty!.vehicleNo,
+                                              _model.selectedParty!.vehicleType,
+                                            );
+                                            context.safePop();
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'printer connection'),
+                                                  content: Text(
+                                                      'printer not connected'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(
+                                                    'Fill Required Fields'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+
+                                        safeSetState(() {});
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        '9zja9z2u' /* Create Pass */,
+                                      ),
+                                      options: FFButtonOptions(
+                                        width: 150.0,
+                                        height: 45.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .parkingSecondaryBackground,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .displayLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .displayLargeFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBtnText,
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayLargeFamily),
                                             ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 1100),
-                                          backgroundColor: Color(0xFF67EA11),
+                                        elevation: 0.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
                                         ),
-                                      );
-                                      if (!functions.isPrinterSelected(
-                                          FFAppState().printerDevice)!) {
-                                        _model.resDevice3 =
-                                            await actions.scanPrinter(
-                                          FFAppState().posMode,
-                                        );
-                                      }
-                                      await actions.connectDevice(
-                                        FFAppState().printerDevice,
-                                        FFAppState().printerIndex,
-                                      );
-                                      if (FFAppState().printerName != null &&
-                                          FFAppState().printerName != '') {
-                                        _model.device3 =
-                                            await actions.newCustomAction(
-                                          FFAppState().printerIndex,
-                                        );
-                                        _model.outletdoc2 =
-                                            await queryOutletRecordOnce(
-                                          queryBuilder: (outletRecord) =>
-                                              outletRecord.where(
-                                            'id',
-                                            isEqualTo:
-                                                FFAppState().outletIdRef?.id,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        await actions.printPassParking(
-                                          _model.device3!.toList(),
-                                          FFAppState().isPrinterConnected,
-                                          FFAppState().printerName,
-                                          getJsonField(
-                                            functions.outletDocToJson(
-                                                _model.outletdoc2!),
-                                            r'''$''',
-                                          ),
-                                          _model.passDoc!,
-                                          FFAppState().paperSize,
-                                          _model.selectedParty!.name,
-                                          _model.selectedParty!.mobile,
-                                          _model.selectedParty!.vehicleNo,
-                                          _model.selectedParty!.vehicleType,
-                                        );
-                                        context.safePop();
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('printer connection'),
-                                              content:
-                                                  Text('printer not connected'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      }
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Error'),
-                                            content:
-                                                Text('Fill Required Fields'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    }
-
-                                    safeSetState(() {});
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    '9zja9z2u' /* Create Pass */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 150.0,
-                                    height: 45.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .parkingSecondaryBackground,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .displayLarge
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .displayLargeFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          fontSize: 15.0,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .displayLargeFamily),
-                                        ),
-                                    elevation: 0.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
                                     ),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                ),
-                                Builder(
-                                  builder: (context) => FFButtonWidget(
-                                    onPressed: () async {
-                                      if ((_model.dropDownValue != null &&
-                                              _model.dropDownValue != '') &&
-                                          (_model.paymentValue != null &&
-                                              _model.paymentValue != '') &&
-                                          (_model.passValue != null &&
-                                              _model.passValue != '') &&
-                                          (_model.textFieldAmtTextController
-                                                      .text !=
-                                                  null &&
-                                              _model.textFieldAmtTextController
-                                                      .text !=
-                                                  '')) {
-                                        FFAppState().emailForReport =
-                                            currentUserEmail;
-                                        safeSetState(() {});
-                                        await showDialog(
-                                          context: context,
-                                          builder: (dialogContext) {
-                                            return Dialog(
-                                              elevation: 0,
-                                              insetPadding: EdgeInsets.zero,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              alignment:
-                                                  AlignmentDirectional(0.0, 0.0)
-                                                      .resolve(
-                                                          Directionality.of(
-                                                              context)),
-                                              child: GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(dialogContext)
+                                    Builder(
+                                      builder: (context) => FFButtonWidget(
+                                        onPressed: () async {
+                                          if ((_model.dropDownValue != null &&
+                                                  _model.dropDownValue != '') &&
+                                              (_model.paymentValue != null &&
+                                                  _model.paymentValue != '') &&
+                                              (_model.passValue != null &&
+                                                  _model.passValue != '') &&
+                                              (_model.textFieldAmtTextController
+                                                          .text !=
+                                                      null &&
+                                                  _model.textFieldAmtTextController
+                                                          .text !=
+                                                      '')) {
+                                            FFAppState().emailForReport =
+                                                currentUserEmail;
+                                            safeSetState(() {});
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => FocusScope.of(
+                                                            dialogContext)
                                                         .unfocus(),
-                                                child: EmailInputWidget(),
-                                              ),
+                                                    child: EmailInputWidget(),
+                                                  ),
+                                                );
+                                              },
                                             );
-                                          },
-                                        );
 
-                                        var monthlyPassRecordReference =
-                                            MonthlyPassRecord.createDoc(
-                                                FFAppState().outletIdRef!);
-                                        await monthlyPassRecordReference
-                                            .set(createMonthlyPassRecordData(
-                                          planName: _model.selectedMessage,
-                                          status: true,
-                                          validityDays: () {
-                                            if (_model.selectedMessage ==
-                                                'Weekly Pass') {
-                                              return 7;
-                                            } else if (_model.selectedMessage ==
-                                                'Monthly Pass') {
-                                              return 30;
-                                            } else if (_model.selectedMessage ==
-                                                'Half Month Pass') {
-                                              return 15;
-                                            } else {
-                                              return 0;
-                                            }
-                                          }(),
-                                          createdBy:
-                                              FFAppState().logedInUserDetail,
-                                          updatedBy: currentUserReference,
-                                          custRef:
-                                              _model.selectedParty?.reference,
-                                          amount: double.tryParse(_model
-                                              .textFieldAmtTextController.text),
-                                          paymentType:
-                                              _model.selectedPaymentType,
-                                          passStartDate: getCurrentTimestamp
-                                              .millisecondsSinceEpoch,
-                                          passEndDate:
-                                              functions.renewalOnSelection(
-                                                  _model.selectedMessage,
-                                                  getCurrentTimestamp
-                                                      .millisecondsSinceEpoch),
-                                          passStartDayId:
-                                              functions.milisecToTimestamp(
-                                                  getCurrentTimestamp
-                                                      .millisecondsSinceEpoch),
-                                          passEndDayId:
-                                              functions.milisecToTimestamp(
+                                            var monthlyPassRecordReference =
+                                                MonthlyPassRecord.createDoc(
+                                                    FFAppState().outletIdRef!);
+                                            await monthlyPassRecordReference
+                                                .set(
+                                                    createMonthlyPassRecordData(
+                                              planName: _model.selectedMessage,
+                                              status: true,
+                                              validityDays: () {
+                                                if (_model.selectedMessage ==
+                                                    'Weekly Pass') {
+                                                  return 7;
+                                                } else if (_model
+                                                        .selectedMessage ==
+                                                    'Monthly Pass') {
+                                                  return 30;
+                                                } else if (_model
+                                                        .selectedMessage ==
+                                                    'Half Month Pass') {
+                                                  return 15;
+                                                } else {
+                                                  return 0;
+                                                }
+                                              }(),
+                                              createdBy: FFAppState()
+                                                  .logedInUserDetail,
+                                              updatedBy: currentUserReference,
+                                              custRef: _model
+                                                  .selectedParty?.reference,
+                                              amount: double.tryParse(_model
+                                                  .textFieldAmtTextController
+                                                  .text),
+                                              paymentType:
+                                                  _model.selectedPaymentType,
+                                              passStartDate: getCurrentTimestamp
+                                                  .millisecondsSinceEpoch,
+                                              passEndDate:
                                                   functions.renewalOnSelection(
                                                       _model.selectedMessage,
                                                       getCurrentTimestamp
-                                                          .millisecondsSinceEpoch)),
-                                        ));
-                                        _model.passDocCopyCopy =
-                                            MonthlyPassRecord
-                                                .getDocumentFromData(
+                                                          .millisecondsSinceEpoch),
+                                              passStartDayId:
+                                                  functions.milisecToTimestamp(
+                                                      getCurrentTimestamp
+                                                          .millisecondsSinceEpoch),
+                                              passEndDayId: functions
+                                                  .milisecToTimestamp(functions
+                                                      .renewalOnSelection(
+                                                          _model
+                                                              .selectedMessage,
+                                                          getCurrentTimestamp
+                                                              .millisecondsSinceEpoch)),
+                                            ));
+                                            _model.passDocCopyCopy =
+                                                MonthlyPassRecord.getDocumentFromData(
                                                     createMonthlyPassRecordData(
                                                       planName: _model
                                                           .selectedMessage,
@@ -1421,147 +1473,163 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                     ),
                                                     monthlyPassRecordReference);
 
-                                        await _model.passDocCopyCopy!.reference
-                                            .update(createMonthlyPassRecordData(
-                                          id: _model
-                                              .passDocCopyCopy?.reference.id,
-                                        ));
-                                        _model.partydetails2Copy =
-                                            await queryPartyRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (partyRecord) =>
-                                              partyRecord.where(
-                                            'id',
-                                            isEqualTo: _model.selectedParty?.id,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _model.base64Link2Copy = await actions
-                                            .generateParkingPassPdf(
-                                          _model.partydetails2Copy,
-                                          _model.passDocCopyCopy,
-                                        );
-                                        _model.apiResult6yc22Copy =
-                                            await SendMailCall.call(
-                                          mobileNo:
-                                              _model.partydetails2Copy?.mobile,
-                                          username:
-                                              _model.partydetails2Copy?.name,
-                                          toEmail: FFAppState().emailForReport,
-                                          fileName: 'Monthly Pass',
-                                          outletName:
-                                              monthlyPass2OutletRecord?.name,
-                                          branchName:
-                                              monthlyPass2OutletRecord?.branch,
-                                          file: _model.base64Link2Copy,
-                                          reportType: 'Monthly Pass',
-                                          roll: FFAppState().currentUserRole,
-                                        );
-
-                                        if ((_model.apiResult6yc22Copy
-                                                ?.succeeded ??
-                                            true)) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'Email Sent Successfully. Wait 5-8 Minutes..'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          context.safePop();
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'Email Not Sent ! Try Again'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content:
-                                                  Text('Fill Required Fields'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
+                                            await _model
+                                                .passDocCopyCopy!.reference
+                                                .update(
+                                                    createMonthlyPassRecordData(
+                                              id: _model.passDocCopyCopy
+                                                  ?.reference.id,
+                                            ));
+                                            _model.partydetails2Copy =
+                                                await queryPartyRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (partyRecord) =>
+                                                  partyRecord.where(
+                                                'id',
+                                                isEqualTo:
+                                                    _model.selectedParty?.id,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _model.base64Link2Copy =
+                                                await actions
+                                                    .generateParkingPassPdf(
+                                              _model.partydetails2Copy,
+                                              _model.passDocCopyCopy,
                                             );
-                                          },
-                                        );
-                                      }
+                                            _model.apiResult6yc22Copy =
+                                                await SendMailCall.call(
+                                              mobileNo: _model
+                                                  .partydetails2Copy?.mobile,
+                                              username: _model
+                                                  .partydetails2Copy?.name,
+                                              toEmail:
+                                                  FFAppState().emailForReport,
+                                              fileName: 'Monthly Pass',
+                                              outletName:
+                                                  monthlyPass2OutletRecord
+                                                      ?.name,
+                                              branchName:
+                                                  monthlyPass2OutletRecord
+                                                      ?.branch,
+                                              file: _model.base64Link2Copy,
+                                              reportType: 'Monthly Pass',
+                                              roll:
+                                                  FFAppState().currentUserRole,
+                                            );
 
-                                      safeSetState(() {});
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      'pxcxlkcm' /* Send Mail */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: 150.0,
-                                      height: 45.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
+                                            if ((_model.apiResult6yc22Copy
+                                                    ?.succeeded ??
+                                                true)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: Text(
+                                                        'Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              context.safePop();
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: Text(
+                                                        'Email Not Sent ! Try Again'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Fill Required Fields'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          safeSetState(() {});
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'pxcxlkcm' /* Send Mail */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width: 150.0,
+                                          height: 45.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
+                                                        .titleSmallFamily,
+                                                color: Colors.white,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily),
+                                              ),
+                                          elevation: 0.0,
+                                          borderSide: BorderSide(
+                                            width: 1.0,
                                           ),
-                                      elevation: 0.0,
-                                      borderSide: BorderSide(
-                                        width: 1.0,
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
                                       ),
-                                      borderRadius: BorderRadius.circular(16.0),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ));

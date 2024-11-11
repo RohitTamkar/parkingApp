@@ -94,50 +94,6 @@ class _VehicleEntryCopyWidgetState extends State<VehicleEntryCopyWidget>
     });
 
     animationsMap.addAll({
-      'iconOnPageLoadAnimation1': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.35, 1.35),
-          ),
-          TintEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            color: Color(0xFFFFDD42),
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'iconOnPageLoadAnimation2': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.35, 1.35),
-          ),
-          TintEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1500.0.ms,
-            color: Color(0xFFFFDD42),
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'containerOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: false,
@@ -373,6 +329,50 @@ class _VehicleEntryCopyWidgetState extends State<VehicleEntryCopyWidget>
             duration: 375.0.ms,
             begin: Offset(1.2, 1.2),
             end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.35, 1.35),
+          ),
+          TintEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            color: Color(0xFFFFDD42),
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.35, 1.35),
+          ),
+          TintEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            color: Color(0xFFFFDD42),
+            begin: 0.0,
+            end: 1.0,
           ),
         ],
       ),
@@ -1857,74 +1857,77 @@ class _VehicleEntryCopyWidgetState extends State<VehicleEntryCopyWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 100.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).parkingPrimary,
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 5.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              fillColor:
-                                  FlutterFlowTheme.of(context).parkingPrimary,
-                              icon: Icon(
-                                Icons.dehaze,
-                                color: FlutterFlowTheme.of(context).lineColor,
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
-                                scaffoldKey.currentState!.openDrawer();
-                              },
-                            ),
-                            Text(
-                              FFAppState().outletName,
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .headlineSmallFamily,
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
-                                  ),
-                            ),
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              fillColor:
-                                  FlutterFlowTheme.of(context).parkingPrimary,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color:
+                Flexible(
+                  flex: 4,
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).parkingPrimary,
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 5.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                fillColor:
                                     FlutterFlowTheme.of(context).parkingPrimary,
-                                size: 24.0,
+                                icon: Icon(
+                                  Icons.dehaze,
+                                  color: FlutterFlowTheme.of(context).lineColor,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  scaffoldKey.currentState!.openDrawer();
+                                },
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                              Text(
+                                FFAppState().outletName,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .lineColor,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily),
+                                    ),
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).parkingPrimary,
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: FlutterFlowTheme.of(context)
+                                      .parkingPrimary,
+                                  size: 24.0,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1934,81 +1937,83 @@ class _VehicleEntryCopyWidgetState extends State<VehicleEntryCopyWidget>
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed(
-                            'ParkingCheckIN',
-                            queryParameters: {
-                              'shiftDoc': serializeParam(
-                                widget!.shiftDoc,
-                                ParamType.JSON,
-                              ),
-                              'userRef': serializeParam(
-                                widget!.userRef,
-                                ParamType.DocumentReference,
-                              ),
-                            }.withoutNulls,
-                          );
-                        },
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.6,
-                          height: MediaQuery.sizeOf(context).height * 0.15,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).info,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 12.0,
-                                color: Color(0x26000000),
-                                offset: Offset(
-                                  9.0,
-                                  9.0,
+                      Expanded(
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              'ParkingCheckIN',
+                              queryParameters: {
+                                'shiftDoc': serializeParam(
+                                  widget!.shiftDoc,
+                                  ParamType.JSON,
                                 ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Icon(
-                                    Icons.receipt_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                    size: 30.0,
-                                  ).animateOnPageLoad(animationsMap[
-                                      'iconOnPageLoadAnimation1']!),
+                                'userRef': serializeParam(
+                                  widget!.userRef,
+                                  ParamType.DocumentReference,
                                 ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'v50dusrr' /* Receipt Entry */,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineLarge
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLargeFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLargeFamily),
-                                        ),
+                              }.withoutNulls,
+                            );
+                          },
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.6,
+                            height: MediaQuery.sizeOf(context).height * 0.15,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).info,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 12.0,
+                                  color: Color(0x26000000),
+                                  offset: Offset(
+                                    9.0,
+                                    9.0,
                                   ),
-                                ),
+                                )
                               ],
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Icon(
+                                      Icons.receipt_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      size: 30.0,
+                                    ).animateOnPageLoad(animationsMap[
+                                        'iconOnPageLoadAnimation1']!),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'v50dusrr' /* Receipt Entry */,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineLargeFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLargeFamily),
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -2035,88 +2040,84 @@ class _VehicleEntryCopyWidgetState extends State<VehicleEntryCopyWidget>
                               ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'BillEntry',
-                              queryParameters: {
-                                'shiftDoc': serializeParam(
-                                  widget!.shiftDoc,
-                                  ParamType.JSON,
-                                ),
-                                'userRef': serializeParam(
-                                  widget!.userRef,
-                                  ParamType.DocumentReference,
-                                ),
-                              }.withoutNulls,
-                            );
-                          },
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.6,
-                            height: MediaQuery.sizeOf(context).height * 0.15,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).info,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 12.0,
-                                  color: Color(0x27000000),
-                                  offset: Offset(
-                                    9.0,
-                                    9.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(30.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.moneyBillWaveAlt,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        size: 30.0,
-                                      ).animateOnPageLoad(animationsMap[
-                                          'iconOnPageLoadAnimation2']!),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'faryueeg' /* Bill Entry */,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineLargeFamily),
-                                          ),
-                                    ),
-                                  ),
-                                ],
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            'BillEntry',
+                            queryParameters: {
+                              'shiftDoc': serializeParam(
+                                widget!.shiftDoc,
+                                ParamType.JSON,
                               ),
+                              'userRef': serializeParam(
+                                widget!.userRef,
+                                ParamType.DocumentReference,
+                              ),
+                            }.withoutNulls,
+                          );
+                        },
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.6,
+                          height: MediaQuery.sizeOf(context).height * 0.15,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).info,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 12.0,
+                                color: Color(0x27000000),
+                                offset: Offset(
+                                  9.0,
+                                  9.0,
+                                ),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.moneyBillWaveAlt,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      size: 30.0,
+                                    ).animateOnPageLoad(animationsMap[
+                                        'iconOnPageLoadAnimation2']!),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'faryueeg' /* Bill Entry */,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLargeFamily),
+                                        ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
