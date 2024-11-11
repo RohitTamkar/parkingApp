@@ -1986,7 +1986,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                       Icons.receipt_rounded,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBtnText,
-                                      size: 30.0,
+                                      size: 20.0,
                                     ).animateOnPageLoad(animationsMap[
                                         'iconOnPageLoadAnimation1']!),
                                   ),
@@ -2089,7 +2089,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                         FontAwesomeIcons.moneyBillWaveAlt,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBtnText,
-                                        size: 30.0,
+                                        size: 20.0,
                                       ).animateOnPageLoad(animationsMap[
                                           'iconOnPageLoadAnimation2']!),
                                     ),
