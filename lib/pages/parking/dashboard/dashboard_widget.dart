@@ -144,7 +144,19 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                             size: 20.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed('account');
+                                            context.pushNamed(
+                                              'VehicleEntry',
+                                              queryParameters: {
+                                                'shiftDoc': serializeParam(
+                                                  FFAppState().shiftDetailsNEw,
+                                                  ParamType.JSON,
+                                                ),
+                                                'userRef': serializeParam(
+                                                  currentUserReference,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           },
                                         ),
                                       ),
@@ -287,7 +299,22 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                   size: 30.0,
                                                 ),
                                                 onPressed: () async {
-                                                  context.pushNamed('account');
+                                                  context.pushNamed(
+                                                    'VehicleEntry',
+                                                    queryParameters: {
+                                                      'shiftDoc':
+                                                          serializeParam(
+                                                        FFAppState()
+                                                            .shiftDetailsNEw,
+                                                        ParamType.JSON,
+                                                      ),
+                                                      'userRef': serializeParam(
+                                                        currentUserReference,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
                                                 },
                                               ),
                                             ),
