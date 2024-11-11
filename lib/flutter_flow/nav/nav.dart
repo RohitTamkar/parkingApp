@@ -1545,6 +1545,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'MonthlyPass2',
               path: 'monthlyPass2',
               builder: (context, params) => MonthlyPass2Widget(),
+            ),
+            FFRoute(
+              name: 'VehicleEntryCopy',
+              path: 'vehicleEntryCopy',
+              builder: (context, params) => VehicleEntryCopyWidget(
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.JSON,
+                ),
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

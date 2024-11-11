@@ -19,11 +19,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'vehicle_entry_model.dart';
-export 'vehicle_entry_model.dart';
+import 'vehicle_entry_copy_model.dart';
+export 'vehicle_entry_copy_model.dart';
 
-class VehicleEntryWidget extends StatefulWidget {
-  const VehicleEntryWidget({
+class VehicleEntryCopyWidget extends StatefulWidget {
+  const VehicleEntryCopyWidget({
     super.key,
     this.shiftDoc,
     this.userRef,
@@ -33,12 +33,12 @@ class VehicleEntryWidget extends StatefulWidget {
   final DocumentReference? userRef;
 
   @override
-  State<VehicleEntryWidget> createState() => _VehicleEntryWidgetState();
+  State<VehicleEntryCopyWidget> createState() => _VehicleEntryCopyWidgetState();
 }
 
-class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
+class _VehicleEntryCopyWidgetState extends State<VehicleEntryCopyWidget>
     with TickerProviderStateMixin {
-  late VehicleEntryModel _model;
+  late VehicleEntryCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   var hasContainerTriggered1 = false;
@@ -60,7 +60,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => VehicleEntryModel());
+    _model = createModel(context, () => VehicleEntryCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -399,7 +399,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
     context.watch<FFAppState>();
 
     return Title(
-        title: 'VehicleEntry',
+        title: 'VehicleEntryCopy',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -845,7 +845,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'girymwqa' /* Outlet List */,
+                                                          'b1rnijvv' /* Outlet List */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1037,7 +1037,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'xfwsb9f7' /* Masters */,
+                                                          '591fyojm' /* Masters */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1197,7 +1197,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'ddtm2n33' /* Reports */,
+                                                            'e8u76t60' /* Reports */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1325,7 +1325,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'pyt7bvt2' /* Monthly Pass */,
+                                                          'z8404ezo' /* Monthly Pass */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1487,7 +1487,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'n88a9knr' /* Subscription */,
+                                                          'ck98grh8' /* Subscription */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1631,7 +1631,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          '5zj5ra3u' /* Printer Setting */,
+                                                          'k17yqesx' /* Printer Setting */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1809,7 +1809,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'vr2lhcdy' /* Logout */,
+                                                          'tvo53wtm' /* Logout */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1989,7 +1989,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                   flex: 3,
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'vuikjnjv' /* Receipt Entry */,
+                                      'v50dusrr' /* Receipt Entry */,
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
@@ -2018,7 +2018,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                             0.0, 25.0, 0.0, 25.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'w60jae91' /* OR */,
+                            '4jilxxsu' /* OR */,
                           ),
                           style: FlutterFlowTheme.of(context)
                               .displayLarge
@@ -2096,7 +2096,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                     flex: 3,
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        '55i9w879' /* Bill Entry */,
+                                        'faryueeg' /* Bill Entry */,
                                       ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
