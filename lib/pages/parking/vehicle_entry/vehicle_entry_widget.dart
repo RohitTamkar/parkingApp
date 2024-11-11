@@ -1976,45 +1976,42 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                               ],
                               borderRadius: BorderRadius.circular(30.0),
                             ),
-                            child: Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Icon(
-                                      Icons.receipt_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
-                                      size: 20.0,
-                                    ).animateOnPageLoad(animationsMap[
-                                        'iconOnPageLoadAnimation1']!),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'vuikjnjv' /* Receipt Entry */,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLargeFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineLargeFamily),
-                                          ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Icon(
+                                    Icons.receipt_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                    size: 20.0,
+                                  ).animateOnPageLoad(animationsMap[
+                                      'iconOnPageLoadAnimation1']!),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'vuikjnjv' /* Receipt Entry */,
                                     ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLargeFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLargeFamily),
+                                        ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
