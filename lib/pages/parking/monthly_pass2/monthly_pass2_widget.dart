@@ -208,17 +208,6 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
-                                          offset: Offset(
-                                            2.0,
-                                            5.0,
-                                          ),
-                                        )
-                                      ],
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Padding(
@@ -993,7 +982,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                                     .bodySmallFamily),
                                                       ),
                                                 ),
-                                                Expanded(
+                                                Flexible(
                                                   child: TextFormField(
                                                     controller: _model
                                                         .textFieldAmtTextController,

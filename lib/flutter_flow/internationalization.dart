@@ -23176,6 +23176,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MonthlyPass
   {
+    '6e9ne09o': {
+      'en': 'Monthly Pass',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'drej0p4k': {
       'en': 'Select Customer',
       'hi': '',
@@ -23260,28 +23267,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    '4ksaeywi': {
-      'en': 'Remarks',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'c6v5siav': {
-      'en': 'Enter Any Remark',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'whq7ohfc': {
+    'wyo4oq8o': {
       'en': 'Amount ',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'fmav8aco': {
+    'vnkszzot': {
       'en': '0',
       'hi': '',
       'kn': '',
@@ -23297,13 +23290,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3d6rzj9a': {
       'en': 'Send Mail',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'pxqj0jku': {
-      'en': 'Monthly Pass',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -23684,7 +23670,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // parkingReportNew
   {
-    '5uwkc8cf': {
+    'pxqj0jku': {
       'en': 'Reports',
       'hi': '',
       'kn': '',
@@ -24129,7 +24115,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'q2u5wpv0': {
+    'fmav8aco': {
       'en': '0',
       'hi': '',
       'kn': '',
@@ -24151,86 +24137,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'sj2dg2dj': {
-      'en': 'Home',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-  },
-  // VehicleEntryCopy
-  {
-    'b1rnijvv': {
-      'en': 'Outlet List',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '591fyojm': {
-      'en': 'Masters',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'e8u76t60': {
-      'en': 'Reports',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'z8404ezo': {
-      'en': 'Monthly Pass',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'ck98grh8': {
-      'en': 'Subscription',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'k17yqesx': {
-      'en': 'Printer Setting',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'tvo53wtm': {
-      'en': 'Logout',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'v50dusrr': {
-      'en': 'Receipt Entry',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '4jilxxsu': {
-      'en': 'OR',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'faryueeg': {
-      'en': 'Bill Entry',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'qrzflmnu': {
       'en': 'Home',
       'hi': '',
       'kn': '',

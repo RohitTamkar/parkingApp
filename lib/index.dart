@@ -235,5 +235,3 @@ export '/pages/parking/dailly_collection_report/dailly_collection_report_widget.
     show DaillyCollectionReportWidget;
 export '/pages/parking/monthly_pass2/monthly_pass2_widget.dart'
     show MonthlyPass2Widget;
-export '/pages/parking/vehicle_entry_copy/vehicle_entry_copy_widget.dart'
-    show VehicleEntryCopyWidget;

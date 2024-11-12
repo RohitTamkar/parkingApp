@@ -153,7 +153,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
-                                '5uwkc8cf' /* Reports */,
+                                'pxqj0jku' /* Reports */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
