@@ -24095,7 +24095,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'n3o5r36k': {
-      'en': 'Message',
+      'en': 'Pass Type',
       'hi': '',
       'kn': '',
       'mr': '',

@@ -798,7 +798,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                              'n3o5r36k' /* Message */,
+                                                              'n3o5r36k' /* Pass Type */,
                                                             ),
                                                             icon: Icon(
                                                               Icons
