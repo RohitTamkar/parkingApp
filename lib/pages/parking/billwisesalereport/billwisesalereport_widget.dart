@@ -37,12 +37,14 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().filterDate = getCurrentTimestamp.toString();
-      FFAppState().update(() {});
-      FFAppState().filterDate = functions.getDayId();
+      FFAppState().filterDate = dateTimeFormat(
+        "d/M/y",
+        getCurrentTimestamp,
+        locale: FFLocalizations.of(context).languageCode,
+      );
       FFAppState().startDate = getCurrentTimestamp;
       FFAppState().endDate = getCurrentTimestamp;
-      FFAppState().update(() {});
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
