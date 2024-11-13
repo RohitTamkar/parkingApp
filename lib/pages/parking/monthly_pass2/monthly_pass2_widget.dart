@@ -63,7 +63,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
       stream: queryOutletRecord(
         queryBuilder: (outletRecord) => outletRecord.where(
           'id',
-          isEqualTo: FFAppState().outletId,
+          isEqualTo: FFAppState().outletIdRef?.id,
         ),
         singleRecord: true,
       ),
