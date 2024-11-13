@@ -283,7 +283,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                       .primaryText,
                                               selectedDateTimeBackgroundColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .alternate,
                                               selectedDateTimeForegroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .info,
@@ -394,7 +394,7 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                       .primaryText,
                                               selectedDateTimeBackgroundColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .alternate,
                                               selectedDateTimeForegroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .info,

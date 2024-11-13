@@ -193,7 +193,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           FFAppState().update(() {});
                                         },
                                       ),
-                                    if (FFAppState().showDiscount)
+                                    if (false)
                                       FlutterFlowIconButton(
                                         borderColor:
                                             FlutterFlowTheme.of(context)
@@ -412,7 +412,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         ],
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 10.0)),
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                               ),
                               if (!FFAppState().showDiscount)
@@ -1311,8 +1311,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                   FFButtonWidget(
                                     onPressed: () async {
                                       var _shouldSetState = false;
-                                      if (_model.textController1.text != null &&
-                                          _model.textController1.text != '') {
+                                      if ((_model.textController1.text !=
+                                                  null &&
+                                              _model.textController1.text !=
+                                                  '') &&
+                                          (_model.dropDownvechicleValue !=
+                                                  null &&
+                                              _model.dropDownvechicleValue !=
+                                                  '')) {
                                         _model.countdatagetPRINT =
                                             await queryInvoiceRecordOnce(
                                           parent: FFAppState().outletIdRef,
@@ -1675,7 +1681,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             'VehicleEntry',
                                             queryParameters: {
                                               'shiftDoc': serializeParam(
-                                                _model.shiftSummarRkiosk,
+                                                FFAppState().shiftDetailsNEw,
                                                 ParamType.JSON,
                                               ),
                                               'userRef': serializeParam(
@@ -1714,7 +1720,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
-                                              content: Text('Add Vechicle No'),
+                                              content: Text(
+                                                  'Add Vechicle No & Vehicle Type'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
@@ -1771,8 +1778,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                   FFButtonWidget(
                                     onPressed: () async {
                                       var _shouldSetState = false;
-                                      if (_model.textController1.text != null &&
-                                          _model.textController1.text != '') {
+                                      if ((_model.textController1.text !=
+                                                  null &&
+                                              _model.textController1.text !=
+                                                  '') &&
+                                          (_model.dropDownvechicleValue !=
+                                                  null &&
+                                              _model.dropDownvechicleValue !=
+                                                  '')) {
                                         _model.countdataget =
                                             await queryInvoiceRecordOnce(
                                           parent: FFAppState().outletIdRef,
@@ -2039,7 +2052,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             'VehicleEntry',
                                             queryParameters: {
                                               'shiftDoc': serializeParam(
-                                                _model.shiftSummarRkiosk2,
+                                                FFAppState().shiftDetailsNEw,
                                                 ParamType.JSON,
                                               ),
                                               'userRef': serializeParam(
@@ -2079,7 +2092,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
-                                              content: Text('Add Vechicle No'),
+                                              content: Text(
+                                                  'Add Vechicle No & Vehicle Type'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>

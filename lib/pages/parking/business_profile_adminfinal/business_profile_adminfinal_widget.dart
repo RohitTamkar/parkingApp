@@ -39,14 +39,10 @@ class _BusinessProfileAdminfinalWidgetState
   late BusinessProfileAdminfinalModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasIconButtonTriggered1 = false;
+  var hasIconButtonTriggered2 = false;
   var hasContainerTriggered1 = false;
   var hasContainerTriggered2 = false;
-  var hasIconButtonTriggered1 = false;
-  var hasContainerTriggered3 = false;
-  var hasContainerTriggered4 = false;
-  var hasIconButtonTriggered2 = false;
-  var hasContainerTriggered5 = false;
-  var hasContainerTriggered6 = false;
   final animationsMap = <String, AnimationInfo>{};
 
   @override
@@ -84,40 +80,6 @@ class _BusinessProfileAdminfinalWidgetState
     });
 
     animationsMap.addAll({
-      'containerOnActionTriggerAnimation1': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: false,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 300.0.ms,
-            begin: Offset(0.88, 0.88),
-            end: Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'containerOnActionTriggerAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 375.0.ms,
-            begin: 1.0,
-            end: 0.8,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 375.0.ms,
-            begin: Offset(1.2, 1.2),
-            end: Offset(0.0, 0.0),
-          ),
-        ],
-      ),
       'iconButtonOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: false,
@@ -128,40 +90,6 @@ class _BusinessProfileAdminfinalWidgetState
             duration: 300.0.ms,
             begin: Offset(0.3, 0.3),
             end: Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'containerOnActionTriggerAnimation3': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: false,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 300.0.ms,
-            begin: Offset(0.88, 0.88),
-            end: Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'containerOnActionTriggerAnimation4': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 375.0.ms,
-            begin: 1.0,
-            end: 0.8,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 375.0.ms,
-            begin: Offset(1.2, 1.2),
-            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -178,7 +106,7 @@ class _BusinessProfileAdminfinalWidgetState
           ),
         ],
       ),
-      'containerOnActionTriggerAnimation5': AnimationInfo(
+      'containerOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: false,
         effectsBuilder: () => [
@@ -191,7 +119,7 @@ class _BusinessProfileAdminfinalWidgetState
           ),
         ],
       ),
-      'containerOnActionTriggerAnimation6': AnimationInfo(
+      'containerOnActionTriggerAnimation2': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -628,36 +556,6 @@ class _BusinessProfileAdminfinalWidgetState
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    if (animationsMap[
-                                                            'containerOnActionTriggerAnimation2'] !=
-                                                        null) {
-                                                      safeSetState(() =>
-                                                          hasContainerTriggered2 =
-                                                              true);
-                                                      SchedulerBinding.instance
-                                                          .addPostFrameCallback((_) async =>
-                                                              await animationsMap[
-                                                                      'containerOnActionTriggerAnimation2']!
-                                                                  .controller
-                                                                  .forward(
-                                                                      from:
-                                                                          0.0));
-                                                    }
-                                                    if (animationsMap[
-                                                            'containerOnActionTriggerAnimation1'] !=
-                                                        null) {
-                                                      safeSetState(() =>
-                                                          hasContainerTriggered1 =
-                                                              true);
-                                                      SchedulerBinding.instance
-                                                          .addPostFrameCallback((_) async =>
-                                                              await animationsMap[
-                                                                      'containerOnActionTriggerAnimation1']!
-                                                                  .controller
-                                                                  .forward(
-                                                                      from:
-                                                                          0.0));
-                                                    }
                                                     await showDialog(
                                                       context: context,
                                                       builder:
@@ -710,11 +608,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                                       .circular(
                                                                           0.0),
                                                             ),
-                                                          ).animateOnActionTrigger(
-                                                              animationsMap[
-                                                                  'containerOnActionTriggerAnimation2']!,
-                                                              hasBeenTriggered:
-                                                                  hasContainerTriggered2),
+                                                          ),
                                                         Align(
                                                           alignment:
                                                               AlignmentDirectional(
@@ -757,11 +651,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                       ],
                                                     ),
                                                   ),
-                                                ).animateOnActionTrigger(
-                                                    animationsMap[
-                                                        'containerOnActionTriggerAnimation1']!,
-                                                    hasBeenTriggered:
-                                                        hasContainerTriggered1),
+                                                ),
                                             ],
                                           ),
                                         ),
@@ -1166,11 +1056,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                                           .circular(
                                                                               0.0),
                                                                 ),
-                                                              ).animateOnActionTrigger(
-                                                                  animationsMap[
-                                                                      'containerOnActionTriggerAnimation4']!,
-                                                                  hasBeenTriggered:
-                                                                      hasContainerTriggered4),
+                                                              ),
                                                               Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
@@ -1192,30 +1078,6 @@ class _BusinessProfileAdminfinalWidgetState
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
-                                                                    if (animationsMap[
-                                                                            'containerOnActionTriggerAnimation4'] !=
-                                                                        null) {
-                                                                      safeSetState(() =>
-                                                                          hasContainerTriggered4 =
-                                                                              true);
-                                                                      SchedulerBinding
-                                                                          .instance
-                                                                          .addPostFrameCallback((_) async => await animationsMap['containerOnActionTriggerAnimation4']!
-                                                                              .controller
-                                                                              .forward(from: 0.0));
-                                                                    }
-                                                                    if (animationsMap[
-                                                                            'containerOnActionTriggerAnimation3'] !=
-                                                                        null) {
-                                                                      safeSetState(() =>
-                                                                          hasContainerTriggered3 =
-                                                                              true);
-                                                                      SchedulerBinding
-                                                                          .instance
-                                                                          .addPostFrameCallback((_) async => await animationsMap['containerOnActionTriggerAnimation3']!
-                                                                              .controller
-                                                                              .forward(from: 0.0));
-                                                                    }
                                                                     FFAppState()
                                                                             .outletIdRef =
                                                                         listViewOutletRecord
@@ -1601,11 +1463,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                             ],
                                                           ),
                                                         ),
-                                                      ).animateOnActionTrigger(
-                                                          animationsMap[
-                                                              'containerOnActionTriggerAnimation3']!,
-                                                          hasBeenTriggered:
-                                                              hasContainerTriggered3),
+                                                      ),
                                                     );
                                                   },
                                                 );
@@ -1690,9 +1548,9 @@ class _BusinessProfileAdminfinalWidgetState
                                                   ),
                                                 ).animateOnActionTrigger(
                                                     animationsMap[
-                                                        'containerOnActionTriggerAnimation6']!,
+                                                        'containerOnActionTriggerAnimation2']!,
                                                     hasBeenTriggered:
-                                                        hasContainerTriggered6),
+                                                        hasContainerTriggered2),
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -1745,9 +1603,9 @@ class _BusinessProfileAdminfinalWidgetState
                                           ),
                                         ).animateOnActionTrigger(
                                             animationsMap[
-                                                'containerOnActionTriggerAnimation5']!,
+                                                'containerOnActionTriggerAnimation1']!,
                                             hasBeenTriggered:
-                                                hasContainerTriggered5),
+                                                hasContainerTriggered1),
                                     ],
                                   ),
                                 ),

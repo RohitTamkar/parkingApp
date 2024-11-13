@@ -448,7 +448,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                       .primaryText,
                                               selectedDateTimeBackgroundColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .alternate,
                                               selectedDateTimeForegroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .info,

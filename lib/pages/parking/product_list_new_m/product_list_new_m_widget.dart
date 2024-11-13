@@ -90,7 +90,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('mastersNew');
+                                  context.goNamed('mastersNew');
                                 },
                               ),
                               AutoSizeText(

@@ -115,9 +115,9 @@ export '/pages/parking/business_profile_adminfinal/business_profile_adminfinal_w
     show BusinessProfileAdminfinalWidget;
 export '/pages/parking/outletlist_page/outletlist_page_widget.dart'
     show OutletlistPageWidget;
-export '/pages/add_outlet_page/add_outlet_page_widget.dart'
+export '/pages/parking/add_outlet_page/add_outlet_page_widget.dart'
     show AddOutletPageWidget;
-export '/pages/create_user_profile_new_p/create_user_profile_new_p_widget.dart'
+export '/pages/parking/create_user_profile_new_p/create_user_profile_new_p_widget.dart'
     show CreateUserProfileNewPWidget;
 export '/pages/parking/add_business_profile/add_business_profile_widget.dart'
     show AddBusinessProfileWidget;

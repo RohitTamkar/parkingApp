@@ -136,7 +136,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                 size: 30.0,
                               ),
                               onPressed: () async {
-                                context.pushNamed(
+                                context.goNamed(
                                   'VehicleEntry',
                                   queryParameters: {
                                     'shiftDoc': serializeParam(

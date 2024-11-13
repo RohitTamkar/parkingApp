@@ -18046,14 +18046,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'eobswzee': {
-      'en': 'User Account',
+      'en': 'Vehicle List',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
     'sovmbdvk': {
-      'en': 'in Progress',
+      'en': 'All check-in Vehicle List ',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -24045,6 +24045,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'er8qgd5z': {
+      'en': 'Mobile No.',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'hxrqccky': {
       'en': 'Vehicle No',
       'hi': '',
@@ -26297,6 +26304,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     '2ia8m9dw': {
+      'en': 'Please choose an option from the dropdown',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // passwordCopy
+  {
+    'v1iobt2m': {
+      'en': 'Access',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'oa0dstik': {
+      'en': 'Enter Password',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '1sqom58n': {
+      'en': 'Login',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'n3snmx3i': {
+      'en': 'Cancel',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'f7gveq36': {
+      'en': 'Please enter valid email id',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'phqxtzg9': {
       'en': 'Please choose an option from the dropdown',
       'hi': '',
       'kn': '',

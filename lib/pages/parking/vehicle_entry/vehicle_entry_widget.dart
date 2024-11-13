@@ -1961,7 +1961,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                           },
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.6,
-                            height: MediaQuery.sizeOf(context).height * 0.1,
+                            height: MediaQuery.sizeOf(context).height * 0.15,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).info,
                               boxShadow: [
@@ -2062,7 +2062,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                           },
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.6,
-                            height: MediaQuery.sizeOf(context).height * 0.1,
+                            height: MediaQuery.sizeOf(context).height * 0.15,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).info,
                               boxShadow: [

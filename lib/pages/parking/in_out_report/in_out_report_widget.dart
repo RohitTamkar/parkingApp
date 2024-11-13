@@ -286,7 +286,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                         .primaryText,
                                                 selectedDateTimeBackgroundColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .alternate,
                                                 selectedDateTimeForegroundColor:
                                                     FlutterFlowTheme.of(context)
                                                         .info,
@@ -399,7 +399,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                         .primaryText,
                                                 selectedDateTimeBackgroundColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .alternate,
                                                 selectedDateTimeForegroundColor:
                                                     FlutterFlowTheme.of(context)
                                                         .info,

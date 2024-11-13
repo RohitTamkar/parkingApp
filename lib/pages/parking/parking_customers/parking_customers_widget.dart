@@ -2423,17 +2423,17 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget>
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               FlutterFlowIconButton(
-                                borderRadius: 8.0,
-                                buttonSize: 40.0,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).parkingPrimary,
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 45.0,
                                 icon: Icon(
-                                  Icons.dehaze,
+                                  Icons.chevron_left,
                                   color: FlutterFlowTheme.of(context).lineColor,
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  scaffoldKey.currentState!.openDrawer();
+                                  context.pop();
                                 },
                               ),
                               Text(

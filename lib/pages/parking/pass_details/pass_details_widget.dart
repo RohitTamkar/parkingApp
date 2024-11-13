@@ -134,7 +134,7 @@ class _PassDetailsWidgetState extends State<PassDetailsWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pop();
+                                    context.safePop();
                                   },
                                 ),
                                 AutoSizeText(

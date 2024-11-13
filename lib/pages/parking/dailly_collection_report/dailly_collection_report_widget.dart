@@ -449,7 +449,7 @@ class _DaillyCollectionReportWidgetState
                                                       .primaryText,
                                               selectedDateTimeBackgroundColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .alternate,
                                               selectedDateTimeForegroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .info,
