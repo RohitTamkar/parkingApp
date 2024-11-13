@@ -355,8 +355,12 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     0.0, 0.0, 0.0, 20.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().filterDate =
-                                        functions.getDayId();
+                                    FFAppState().filterDate = dateTimeFormat(
+                                      "d/M/y",
+                                      getCurrentTimestamp,
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
+                                    );
                                     FFAppState().startDate =
                                         getCurrentTimestamp;
                                     FFAppState().endDate = getCurrentTimestamp;
