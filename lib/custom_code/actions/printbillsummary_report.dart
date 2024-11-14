@@ -284,14 +284,6 @@ Future printbillsummaryReport(
       for (var invoice in dataDocument) {
         totalAmt += invoice.finalBillAmt;
 
-        String date;
-        if (invoice.checkOutTime != 0) {
-          date = DateFormat('dd/MM').format(
-              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime));
-        } else {
-          date = 'No Out';
-        }
-
         bytes += generator.row([
           PosColumn(
             text: invoice.count.toString(),
@@ -312,7 +304,9 @@ Future printbillsummaryReport(
                 bold: false,
               )),
           PosColumn(
-            text: date,
+            text: DateFormat('dd/MM').format(
+              DateTime.fromMillisecondsSinceEpoch(invoice.checkOutTime),
+            ),
             width: 3,
             styles: PosStyles(
               height: PosTextSize.size1,

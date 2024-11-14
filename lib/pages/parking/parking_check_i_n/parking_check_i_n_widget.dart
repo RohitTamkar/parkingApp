@@ -483,13 +483,20 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 safeSetState(() {
                                                   _model.textController1?.text =
                                                       _model.prd5456!.vehicleNo;
-                                                  _model.textController1
-                                                          ?.selection =
-                                                      TextSelection.collapsed(
-                                                          offset: _model
-                                                              .textController1!
-                                                              .text
-                                                              .length);
+                                                  _model.textFieldFocusNode
+                                                      ?.requestFocus();
+                                                  WidgetsBinding.instance
+                                                      .addPostFrameCallback(
+                                                          (_) {
+                                                    _model.textController1
+                                                            ?.selection =
+                                                        TextSelection.collapsed(
+                                                      offset: _model
+                                                          .textController1!
+                                                          .text
+                                                          .length,
+                                                    );
+                                                  });
                                                 });
                                                 safeSetState(() {
                                                   _model.dropDownvechicleValueController
@@ -772,7 +779,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           ),
                                           autofocus: false,
                                           textCapitalization:
-                                              TextCapitalization.words,
+                                              TextCapitalization.characters,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -897,13 +904,19 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             safeSetState(() {
                                               _model.textController1?.text =
                                                   FFAppState().resultText;
-                                              _model.textController1
-                                                      ?.selection =
-                                                  TextSelection.collapsed(
-                                                      offset: _model
-                                                          .textController1!
-                                                          .text
-                                                          .length);
+                                              _model.textFieldFocusNode
+                                                  ?.requestFocus();
+                                              WidgetsBinding.instance
+                                                  .addPostFrameCallback((_) {
+                                                _model.textController1
+                                                        ?.selection =
+                                                    TextSelection.collapsed(
+                                                  offset: _model
+                                                      .textController1!
+                                                      .text
+                                                      .length,
+                                                );
+                                              });
                                             });
                                             FFAppState().showNumber = true;
                                             safeSetState(() {});

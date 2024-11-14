@@ -90,7 +90,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  context.pushNamed('mastersNew');
                                 },
                               ),
                               AutoSizeText(

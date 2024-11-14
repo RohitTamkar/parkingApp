@@ -359,7 +359,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                 safeSetState(() {});
                               },
                               autofocus: false,
-                              textCapitalization: TextCapitalization.words,
+                              textCapitalization: TextCapitalization.characters,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: FFLocalizations.of(context).getText(

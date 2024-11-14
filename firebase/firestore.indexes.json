@@ -1,20 +1,6 @@
 {
   "indexes": [
     {
-      "collectionGroup": "INVOICE",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "dayId",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "invoiceDate",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "CATEGORY",
       "queryScope": "COLLECTION",
       "fields": [
@@ -57,18 +43,6 @@
         {
           "fieldPath": "invoiceDate",
           "order": "ASCENDING"
-        }
-      ]
-    }
-  ],
-  "fieldOverrides": [
-    {
-      "collectionGroup": "QR_TRANSACTIONS",
-      "fieldPath": "orderId",
-      "indexes": [
-        {
-          "order": "ASCENDING",
-          "queryScope": "COLLECTION_GROUP"
         }
       ]
     }

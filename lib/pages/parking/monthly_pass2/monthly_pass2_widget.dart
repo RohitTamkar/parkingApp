@@ -135,7 +135,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'l2q22mw7' /* Monthly Pass */,
+                                  '1te0yrbd' /* Monthly Pass */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall

@@ -247,8 +247,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           );
         }
       }
-
-      context.pushNamed('LoginPageNew');
     });
 
     animationsMap.addAll({

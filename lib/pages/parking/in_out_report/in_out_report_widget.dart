@@ -188,7 +188,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                     ),
                     title: Text(
                       FFLocalizations.of(context).getText(
-                        'zvj76iyi' /* In \ Out Report */,
+                        'a4rhv936' /* In \ Out Report */,
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(

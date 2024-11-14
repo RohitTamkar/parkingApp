@@ -1163,37 +1163,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                           ),
                                                         }.withoutNulls,
                                                       );
-                                                    } else {
-                                                      context.pushNamed(
-                                                        'ProductAndListNew',
-                                                        queryParameters: {
-                                                          'doc': serializeParam(
-                                                            widget!.doc,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                          'shiftDetails':
-                                                              serializeParam(
-                                                            _model
-                                                                .shiftDetailsNew2,
-                                                            ParamType.JSON,
-                                                          ),
-                                                          'taxcollection':
-                                                              serializeParam(
-                                                            _model
-                                                                .taxcollection,
-                                                            ParamType.Document,
-                                                            isList: true,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'taxcollection': _model
-                                                              .taxcollection,
-                                                        },
-                                                      );
                                                     }
-
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                     return;
@@ -1281,37 +1251,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                           ),
                                                         }.withoutNulls,
                                                       );
-                                                    } else {
-                                                      context.pushNamed(
-                                                        'ProductAndListNew',
-                                                        queryParameters: {
-                                                          'doc': serializeParam(
-                                                            widget!.doc,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                          'shiftDetails':
-                                                              serializeParam(
-                                                            widget!
-                                                                .shiftDetails,
-                                                            ParamType.JSON,
-                                                          ),
-                                                          'taxcollection':
-                                                              serializeParam(
-                                                            _model
-                                                                .taxcollection,
-                                                            ParamType.Document,
-                                                            isList: true,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'taxcollection': _model
-                                                              .taxcollection,
-                                                        },
-                                                      );
                                                     }
-
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                     return;

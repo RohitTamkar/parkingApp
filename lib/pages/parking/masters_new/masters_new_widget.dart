@@ -122,7 +122,20 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.safePop();
+                                      context.pushNamed(
+                                        'VehicleEntry',
+                                        queryParameters: {
+                                          'shiftDoc': serializeParam(
+                                            FFAppState().shiftDetailsNEw,
+                                            ParamType.JSON,
+                                          ),
+                                          'userRef': serializeParam(
+                                            mastersNewUserProfileRecord
+                                                ?.reference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     },
                                   ),
                                   InkWell(

@@ -76,27 +76,15 @@ class _PhoneAuthPageWidgetState extends State<PhoneAuthPageWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('welcomeScreenNew');
-                                  },
-                                  onLongPress: () async {
-                                    context.pushNamed('welcomeScreenNew');
-                                  },
-                                  child: Container(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.asset(
-                                          'assets/images/IMG_20220412_140945.png',
-                                        ).image,
-                                      ),
+                                child: Container(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: Image.asset(
+                                        'assets/images/IMG_20220412_140945.png',
+                                      ).image,
                                     ),
                                   ),
                                 ),

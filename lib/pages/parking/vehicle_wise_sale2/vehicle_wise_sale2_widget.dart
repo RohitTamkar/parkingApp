@@ -187,7 +187,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                   ),
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      'orb6t51y' /* Vehicle Parking Report */,
+                      'r1ndf8dh' /* Vehicle Parking Report */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                           fontFamily:
