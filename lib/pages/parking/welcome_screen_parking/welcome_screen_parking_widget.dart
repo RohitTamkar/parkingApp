@@ -113,7 +113,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           outletName: '',
           outletId: '',
           board: '',
-          serial: '',
+          serial: FFAppState().dId,
           branch: '',
         ));
         _model.refnew = DeviceRecord.getDocumentFromData(
@@ -139,7 +139,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
               outletName: '',
               outletId: '',
               board: '',
-              serial: '',
+              serial: FFAppState().dId,
               branch: '',
             ),
             deviceRecordReference);
@@ -149,93 +149,65 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ));
       }
 
-      if (true == true) {
-        _model.userProfile = await queryUserProfileRecordOnce(
-          queryBuilder: (userProfileRecord) => userProfileRecord.where(
-            'mobile',
-            isEqualTo: FFAppState().currentMobileString,
-          ),
-          singleRecord: true,
-        ).then((s) => s.firstOrNull);
-        _model.shiftdetailfirebase = await queryShiftRecordOnce(
-          parent: FFAppState().outletIdRef,
-        );
-        _model.devicedetails23 = await queryOutletRecordOnce(
-          queryBuilder: (outletRecord) => outletRecord.where(
-            'id',
-            isEqualTo: FFAppState().outletIdRef?.id,
-          ),
-          singleRecord: true,
-        ).then((s) => s.firstOrNull);
-        FFAppState().userName = _model.userProfile!.name;
-        FFAppState().outletName = _model.devicedetails23!.name;
-        safeSetState(() {});
-        _model.internetconnection = await actions.checkInternetConnection();
-        if (true == true) {
-          if (true == true) {
-            if ((_model.userProfile != null) == true) {
-              _model.shiftDetailsNewcar = await actions.shiftDetailNewpark(
-                _model.shiftdetailfirebase?.toList(),
+      _model.deviceexist = await queryDeviceRecordOnce(
+        queryBuilder: (deviceRecord) => deviceRecord.where(
+          'deviceId',
+          isEqualTo: FFAppState().dId,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      _model.userProfile = await queryUserProfileRecordOnce(
+        queryBuilder: (userProfileRecord) => userProfileRecord.where(
+          'mobile',
+          isEqualTo: FFAppState().currentMobileString,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      _model.shiftdetailfirebase = await queryShiftRecordOnce(
+        parent: FFAppState().outletIdRef,
+      );
+      _model.outletdetails23 = await queryOutletRecordOnce(
+        queryBuilder: (outletRecord) => outletRecord.where(
+          'id',
+          isEqualTo: FFAppState().outletIdRef?.id,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      FFAppState().userName = _model.userProfile!.name;
+      FFAppState().outletName = _model.outletdetails23!.name;
+      safeSetState(() {});
+      if (_model.deviceexist!.active && _model.outletdetails23!.active) {
+        if ((_model.userProfile != null) == true) {
+          _model.shiftDetailsNewcar = await actions.shiftDetailNewpark(
+            _model.shiftdetailfirebase?.toList(),
+          );
+          FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
+          safeSetState(() {});
+          await Future.delayed(const Duration(milliseconds: 2000));
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            enableDrag: false,
+            context: context,
+            builder: (context) {
+              return Padding(
+                padding: MediaQuery.viewInsetsOf(context),
+                child: OpeningBalNewCarWidget(
+                  shiftDetails: _model.shiftDetailsNewcar,
+                  doc: _model.userProfile?.reference,
+                ),
               );
-              FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
-              safeSetState(() {});
-              await Future.delayed(const Duration(milliseconds: 2000));
-              await showModalBottomSheet(
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                enableDrag: false,
-                context: context,
-                builder: (context) {
-                  return Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: OpeningBalNewCarWidget(
-                      shiftDetails: _model.shiftDetailsNewcar,
-                      doc: _model.userProfile?.reference,
-                    ),
-                  );
-                },
-              ).then((value) => safeSetState(() {}));
+            },
+          ).then((value) => safeSetState(() {}));
 
-              return;
-            } else {
-              await showDialog(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text('Invalid Password'),
-                    content: Text('Authentication faild! Invalid Password!'),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(alertDialogContext),
-                        child: Text('Ok'),
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
-          } else {
-            await showDialog(
-              context: context,
-              builder: (alertDialogContext) {
-                return AlertDialog(
-                  content: Text('Device is not Active Contact Admin!'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext),
-                      child: Text('Ok'),
-                    ),
-                  ],
-                );
-              },
-            );
-          }
+          return;
         } else {
           await showDialog(
             context: context,
             builder: (alertDialogContext) {
               return AlertDialog(
-                content: Text('Check Internet connection!'),
+                title: Text('Invalid Password'),
+                content: Text('Authentication faild! Invalid Password!'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -246,6 +218,23 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
             },
           );
         }
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              content: Text('Device is not Active Contact Admin!'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+
+        context.pushNamed('Deviceqr');
       }
     });
 

@@ -614,6 +614,177 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'MonthlyPass2',
               path: 'monthlyPass2',
               builder: (context, params) => MonthlyPass2Widget(),
+            ),
+            FFRoute(
+              name: 'WebDashboard',
+              path: 'webDashboard',
+              builder: (context, params) => WebDashboardWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+                shiftRef: params.getParam(
+                  'shiftRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'SHIFT'],
+                ),
+                userId: params.getParam(
+                  'userId',
+                  ParamType.String,
+                ),
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebOutletListPage',
+              path: 'webOutletListPage',
+              builder: (context, params) => WebOutletListPageWidget(
+                mobileNo: params.getParam(
+                  'mobileNo',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebCategoryList',
+              path: 'webCategoryList',
+              builder: (context, params) => WebCategoryListWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebAddCategory',
+              path: 'webAddCategory',
+              builder: (context, params) => WebAddCategoryWidget(
+                codeLen: params.getParam(
+                  'codeLen',
+                  ParamType.int,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebEditCategory',
+              path: 'webEditCategory',
+              builder: (context, params) => WebEditCategoryWidget(
+                catRef: params.getParam(
+                  'catRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'CATEGORY'],
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebVehicleWiseSaleReport',
+              path: 'webVehicleWiseSaleReport',
+              requireAuth: true,
+              builder: (context, params) => WebVehicleWiseSaleReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebInOutReport',
+              path: 'WebInOut',
+              builder: (context, params) => WebInOutReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebTodaysSummaryReport',
+              path: 'webTodaysSummaryReport',
+              builder: (context, params) => WebTodaysSummaryReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebBillwisesaleReport',
+              path: 'webBillwisesaleReport',
+              builder: (context, params) => WebBillwisesaleReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebDailyCollectionReport',
+              path: 'webDailyCollectionReport',
+              builder: (context, params) => WebDailyCollectionReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebUnbilledReceipts',
+              path: 'webUnbilledReceipts',
+              builder: (context, params) => WebUnbilledReceiptsWidget(),
+            ),
+            FFRoute(
+              name: 'WebPassDetails',
+              path: 'webPassDetails',
+              builder: (context, params) => WebPassDetailsWidget(),
+            ),
+            FFRoute(
+              name: 'WebUserwiseReport',
+              path: 'webUserwiseReport',
+              builder: (context, params) => WebUserwiseReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebProductListNewM',
+              path: 'webProductListNewM',
+              builder: (context, params) => WebProductListNewMWidget(
+                outletId: params.getParam(
+                  'outletId',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebAddproductAPP',
+              path: 'webaddVehicleApp',
+              builder: (context, params) => WebAddproductAPPWidget(
+                catcodeLen: params.getParam(
+                  'catcodeLen',
+                  ParamType.int,
+                ),
+                proRef: params.getParam(
+                  'proRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PRODUCT'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebEditproductNewM',
+              path: 'webEditproductNewM',
+              asyncParams: {
+                'productDocument':
+                    getDoc(['OUTLET', 'PRODUCT'], ProductRecord.fromSnapshot),
+              },
+              builder: (context, params) => WebEditproductNewMWidget(
+                codeLen: params.getParam(
+                  'codeLen',
+                  ParamType.int,
+                ),
+                proRef: params.getParam(
+                  'proRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'PRODUCT'],
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                productDocument: params.getParam(
+                  'productDocument',
+                  ParamType.Document,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

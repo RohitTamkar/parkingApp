@@ -16,7 +16,7 @@ export '/pages/parking/add_business_profile/add_business_profile_widget.dart'
     show AddBusinessProfileWidget;
 export '/pages/parking/edit_busines_profile/edit_busines_profile_widget.dart'
     show EditBusinesProfileWidget;
-export '/pages/account/account_widget.dart' show AccountWidget;
+export '/pages/parking/account/account_widget.dart' show AccountWidget;
 export '/pages/parking/edit_userprofile/edit_userprofile_widget.dart'
     show EditUserprofileWidget;
 export '/pages/parking/masters_new/masters_new_widget.dart'
@@ -48,7 +48,7 @@ export '/pages/parking/printersetting_car/printersetting_car_widget.dart'
     show PrintersettingCarWidget;
 export '/pages/parking/subscription_new2/subscription_new2_widget.dart'
     show SubscriptionNew2Widget;
-export '/pages/parking/deviceqr/deviceqr_widget.dart' show DeviceqrWidget;
+export '/pages/deviceqr/deviceqr_widget.dart' show DeviceqrWidget;
 export '/pages/parking/parking_report/parking_report_widget.dart'
     show ParkingReportWidget;
 export '/pages/parking/number_plate_scanner/number_plate_scanner_widget.dart'
@@ -85,7 +85,39 @@ export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
 export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
     show TodaysSummaryReportWidget;
-export '/pages/parking/dailly_collection_report/dailly_collection_report_widget.dart'
+export '/pages/dailly_collection_report/dailly_collection_report_widget.dart'
     show DaillyCollectionReportWidget;
 export '/pages/parking/monthly_pass2/monthly_pass2_widget.dart'
     show MonthlyPass2Widget;
+export '/web_parking/web_dashboard/web_dashboard_widget.dart'
+    show WebDashboardWidget;
+export '/web_parking/web_outlet_list_page/web_outlet_list_page_widget.dart'
+    show WebOutletListPageWidget;
+export '/web_parking/web_category_list/web_category_list_widget.dart'
+    show WebCategoryListWidget;
+export '/web_parking/web_add_category/web_add_category_widget.dart'
+    show WebAddCategoryWidget;
+export '/web_parking/web_edit_category/web_edit_category_widget.dart'
+    show WebEditCategoryWidget;
+export '/web_parking/web_vehicle_wise_sale_report/web_vehicle_wise_sale_report_widget.dart'
+    show WebVehicleWiseSaleReportWidget;
+export '/web_parking/web_in_out_report/web_in_out_report_widget.dart'
+    show WebInOutReportWidget;
+export '/web_parking/web_todays_summary_report/web_todays_summary_report_widget.dart'
+    show WebTodaysSummaryReportWidget;
+export '/web_parking/web_billwisesale_report/web_billwisesale_report_widget.dart'
+    show WebBillwisesaleReportWidget;
+export '/web_parking/web_daily_collection_report/web_daily_collection_report_widget.dart'
+    show WebDailyCollectionReportWidget;
+export '/web_parking/web_unbilled_receipts/web_unbilled_receipts_widget.dart'
+    show WebUnbilledReceiptsWidget;
+export '/web_parking/web_pass_details/web_pass_details_widget.dart'
+    show WebPassDetailsWidget;
+export '/web_parking/web_userwise_report/web_userwise_report_widget.dart'
+    show WebUserwiseReportWidget;
+export '/web_parking/web_product_list_new_m/web_product_list_new_m_widget.dart'
+    show WebProductListNewMWidget;
+export '/web_parking/web_addproduct_a_p_p/web_addproduct_a_p_p_widget.dart'
+    show WebAddproductAPPWidget;
+export '/web_parking/web_editproduct_new_m/web_editproduct_new_m_widget.dart'
+    show WebEditproductNewMWidget;

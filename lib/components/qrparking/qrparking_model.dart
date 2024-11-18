@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -16,6 +17,8 @@ import 'package:provider/provider.dart';
 class QrparkingModel extends FlutterFlowModel<QrparkingWidget> {
   ///  State fields for stateful widgets in this component.
 
+  // Model for paymentMode component.
+  late PaymentModeModel paymentModeModel;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   InvoiceRecord? docinvqr;
   // Stores action output result for [Custom Action - scanPrinter] action in Button widget.
@@ -28,10 +31,26 @@ class QrparkingModel extends FlutterFlowModel<QrparkingWidget> {
   List<dynamic>? deviceqr;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   OutletRecord? outletdocqr;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? docinvqr2;
+  // Stores action output result for [Custom Action - scanPrinter] action in Button widget.
+  bool? resDevice2qr2;
+  // Stores action output result for [Custom Action - connectDevice] action in Button widget.
+  bool? connectdeviceqr2;
+  // Stores action output result for [Custom Action - selectBillPrint] action in Button widget.
+  List<dynamic>? returnedList2qr22;
+  // Stores action output result for [Custom Action - newCustomAction] action in Button widget.
+  List<dynamic>? deviceqr2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  OutletRecord? outletdocqr2;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    paymentModeModel = createModel(context, () => PaymentModeModel());
+  }
 
   @override
-  void dispose() {}
+  void dispose() {
+    paymentModeModel.dispose();
+  }
 }

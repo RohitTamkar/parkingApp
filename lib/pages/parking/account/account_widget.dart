@@ -449,7 +449,22 @@ class _AccountWidgetState extends State<AccountWidget>
                                                 ),
                                                 onPressed: () async {
                                                   context.pushNamed(
-                                                      'ParkingCustomers');
+                                                    'VehicleEntry',
+                                                    queryParameters: {
+                                                      'shiftDoc':
+                                                          serializeParam(
+                                                        FFAppState()
+                                                            .shiftDetailsNEw,
+                                                        ParamType.JSON,
+                                                      ),
+                                                      'userRef': serializeParam(
+                                                        containerUserProfileRecord
+                                                            ?.reference,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
                                                 },
                                               ),
                                             ),

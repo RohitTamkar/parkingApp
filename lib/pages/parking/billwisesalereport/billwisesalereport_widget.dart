@@ -145,7 +145,9 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
                               FFAppState().paperSize,
-                              billwisesalereportInvoiceRecordList.toList(),
+                              billwisesalereportInvoiceRecordList
+                                  .where((e) => e.checkOutTime != 0)
+                                  .toList(),
                             );
                           } else {
                             await showDialog(

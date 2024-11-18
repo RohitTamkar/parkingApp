@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -77,7 +78,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                 padding: EdgeInsets.all(10.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
@@ -247,142 +248,308 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        StreamBuilder<List<PaymentModeRecord>>(
+                          stream: queryPaymentModeRecord(),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  child: SpinKitFadingCircle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 40.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<PaymentModeRecord>
+                                paymentModePaymentModeRecordList =
+                                snapshot.data!;
+
+                            return wrapWithModel(
+                              model: _model.paymentModeModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: PaymentModeWidget(),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
                             var _shouldSetState = false;
-
-                            await widget!.invdoc!.reference
-                                .update(createInvoiceRecordData(
-                              checkOutTime:
-                                  getCurrentTimestamp.millisecondsSinceEpoch,
-                              billAmt: functions.calculateParkingCharges12hours(
-                                  widget!.invdoc?.vechicleType,
-                                  widget!.invdoc?.checkInTime,
-                                  getCurrentTimestamp.millisecondsSinceEpoch),
-                              finalBillAmt:
-                                  functions.calculateParkingCharges12hours(
-                                      widget!.invdoc?.vechicleType,
+                            if (widget!.invdoc?.orderType == 'MONTHLYPASS') {
+                              await widget!.invdoc!.reference
+                                  .update(createInvoiceRecordData(
+                                checkOutTime:
+                                    getCurrentTimestamp.millisecondsSinceEpoch,
+                                billAmt: 0.0,
+                                finalBillAmt: 0.0,
+                                duration: valueOrDefault<double>(
+                                  functions.calculateHour(
                                       widget!.invdoc?.checkInTime,
                                       getCurrentTimestamp
                                           .millisecondsSinceEpoch),
-                              duration: valueOrDefault<double>(
-                                functions.calculateHour(
-                                    widget!.invdoc?.checkInTime,
-                                    getCurrentTimestamp.millisecondsSinceEpoch),
-                                0.0,
-                              ),
-                            ));
-                            _model.docinvqr = await queryInvoiceRecordOnce(
-                              parent: FFAppState().outletIdRef,
-                              queryBuilder: (invoiceRecord) =>
-                                  invoiceRecord.where(
-                                'id',
-                                isEqualTo: widget!.invdoc?.id,
-                              ),
-                              singleRecord: true,
-                            ).then((s) => s.firstOrNull);
-                            _shouldSetState = true;
-                            if (!functions.isPrinterSelected(
-                                FFAppState().printerDevice)!) {
-                              _model.resDevice2qr = await actions.scanPrinter(
-                                FFAppState().posMode,
-                              );
-                              _shouldSetState = true;
-                            }
-                            _model.connectdeviceqr =
-                                await actions.connectDevice(
-                              FFAppState().printerDevice,
-                              FFAppState().printerIndex,
-                            );
-                            _shouldSetState = true;
-                            if (FFAppState().printerName != null &&
-                                FFAppState().printerName != '') {
-                              _model.returnedList2qr2 =
-                                  await actions.selectBillPrint(
-                                FFAppState().selBill.toString(),
-                                FFAppState().allBillsList.toList(),
-                              );
-                              _shouldSetState = true;
-                              _model.deviceqr = await actions.newCustomAction(
-                                FFAppState().printerIndex,
-                              );
-                              _shouldSetState = true;
-                              _model.outletdocqr = await queryOutletRecordOnce(
-                                queryBuilder: (outletRecord) =>
-                                    outletRecord.where(
+                                  0.0,
+                                ),
+                              ));
+                              _model.docinvqr = await queryInvoiceRecordOnce(
+                                parent: FFAppState().outletIdRef,
+                                queryBuilder: (invoiceRecord) =>
+                                    invoiceRecord.where(
                                   'id',
-                                  isEqualTo: FFAppState().outletIdRef?.id,
+                                  isEqualTo: widget!.invdoc?.id,
                                 ),
                                 singleRecord: true,
                               ).then((s) => s.firstOrNull);
                               _shouldSetState = true;
-                              await actions.printBillParking(
-                                _model.deviceqr!.toList(),
-                                FFAppState().isPrinterConnected,
-                                FFAppState().printerName,
-                                getJsonField(
-                                  functions
-                                      .outletDocToJson(_model.outletdocqr!),
-                                  r'''$''',
-                                ),
-                                _model.docinvqr!,
-                                FFAppState().paperSize,
+                              if (!functions.isPrinterSelected(
+                                  FFAppState().printerDevice)!) {
+                                _model.resDevice2qr = await actions.scanPrinter(
+                                  FFAppState().posMode,
+                                );
+                                _shouldSetState = true;
+                              }
+                              _model.connectdeviceqr =
+                                  await actions.connectDevice(
+                                FFAppState().printerDevice,
+                                FFAppState().printerIndex,
                               );
-                              await actions.removeFromAllBillList(
-                                FFAppState().selBill,
-                              );
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    content: Text('Check Out SuccessFull!'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                              Navigator.pop(context);
-
-                              context.pushNamed(
-                                'VehicleEntry',
-                                queryParameters: {
-                                  'shiftDoc': serializeParam(
-                                    widget!.shiftdoc,
-                                    ParamType.JSON,
+                              _shouldSetState = true;
+                              if (FFAppState().printerName != null &&
+                                  FFAppState().printerName != '') {
+                                _model.returnedList2qr2 =
+                                    await actions.selectBillPrint(
+                                  FFAppState().selBill.toString(),
+                                  FFAppState().allBillsList.toList(),
+                                );
+                                _shouldSetState = true;
+                                _model.deviceqr = await actions.newCustomAction(
+                                  FFAppState().printerIndex,
+                                );
+                                _shouldSetState = true;
+                                _model.outletdocqr =
+                                    await queryOutletRecordOnce(
+                                  queryBuilder: (outletRecord) =>
+                                      outletRecord.where(
+                                    'id',
+                                    isEqualTo: FFAppState().outletIdRef?.id,
                                   ),
-                                  'userRef': serializeParam(
-                                    widget!.usrref,
-                                    ParamType.DocumentReference,
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                _shouldSetState = true;
+                                await actions.printBillParking(
+                                  _model.deviceqr!.toList(),
+                                  FFAppState().isPrinterConnected,
+                                  FFAppState().printerName,
+                                  getJsonField(
+                                    functions
+                                        .outletDocToJson(_model.outletdocqr!),
+                                    r'''$''',
                                   ),
-                                }.withoutNulls,
-                              );
+                                  _model.docinvqr!,
+                                  FFAppState().paperSize,
+                                );
+                                await actions.removeFromAllBillList(
+                                  FFAppState().selBill,
+                                );
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      content: Text('Check Out SuccessFull!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                Navigator.pop(context);
 
-                              if (_shouldSetState) safeSetState(() {});
-                              return;
+                                context.pushNamed(
+                                  'VehicleEntry',
+                                  queryParameters: {
+                                    'shiftDoc': serializeParam(
+                                      widget!.shiftdoc,
+                                      ParamType.JSON,
+                                    ),
+                                    'userRef': serializeParam(
+                                      widget!.usrref,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('printer connection'),
+                                      content: Text('printer not connected'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             } else {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('printer connection'),
-                                    content: Text('printer not connected'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
+                              await widget!.invdoc!.reference
+                                  .update(createInvoiceRecordData(
+                                checkOutTime:
+                                    getCurrentTimestamp.millisecondsSinceEpoch,
+                                billAmt:
+                                    functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
+                                finalBillAmt:
+                                    functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
+                                duration: valueOrDefault<double>(
+                                  functions.calculateHour(
+                                      widget!.invdoc?.checkInTime,
+                                      getCurrentTimestamp
+                                          .millisecondsSinceEpoch),
+                                  0.0,
+                                ),
+                              ));
+                              _model.docinvqr2 = await queryInvoiceRecordOnce(
+                                parent: FFAppState().outletIdRef,
+                                queryBuilder: (invoiceRecord) =>
+                                    invoiceRecord.where(
+                                  'id',
+                                  isEqualTo: widget!.invdoc?.id,
+                                ),
+                                singleRecord: true,
+                              ).then((s) => s.firstOrNull);
+                              _shouldSetState = true;
+                              if (!functions.isPrinterSelected(
+                                  FFAppState().printerDevice)!) {
+                                _model.resDevice2qr2 =
+                                    await actions.scanPrinter(
+                                  FFAppState().posMode,
+                                );
+                                _shouldSetState = true;
+                              }
+                              _model.connectdeviceqr2 =
+                                  await actions.connectDevice(
+                                FFAppState().printerDevice,
+                                FFAppState().printerIndex,
                               );
+                              _shouldSetState = true;
+                              if (FFAppState().printerName != null &&
+                                  FFAppState().printerName != '') {
+                                _model.returnedList2qr22 =
+                                    await actions.selectBillPrint(
+                                  FFAppState().selBill.toString(),
+                                  FFAppState().allBillsList.toList(),
+                                );
+                                _shouldSetState = true;
+                                _model.deviceqr2 =
+                                    await actions.newCustomAction(
+                                  FFAppState().printerIndex,
+                                );
+                                _shouldSetState = true;
+                                _model.outletdocqr2 =
+                                    await queryOutletRecordOnce(
+                                  queryBuilder: (outletRecord) =>
+                                      outletRecord.where(
+                                    'id',
+                                    isEqualTo: FFAppState().outletIdRef?.id,
+                                  ),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                _shouldSetState = true;
+                                await actions.printBillParking(
+                                  _model.deviceqr2!.toList(),
+                                  FFAppState().isPrinterConnected,
+                                  FFAppState().printerName,
+                                  getJsonField(
+                                    functions
+                                        .outletDocToJson(_model.outletdocqr2!),
+                                    r'''$''',
+                                  ),
+                                  _model.docinvqr2!,
+                                  FFAppState().paperSize,
+                                );
+                                await actions.removeFromAllBillList(
+                                  FFAppState().selBill,
+                                );
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      content: Text('Check Out SuccessFull!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                Navigator.pop(context);
+
+                                context.pushNamed(
+                                  'VehicleEntry',
+                                  queryParameters: {
+                                    'shiftDoc': serializeParam(
+                                      widget!.shiftdoc,
+                                      ParamType.JSON,
+                                    ),
+                                    'userRef': serializeParam(
+                                      widget!.usrref,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('printer connection'),
+                                      content: Text('printer not connected'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             }
 
                             if (_shouldSetState) safeSetState(() {});
@@ -423,57 +590,107 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            await widget!.invdoc!.reference
-                                .update(createInvoiceRecordData(
-                              checkOutTime:
-                                  getCurrentTimestamp.millisecondsSinceEpoch,
-                              billAmt: functions.calculateParkingCharges12hours(
-                                  widget!.invdoc?.vechicleType,
-                                  widget!.invdoc?.checkInTime,
-                                  getCurrentTimestamp.millisecondsSinceEpoch),
-                              finalBillAmt:
-                                  functions.calculateParkingCharges12hours(
-                                      widget!.invdoc?.vechicleType,
+                            if (widget!.invdoc?.orderType == 'MONTHLYPASS') {
+                              await widget!.invdoc!.reference
+                                  .update(createInvoiceRecordData(
+                                checkOutTime:
+                                    getCurrentTimestamp.millisecondsSinceEpoch,
+                                billAmt: 0.0,
+                                finalBillAmt: 0.0,
+                                duration: valueOrDefault<double>(
+                                  functions.calculateHour(
                                       widget!.invdoc?.checkInTime,
                                       getCurrentTimestamp
                                           .millisecondsSinceEpoch),
-                              duration: valueOrDefault<double>(
-                                functions.calculateHour(
-                                    widget!.invdoc?.checkInTime,
-                                    getCurrentTimestamp.millisecondsSinceEpoch),
-                                0.0,
-                              ),
-                            ));
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  content: Text('Check Out SuccessFull!'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            Navigator.pop(context);
+                                  0.0,
+                                ),
+                              ));
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    content: Text('Check Out SuccessFull!'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              Navigator.pop(context);
 
-                            context.pushNamed(
-                              'VehicleEntry',
-                              queryParameters: {
-                                'shiftDoc': serializeParam(
-                                  widget!.shiftdoc,
-                                  ParamType.JSON,
+                              context.pushNamed(
+                                'VehicleEntry',
+                                queryParameters: {
+                                  'shiftDoc': serializeParam(
+                                    widget!.shiftdoc,
+                                    ParamType.JSON,
+                                  ),
+                                  'userRef': serializeParam(
+                                    widget!.usrref,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              await widget!.invdoc!.reference
+                                  .update(createInvoiceRecordData(
+                                checkOutTime:
+                                    getCurrentTimestamp.millisecondsSinceEpoch,
+                                billAmt:
+                                    functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
+                                finalBillAmt:
+                                    functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
+                                duration: valueOrDefault<double>(
+                                  functions.calculateHour(
+                                      widget!.invdoc?.checkInTime,
+                                      getCurrentTimestamp
+                                          .millisecondsSinceEpoch),
+                                  0.0,
                                 ),
-                                'userRef': serializeParam(
-                                  widget!.usrref,
-                                  ParamType.DocumentReference,
-                                ),
-                              }.withoutNulls,
-                            );
+                              ));
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    content: Text('Check Out SuccessFull!'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              Navigator.pop(context);
+
+                              context.pushNamed(
+                                'VehicleEntry',
+                                queryParameters: {
+                                  'shiftDoc': serializeParam(
+                                    widget!.shiftdoc,
+                                    ParamType.JSON,
+                                  ),
+                                  'userRef': serializeParam(
+                                    widget!.usrref,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            }
                           },
                           text: FFLocalizations.of(context).getText(
                             'l4t1fump' /* CheckOut & Save */,

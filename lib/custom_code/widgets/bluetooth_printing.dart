@@ -36,7 +36,7 @@ class _BluetoothPrintingState extends State<BluetoothPrinting> {
 
   bool _connected = false;
   BluetoothDevice? _device;
-  String tips = 'no device connect';
+  String tips = 'no device  connect';
 
   @override
   void initState() {

@@ -1,6 +1,6 @@
 {
-    "name": "ParkingAPP",
-    "short_name": "ParkingAPP",
+    "name": "Park Sense",
+    "short_name": "Park Sense",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

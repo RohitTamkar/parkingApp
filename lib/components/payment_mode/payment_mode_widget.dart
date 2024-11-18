@@ -64,7 +64,17 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
         return FlutterFlowDropDown<String>(
           controller: _model.dropDownValueController ??=
               FormFieldController<String>(null),
-          options: dropDownPaymentModeRecordList.map((e) => e.name).toList(),
+          options: [
+            FFLocalizations.of(context).getText(
+              'snikl2jw' /* Cash */,
+            ),
+            FFLocalizations.of(context).getText(
+              'qzvyhose' /* UPI */,
+            ),
+            FFLocalizations.of(context).getText(
+              'd7c724kl' /* Complementary */,
+            )
+          ],
           onChanged: (val) => safeSetState(() => _model.dropDownValue = val),
           width: 300.0,
           textStyle: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -179,7 +179,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                     icon: Icon(
                       Icons.arrow_back_rounded,
                       color: FlutterFlowTheme.of(context).primaryText,
-                      size: 30.0,
+                      size: 25.0,
                     ),
                     onPressed: () async {
                       context.pop();
@@ -193,7 +193,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                           fontFamily:
                               FlutterFlowTheme.of(context).headlineMediumFamily,
                           color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 22.0,
+                          fontSize: 20.0,
                           letterSpacing: 0.0,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context)

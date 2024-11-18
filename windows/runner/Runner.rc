@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "ParkingAPP" "\0"
+            VALUE "CompanyName", "Park Sense" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "ParkingAPP" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 ParkingAPP. All rights reserved." "\0"
-            VALUE "OriginalFilename", "parking_a_p_p.exe" "\0"
-            VALUE "ProductName", "ParkingAPP" "\0"
+            VALUE "InternalName", "Park Sense" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 Park Sense. All rights reserved." "\0"
+            VALUE "OriginalFilename", "park_sense.exe" "\0"
+            VALUE "ProductName", "Park Sense" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

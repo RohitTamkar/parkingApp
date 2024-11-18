@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = parkingAPPFirebaseUserStream()
+    userStream = parkSenseFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'ParkingAPP',
+      title: 'Park Sense',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,

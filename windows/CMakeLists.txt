@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(parking_a_p_p LANGUAGES CXX)
+project(park_sense LANGUAGES CXX)
 
-set(BINARY_NAME "parking_a_p_p")
+set(BINARY_NAME "park_sense")
 
 cmake_policy(SET CMP0063 NEW)
 

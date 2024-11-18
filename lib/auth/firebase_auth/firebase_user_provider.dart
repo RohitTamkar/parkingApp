@@ -7,8 +7,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class ParkingAPPFirebaseUser extends BaseAuthUser {
-  ParkingAPPFirebaseUser(this.user);
+class ParkSenseFirebaseUser extends BaseAuthUser {
+  ParkSenseFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -56,17 +56,17 @@ class ParkingAPPFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      ParkingAPPFirebaseUser(user);
+      ParkSenseFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> parkingAPPFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> parkSenseFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = ParkingAPPFirebaseUser(user);
+        currentUser = ParkSenseFirebaseUser(user);
         if (!kIsWeb) {
           FirebaseCrashlytics.instance.setUserIdentifier(user?.uid ?? '');
         }
