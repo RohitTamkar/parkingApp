@@ -63,7 +63,11 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
 
         return FlutterFlowDropDown<String>(
           controller: _model.dropDownValueController ??=
-              FormFieldController<String>(null),
+              FormFieldController<String>(
+            _model.dropDownValue ??= FFLocalizations.of(context).getText(
+              'y2uv7xor' /* Cash */,
+            ),
+          ),
           options: [
             FFLocalizations.of(context).getText(
               'snikl2jw' /* Cash */,
