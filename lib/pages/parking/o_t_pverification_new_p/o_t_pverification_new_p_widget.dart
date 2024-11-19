@@ -615,33 +615,49 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                         if (_model
                                                                 .docId?.role ==
                                                             'admin') {
-                                                          context.pushNamedAuth(
-                                                            'businessProfileAdminfinal',
-                                                            context.mounted,
-                                                            queryParameters: {
-                                                              'mobileNo':
-                                                                  serializeParam(
-                                                                FFAppState()
-                                                                    .currentMobileString,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
+                                                          if (isWeb) {
+                                                            context.pushNamedAuth(
+                                                                'WebDashboard',
+                                                                context
+                                                                    .mounted);
+                                                          } else {
+                                                            context
+                                                                .pushNamedAuth(
+                                                              'businessProfileAdminfinal',
+                                                              context.mounted,
+                                                              queryParameters: {
+                                                                'mobileNo':
+                                                                    serializeParam(
+                                                                  FFAppState()
+                                                                      .currentMobileString,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          }
                                                         } else {
-                                                          context.pushNamedAuth(
-                                                            'businessProfileAdminfinal',
-                                                            context.mounted,
-                                                            queryParameters: {
-                                                              'mobileNo':
-                                                                  serializeParam(
-                                                                FFAppState()
-                                                                    .currentMobileString,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
+                                                          if (isWeb) {
+                                                            context.pushNamedAuth(
+                                                                'WebDashboard',
+                                                                context
+                                                                    .mounted);
+                                                          } else {
+                                                            context
+                                                                .pushNamedAuth(
+                                                              'businessProfileAdminfinal',
+                                                              context.mounted,
+                                                              queryParameters: {
+                                                                'mobileNo':
+                                                                    serializeParam(
+                                                                  FFAppState()
+                                                                      .currentMobileString,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          }
                                                         }
                                                       } else {
                                                         context.pushNamedAuth(

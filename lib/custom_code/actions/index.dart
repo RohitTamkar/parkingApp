@@ -155,4 +155,5 @@ export 'product_sale_report2.dart' show productSaleReport2;
 export 'get_current_month1.dart' show getCurrentMonth1;
 export 'generate_parking_pass_pdf.dart' show generateParkingPassPdf;
 export 'return_date_nextday.dart' show returnDateNextday;
-export 'gen_vehicle_wise_report_excel.dart' show genVehicleWiseReportExcel;
+export 'cal_complementary_mode_amount.dart' show calComplementaryModeAmount;
+export 'web_login.dart' show webLogin;

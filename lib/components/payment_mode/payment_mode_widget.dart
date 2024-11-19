@@ -43,6 +43,8 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<PaymentModeRecord>>(
       stream: queryPaymentModeRecord(),
       builder: (context, snapshot) {
@@ -79,7 +81,28 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
               'd7c724kl' /* Complementary */,
             )
           ],
-          onChanged: (val) => safeSetState(() => _model.dropDownValue = val),
+          onChanged: (val) async {
+            safeSetState(() => _model.dropDownValue = val);
+            if ((_model.dropDownValue == 'Complementary'
+                    ? (FFAppState().billAmt == 0.0)
+                    : FFAppState().billAmt.round()) !=
+                null) {
+              await showDialog(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    content: Text('Payment Type Selected'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(alertDialogContext),
+                        child: Text('Ok'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+          },
           width: 300.0,
           textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                 fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,

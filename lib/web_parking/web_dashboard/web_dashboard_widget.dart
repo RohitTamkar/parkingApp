@@ -474,7 +474,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 40.0),
                                                   child: AutoSizeText(
-                                                    '₹',
+                                                    '₹${rowShiftRecord?.totalSale?.toString()}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .headlineMedium

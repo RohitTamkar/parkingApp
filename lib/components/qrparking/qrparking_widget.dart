@@ -270,10 +270,46 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 paymentModePaymentModeRecordList =
                                 snapshot.data!;
 
-                            return wrapWithModel(
-                              model: _model.paymentModeModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: PaymentModeWidget(),
+                            return InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                if ((_model.paymentModeModel.dropDownValue ==
+                                                    'Complementary'
+                                                ? (FFAppState().billAmt == 0.0)
+                                                : FFAppState().billAmt.round())
+                                            .toString() !=
+                                        null &&
+                                    (_model.paymentModeModel.dropDownValue ==
+                                                    'Complementary'
+                                                ? (FFAppState().billAmt == 0.0)
+                                                : FFAppState().billAmt.round())
+                                            .toString() !=
+                                        '') {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        content: Text('Payment Type Selected'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                              child: wrapWithModel(
+                                model: _model.paymentModeModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: PaymentModeWidget(),
+                              ),
                             );
                           },
                         ),
@@ -417,14 +453,20 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   .update(createInvoiceRecordData(
                                 checkOutTime:
                                     getCurrentTimestamp.millisecondsSinceEpoch,
-                                billAmt:
-                                    functions.calculateParkingCharges12hours(
+                                billAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'Complementary'
+                                    ? 0.0
+                                    : functions.calculateParkingCharges12hours(
                                         widget!.invdoc?.vechicleType,
                                         widget!.invdoc?.checkInTime,
                                         getCurrentTimestamp
                                             .millisecondsSinceEpoch),
-                                finalBillAmt:
-                                    functions.calculateParkingCharges12hours(
+                                finalBillAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'Complementary'
+                                    ? 0.0
+                                    : functions.calculateParkingCharges12hours(
                                         widget!.invdoc?.vechicleType,
                                         widget!.invdoc?.checkInTime,
                                         getCurrentTimestamp
@@ -436,6 +478,8 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           .millisecondsSinceEpoch),
                                   0.0,
                                 ),
+                                paymentMode:
+                                    _model.paymentModeModel.dropDownValue,
                               ));
                               _model.docinvqr2 = await queryInvoiceRecordOnce(
                                 parent: FFAppState().outletIdRef,
@@ -640,14 +684,20 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   .update(createInvoiceRecordData(
                                 checkOutTime:
                                     getCurrentTimestamp.millisecondsSinceEpoch,
-                                billAmt:
-                                    functions.calculateParkingCharges12hours(
+                                billAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'Complementary'
+                                    ? 0.0
+                                    : functions.calculateParkingCharges12hours(
                                         widget!.invdoc?.vechicleType,
                                         widget!.invdoc?.checkInTime,
                                         getCurrentTimestamp
                                             .millisecondsSinceEpoch),
-                                finalBillAmt:
-                                    functions.calculateParkingCharges12hours(
+                                finalBillAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'Complementary'
+                                    ? 0.0
+                                    : functions.calculateParkingCharges12hours(
                                         widget!.invdoc?.vechicleType,
                                         widget!.invdoc?.checkInTime,
                                         getCurrentTimestamp
@@ -659,6 +709,8 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           .millisecondsSinceEpoch),
                                   0.0,
                                 ),
+                                paymentMode:
+                                    _model.paymentModeModel.dropDownValue,
                               ));
                               await showDialog(
                                 context: context,

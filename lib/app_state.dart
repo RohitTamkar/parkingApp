@@ -638,6 +638,13 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _newcount = prefs.getInt('ff_newcount') ?? _newcount;
     });
+    _safeInit(() {
+      _currentUserId = prefs.getString('ff_currentUserId') ?? _currentUserId;
+    });
+    _safeInit(() {
+      _currentUserRef =
+          prefs.getString('ff_currentUserRef')?.ref ?? _currentUserRef;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -3477,6 +3484,57 @@ class FFAppState extends ChangeNotifier {
   set newcount(int value) {
     _newcount = value;
     prefs.setInt('ff_newcount', value);
+  }
+
+  bool _loggedIn = false;
+  bool get loggedIn => _loggedIn;
+  set loggedIn(bool value) {
+    _loggedIn = value;
+  }
+
+  List<dynamic> _loggedInUser = [];
+  List<dynamic> get loggedInUser => _loggedInUser;
+  set loggedInUser(List<dynamic> value) {
+    _loggedInUser = value;
+  }
+
+  void addToLoggedInUser(dynamic value) {
+    loggedInUser.add(value);
+  }
+
+  void removeFromLoggedInUser(dynamic value) {
+    loggedInUser.remove(value);
+  }
+
+  void removeAtIndexFromLoggedInUser(int index) {
+    loggedInUser.removeAt(index);
+  }
+
+  void updateLoggedInUserAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    loggedInUser[index] = updateFn(_loggedInUser[index]);
+  }
+
+  void insertAtIndexInLoggedInUser(int index, dynamic value) {
+    loggedInUser.insert(index, value);
+  }
+
+  String _currentUserId = '';
+  String get currentUserId => _currentUserId;
+  set currentUserId(String value) {
+    _currentUserId = value;
+    prefs.setString('ff_currentUserId', value);
+  }
+
+  DocumentReference? _currentUserRef;
+  DocumentReference? get currentUserRef => _currentUserRef;
+  set currentUserRef(DocumentReference? value) {
+    _currentUserRef = value;
+    value != null
+        ? prefs.setString('ff_currentUserRef', value.path)
+        : prefs.remove('ff_currentUserRef');
   }
 }
 

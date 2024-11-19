@@ -28,7 +28,11 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      context.pushNamed('phoneAuthPage');
+      if (isWeb) {
+        context.pushNamed('webLogin');
+      } else {
+        context.pushNamed('phoneAuthPage');
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -68,12 +72,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
-                            onTap: () async {
-                              FFAppState().navigate = 'PARKING';
-                              safeSetState(() {});
-
-                              context.pushNamed('phoneAuthPage');
-                            },
+                            onTap: () async {},
                             child: Material(
                               color: Colors.transparent,
                               elevation: 2.0,

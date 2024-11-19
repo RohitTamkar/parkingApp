@@ -121,3 +121,6 @@ export '/web_parking/web_addproduct_a_p_p/web_addproduct_a_p_p_widget.dart'
     show WebAddproductAPPWidget;
 export '/web_parking/web_editproduct_new_m/web_editproduct_new_m_widget.dart'
     show WebEditproductNewMWidget;
+export '/web_parking/web_login/web_login_widget.dart' show WebLoginWidget;
+export '/web_parking/user_account/user_account_widget.dart'
+    show UserAccountWidget;

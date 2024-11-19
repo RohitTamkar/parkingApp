@@ -692,7 +692,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'WebVehicleWiseSaleReport',
               path: 'webVehicleWiseSaleReport',
-              requireAuth: true,
               builder: (context, params) => WebVehicleWiseSaleReportWidget(),
             ),
             FFRoute(
@@ -785,6 +784,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.Document,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'webLogin',
+              path: 'webLogin',
+              builder: (context, params) => WebLoginWidget(),
+            ),
+            FFRoute(
+              name: 'UserAccount',
+              path: 'userAccount',
+              builder: (context, params) => UserAccountWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
