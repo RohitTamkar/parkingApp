@@ -567,20 +567,25 @@ class _WebOutletListPageWidgetState extends State<WebOutletListPageWidget>
                                                                         true) {
                                                                       context
                                                                           .pushNamed(
-                                                                        'welcomeScreenParking',
+                                                                        'WebDashboard',
                                                                         queryParameters:
                                                                             {
-                                                                          'deviceDoc':
+                                                                          'outletId':
                                                                               serializeParam(
-                                                                            _model.devicedetails2,
-                                                                            ParamType.Document,
+                                                                            gridViewOutletRecord.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
+                                                                          'userId':
+                                                                              serializeParam(
+                                                                            FFAppState().currentUserId,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'mobile':
+                                                                              serializeParam(
+                                                                            FFAppState().currentMobileString,
+                                                                            ParamType.String,
                                                                           ),
                                                                         }.withoutNulls,
-                                                                        extra: <String,
-                                                                            dynamic>{
-                                                                          'deviceDoc':
-                                                                              _model.devicedetails2,
-                                                                        },
                                                                       );
                                                                     } else {
                                                                       await showDialog(
