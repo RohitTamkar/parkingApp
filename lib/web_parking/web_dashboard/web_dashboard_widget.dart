@@ -125,8 +125,8 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                             Expanded(
                               flex: 2,
                               child: StreamBuilder<OutletRecord>(
-                                stream: OutletRecord.getDocument(
-                                    FFAppState().outletIdRef!),
+                                stream:
+                                    OutletRecord.getDocument(widget!.outletId!),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -362,7 +362,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                               flex: 12,
                               child: StreamBuilder<List<ShiftRecord>>(
                                 stream: queryShiftRecord(
-                                  parent: FFAppState().outletIdRef,
+                                  parent: widget!.outletId,
                                   queryBuilder: (shiftRecord) =>
                                       shiftRecord.where(
                                     'shiftId',
@@ -945,8 +945,8 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                           ShiftRecord>>(
                                                                     stream:
                                                                         queryShiftRecord(
-                                                                      parent: FFAppState()
-                                                                          .outletIdRef,
+                                                                      parent: widget!
+                                                                          .outletId,
                                                                       queryBuilder:
                                                                           (shiftRecord) =>
                                                                               shiftRecord.where(
