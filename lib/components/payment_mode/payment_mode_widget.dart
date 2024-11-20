@@ -73,10 +73,31 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
               'snikl2jw' /* CASH */,
             ),
             FFLocalizations.of(context).getText(
-              'qzvyhose' /* UPI */,
+              'vb1guzii' /* Complementary */,
             ),
             FFLocalizations.of(context).getText(
-              'd7c724kl' /* Complementary */,
+              'wy5nxsum' /* CREDIT */,
+            ),
+            FFLocalizations.of(context).getText(
+              '25knlurq' /* GOOGLEPAY */,
+            ),
+            FFLocalizations.of(context).getText(
+              'frif7scg' /* PAYTM */,
+            ),
+            FFLocalizations.of(context).getText(
+              '77fnzh9p' /* PHONEPE */,
+            ),
+            FFLocalizations.of(context).getText(
+              'wfe4m0ja' /* CHEQUE */,
+            ),
+            FFLocalizations.of(context).getText(
+              'v3x82lma' /* OTHER */,
+            ),
+            FFLocalizations.of(context).getText(
+              '926j8pzf' /* CARD */,
+            ),
+            FFLocalizations.of(context).getText(
+              'r0ivc463' /* UPI QR */,
             )
           ],
           onChanged: (val) => safeSetState(() => _model.dropDownValue = val),
