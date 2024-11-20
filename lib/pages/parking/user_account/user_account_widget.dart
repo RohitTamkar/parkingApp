@@ -514,6 +514,15 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                   () async {
                                                                 _model.docPermissions1 =
                                                                     await queryUserProfileRecordOnce(
+                                                                  queryBuilder:
+                                                                      (userProfileRecord) =>
+                                                                          userProfileRecord
+                                                                              .where(
+                                                                    'mobile',
+                                                                    isEqualTo:
+                                                                        widget!
+                                                                            .mobile,
+                                                                  ),
                                                                   singleRecord:
                                                                       true,
                                                                 ).then((s) => s
@@ -530,8 +539,45 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                       .id,
                                                                 ));
 
-                                                                context.pushNamed(
-                                                                    'editUserprofile');
+                                                                context
+                                                                    .pushNamed(
+                                                                  'editUserprofile',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'docRef':
+                                                                        serializeParam(
+                                                                      listItem,
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
+                                                                    'nextP':
+                                                                        serializeParam(
+                                                                      2,
+                                                                      ParamType
+                                                                          .int,
+                                                                    ),
+                                                                    'id':
+                                                                        serializeParam(
+                                                                      listItem
+                                                                          .reference
+                                                                          .id,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'mobile':
+                                                                        serializeParam(
+                                                                      widget!
+                                                                          .mobile,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    'docRef':
+                                                                        listItem,
+                                                                  },
+                                                                );
 
                                                                 safeSetState(
                                                                     () {});
