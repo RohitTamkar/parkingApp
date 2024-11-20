@@ -398,7 +398,7 @@ class _WebVehicleWiseSaleReportWidgetState
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'y5k6738c' /* 2 Wheelere */,
+                                                          'y5k6738c' /* 2 Wheeler */,
                                                         ),
                                                       ),
                                                       Tab(

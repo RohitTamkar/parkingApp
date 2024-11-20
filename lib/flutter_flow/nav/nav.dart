@@ -793,7 +793,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'UserAccount',
               path: 'userAccount',
-              builder: (context, params) => UserAccountWidget(),
+              builder: (context, params) => UserAccountWidget(
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'AddUser',
+              path: 'addUser',
+              builder: (context, params) => AddUserWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

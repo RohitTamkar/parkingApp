@@ -33,6 +33,10 @@ class QrparkingModel extends FlutterFlowModel<QrparkingWidget> {
   OutletRecord? outletdocqr;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   InvoiceRecord? docinvqr2;
+  // Stores action output result for [Custom Action - calShiftSummary] action in Button widget.
+  dynamic? shiftSummarRkiosk2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ShiftRecord? shiftref;
   // Stores action output result for [Custom Action - scanPrinter] action in Button widget.
   bool? resDevice2qr2;
   // Stores action output result for [Custom Action - connectDevice] action in Button widget.
@@ -43,6 +47,12 @@ class QrparkingModel extends FlutterFlowModel<QrparkingWidget> {
   List<dynamic>? deviceqr2;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   OutletRecord? outletdocqr2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? savebill;
+  // Stores action output result for [Custom Action - calShiftSummary] action in Button widget.
+  dynamic? shiftSummarRkiosk23;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ShiftRecord? shiftref2;
 
   @override
   void initState(BuildContext context) {

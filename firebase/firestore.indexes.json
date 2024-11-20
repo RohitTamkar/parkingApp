@@ -45,6 +45,20 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "USER_PROFILE",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDeleted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "outlets",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
     }
   ]
 }

@@ -1330,3 +1330,22 @@ double returntoatlamt(List<double> listamt) {
   }
   return tt;
 }
+
+String genInvoiceNumyear(int? count) {
+  DateTime now = DateTime.now();
+  int currentYear = now.year;
+  int nextYear = now.month >= 4 ? currentYear + 1 : currentYear;
+  int previousYear = nextYear - 1;
+
+  // Format the financial year string as "YYYY-YY"
+  String financialYearString =
+      "$previousYear-${nextYear.toString().substring(2)}";
+
+  // Format the count with leading zeros (e.g., 001)
+  String billCount = count != null ? count.toString().padLeft(3, '0') : '001';
+
+  // Construct the invoice number
+  String invNum = "Retail:$financialYearString/$billCount";
+
+  return invNum;
+}
