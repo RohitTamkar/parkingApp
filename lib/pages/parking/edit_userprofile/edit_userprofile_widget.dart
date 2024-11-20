@@ -61,6 +61,8 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'editUserprofile',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -105,7 +107,25 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed('account');
+                                    if (widget!.nextP == 1 ? true : false) {
+                                      context.pushNamed(
+                                        'VehicleEntry',
+                                        queryParameters: {
+                                          'shiftDoc': serializeParam(
+                                            FFAppState().shiftDetailsNEw,
+                                            ParamType.JSON,
+                                          ),
+                                          'userRef': serializeParam(
+                                            widget!.docRef?.reference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    } else {
+                                      context.pushNamed('UserAccount');
+
+                                      return;
+                                    }
                                   },
                                 ),
                                 AutoSizeText(
