@@ -957,33 +957,32 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    if (false)
-                                      Expanded(
-                                        child: Text(
-                                          '₹ ${valueOrDefault<String>(
-                                            FFAppState()
-                                                .parkingCharges
-                                                .toString(),
-                                            '0',
-                                          )}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
+                                    Expanded(
+                                      child: Text(
+                                        '₹ ${valueOrDefault<String>(
+                                          FFAppState()
+                                              .parkingCharges
+                                              .toString(),
+                                          '0',
+                                        )}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
                                       ),
+                                    ),
                                     Expanded(
                                       flex: 2,
                                       child: Padding(

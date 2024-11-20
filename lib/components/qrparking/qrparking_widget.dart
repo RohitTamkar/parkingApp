@@ -765,10 +765,11 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 widget!.shiftdoc,
                                 r'''$.shiftExists''',
                               )) {
-                                _model.shiftSummarRkiosk23 =
-                                    await actions.calShiftSummary(
+                                _model.shiftupdate =
+                                    await actions.calShiftSummary2(
                                   _model.savebill!,
                                   widget!.shiftdoc!,
+                                  widget!.invdoc!.finalBillAmt,
                                 );
                                 _shouldSetState = true;
                                 _model.shiftref2 = await queryShiftRecordOnce(
@@ -792,29 +793,29 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     0,
                                   ),
                                   totalSale: getJsonField(
-                                    _model.shiftSummarRkiosk23,
+                                    _model.shiftupdate,
                                     r'''$.totalSale''',
                                   ),
                                   deliveryCharges: getJsonField(
-                                    _model.shiftSummarRkiosk23,
+                                    _model.shiftupdate,
                                     r'''$.deliveryCharges''',
                                   ),
                                   lastBillNo: getJsonField(
-                                    _model.shiftSummarRkiosk23,
+                                    _model.shiftupdate,
                                     r'''$.lastBillNo''',
                                   ).toString(),
                                   discount: getJsonField(
-                                    _model.shiftSummarRkiosk23,
+                                    _model.shiftupdate,
                                     r'''$.discount''',
                                   ),
                                   lastBillTime: functions
                                       .timestampToMili(getCurrentTimestamp),
                                   cashSale: getJsonField(
-                                    _model.shiftSummarRkiosk23,
+                                    _model.shiftupdate,
                                     r'''$.cashSale''',
                                   ),
                                   paymentJson: getJsonField(
-                                    _model.shiftSummarRkiosk23,
+                                    _model.shiftupdate,
                                     r'''$.paymentJson''',
                                   ).toString(),
                                 ));

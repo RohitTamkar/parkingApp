@@ -453,7 +453,6 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                               0.0, 1.0, 0.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 0.2,
                             decoration: BoxDecoration(
                               color:
                                   FlutterFlowTheme.of(context).parkingPrimary,
@@ -549,6 +548,20 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
+                                      FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 8.0,
+                                        buttonSize: 45.0,
+                                        icon: Icon(
+                                          Icons.addchart,
+                                          color: FlutterFlowTheme.of(context)
+                                              .lineColor,
+                                          size: 18.0,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
                                       FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 8.0,

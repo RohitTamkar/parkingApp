@@ -1,4 +1,5 @@
 export 'check_platform.dart' show checkPlatform;
+export 'cal_shift_summary2.dart' show calShiftSummary2;
 export 'print_unbilled_report.dart' show printUnbilledReport;
 export 'printbillsummary_report.dart' show printbillsummaryReport;
 export 'print_billnewhive.dart' show printBillnewhive;
