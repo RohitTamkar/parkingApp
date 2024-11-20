@@ -65,7 +65,7 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
           controller: _model.dropDownValueController ??=
               FormFieldController<String>(
             _model.dropDownValue ??= FFLocalizations.of(context).getText(
-              'y2uv7xor' /* Cash */,
+              'y2uv7xor' /* CASH */,
             ),
           ),
           options: [

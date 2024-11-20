@@ -7659,7 +7659,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // paymentMode
   {
     'y2uv7xor': {
-      'en': 'Cash',
+      'en': 'CASH',
       'hi': '',
       'kn': '',
       'mr': '',
