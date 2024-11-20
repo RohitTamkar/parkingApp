@@ -1066,7 +1066,20 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                                             Colors.transparent,
                                                         highlightColor:
                                                             Colors.transparent,
-                                                        onTap: () async {},
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                            'editUserPermission',
+                                                            queryParameters: {
+                                                              'userRef':
+                                                                  serializeParam(
+                                                                containerUserProfileRecord
+                                                                    ?.reference,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
                                                         child: Container(
                                                           width:
                                                               MediaQuery.sizeOf(

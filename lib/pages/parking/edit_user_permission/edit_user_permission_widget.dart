@@ -234,7 +234,7 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                                           .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .customColor3,
+                                                      .customColor1,
                                                   fontSize: 20.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: GoogleFonts
