@@ -5113,6 +5113,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Unbilled2
   {
+    '7qdeun8g': {
+      'en': 'Unbilled',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'qwvql5ss': {
       'en': 'Recipt',
       'hi': '',
@@ -5136,13 +5143,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ixpiwbuh': {
       'en': 'In Time',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '7qdeun8g': {
-      'en': 'Unbilled',
       'hi': '',
       'kn': '',
       'mr': '',

@@ -168,28 +168,6 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                     ),
                   ),
                 ),
-                appBar: AppBar(
-                  backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
-                  automaticallyImplyLeading: false,
-                  title: Text(
-                    FFLocalizations.of(context).getText(
-                      '7qdeun8g' /* Unbilled */,
-                    ),
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).headlineMediumFamily,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 22.0,
-                          letterSpacing: 0.0,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context)
-                                  .headlineMediumFamily),
-                        ),
-                  ),
-                  actions: [],
-                  centerTitle: true,
-                  elevation: 2.0,
-                ),
                 body: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -203,40 +181,63 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 60.0,
-                                  icon: Icon(
-                                    Icons.arrow_back_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 30.0,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 15.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 30.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 50.0,
+                                    icon: Icon(
+                                      Icons.arrow_back_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pop();
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    context.pop();
-                                  },
-                                ),
-                                FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 60.0,
-                                  icon: Icon(
-                                    Icons.arrow_back_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 30.0,
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      '7qdeun8g' /* Unbilled */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMediumFamily,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMediumFamily),
+                                        ),
                                   ),
-                                  onPressed: () async {
-                                    context.pop();
-                                  },
-                                ),
-                              ],
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 30.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 50.0,
+                                    icon: Icon(
+                                      Icons.arrow_back_rounded,
+                                      color: Color(0x000D0801),
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pop();
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
