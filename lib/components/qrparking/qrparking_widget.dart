@@ -767,7 +767,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 r'''$.shiftExists''',
                               )) {
                                 if (_model.paymentModeModel.dropDownValue ==
-                                    'Complementary') {
+                                    'COMPLEMENTARY') {
                                   _model.shiftfierbase =
                                       await queryShiftRecordOnce(
                                     parent: FFAppState().outletIdRef,
