@@ -804,29 +804,29 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                       0,
                                     ),
                                     totalSale: getJsonField(
-                                      _model.shiftupdate,
+                                      _model.shiftSummarRkiosk23,
                                       r'''$.totalSale''',
                                     ),
                                     deliveryCharges: getJsonField(
-                                      _model.shiftupdate,
+                                      _model.shiftSummarRkiosk23,
                                       r'''$.deliveryCharges''',
                                     ),
                                     lastBillNo: getJsonField(
-                                      _model.shiftupdate,
+                                      _model.shiftSummarRkiosk23,
                                       r'''$.lastBillNo''',
                                     ).toString(),
                                     discount: getJsonField(
-                                      _model.shiftupdate,
+                                      _model.shiftSummarRkiosk23,
                                       r'''$.discount''',
                                     ),
                                     lastBillTime: functions
                                         .timestampToMili(getCurrentTimestamp),
                                     cashSale: getJsonField(
-                                      _model.shiftupdate,
+                                      _model.shiftSummarRkiosk23,
                                       r'''$.cashSale''',
                                     ),
                                     paymentJson: getJsonField(
-                                      _model.shiftupdate,
+                                      _model.shiftSummarRkiosk23,
                                       r'''$.paymentJson''',
                                     ).toString(),
                                   ));

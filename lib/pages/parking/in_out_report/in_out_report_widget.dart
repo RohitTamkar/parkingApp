@@ -658,7 +658,9 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                       .secondaryBackground,
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(5.0),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 10.0, 5.0, 10.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
