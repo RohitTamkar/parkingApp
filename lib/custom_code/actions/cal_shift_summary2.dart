@@ -69,9 +69,6 @@ Future<dynamic> calShiftSummary2(
         (invoice.paymentMode == "CASH"
             ? invoice.finalBillAmt!.toDouble() - previousAmount
             : 0);
-    paymentJsonData["complementary"] =
-        paymentJsonData["complementary"].toDouble() +
-            (invoice.paymentMode == "COMPLEMENTARY" ? 0 : 0);
     paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() +
         (invoice.paymentMode == "CREDIT"
             ? invoice.finalBillAmt!.toDouble() - previousAmount

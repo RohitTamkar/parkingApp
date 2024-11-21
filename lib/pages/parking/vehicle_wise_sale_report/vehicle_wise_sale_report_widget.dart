@@ -119,7 +119,7 @@ class _VehicleWiseSaleReportWidgetState
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 10.0),
+                                    20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -498,6 +498,7 @@ class _VehicleWiseSaleReportWidgetState
                                                                             Row(
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Expanded(
                                                                                   flex: 4,
@@ -709,6 +710,8 @@ class _VehicleWiseSaleReportWidgetState
                                                                                 MainAxisSize.max,
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
                                                                             children:
                                                                                 [
                                                                               Expanded(
@@ -920,6 +923,8 @@ class _VehicleWiseSaleReportWidgetState
                                                                                 MainAxisSize.max,
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
                                                                             children:
                                                                                 [
                                                                               Expanded(
@@ -1131,6 +1136,8 @@ class _VehicleWiseSaleReportWidgetState
                                                                                 MainAxisSize.max,
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
                                                                             children:
                                                                                 [
                                                                               Expanded(

@@ -5158,6 +5158,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // InOutReport
   {
+    'a4rhv936': {
+      'en': 'In \\ Out Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     '63v53jxw': {
       'en': 'Recipt',
       'hi': '',
@@ -5181,13 +5188,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'mpq5n1ye': {
       'en': 'Out Date',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'a4rhv936': {
-      'en': 'In \\ Out Report',
       'hi': '',
       'kn': '',
       'mr': '',
