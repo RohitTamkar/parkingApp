@@ -4239,92 +4239,43 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'pfdldgwd': {
-      'en': ' Name',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'gcz63b3l': {
+    'w4ymv88o': {
       'en': 'Customer Name',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'vhniwwfs': {
-      'en': 'Mobile No.',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '3eloylje': {
+    'jiqb7ttm': {
       'en': 'Mobile',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'j3ldloqm': {
+    '96zkcnr0': {
       'en': 'Alternate Mobile No.',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'ph9i18x6': {
-      'en': 'Alternate Mobile No=',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'g62udr43': {
+    'kqih1g0m': {
       'en': 'Email',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'goxqvusq': {
-      'en': 'Email',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'b5ec9wt2': {
+    '3uol45vs': {
       'en': 'Address',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'dxot2jeo': {
-      'en': 'Address',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'gwc83sl6': {
-      'en': 'Vehicle No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'scqxg0p8': {
-      'en': 'Vehicle No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'cm14w1x3': {
-      'en': 'Vehicle Type',
+    'ogdwy9a6': {
+      'en': 'Vehicle No.',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -4365,15 +4316,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'y5q7m6e0': {
-      'en': 'Aadhar No',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '6ur3a1io': {
-      'en': 'Aadhar No',
+    '9xzcmuwm': {
+      'en': 'Aadhar No.',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -4400,28 +4344,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'wjm2z6vo': {
+    'bh02awhi': {
       'en': 'Credit Limit',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'wmg9xzok': {
-      'en': 'Credit Limit',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '4slso1ts': {
-      'en': 'Old Balance',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'm3jqpghm': {
+    'cdn610a3': {
       'en': 'Old Balance',
       'hi': '',
       'kn': '',
@@ -5135,7 +5065,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'dapujzyl': {
-      'en': ' In Date',
+      'en': 'In Date',
       'hi': '',
       'kn': '',
       'mr': '',
