@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -51,44 +52,46 @@ class _EmailInputWidgetState extends State<EmailInputWidget> {
       key: _model.formKey,
       autovalidateMode: AutovalidateMode.disabled,
       child: Container(
-        width: 310.0,
-        height: 310.0,
+        width: 300.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Flexible(
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 7.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.close_sharp,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderColor: FlutterFlowTheme.of(context).accent3,
+                        borderRadius: 8.0,
+                        buttonSize: 40.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        icon: Icon(
+                          Icons.close_sharp,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Flexible(
-              child: Align(
+              Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
@@ -119,52 +122,47 @@ class _EmailInputWidgetState extends State<EmailInputWidget> {
                           ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 2.0,
+                          color: FlutterFlowTheme.of(context).accent3,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).primary,
-                          width: 2.0,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       errorBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       focusedErrorBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: FlutterFlowTheme.of(context).titleMedium.override(
                           fontFamily:
-                              FlutterFlowTheme.of(context).bodyMediumFamily,
-                          color: FlutterFlowTheme.of(context).info,
-                          fontSize: 15.0,
+                              FlutterFlowTheme.of(context).titleMediumFamily,
                           letterSpacing: 0.0,
                           decoration: TextDecoration.underline,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                              FlutterFlowTheme.of(context).titleMediumFamily),
                         ),
                     validator:
                         _model.textControllerValidator.asValidator(context),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-              child: FFButtonWidget(
+              FFButtonWidget(
                 onPressed: () async {
                   if (_model.formKey.currentState == null ||
                       !_model.formKey.currentState!.validate()) {
@@ -199,8 +197,8 @@ class _EmailInputWidgetState extends State<EmailInputWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -7613,7 +7613,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'vb1guzii': {
-      'en': 'Complementary',
+      'en': 'COMPLEMENTARY',
       'hi': '',
       'kn': '',
       'mr': '',

@@ -109,7 +109,6 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              flex: 4,
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 100.0,
@@ -536,7 +535,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                               ),
                             ),
                             Expanded(
-                              flex: 18,
+                              flex: 5,
                               child: Stack(
                                 children: [
                                   if (FFAppState().isVisible)
@@ -572,24 +571,21 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                             snapshot.data!;
 
                                         return Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
+                                          width: double.infinity,
+                                          height: double.infinity,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(0.0),
                                               bottomRight: Radius.circular(0.0),
-                                              topLeft: Radius.circular(40.0),
-                                              topRight: Radius.circular(40.0),
+                                              topLeft: Radius.circular(0.0),
+                                              topRight: Radius.circular(0.0),
                                             ),
                                           ),
                                           child: Container(
-                                            width: 100.0,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                1.0,
+                                            width: double.infinity,
+                                            height: double.infinity,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -599,8 +595,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                     Radius.circular(0.0),
                                                 bottomRight:
                                                     Radius.circular(0.0),
-                                                topLeft: Radius.circular(40.0),
-                                                topRight: Radius.circular(40.0),
+                                                topLeft: Radius.circular(0.0),
+                                                topRight: Radius.circular(0.0),
                                               ),
                                             ),
                                             child: Visibility(
@@ -627,9 +623,9 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                       bottomRight:
                                                           Radius.circular(0.0),
                                                       topLeft:
-                                                          Radius.circular(40.0),
+                                                          Radius.circular(0.0),
                                                       topRight:
-                                                          Radius.circular(40.0),
+                                                          Radius.circular(0.0),
                                                     ),
                                                   ),
                                                   child: Padding(
@@ -639,7 +635,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                                 10.0,
                                                                 10.0,
                                                                 10.0,
-                                                                3.0),
+                                                                10.0),
                                                     child:
                                                         SingleChildScrollView(
                                                       child: Column(

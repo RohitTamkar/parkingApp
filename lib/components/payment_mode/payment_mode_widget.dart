@@ -73,7 +73,7 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
               'snikl2jw' /* CASH */,
             ),
             FFLocalizations.of(context).getText(
-              'vb1guzii' /* Complementary */,
+              'vb1guzii' /* COMPLEMENTARY */,
             ),
             FFLocalizations.of(context).getText(
               'wy5nxsum' /* CREDIT */,
