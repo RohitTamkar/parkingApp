@@ -464,6 +464,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   _model.docinvqr2!,
                                   widget!.shiftdoc!,
                                   widget!.invdoc!.finalBillAmt,
+                                  _model.paymentModeModel.dropDownValue!,
                                 );
                                 _shouldSetState = true;
                                 _model.shiftref = await queryShiftRecordOnce(
@@ -789,6 +790,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     widget!.invdoc!,
                                     _model.shiftDetailsNewcar!,
                                     widget!.invdoc!.finalBillAmt,
+                                    _model.paymentModeModel.dropDownValue!,
                                   );
                                   _shouldSetState = true;
 
@@ -861,6 +863,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     _model.savebill!,
                                     widget!.shiftdoc!,
                                     widget!.invdoc!.finalBillAmt,
+                                    _model.paymentModeModel.dropDownValue!,
                                   );
                                   _shouldSetState = true;
                                   _model.shiftref2 = await queryShiftRecordOnce(

@@ -13,8 +13,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'dart:convert';
 
-Future<dynamic> calShiftSummary2(
-    InvoiceRecord invoice, dynamic shift1, double previousAmount) async {
+Future<dynamic> calShiftSummary2(InvoiceRecord invoice, dynamic shift1,
+    double previousAmount, String paymentmode) async {
   // Add your function code here!
   print("invoice");
   print(invoice);
