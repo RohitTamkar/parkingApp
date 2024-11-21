@@ -766,90 +766,186 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 widget!.shiftdoc,
                                 r'''$.shiftExists''',
                               )) {
-                                _model.shiftupdate =
-                                    await actions.calShiftSummary2(
-                                  _model.savebill!,
-                                  widget!.shiftdoc!,
-                                  widget!.invdoc!.finalBillAmt,
-                                );
-                                _shouldSetState = true;
-                                _model.shiftref2 = await queryShiftRecordOnce(
-                                  parent: FFAppState().outletIdRef,
-                                  queryBuilder: (shiftRecord) =>
-                                      shiftRecord.where(
-                                    'shiftId',
-                                    isEqualTo: getJsonField(
-                                      widget!.shiftdoc,
-                                      r'''$.shiftId''',
+                                if (_model.paymentModeModel.dropDownValue ==
+                                    'Complementary') {
+                                  _model.shiftref23 =
+                                      await queryShiftRecordOnce(
+                                    parent: FFAppState().outletIdRef,
+                                    queryBuilder: (shiftRecord) =>
+                                        shiftRecord.where(
+                                      'shiftId',
+                                      isEqualTo: widget!.invdoc?.shiftId,
+                                    ),
+                                  );
+                                  _shouldSetState = true;
+                                  _model.shiftDetailsNewcar =
+                                      await actions.shiftDetailNewpark(
+                                    _model.shiftref23?.toList(),
+                                  );
+                                  _shouldSetState = true;
+                                  _model.shiftSummarRkiosk23 =
+                                      await actions.calShiftSummary2(
+                                    widget!.invdoc!,
+                                    _model.shiftDetailsNewcar!,
+                                    widget!.invdoc!.finalBillAmt,
+                                  );
+                                  _shouldSetState = true;
+                                  _model.shiftfierbase =
+                                      await queryShiftRecordOnce(
+                                    parent: FFAppState().outletIdRef,
+                                    singleRecord: true,
+                                  ).then((s) => s.firstOrNull);
+                                  _shouldSetState = true;
+
+                                  await _model.shiftfierbase!.reference
+                                      .update(createShiftRecordData(
+                                    billCount: valueOrDefault<int>(
+                                      FFAppState().count,
+                                      0,
+                                    ),
+                                    totalSale: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.totalSale''',
+                                    ),
+                                    deliveryCharges: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.deliveryCharges''',
+                                    ),
+                                    lastBillNo: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.lastBillNo''',
                                     ).toString(),
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                _shouldSetState = true;
-
-                                await _model.shiftref2!.reference
-                                    .update(createShiftRecordData(
-                                  billCount: valueOrDefault<int>(
-                                    FFAppState().count,
-                                    0,
-                                  ),
-                                  totalSale: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.totalSale''',
-                                  ),
-                                  deliveryCharges: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.deliveryCharges''',
-                                  ),
-                                  lastBillNo: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.lastBillNo''',
-                                  ).toString(),
-                                  discount: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.discount''',
-                                  ),
-                                  lastBillTime: functions
-                                      .timestampToMili(getCurrentTimestamp),
-                                  cashSale: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.cashSale''',
-                                  ),
-                                  paymentJson: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.paymentJson''',
-                                  ).toString(),
-                                ));
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      content: Text('Check Out SuccessFull!'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                Navigator.pop(context);
-
-                                context.pushNamed(
-                                  'VehicleEntry',
-                                  queryParameters: {
-                                    'shiftDoc': serializeParam(
-                                      widget!.shiftdoc,
-                                      ParamType.JSON,
+                                    discount: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.discount''',
                                     ),
-                                    'userRef': serializeParam(
-                                      widget!.usrref,
-                                      ParamType.DocumentReference,
+                                    lastBillTime: functions
+                                        .timestampToMili(getCurrentTimestamp),
+                                    cashSale: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.cashSale''',
                                     ),
-                                  }.withoutNulls,
-                                );
+                                    paymentJson: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.paymentJson''',
+                                    ).toString(),
+                                  ));
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        content: Text('Check Out SuccessFull!'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  Navigator.pop(context);
+
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        widget!.shiftdoc,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        widget!.usrref,
+                                        ParamType.DocumentReference,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                } else {
+                                  _model.shiftupdate =
+                                      await actions.calShiftSummary2(
+                                    _model.savebill!,
+                                    widget!.shiftdoc!,
+                                    widget!.invdoc!.finalBillAmt,
+                                  );
+                                  _shouldSetState = true;
+                                  _model.shiftref2 = await queryShiftRecordOnce(
+                                    parent: FFAppState().outletIdRef,
+                                    queryBuilder: (shiftRecord) =>
+                                        shiftRecord.where(
+                                      'shiftId',
+                                      isEqualTo: getJsonField(
+                                        widget!.shiftdoc,
+                                        r'''$.shiftId''',
+                                      ).toString(),
+                                    ),
+                                    singleRecord: true,
+                                  ).then((s) => s.firstOrNull);
+                                  _shouldSetState = true;
+
+                                  await _model.shiftref2!.reference
+                                      .update(createShiftRecordData(
+                                    billCount: valueOrDefault<int>(
+                                      FFAppState().count,
+                                      0,
+                                    ),
+                                    totalSale: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.totalSale''',
+                                    ),
+                                    deliveryCharges: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.deliveryCharges''',
+                                    ),
+                                    lastBillNo: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.lastBillNo''',
+                                    ).toString(),
+                                    discount: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.discount''',
+                                    ),
+                                    lastBillTime: functions
+                                        .timestampToMili(getCurrentTimestamp),
+                                    cashSale: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.cashSale''',
+                                    ),
+                                    paymentJson: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.paymentJson''',
+                                    ).toString(),
+                                  ));
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        content: Text('Check Out SuccessFull!'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  Navigator.pop(context);
+
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        widget!.shiftdoc,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        widget!.usrref,
+                                        ParamType.DocumentReference,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

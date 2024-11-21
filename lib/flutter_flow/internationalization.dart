@@ -5180,7 +5180,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     's5s6s18s': {
-      'en': ' In Date',
+      'en': 'In Date',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -5203,6 +5203,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TodaysSummaryReport
   {
+    'j4jqdsok': {
+      'en': 'Today Summary Report ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     't9cuprp5': {
       'en': 'Total Check In',
       'hi': '',
@@ -5219,13 +5226,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bgzi373b': {
       'en': 'Total Amt',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'j4jqdsok': {
-      'en': 'Today Summary Report ',
       'hi': '',
       'kn': '',
       'mr': '',
