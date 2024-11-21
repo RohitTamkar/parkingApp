@@ -804,6 +804,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'AddUser',
               path: 'addUser',
               builder: (context, params) => AddUserWidget(),
+            ),
+            FFRoute(
+              name: 'ParkingLogin',
+              path: 'parkingLogin',
+              builder: (context, params) => ParkingLoginWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

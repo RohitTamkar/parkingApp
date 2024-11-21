@@ -2355,7 +2355,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'ib7r67fy': {
-      'en': 'Settings',
+      'en': 'Category',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -4581,21 +4581,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    '37dsqgu6': {
+    't336deci': {
       'en': 'Created : ',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '152d5rhw': {
+    '54nfeiqx': {
       'en': 'Renewal : ',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'y8q5qomi': {
+    'm84vvbri': {
       'en': 'Pass status : ',
       'hi': '',
       'kn': '',
@@ -4998,6 +4998,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // vehicleWiseSale2
   {
+    'r1ndf8dh': {
+      'en': 'Vehicle Parking Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'o0zvnam0': {
       'en': 'Bicycle',
       'hi': '',
@@ -5091,13 +5098,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'q8ra53gd': {
       'en': 'Total Amt',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'r1ndf8dh': {
-      'en': 'Vehicle Parking Report',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -7528,6 +7528,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     '65aabs45': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // ParkingLogin
+  {
+    '3eztguhw': {
       'en': 'Home',
       'hi': '',
       'kn': '',

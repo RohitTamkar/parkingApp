@@ -614,7 +614,7 @@ class _NavBarWebParkingWidgetState extends State<NavBarWebParkingWidget> {
                                       ),
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'qx9d46za' /* In / Out Report */,
+                                          'qx9d46za' /* In  Out Report */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .labelLarge

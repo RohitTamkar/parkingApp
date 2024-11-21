@@ -987,7 +987,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                                           child:
                                                                               Text(
                                                                             FFLocalizations.of(context).getText(
-                                                                              '5y4l9ger' /* Date/Time */,
+                                                                              '5y4l9ger' /* DateTime */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,

@@ -1,5 +1,6 @@
 // Export pages
-export '/pages/start_screen/start_screen_widget.dart' show StartScreenWidget;
+export '/pages/parking/start_screen/start_screen_widget.dart'
+    show StartScreenWidget;
 export '/pages/parking/phone_auth_page/phone_auth_page_widget.dart'
     show PhoneAuthPageWidget;
 export '/pages/parking/o_t_pverification_new_p/o_t_pverification_new_p_widget.dart'
@@ -40,7 +41,7 @@ export '/pages/parking/parking_product/parking_product_widget.dart'
     show ParkingProductWidget;
 export '/pages/parking/edit_user_permission/edit_user_permission_widget.dart'
     show EditUserPermissionWidget;
-export '/pages/parking_product_copy/parking_product_copy_widget.dart'
+export '/pages/parking/parking_product_copy/parking_product_copy_widget.dart'
     show ParkingProductCopyWidget;
 export '/pages/parking/welcome_screen_parking/welcome_screen_parking_widget.dart'
     show WelcomeScreenParkingWidget;
@@ -48,7 +49,7 @@ export '/pages/parking/printersetting_car/printersetting_car_widget.dart'
     show PrintersettingCarWidget;
 export '/pages/parking/subscription_new2/subscription_new2_widget.dart'
     show SubscriptionNew2Widget;
-export '/pages/deviceqr/deviceqr_widget.dart' show DeviceqrWidget;
+export '/pages/parking/deviceqr/deviceqr_widget.dart' show DeviceqrWidget;
 export '/pages/parking/parking_report/parking_report_widget.dart'
     show ParkingReportWidget;
 export '/pages/parking/number_plate_scanner/number_plate_scanner_widget.dart'
@@ -85,7 +86,7 @@ export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
 export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
     show TodaysSummaryReportWidget;
-export '/pages/dailly_collection_report/dailly_collection_report_widget.dart'
+export '/pages/parking/dailly_collection_report/dailly_collection_report_widget.dart'
     show DaillyCollectionReportWidget;
 export '/pages/parking/monthly_pass2/monthly_pass2_widget.dart'
     show MonthlyPass2Widget;
@@ -125,3 +126,5 @@ export '/web_parking/web_login/web_login_widget.dart' show WebLoginWidget;
 export '/pages/parking/user_account/user_account_widget.dart'
     show UserAccountWidget;
 export '/pages/parking/add_user/add_user_widget.dart' show AddUserWidget;
+export '/pages/parking/parking_login/parking_login_widget.dart'
+    show ParkingLoginWidget;

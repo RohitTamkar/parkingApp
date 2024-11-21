@@ -1996,7 +1996,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                                                                     children: [
                                                                                                       AutoSizeText(
                                                                                                         FFLocalizations.of(context).getText(
-                                                                                                          '8tdzlav5' /* Extra/Dlvr Ch. */,
+                                                                                                          '8tdzlav5' /* ExtraDlvr Ch. */,
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,

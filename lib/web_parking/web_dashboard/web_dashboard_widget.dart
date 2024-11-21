@@ -1782,7 +1782,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                               children: [
                                                                                                 AutoSizeText(
                                                                                                   FFLocalizations.of(context).getText(
-                                                                                                    '0pnyccih' /* Extra/Dlvr Ch. */,
+                                                                                                    '0pnyccih' /* ExtraDlvr Ch. */,
                                                                                                   ),
                                                                                                   style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,

@@ -121,74 +121,81 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).parkingPrimary,
                         ),
-                        child: Row(
+                        child: Column(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 60.0,
-                              icon: Icon(
-                                Icons.arrow_back_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 30.0,
-                              ),
-                              onPressed: () async {
-                                context.goNamed(
-                                  'VehicleEntry',
-                                  queryParameters: {
-                                    'shiftDoc': serializeParam(
-                                      FFAppState().shiftDetailsNEw,
-                                      ParamType.JSON,
-                                    ),
-                                    'userRef': serializeParam(
-                                      currentUserReference,
-                                      ParamType.DocumentReference,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                            ),
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'pxqj0jku' /* Reports */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .headlineMediumFamily,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30.0,
+                                  borderWidth: 1.0,
+                                  buttonSize: 60.0,
+                                  icon: Icon(
+                                    Icons.arrow_back_rounded,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    fontSize: 22.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineMediumFamily),
+                                    size: 30.0,
                                   ),
-                            ),
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 60.0,
-                              icon: Icon(
-                                Icons.arrow_back_rounded,
-                                color: Colors.transparent,
-                              ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
+                                  onPressed: () async {
+                                    context.goNamed(
+                                      'VehicleEntry',
+                                      queryParameters: {
+                                        'shiftDoc': serializeParam(
+                                          FFAppState().shiftDetailsNEw,
+                                          ParamType.JSON,
+                                        ),
+                                        'userRef': serializeParam(
+                                          currentUserReference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'pxqj0jku' /* Reports */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .headlineMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 22.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMediumFamily),
+                                      ),
+                                ),
+                                FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30.0,
+                                  borderWidth: 1.0,
+                                  buttonSize: 60.0,
+                                  icon: Icon(
+                                    Icons.arrow_back_rounded,
+                                    color: Colors.transparent,
+                                  ),
+                                  onPressed: () {
+                                    print('IconButton pressed ...');
+                                  },
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ),
                     ),
                     Expanded(
-                      flex: 10,
+                      flex: 8,
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -218,7 +225,6 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'cunxzywe' /* Vehicle Wise Report */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -235,6 +241,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
@@ -270,7 +277,6 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'h1uk5mv9' /* In \ Out Report */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -287,6 +293,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
@@ -319,7 +326,6 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'pjk8h3oq' /* Today Summary Report */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -336,6 +342,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
@@ -372,7 +379,6 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     '13p2te3m' /* Bill Summary */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -389,6 +395,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
@@ -421,7 +428,6 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     '30hlh3sh' /* Daily Collection Report */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -438,6 +444,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
@@ -473,7 +480,6 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'hqcj4zau' /* Unbilled Receipts */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -490,6 +496,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)

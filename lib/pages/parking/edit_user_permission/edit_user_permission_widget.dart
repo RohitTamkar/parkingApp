@@ -596,7 +596,7 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                                                   SwitchListTile(
                                                                 value: _model
                                                                         .switchListTileValue4 ??=
-                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Settings').toString() !=
+                                                                    functions.userDocToJsonNew(containerUserProfileRecord!, 'Category').toString() !=
                                                                             '0'
                                                                         ? true
                                                                         : false,
@@ -610,7 +610,7 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    'ib7r67fy' /* Settings */,
+                                                                    'ib7r67fy' /* Category */,
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
