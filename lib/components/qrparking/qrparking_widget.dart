@@ -768,28 +768,6 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                               )) {
                                 if (_model.paymentModeModel.dropDownValue ==
                                     'Complementary') {
-                                  _model.shiftref23 =
-                                      await queryShiftRecordOnce(
-                                    parent: FFAppState().outletIdRef,
-                                    queryBuilder: (shiftRecord) =>
-                                        shiftRecord.where(
-                                      'shiftId',
-                                      isEqualTo: widget!.invdoc?.shiftId,
-                                    ),
-                                  );
-                                  _shouldSetState = true;
-                                  _model.shiftDetailsNewcar =
-                                      await actions.shiftDetailNewpark(
-                                    _model.shiftref23?.toList(),
-                                  );
-                                  _shouldSetState = true;
-                                  _model.shiftSummarRkiosk23 =
-                                      await actions.calShiftSummary2(
-                                    widget!.invdoc!,
-                                    _model.shiftDetailsNewcar!,
-                                    widget!.invdoc!.finalBillAmt,
-                                  );
-                                  _shouldSetState = true;
                                   _model.shiftfierbase =
                                       await queryShiftRecordOnce(
                                     parent: FFAppState().outletIdRef,
@@ -800,6 +778,18 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
+                                  _shouldSetState = true;
+                                  _model.shiftDetailsNewcar =
+                                      await actions.shiftDetailNewpark2(
+                                    _model.shiftfierbase,
+                                  );
+                                  _shouldSetState = true;
+                                  _model.shiftSummarRkiosk23 =
+                                      await actions.calShiftSummary2(
+                                    widget!.invdoc!,
+                                    _model.shiftDetailsNewcar!,
+                                    widget!.invdoc!.finalBillAmt,
+                                  );
                                   _shouldSetState = true;
 
                                   await _model.shiftfierbase!.reference

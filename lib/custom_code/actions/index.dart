@@ -140,6 +140,7 @@ export 'add_to_hold_list_gr_calculationdis_per.dart'
 export 'dis_amt_changed_functiongrocery.dart' show disAmtChangedFunctiongrocery;
 export 'tax_per_changed_functiongrocery.dart' show taxPerChangedFunctiongrocery;
 export 'tax_amt_changed_functiongrocery.dart' show taxAmtChangedFunctiongrocery;
+export 'shift_detail_newpark2.dart' show shiftDetailNewpark2;
 export 'rate_price_changed_functiongrocery.dart'
     show ratePriceChangedFunctiongrocery;
 export 'cal_sub_total_for_grocery.dart' show calSubTotalForGrocery;
