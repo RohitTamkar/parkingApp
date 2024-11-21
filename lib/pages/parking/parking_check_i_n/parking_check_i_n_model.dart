@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -50,8 +49,6 @@ class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // Model for paymentMode component.
-  late PaymentModeModel paymentModeModel;
   // State field(s) for Advance_amt widget.
   FocusNode? advanceAmtFocusNode;
   TextEditingController? advanceAmtTextController;
@@ -86,16 +83,13 @@ class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
   ShiftRecord? shiftref2;
 
   @override
-  void initState(BuildContext context) {
-    paymentModeModel = createModel(context, () => PaymentModeModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
     textFieldFocusNode?.dispose();
     textController1?.dispose();
 
-    paymentModeModel.dispose();
     advanceAmtFocusNode?.dispose();
     advanceAmtTextController?.dispose();
 

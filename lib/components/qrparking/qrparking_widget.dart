@@ -793,6 +793,11 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   _model.shiftfierbase =
                                       await queryShiftRecordOnce(
                                     parent: FFAppState().outletIdRef,
+                                    queryBuilder: (shiftRecord) =>
+                                        shiftRecord.where(
+                                      'shiftId',
+                                      isEqualTo: widget!.invdoc?.shiftId,
+                                    ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
                                   _shouldSetState = true;
