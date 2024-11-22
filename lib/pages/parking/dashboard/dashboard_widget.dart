@@ -1193,7 +1193,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                                                                       ),
                                                                                                     ),
                                                                                                     AutoSizeText(
-                                                                                                      functions.calUPICopy(containerShiftRecord!.paymentJson).toString(),
+                                                                                                      functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'googlepay + paytm + phonepe'),
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             letterSpacing: 0.0,
