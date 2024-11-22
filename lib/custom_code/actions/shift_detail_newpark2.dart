@@ -11,56 +11,54 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 Future<dynamic> shiftDetailNewpark2(ShiftRecord? shiftlist) async {
   List<dynamic> docRecord = [];
   bool flag = false;
   int shiftCount = 0;
-  for (var doc in shiftlist!) {
-    print(doc);
-    if (doc.endTime == 0) {
-      // Check if the startTime is in a new day
-      DateTime currentDateTime = DateTime.now();
-      var formatter = DateFormat('yyyy-MM-dd');
-      String currentDate = formatter.format(currentDateTime);
-      DateTime shiftStartTime =
-          DateTime.fromMillisecondsSinceEpoch(doc.startTime);
-      String shiftDate = formatter.format(shiftStartTime);
-      if (currentDate == shiftDate) {
-        // Same day, the shift is resumed
-        // Same day, the shift is resumed
-        flag = true;
-        docRecord.add({
-          "ref": doc.id,
-          "shiftId": doc.shiftId,
-          "dayId": doc.dayId,
-          "billCount": doc.billCount,
-          "msg": "Shift resumed",
-          "shiftExists": true,
-          "totalSale": doc.totalSale,
-          "lastBillNo": doc.lastBillNo,
-          "deliveryCharges": doc.deliveryCharges,
-          "discount": doc.discount,
-          "tax": doc.tax,
-          "shiftCount": ++shiftCount,
-          "endTime": doc.endTime,
-          "startTime": doc.startTime,
-          "startTimeFormat": doc.startTime, //"dd-mmm-yyyy  h:MM:ss"),
-          "lastBillTime": doc.lastBillTime,
-          "openingAmt": doc.openingAmt,
-          "cashSale": doc.cashSale,
-          "paymentJson": doc.paymentJson
-        });
-      } else {
-        // New day, start a new shift
-        print('new day end time is not updated');
-      }
-    } else {
-      // The shift has ended, so start a new shift
-      shiftCount++;
-      print('shcount$shiftCount');
-    }
+
+  print(shiftlist);
+  if (shiftlist?.endTime == 0) {
+    // Check if the startTime is in a new day
+    DateTime currentDateTime = DateTime.now();
+    var formatter = DateFormat('yyyy-MM-dd');
+    String currentDate = formatter.format(currentDateTime);
+    DateTime shiftStartTime =
+        DateTime.fromMillisecondsSinceEpoch(shiftlist!.startTime);
+    String shiftDate = formatter.format(shiftStartTime);
+
+    // Same day, the shift is resumed
+    // Same day, the shift is resumed
+    flag = true;
+    docRecord.add({
+      "ref": shiftlist.id,
+      "shiftId": shiftlist.shiftId,
+      "dayId": shiftlist.dayId,
+      "billCount": shiftlist.billCount,
+      "msg": "Shift resumed",
+      "shiftExists": true,
+      "totalSale": shiftlist.totalSale,
+      "lastBillNo": shiftlist.lastBillNo,
+      "deliveryCharges": shiftlist.deliveryCharges,
+      "discount": shiftlist.discount,
+      "tax": shiftlist.tax,
+      "shiftCount": ++shiftCount,
+      "endTime": shiftlist.endTime,
+      "startTime": shiftlist.startTime,
+      "startTimeFormat": shiftlist.startTime, //"dd-mmm-yyyy  h:MM:ss"),
+      "lastBillTime": shiftlist.lastBillTime,
+      "openingAmt": shiftlist.openingAmt,
+      "cashSale": shiftlist.cashSale,
+      "paymentJson": shiftlist.paymentJson
+    });
+  } else {
+    // The shift has ended, so start a new shift
+    shiftCount++;
+    print('shcount$shiftCount');
   }
-  if (flag == false && shiftlist.isNotEmpty) {
+
+  if (flag == false && shiftlist?.id == null) {
     shiftCount++;
     print('shcountne$shiftCount');
     docRecord.add({

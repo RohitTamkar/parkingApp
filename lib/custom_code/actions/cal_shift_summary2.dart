@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert';
 
 Future<dynamic> calShiftSummary2(InvoiceRecord invoice, dynamic shift1,
@@ -31,12 +33,26 @@ Future<dynamic> calShiftSummary2(InvoiceRecord invoice, dynamic shift1,
         shift[i]["deliveryCharges"] + invoice.delliveryChrg;
     shift[i]["discount"] = shift[i]["discount"] + invoice.discountAmt;
     shift[i]["tax"] = shift[i]["tax"] + invoice.taxAmt;
-    shift[i]["totalSale"] = shift[i]["totalSale"] + total - previousAmount;
+    if (paymentmode == 'COMPLEMENTARY') {
+      shift[i]["totalSale"] = shift[i]["totalSale"] - total;
+    } else {
+      shift[i]["totalSale"] = shift[i]["totalSale"] + total - previousAmount;
+    }
+
     // shift[i]["subTotalBill"] = shift[i]["subTotalBill"] + invoice.billAmt;
-    shift[i]["cashSale"] = shift[i]["cashSale"].toDouble() +
-        (invoice.paymentMode == "CASH"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
+
+    if (paymentmode == 'COMPLEMENTARY') {
+      shift[i]["cashSale"] = shift[i]["cashSale"].toDouble() -
+          (invoice.paymentMode == "CASH"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      shift[i]["cashSale"] = shift[i]["cashSale"].toDouble() +
+          (invoice.paymentMode == "CASH"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+
     /*shift[i]["creditSale"] = shift[i]["creditSale"].toDouble() +
         (invoice.paymentMode == "CREDIT"
             ? invoice.finalBillAmt!.toDouble()
@@ -65,48 +81,110 @@ Future<dynamic> calShiftSummary2(InvoiceRecord invoice, dynamic shift1,
         ? invoice.finalBillAmt!.toDouble()
         : 0);*/
     final paymentJsonData = jsonDecode(shift[i]["paymentJson"]);
-    paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() +
-        (invoice.paymentMode == "CASH"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() -
+          (invoice.paymentMode == "CASH"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() +
+          (invoice.paymentMode == "CASH"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
     paymentJsonData["complementary"] =
         paymentJsonData["complementary"].toDouble() +
             (invoice.paymentMode == "COMPLEMENTARY"
                 ? invoice.finalBillAmt!.toDouble() - previousAmount
                 : 0);
-    paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() +
-        (invoice.paymentMode == "CREDIT"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() +
-        (invoice.paymentMode == "GOOGLEPAY"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() +
-        (invoice.paymentMode == "PAYTM"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() +
-        (invoice.paymentMode == "PHONEPE"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() +
-        (invoice.paymentMode == "CHEQUE"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["other"] = paymentJsonData["other"].toDouble() +
-        (invoice.paymentMode == "OTHER"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["card"] = paymentJsonData["card"].toDouble() +
-        (invoice.paymentMode == "CARD"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-    paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() +
-        (invoice.paymentMode == "UPI QR"
-            ? invoice.finalBillAmt!.toDouble() - previousAmount
-            : 0);
-
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() -
+          (invoice.paymentMode == "CREDIT"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() +
+          (invoice.paymentMode == "CREDIT"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() -
+          (invoice.paymentMode == "GOOGLEPAY"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() +
+          (invoice.paymentMode == "GOOGLEPAY"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() -
+          (invoice.paymentMode == "PAYTM"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() +
+          (invoice.paymentMode == "PAYTM"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() -
+          (invoice.paymentMode == "PHONEPE"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() +
+          (invoice.paymentMode == "PHONEPE"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() -
+          (invoice.paymentMode == "CHEQUE"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() +
+          (invoice.paymentMode == "CHEQUE"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["other"] = paymentJsonData["other"].toDouble() -
+          (invoice.paymentMode == "OTHER"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["other"] = paymentJsonData["other"].toDouble() +
+          (invoice.paymentMode == "OTHER"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["card"] = paymentJsonData["card"].toDouble() -
+          (invoice.paymentMode == "CARD"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["card"] = paymentJsonData["card"].toDouble() +
+          (invoice.paymentMode == "CARD"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
+    if (paymentmode == 'COMPLEMENTARY') {
+      paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() -
+          (invoice.paymentMode == "UPI QR"
+              ? invoice.finalBillAmt!.toDouble()
+              : 0);
+    } else {
+      paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() +
+          (invoice.paymentMode == "UPI QR"
+              ? invoice.finalBillAmt!.toDouble() - previousAmount
+              : 0);
+    }
     var paymentJsonDataString = jsonEncode(paymentJsonData).toString();
     shift[i]["paymentJson"] = paymentJsonDataString;
   }
