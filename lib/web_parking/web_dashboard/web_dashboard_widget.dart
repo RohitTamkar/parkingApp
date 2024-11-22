@@ -1374,7 +1374,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                                           ),
                                                                                                         ),
                                                                                                         AutoSizeText(
-                                                                                                          functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'digital'),
+                                                                                                          functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'googlepay + paytm + phonepe'),
                                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                                 fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
