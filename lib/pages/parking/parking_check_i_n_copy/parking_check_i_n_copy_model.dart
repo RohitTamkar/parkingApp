@@ -9,7 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'parking_check_i_n_widget.dart' show ParkingCheckINWidget;
+import 'parking_check_i_n_copy_widget.dart' show ParkingCheckINCopyWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -20,7 +20,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
+class ParkingCheckINCopyModel
+    extends FlutterFlowModel<ParkingCheckINCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   var qrResult = '';

@@ -128,3 +128,7 @@ export '/pages/parking/user_account/user_account_widget.dart'
 export '/pages/parking/add_user/add_user_widget.dart' show AddUserWidget;
 export '/pages/parking/parking_login/parking_login_widget.dart'
     show ParkingLoginWidget;
+export '/pages/parking/edit_outlet_page/edit_outlet_page_widget.dart'
+    show EditOutletPageWidget;
+export '/pages/parking/parking_check_i_n_copy/parking_check_i_n_copy_widget.dart'
+    show ParkingCheckINCopyWidget;

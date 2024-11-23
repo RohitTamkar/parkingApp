@@ -809,6 +809,44 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ParkingLogin',
               path: 'parkingLogin',
               builder: (context, params) => ParkingLoginWidget(),
+            ),
+            FFRoute(
+              name: 'EditOutletPage',
+              path: 'editOutletPage',
+              builder: (context, params) => EditOutletPageWidget(
+                outletRef: params.getParam(
+                  'outletRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                docRef: params.getParam(
+                  'docRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'ParkingCheckINCopy',
+              path: 'parkingCheckINCopy',
+              builder: (context, params) => ParkingCheckINCopyWidget(
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.JSON,
+                ),
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

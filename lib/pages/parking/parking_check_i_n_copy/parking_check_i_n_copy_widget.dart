@@ -18,11 +18,11 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'parking_check_i_n_model.dart';
-export 'parking_check_i_n_model.dart';
+import 'parking_check_i_n_copy_model.dart';
+export 'parking_check_i_n_copy_model.dart';
 
-class ParkingCheckINWidget extends StatefulWidget {
-  const ParkingCheckINWidget({
+class ParkingCheckINCopyWidget extends StatefulWidget {
+  const ParkingCheckINCopyWidget({
     super.key,
     this.shiftDoc,
     this.userRef,
@@ -32,18 +32,19 @@ class ParkingCheckINWidget extends StatefulWidget {
   final DocumentReference? userRef;
 
   @override
-  State<ParkingCheckINWidget> createState() => _ParkingCheckINWidgetState();
+  State<ParkingCheckINCopyWidget> createState() =>
+      _ParkingCheckINCopyWidgetState();
 }
 
-class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
-  late ParkingCheckINModel _model;
+class _ParkingCheckINCopyWidgetState extends State<ParkingCheckINCopyWidget> {
+  late ParkingCheckINCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ParkingCheckINModel());
+    _model = createModel(context, () => ParkingCheckINCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -75,7 +76,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'ParkingCheckIN',
+        title: 'ParkingCheckINCopy',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -154,24 +155,27 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         );
                                       },
                                     ),
-                                    FlutterFlowIconButton(
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      icon: Icon(
-                                        Icons.camera_alt,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
+                                    if (false)
+                                      FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        icon: Icon(
+                                          Icons.camera_alt,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          context
+                                              .pushNamed('NumberPlateScanner');
+                                        },
                                       ),
-                                      onPressed: () async {
-                                        context.pushNamed('NumberPlateScanner');
-                                      },
-                                    ),
                                     if (false)
                                       FlutterFlowIconButton(
                                         borderColor:
@@ -214,165 +218,170 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           FFAppState().update(() {});
                                         },
                                       ),
-                                    FlutterFlowIconButton(
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      icon: Icon(
-                                        Icons.qr_code_scanner,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        _model.qrResult =
-                                            await FlutterBarcodeScanner
-                                                .scanBarcode(
-                                          '#C62828', // scanning line color
-                                          FFLocalizations.of(context).getText(
-                                            'zqkor18t' /* Cancel */,
-                                          ), // cancel button text
-                                          true, // whether to show the flash icon
-                                          ScanMode.QR,
-                                        );
+                                    if (false)
+                                      FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        icon: Icon(
+                                          Icons.qr_code_scanner,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          _model.qrResult =
+                                              await FlutterBarcodeScanner
+                                                  .scanBarcode(
+                                            '#C62828', // scanning line color
+                                            FFLocalizations.of(context).getText(
+                                              'jqoyacdi' /* Cancel */,
+                                            ), // cancel button text
+                                            true, // whether to show the flash icon
+                                            ScanMode.QR,
+                                          );
 
-                                        _model.getinvout =
-                                            await queryMonthlyPassRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (monthlyPassRecord) =>
-                                              monthlyPassRecord.where(
-                                            'id',
-                                            isEqualTo: _model.qrResult,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        if (getCurrentTimestamp
-                                                .millisecondsSinceEpoch <=
-                                            _model.getinvout!.passEndDate) {
-                                          FFAppState().newcount =
-                                              FFAppState().newcount + 1;
-                                          safeSetState(() {});
-                                          _model.invoiceParty =
-                                              await queryPartyRecordOnce(
+                                          _model.getinvout =
+                                              await queryMonthlyPassRecordOnce(
                                             parent: FFAppState().outletIdRef,
-                                            queryBuilder: (partyRecord) =>
-                                                partyRecord.where(
+                                            queryBuilder: (monthlyPassRecord) =>
+                                                monthlyPassRecord.where(
                                               'id',
-                                              isEqualTo:
-                                                  _model.getinvout?.custRef?.id,
+                                              isEqualTo: _model.qrResult,
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-
-                                          var invoiceRecordReference =
-                                              InvoiceRecord.createDoc(
-                                                  FFAppState().outletIdRef!);
-                                          await invoiceRecordReference
-                                              .set(createInvoiceRecordData(
-                                            party: _model.invoiceParty?.id,
-                                            vechicleNo:
-                                                _model.invoiceParty?.vehicleNo,
-                                            vechicleType: _model
-                                                .invoiceParty?.vehicleType,
-                                            checkInTime: getCurrentTimestamp
-                                                .millisecondsSinceEpoch,
-                                            invoiceDate: getCurrentTimestamp
-                                                .millisecondsSinceEpoch,
-                                            orderType: 'MONTHLYPASS',
-                                            checkOutTime: 0,
-                                            finalBillAmt: 0.0,
-                                            billAmt: 0.0,
-                                            dayId: functions.getDayId(),
-                                            count: FFAppState().newcount,
-                                          ));
-                                          _model.invoice =
-                                              InvoiceRecord.getDocumentFromData(
-                                                  createInvoiceRecordData(
-                                                    party:
-                                                        _model.invoiceParty?.id,
-                                                    vechicleNo: _model
-                                                        .invoiceParty
-                                                        ?.vehicleNo,
-                                                    vechicleType: _model
-                                                        .invoiceParty
-                                                        ?.vehicleType,
-                                                    checkInTime: getCurrentTimestamp
-                                                        .millisecondsSinceEpoch,
-                                                    invoiceDate: getCurrentTimestamp
-                                                        .millisecondsSinceEpoch,
-                                                    orderType: 'MONTHLYPASS',
-                                                    checkOutTime: 0,
-                                                    finalBillAmt: 0.0,
-                                                    billAmt: 0.0,
-                                                    dayId: functions.getDayId(),
-                                                    count:
-                                                        FFAppState().newcount,
-                                                  ),
-                                                  invoiceRecordReference);
-
-                                          await _model.invoice!.reference
-                                              .update(createInvoiceRecordData(
-                                            id: _model.invoice?.reference.id,
-                                          ));
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'Check-in Successful !'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          Navigator.pop(context);
-
-                                          context.goNamed(
-                                            'VehicleEntry',
-                                            queryParameters: {
-                                              'shiftDoc': serializeParam(
-                                                widget!.shiftDoc,
-                                                ParamType.JSON,
+                                          if (getCurrentTimestamp
+                                                  .millisecondsSinceEpoch <=
+                                              _model.getinvout!.passEndDate) {
+                                            FFAppState().newcount =
+                                                FFAppState().newcount + 1;
+                                            safeSetState(() {});
+                                            _model.invoiceParty =
+                                                await queryPartyRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (partyRecord) =>
+                                                  partyRecord.where(
+                                                'id',
+                                                isEqualTo: _model
+                                                    .getinvout?.custRef?.id,
                                               ),
-                                              'userRef': serializeParam(
-                                                widget!.userRef,
-                                                ParamType.DocumentReference,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content:
-                                                    Text('Pass is expired !'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
 
-                                        safeSetState(() {});
-                                      },
-                                    ),
+                                            var invoiceRecordReference =
+                                                InvoiceRecord.createDoc(
+                                                    FFAppState().outletIdRef!);
+                                            await invoiceRecordReference
+                                                .set(createInvoiceRecordData(
+                                              party: _model.invoiceParty?.id,
+                                              vechicleNo: _model
+                                                  .invoiceParty?.vehicleNo,
+                                              vechicleType: _model
+                                                  .invoiceParty?.vehicleType,
+                                              checkInTime: getCurrentTimestamp
+                                                  .millisecondsSinceEpoch,
+                                              invoiceDate: getCurrentTimestamp
+                                                  .millisecondsSinceEpoch,
+                                              orderType: 'MONTHLYPASS',
+                                              checkOutTime: 0,
+                                              finalBillAmt: 0.0,
+                                              billAmt: 0.0,
+                                              dayId: functions.getDayId(),
+                                              count: FFAppState().newcount,
+                                            ));
+                                            _model.invoice = InvoiceRecord
+                                                .getDocumentFromData(
+                                                    createInvoiceRecordData(
+                                                      party: _model
+                                                          .invoiceParty?.id,
+                                                      vechicleNo: _model
+                                                          .invoiceParty
+                                                          ?.vehicleNo,
+                                                      vechicleType: _model
+                                                          .invoiceParty
+                                                          ?.vehicleType,
+                                                      checkInTime:
+                                                          getCurrentTimestamp
+                                                              .millisecondsSinceEpoch,
+                                                      invoiceDate:
+                                                          getCurrentTimestamp
+                                                              .millisecondsSinceEpoch,
+                                                      orderType: 'MONTHLYPASS',
+                                                      checkOutTime: 0,
+                                                      finalBillAmt: 0.0,
+                                                      billAmt: 0.0,
+                                                      dayId:
+                                                          functions.getDayId(),
+                                                      count:
+                                                          FFAppState().newcount,
+                                                    ),
+                                                    invoiceRecordReference);
+
+                                            await _model.invoice!.reference
+                                                .update(createInvoiceRecordData(
+                                              id: _model.invoice?.reference.id,
+                                            ));
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  content: Text(
+                                                      'Check-in Successful !'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            Navigator.pop(context);
+
+                                            context.goNamed(
+                                              'VehicleEntry',
+                                              queryParameters: {
+                                                'shiftDoc': serializeParam(
+                                                  widget!.shiftDoc,
+                                                  ParamType.JSON,
+                                                ),
+                                                'userRef': serializeParam(
+                                                  widget!.userRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  content:
+                                                      Text('Pass is expired !'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          safeSetState(() {});
+                                        },
+                                      ),
                                     Expanded(
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -567,12 +576,12 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '2ga110kw' /* Customer */,
+                                                '9w24jtlk' /* Customer */,
                                               ),
                                               searchHintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '7iphsy5c' /* Search here... */,
+                                                'qkqww61n' /* Search here... */,
                                               ),
                                               icon: Icon(
                                                 Icons
@@ -716,7 +725,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'y3wrbbhj' /* Vehicle Type */,
+                                              'gehni8v6' /* Vehicle Type */,
                                             ),
                                             icon: Icon(
                                               Icons.keyboard_arrow_down_rounded,
@@ -791,7 +800,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'yg371ws7' /* Vehicle Number */,
+                                              'p5aoe3id' /* Vehicle Number */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1044,7 +1053,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'iwj46d94' /* Payment Mode */,
+                                                'v4nxy3u0' /* Payment Mode */,
                                               ),
                                               icon: Icon(
                                                 Icons
@@ -1096,7 +1105,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'acc6fkb9' /* Advance Amount */,
+                                              'tpnne80i' /* Advance Amount */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1217,7 +1226,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              '9bo31vnp' /* Discount  Amount */,
+                                              'saiyixb0' /* Discount  Amount */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -1320,8 +1329,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                 ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   FFButtonWidget(
                                     onPressed: () async {
@@ -1437,7 +1445,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             vechicleType:
                                                 _model.dropDownvechicleValue,
                                             count: FFAppState().newcount,
-                                            checkOutTime: 0,
+                                            checkOutTime: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
                                           ),
                                           ...mapToFirestore(
                                             {
@@ -1495,7 +1504,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             vechicleType:
                                                 _model.dropDownvechicleValue,
                                             count: FFAppState().newcount,
-                                            checkOutTime: 0,
+                                            checkOutTime: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
                                           ),
                                           ...mapToFirestore(
                                             {
@@ -1760,7 +1770,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                       if (_shouldSetState) safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      'vhfst6ta' /* PRINT */,
+                                      'yzwytqhe' /* PRINT */,
                                     ),
                                     icon: Icon(
                                       Icons.print_outlined,
@@ -1797,259 +1807,341 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      var _shouldSetState = false;
-                                      if ((_model.textController1.text !=
-                                                  null &&
-                                              _model
-                                                      .textController1.text !=
-                                                  '') &&
-                                          (_model.dropDownvechicleValue !=
-                                                  null &&
-                                              _model.dropDownvechicleValue !=
-                                                  '') &&
-                                          (_model.dropDownPaymentModeValue !=
-                                                  null &&
-                                              _model.dropDownPaymentModeValue !=
-                                                  '')) {
-                                        _model.countdataget =
-                                            await queryInvoiceRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord
-                                                  .where(
-                                                    'invoiceDate',
-                                                    isLessThanOrEqualTo:
-                                                        getCurrentTimestamp
-                                                            .millisecondsSinceEpoch,
-                                                  )
-                                                  .orderBy('invoiceDate',
-                                                      descending: true),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _shouldSetState = true;
-                                        FFAppState().count =
-                                            _model.countdataget!.count;
-                                        safeSetState(() {});
-                                        if (getJsonField(
-                                          widget!.shiftDoc,
-                                          r'''$.shiftExists''',
-                                        )) {
-                                          FFAppState().count =
-                                              FFAppState().count + 1;
-                                          FFAppState().newcount =
-                                              FFAppState().newcount + 1;
-                                          safeSetState(() {});
-                                        } else {
-                                          FFAppState().count =
-                                              FFAppState().count + 1;
-                                          FFAppState().newcount =
-                                              FFAppState().newcount + 1;
-                                          safeSetState(() {});
-                                        }
-
-                                        FFAppState()
-                                            .addToListCars(SelItemListStruct(
-                                          name: functions.toCapitalLetter(
-                                              _model.textController1.text),
-                                          price: FFAppState().parkingCharges,
-                                          categoryP:
-                                              _model.dropDowncustomerValue,
-                                        ));
-                                        safeSetState(() {});
-
-                                        var invoiceRecordReference =
-                                            InvoiceRecord.createDoc(
-                                                FFAppState().outletIdRef!);
-                                        await invoiceRecordReference.set({
-                                          ...createInvoiceRecordData(
-                                            invoice: functions.genInvoiceNum(
-                                                FFAppState().newcount,
-                                                FFAppState().shiftCount),
-                                            invoiceDate:
-                                                functions.timestampToMili(
-                                                    getCurrentTimestamp),
-                                            dayId: functions.getDayId(),
-                                            paymentMode:
-                                                _model.dropDownPaymentModeValue,
-                                            discountAmt: double.tryParse(_model
-                                                .discountAmtTextController
-                                                .text),
-                                            discountPer: valueOrDefault<double>(
-                                              FFAppState().disPer,
-                                              0.0,
-                                            ),
-                                            taxAmt: 0.0,
-                                            billAmt: valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
-                                            finalBillAmt:
-                                                valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
-                                            roundOff: 0.0,
-                                            shiftId: getJsonField(
-                                              widget!.shiftDoc,
-                                              r'''$.shiftId''',
-                                            ).toString(),
-                                            vechicleNo:
-                                                functions.toCapitalLetter(_model
-                                                    .textController1.text),
-                                            checkInTime: valueOrDefault<int>(
-                                              getCurrentTimestamp
-                                                  .millisecondsSinceEpoch,
-                                              0,
-                                            ),
-                                            advancePaid: double.tryParse(_model
-                                                .advanceAmtTextController.text),
-                                            vechicleType:
-                                                _model.dropDownvechicleValue,
-                                            count: FFAppState().newcount,
-                                            checkOutTime: 0,
-                                          ),
-                                          ...mapToFirestore(
-                                            {
-                                              'productList':
-                                                  getSelItemListListFirestoreData(
-                                                FFAppState().listCars,
-                                              ),
-                                            },
-                                          ),
-                                        });
-                                        _model.docInvoicecars2 =
-                                            InvoiceRecord.getDocumentFromData({
-                                          ...createInvoiceRecordData(
-                                            invoice: functions.genInvoiceNum(
-                                                FFAppState().newcount,
-                                                FFAppState().shiftCount),
-                                            invoiceDate:
-                                                functions.timestampToMili(
-                                                    getCurrentTimestamp),
-                                            dayId: functions.getDayId(),
-                                            paymentMode:
-                                                _model.dropDownPaymentModeValue,
-                                            discountAmt: double.tryParse(_model
-                                                .discountAmtTextController
-                                                .text),
-                                            discountPer: valueOrDefault<double>(
-                                              FFAppState().disPer,
-                                              0.0,
-                                            ),
-                                            taxAmt: 0.0,
-                                            billAmt: valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
-                                            finalBillAmt:
-                                                valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
-                                            roundOff: 0.0,
-                                            shiftId: getJsonField(
-                                              widget!.shiftDoc,
-                                              r'''$.shiftId''',
-                                            ).toString(),
-                                            vechicleNo:
-                                                functions.toCapitalLetter(_model
-                                                    .textController1.text),
-                                            checkInTime: valueOrDefault<int>(
-                                              getCurrentTimestamp
-                                                  .millisecondsSinceEpoch,
-                                              0,
-                                            ),
-                                            advancePaid: double.tryParse(_model
-                                                .advanceAmtTextController.text),
-                                            vechicleType:
-                                                _model.dropDownvechicleValue,
-                                            count: FFAppState().newcount,
-                                            checkOutTime: 0,
-                                          ),
-                                          ...mapToFirestore(
-                                            {
-                                              'productList':
-                                                  getSelItemListListFirestoreData(
-                                                FFAppState().listCars,
-                                              ),
-                                            },
-                                          ),
-                                        }, invoiceRecordReference);
-                                        _shouldSetState = true;
-
-                                        await _model.docInvoicecars2!.reference
-                                            .update(createInvoiceRecordData(
-                                          id: _model
-                                              .docInvoicecars2?.reference.id,
-                                        ));
-                                        if (getJsonField(
-                                          widget!.shiftDoc,
-                                          r'''$.shiftExists''',
-                                        )) {
-                                          _model.shiftSummarRkiosk2 =
-                                              await actions.calShiftSummary(
-                                            _model.docInvoicecars2!,
-                                            widget!.shiftDoc!,
-                                          );
-                                          _shouldSetState = true;
-                                          _model.shiftref2 =
-                                              await queryShiftRecordOnce(
+                                  if (false)
+                                    FFButtonWidget(
+                                      onPressed: () async {
+                                        var _shouldSetState = false;
+                                        if ((_model.textController1.text !=
+                                                    null &&
+                                                _model.textController1.text !=
+                                                    '') &&
+                                            (_model.dropDownvechicleValue !=
+                                                    null &&
+                                                _model.dropDownvechicleValue !=
+                                                    '') &&
+                                            (_model.dropDownPaymentModeValue !=
+                                                    null &&
+                                                _model.dropDownPaymentModeValue !=
+                                                    '')) {
+                                          _model.countdataget =
+                                              await queryInvoiceRecordOnce(
                                             parent: FFAppState().outletIdRef,
-                                            queryBuilder: (shiftRecord) =>
-                                                shiftRecord.where(
-                                              'shiftId',
-                                              isEqualTo: getJsonField(
-                                                _model.shiftSummarRkiosk2,
-                                                r'''$.shiftId''',
-                                              ).toString(),
-                                            ),
+                                            queryBuilder: (invoiceRecord) =>
+                                                invoiceRecord
+                                                    .where(
+                                                      'invoiceDate',
+                                                      isLessThanOrEqualTo:
+                                                          getCurrentTimestamp
+                                                              .millisecondsSinceEpoch,
+                                                    )
+                                                    .orderBy('invoiceDate',
+                                                        descending: true),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
                                           _shouldSetState = true;
+                                          FFAppState().count =
+                                              _model.countdataget!.count;
+                                          safeSetState(() {});
+                                          if (getJsonField(
+                                            widget!.shiftDoc,
+                                            r'''$.shiftExists''',
+                                          )) {
+                                            FFAppState().count =
+                                                FFAppState().count + 1;
+                                            FFAppState().newcount =
+                                                FFAppState().newcount + 1;
+                                            safeSetState(() {});
+                                          } else {
+                                            FFAppState().count =
+                                                FFAppState().count + 1;
+                                            FFAppState().newcount =
+                                                FFAppState().newcount + 1;
+                                            safeSetState(() {});
+                                          }
 
-                                          await _model.shiftref2!.reference
-                                              .update(createShiftRecordData(
-                                            billCount: valueOrDefault<int>(
-                                              FFAppState().count,
-                                              0,
-                                            ),
-                                            totalSale: getJsonField(
-                                              _model.shiftSummarRkiosk2,
-                                              r'''$.totalSale''',
-                                            ),
-                                            deliveryCharges: getJsonField(
-                                              _model.shiftSummarRkiosk2,
-                                              r'''$.deliveryCharges''',
-                                            ),
-                                            lastBillNo: getJsonField(
-                                              _model.shiftSummarRkiosk2,
-                                              r'''$.lastBillNo''',
-                                            ).toString(),
-                                            discount: getJsonField(
-                                              _model.shiftSummarRkiosk,
-                                              r'''$.discount''',
-                                            ),
-                                            lastBillTime:
-                                                functions.timestampToMili(
-                                                    getCurrentTimestamp),
-                                            cashSale: getJsonField(
-                                              _model.shiftSummarRkiosk2,
-                                              r'''$.cashSale''',
-                                            ),
-                                            paymentJson: getJsonField(
-                                              _model.shiftSummarRkiosk2,
-                                              r'''$.paymentJson''',
-                                            ).toString(),
+                                          FFAppState()
+                                              .addToListCars(SelItemListStruct(
+                                            name: functions.toCapitalLetter(
+                                                _model.textController1.text),
+                                            price: FFAppState().parkingCharges,
+                                            categoryP:
+                                                _model.dropDowncustomerValue,
                                           ));
+                                          safeSetState(() {});
+
+                                          var invoiceRecordReference =
+                                              InvoiceRecord.createDoc(
+                                                  FFAppState().outletIdRef!);
+                                          await invoiceRecordReference.set({
+                                            ...createInvoiceRecordData(
+                                              invoice: functions.genInvoiceNum(
+                                                  FFAppState().newcount,
+                                                  FFAppState().shiftCount),
+                                              invoiceDate:
+                                                  functions.timestampToMili(
+                                                      getCurrentTimestamp),
+                                              dayId: functions.getDayId(),
+                                              paymentMode: _model
+                                                  .dropDownPaymentModeValue,
+                                              discountAmt: double.tryParse(
+                                                  _model
+                                                      .discountAmtTextController
+                                                      .text),
+                                              discountPer:
+                                                  valueOrDefault<double>(
+                                                FFAppState().disPer,
+                                                0.0,
+                                              ),
+                                              taxAmt: 0.0,
+                                              billAmt: valueOrDefault<double>(
+                                                FFAppState().parkingCharges,
+                                                0.0,
+                                              ),
+                                              finalBillAmt:
+                                                  valueOrDefault<double>(
+                                                FFAppState().parkingCharges,
+                                                0.0,
+                                              ),
+                                              roundOff: 0.0,
+                                              shiftId: getJsonField(
+                                                widget!.shiftDoc,
+                                                r'''$.shiftId''',
+                                              ).toString(),
+                                              vechicleNo: functions
+                                                  .toCapitalLetter(_model
+                                                      .textController1.text),
+                                              checkInTime: valueOrDefault<int>(
+                                                getCurrentTimestamp
+                                                    .millisecondsSinceEpoch,
+                                                0,
+                                              ),
+                                              advancePaid: double.tryParse(
+                                                  _model
+                                                      .advanceAmtTextController
+                                                      .text),
+                                              vechicleType:
+                                                  _model.dropDownvechicleValue,
+                                              count: FFAppState().newcount,
+                                              checkOutTime: 0,
+                                            ),
+                                            ...mapToFirestore(
+                                              {
+                                                'productList':
+                                                    getSelItemListListFirestoreData(
+                                                  FFAppState().listCars,
+                                                ),
+                                              },
+                                            ),
+                                          });
+                                          _model.docInvoicecars2 = InvoiceRecord
+                                              .getDocumentFromData({
+                                            ...createInvoiceRecordData(
+                                              invoice: functions.genInvoiceNum(
+                                                  FFAppState().newcount,
+                                                  FFAppState().shiftCount),
+                                              invoiceDate:
+                                                  functions.timestampToMili(
+                                                      getCurrentTimestamp),
+                                              dayId: functions.getDayId(),
+                                              paymentMode: _model
+                                                  .dropDownPaymentModeValue,
+                                              discountAmt: double.tryParse(
+                                                  _model
+                                                      .discountAmtTextController
+                                                      .text),
+                                              discountPer:
+                                                  valueOrDefault<double>(
+                                                FFAppState().disPer,
+                                                0.0,
+                                              ),
+                                              taxAmt: 0.0,
+                                              billAmt: valueOrDefault<double>(
+                                                FFAppState().parkingCharges,
+                                                0.0,
+                                              ),
+                                              finalBillAmt:
+                                                  valueOrDefault<double>(
+                                                FFAppState().parkingCharges,
+                                                0.0,
+                                              ),
+                                              roundOff: 0.0,
+                                              shiftId: getJsonField(
+                                                widget!.shiftDoc,
+                                                r'''$.shiftId''',
+                                              ).toString(),
+                                              vechicleNo: functions
+                                                  .toCapitalLetter(_model
+                                                      .textController1.text),
+                                              checkInTime: valueOrDefault<int>(
+                                                getCurrentTimestamp
+                                                    .millisecondsSinceEpoch,
+                                                0,
+                                              ),
+                                              advancePaid: double.tryParse(
+                                                  _model
+                                                      .advanceAmtTextController
+                                                      .text),
+                                              vechicleType:
+                                                  _model.dropDownvechicleValue,
+                                              count: FFAppState().newcount,
+                                              checkOutTime: 0,
+                                            ),
+                                            ...mapToFirestore(
+                                              {
+                                                'productList':
+                                                    getSelItemListListFirestoreData(
+                                                  FFAppState().listCars,
+                                                ),
+                                              },
+                                            ),
+                                          }, invoiceRecordReference);
+                                          _shouldSetState = true;
+
+                                          await _model
+                                              .docInvoicecars2!.reference
+                                              .update(createInvoiceRecordData(
+                                            id: _model
+                                                .docInvoicecars2?.reference.id,
+                                          ));
+                                          if (getJsonField(
+                                            widget!.shiftDoc,
+                                            r'''$.shiftExists''',
+                                          )) {
+                                            _model.shiftSummarRkiosk2 =
+                                                await actions.calShiftSummary(
+                                              _model.docInvoicecars2!,
+                                              widget!.shiftDoc!,
+                                            );
+                                            _shouldSetState = true;
+                                            _model.shiftref2 =
+                                                await queryShiftRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (shiftRecord) =>
+                                                  shiftRecord.where(
+                                                'shiftId',
+                                                isEqualTo: getJsonField(
+                                                  _model.shiftSummarRkiosk2,
+                                                  r'''$.shiftId''',
+                                                ).toString(),
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _shouldSetState = true;
+
+                                            await _model.shiftref2!.reference
+                                                .update(createShiftRecordData(
+                                              billCount: valueOrDefault<int>(
+                                                FFAppState().count,
+                                                0,
+                                              ),
+                                              totalSale: getJsonField(
+                                                _model.shiftSummarRkiosk2,
+                                                r'''$.totalSale''',
+                                              ),
+                                              deliveryCharges: getJsonField(
+                                                _model.shiftSummarRkiosk2,
+                                                r'''$.deliveryCharges''',
+                                              ),
+                                              lastBillNo: getJsonField(
+                                                _model.shiftSummarRkiosk2,
+                                                r'''$.lastBillNo''',
+                                              ).toString(),
+                                              discount: getJsonField(
+                                                _model.shiftSummarRkiosk,
+                                                r'''$.discount''',
+                                              ),
+                                              lastBillTime:
+                                                  functions.timestampToMili(
+                                                      getCurrentTimestamp),
+                                              cashSale: getJsonField(
+                                                _model.shiftSummarRkiosk2,
+                                                r'''$.cashSale''',
+                                              ),
+                                              paymentJson: getJsonField(
+                                                _model.shiftSummarRkiosk2,
+                                                r'''$.paymentJson''',
+                                              ).toString(),
+                                            ));
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Alert'),
+                                                  content: Text(
+                                                      'Check In Successfull !'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            await actions.removeFromAllBillList(
+                                              FFAppState().selBill,
+                                            );
+                                            await actions.clearValue();
+                                            FFAppState().subTotal = 0.0;
+                                            FFAppState().listCars = [];
+                                            FFAppState().update(() {});
+                                            FFAppState().finalAmt = 0.0;
+                                            FFAppState().billAmt = 0.0;
+                                            FFAppState().count =
+                                                FFAppState().count;
+                                            FFAppState().cartItem = [];
+                                            FFAppState().shiftDetailsNEw =
+                                                _model.shiftSummarRkiosk2!;
+                                            FFAppState().update(() {});
+
+                                            context.pushNamed(
+                                              'VehicleEntry',
+                                              queryParameters: {
+                                                'shiftDoc': serializeParam(
+                                                  FFAppState().shiftDetailsNEw,
+                                                  ParamType.JSON,
+                                                ),
+                                                'userRef': serializeParam(
+                                                  widget!.userRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Login again to start Shift ',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    Color(0x00000000),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+                                        } else {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('Alert'),
                                                 content: Text(
-                                                    'Check In Successfull !'),
+                                                    'Add Vechicle No & Vehicle Type'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -2061,116 +2153,48 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               );
                                             },
                                           );
-                                          await actions.removeFromAllBillList(
-                                            FFAppState().selBill,
-                                          );
-                                          await actions.clearValue();
-                                          FFAppState().subTotal = 0.0;
-                                          FFAppState().listCars = [];
-                                          FFAppState().update(() {});
-                                          FFAppState().finalAmt = 0.0;
-                                          FFAppState().billAmt = 0.0;
-                                          FFAppState().count =
-                                              FFAppState().count;
-                                          FFAppState().cartItem = [];
-                                          FFAppState().shiftDetailsNEw =
-                                              _model.shiftSummarRkiosk2!;
-                                          FFAppState().update(() {});
-
-                                          context.pushNamed(
-                                            'VehicleEntry',
-                                            queryParameters: {
-                                              'shiftDoc': serializeParam(
-                                                FFAppState().shiftDetailsNEw,
-                                                ParamType.JSON,
-                                              ),
-                                              'userRef': serializeParam(
-                                                widget!.userRef,
-                                                ParamType.DocumentReference,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                          return;
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Login again to start Shift ',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  Color(0x00000000),
-                                            ),
-                                          );
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                          return;
                                         }
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              content: Text(
-                                                  'Add Vechicle No & Vehicle Type'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      }
 
-                                      if (_shouldSetState) safeSetState(() {});
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      '22edrqc0' /* SAVE */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 45.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: FlutterFlowTheme.of(context).info,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        'z38auhkx' /* SAVE */,
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      options: FFButtonOptions(
+                                        height: 45.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallFamily),
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
                                     ),
-                                  ),
                                 ].divide(SizedBox(width: 6.0)),
                               ),
                             ],

@@ -3536,6 +3536,12 @@ class FFAppState extends ChangeNotifier {
         ? prefs.setString('ff_currentUserRef', value.path)
         : prefs.remove('ff_currentUserRef');
   }
+
+  int _updateOutletStartLoop = 0;
+  int get updateOutletStartLoop => _updateOutletStartLoop;
+  set updateOutletStartLoop(int value) {
+    _updateOutletStartLoop = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

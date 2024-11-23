@@ -216,7 +216,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                               .textBusinessNameTextController,
                                           focusNode:
                                               _model.textBusinessNameFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -306,7 +306,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           controller:
                                               _model.textMobileTextController,
                                           focusNode: _model.textMobileFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -413,7 +413,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                               .textAlternateMobileNoTextController,
                                           focusNode: _model
                                               .textAlternateMobileNoFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -503,7 +503,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           controller:
                                               _model.textEmailTextController,
                                           focusNode: _model.textEmailFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -610,7 +610,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                               _model.textAddressTextController,
                                           focusNode:
                                               _model.textAddressFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -717,7 +717,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                               .textVehicleNoTextController,
                                           focusNode:
                                               _model.textVehicleNoFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
@@ -919,7 +919,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                       TextFormField(
                                         controller: _model.textTextController,
                                         focusNode: _model.textFocusNode,
-                                        autofocus: true,
+                                        autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
@@ -1055,7 +1055,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           _model.textCreditLimitTextController,
                                       focusNode:
                                           _model.textCreditLimitFocusNode,
-                                      autofocus: true,
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText:
@@ -1151,7 +1151,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                       controller:
                                           _model.textOldBalanceTextController,
                                       focusNode: _model.textOldBalanceFocusNode,
-                                      autofocus: true,
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText:
