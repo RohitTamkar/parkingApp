@@ -4,6 +4,7 @@ export 'print_unbilled_report.dart' show printUnbilledReport;
 export 'printbillsummary_report.dart' show printbillsummaryReport;
 export 'print_billnewhive.dart' show printBillnewhive;
 export 'print_vehicle_in_out_report.dart' show printVehicleInOutReport;
+export 'print_bill_parking_one_time.dart' show printBillParkingOneTime;
 export 'print_today_summary_report.dart' show printTodaySummaryReport;
 export 'print_vehicle_wise_report.dart' show printVehicleWiseReport;
 export 'print_bill_format_two.dart' show printBillFormatTwo;

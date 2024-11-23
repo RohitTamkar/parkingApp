@@ -1681,7 +1681,7 @@ class _ParkingCheckINCopyWidgetState extends State<ParkingCheckINCopyWidget> {
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
                                           _shouldSetState = true;
-                                          await actions.printBillParking(
+                                          await actions.printBillParkingOneTime(
                                             _model.device!.toList(),
                                             FFAppState().isPrinterConnected,
                                             FFAppState().printerName,
