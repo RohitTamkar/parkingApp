@@ -525,7 +525,7 @@ Future printBillParkingOneTime(
           DateFormat('dd-MM-yyyy hh:mm:a').format(checkOutDateTime);
 
 // Now, you can use these formatted strings in your code
-      bytes += generator.text('Check-In: $formattedCheckInTime',
+      bytes += generator.text('Time: $formattedCheckInTime',
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -533,31 +533,31 @@ Future printBillParkingOneTime(
               align: PosAlign.left));
 
 // Only display Check-Out time if it is non-zero
-      if (invoiceDetails.checkOutTime > 0) {
-        bytes += generator.text('Check-Out: $formattedCheckOutTime',
-            styles: const PosStyles(
-                height: PosTextSize.size1,
-                width: PosTextSize.size1,
-                bold: false,
-                align: PosAlign.left));
-        bytes += generator.text(
-            "Duration :" +
-                functions
-                    .calculateHour(invoiceDetails.checkInTime,
-                        getCurrentTimestamp.millisecondsSinceEpoch)
-                    .toString() +
-                "hr",
-            styles: PosStyles(
-                height: PosTextSize.size1,
-                width: PosTextSize.size1,
-                align: PosAlign.left));
+      //if (invoiceDetails.checkOutTime > 0) {
+      //   bytes += generator.text('Check-Out: $formattedCheckOutTime',
+      //       styles: const PosStyles(
+      //           height: PosTextSize.size1,
+      //           width: PosTextSize.size1,
+      //           bold: false,
+      //           align: PosAlign.left));
 
-        bytes += generator.text("Amount :" + invoiceDetails.billAmt.toString(),
-            styles: PosStyles(
-                height: PosTextSize.size1,
-                width: PosTextSize.size1,
-                align: PosAlign.left));
-      }
+      // bytes += generator.text(
+      //     "Duration :" +
+      //         functions
+      //             .calculateHour(invoiceDetails.checkInTime,
+      //                 getCurrentTimestamp.millisecondsSinceEpoch)
+      //             .toString() +
+      //         "hr",
+      //     styles: PosStyles(
+      //         height: PosTextSize.size1,
+      //         width: PosTextSize.size1,
+      //         align: PosAlign.left));
+      bytes += generator.text("Amount :" + invoiceDetails.billAmt.toString(),
+          styles: PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              align: PosAlign.left));
+      //.}
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
