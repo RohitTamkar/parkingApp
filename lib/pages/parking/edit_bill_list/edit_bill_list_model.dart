@@ -20,6 +20,7 @@ class EditBillListModel extends FlutterFlowModel<EditBillListWidget> {
 
   DateTime? datePicked1;
   DateTime? datePicked2;
+  DateTime? datePicked3;
   // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
   DateTime? datenext;
 

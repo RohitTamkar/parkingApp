@@ -10,7 +10,12 @@ import 'report_calender_model.dart';
 export 'report_calender_model.dart';
 
 class ReportCalenderWidget extends StatefulWidget {
-  const ReportCalenderWidget({super.key});
+  const ReportCalenderWidget({
+    super.key,
+    this.reportType,
+  });
+
+  final String? reportType;
 
   @override
   State<ReportCalenderWidget> createState() => _ReportCalenderWidgetState();
