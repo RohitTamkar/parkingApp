@@ -864,6 +864,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   collectionNamePath: ['OUTLET', 'INVOICE'],
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'WebVehicleWiseSale2',
+              path: 'webVehicleWiseSale2',
+              builder: (context, params) => WebVehicleWiseSale2Widget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

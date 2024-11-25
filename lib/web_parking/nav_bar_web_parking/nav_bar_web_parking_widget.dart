@@ -521,7 +521,7 @@ class _NavBarWebParkingWidgetState extends State<NavBarWebParkingWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('WebVehicleWiseSaleReport');
+                                  context.pushNamed('WebVehicleWiseSale2');
                                 },
                                 child: Container(
                                   width: double.infinity,

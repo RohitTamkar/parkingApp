@@ -29,11 +29,11 @@ class BillDetailsCopyModel extends FlutterFlowModel<BillDetailsCopyWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Custom Action - newCustomAction2] action in Container widget.
+  // Stores action output result for [Custom Action - newCustomAction2] action in Button widget.
   List<SelItemListStruct>? returnList;
-  // Stores action output result for [Custom Action - shiftExists] action in Container widget.
+  // Stores action output result for [Custom Action - shiftExists] action in Button widget.
   dynamic? shiftList;
-  // Stores action output result for [Custom Action - updateShiftSummaryForEB] action in Container widget.
+  // Stores action output result for [Custom Action - updateShiftSummaryForEB] action in Button widget.
   dynamic? returnList1;
 
   @override

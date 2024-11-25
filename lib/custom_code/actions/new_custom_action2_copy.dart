@@ -11,23 +11,21 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
-Future<List<SelItemListStruct>> newCustomAction2Copy(InvoiceRecord list) async {
+Future<List<VehicleBillStruct>> newCustomAction2Copy(List<dynamic> list) async {
   // Add your function code here!
 
   List<dynamic> itemList = [];
-  itemList = list;
-  List<SelItemListStruct> returnList = [];
-  SelItemListStruct struct = SelItemListStruct();
+  itemList = list as List;
+  List<VehicleBillStruct> returnList = [];
+  VehicleBillStruct struct = VehicleBillStruct();
 
   for (int j = 0; j < itemList.length; j++) {
-    struct = createSelItemListStruct(
-        name: itemList[j]["name"],
-        price: itemList[j]["price"],
-        quantity: itemList[j]["quantity"],
-        total: itemList[j]["total"],
-        id: itemList[j]["id"],
-        catId: itemList[j]["catId"],
-        isDeletedItem: itemList[j]["isDeletedItem"]);
+    struct = createVehicleBillStruct(
+        vehicleNo: itemList[j]["vehicleName"],
+        vehicleType: itemList[j]["vehicleType"],
+        billAmt: itemList[j]["billAmt"],
+        finalBillAmt: itemList[j]["finalBillAmt"],
+        count: itemList[j]["count"]);
 
     returnList.add(struct);
     print(returnList);

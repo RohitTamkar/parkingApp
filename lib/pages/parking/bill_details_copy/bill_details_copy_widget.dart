@@ -1467,188 +1467,158 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          25.0,
+                                                                          40.0,
                                                                           0.0,
-                                                                          25.0,
+                                                                          40.0,
                                                                           0.0),
                                                                   child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      _model.returnList =
-                                                                          await actions
-                                                                              .newCustomAction2(
-                                                                        getJsonField(
+                                                                      Container(
+                                                                    width: 10.0,
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.04,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                    ),
+                                                                    child:
+                                                                        FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        _model.returnList =
+                                                                            await actions.newCustomAction2(
+                                                                          getJsonField(
+                                                                            FFAppState().selectedInvoiceJson,
+                                                                            r'''$.productList''',
+                                                                            true,
+                                                                          )!,
+                                                                        );
+
+                                                                        await FFAppState()
+                                                                            .invoiceRef!
+                                                                            .update({
+                                                                          ...createInvoiceRecordData(
+                                                                            paymentMode: FFAppState().dropDown == false
+                                                                                ? getJsonField(
+                                                                                    FFAppState().selectedInvoiceJson,
+                                                                                    r'''$.paymentMode''',
+                                                                                  ).toString()
+                                                                                : FFAppState().PayMode,
+                                                                            billAmt:
+                                                                                getJsonField(
+                                                                              FFAppState().selectedInvoiceJson,
+                                                                              r'''$.billAmt''',
+                                                                            ),
+                                                                            finalBillAmt:
+                                                                                getJsonField(
+                                                                              FFAppState().selectedInvoiceJson,
+                                                                              r'''$.finalBillAmt''',
+                                                                            ),
+                                                                          ),
+                                                                          ...mapToFirestore(
+                                                                            {
+                                                                              'productList': getSelItemListListFirestoreData(
+                                                                                _model.returnList,
+                                                                              ),
+                                                                            },
+                                                                          ),
+                                                                        });
+                                                                        _model.shiftList =
+                                                                            await actions.shiftExists(
+                                                                          functions
+                                                                              .getDayId(),
+                                                                          '1',
+                                                                          FFAppState()
+                                                                              .outletId,
+                                                                        );
+                                                                        _model.returnList1 =
+                                                                            await actions.updateShiftSummaryForEB(
                                                                           FFAppState()
                                                                               .selectedInvoiceJson,
-                                                                          r'''$.productList''',
-                                                                          true,
-                                                                        )!,
-                                                                      );
+                                                                          FFAppState()
+                                                                              .curMode,
+                                                                          FFAppState()
+                                                                              .prevMode,
+                                                                          _model
+                                                                              .shiftList!,
+                                                                        );
 
-                                                                      await FFAppState()
-                                                                          .invoiceRef!
-                                                                          .update({
-                                                                        ...createInvoiceRecordData(
-                                                                          paymentMode: FFAppState().dropDown == false
-                                                                              ? getJsonField(
-                                                                                  FFAppState().selectedInvoiceJson,
-                                                                                  r'''$.paymentMode''',
-                                                                                ).toString()
-                                                                              : FFAppState().PayMode,
-                                                                          billAmt:
-                                                                              getJsonField(
-                                                                            FFAppState().selectedInvoiceJson,
-                                                                            r'''$.billAmt''',
-                                                                          ),
-                                                                          finalBillAmt:
-                                                                              getJsonField(
-                                                                            FFAppState().selectedInvoiceJson,
-                                                                            r'''$.finalBillAmt''',
-                                                                          ),
-                                                                        ),
-                                                                        ...mapToFirestore(
-                                                                          {
-                                                                            'productList':
-                                                                                getSelItemListListFirestoreData(
-                                                                              _model.returnList,
-                                                                            ),
+                                                                        await functions
+                                                                            .shiftRef(_model.shiftList!,
+                                                                                FFAppState().outletId)
+                                                                            .update(createShiftRecordData(
+                                                                              totalSale: getJsonField(
+                                                                                _model.returnList1,
+                                                                                r'''$.totalSale''',
+                                                                              ),
+                                                                              subTotalBill: getJsonField(
+                                                                                _model.returnList1,
+                                                                                r'''$.subTotalSale''',
+                                                                              ),
+                                                                              paymentJson: getJsonField(
+                                                                                _model.returnList1,
+                                                                                r'''$.paymentJson''',
+                                                                              ).toString(),
+                                                                              cashSale: getJsonField(
+                                                                                _model.returnList1,
+                                                                                r'''$.cashSale''',
+                                                                              ),
+                                                                            ));
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return AlertDialog(
+                                                                              title: Text('updated'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                  child: Text('Ok'),
+                                                                                ),
+                                                                              ],
+                                                                            );
                                                                           },
-                                                                        ),
-                                                                      });
-                                                                      _model.shiftList =
-                                                                          await actions
-                                                                              .shiftExists(
-                                                                        functions
-                                                                            .getDayId(),
-                                                                        '1',
-                                                                        FFAppState()
-                                                                            .outletId,
-                                                                      );
-                                                                      _model.returnList1 =
-                                                                          await actions
-                                                                              .updateShiftSummaryForEB(
-                                                                        FFAppState()
-                                                                            .selectedInvoiceJson,
-                                                                        FFAppState()
-                                                                            .curMode,
-                                                                        FFAppState()
-                                                                            .prevMode,
-                                                                        _model
-                                                                            .shiftList!,
-                                                                      );
+                                                                        );
 
-                                                                      await functions
-                                                                          .shiftRef(
-                                                                              _model.shiftList!,
-                                                                              FFAppState().outletId)
-                                                                          .update(createShiftRecordData(
-                                                                            totalSale:
-                                                                                getJsonField(
-                                                                              _model.returnList1,
-                                                                              r'''$.totalSale''',
-                                                                            ),
-                                                                            subTotalBill:
-                                                                                getJsonField(
-                                                                              _model.returnList1,
-                                                                              r'''$.subTotalSale''',
-                                                                            ),
-                                                                            paymentJson:
-                                                                                getJsonField(
-                                                                              _model.returnList1,
-                                                                              r'''$.paymentJson''',
-                                                                            ).toString(),
-                                                                            cashSale:
-                                                                                getJsonField(
-                                                                              _model.returnList1,
-                                                                              r'''$.cashSale''',
-                                                                            ),
-                                                                          ));
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (alertDialogContext) {
-                                                                          return AlertDialog(
-                                                                            title:
-                                                                                Text('updated'),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: Text('Ok'),
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                        },
-                                                                      );
-
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          10.0,
-                                                                      height: MediaQuery.sizeOf(context)
-                                                                              .height *
-                                                                          0.04,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
+                                                                      text: FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'w73dkxff' /* Save */,
                                                                       ),
-                                                                      child:
-                                                                          FFButtonWidget(
-                                                                        onPressed:
-                                                                            () {
-                                                                          print(
-                                                                              'Button pressed ...');
-                                                                        },
-                                                                        text: FFLocalizations.of(context)
-                                                                            .getText(
-                                                                          'w73dkxff' /* Save */,
-                                                                        ),
-                                                                        options:
-                                                                            FFButtonOptions(
-                                                                          height:
-                                                                              40.0,
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              16.0,
-                                                                              0.0,
-                                                                              16.0,
-                                                                              0.0),
-                                                                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).parkingSecondaryBackground,
-                                                                          textStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                color: Colors.white,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                              ),
-                                                                          elevation:
-                                                                              0.0,
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        height:
+                                                                            40.0,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .parkingSecondaryBackground,
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: Colors.white,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            ),
+                                                                        elevation:
+                                                                            0.0,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
                                                                       ),
                                                                     ),
                                                                   ),

@@ -99,73 +99,70 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
               child: Scaffold(
                 key: scaffoldKey,
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                floatingActionButton: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      print('FloatingActionButton pressed ...');
-                    },
-                    backgroundColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    elevation: 8.0,
-                    label: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 50.0,
-                      buttonSize: 50.0,
-                      icon: Icon(
-                        Icons.print,
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 30.0,
-                      ),
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        if (!functions
-                            .isPrinterSelected(FFAppState().printerDevice)!) {
-                          _model.resDevice2 = await actions.scanPrinter(
-                            FFAppState().posMode,
-                          );
-                          _shouldSetState = true;
-                        }
-                        _model.printer = await actions.connectDevice(
-                          FFAppState().printerDevice,
-                          FFAppState().printerIndex,
+                floatingActionButton: FloatingActionButton.extended(
+                  onPressed: () {
+                    print('FloatingActionButton pressed ...');
+                  },
+                  backgroundColor:
+                      FlutterFlowTheme.of(context).secondaryBackground,
+                  elevation: 8.0,
+                  label: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 50.0,
+                    buttonSize: 50.0,
+                    icon: Icon(
+                      Icons.print,
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 30.0,
+                    ),
+                    onPressed: () async {
+                      var _shouldSetState = false;
+                      if (!functions
+                          .isPrinterSelected(FFAppState().printerDevice)!) {
+                        _model.resDevice2 = await actions.scanPrinter(
+                          FFAppState().posMode,
                         );
                         _shouldSetState = true;
-                        if (_model.printer!) {
-                          await actions.printVehicleWiseReport(
-                            FFAppState().printerDevice,
-                            FFAppState().isPrinterConnected,
-                            FFAppState().printerName,
-                            FFAppState().paperSize,
-                            vehicleWiseSale2InvoiceRecordList.toList(),
-                            vehicleWiseSale2InvoiceRecordList
-                                .unique((e) => e.vechicleType)
-                                .toList(),
-                          );
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('printer connection'),
-                                content: Text('printer not connected'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          if (_shouldSetState) safeSetState(() {});
-                          return;
-                        }
-
+                      }
+                      _model.printer = await actions.connectDevice(
+                        FFAppState().printerDevice,
+                        FFAppState().printerIndex,
+                      );
+                      _shouldSetState = true;
+                      if (_model.printer!) {
+                        await actions.printVehicleWiseReport(
+                          FFAppState().printerDevice,
+                          FFAppState().isPrinterConnected,
+                          FFAppState().printerName,
+                          FFAppState().paperSize,
+                          vehicleWiseSale2InvoiceRecordList.toList(),
+                          vehicleWiseSale2InvoiceRecordList
+                              .unique((e) => e.vechicleType)
+                              .toList(),
+                        );
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('printer connection'),
+                              content: Text('printer not connected'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                         if (_shouldSetState) safeSetState(() {});
-                      },
-                    ),
+                        return;
+                      }
+
+                      if (_shouldSetState) safeSetState(() {});
+                    },
                   ),
                 ),
                 body: Column(
@@ -210,19 +207,17 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                       'r1ndf8dh' /* Vehicle Parking Report */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
+                                        .titleMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 20.0,
+                                                  .titleMediumFamily,
                                           letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMediumFamily),
+                                                      .titleMediumFamily),
                                         ),
                                   ),
                                   FlutterFlowIconButton(
@@ -261,8 +256,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 15.0, 0.0, 0.0),
+                          padding: EdgeInsets.all(15.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -533,15 +527,13 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                   ],
                                 ),
                               ),
-                              Flexible(
+                              Expanded(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 15.0, 0.0, 0.0),
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.95,
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.78,
+                                    width: double.infinity,
+                                    height: double.infinity,
                                     decoration: BoxDecoration(),
                                     child: SingleChildScrollView(
                                       child: Column(
