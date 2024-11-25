@@ -9,7 +9,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -1499,47 +1498,19 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         FFButtonWidget(
                                                                       onPressed:
                                                                           () async {
-                                                                        _model.returnList =
-                                                                            await queryInvoiceRecordOnce(
-                                                                          parent:
-                                                                              FFAppState().outletIdRef,
-                                                                          queryBuilder: (invoiceRecord) =>
-                                                                              invoiceRecord.where(
-                                                                            'invoice',
-                                                                            isEqualTo:
-                                                                                containerInvoiceRecord?.reference.id,
-                                                                          ),
-                                                                          singleRecord:
-                                                                              true,
-                                                                        ).then((s) =>
-                                                                                s.firstOrNull);
-
-                                                                        await FFAppState()
-                                                                            .invoiceRef!
+                                                                        await containerInvoiceRecord!
+                                                                            .reference
                                                                             .update(createInvoiceRecordData(
-                                                                              paymentMode: FFAppState().dropDown == false
-                                                                                  ? getJsonField(
-                                                                                      FFAppState().selectedInvoiceJson,
-                                                                                      r'''$.paymentMode''',
-                                                                                    ).toString()
-                                                                                  : FFAppState().PayMode,
-                                                                              billAmt: getJsonField(
-                                                                                FFAppState().selectedInvoiceJson,
-                                                                                r'''$.billAmt''',
-                                                                              ),
-                                                                              finalBillAmt: getJsonField(
-                                                                                FFAppState().selectedInvoiceJson,
-                                                                                r'''$.finalBillAmt''',
-                                                                              ),
-                                                                              vechicleNo: getJsonField(
-                                                                                FFAppState().selectedInvoiceJson,
-                                                                                r'''$.vehicleNo''',
-                                                                              ).toString(),
-                                                                              vechicleType: getJsonField(
-                                                                                FFAppState().selectedInvoiceJson,
-                                                                                r'''$.vehicleType''',
-                                                                              ).toString(),
-                                                                            ));
+                                                                          vechicleNo: _model
+                                                                              .textController1
+                                                                              .text,
+                                                                          finalBillAmt: double.tryParse(_model
+                                                                              .textController2
+                                                                              .text),
+                                                                          paymentMode: _model
+                                                                              .paymentModeModel
+                                                                              .dropDownValue,
+                                                                        ));
                                                                         _model.shiftList =
                                                                             await actions.shiftExists(
                                                                           functions
