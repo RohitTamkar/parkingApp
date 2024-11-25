@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
-Future<List<VehicleBillStruct>> newCustomAction2Copy(List<dynamic> list) async {
+Future<List<VehicleBillStruct>> newCustomAction2Copy(dynamic list) async {
   // Add your function code here!
 
   List<dynamic> itemList = [];

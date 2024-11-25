@@ -1501,7 +1501,8 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           () async {
                                                                         _model.returnList =
                                                                             await actions.newCustomAction2Copy(
-                                                                          VehicleBillStruct.maybeFromMap(FFAppState().selectedInvoiceJson)!
+                                                                          (FFAppState().selectedInvoiceJson.toList().map<VehicleBillStruct?>(VehicleBillStruct.maybeFromMap).toList() as Iterable<VehicleBillStruct?>)
+                                                                              .withoutNulls[0]
                                                                               .toMap(),
                                                                         );
 
