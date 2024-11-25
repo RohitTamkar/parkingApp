@@ -2070,7 +2070,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed(
-                              'ParkingCheckINCopy',
+                              'ParkingCheckIN',
                               queryParameters: {
                                 'shiftDoc': serializeParam(
                                   widget!.shiftDoc,

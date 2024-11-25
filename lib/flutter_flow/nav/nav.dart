@@ -847,6 +847,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   collectionNamePath: ['USER_PROFILE'],
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'EditBillList',
+              path: 'editBillList',
+              builder: (context, params) => EditBillListWidget(),
+            ),
+            FFRoute(
+              name: 'billDetailsCopy',
+              path: 'billDetailsCopy',
+              builder: (context, params) => BillDetailsCopyWidget(
+                docRef: params.getParam(
+                  'docRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET', 'INVOICE'],
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

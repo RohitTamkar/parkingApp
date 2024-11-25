@@ -132,3 +132,7 @@ export '/pages/parking/edit_outlet_page/edit_outlet_page_widget.dart'
     show EditOutletPageWidget;
 export '/pages/parking/parking_check_i_n_copy/parking_check_i_n_copy_widget.dart'
     show ParkingCheckINCopyWidget;
+export '/pages/parking/edit_bill_list/edit_bill_list_widget.dart'
+    show EditBillListWidget;
+export '/pages/parking/bill_details_copy/bill_details_copy_widget.dart'
+    show BillDetailsCopyWidget;
