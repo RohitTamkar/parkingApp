@@ -3542,6 +3542,12 @@ class FFAppState extends ChangeNotifier {
   set updateOutletStartLoop(int value) {
     _updateOutletStartLoop = value;
   }
+
+  DocumentReference? _invoiceRef2;
+  DocumentReference? get invoiceRef2 => _invoiceRef2;
+  set invoiceRef2(DocumentReference? value) {
+    _invoiceRef2 = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

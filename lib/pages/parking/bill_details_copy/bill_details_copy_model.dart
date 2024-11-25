@@ -12,6 +12,7 @@ import 'bill_details_copy_widget.dart' show BillDetailsCopyWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +30,8 @@ class BillDetailsCopyModel extends FlutterFlowModel<BillDetailsCopyWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Custom Action - newCustomAction2] action in Button widget.
-  List<SelItemListStruct>? returnList;
+  // Stores action output result for [Custom Action - newCustomAction2Copy] action in Button widget.
+  List<VehicleBillStruct>? returnList;
   // Stores action output result for [Custom Action - shiftExists] action in Button widget.
   dynamic? shiftList;
   // Stores action output result for [Custom Action - updateShiftSummaryForEB] action in Button widget.

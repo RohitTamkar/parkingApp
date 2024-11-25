@@ -11,6 +11,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +39,17 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BillDetailsCopyModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().filterDate = valueOrDefault<String>(
+        functions.getDayId(),
+        '0',
+      );
+      safeSetState(() {});
+      FFAppState().invoice = functions.genInvoiceNum(1, 1);
+      safeSetState(() {});
+    });
 
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -1488,7 +1500,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                       onPressed:
                                                                           () async {
                                                                         _model.returnList =
-                                                                            await actions.newCustomAction2(
+                                                                            await actions.newCustomAction2Copy(
                                                                           getJsonField(
                                                                             FFAppState().selectedInvoiceJson,
                                                                             r'''$.productList''',
@@ -1498,33 +1510,22 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
 
                                                                         await FFAppState()
                                                                             .invoiceRef!
-                                                                            .update({
-                                                                          ...createInvoiceRecordData(
-                                                                            paymentMode: FFAppState().dropDown == false
-                                                                                ? getJsonField(
-                                                                                    FFAppState().selectedInvoiceJson,
-                                                                                    r'''$.paymentMode''',
-                                                                                  ).toString()
-                                                                                : FFAppState().PayMode,
-                                                                            billAmt:
-                                                                                getJsonField(
-                                                                              FFAppState().selectedInvoiceJson,
-                                                                              r'''$.billAmt''',
-                                                                            ),
-                                                                            finalBillAmt:
-                                                                                getJsonField(
-                                                                              FFAppState().selectedInvoiceJson,
-                                                                              r'''$.finalBillAmt''',
-                                                                            ),
-                                                                          ),
-                                                                          ...mapToFirestore(
-                                                                            {
-                                                                              'productList': getSelItemListListFirestoreData(
-                                                                                _model.returnList,
+                                                                            .update(createInvoiceRecordData(
+                                                                              paymentMode: FFAppState().dropDown == false
+                                                                                  ? getJsonField(
+                                                                                      FFAppState().selectedInvoiceJson,
+                                                                                      r'''$.paymentMode''',
+                                                                                    ).toString()
+                                                                                  : FFAppState().PayMode,
+                                                                              billAmt: getJsonField(
+                                                                                FFAppState().selectedInvoiceJson,
+                                                                                r'''$.billAmt''',
                                                                               ),
-                                                                            },
-                                                                          ),
-                                                                        });
+                                                                              finalBillAmt: getJsonField(
+                                                                                FFAppState().selectedInvoiceJson,
+                                                                                r'''$.finalBillAmt''',
+                                                                              ),
+                                                                            ));
                                                                         _model.shiftList =
                                                                             await actions.shiftExists(
                                                                           functions

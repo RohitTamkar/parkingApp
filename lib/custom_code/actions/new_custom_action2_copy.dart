@@ -15,7 +15,7 @@ Future<List<VehicleBillStruct>> newCustomAction2Copy(List<dynamic> list) async {
   // Add your function code here!
 
   List<dynamic> itemList = [];
-  itemList = list as List;
+  itemList = list;
   List<VehicleBillStruct> returnList = [];
   VehicleBillStruct struct = VehicleBillStruct();
 
