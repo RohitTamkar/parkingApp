@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,6 +9,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -1500,11 +1500,19 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                       onPressed:
                                                                           () async {
                                                                         _model.returnList =
-                                                                            await actions.newCustomAction2Copy(
-                                                                          (FFAppState().selectedInvoiceJson.toList().map<VehicleBillStruct?>(VehicleBillStruct.maybeFromMap).toList() as Iterable<VehicleBillStruct?>)
-                                                                              .withoutNulls[0]
-                                                                              .toMap(),
-                                                                        );
+                                                                            await queryInvoiceRecordOnce(
+                                                                          parent:
+                                                                              FFAppState().outletIdRef,
+                                                                          queryBuilder: (invoiceRecord) =>
+                                                                              invoiceRecord.where(
+                                                                            'invoice',
+                                                                            isEqualTo:
+                                                                                containerInvoiceRecord?.reference.id,
+                                                                          ),
+                                                                          singleRecord:
+                                                                              true,
+                                                                        ).then((s) =>
+                                                                                s.firstOrNull);
 
                                                                         await FFAppState()
                                                                             .invoiceRef!
@@ -1523,6 +1531,14 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                                 FFAppState().selectedInvoiceJson,
                                                                                 r'''$.finalBillAmt''',
                                                                               ),
+                                                                              vechicleNo: getJsonField(
+                                                                                FFAppState().selectedInvoiceJson,
+                                                                                r'''$.vehicleNo''',
+                                                                              ).toString(),
+                                                                              vechicleType: getJsonField(
+                                                                                FFAppState().selectedInvoiceJson,
+                                                                                r'''$.vehicleType''',
+                                                                              ).toString(),
                                                                             ));
                                                                         _model.shiftList =
                                                                             await actions.shiftExists(
