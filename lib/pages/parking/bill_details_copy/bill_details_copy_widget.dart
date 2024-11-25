@@ -1501,11 +1501,8 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           () async {
                                                                         _model.returnList =
                                                                             await actions.newCustomAction2Copy(
-                                                                          getJsonField(
-                                                                            FFAppState().selectedInvoiceJson,
-                                                                            r'''$.productList''',
-                                                                            true,
-                                                                          )!,
+                                                                          VehicleBillStruct.maybeFromMap(FFAppState().selectedInvoiceJson)!
+                                                                              .toMap(),
                                                                         );
 
                                                                         await FFAppState()
