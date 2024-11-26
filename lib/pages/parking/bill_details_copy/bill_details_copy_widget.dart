@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,6 +9,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -1499,6 +1499,9 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         FFButtonWidget(
                                                                       onPressed:
                                                                           () async {
+                                                                        var _shouldSetState =
+                                                                            false;
+
                                                                         await containerInvoiceRecord!
                                                                             .reference
                                                                             .update(createInvoiceRecordData(
@@ -1512,202 +1515,228 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               .paymentModeModel
                                                                               .dropDownValue,
                                                                         ));
-                                                                        FFAppState().invoiceStruct =
-                                                                            InvoiceStructStruct.maybeFromMap(FFAppState().selectedInvoiceJson)!;
-                                                                        safeSetState(
-                                                                            () {});
-                                                                        _model.updated =
-                                                                            await actions.hiveInvoiceCrud(
+                                                                        _model.savebill =
+                                                                            await queryInvoiceRecordOnce(
+                                                                          parent:
+                                                                              FFAppState().outletIdRef,
+                                                                          queryBuilder: (invoiceRecord) =>
+                                                                              invoiceRecord.where(
+                                                                            'id',
+                                                                            isEqualTo:
+                                                                                containerInvoiceRecord?.id,
+                                                                          ),
+                                                                          singleRecord:
+                                                                              true,
+                                                                        ).then((s) =>
+                                                                                s.firstOrNull);
+                                                                        _shouldSetState =
+                                                                            true;
+                                                                        if (getJsonField(
                                                                           FFAppState()
-                                                                              .invoiceStruct
-                                                                              .hivekey,
-                                                                          FFAppState()
-                                                                              .invoiceStruct,
-                                                                          'update',
-                                                                        );
-                                                                        _model.shiftidtoInt =
-                                                                            await actions.shiftIdtoInt(
-                                                                          FFAppState()
-                                                                              .invoiceStruct
-                                                                              .shiftId,
-                                                                        );
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (alertDialogContext) {
-                                                                            return AlertDialog(
-                                                                              title: Text(FFAppState().invoiceStruct.shiftId),
-                                                                              content: Text(_model.shiftidtoInt!.toString()),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                  child: Text('Ok'),
-                                                                                ),
-                                                                              ],
+                                                                              .shiftDetailsNEw,
+                                                                          r'''$.shiftExists''',
+                                                                        )) {
+                                                                          if (_model.paymentModeModel.dropDownValue ==
+                                                                              'COMPLEMENTARY') {
+                                                                            _model.shiftfierbase =
+                                                                                await queryShiftRecordOnce(
+                                                                              parent: FFAppState().outletIdRef,
+                                                                              queryBuilder: (shiftRecord) => shiftRecord.where(
+                                                                                'shiftId',
+                                                                                isEqualTo: containerInvoiceRecord?.shiftId,
+                                                                              ),
+                                                                              singleRecord: true,
+                                                                            ).then((s) => s.firstOrNull);
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                            _model.shiftDetailsNewcar =
+                                                                                await actions.shiftDetailNewpark2(
+                                                                              _model.shiftfierbase,
                                                                             );
-                                                                          },
-                                                                        );
-                                                                        _model.getOfflineShiftdetails =
-                                                                            await actions.hiveShiftCrud(
-                                                                          _model
-                                                                              .shiftidtoInt,
-                                                                          FFAppState()
-                                                                              .shiftDetails,
-                                                                          'get',
-                                                                        );
-                                                                        _model.shiftsummaryresult =
-                                                                            await actions.updateShiftSummaryForEB(
-                                                                          FFAppState()
-                                                                              .selectedInvoiceJson,
-                                                                          FFAppState()
-                                                                              .curMode,
-                                                                          FFAppState()
-                                                                              .prevMode,
-                                                                          _model
-                                                                              .getOfflineShiftdetails!
-                                                                              .toMap(),
-                                                                        );
-                                                                        FFAppState()
-                                                                            .updateShiftDetailsStruct(
-                                                                          (e) => e
-                                                                            ..id =
-                                                                                valueOrDefault<String>(
-                                                                              _model.getOfflineShiftdetails?.id,
-                                                                              '0',
-                                                                            )
-                                                                            ..billCount =
-                                                                                valueOrDefault<int>(
-                                                                              _model.getOfflineShiftdetails?.billCount,
-                                                                              0,
-                                                                            )
-                                                                            ..dayId =
-                                                                                _model.getOfflineShiftdetails?.dayId
-                                                                            ..lastBillNo =
-                                                                                _model.getOfflineShiftdetails?.lastBillNo
-                                                                            ..lastBillTime =
-                                                                                _model.getOfflineShiftdetails?.lastBillTime
-                                                                            ..tax =
-                                                                                _model.getOfflineShiftdetails?.tax
-                                                                            ..deliveryCharges =
-                                                                                _model.getOfflineShiftdetails?.deliveryCharges
-                                                                            ..code =
-                                                                                _model.getOfflineShiftdetails?.code
-                                                                            ..endTime =
-                                                                                _model.getOfflineShiftdetails?.endTime
-                                                                            ..advanceAmtTotal =
-                                                                                _model.getOfflineShiftdetails?.advanceAmtTotal
-                                                                            ..customerReciveAmtTotal =
-                                                                                _model.getOfflineShiftdetails?.customerReciveAmtTotal
-                                                                            ..discount =
-                                                                                _model.getOfflineShiftdetails?.discount
-                                                                            ..expensesAmtTotal =
-                                                                                _model.getOfflineShiftdetails?.expensesAmtTotal
-                                                                            ..openingAmt =
-                                                                                _model.getOfflineShiftdetails?.openingAmt
-                                                                            ..receiveAmtTotal =
-                                                                                _model.getOfflineShiftdetails?.receiveAmtTotal
-                                                                            ..refoundAmount =
-                                                                                _model.getOfflineShiftdetails?.refoundAmount
-                                                                            ..totalSale =
-                                                                                _model.getOfflineShiftdetails?.totalSale
-                                                                            ..roundOff =
-                                                                                _model.getOfflineShiftdetails?.roundOff
-                                                                            ..cashInHand =
-                                                                                _model.getOfflineShiftdetails?.cashInHand
-                                                                            ..cashSale =
-                                                                                _model.getOfflineShiftdetails?.cashSale
-                                                                            ..startTime =
-                                                                                _model.getOfflineShiftdetails?.startTime
-                                                                            ..inActive =
-                                                                                _model.getOfflineShiftdetails?.inActive
-                                                                            ..shiftNo =
-                                                                                _model.getOfflineShiftdetails?.shiftNo
-                                                                            ..subTotalBill =
-                                                                                getJsonField(
-                                                                              _model.shiftsummaryresult,
-                                                                              r'''$.subTotalSale''',
-                                                                            )
-                                                                            ..userId =
-                                                                                valueOrDefault<String>(
-                                                                              _model.getOfflineShiftdetails?.userId,
-                                                                              '0',
-                                                                            )
-                                                                            ..deviceId =
-                                                                                _model.getOfflineShiftdetails?.deviceId
-                                                                            ..paymentJson =
-                                                                                getJsonField(
-                                                                              _model.shiftsummaryresult,
-                                                                              r'''$.paymentJson''',
-                                                                            ).toString()
-                                                                            ..version =
-                                                                                _model.getOfflineShiftdetails?.version
-                                                                            ..productSaleList =
-                                                                                _model.getOfflineShiftdetails!.productSaleList.toList()
-                                                                            ..shiftId =
-                                                                                _model.getOfflineShiftdetails?.shiftId
-                                                                            ..synC =
-                                                                                _model.getOfflineShiftdetails?.synC
-                                                                            ..hivekey =
-                                                                                _model.getOfflineShiftdetails?.hivekey
-                                                                            ..newIDShift = _model.getOfflineShiftdetails?.newIDShift,
-                                                                        );
-                                                                        safeSetState(
-                                                                            () {});
-                                                                        _model.newupdated =
-                                                                            await actions.hiveShiftCrud(
-                                                                          _model
-                                                                              .getOfflineShiftdetails
-                                                                              ?.newIDShift,
-                                                                          FFAppState()
-                                                                              .shiftDetails,
-                                                                          'update',
-                                                                        );
-                                                                        var confirmDialogResponse = await showDialog<bool>(
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                            _model.shiftSummarRkiosk23 =
+                                                                                await actions.calShiftSummary2(
+                                                                              containerInvoiceRecord!,
+                                                                              _model.shiftDetailsNewcar!,
+                                                                              containerInvoiceRecord!.finalBillAmt,
+                                                                              _model.paymentModeModel.dropDownValue!,
+                                                                            );
+                                                                            _shouldSetState =
+                                                                                true;
+
+                                                                            await _model.shiftfierbase!.reference.update(createShiftRecordData(
+                                                                              billCount: valueOrDefault<int>(
+                                                                                FFAppState().count,
+                                                                                0,
+                                                                              ),
+                                                                              totalSale: getJsonField(
+                                                                                _model.shiftSummarRkiosk23,
+                                                                                r'''$.totalSale''',
+                                                                              ),
+                                                                              deliveryCharges: getJsonField(
+                                                                                _model.shiftSummarRkiosk23,
+                                                                                r'''$.deliveryCharges''',
+                                                                              ),
+                                                                              lastBillNo: getJsonField(
+                                                                                _model.shiftSummarRkiosk23,
+                                                                                r'''$.lastBillNo''',
+                                                                              ).toString(),
+                                                                              discount: getJsonField(
+                                                                                _model.shiftSummarRkiosk23,
+                                                                                r'''$.discount''',
+                                                                              ),
+                                                                              lastBillTime: functions.timestampToMili(getCurrentTimestamp),
+                                                                              cashSale: getJsonField(
+                                                                                _model.shiftSummarRkiosk23,
+                                                                                r'''$.cashSale''',
+                                                                              ),
+                                                                              paymentJson: getJsonField(
+                                                                                _model.shiftSummarRkiosk23,
+                                                                                r'''$.paymentJson''',
+                                                                              ).toString(),
+                                                                            ));
+                                                                            await showDialog(
                                                                               context: context,
                                                                               builder: (alertDialogContext) {
                                                                                 return AlertDialog(
-                                                                                  content: Text('Are you sure to update?'),
+                                                                                  content: Text('Check Out SuccessFull!'),
                                                                                   actions: [
                                                                                     TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                      child: Text('Cancel'),
-                                                                                    ),
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                      child: Text('Confirm'),
+                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                      child: Text('Ok'),
                                                                                     ),
                                                                                   ],
                                                                                 );
                                                                               },
-                                                                            ) ??
-                                                                            false;
-                                                                        if (confirmDialogResponse) {
-                                                                          await showDialog(
-                                                                            context:
-                                                                                context,
-                                                                            builder:
-                                                                                (alertDialogContext) {
-                                                                              return AlertDialog(
-                                                                                content: Text('Invoice Data Updated Sucessfully.'),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
-                                                                                  ),
-                                                                                ],
-                                                                              );
-                                                                            },
-                                                                          );
-                                                                          context
-                                                                              .safePop();
+                                                                            );
+                                                                            Navigator.pop(context);
+
+                                                                            context.pushNamed(
+                                                                              'VehicleEntry',
+                                                                              queryParameters: {
+                                                                                'shiftDoc': serializeParam(
+                                                                                  FFAppState().shiftDetailsNEw,
+                                                                                  ParamType.JSON,
+                                                                                ),
+                                                                                'userRef': serializeParam(
+                                                                                  currentUserReference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                            );
+                                                                          } else {
+                                                                            _model.shiftupdate =
+                                                                                await actions.calShiftSummary2(
+                                                                              _model.savebill!,
+                                                                              FFAppState().shiftDetailsNEw,
+                                                                              containerInvoiceRecord!.finalBillAmt,
+                                                                              _model.paymentModeModel.dropDownValue!,
+                                                                            );
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                            _model.shiftref2 =
+                                                                                await queryShiftRecordOnce(
+                                                                              parent: FFAppState().outletIdRef,
+                                                                              queryBuilder: (shiftRecord) => shiftRecord.where(
+                                                                                'shiftId',
+                                                                                isEqualTo: getJsonField(
+                                                                                  FFAppState().shiftDetailsNEw,
+                                                                                  r'''$.shiftId''',
+                                                                                ).toString(),
+                                                                              ),
+                                                                              singleRecord: true,
+                                                                            ).then((s) => s.firstOrNull);
+                                                                            _shouldSetState =
+                                                                                true;
+
+                                                                            await _model.shiftref2!.reference.update(createShiftRecordData(
+                                                                              billCount: valueOrDefault<int>(
+                                                                                FFAppState().count,
+                                                                                0,
+                                                                              ),
+                                                                              totalSale: getJsonField(
+                                                                                _model.shiftupdate,
+                                                                                r'''$.totalSale''',
+                                                                              ),
+                                                                              deliveryCharges: getJsonField(
+                                                                                _model.shiftupdate,
+                                                                                r'''$.deliveryCharges''',
+                                                                              ),
+                                                                              lastBillNo: getJsonField(
+                                                                                _model.shiftupdate,
+                                                                                r'''$.lastBillNo''',
+                                                                              ).toString(),
+                                                                              discount: getJsonField(
+                                                                                _model.shiftupdate,
+                                                                                r'''$.discount''',
+                                                                              ),
+                                                                              lastBillTime: functions.timestampToMili(getCurrentTimestamp),
+                                                                              cashSale: getJsonField(
+                                                                                _model.shiftupdate,
+                                                                                r'''$.cashSale''',
+                                                                              ),
+                                                                              paymentJson: getJsonField(
+                                                                                _model.shiftupdate,
+                                                                                r'''$.paymentJson''',
+                                                                              ).toString(),
+                                                                            ));
+                                                                            await showDialog(
+                                                                              context: context,
+                                                                              builder: (alertDialogContext) {
+                                                                                return AlertDialog(
+                                                                                  content: Text('Check Out SuccessFull!'),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                      child: Text('Ok'),
+                                                                                    ),
+                                                                                  ],
+                                                                                );
+                                                                              },
+                                                                            );
+                                                                            Navigator.pop(context);
+
+                                                                            context.pushNamed(
+                                                                              'VehicleEntry',
+                                                                              queryParameters: {
+                                                                                'shiftDoc': serializeParam(
+                                                                                  FFAppState().shiftDetailsNEw,
+                                                                                  ParamType.JSON,
+                                                                                ),
+                                                                                'userRef': serializeParam(
+                                                                                  currentUserReference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                            );
+
+                                                                            if (_shouldSetState)
+                                                                              safeSetState(() {});
+                                                                            return;
+                                                                          }
                                                                         } else {
-                                                                          context
-                                                                              .safePop();
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text(
+                                                                                'Login again to start Shift ',
+                                                                                style: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                              ),
+                                                                              duration: Duration(milliseconds: 4000),
+                                                                              backgroundColor: Color(0x00000000),
+                                                                            ),
+                                                                          );
+                                                                          if (_shouldSetState)
+                                                                            safeSetState(() {});
+                                                                          return;
                                                                         }
 
-                                                                        safeSetState(
-                                                                            () {});
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
                                                                       },
                                                                       text: FFLocalizations.of(
                                                                               context)

@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,6 +10,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'bill_details_copy_widget.dart' show BillDetailsCopyWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -30,16 +30,18 @@ class BillDetailsCopyModel extends FlutterFlowModel<BillDetailsCopyWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Custom Action - hiveInvoiceCrud] action in Button widget.
-  InvoiceStructStruct? updated;
-  // Stores action output result for [Custom Action - shiftIdtoInt] action in Button widget.
-  int? shiftidtoInt;
-  // Stores action output result for [Custom Action - hiveShiftCrud] action in Button widget.
-  ShiftDetailsStruct? getOfflineShiftdetails;
-  // Stores action output result for [Custom Action - updateShiftSummaryForEB] action in Button widget.
-  dynamic? shiftsummaryresult;
-  // Stores action output result for [Custom Action - hiveShiftCrud] action in Button widget.
-  ShiftDetailsStruct? newupdated;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? savebill;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ShiftRecord? shiftfierbase;
+  // Stores action output result for [Custom Action - shiftDetailNewpark2] action in Button widget.
+  dynamic? shiftDetailsNewcar;
+  // Stores action output result for [Custom Action - calShiftSummary2] action in Button widget.
+  dynamic? shiftSummarRkiosk23;
+  // Stores action output result for [Custom Action - calShiftSummary2] action in Button widget.
+  dynamic? shiftupdate;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ShiftRecord? shiftref2;
 
   @override
   void initState(BuildContext context) {
