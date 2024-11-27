@@ -1506,8 +1506,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         var _shouldSetState =
                                                                             false;
 
-                                                                        await widget!
-                                                                            .invdoc!
+                                                                        await containerInvoiceRecord!
                                                                             .reference
                                                                             .update(createInvoiceRecordData(
                                                                           vechicleNo: _model
