@@ -823,44 +823,86 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                               ),
                                                             ),
                                                             Expanded(
-                                                              child: Container(
-                                                                width: 100.0,
-                                                                height: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .height *
-                                                                    0.04,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                ),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Expanded(
+                                                              child: StreamBuilder<
+                                                                  List<
+                                                                      PaymentModeRecord>>(
+                                                                stream:
+                                                                    queryPaymentModeRecord(),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                                          SizedBox(
+                                                                        width:
+                                                                            40.0,
+                                                                        height:
+                                                                            40.0,
                                                                         child:
-                                                                            wrapWithModel(
-                                                                          model:
-                                                                              _model.paymentModeModel,
-                                                                          updateCallback: () =>
-                                                                              safeSetState(() {}),
-                                                                          child:
-                                                                              PaymentModeWidget(),
+                                                                            SpinKitFadingCircle(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          size:
+                                                                              40.0,
                                                                         ),
                                                                       ),
+                                                                    );
+                                                                  }
+                                                                  List<PaymentModeRecord>
+                                                                      containerPaymentModeRecordList =
+                                                                      snapshot
+                                                                          .data!;
+
+                                                                  return Container(
+                                                                    width:
+                                                                        100.0,
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.04,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Expanded(
+                                                                          child:
+                                                                              InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              FFAppState().PayMode = containerPaymentModeRecordList.first.name;
+                                                                              FFAppState().dropDown = true;
+                                                                              FFAppState().curMode = containerPaymentModeRecordList.first.name;
+                                                                              FFAppState().prevMode = containerInvoiceRecord!.paymentMode;
+                                                                              safeSetState(() {});
+                                                                            },
+                                                                            child:
+                                                                                wrapWithModel(
+                                                                              model: _model.paymentModeModel,
+                                                                              updateCallback: () => safeSetState(() {}),
+                                                                              child: PaymentModeWidget(),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                },
                                                               ),
                                                             ),
                                                           ],
@@ -1541,11 +1583,11 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           r'''$.shiftExists''',
                                                                         )) {
                                                                           _model.shiftupdate =
-                                                                              await actions.updateShiftSummaryForEB(
-                                                                            FFAppState().selectedInvoiceJson,
+                                                                              await actions.calShiftSummaryNew2(
+                                                                            _model.savebill!,
+                                                                            widget!.shiftdoc!,
                                                                             FFAppState().curMode,
                                                                             FFAppState().prevMode,
-                                                                            widget!.shiftdoc!,
                                                                           );
                                                                           _shouldSetState =
                                                                               true;

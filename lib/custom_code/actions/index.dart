@@ -27,6 +27,7 @@ export 'add_to_hold_list_gr_calculationqty.dart'
     show addToHoldListGrCalculationqty;
 export 'add_to_hold_listprdplus.dart' show addToHoldListprdplus;
 export 'add_to_hold_listprdminus.dart' show addToHoldListprdminus;
+export 'cal_shift_summary_new2.dart' show calShiftSummaryNew2;
 export 'add_to_hold_listprd.dart' show addToHoldListprd;
 export 'new_custom_action3_copy.dart' show newCustomAction3Copy;
 export 'cal_sub_total_copy.dart' show calSubTotalCopy;
