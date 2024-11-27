@@ -1600,7 +1600,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               context: context,
                                                                               builder: (alertDialogContext) {
                                                                                 return AlertDialog(
-                                                                                  content: Text('Check Out SuccessFull!'),
+                                                                                  content: Text('updated  successFull!'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
@@ -1611,20 +1611,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               },
                                                                             );
                                                                             Navigator.pop(context);
-
-                                                                            context.pushNamed(
-                                                                              'VehicleEntry',
-                                                                              queryParameters: {
-                                                                                'shiftDoc': serializeParam(
-                                                                                  FFAppState().shiftDetailsNEw,
-                                                                                  ParamType.JSON,
-                                                                                ),
-                                                                                'userRef': serializeParam(
-                                                                                  currentUserReference,
-                                                                                  ParamType.DocumentReference,
-                                                                                ),
-                                                                              }.withoutNulls,
-                                                                            );
+                                                                            context.safePop();
                                                                           } else {
                                                                             _model.shiftupdate =
                                                                                 await actions.calShiftSummary2(
@@ -1685,7 +1672,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               context: context,
                                                                               builder: (alertDialogContext) {
                                                                                 return AlertDialog(
-                                                                                  content: Text('Check Out SuccessFull!'),
+                                                                                  content: Text('updated  successFull!'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
@@ -1696,24 +1683,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               },
                                                                             );
                                                                             Navigator.pop(context);
-
-                                                                            context.pushNamed(
-                                                                              'VehicleEntry',
-                                                                              queryParameters: {
-                                                                                'shiftDoc': serializeParam(
-                                                                                  FFAppState().shiftDetailsNEw,
-                                                                                  ParamType.JSON,
-                                                                                ),
-                                                                                'userRef': serializeParam(
-                                                                                  currentUserReference,
-                                                                                  ParamType.DocumentReference,
-                                                                                ),
-                                                                              }.withoutNulls,
-                                                                            );
-
-                                                                            if (_shouldSetState)
-                                                                              safeSetState(() {});
-                                                                            return;
+                                                                            context.safePop();
                                                                           }
                                                                         } else {
                                                                           ScaffoldMessenger.of(context)
