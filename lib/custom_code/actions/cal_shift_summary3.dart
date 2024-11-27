@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert';
 
 Future<dynamic> calShiftSummary3(
@@ -51,42 +53,39 @@ Future<dynamic> calShiftSummary3(
 
     // Deduct the old amount
     paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() -
-        (invoice.paymentMode == "CASH" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() -
-        (invoice.paymentMode == "CREDIT" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() -
-        (invoice.paymentMode == "GOOGLEPAY" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() -
-        (invoice.paymentMode == "PAYTM" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() -
-        (invoice.paymentMode == "PHONEPE" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() -
-        (invoice.paymentMode == "CHEQUE" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["other"] = paymentJsonData["other"].toDouble() -
-        (invoice.paymentMode == "OTHER" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["card"] = paymentJsonData["card"].toDouble() -
-        (invoice.paymentMode == "CARD" ? (oldFinalBillAmt ?? 0) : 0);
-    paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() -
-        (invoice.paymentMode == "UPI QR" ? (oldFinalBillAmt ?? 0) : 0);
-
-    // Add the new amount
-    paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() +
+        (invoice.paymentMode == "CASH" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "CASH" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() +
+
+    paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() -
+        (invoice.paymentMode == "CREDIT" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "CREDIT" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() +
+
+    paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() -
+        (invoice.paymentMode == "GOOGLEPAY" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "GOOGLEPAY" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() +
+
+    paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() -
+        (invoice.paymentMode == "PAYTM" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "PAYTM" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() +
+
+    paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() -
+        (invoice.paymentMode == "PHONEPE" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "PHONEPE" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() +
+
+    paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() -
+        (invoice.paymentMode == "CHEQUE" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "CHEQUE" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["other"] = paymentJsonData["other"].toDouble() +
+
+    paymentJsonData["other"] = paymentJsonData["other"].toDouble() -
+        (invoice.paymentMode == "OTHER" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "OTHER" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["card"] = paymentJsonData["card"].toDouble() +
+
+    paymentJsonData["card"] = paymentJsonData["card"].toDouble() -
+        (invoice.paymentMode == "CARD" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "CARD" ? (newFinalBillAmt ?? 0) : 0);
-    paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() +
+
+    paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() -
+        (invoice.paymentMode == "UPI QR" ? (oldFinalBillAmt ?? 0) : 0) +
         (invoice.paymentMode == "UPI QR" ? (newFinalBillAmt ?? 0) : 0);
 
     shift[i]["paymentJson"] = jsonEncode(paymentJsonData);
