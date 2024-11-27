@@ -1586,6 +1586,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               await actions.calShiftSummary3(
                                                                             _model.savebill!,
                                                                             widget!.shiftdoc!,
+                                                                            containerInvoiceRecord?.finalBillAmt,
                                                                           );
                                                                           _shouldSetState =
                                                                               true;
