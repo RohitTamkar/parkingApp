@@ -694,6 +694,11 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                                       ParamType
                                                           .DocumentReference,
                                                     ),
+                                                    'shiftdoc': serializeParam(
+                                                      FFAppState()
+                                                          .shiftDetailsNEw,
+                                                      ParamType.JSON,
+                                                    ),
                                                   }.withoutNulls,
                                                 );
                                               },

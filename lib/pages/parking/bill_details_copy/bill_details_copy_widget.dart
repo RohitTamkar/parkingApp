@@ -22,9 +22,13 @@ class BillDetailsCopyWidget extends StatefulWidget {
   const BillDetailsCopyWidget({
     super.key,
     this.docRef,
+    this.invdoc,
+    required this.shiftdoc,
   });
 
   final DocumentReference? docRef;
+  final InvoiceRecord? invdoc;
+  final dynamic shiftdoc;
 
   @override
   State<BillDetailsCopyWidget> createState() => _BillDetailsCopyWidgetState();
@@ -1502,7 +1506,8 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         var _shouldSetState =
                                                                             false;
 
-                                                                        await containerInvoiceRecord!
+                                                                        await widget!
+                                                                            .invdoc!
                                                                             .reference
                                                                             .update(createInvoiceRecordData(
                                                                           vechicleNo: _model
@@ -1514,6 +1519,9 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           paymentMode: _model
                                                                               .paymentModeModel
                                                                               .dropDownValue,
+                                                                          billAmt: double.tryParse(_model
+                                                                              .textController2
+                                                                              .text),
                                                                         ));
                                                                         _model.savebill =
                                                                             await queryInvoiceRecordOnce(
@@ -1523,7 +1531,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               invoiceRecord.where(
                                                                             'id',
                                                                             isEqualTo:
-                                                                                containerInvoiceRecord?.id,
+                                                                                widget!.invdoc?.id,
                                                                           ),
                                                                           singleRecord:
                                                                               true,
@@ -1532,159 +1540,100 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         _shouldSetState =
                                                                             true;
                                                                         if (getJsonField(
-                                                                          FFAppState()
-                                                                              .shiftDetailsNEw,
+                                                                          widget!
+                                                                              .shiftdoc,
                                                                           r'''$.shiftExists''',
                                                                         )) {
-                                                                          if (_model.paymentModeModel.dropDownValue ==
-                                                                              'COMPLEMENTARY') {
-                                                                            _model.shiftfierbase =
-                                                                                await queryShiftRecordOnce(
-                                                                              parent: FFAppState().outletIdRef,
-                                                                              queryBuilder: (shiftRecord) => shiftRecord.where(
-                                                                                'shiftId',
-                                                                                isEqualTo: containerInvoiceRecord?.shiftId,
-                                                                              ),
-                                                                              singleRecord: true,
-                                                                            ).then((s) => s.firstOrNull);
-                                                                            _shouldSetState =
-                                                                                true;
-                                                                            _model.shiftDetailsNewcar =
-                                                                                await actions.shiftDetailNewpark2(
-                                                                              _model.shiftfierbase,
-                                                                            );
-                                                                            _shouldSetState =
-                                                                                true;
-                                                                            _model.shiftSummarRkiosk23 =
-                                                                                await actions.calShiftSummary2(
-                                                                              containerInvoiceRecord!,
-                                                                              _model.shiftDetailsNewcar!,
-                                                                              containerInvoiceRecord!.finalBillAmt,
-                                                                              _model.paymentModeModel.dropDownValue!,
-                                                                            );
-                                                                            _shouldSetState =
-                                                                                true;
+                                                                          _model.shiftupdate =
+                                                                              await actions.calShiftSummary(
+                                                                            _model.savebill!,
+                                                                            widget!.shiftdoc!,
+                                                                          );
+                                                                          _shouldSetState =
+                                                                              true;
+                                                                          _model.shiftref2 =
+                                                                              await queryShiftRecordOnce(
+                                                                            parent:
+                                                                                FFAppState().outletIdRef,
+                                                                            queryBuilder: (shiftRecord) =>
+                                                                                shiftRecord.where(
+                                                                              'shiftId',
+                                                                              isEqualTo: getJsonField(
+                                                                                widget!.shiftdoc,
+                                                                                r'''$.shiftId''',
+                                                                              ).toString(),
+                                                                            ),
+                                                                            singleRecord:
+                                                                                true,
+                                                                          ).then((s) => s.firstOrNull);
+                                                                          _shouldSetState =
+                                                                              true;
 
-                                                                            await _model.shiftfierbase!.reference.update(createShiftRecordData(
-                                                                              billCount: valueOrDefault<int>(
-                                                                                FFAppState().count,
-                                                                                0,
-                                                                              ),
-                                                                              totalSale: getJsonField(
-                                                                                _model.shiftSummarRkiosk23,
-                                                                                r'''$.totalSale''',
-                                                                              ),
-                                                                              deliveryCharges: getJsonField(
-                                                                                _model.shiftSummarRkiosk23,
-                                                                                r'''$.deliveryCharges''',
-                                                                              ),
-                                                                              lastBillNo: getJsonField(
-                                                                                _model.shiftSummarRkiosk23,
-                                                                                r'''$.lastBillNo''',
-                                                                              ).toString(),
-                                                                              discount: getJsonField(
-                                                                                _model.shiftSummarRkiosk23,
-                                                                                r'''$.discount''',
-                                                                              ),
-                                                                              lastBillTime: functions.timestampToMili(getCurrentTimestamp),
-                                                                              cashSale: getJsonField(
-                                                                                _model.shiftSummarRkiosk23,
-                                                                                r'''$.cashSale''',
-                                                                              ),
-                                                                              paymentJson: getJsonField(
-                                                                                _model.shiftSummarRkiosk23,
-                                                                                r'''$.paymentJson''',
-                                                                              ).toString(),
-                                                                            ));
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (alertDialogContext) {
-                                                                                return AlertDialog(
-                                                                                  content: Text('updated  successFull!'),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
-                                                                                    ),
-                                                                                  ],
-                                                                                );
-                                                                              },
-                                                                            );
-                                                                            Navigator.pop(context);
-                                                                            context.safePop();
-                                                                          } else {
-                                                                            _model.shiftupdate =
-                                                                                await actions.calShiftSummary2(
-                                                                              _model.savebill!,
-                                                                              FFAppState().shiftDetailsNEw,
-                                                                              containerInvoiceRecord!.finalBillAmt,
-                                                                              _model.paymentModeModel.dropDownValue!,
-                                                                            );
-                                                                            _shouldSetState =
-                                                                                true;
-                                                                            _model.shiftref2 =
-                                                                                await queryShiftRecordOnce(
-                                                                              parent: FFAppState().outletIdRef,
-                                                                              queryBuilder: (shiftRecord) => shiftRecord.where(
-                                                                                'shiftId',
-                                                                                isEqualTo: getJsonField(
-                                                                                  FFAppState().shiftDetailsNEw,
-                                                                                  r'''$.shiftId''',
-                                                                                ).toString(),
-                                                                              ),
-                                                                              singleRecord: true,
-                                                                            ).then((s) => s.firstOrNull);
-                                                                            _shouldSetState =
-                                                                                true;
-
-                                                                            await _model.shiftref2!.reference.update(createShiftRecordData(
-                                                                              billCount: valueOrDefault<int>(
-                                                                                FFAppState().count,
-                                                                                0,
-                                                                              ),
-                                                                              totalSale: getJsonField(
-                                                                                _model.shiftupdate,
-                                                                                r'''$.totalSale''',
-                                                                              ),
-                                                                              deliveryCharges: getJsonField(
-                                                                                _model.shiftupdate,
-                                                                                r'''$.deliveryCharges''',
-                                                                              ),
-                                                                              lastBillNo: getJsonField(
-                                                                                _model.shiftupdate,
-                                                                                r'''$.lastBillNo''',
-                                                                              ).toString(),
-                                                                              discount: getJsonField(
-                                                                                _model.shiftupdate,
-                                                                                r'''$.discount''',
-                                                                              ),
-                                                                              lastBillTime: functions.timestampToMili(getCurrentTimestamp),
-                                                                              cashSale: getJsonField(
-                                                                                _model.shiftupdate,
-                                                                                r'''$.cashSale''',
-                                                                              ),
-                                                                              paymentJson: getJsonField(
-                                                                                _model.shiftupdate,
-                                                                                r'''$.paymentJson''',
-                                                                              ).toString(),
-                                                                            ));
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (alertDialogContext) {
-                                                                                return AlertDialog(
-                                                                                  content: Text('updated  successFull!'),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
-                                                                                    ),
-                                                                                  ],
-                                                                                );
-                                                                              },
-                                                                            );
-                                                                            Navigator.pop(context);
-                                                                            context.safePop();
-                                                                          }
+                                                                          await _model
+                                                                              .shiftref2!
+                                                                              .reference
+                                                                              .update(createShiftRecordData(
+                                                                            billCount:
+                                                                                valueOrDefault<int>(
+                                                                              FFAppState().count,
+                                                                              0,
+                                                                            ),
+                                                                            totalSale:
+                                                                                getJsonField(
+                                                                              _model.shiftupdate,
+                                                                              r'''$.totalSale''',
+                                                                            ),
+                                                                            deliveryCharges:
+                                                                                getJsonField(
+                                                                              _model.shiftupdate,
+                                                                              r'''$.deliveryCharges''',
+                                                                            ),
+                                                                            lastBillNo:
+                                                                                getJsonField(
+                                                                              _model.shiftupdate,
+                                                                              r'''$.lastBillNo''',
+                                                                            ).toString(),
+                                                                            discount:
+                                                                                getJsonField(
+                                                                              _model.shiftupdate,
+                                                                              r'''$.discount''',
+                                                                            ),
+                                                                            lastBillTime:
+                                                                                functions.timestampToMili(getCurrentTimestamp),
+                                                                            cashSale:
+                                                                                getJsonField(
+                                                                              _model.shiftupdate,
+                                                                              r'''$.cashSale''',
+                                                                            ),
+                                                                            paymentJson:
+                                                                                getJsonField(
+                                                                              _model.shiftupdate,
+                                                                              r'''$.paymentJson''',
+                                                                            ).toString(),
+                                                                          ));
+                                                                          await showDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (alertDialogContext) {
+                                                                              return AlertDialog(
+                                                                                content: Text('updated  successFull!'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
+                                                                                  ),
+                                                                                ],
+                                                                              );
+                                                                            },
+                                                                          );
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                          context
+                                                                              .safePop();
+                                                                          if (_shouldSetState)
+                                                                            safeSetState(() {});
+                                                                          return;
                                                                         } else {
                                                                           ScaffoldMessenger.of(context)
                                                                               .showSnackBar(

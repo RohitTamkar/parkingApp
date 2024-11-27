@@ -856,12 +856,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'billDetailsCopy',
               path: 'billDetailsCopy',
+              asyncParams: {
+                'invdoc':
+                    getDoc(['OUTLET', 'INVOICE'], InvoiceRecord.fromSnapshot),
+              },
               builder: (context, params) => BillDetailsCopyWidget(
                 docRef: params.getParam(
                   'docRef',
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['OUTLET', 'INVOICE'],
+                ),
+                invdoc: params.getParam(
+                  'invdoc',
+                  ParamType.Document,
+                ),
+                shiftdoc: params.getParam(
+                  'shiftdoc',
+                  ParamType.JSON,
                 ),
               ),
             ),
