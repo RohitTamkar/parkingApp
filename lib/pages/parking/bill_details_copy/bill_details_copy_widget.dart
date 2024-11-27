@@ -1583,11 +1583,9 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           r'''$.shiftExists''',
                                                                         )) {
                                                                           _model.shiftupdate =
-                                                                              await actions.calShiftSummaryNew2(
+                                                                              await actions.calShiftSummary(
                                                                             _model.savebill!,
                                                                             widget!.shiftdoc!,
-                                                                            FFAppState().curMode,
-                                                                            FFAppState().prevMode,
                                                                           );
                                                                           _shouldSetState =
                                                                               true;

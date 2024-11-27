@@ -14,7 +14,7 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert';
 
 Future<dynamic> calShiftSummaryNew2(
-  InvoiceRecord newInvoice,
+  DocumentReference invoice,
   dynamic shift1,
   String currentMode,
   String prevMode,
