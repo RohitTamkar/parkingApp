@@ -203,7 +203,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                               queryBuilder: (invoiceRecord) =>
                                   invoiceRecord.where(
                                 'id',
-                                isEqualTo: widget!.invdoc?.reference.id,
+                                isEqualTo: widget!.docRef?.id,
                               ),
                               singleRecord: true,
                             ),
