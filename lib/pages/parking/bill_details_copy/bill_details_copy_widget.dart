@@ -1547,8 +1547,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         var _shouldSetState =
                                                                             false;
 
-                                                                        await widget!
-                                                                            .invdoc!
+                                                                        await containerInvoiceRecord!
                                                                             .reference
                                                                             .update(createInvoiceRecordData(
                                                                           vechicleNo: _model
@@ -1569,7 +1568,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               invoiceRecord.where(
                                                                             'id',
                                                                             isEqualTo:
-                                                                                widget!.invdoc?.id,
+                                                                                containerInvoiceRecord?.id,
                                                                           ),
                                                                           singleRecord:
                                                                               true,
@@ -1586,7 +1585,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               await actions.calShiftSummary2(
                                                                             _model.savebill!,
                                                                             widget!.shiftdoc!,
-                                                                            widget!.invdoc!.finalBillAmt,
+                                                                            containerInvoiceRecord!.finalBillAmt,
                                                                             _model.paymentModeModel.dropDownValue!,
                                                                           );
                                                                           _shouldSetState =
