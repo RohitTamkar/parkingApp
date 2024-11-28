@@ -203,7 +203,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                               queryBuilder: (invoiceRecord) =>
                                   invoiceRecord.where(
                                 'id',
-                                isEqualTo: widget!.docRef?.id,
+                                isEqualTo: widget!.invdoc?.reference.id,
                               ),
                               singleRecord: true,
                             ),
@@ -1585,7 +1585,10 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               await actions.calShiftSummary3(
                                                                             _model.savebill!,
                                                                             widget!.shiftdoc!,
-                                                                            containerInvoiceRecord!.finalBillAmt,
+                                                                            valueOrDefault<double>(
+                                                                              widget!.invdoc?.finalBillAmt,
+                                                                              0.0,
+                                                                            ),
                                                                             _model.paymentModeModel.dropDownValue!,
                                                                           );
                                                                           _shouldSetState =
@@ -1597,10 +1600,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                             queryBuilder: (shiftRecord) =>
                                                                                 shiftRecord.where(
                                                                               'shiftId',
-                                                                              isEqualTo: getJsonField(
-                                                                                widget!.shiftdoc,
-                                                                                r'''$.shiftId''',
-                                                                              ).toString(),
+                                                                              isEqualTo: widget!.invdoc?.shiftId,
                                                                             ),
                                                                             singleRecord:
                                                                                 true,

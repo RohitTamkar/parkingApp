@@ -699,7 +699,15 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                                           .shiftDetailsNEw,
                                                       ParamType.JSON,
                                                     ),
+                                                    'invdoc': serializeParam(
+                                                      billWiseSaleReportVarItem,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'invdoc':
+                                                        billWiseSaleReportVarItem,
+                                                  },
                                                 );
                                               },
                                               child: Container(
