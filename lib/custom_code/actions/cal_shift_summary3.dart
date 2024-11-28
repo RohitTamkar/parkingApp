@@ -16,57 +16,54 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert';
 
 Future<dynamic> calShiftSummary3(
-  InvoiceRecord invoice, // Updated invoice data
-  dynamic shift1, // Current shift summary
-  double? oldFinalBillAmt, // Old final bill amount (from original invoice)
-  String oldPaymentMode, // Old payment mode (from original invoice)
+  InvoiceRecord originalInvoice, // Original invoice before editing
+  InvoiceRecord updatedInvoice, // Updated invoice after editing
+  dynamic shift1,
 ) async {
-  print("Processing Invoice Edit:");
-  print(invoice);
+  print("Original Invoice: $originalInvoice");
+  print("Updated Invoice: $updatedInvoice");
 
-  // New final bill amount
-  double newFinalBillAmt = invoice.finalBillAmt ?? 0.0;
+  double? originalTotal = originalInvoice.finalBillAmt ?? 0;
+  double? updatedTotal = updatedInvoice.finalBillAmt ?? 0;
+  double difference = updatedTotal - originalTotal;
 
-  // Parse shift into a mutable structure
+  print("Shift before update: $shift1");
   List<dynamic> shift = [];
   shift.add(shift1);
 
   for (int i = 0; i < shift.length; i++) {
-    // --- Adjust Total Sale ---
-    shift[i]["totalSale"] -= oldFinalBillAmt ?? 0.0; // Deduct old bill amount
-    shift[i]["totalSale"] += newFinalBillAmt; // Add new bill amount
+    // Update totals in the shift
+    shift[i]["totalSale"] = shift[i]["totalSale"] + difference;
+    shift[i]["deliveryCharges"] = shift[i]["deliveryCharges"] +
+        (updatedInvoice.delliveryChrg ?? 0) -
+        (originalInvoice.delliveryChrg ?? 0);
+    shift[i]["discount"] = shift[i]["discount"] +
+        (updatedInvoice.discountAmt ?? 0) -
+        (originalInvoice.discountAmt ?? 0);
+    shift[i]["tax"] = shift[i]["tax"] +
+        (updatedInvoice.taxAmt ?? 0) -
+        (originalInvoice.taxAmt ?? 0);
 
-    // --- Adjust Cash Sale (if applicable) ---
-    if (oldPaymentMode == "CASH") {
-      shift[i]["cashSale"] -= oldFinalBillAmt ?? 0.0; // Deduct old CASH amount
-    }
-    if (invoice.paymentMode == "CASH") {
-      shift[i]["cashSale"] += newFinalBillAmt; // Add new CASH amount
-    }
-
-    // --- Adjust Delivery Charges, Discount, and Tax ---
-    shift[i]["deliveryCharges"] -= invoice.delliveryChrg ?? 0.0; // Deduct old
-    shift[i]["discount"] -= invoice.discountAmt ?? 0.0; // Deduct old
-    shift[i]["tax"] -= invoice.taxAmt ?? 0.0; // Deduct old
-
-    shift[i]["deliveryCharges"] += invoice.delliveryChrg ?? 0.0; // Add new
-    shift[i]["discount"] += invoice.discountAmt ?? 0.0; // Add new
-    shift[i]["tax"] += invoice.taxAmt ?? 0.0; // Add new
-
-    // --- Handle Payment JSON ---
+    // Adjust the paymentJson
     final paymentJsonData = jsonDecode(shift[i]["paymentJson"]);
 
-    // Deduct old payment mode amount
-    paymentJsonData[oldPaymentMode.toLowerCase()] -= oldFinalBillAmt ?? 0.0;
+    // Deduct original amounts
+    paymentJsonData[originalInvoice.paymentMode.toLowerCase()] =
+        (paymentJsonData[originalInvoice.paymentMode.toLowerCase()] ?? 0)
+                .toDouble() -
+            originalTotal;
 
-    // Add new payment mode amount
-    paymentJsonData[invoice.paymentMode.toLowerCase()] += newFinalBillAmt;
+    // Add updated amounts
+    paymentJsonData[updatedInvoice.paymentMode.toLowerCase()] =
+        (paymentJsonData[updatedInvoice.paymentMode.toLowerCase()] ?? 0)
+                .toDouble() +
+            updatedTotal;
 
-    // Save updated payment JSON
-    shift[i]["paymentJson"] = jsonEncode(paymentJsonData);
+    // Re-encode the paymentJson
+    shift[i]["paymentJson"] = jsonEncode(paymentJsonData).toString();
   }
 
-  print("Updated Shift Summary:");
+  print('Updated Shift:');
   print(shift[0]);
   return shift[0];
 }
