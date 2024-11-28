@@ -16,82 +16,57 @@ import 'index.dart'; // Imports other custom actions
 import 'dart:convert';
 
 Future<dynamic> calShiftSummary3(
-  InvoiceRecord invoice,
-  dynamic shift1,
-  double? oldFinalBillAmt, // Pass the old amount
+  InvoiceRecord invoice, // Updated invoice data
+  dynamic shift1, // Current shift summary
+  double? oldFinalBillAmt, // Old final bill amount (from original invoice)
+  String oldPaymentMode, // Old payment mode (from original invoice)
 ) async {
-  print("Invoice:");
+  print("Processing Invoice Edit:");
   print(invoice);
-  double? newFinalBillAmt = invoice.finalBillAmt; // The updated amount
-  print("Shift before update:");
-  print(shift1);
+
+  // New final bill amount
+  double newFinalBillAmt = invoice.finalBillAmt ?? 0.0;
+
+  // Parse shift into a mutable structure
   List<dynamic> shift = [];
   shift.add(shift1);
 
   for (int i = 0; i < shift.length; i++) {
-    // Update general fields by first removing the old amount and then adding the new amount
-    shift[i]["totalSale"] =
-        shift[i]["totalSale"] - (oldFinalBillAmt ?? 0) + (newFinalBillAmt ?? 0);
+    // --- Adjust Total Sale ---
+    shift[i]["totalSale"] -= oldFinalBillAmt ?? 0.0; // Deduct old bill amount
+    shift[i]["totalSale"] += newFinalBillAmt; // Add new bill amount
 
-    shift[i]["cashSale"] = shift[i]["cashSale"].toDouble() -
-        (invoice.paymentMode == "CASH" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "CASH" ? (newFinalBillAmt ?? 0) : 0);
+    // --- Adjust Cash Sale (if applicable) ---
+    if (oldPaymentMode == "CASH") {
+      shift[i]["cashSale"] -= oldFinalBillAmt ?? 0.0; // Deduct old CASH amount
+    }
+    if (invoice.paymentMode == "CASH") {
+      shift[i]["cashSale"] += newFinalBillAmt; // Add new CASH amount
+    }
 
-    shift[i]["deliveryCharges"] = shift[i]["deliveryCharges"] -
-        (invoice.delliveryChrg ?? 0) +
-        (invoice.delliveryChrg ?? 0);
+    // --- Adjust Delivery Charges, Discount, and Tax ---
+    shift[i]["deliveryCharges"] -= invoice.delliveryChrg ?? 0.0; // Deduct old
+    shift[i]["discount"] -= invoice.discountAmt ?? 0.0; // Deduct old
+    shift[i]["tax"] -= invoice.taxAmt ?? 0.0; // Deduct old
 
-    shift[i]["discount"] = shift[i]["discount"] -
-        (invoice.discountAmt ?? 0) +
-        (invoice.discountAmt ?? 0);
+    shift[i]["deliveryCharges"] += invoice.delliveryChrg ?? 0.0; // Add new
+    shift[i]["discount"] += invoice.discountAmt ?? 0.0; // Add new
+    shift[i]["tax"] += invoice.taxAmt ?? 0.0; // Add new
 
-    shift[i]["tax"] =
-        shift[i]["tax"] - (invoice.taxAmt ?? 0) + (invoice.taxAmt ?? 0);
-
-    // Update paymentJson by first removing old values, then adding new values
+    // --- Handle Payment JSON ---
     final paymentJsonData = jsonDecode(shift[i]["paymentJson"]);
 
-    // Deduct the old amount
-    paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() -
-        (invoice.paymentMode == "CASH" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "CASH" ? (newFinalBillAmt ?? 0) : 0);
+    // Deduct old payment mode amount
+    paymentJsonData[oldPaymentMode.toLowerCase()] -= oldFinalBillAmt ?? 0.0;
 
-    paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() -
-        (invoice.paymentMode == "CREDIT" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "CREDIT" ? (newFinalBillAmt ?? 0) : 0);
+    // Add new payment mode amount
+    paymentJsonData[invoice.paymentMode.toLowerCase()] += newFinalBillAmt;
 
-    paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() -
-        (invoice.paymentMode == "GOOGLEPAY" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "GOOGLEPAY" ? (newFinalBillAmt ?? 0) : 0);
-
-    paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() -
-        (invoice.paymentMode == "PAYTM" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "PAYTM" ? (newFinalBillAmt ?? 0) : 0);
-
-    paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() -
-        (invoice.paymentMode == "PHONEPE" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "PHONEPE" ? (newFinalBillAmt ?? 0) : 0);
-
-    paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() -
-        (invoice.paymentMode == "CHEQUE" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "CHEQUE" ? (newFinalBillAmt ?? 0) : 0);
-
-    paymentJsonData["other"] = paymentJsonData["other"].toDouble() -
-        (invoice.paymentMode == "OTHER" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "OTHER" ? (newFinalBillAmt ?? 0) : 0);
-
-    paymentJsonData["card"] = paymentJsonData["card"].toDouble() -
-        (invoice.paymentMode == "CARD" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "CARD" ? (newFinalBillAmt ?? 0) : 0);
-
-    paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() -
-        (invoice.paymentMode == "UPI QR" ? (oldFinalBillAmt ?? 0) : 0) +
-        (invoice.paymentMode == "UPI QR" ? (newFinalBillAmt ?? 0) : 0);
-
+    // Save updated payment JSON
     shift[i]["paymentJson"] = jsonEncode(paymentJsonData);
   }
 
-  print('Shift after update:');
+  print("Updated Shift Summary:");
   print(shift[0]);
   return shift[0];
 }

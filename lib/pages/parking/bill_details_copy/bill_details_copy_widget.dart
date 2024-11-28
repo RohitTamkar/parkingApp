@@ -1587,6 +1587,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                             _model.savebill!,
                                                                             widget!.shiftdoc!,
                                                                             containerInvoiceRecord?.finalBillAmt,
+                                                                            containerInvoiceRecord!.paymentMode,
                                                                           );
                                                                           _shouldSetState =
                                                                               true;
