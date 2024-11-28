@@ -203,8 +203,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                               queryBuilder: (invoiceRecord) =>
                                   invoiceRecord.where(
                                 'id',
-                                isEqualTo: functions
-                                    .getDocIdFromDocRefInvoice(widget!.docRef!),
+                                isEqualTo: widget!.invdoc?.reference.id,
                               ),
                               singleRecord: true,
                             ),
@@ -1548,7 +1547,8 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                         var _shouldSetState =
                                                                             false;
 
-                                                                        await containerInvoiceRecord!
+                                                                        await widget!
+                                                                            .invdoc!
                                                                             .reference
                                                                             .update(createInvoiceRecordData(
                                                                           vechicleNo: _model
