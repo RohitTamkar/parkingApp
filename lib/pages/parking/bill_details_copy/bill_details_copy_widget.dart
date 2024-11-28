@@ -1568,7 +1568,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               invoiceRecord.where(
                                                                             'id',
                                                                             isEqualTo:
-                                                                                containerInvoiceRecord?.id,
+                                                                                widget!.invdoc?.id,
                                                                           ),
                                                                           singleRecord:
                                                                               true,
