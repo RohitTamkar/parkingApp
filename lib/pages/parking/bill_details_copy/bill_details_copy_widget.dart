@@ -1582,7 +1582,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           r'''$.shiftExists''',
                                                                         )) {
                                                                           _model.shiftupdate =
-                                                                              await actions.calShiftSummary2(
+                                                                              await actions.calShiftSummary3(
                                                                             _model.savebill!,
                                                                             widget!.shiftdoc!,
                                                                             containerInvoiceRecord!.finalBillAmt,
