@@ -13,6 +13,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:convert';
 
 Future<dynamic> calShiftSummary3(InvoiceRecord invoice, dynamic shift1,
@@ -28,66 +30,77 @@ Future<dynamic> calShiftSummary3(InvoiceRecord invoice, dynamic shift1,
   for (int i = 0; i < shift.length; i++) {
     shift[i]["billCount"] = FFAppState().billcount;
     shift[i]["lastBillNo"] = invoice.invoice;
+    // shift[i]["billAmt"] = shift[i]["billAmt"] + invoice.billAmt;
+    shift[i]["deliveryCharges"] =
+        shift[i]["deliveryCharges"] + invoice.delliveryChrg;
+    shift[i]["discount"] = shift[i]["discount"] + invoice.discountAmt;
+    shift[i]["tax"] = shift[i]["tax"] + invoice.taxAmt;
 
-    // Adjust delivery charges, discount, and tax based on the current invoice
-    shift[i]["deliveryCharges"] += invoice.delliveryChrg ?? 0;
-    shift[i]["discount"] += invoice.discountAmt ?? 0;
-    shift[i]["tax"] += invoice.taxAmt ?? 0;
+    shift[i]["totalSale"] = shift[i]["totalSale"] + total - previousAmount;
 
-    // Update totalSale by adjusting for the difference between the current and previous amounts
-    shift[i]["totalSale"] += (total ?? 0) - previousAmount;
+    // shift[i]["subTotalBill"] = shift[i]["subTotalBill"] + invoice.billAmt;
 
-    // Update the payment method specific totals dynamically
+    shift[i]["cashSale"] = shift[i]["cashSale"].toDouble() +
+        (invoice.paymentMode == "CASH"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
     final paymentJsonData = jsonDecode(shift[i]["paymentJson"]);
 
-    // Update each payment mode dynamically
-    void updatePayment(String mode, double adjustment) {
-      paymentJsonData[mode] =
-          (paymentJsonData[mode]?.toDouble() ?? 0) + adjustment;
-    }
+    paymentJsonData["cash"] = paymentJsonData["cash"].toDouble() +
+        (invoice.paymentMode == "CASH"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
 
-    // Calculate the adjustment for the current payment mode
-    double adjustment = (invoice.finalBillAmt ?? 0) - previousAmount;
+    paymentJsonData["complementary"] =
+        paymentJsonData["complementary"].toDouble() +
+            (invoice.paymentMode == "COMPLEMENTARY"
+                ? invoice.finalBillAmt!.toDouble() - previousAmount
+                : 0);
 
-    switch (invoice.paymentMode) {
-      case "CASH":
-        updatePayment("cash", adjustment);
-        break;
-      case "COMPLEMENTARY":
-        updatePayment("complementary", adjustment);
-        break;
-      case "CREDIT":
-        updatePayment("credit", adjustment);
-        break;
-      case "GOOGLEPAY":
-        updatePayment("googlepay", adjustment);
-        break;
-      case "PAYTM":
-        updatePayment("paytm", adjustment);
-        break;
-      case "PHONEPE":
-        updatePayment("phonepe", adjustment);
-        break;
-      case "CHEQUE":
-        updatePayment("cheque", adjustment);
-        break;
-      case "OTHER":
-        updatePayment("other", adjustment);
-        break;
-      case "CARD":
-        updatePayment("card", adjustment);
-        break;
-      case "UPI QR":
-        updatePayment("upi_qr", adjustment);
-        break;
-      default:
-        print("Unknown payment mode: ${invoice.paymentMode}");
-    }
+    paymentJsonData["credit"] = paymentJsonData["credit"].toDouble() +
+        (invoice.paymentMode == "CREDIT"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
 
-    // Convert the updated paymentJsonData back to a string and assign it back
-    shift[i]["paymentJson"] = jsonEncode(paymentJsonData);
+    paymentJsonData["googlepay"] = paymentJsonData["googlepay"].toDouble() +
+        (invoice.paymentMode == "GOOGLEPAY"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    paymentJsonData["paytm"] = paymentJsonData["paytm"].toDouble() +
+        (invoice.paymentMode == "PAYTM"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    paymentJsonData["phonepe"] = paymentJsonData["phonepe"].toDouble() +
+        (invoice.paymentMode == "PHONEPE"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    paymentJsonData["cheque"] = paymentJsonData["cheque"].toDouble() +
+        (invoice.paymentMode == "CHEQUE"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    paymentJsonData["other"] = paymentJsonData["other"].toDouble() +
+        (invoice.paymentMode == "OTHER"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    paymentJsonData["card"] = paymentJsonData["card"].toDouble() +
+        (invoice.paymentMode == "CARD"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    paymentJsonData["upi_qr"] = paymentJsonData["upi_qr"].toDouble() +
+        (invoice.paymentMode == "UPI QR"
+            ? invoice.finalBillAmt!.toDouble() - previousAmount
+            : 0);
+
+    var paymentJsonDataString = jsonEncode(paymentJsonData).toString();
+    shift[i]["paymentJson"] = paymentJsonDataString;
   }
-
   print('sk');
   print(shift[0]);
   return shift[0];
