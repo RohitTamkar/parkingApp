@@ -225,9 +225,11 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'cunxzywe' /* Vehicle Wise Report */,
                                   ),
                                   options: FFButtonOptions(
+                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
+                                    iconAlignment: IconAlignment.start,
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color:
@@ -277,6 +279,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'h1uk5mv9' /* In \ Out Report */,
                                   ),
                                   options: FFButtonOptions(
+                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -326,6 +329,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'pjk8h3oq' /* Today Summary Report */,
                                   ),
                                   options: FFButtonOptions(
+                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -379,6 +383,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     '13p2te3m' /* Bill Summary */,
                                   ),
                                   options: FFButtonOptions(
+                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -428,6 +433,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     '30hlh3sh' /* Daily Collection Report */,
                                   ),
                                   options: FFButtonOptions(
+                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
@@ -480,6 +486,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     'hqcj4zau' /* Unbilled Receipts */,
                                   ),
                                   options: FFButtonOptions(
+                                    width: double.infinity,
                                     height: 50.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),

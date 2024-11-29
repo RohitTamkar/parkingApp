@@ -226,64 +226,13 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(5.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              5.0, 20.0, 5.0, 5.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 30.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child:
-                                                      ReportCalenderCopyWidget(),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: <Widget>[]
-                                              .divide(SizedBox(width: 20.0)),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(width: 50.0)),
-                                  ),
-                                ),
-                              ),
                               Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
