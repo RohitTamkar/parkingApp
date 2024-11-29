@@ -1,8 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/parking/email_input/email_input_widget.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -180,78 +183,220 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                     children: [
                       Expanded(
                         flex: 4,
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFFAC47),
+                        child: StreamBuilder<List<OutletRecord>>(
+                          stream: queryOutletRecord(
+                            singleRecord: true,
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 15.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.chevron_left,
-                                        color: Color(0xFF0D0801),
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pop();
-                                      },
-                                    ),
-                                    AutoSizeText(
-                                      FFLocalizations.of(context).getText(
-                                        '32zgov2x' /* Bill Summary */,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
-                                          ),
-                                    ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.email,
-                                        color: FlutterFlowTheme.of(context)
-                                            .parkingPrimary,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                  ],
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  child: SpinKitFadingCircle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 40.0,
+                                  ),
                                 ),
+                              );
+                            }
+                            List<OutletRecord> containerOutletRecordList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final containerOutletRecord =
+                                containerOutletRecordList.isNotEmpty
+                                    ? containerOutletRecordList.first
+                                    : null;
+
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFFFAC47),
                               ),
-                            ],
-                          ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 50.0,
+                                          icon: Icon(
+                                            Icons.chevron_left,
+                                            color: Color(0xFF0D0801),
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            context.pop();
+                                          },
+                                        ),
+                                        AutoSizeText(
+                                          FFLocalizations.of(context).getText(
+                                            '32zgov2x' /* Bill Summary */,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMediumFamily,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMediumFamily),
+                                              ),
+                                        ),
+                                        Builder(
+                                          builder: (context) =>
+                                              FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 20.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 50.0,
+                                            icon: Icon(
+                                              Icons.email,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
+                                            onPressed: () async {
+                                              FFAppState().emailForReport =
+                                                  currentUserEmail;
+                                              safeSetState(() {});
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () =>
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus(),
+                                                      child: EmailInputWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+
+                                              _model.base64Link2 = await actions
+                                                  .genExcelForBillWiseReport(
+                                                FFAppState()
+                                                    .startDate
+                                                    ?.toString(),
+                                                containerOutletRecord?.name,
+                                                billwisesalereportInvoiceRecordList
+                                                    .toList(),
+                                                FFAppState()
+                                                    .endDate
+                                                    ?.toString(),
+                                              );
+                                              _model.apiResult6yc2 =
+                                                  await SendMailCall.call(
+                                                mobileNo: FFAppState()
+                                                    .currentMobileString,
+                                                username: valueOrDefault(
+                                                    currentUserDocument?.name,
+                                                    ''),
+                                                roll: FFAppState()
+                                                    .currentUserRole,
+                                                toEmail:
+                                                    FFAppState().emailForReport,
+                                                fileName: 'BillWiseSaleReport',
+                                                outletName:
+                                                    containerOutletRecord?.name,
+                                                branchName:
+                                                    containerOutletRecord
+                                                        ?.branch,
+                                                file: _model.base64Link2,
+                                                reportType:
+                                                    'Bill Wise Sale Report',
+                                              );
+
+                                              if ((_model.apiResult6yc2
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: Text(
+                                                          'Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              } else {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: Text(
+                                                          'Email Not Sent ! Try Again'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              }
+
+                                              safeSetState(() {});
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Expanded(

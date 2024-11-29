@@ -26,6 +26,7 @@ Future<String> genExcelForBillWiseReport(
   String? startdate,
   String? shopName,
   List<InvoiceRecord>? docList,
+  String? enddate,
 ) async {
   // Add your function code here!
   var excel = Excel.createExcel();
@@ -110,12 +111,13 @@ Future<String> genExcelForBillWiseReport(
 
   for (var product in docList!) {
     sheet.appendRow([
-      TextCellValue(product.dayId),
-      TextCellValue(product.invoice),
+      TextCellValue(product.count.toString()),
+      TextCellValue(product.vechicleNo),
+      TextCellValue(product.checkOutTime.toString()),
       TextCellValue(product.finalBillAmt.toString()),
-      TextCellValue(product.taxAmt.toString()),
-      TextCellValue(product.discountAmt.toString()),
-      TextCellValue(product.delliveryChrg.toString()),
+      // TextCellValue(product.taxAmt.toString()),
+      // TextCellValue(product.discountAmt.toString()),
+      // TextCellValue(product.delliveryChrg.toString()),
     ]);
   }
 
