@@ -32,10 +32,12 @@ class BillDetailsCopyModel extends FlutterFlowModel<BillDetailsCopyWidget> {
   String? Function(BuildContext, String?)? textController2Validator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   InvoiceRecord? savebill;
-  // Stores action output result for [Custom Action - calShiftSummary3] action in Button widget.
-  dynamic? shiftupdate;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   ShiftRecord? shiftref2;
+  // Stores action output result for [Custom Action - shiftDetailNewpark2] action in Button widget.
+  dynamic? shiftDetailsNewcar;
+  // Stores action output result for [Custom Action - calShiftSummary3] action in Button widget.
+  dynamic? shiftupdate;
 
   @override
   void initState(BuildContext context) {

@@ -1584,18 +1584,6 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                               .shiftdoc,
                                                                           r'''$.shiftExists''',
                                                                         )) {
-                                                                          _model.shiftupdate =
-                                                                              await actions.calShiftSummary3(
-                                                                            _model.savebill!,
-                                                                            widget!.shiftdoc!,
-                                                                            valueOrDefault<double>(
-                                                                              widget!.invdoc?.finalBillAmt,
-                                                                              0.0,
-                                                                            ),
-                                                                            _model.paymentModeModel.dropDownValue!,
-                                                                          );
-                                                                          _shouldSetState =
-                                                                              true;
                                                                           _model.shiftref2 =
                                                                               await queryShiftRecordOnce(
                                                                             parent:
@@ -1608,6 +1596,24 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                             singleRecord:
                                                                                 true,
                                                                           ).then((s) => s.firstOrNull);
+                                                                          _shouldSetState =
+                                                                              true;
+                                                                          _model.shiftDetailsNewcar =
+                                                                              await actions.shiftDetailNewpark2(
+                                                                            _model.shiftref2,
+                                                                          );
+                                                                          _shouldSetState =
+                                                                              true;
+                                                                          _model.shiftupdate =
+                                                                              await actions.calShiftSummary3(
+                                                                            _model.savebill!,
+                                                                            _model.shiftDetailsNewcar!,
+                                                                            valueOrDefault<double>(
+                                                                              widget!.invdoc?.finalBillAmt,
+                                                                              0.0,
+                                                                            ),
+                                                                            _model.paymentModeModel.dropDownValue!,
+                                                                          );
                                                                           _shouldSetState =
                                                                               true;
 
