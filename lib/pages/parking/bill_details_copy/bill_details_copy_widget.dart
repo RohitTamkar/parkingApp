@@ -1559,6 +1559,9 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           paymentMode: _model
                                                                               .paymentModeModel
                                                                               .dropDownValue,
+                                                                          billAmt: double.tryParse(_model
+                                                                              .textController2
+                                                                              .text),
                                                                         ));
                                                                         _model.savebill =
                                                                             await queryInvoiceRecordOnce(
