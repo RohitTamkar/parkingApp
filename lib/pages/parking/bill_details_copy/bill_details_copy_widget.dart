@@ -1598,16 +1598,10 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
                                                                           ).then((s) => s.firstOrNull);
                                                                           _shouldSetState =
                                                                               true;
-                                                                          _model.shiftDetailsNewcar =
-                                                                              await actions.shiftDetailNewpark2(
-                                                                            _model.shiftref2,
-                                                                          );
-                                                                          _shouldSetState =
-                                                                              true;
                                                                           _model.shiftupdate =
                                                                               await actions.calShiftSummary3(
                                                                             _model.savebill!,
-                                                                            _model.shiftDetailsNewcar!,
+                                                                            widget!.shiftdoc!,
                                                                             valueOrDefault<double>(
                                                                               widget!.invdoc?.finalBillAmt,
                                                                               0.0,

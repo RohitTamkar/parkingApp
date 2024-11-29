@@ -62,16 +62,10 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
     return StreamBuilder<List<InvoiceRecord>>(
       stream: queryInvoiceRecord(
         parent: FFAppState().outletIdRef,
-        queryBuilder: (invoiceRecord) => invoiceRecord
-            .where(
-              'invoiceDate',
-              isGreaterThanOrEqualTo:
-                  FFAppState().startDate?.millisecondsSinceEpoch,
-            )
-            .where(
-              'invoiceDate',
-              isLessThanOrEqualTo: FFAppState().endDate?.millisecondsSinceEpoch,
-            ),
+        queryBuilder: (invoiceRecord) => invoiceRecord.where(
+          'dayId',
+          isEqualTo: FFAppState().filterDate,
+        ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
