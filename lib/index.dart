@@ -134,7 +134,7 @@ export '/pages/parking/parking_check_i_n_copy/parking_check_i_n_copy_widget.dart
     show ParkingCheckINCopyWidget;
 export '/pages/parking/edit_bill_list/edit_bill_list_widget.dart'
     show EditBillListWidget;
-export '/pages/parking/bill_details_copy/bill_details_copy_widget.dart'
-    show BillDetailsCopyWidget;
+export '/pages/parking/edit_bill_details/edit_bill_details_widget.dart'
+    show EditBillDetailsWidget;
 export '/web_parking/web_vehicle_wise_sale2/web_vehicle_wise_sale2_widget.dart'
     show WebVehicleWiseSale2Widget;

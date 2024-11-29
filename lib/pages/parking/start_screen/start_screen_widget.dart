@@ -72,7 +72,12 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
-                            onTap: () async {},
+                            onTap: () async {
+                              FFAppState().navigate = 'PARKING';
+                              safeSetState(() {});
+
+                              context.pushNamed('phoneAuthPage');
+                            },
                             child: Material(
                               color: Colors.transparent,
                               elevation: 2.0,

@@ -854,13 +854,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditBillListWidget(),
             ),
             FFRoute(
-              name: 'billDetailsCopy',
-              path: 'billDetailsCopy',
+              name: 'editBillDetails',
+              path: 'editBillDetails',
               asyncParams: {
                 'invdoc':
                     getDoc(['OUTLET', 'INVOICE'], InvoiceRecord.fromSnapshot),
               },
-              builder: (context, params) => BillDetailsCopyWidget(
+              builder: (context, params) => EditBillDetailsWidget(
                 docRef: params.getParam(
                   'docRef',
                   ParamType.DocumentReference,

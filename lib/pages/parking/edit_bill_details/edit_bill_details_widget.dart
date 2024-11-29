@@ -15,11 +15,11 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'bill_details_copy_model.dart';
-export 'bill_details_copy_model.dart';
+import 'edit_bill_details_model.dart';
+export 'edit_bill_details_model.dart';
 
-class BillDetailsCopyWidget extends StatefulWidget {
-  const BillDetailsCopyWidget({
+class EditBillDetailsWidget extends StatefulWidget {
+  const EditBillDetailsWidget({
     super.key,
     this.docRef,
     this.invdoc,
@@ -31,18 +31,18 @@ class BillDetailsCopyWidget extends StatefulWidget {
   final dynamic shiftdoc;
 
   @override
-  State<BillDetailsCopyWidget> createState() => _BillDetailsCopyWidgetState();
+  State<EditBillDetailsWidget> createState() => _EditBillDetailsWidgetState();
 }
 
-class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
-  late BillDetailsCopyModel _model;
+class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
+  late EditBillDetailsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BillDetailsCopyModel());
+    _model = createModel(context, () => EditBillDetailsModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -74,7 +74,7 @@ class _BillDetailsCopyWidgetState extends State<BillDetailsCopyWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'billDetailsCopy',
+        title: 'editBillDetails',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

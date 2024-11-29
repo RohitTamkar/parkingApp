@@ -7806,7 +7806,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
-  // billDetailsCopy
+  // editBillDetails
   {
     'kjb5s68q': {
       'en': 'Bill Details',
@@ -8669,6 +8669,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     '6mkny4ac': {
+      'en': 'Done',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // reportCalenderCopy
+  {
+    '8i5ipslo': {
+      'en': 'cancel',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'udzsr8jo': {
       'en': 'Done',
       'hi': '',
       'kn': '',
