@@ -1332,16 +1332,11 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                       var _shouldSetState = false;
                                       if ((_model.textController1.text !=
                                                   null &&
-                                              _model
-                                                      .textController1.text !=
+                                              _model.textController1.text !=
                                                   '') &&
                                           (_model.dropDownvechicleValue !=
                                                   null &&
                                               _model.dropDownvechicleValue !=
-                                                  '') &&
-                                          (_model.dropDownPaymentModeValue !=
-                                                  null &&
-                                              _model.dropDownPaymentModeValue !=
                                                   '')) {
                                         _model.countdatagetPRINT =
                                             await queryInvoiceRecordOnce(
@@ -1806,16 +1801,11 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                       var _shouldSetState = false;
                                       if ((_model.textController1.text !=
                                                   null &&
-                                              _model
-                                                      .textController1.text !=
+                                              _model.textController1.text !=
                                                   '') &&
                                           (_model.dropDownvechicleValue !=
                                                   null &&
                                               _model.dropDownvechicleValue !=
-                                                  '') &&
-                                          (_model.dropDownPaymentModeValue !=
-                                                  null &&
-                                              _model.dropDownPaymentModeValue !=
                                                   '')) {
                                         _model.countdataget =
                                             await queryInvoiceRecordOnce(

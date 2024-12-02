@@ -55,6 +55,8 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
   var hasContainerTriggered12 = false;
   var hasContainerTriggered13 = false;
   var hasContainerTriggered14 = false;
+  var hasContainerTriggered15 = false;
+  var hasContainerTriggered16 = false;
   final animationsMap = <String, AnimationInfo>{};
 
   @override
@@ -312,6 +314,40 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
         ],
       ),
       'containerOnActionTriggerAnimation14': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 375.0.ms,
+            begin: 1.0,
+            end: 0.8,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 375.0.ms,
+            begin: Offset(1.2, 1.2),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation15': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: Offset(0.88, 0.88),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation16': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -1813,21 +1849,6 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               if (animationsMap[
-                                                      'containerOnActionTriggerAnimation14'] !=
-                                                  null) {
-                                                safeSetState(() =>
-                                                    hasContainerTriggered14 =
-                                                        true);
-                                                SchedulerBinding.instance
-                                                    .addPostFrameCallback(
-                                                        (_) async =>
-                                                            await animationsMap[
-                                                                    'containerOnActionTriggerAnimation14']!
-                                                                .controller
-                                                                .forward(
-                                                                    from: 0.0));
-                                              }
-                                              if (animationsMap[
                                                       'containerOnActionTriggerAnimation13'] !=
                                                   null) {
                                                 safeSetState(() =>
@@ -1838,6 +1859,171 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         (_) async =>
                                                             await animationsMap[
                                                                     'containerOnActionTriggerAnimation13']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0));
+                                              }
+
+                                              context.pushNamed('AppSettings');
+                                            },
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.7,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.06,
+                                              decoration: BoxDecoration(
+                                                color: Color(0x00FFFFFF),
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                              ),
+                                              child: Stack(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.15,
+                                                          height:
+                                                              double.infinity,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child:
+                                                              FlutterFlowIconButton(
+                                                            borderColor: Colors
+                                                                .transparent,
+                                                            borderRadius: 30.0,
+                                                            borderWidth: 1.0,
+                                                            buttonSize: 60.0,
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .settings_sharp,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              size: 25.0,
+                                                            ),
+                                                            onPressed: () {
+                                                              print(
+                                                                  'IconButton pressed ...');
+                                                            },
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: AutoSizeText(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'iaku247x' /* App Setting */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineSmallFamily),
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.7,
+                                                    height: double.infinity,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x4C989FDE),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                  ).animateOnActionTrigger(
+                                                      animationsMap[
+                                                          'containerOnActionTriggerAnimation14']!,
+                                                      hasBeenTriggered:
+                                                          hasContainerTriggered14),
+                                                ],
+                                              ),
+                                            ),
+                                          ).animateOnActionTrigger(
+                                              animationsMap[
+                                                  'containerOnActionTriggerAnimation13']!,
+                                              hasBeenTriggered:
+                                                  hasContainerTriggered13),
+                                        ],
+                                      ),
+                                      Divider(
+                                        thickness: 0.5,
+                                        indent: 40.0,
+                                        endIndent: 40.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor1,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (animationsMap[
+                                                      'containerOnActionTriggerAnimation16'] !=
+                                                  null) {
+                                                safeSetState(() =>
+                                                    hasContainerTriggered16 =
+                                                        true);
+                                                SchedulerBinding.instance
+                                                    .addPostFrameCallback(
+                                                        (_) async =>
+                                                            await animationsMap[
+                                                                    'containerOnActionTriggerAnimation16']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0));
+                                              }
+                                              if (animationsMap[
+                                                      'containerOnActionTriggerAnimation15'] !=
+                                                  null) {
+                                                safeSetState(() =>
+                                                    hasContainerTriggered15 =
+                                                        true);
+                                                SchedulerBinding.instance
+                                                    .addPostFrameCallback(
+                                                        (_) async =>
+                                                            await animationsMap[
+                                                                    'containerOnActionTriggerAnimation15']!
                                                                 .controller
                                                                 .forward(
                                                                     from: 0.0));
@@ -1879,9 +2065,9 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     ),
                                                   ).animateOnActionTrigger(
                                                       animationsMap[
-                                                          'containerOnActionTriggerAnimation14']!,
+                                                          'containerOnActionTriggerAnimation16']!,
                                                       hasBeenTriggered:
-                                                          hasContainerTriggered14),
+                                                          hasContainerTriggered16),
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -1959,9 +2145,9 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             ),
                                           ).animateOnActionTrigger(
                                               animationsMap[
-                                                  'containerOnActionTriggerAnimation13']!,
+                                                  'containerOnActionTriggerAnimation15']!,
                                               hasBeenTriggered:
-                                                  hasContainerTriggered13),
+                                                  hasContainerTriggered15),
                                         ],
                                       ),
                                     ],

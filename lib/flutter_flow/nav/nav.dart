@@ -881,6 +881,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'WebVehicleWiseSale2',
               path: 'webVehicleWiseSale2',
               builder: (context, params) => WebVehicleWiseSale2Widget(),
+            ),
+            FFRoute(
+              name: 'AppSettings',
+              path: 'appSettings',
+              builder: (context, params) => AppSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'ShiftEnd',
+              path: 'shiftEnd',
+              builder: (context, params) => ShiftEndWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

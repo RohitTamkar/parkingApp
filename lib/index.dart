@@ -138,3 +138,6 @@ export '/pages/parking/edit_bill_details/edit_bill_details_widget.dart'
     show EditBillDetailsWidget;
 export '/web_parking/web_vehicle_wise_sale2/web_vehicle_wise_sale2_widget.dart'
     show WebVehicleWiseSale2Widget;
+export '/pages/parking/app_settings/app_settings_widget.dart'
+    show AppSettingsWidget;
+export '/pages/parking/shift_end/shift_end_widget.dart' show ShiftEndWidget;

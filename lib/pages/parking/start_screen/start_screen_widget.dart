@@ -27,13 +27,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
     _model = createModel(context, () => StartScreenModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (isWeb) {
-        context.pushNamed('webLogin');
-      } else {
-        context.pushNamed('phoneAuthPage');
-      }
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
