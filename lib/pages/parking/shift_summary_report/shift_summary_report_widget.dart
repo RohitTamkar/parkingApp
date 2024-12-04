@@ -630,11 +630,8 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                 ),
                                                           ),
                                                           Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'wyuccyni' /* User Name */,
-                                                            ),
+                                                            FFAppState()
+                                                                .userName,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium

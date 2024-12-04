@@ -8551,13 +8551,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'wyuccyni': {
-      'en': 'User Name',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'gh3a8fwd': {
       'en': 'Total Check In',
       'hi': '',
