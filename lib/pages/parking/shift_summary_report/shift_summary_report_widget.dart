@@ -734,7 +734,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                   ),
                                                             ),
                                                             Text(
-                                                              containerShiftRecordList
+                                                              shiftSummaryReportInvoiceRecordList
                                                                   .where((e) =>
                                                                       (e.vechicleType ==
                                                                           listItem
@@ -803,7 +803,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                   ),
                                                             ),
                                                             Text(
-                                                              containerShiftRecordList
+                                                              shiftSummaryReportInvoiceRecordList
                                                                   .where((e) =>
                                                                       (e.vechicleType ==
                                                                           listItem
