@@ -4748,6 +4748,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'xjmzlgm0': {
+      'en': 'Shift End',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'vuikjnjv': {
       'en': 'Receipt Entry',
       'hi': '',
@@ -7551,6 +7558,90 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ParkingLogin
   {
+    'ezpu2d28': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '1drq101v': {
+      'en': 'Rohit',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'kbpnqf4x': {
+      'en': 'Amrut',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'wirymdgq': {
+      'en': 'Piyush',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'b9tv67wp': {
+      'en': 'Please select...',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'vclqgyny': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '1qin5wiy': {
+      'en': 'Login',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'gfz9bs8d': {
+      'en': 'Subscription Due Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '0burarz1': {
+      'en': 'Remaining Days',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ep6bedcg': {
+      'en': '@copyright reserved ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ul96rral': {
+      'en': 'SENSIBLE CONNECT SOLUTIONS PRIVATE LIMITED ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'wt14jwok': {
+      'en': '2024 All rights reserved',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     '3eztguhw': {
       'en': 'Home',
       'hi': '',
@@ -8122,7 +8213,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'in0rzcht': {
+    'xgvrerkw': {
       'en': 'Apply Changes',
       'hi': '',
       'kn': '',
@@ -8140,7 +8231,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ShiftEnd
   {
     'zo65sq5q': {
-      'en': '',
+      'en': 'Shift Summary',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -8420,6 +8511,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'dl2960e8': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // welcomeScreenNew
+  {
+    'f4k5zln0': {
       'en': 'Home',
       'hi': '',
       'kn': '',

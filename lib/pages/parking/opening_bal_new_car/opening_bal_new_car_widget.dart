@@ -577,355 +577,116 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                   _model.taxcollection =
                                                       await queryTaxMasterRecordOnce();
                                                   _shouldSetState = true;
-                                                  if (!(_model
+                                                  _model.masterAppsetting =
+                                                      await queryAppSettingsMasterRecordOnce();
+                                                  _shouldSetState = true;
+                                                  _model.returnAppsettiing =
+                                                      await actions
+                                                          .returnAppsetting(
+                                                    _model.masterAppsetting!
+                                                        .toList(),
+                                                    FFAppState()
+                                                        .appSettings
+                                                        .toList(),
+                                                  );
+                                                  _shouldSetState = true;
+                                                  if (_model
                                                           .isAppSetExistsNew !=
-                                                      null)) {
+                                                      null) {
+                                                    FFAppState().appSettings =
+                                                        _model
+                                                            .isAppSetExistsNew!
+                                                            .settingList
+                                                            .toList()
+                                                            .cast<
+                                                                AppSettingsStruct>();
+                                                    safeSetState(() {});
+                                                    _model.returnAppsettiingupdate =
+                                                        await actions
+                                                            .returnAppsetting(
+                                                      _model.masterAppsetting!
+                                                          .toList(),
+                                                      FFAppState()
+                                                          .appSettings
+                                                          .toList(),
+                                                    );
+                                                    _shouldSetState = true;
+
+                                                    await _model
+                                                        .isAppSetExistsNew!
+                                                        .reference
+                                                        .update({
+                                                      ...createAppSettingsRecordData(
+                                                        deviceId:
+                                                            FFAppState().dId,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'settingList':
+                                                              getAppSettingsListFirestoreData(
+                                                            _model
+                                                                .returnAppsettiingupdate,
+                                                          ),
+                                                        },
+                                                      ),
+                                                    });
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'App Settings Updated !',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
+                                                    );
+                                                  } else {
                                                     var appSettingsRecordReference =
                                                         AppSettingsRecord
                                                             .createDoc(FFAppState()
                                                                 .outletIdRef!);
                                                     await appSettingsRecordReference
-                                                        .set(
-                                                            createAppSettingsRecordData(
-                                                      saveButton: true,
-                                                      billSettlement: true,
-                                                      allowSaleWithoutTax:
-                                                          false,
-                                                      askCustomerInBillCreation:
-                                                          false,
-                                                      billFormatSendToEmail:
-                                                          false,
-                                                      calculateReverseQuantity:
-                                                          false,
-                                                      captainDetails: false,
-                                                      captainRequest: false,
-                                                      checkInCheckOut: false,
-                                                      couponKotHeader: false,
-                                                      couponPrintBill: false,
-                                                      couponSaveBill: false,
-                                                      deliveryNote: false,
-                                                      saveKot: false,
-                                                      discountToBill: false,
-                                                      doNotShowProductList:
-                                                          false,
-                                                      barcodeMenu: false,
-                                                      billModificationtoUser:
-                                                          false,
-                                                      comboPriceUpdate: false,
-                                                      customerAdvance: false,
-                                                      customerforcefully: false,
-                                                      editingSettlement: false,
-                                                      floatingKeyboard: false,
-                                                      goodsReceivedMenu: false,
-                                                      kotPrintAmountColumn:
-                                                          false,
-                                                      kotReprint: false,
-                                                      loyaltyPoints: false,
-                                                      onlineOrderSystem: false,
-                                                      openingBalanceAmountSet:
-                                                          false,
-                                                      openingBalancePopup:
-                                                          false,
-                                                      paymentMenu: false,
-                                                      salesman: false,
-                                                      salesmanForcefully: false,
-                                                      salesmanProductWise:
-                                                          false,
-                                                      stockOutMenu: false,
-                                                      store: false,
-                                                      tableForcefully: false,
-                                                      threeCharSearch: false,
-                                                      wlanCommunication: false,
-                                                      estimateMode: false,
-                                                      hideKeyboard: false,
-                                                      hideProductSearchCode:
-                                                          false,
-                                                      inclusiveTax: false,
-                                                      itemStockRequestSent:
-                                                          false,
-                                                      kotRemark: false,
-                                                      manualPrice: false,
-                                                      openPrice: false,
-                                                      pemisesShowCodeWise:
-                                                          false,
-                                                      productSuggestionRemove:
-                                                          false,
-                                                      regionalLanguage: false,
-                                                      rfidMasterRead: false,
-                                                      rfidMasterWrite: false,
-                                                      searchWithOnlyBarcode:
-                                                          false,
-                                                      sendSMS: false,
-                                                      showHoldListButton: false,
-                                                      showPrintButtonsAfterPay:
-                                                          false,
-                                                      showProductImage: false,
-                                                      sortHotKeys: false,
-                                                      stockGettingMinus: false,
-                                                      stockRequestAccept: false,
-                                                      tables: false,
-                                                      upiButton: false,
-                                                      vehicleNumber: false,
-                                                      weightMinus: false,
-                                                      barcodeOnBill: false,
-                                                      billRemark: false,
-                                                      cgstSgstOnBill: false,
-                                                      columnProductNameAndQtyPrint:
-                                                          false,
-                                                      dontPrintBillnoInbill:
-                                                          false,
-                                                      dontPrintRateColumn:
-                                                          false,
-                                                      dontPrintSerialNoInbill:
-                                                          false,
-                                                      dontPrintTaxInvoiceOnBill:
-                                                          false,
-                                                      doubleprint: false,
-                                                      duplicateBill: false,
-                                                      billPrintingServicesPointWise:
-                                                          false,
-                                                      largeBillFont: false,
-                                                      numberToWords: false,
-                                                      signatureInBill: false,
-                                                      fontBoldNetTotal: false,
-                                                      gstBreakUpOnBill: false,
-                                                      hsnNumber: false,
-                                                      paymentModePrint: false,
-                                                      printConsolidateTax:
-                                                          false,
-                                                      printDiscountOnBill:
-                                                          false,
-                                                      printMrpPrice: false,
-                                                      printUnitTypeOnBill:
-                                                          false,
-                                                      printUserNameInBill:
-                                                          false,
-                                                      productNameCut: false,
-                                                      productSerialNumber:
-                                                          false,
-                                                      regionalBillPrint: false,
-                                                      regionalKOTPrint: false,
-                                                      saveMRPinBill: false,
-                                                      totalQtyInBill: false,
-                                                      trimNameForSingleLine:
-                                                          false,
-                                                      billAmountInWords: false,
-                                                      couponKotSummary: false,
-                                                      openSoftKeyWord: false,
-                                                      rateColumnTax: false,
-                                                      showProductImg: false,
-                                                      regularScreen: true,
-                                                      tableScreen: false,
-                                                      fullScreenQr: false,
-                                                      fullScreenBill: false,
-                                                      productAndList: false,
-                                                      deviceId:
-                                                          FFAppState().dId,
-                                                    ));
+                                                        .set({
+                                                      ...createAppSettingsRecordData(
+                                                        deviceId:
+                                                            FFAppState().dId,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'settingList':
+                                                              getAppSettingsListFirestoreData(
+                                                            _model
+                                                                .returnAppsettiing,
+                                                          ),
+                                                        },
+                                                      ),
+                                                    });
                                                     _model.doc = AppSettingsRecord
-                                                        .getDocumentFromData(
-                                                            createAppSettingsRecordData(
-                                                              saveButton: true,
-                                                              billSettlement:
-                                                                  true,
-                                                              allowSaleWithoutTax:
-                                                                  false,
-                                                              askCustomerInBillCreation:
-                                                                  false,
-                                                              billFormatSendToEmail:
-                                                                  false,
-                                                              calculateReverseQuantity:
-                                                                  false,
-                                                              captainDetails:
-                                                                  false,
-                                                              captainRequest:
-                                                                  false,
-                                                              checkInCheckOut:
-                                                                  false,
-                                                              couponKotHeader:
-                                                                  false,
-                                                              couponPrintBill:
-                                                                  false,
-                                                              couponSaveBill:
-                                                                  false,
-                                                              deliveryNote:
-                                                                  false,
-                                                              saveKot: false,
-                                                              discountToBill:
-                                                                  false,
-                                                              doNotShowProductList:
-                                                                  false,
-                                                              barcodeMenu:
-                                                                  false,
-                                                              billModificationtoUser:
-                                                                  false,
-                                                              comboPriceUpdate:
-                                                                  false,
-                                                              customerAdvance:
-                                                                  false,
-                                                              customerforcefully:
-                                                                  false,
-                                                              editingSettlement:
-                                                                  false,
-                                                              floatingKeyboard:
-                                                                  false,
-                                                              goodsReceivedMenu:
-                                                                  false,
-                                                              kotPrintAmountColumn:
-                                                                  false,
-                                                              kotReprint: false,
-                                                              loyaltyPoints:
-                                                                  false,
-                                                              onlineOrderSystem:
-                                                                  false,
-                                                              openingBalanceAmountSet:
-                                                                  false,
-                                                              openingBalancePopup:
-                                                                  false,
-                                                              paymentMenu:
-                                                                  false,
-                                                              salesman: false,
-                                                              salesmanForcefully:
-                                                                  false,
-                                                              salesmanProductWise:
-                                                                  false,
-                                                              stockOutMenu:
-                                                                  false,
-                                                              store: false,
-                                                              tableForcefully:
-                                                                  false,
-                                                              threeCharSearch:
-                                                                  false,
-                                                              wlanCommunication:
-                                                                  false,
-                                                              estimateMode:
-                                                                  false,
-                                                              hideKeyboard:
-                                                                  false,
-                                                              hideProductSearchCode:
-                                                                  false,
-                                                              inclusiveTax:
-                                                                  false,
-                                                              itemStockRequestSent:
-                                                                  false,
-                                                              kotRemark: false,
-                                                              manualPrice:
-                                                                  false,
-                                                              openPrice: false,
-                                                              pemisesShowCodeWise:
-                                                                  false,
-                                                              productSuggestionRemove:
-                                                                  false,
-                                                              regionalLanguage:
-                                                                  false,
-                                                              rfidMasterRead:
-                                                                  false,
-                                                              rfidMasterWrite:
-                                                                  false,
-                                                              searchWithOnlyBarcode:
-                                                                  false,
-                                                              sendSMS: false,
-                                                              showHoldListButton:
-                                                                  false,
-                                                              showPrintButtonsAfterPay:
-                                                                  false,
-                                                              showProductImage:
-                                                                  false,
-                                                              sortHotKeys:
-                                                                  false,
-                                                              stockGettingMinus:
-                                                                  false,
-                                                              stockRequestAccept:
-                                                                  false,
-                                                              tables: false,
-                                                              upiButton: false,
-                                                              vehicleNumber:
-                                                                  false,
-                                                              weightMinus:
-                                                                  false,
-                                                              barcodeOnBill:
-                                                                  false,
-                                                              billRemark: false,
-                                                              cgstSgstOnBill:
-                                                                  false,
-                                                              columnProductNameAndQtyPrint:
-                                                                  false,
-                                                              dontPrintBillnoInbill:
-                                                                  false,
-                                                              dontPrintRateColumn:
-                                                                  false,
-                                                              dontPrintSerialNoInbill:
-                                                                  false,
-                                                              dontPrintTaxInvoiceOnBill:
-                                                                  false,
-                                                              doubleprint:
-                                                                  false,
-                                                              duplicateBill:
-                                                                  false,
-                                                              billPrintingServicesPointWise:
-                                                                  false,
-                                                              largeBillFont:
-                                                                  false,
-                                                              numberToWords:
-                                                                  false,
-                                                              signatureInBill:
-                                                                  false,
-                                                              fontBoldNetTotal:
-                                                                  false,
-                                                              gstBreakUpOnBill:
-                                                                  false,
-                                                              hsnNumber: false,
-                                                              paymentModePrint:
-                                                                  false,
-                                                              printConsolidateTax:
-                                                                  false,
-                                                              printDiscountOnBill:
-                                                                  false,
-                                                              printMrpPrice:
-                                                                  false,
-                                                              printUnitTypeOnBill:
-                                                                  false,
-                                                              printUserNameInBill:
-                                                                  false,
-                                                              productNameCut:
-                                                                  false,
-                                                              productSerialNumber:
-                                                                  false,
-                                                              regionalBillPrint:
-                                                                  false,
-                                                              regionalKOTPrint:
-                                                                  false,
-                                                              saveMRPinBill:
-                                                                  false,
-                                                              totalQtyInBill:
-                                                                  false,
-                                                              trimNameForSingleLine:
-                                                                  false,
-                                                              billAmountInWords:
-                                                                  false,
-                                                              couponKotSummary:
-                                                                  false,
-                                                              openSoftKeyWord:
-                                                                  false,
-                                                              rateColumnTax:
-                                                                  false,
-                                                              showProductImg:
-                                                                  false,
-                                                              regularScreen:
-                                                                  true,
-                                                              tableScreen:
-                                                                  false,
-                                                              fullScreenQr:
-                                                                  false,
-                                                              fullScreenBill:
-                                                                  false,
-                                                              productAndList:
-                                                                  false,
-                                                              deviceId:
-                                                                  FFAppState()
-                                                                      .dId,
-                                                            ),
-                                                            appSettingsRecordReference);
+                                                        .getDocumentFromData({
+                                                      ...createAppSettingsRecordData(
+                                                        deviceId:
+                                                            FFAppState().dId,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'settingList':
+                                                              getAppSettingsListFirestoreData(
+                                                            _model
+                                                                .returnAppsettiing,
+                                                          ),
+                                                        },
+                                                      ),
+                                                    }, appSettingsRecordReference);
                                                     _shouldSetState = true;
                                                     await showDialog(
                                                       context: context,
@@ -947,6 +708,22 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                       },
                                                     );
                                                   }
+
+                                                  _model.devicew =
+                                                      await queryAppSettingsRecordOnce(
+                                                    parent: FFAppState()
+                                                        .outletIdRef,
+                                                    queryBuilder:
+                                                        (appSettingsRecord) =>
+                                                            appSettingsRecord
+                                                                .where(
+                                                      'deviceId',
+                                                      isEqualTo:
+                                                          FFAppState().dId,
+                                                    ),
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+                                                  _shouldSetState = true;
                                                   if (!getJsonField(
                                                     widget!.shiftDetails,
                                                     r'''$.shiftExists''',
@@ -1046,6 +823,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                                 getCurrentTimestamp),
                                                         paymentJson:
                                                             '{\"cash\":0,\"credit\":0,\"cheque\":0,\"digital\":0,\"card\":0,\"googlepay\":0,\"phonepe\":0,\"paytm\":0,\"other\":0,\"loyaltypoint\":0,\"upi_qr\":0,\"complementary\":0.0}',
+                                                        userId: widget!.doc?.id,
                                                       ));
                                                       _model.shiftDoc1 = ShiftRecord
                                                           .getDocumentFromData(
@@ -1075,6 +853,8 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                                         getCurrentTimestamp),
                                                                 paymentJson:
                                                                     '{\"cash\":0,\"credit\":0,\"cheque\":0,\"digital\":0,\"card\":0,\"googlepay\":0,\"phonepe\":0,\"paytm\":0,\"other\":0,\"loyaltypoint\":0,\"upi_qr\":0,\"complementary\":0.0}',
+                                                                userId: widget!
+                                                                    .doc?.id,
                                                               ),
                                                               shiftRecordReference);
                                                       _shouldSetState = true;
@@ -1161,7 +941,17 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                             ParamType
                                                                 .DocumentReference,
                                                           ),
+                                                          'appSetting':
+                                                              serializeParam(
+                                                            _model.devicew,
+                                                            ParamType.Document,
+                                                          ),
                                                         }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'appSetting':
+                                                              _model.devicew,
+                                                        },
                                                       );
                                                     }
                                                     if (_shouldSetState)
@@ -1249,7 +1039,17 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                             ParamType
                                                                 .DocumentReference,
                                                           ),
+                                                          'appSetting':
+                                                              serializeParam(
+                                                            _model.devicew,
+                                                            ParamType.Document,
+                                                          ),
                                                         }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'appSetting':
+                                                              _model.devicew,
+                                                        },
                                                       );
                                                     }
                                                     if (_shouldSetState)

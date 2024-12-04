@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/app_setting_component_widget.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,6 +56,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -84,7 +87,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                 size: 24.0,
                               ),
                               onPressed: () async {
-                                context.pushNamed('mastersNew');
+                                context.safePop();
                               },
                             ),
                             AutoSizeText(
@@ -164,7 +167,6 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
 
                     return Container(
                       width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * 0.9,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
@@ -213,6 +215,11 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                                 return AppSettingComponentWidget(
                                                   key: Key(
                                                       'Key8fs_${appSettingListIndex}_of_${appSettingList.length}'),
+                                                  settingStruct:
+                                                      appSettingListItem,
+                                                  allSettings:
+                                                      containerMainAppSettingsRecord
+                                                          ?.settingList,
                                                 );
                                               },
                                             );
@@ -225,66 +232,91 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                               ],
                             ),
                           ),
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              width: double.infinity,
-                              height: MediaQuery.sizeOf(context).height * 0.1,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 6.0,
-                                    color: Color(0x58000000),
-                                    offset: Offset(
-                                      0.0,
-                                      -1.0,
+                          FFButtonWidget(
+                            onPressed: () async {
+                              await containerMainAppSettingsRecord!.reference
+                                  .update({
+                                ...mapToFirestore(
+                                  {
+                                    'settingList':
+                                        getAppSettingsListFirestoreData(
+                                      FFAppState().appSettings,
                                     ),
-                                  )
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  FFButtonWidget(
-                                    onPressed: () async {},
-                                    text: FFLocalizations.of(context).getText(
-                                      'in0rzcht' /* Apply Changes */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      padding: EdgeInsets.all(20.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
-                                          ),
-                                      elevation: 2.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
+                                  },
+                                ),
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Changes Applied....!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily,
+                                          color: Color(0x00000000),
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmallFamily),
+                                        ),
                                   ),
-                                ],
+                                  duration: Duration(milliseconds: 3000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                ),
+                              );
+
+                              context.pushNamed(
+                                'welcomeScreenParking',
+                                queryParameters: {
+                                  'appSettings': serializeParam(
+                                    containerMainAppSettingsRecord,
+                                    ParamType.Document,
+                                  ),
+                                  'shiftDoc': serializeParam(
+                                    FFAppState().shiftDetailsNEw,
+                                    ParamType.JSON,
+                                  ),
+                                  'outletRef': serializeParam(
+                                    FFAppState().outletIdRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'appSettings': containerMainAppSettingsRecord,
+                                },
+                              );
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              'xgvrerkw' /* Apply Changes */,
+                            ),
+                            options: FFButtonOptions(
+                              padding: EdgeInsets.all(20.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmallFamily),
+                                  ),
+                              elevation: 2.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
                               ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ],

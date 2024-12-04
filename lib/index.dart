@@ -141,3 +141,5 @@ export '/web_parking/web_vehicle_wise_sale2/web_vehicle_wise_sale2_widget.dart'
 export '/pages/parking/app_settings/app_settings_widget.dart'
     show AppSettingsWidget;
 export '/pages/parking/shift_end/shift_end_widget.dart' show ShiftEndWidget;
+export '/pages/parking/welcome_screen_new/welcome_screen_new_widget.dart'
+    show WelcomeScreenNewWidget;

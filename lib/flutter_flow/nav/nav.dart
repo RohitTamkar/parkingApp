@@ -81,14 +81,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? WelcomeScreenParkingWidget()
+          ? ParkingLoginWidget()
           : StartScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? WelcomeScreenParkingWidget()
+              ? ParkingLoginWidget()
               : StartScreenWidget(),
           routes: [
             FFRoute(
@@ -421,6 +421,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'mobile',
                   ParamType.String,
                 ),
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.JSON,
+                ),
+                userDoc: params.getParam(
+                  'userDoc',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+                outletRef: params.getParam(
+                  'outletRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['OUTLET'],
+                ),
               ),
             ),
             FFRoute(
@@ -541,6 +557,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'VehicleEntry',
               path: 'vehicleEntry',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => VehicleEntryWidget(
                 shiftDoc: params.getParam(
                   'shiftDoc',
@@ -551,6 +571,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['USER_PROFILE'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -890,7 +914,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ShiftEnd',
               path: 'shiftEnd',
-              builder: (context, params) => ShiftEndWidget(),
+              builder: (context, params) => ShiftEndWidget(
+                setting: params.getParam(
+                  'setting',
+                  ParamType.DataStruct,
+                  isList: false,
+                  structBuilder: AppSettingsStruct.fromSerializableMap,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'welcomeScreenNew',
+              path: 'welcomeScreenNew',
+              builder: (context, params) => WelcomeScreenNewWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

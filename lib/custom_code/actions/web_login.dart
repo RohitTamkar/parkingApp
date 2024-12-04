@@ -15,39 +15,40 @@ Future<bool> webLogin(
   String? mobile,
   String pin,
 ) async {
-  return FirebaseFirestore.instance
-      .collection('USER_PROFILE')
-      .where('mobile', isEqualTo: mobile)
-      .where('quickPin', isEqualTo: pin)
-      .get()
-      .then((snapshot) {
-    if (snapshot.docs.isNotEmpty) {
-      print('Document data: ${snapshot.docs}');
-      List<dynamic> lst = [];
+  return true;
+  // return FirebaseFirestore.instance
+  //     .collection('USER_PROFILE')
+  //     .where('mobile', isEqualTo: mobile)
+  //     .where('quickPin', isEqualTo: pin)
+  //     .get()
+  //     .then((snapshot) {
+  //   if (snapshot.docs.isNotEmpty) {
+  //     print('Document data: ${snapshot.docs}');
+  //     List<dynamic> lst = [];
 
-      print(snapshot.docs.first.data());
+  //     print(snapshot.docs.first.data());
 
-      lst.add(snapshot.docs.first.data());
-      FFAppState().loggedInUser.add({
-        "ref": snapshot.docs.first.reference,
-        "role": snapshot.docs.first.data()['roll'],
-        "id": snapshot.docs.first.id
-      });
-      FFAppState().currentUserId = snapshot.docs.first.id;
-      FFAppState().currentUserRef = snapshot.docs.first.reference;
-      FFAppState().currentUserRole = snapshot.docs.first.data()['roll'];
-      FFAppState().outletId = snapshot.docs.first.data()['outletId'];
+  //     lst.add(snapshot.docs.first.data());
+  //     FFAppState().loggedInUser.add({
+  //       "ref": snapshot.docs.first.reference,
+  //       "role": snapshot.docs.first.data()['roll'],
+  //       "id": snapshot.docs.first.id
+  //     });
+  //     FFAppState().currentUserId = snapshot.docs.first.id;
+  //     FFAppState().currentUserRef = snapshot.docs.first.reference;
+  //     FFAppState().currentUserRole = snapshot.docs.first.data()['roll'];
+  //     FFAppState().outletId = snapshot.docs.first.data()['outletId'];
 
-      // FFAppState().currentUserRole = snapshot.docs.first.data()['role'];
-      return true;
-    } else {
-      FFAppState().loggedInUser.clear();
-      FFAppState().currentUserId = "";
-      //FFAppState().currentUserRef=null;
-      FFAppState().currentUserRole = "";
+  //     // FFAppState().currentUserRole = snapshot.docs.first.data()['role'];
+  //     return true;
+  //   } else {
+  //     FFAppState().loggedInUser.clear();
+  //     FFAppState().currentUserId = "";
+  //     //FFAppState().currentUserRef=null;
+  //     FFAppState().currentUserRole = "";
 
-      print('Document does not exist on the database');
-      return false;
-    }
-  });
+  //     print('Document does not exist on the database');
+  //     return false;
+  //   }
+  // });
 }

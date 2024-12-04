@@ -25,8 +25,16 @@ class OpeningBalNewCarModel extends FlutterFlowModel<OpeningBalNewCarWidget> {
   AppSettingsRecord? isAppSetExistsNew;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<TaxMasterRecord>? taxcollection;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<AppSettingsMasterRecord>? masterAppsetting;
+  // Stores action output result for [Custom Action - returnAppsetting] action in Button widget.
+  List<AppSettingsStruct>? returnAppsettiing;
+  // Stores action output result for [Custom Action - returnAppsetting] action in Button widget.
+  List<AppSettingsStruct>? returnAppsettiingupdate;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   AppSettingsRecord? doc;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  AppSettingsRecord? devicew;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ShiftRecord? shiftDoc1;
   // Stores action output result for [Custom Action - hiveShiftCrud] action in Button widget.

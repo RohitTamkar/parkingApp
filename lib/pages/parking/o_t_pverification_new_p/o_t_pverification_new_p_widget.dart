@@ -616,10 +616,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                 .docId?.role ==
                                                             'admin') {
                                                           if (isWeb) {
-                                                            context.pushNamedAuth(
-                                                                'WebDashboard',
-                                                                context
-                                                                    .mounted);
+                                                            context
+                                                                .pushNamedAuth(
+                                                              'businessProfileAdminfinal',
+                                                              context.mounted,
+                                                              queryParameters: {
+                                                                'mobileNo':
+                                                                    serializeParam(
+                                                                  FFAppState()
+                                                                      .currentMobileString,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
                                                           } else {
                                                             context
                                                                 .pushNamedAuth(
@@ -638,10 +648,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                           }
                                                         } else {
                                                           if (isWeb) {
-                                                            context.pushNamedAuth(
-                                                                'WebDashboard',
-                                                                context
-                                                                    .mounted);
+                                                            context
+                                                                .pushNamedAuth(
+                                                              'businessProfileAdminfinal',
+                                                              context.mounted,
+                                                              queryParameters: {
+                                                                'mobileNo':
+                                                                    serializeParam(
+                                                                  FFAppState()
+                                                                      .currentMobileString,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
                                                           } else {
                                                             context
                                                                 .pushNamedAuth(

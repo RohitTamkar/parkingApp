@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/parking/opening_bal_new_car/opening_bal_new_car_widget.dart';
 import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,35 +14,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'welcome_screen_parking_model.dart';
-export 'welcome_screen_parking_model.dart';
+import 'welcome_screen_new_model.dart';
+export 'welcome_screen_new_model.dart';
 
-class WelcomeScreenParkingWidget extends StatefulWidget {
-  const WelcomeScreenParkingWidget({
-    super.key,
-    this.deviceDoc,
-    this.appSettings,
-    this.mobile,
-    this.shiftDoc,
-    this.userDoc,
-    this.outletRef,
-  });
-
-  final DeviceRecord? deviceDoc;
-  final AppSettingsRecord? appSettings;
-  final String? mobile;
-  final dynamic shiftDoc;
-  final DocumentReference? userDoc;
-  final DocumentReference? outletRef;
+class WelcomeScreenNewWidget extends StatefulWidget {
+  const WelcomeScreenNewWidget({super.key});
 
   @override
-  State<WelcomeScreenParkingWidget> createState() =>
-      _WelcomeScreenParkingWidgetState();
+  State<WelcomeScreenNewWidget> createState() => _WelcomeScreenNewWidgetState();
 }
 
-class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
+class _WelcomeScreenNewWidgetState extends State<WelcomeScreenNewWidget>
     with TickerProviderStateMixin {
-  late WelcomeScreenParkingModel _model;
+  late WelcomeScreenNewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -52,7 +35,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WelcomeScreenParkingModel());
+    _model = createModel(context, () => WelcomeScreenNewModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -66,30 +49,13 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
       _model.deiviceexistnew = await queryDeviceRecordOnce(
         queryBuilder: (deviceRecord) => deviceRecord.where(
           'deviceId',
-          isEqualTo: valueOrDefault<String>(
-            getJsonField(
-              _model.docRes,
-              r'''$.deviceId''',
-            )?.toString()?.toString(),
-            'null',
-          ),
+          isEqualTo: getJsonField(
+            _model.docRes,
+            r'''$.deviceId''',
+          ).toString().toString(),
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      _model.invcode = await queryInvoiceRecordOnce(
-        parent: FFAppState().outletIdRef,
-        queryBuilder: (invoiceRecord) =>
-            invoiceRecord.orderBy('invoiceDate', descending: true),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      if (_model.invcode != null) {
-        FFAppState().newcount = _model.invcode!.count;
-        safeSetState(() {});
-      } else {
-        FFAppState().newcount = 0;
-        safeSetState(() {});
-      }
-
       if (_model.deiviceexistnew?.deviceId ==
           getJsonField(
             _model.docRes,
@@ -121,6 +87,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           board: '',
           serial: FFAppState().dId,
           branch: '',
+          billingType: FFAppState().navigate,
         ));
         _model.refnew = DeviceRecord.getDocumentFromData(
             createDeviceRecordData(
@@ -147,6 +114,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
               board: '',
               serial: FFAppState().dId,
               branch: '',
+              billingType: FFAppState().navigate,
             ),
             deviceRecordReference);
 
@@ -158,7 +126,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           builder: (alertDialogContext) {
             return AlertDialog(
               title: Text('Alert'),
-              content: Text('Device Add Succefully !'),
+              content: Text('Device Add Succefully!'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
@@ -170,92 +138,10 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         );
       }
 
-      _model.deviceexist = await queryDeviceRecordOnce(
-        queryBuilder: (deviceRecord) => deviceRecord.where(
-          'deviceId',
-          isEqualTo: FFAppState().dId,
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      _model.userProfile = await queryUserProfileRecordOnce(
-        queryBuilder: (userProfileRecord) => userProfileRecord.where(
-          'mobile',
-          isEqualTo: FFAppState().currentMobileString,
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      _model.shiftdetailfirebase = await queryShiftRecordOnce(
-        parent: FFAppState().outletIdRef,
-      );
-      _model.outletdetails23 = await queryOutletRecordOnce(
-        queryBuilder: (outletRecord) => outletRecord.where(
-          'id',
-          isEqualTo: FFAppState().outletIdRef?.id,
-        ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      FFAppState().userName = _model.userProfile!.name;
-      FFAppState().outletName = _model.outletdetails23!.name;
-      safeSetState(() {});
-      if (_model.deviceexist!.active && _model.outletdetails23!.active) {
-        if ((_model.userProfile != null) == true) {
-          _model.shiftDetailsNewcar = await actions.shiftDetailNewpark(
-            _model.shiftdetailfirebase?.toList(),
-          );
-          FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
-          safeSetState(() {});
-          await Future.delayed(const Duration(milliseconds: 2000));
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            enableDrag: false,
-            context: context,
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.viewInsetsOf(context),
-                child: OpeningBalNewCarWidget(
-                  shiftDetails: _model.shiftDetailsNewcar,
-                  doc: _model.userProfile?.reference,
-                ),
-              );
-            },
-          ).then((value) => safeSetState(() {}));
-
-          return;
-        } else {
-          await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text('Invalid Password'),
-                content: Text('Authentication faild! Invalid Password!'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
-              );
-            },
-          );
-        }
+      if (FFAppState().targetPlatform == 'android') {
+        context.pushNamed('ParkingLogin');
       } else {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text('Device is not Active Contact Admin!'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-
-        context.pushNamed('Deviceqr');
+        context.pushNamed('ParkingLogin');
       }
     });
 
@@ -340,37 +226,46 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
     context.watch<FFAppState>();
 
     return Title(
-        title: 'welcomeScreenParking',
+        title: 'welcomeScreenNew',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Color(0xFF1E2429),
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  FlutterFlowTheme.of(context).primaryBtnText,
-                  FlutterFlowTheme.of(context).error
-                ],
-                stops: [1.0, 1.0],
-                begin: AlignmentDirectional(0.0, -1.0),
-                end: AlignmentDirectional(0, 1.0),
-              ),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
+              top: true,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).primaryBtnText,
+                      FlutterFlowTheme.of(context).error
+                    ],
+                    stops: [1.0, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/Sensible_Connect_Logo_2.png',
+                      height: 180.0,
+                      fit: BoxFit.contain,
+                    ).animateOnPageLoad(
+                        animationsMap['imageOnPageLoadAnimation']!),
+                  ],
+                ).animateOnPageLoad(
+                    animationsMap['columnOnPageLoadAnimation']!),
+              ).animateOnPageLoad(
+                  animationsMap['containerOnPageLoadAnimation']!),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/98092-loading.gif',
-                  height: 180.0,
-                  fit: BoxFit.contain,
-                ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
-              ],
-            ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
-          ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+          ),
         ));
   }
 }
