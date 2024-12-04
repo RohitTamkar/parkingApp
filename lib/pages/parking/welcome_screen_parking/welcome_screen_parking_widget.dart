@@ -82,6 +82,13 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
             invoiceRecord.orderBy('invoiceDate', descending: true),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      _model.outletDetail6 = await queryOutletRecordOnce(
+        queryBuilder: (outletRecord) => outletRecord.where(
+          'id',
+          isEqualTo: FFAppState().outletIdRef?.id,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       if (_model.invcode != null) {
         FFAppState().newcount = _model.invcode!.count;
         safeSetState(() {});
@@ -95,6 +102,13 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
             _model.docRes,
             r'''$.deviceId''',
           ).toString().toString()) {
+        await _model.deiviceexistnew!.reference.update(createDeviceRecordData(
+          outletId: _model.outletDetail6?.id,
+          outletName: _model.outletDetail6?.name,
+          outletRef: _model.outletDetail6?.reference,
+          billingType: _model.outletDetail6?.billingType,
+          branch: _model.outletDetail6?.branch,
+        ));
       } else {
         var deviceRecordReference = DeviceRecord.collection.doc();
         await deviceRecordReference.set(createDeviceRecordData(
