@@ -12,6 +12,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -477,19 +478,29 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     focusNode:
                                                                         _model
                                                                             .quickPinFocusNode,
+                                                                    onChanged: (_) =>
+                                                                        EasyDebounce
+                                                                            .debounce(
+                                                                      '_model.quickPinTextController',
+                                                                      Duration(
+                                                                          milliseconds:
+                                                                              2000),
+                                                                      () async {
+                                                                        FFAppState().quickPin = _model
+                                                                            .quickPinTextController
+                                                                            .text;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
+                                                                    ),
                                                                     autofocus:
                                                                         false,
-                                                                    readOnly:
-                                                                        true,
                                                                     obscureText:
                                                                         false,
                                                                     decoration:
                                                                         InputDecoration(
                                                                       isDense:
                                                                           true,
-                                                                      labelText:
-                                                                          FFAppState()
-                                                                              .quickPin,
                                                                       hintStyle: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
