@@ -688,12 +688,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                   parent: FFAppState().outletIdRef,
                                                                                 );
                                                                                 _shouldSetState = true;
-                                                                                _model.shiftdetailskiosknew = await actions.shiftExists(
-                                                                                  functions.getDayId(),
-                                                                                  '0',
-                                                                                  FFAppState().outletIdRef!.id,
-                                                                                );
-                                                                                _shouldSetState = true;
                                                                                 _model.internetconnection = await actions.checkInternetConnection();
                                                                                 _shouldSetState = true;
                                                                                 if (true) {

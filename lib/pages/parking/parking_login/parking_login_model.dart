@@ -42,8 +42,6 @@ class ParkingLoginModel extends FlutterFlowModel<ParkingLoginWidget> {
   OutletRecord? outletDoc;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<ShiftRecord>? shiftlist;
-  // Stores action output result for [Custom Action - shiftExists] action in Button widget.
-  dynamic? shiftdetailskiosknew;
   // Stores action output result for [Custom Action - checkInternetConnection] action in Button widget.
   bool? internetconnection;
   // Stores action output result for [Custom Action - shiftDetailNewpark] action in Button widget.
