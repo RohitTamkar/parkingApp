@@ -927,6 +927,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'welcomeScreenNew',
               path: 'welcomeScreenNew',
               builder: (context, params) => WelcomeScreenNewWidget(),
+            ),
+            FFRoute(
+              name: 'shiftSummaryReport',
+              path: 'shiftSummaryReport',
+              builder: (context, params) => ShiftSummaryReportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

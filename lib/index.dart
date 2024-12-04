@@ -143,3 +143,5 @@ export '/pages/parking/app_settings/app_settings_widget.dart'
 export '/pages/parking/shift_end/shift_end_widget.dart' show ShiftEndWidget;
 export '/pages/parking/welcome_screen_new/welcome_screen_new_widget.dart'
     show WelcomeScreenNewWidget;
+export '/pages/parking/shift_summary_report/shift_summary_report_widget.dart'
+    show ShiftSummaryReportWidget;

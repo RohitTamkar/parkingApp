@@ -518,6 +518,59 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                   ),
                                 ),
                               ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 20.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    FFAppState().filterDate =
+                                        getCurrentTimestamp.toString();
+                                    FFAppState().update(() {});
+                                    FFAppState().filterDate =
+                                        functions.getDayId();
+                                    FFAppState().startDate =
+                                        getCurrentTimestamp;
+                                    FFAppState().endDate = getCurrentTimestamp;
+                                    FFAppState().update(() {});
+
+                                    context.pushNamed('shiftSummaryReport');
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'tvoh4pyy' /* Shift Summary Report */,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),

@@ -4946,6 +4946,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'tvoh4pyy': {
+      'en': 'Shift Summary Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'ms5z1mi4': {
       'en': 'Report',
       'hi': '',
@@ -8528,6 +8535,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // welcomeScreenNew
   {
     'f4k5zln0': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // shiftSummaryReport
+  {
+    'bvtqu2ud': {
+      'en': 'Shift Summary Report ',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'wyuccyni': {
+      'en': 'User Name',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'gh3a8fwd': {
+      'en': 'Total Check In',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '8zyctzdk': {
+      'en': 'Total Check out',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'zqggusqj': {
+      'en': 'Total Amt',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '81gehlns': {
       'en': 'Home',
       'hi': '',
       'kn': '',
