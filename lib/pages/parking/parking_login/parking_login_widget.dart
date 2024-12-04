@@ -662,7 +662,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                       )
                                                                                       .where(
                                                                                         'quickPin',
-                                                                                        isEqualTo: FFAppState().quickPin,
+                                                                                        isEqualTo: _model.quickPinTextController.text,
                                                                                       ),
                                                                                   singleRecord: true,
                                                                                 ).then((s) => s.firstOrNull);
