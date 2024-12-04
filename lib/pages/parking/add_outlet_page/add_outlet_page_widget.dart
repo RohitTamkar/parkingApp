@@ -933,8 +933,7 @@ class _AddOutletPageWidgetState extends State<AddOutletPageWidget> {
                                               queryBuilder: (deviceRecord) =>
                                                   deviceRecord.where(
                                                 'deviceId',
-                                                isEqualTo:
-                                                    FFAppState().deviceqrId,
+                                                isEqualTo: FFAppState().dId,
                                               ),
                                               singleRecord: true,
                                             ).then((s) => s.firstOrNull);
