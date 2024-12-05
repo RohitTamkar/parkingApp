@@ -67,11 +67,11 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
             .where(
               'startTime',
               isGreaterThanOrEqualTo:
-                  getCurrentTimestamp.millisecondsSinceEpoch,
+                  FFAppState().startDate?.millisecondsSinceEpoch,
             )
             .where(
               'startTime',
-              isLessThanOrEqualTo: getCurrentTimestamp.millisecondsSinceEpoch,
+              isLessThanOrEqualTo: FFAppState().endDate?.millisecondsSinceEpoch,
             ),
       ),
       builder: (context, snapshot) {
