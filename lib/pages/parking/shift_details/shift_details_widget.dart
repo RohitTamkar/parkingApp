@@ -598,7 +598,8 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                                   'shiftSummaryReport',
                                                   queryParameters: {
                                                     'docRef': serializeParam(
-                                                      dayWiseShiftReportVarItem
+                                                      shiftDetailsShiftRecordList[
+                                                              dayWiseShiftReportVarIndex]
                                                           .reference,
                                                       ParamType
                                                           .DocumentReference,
