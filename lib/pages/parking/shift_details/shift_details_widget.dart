@@ -88,115 +88,78 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
-                      child: StreamBuilder<List<OutletRecord>>(
-                        stream: queryOutletRecord(
-                          queryBuilder: (outletRecord) => outletRecord.where(
-                            'id',
-                            isEqualTo: FFAppState().outletId,
-                          ),
-                          singleRecord: true,
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFAC47),
                         ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 40.0,
-                                height: 40.0,
-                                child: SpinKitFadingCircle(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 40.0,
-                                ),
-                              ),
-                            );
-                          }
-                          List<OutletRecord> containerOutletRecordList =
-                              snapshot.data!;
-                          // Return an empty Container when the item does not exist.
-                          if (snapshot.data!.isEmpty) {
-                            return Container();
-                          }
-                          final containerOutletRecord =
-                              containerOutletRecordList.isNotEmpty
-                                  ? containerOutletRecordList.first
-                                  : null;
-
-                          return Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFFFAC47),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 15.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 50.0,
-                                        icon: Icon(
-                                          Icons.chevron_left,
-                                          color: Color(0xFF0D0801),
-                                          size: 24.0,
-                                        ),
-                                        onPressed: () async {
-                                          context.pop();
-                                        },
-                                      ),
-                                      AutoSizeText(
-                                        FFLocalizations.of(context).getText(
-                                          'ggif2w57' /* Shift Summary */,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMediumFamily),
-                                            ),
-                                      ),
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 20.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 50.0,
-                                        icon: Icon(
-                                          Icons.email,
-                                          color: FlutterFlowTheme.of(context)
-                                              .parkingPrimary,
-                                          size: 24.0,
-                                        ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
-                                      ),
-                                    ],
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 15.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 30.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 50.0,
+                                    icon: Icon(
+                                      Icons.chevron_left,
+                                      color: Color(0xFF0D0801),
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pop();
+                                    },
                                   ),
-                                ),
-                              ],
+                                  AutoSizeText(
+                                    FFLocalizations.of(context).getText(
+                                      'ggif2w57' /* Shift Summary */,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMediumFamily,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMediumFamily),
+                                        ),
+                                  ),
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 20.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 50.0,
+                                    icon: Icon(
+                                      Icons.email,
+                                      color: FlutterFlowTheme.of(context)
+                                          .parkingPrimary,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                          );
-                        },
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(
