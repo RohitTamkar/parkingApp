@@ -34,8 +34,13 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().selectStartDate = functions.getCurrentMonth('start');
-      FFAppState().selectEndDate = functions.getCurrentMonth('end');
+      FFAppState().filterDate = dateTimeFormat(
+        "d/M/y",
+        getCurrentTimestamp,
+        locale: FFLocalizations.of(context).languageCode,
+      );
+      FFAppState().startDate = getCurrentTimestamp;
+      FFAppState().endDate = getCurrentTimestamp;
       safeSetState(() {});
     });
 
@@ -56,6 +61,16 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
     return StreamBuilder<List<ShiftRecord>>(
       stream: queryShiftRecord(
         parent: FFAppState().outletIdRef,
+        queryBuilder: (shiftRecord) => shiftRecord
+            .where(
+              'startTime',
+              isGreaterThanOrEqualTo:
+                  getCurrentTimestamp.millisecondsSinceEpoch,
+            )
+            .where(
+              'startTime',
+              isLessThanOrEqualTo: getCurrentTimestamp.millisecondsSinceEpoch,
+            ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -567,12 +582,8 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                   decoration: BoxDecoration(),
                                   child: Builder(
                                     builder: (context) {
-                                      final dayWiseShiftReportVar = functions
-                                          .orderByShift(
-                                              shiftDetailsShiftRecordList
-                                                  .toList(),
-                                              'd')
-                                          .toList();
+                                      final dayWiseShiftReportVar =
+                                          shiftDetailsShiftRecordList.toList();
 
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
