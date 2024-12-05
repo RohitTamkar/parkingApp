@@ -121,7 +121,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                         );
                         _shouldSetState = true;
                         if (_model.printer!) {
-                          await actions.printTodaySummaryReport(
+                          await actions.printShiftSummaryReport(
                             FFAppState().printerDevice,
                             FFAppState().isPrinterConnected,
                             FFAppState().printerName,
