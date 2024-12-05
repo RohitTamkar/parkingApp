@@ -553,6 +553,12 @@ double calUPI(ShiftRecord shiftDoc) {
   return (0);
 }
 
+String getDocIdFromDocRefShiftInvoice(DocumentReference docRef) {
+  String id = docRef.id;
+  print(id);
+  return id;
+}
+
 String getDeviceIdByRef(DocumentReference docRef) {
   return docRef.id;
   // Add your function code here!
