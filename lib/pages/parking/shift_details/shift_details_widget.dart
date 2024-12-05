@@ -598,13 +598,14 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                                   'shiftSummaryReport',
                                                   queryParameters: {
                                                     'docRef': serializeParam(
-                                                      shiftDetailsShiftRecordList[
-                                                              dayWiseShiftReportVarIndex]
-                                                          .reference,
-                                                      ParamType
-                                                          .DocumentReference,
+                                                      dayWiseShiftReportVarItem,
+                                                      ParamType.Document,
                                                     ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'docRef':
+                                                        dayWiseShiftReportVarItem,
+                                                  },
                                                 );
                                               },
                                               child: Container(

@@ -931,12 +931,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'shiftSummaryReport',
               path: 'shiftSummaryReport',
+              asyncParams: {
+                'docRef': getDoc(['OUTLET', 'SHIFT'], ShiftRecord.fromSnapshot),
+              },
               builder: (context, params) => ShiftSummaryReportWidget(
                 docRef: params.getParam(
                   'docRef',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['OUTLET', 'SHIFT'],
+                  ParamType.Document,
                 ),
               ),
             ),

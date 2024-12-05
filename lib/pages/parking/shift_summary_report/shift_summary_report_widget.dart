@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -22,7 +21,7 @@ class ShiftSummaryReportWidget extends StatefulWidget {
     this.docRef,
   });
 
-  final DocumentReference? docRef;
+  final ShiftRecord? docRef;
 
   @override
   State<ShiftSummaryReportWidget> createState() =>
@@ -63,8 +62,9 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
       stream: queryInvoiceRecord(
         parent: FFAppState().outletIdRef,
         queryBuilder: (invoiceRecord) => invoiceRecord.where(
-          'id',
-          isEqualTo: widget!.docRef?.id != '' ? widget!.docRef?.id : null,
+          'shiftId',
+          isEqualTo:
+              widget!.docRef?.shiftId != '' ? widget!.docRef?.shiftId : null,
         ),
       ),
       builder: (context, snapshot) {
