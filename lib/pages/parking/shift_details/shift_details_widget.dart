@@ -34,6 +34,8 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().filterDate = getCurrentTimestamp.toString();
+      FFAppState().update(() {});
       FFAppState().filterDate = dateTimeFormat(
         "d/M/y",
         getCurrentTimestamp,
