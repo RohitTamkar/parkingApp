@@ -647,12 +647,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                   (e.vechicleType ==
                                                                       listItem
                                                                           .vechicleType) &&
-                                                                  ((listItem.checkInTime >=
+                                                                  ((e.checkInTime >=
                                                                           FFAppState()
                                                                               .startDate!
                                                                               .millisecondsSinceEpoch) &&
-                                                                      (listItem
-                                                                              .checkInTime <=
+                                                                      (e.checkInTime <=
                                                                           FFAppState()
                                                                               .endDate!
                                                                               .millisecondsSinceEpoch)))
@@ -721,12 +720,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                   (e.vechicleType ==
                                                                       listItem
                                                                           .vechicleType) &&
-                                                                  ((listItem.checkOutTime >=
+                                                                  ((e.checkOutTime >=
                                                                           FFAppState()
                                                                               .startDate!
                                                                               .millisecondsSinceEpoch) &&
-                                                                      (listItem
-                                                                              .checkOutTime <=
+                                                                      (e.checkOutTime <=
                                                                           FFAppState()
                                                                               .endDate!
                                                                               .millisecondsSinceEpoch)))
