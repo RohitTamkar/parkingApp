@@ -1105,9 +1105,6 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                       ),
                                     }.withoutNulls,
                                   );
-
-                                  if (_shouldSetState) safeSetState(() {});
-                                  return;
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
