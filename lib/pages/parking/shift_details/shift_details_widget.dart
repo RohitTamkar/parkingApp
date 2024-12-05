@@ -56,16 +56,6 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
     return StreamBuilder<List<ShiftRecord>>(
       stream: queryShiftRecord(
         parent: FFAppState().outletIdRef,
-        queryBuilder: (shiftRecord) => shiftRecord
-            .where(
-              'startTime',
-              isGreaterThanOrEqualTo:
-                  getCurrentTimestamp.millisecondsSinceEpoch,
-            )
-            .where(
-              'startTime',
-              isEqualTo: getCurrentTimestamp.millisecondsSinceEpoch,
-            ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
