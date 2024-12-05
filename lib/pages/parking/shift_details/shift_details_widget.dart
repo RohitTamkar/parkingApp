@@ -639,227 +639,241 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 10.0),
-                                            child: Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 15.0, 10.0, 15.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        Expanded(
-                                                          flex: 4,
-                                                          child: Text(
-                                                            dayWiseShiftReportVarItem
-                                                                .dayId,
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex: 4,
-                                                          child: Text(
-                                                            dayWiseShiftReportVarItem
-                                                                .shiftId,
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex: 6,
-                                                          child: Text(
-                                                            dayWiseShiftReportVarItem
-                                                                .billCount
-                                                                .toString(),
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelSmallFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Expanded(
-                                                          flex: 5,
-                                                          child: Text(
-                                                            dayWiseShiftReportVarItem
-                                                                .totalSale
-                                                                .toString(),
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ].divide(SizedBox(
-                                                          width: 10.0)),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'shiftSummaryReport',
+                                                  queryParameters: {
+                                                    'docRef': serializeParam(
+                                                      dayWiseShiftReportVarItem
+                                                          .reference,
+                                                      ParamType
+                                                          .DocumentReference,
                                                     ),
-                                                    if (FFAppState()
-                                                            .fabButtonHide ==
-                                                        true)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child:
-                                                                  FlutterFlowIconButton(
-                                                                borderColor: Colors
-                                                                    .transparent,
-                                                                borderRadius:
-                                                                    30.0,
-                                                                buttonSize:
-                                                                    40.0,
-                                                                icon: Icon(
-                                                                  Icons
-                                                                      .email_outlined,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                  size: 24.0,
-                                                                ),
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'IconButton pressed ...');
-                                                                },
-                                                              ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10.0, 15.0,
+                                                          10.0, 15.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          Expanded(
+                                                            flex: 4,
+                                                            child: Text(
+                                                              dayWiseShiftReportVarItem
+                                                                  .dayId,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelSmallFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                  ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child:
-                                                                  FlutterFlowIconButton(
-                                                                borderColor: Colors
-                                                                    .transparent,
-                                                                borderRadius:
-                                                                    30.0,
-                                                                buttonSize:
-                                                                    40.0,
-                                                                icon: Icon(
-                                                                  Icons
-                                                                      .print_outlined,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  size: 24.0,
+                                                          ),
+                                                          Expanded(
+                                                            flex: 4,
+                                                            child: Text(
+                                                              dayWiseShiftReportVarItem
+                                                                  .shiftId,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelSmallFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 6,
+                                                            child: Text(
+                                                              dayWiseShiftReportVarItem
+                                                                  .billCount
+                                                                  .toString(),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelSmallFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            flex: 5,
+                                                            child: Text(
+                                                              dayWiseShiftReportVarItem
+                                                                  .totalSale
+                                                                  .toString(),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelLargeFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ].divide(SizedBox(
+                                                            width: 10.0)),
+                                                      ),
+                                                      if (FFAppState()
+                                                              .fabButtonHide ==
+                                                          true)
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FlutterFlowIconButton(
+                                                                  borderColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  borderRadius:
+                                                                      30.0,
+                                                                  buttonSize:
+                                                                      40.0,
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .email_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {
+                                                                    print(
+                                                                        'IconButton pressed ...');
+                                                                  },
                                                                 ),
-                                                                onPressed:
-                                                                    () async {
-                                                                  var _shouldSetState =
-                                                                      false;
-                                                                  _model.resDevice =
-                                                                      await actions
-                                                                          .scanPrinter(
-                                                                    FFAppState()
-                                                                        .posMode,
-                                                                  );
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  if (_model
-                                                                          .resDevice !=
-                                                                      true) {
-                                                                    _model.rd =
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    FlutterFlowIconButton(
+                                                                  borderColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  borderRadius:
+                                                                      30.0,
+                                                                  buttonSize:
+                                                                      40.0,
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .print_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    var _shouldSetState =
+                                                                        false;
+                                                                    _model.resDevice =
                                                                         await actions
                                                                             .scanPrinter(
                                                                       FFAppState()
@@ -867,80 +881,89 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                                                     );
                                                                     _shouldSetState =
                                                                         true;
-                                                                  }
-                                                                  await actions
-                                                                      .connectDevice(
-                                                                    FFAppState()
-                                                                        .printerDevice,
-                                                                    '0',
-                                                                  );
-                                                                  if (FFAppState()
-                                                                              .printerName !=
-                                                                          null &&
-                                                                      FFAppState()
-                                                                              .printerName !=
-                                                                          '') {
-                                                                    await actions
-                                                                        .printShiftReport(
-                                                                      functions
-                                                                          .shiftDocToJsonList(
-                                                                              dayWiseShiftReportVarItem)
-                                                                          .toList(),
-                                                                      getJsonField(
+                                                                    if (_model
+                                                                            .resDevice !=
+                                                                        true) {
+                                                                      _model.rd =
+                                                                          await actions
+                                                                              .scanPrinter(
                                                                         FFAppState()
-                                                                            .printerDevice,
-                                                                        r'''$''',
+                                                                            .posMode,
+                                                                      );
+                                                                      _shouldSetState =
+                                                                          true;
+                                                                    }
+                                                                    await actions
+                                                                        .connectDevice(
+                                                                      FFAppState()
+                                                                          .printerDevice,
+                                                                      '0',
+                                                                    );
+                                                                    if (FFAppState().printerName !=
+                                                                            null &&
+                                                                        FFAppState().printerName !=
+                                                                            '') {
+                                                                      await actions
+                                                                          .printShiftReport(
+                                                                        functions
+                                                                            .shiftDocToJsonList(dayWiseShiftReportVarItem)
+                                                                            .toList(),
+                                                                        getJsonField(
+                                                                          FFAppState()
+                                                                              .printerDevice,
+                                                                          r'''$''',
+                                                                          true,
+                                                                        )!,
+                                                                        FFAppState()
+                                                                            .isPrinterConnected,
+                                                                        FFAppState()
+                                                                            .isPrinterConnected
+                                                                            .toString(),
+                                                                        FFAppState()
+                                                                            .paperSize,
                                                                         true,
-                                                                      )!,
-                                                                      FFAppState()
-                                                                          .isPrinterConnected,
-                                                                      FFAppState()
-                                                                          .isPrinterConnected
-                                                                          .toString(),
-                                                                      FFAppState()
-                                                                          .paperSize,
-                                                                      true,
-                                                                    );
-                                                                    if (_shouldSetState)
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('printer connection'),
-                                                                          content:
-                                                                              Text('printer not connected'),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                              child: Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        );
-                                                                      },
-                                                                    );
-                                                                    if (_shouldSetState)
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    return;
-                                                                  }
+                                                                      );
+                                                                      if (_shouldSetState)
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      return;
+                                                                    } else {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (alertDialogContext) {
+                                                                          return AlertDialog(
+                                                                            title:
+                                                                                Text('printer connection'),
+                                                                            content:
+                                                                                Text('printer not connected'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                child: Text('Ok'),
+                                                                              ),
+                                                                            ],
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                      if (_shouldSetState)
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      return;
+                                                                    }
 
-                                                                  if (_shouldSetState)
-                                                                    safeSetState(
-                                                                        () {});
-                                                                },
+                                                                    if (_shouldSetState)
+                                                                      safeSetState(
+                                                                          () {});
+                                                                  },
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
