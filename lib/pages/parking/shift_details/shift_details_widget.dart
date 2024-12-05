@@ -34,7 +34,8 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().filterDate = functions.getDayId();
+      FFAppState().selectStartDate = functions.getCurrentMonth('start');
+      FFAppState().selectEndDate = functions.getCurrentMonth('end');
       safeSetState(() {});
     });
 
@@ -148,22 +149,21 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                                       .titleMediumFamily),
                                         ),
                                   ),
-                                  if (false)
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.email,
-                                        color: FlutterFlowTheme.of(context)
-                                            .parkingPrimary,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 20.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 50.0,
+                                    icon: Icon(
+                                      Icons.email,
+                                      color: FlutterFlowTheme.of(context)
+                                          .parkingPrimary,
+                                      size: 24.0,
                                     ),
+                                    onPressed: () {
+                                      print('IconButton pressed ...');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
