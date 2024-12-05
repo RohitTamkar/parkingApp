@@ -533,7 +533,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('shiftSummaryReport');
+                                    context.pushNamed('ShiftDetails');
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'tvoh4pyy' /* Shift Summary Report */,
