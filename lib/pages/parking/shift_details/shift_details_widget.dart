@@ -34,13 +34,8 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().filterDate = dateTimeFormat(
-        "d/M/y",
-        getCurrentTimestamp,
-        locale: FFLocalizations.of(context).languageCode,
-      );
-      FFAppState().startDate = getCurrentTimestamp;
-      FFAppState().endDate = getCurrentTimestamp;
+      FFAppState().selectStartDate = functions.getCurrentMonth('start');
+      FFAppState().selectEndDate = functions.getCurrentMonth('end');
       safeSetState(() {});
     });
 
