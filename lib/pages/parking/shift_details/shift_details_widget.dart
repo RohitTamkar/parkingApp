@@ -34,8 +34,7 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().selectStartDate = functions.getCurrentMonth('start');
-      FFAppState().selectEndDate = functions.getCurrentMonth('end');
+      FFAppState().filterDate = functions.getDayId();
       safeSetState(() {});
     });
 
@@ -59,11 +58,12 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
         queryBuilder: (shiftRecord) => shiftRecord
             .where(
               'startTime',
-              isGreaterThanOrEqualTo: FFAppState().selectStartDate,
+              isGreaterThanOrEqualTo:
+                  getCurrentTimestamp.millisecondsSinceEpoch,
             )
             .where(
               'startTime',
-              isLessThanOrEqualTo: FFAppState().selectEndDate,
+              isLessThanOrEqualTo: getCurrentTimestamp.millisecondsSinceEpoch,
             ),
       ),
       builder: (context, snapshot) {
