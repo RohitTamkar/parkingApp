@@ -1200,8 +1200,8 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                                         },
                                                       );
 
-                                                      context
-                                                          .pushNamed('account');
+                                                      context.pushNamed(
+                                                          'VehicleEntry');
                                                     } else {
                                                       if (_model.formKey
                                                                   .currentState ==

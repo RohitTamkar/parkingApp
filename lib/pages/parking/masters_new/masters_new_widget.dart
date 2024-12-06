@@ -637,16 +637,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed(
-                                            'UserAccount',
-                                            queryParameters: {
-                                              'mobile': serializeParam(
-                                                FFAppState()
-                                                    .currentMobileString,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
+                                          context.pushNamed('UserAccount');
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,

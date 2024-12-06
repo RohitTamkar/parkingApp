@@ -37,16 +37,10 @@ class OpeningBalNewCarModel extends FlutterFlowModel<OpeningBalNewCarWidget> {
   AppSettingsRecord? devicew;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ShiftRecord? shiftDoc1;
-  // Stores action output result for [Custom Action - hiveShiftCrud] action in Button widget.
-  ShiftDetailsStruct? createdshiftDetailshive;
-  // Stores action output result for [Custom Action - hiveGetShiftDetails] action in Button widget.
-  List<ShiftDetailsStruct>? shiftdetailshive;
-  // Stores action output result for [Custom Action - shiftDetailNew] action in Button widget.
-  dynamic? shiftDetailsNew2;
-  // Stores action output result for [Custom Action - shiftIdtoInt] action in Button widget.
-  int? shiftidhive2;
-  // Stores action output result for [Custom Action - hiveShiftCrud] action in Button widget.
-  ShiftDetailsStruct? getOfflineShiftdetails;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<ShiftRecord>? shiftList;
+  // Stores action output result for [Custom Action - shiftDetailNewpark] action in Button widget.
+  dynamic? newShift;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<ShiftRecord>? shiftresumed;
   // Stores action output result for [Custom Action - shiftDetailNewpark] action in Button widget.

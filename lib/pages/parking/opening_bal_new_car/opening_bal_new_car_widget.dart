@@ -887,53 +887,31 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                                 .secondary,
                                                       ),
                                                     );
-                                                    _model.createdshiftDetailshive =
-                                                        await actions
-                                                            .hiveShiftCrud(
-                                                      functions.getShiftIdInt(
-                                                          FFAppState()
-                                                              .shiftCount),
-                                                      FFAppState().shiftDetails,
-                                                      'create',
+                                                    _model.shiftList =
+                                                        await queryShiftRecordOnce(
+                                                      parent: FFAppState()
+                                                          .outletIdRef,
                                                     );
                                                     _shouldSetState = true;
-                                                    _model.shiftdetailshive =
+                                                    _model.newShift =
                                                         await actions
-                                                            .hiveGetShiftDetails();
-                                                    _shouldSetState = true;
-                                                    FFAppState()
-                                                            .shiftDetailslisthive =
-                                                        _model.shiftdetailshive!
-                                                            .toList()
-                                                            .cast<
-                                                                ShiftDetailsStruct>();
-                                                    safeSetState(() {});
-                                                    FFAppState().shiftDetails =
-                                                        _model
-                                                            .createdshiftDetailshive!;
-                                                    safeSetState(() {});
-                                                    _model.shiftDetailsNew2 =
-                                                        await actions
-                                                            .shiftDetailNew(
-                                                      FFAppState()
-                                                          .shiftDetailslisthive
-                                                          .toList(),
+                                                            .shiftDetailNewpark(
+                                                      _model.shiftList
+                                                          ?.toList(),
                                                     );
                                                     _shouldSetState = true;
                                                     if (true) {
                                                       FFAppState()
                                                               .shiftDetailsNEw =
-                                                          _model
-                                                              .shiftDetailsNew2!;
+                                                          _model.newShift!;
                                                       safeSetState(() {});
 
-                                                      context.pushNamed(
+                                                      context.goNamed(
                                                         'VehicleEntry',
                                                         queryParameters: {
                                                           'shiftDoc':
                                                               serializeParam(
-                                                            _model
-                                                                .shiftDetailsNew2,
+                                                            _model.newShift,
                                                             ParamType.JSON,
                                                           ),
                                                           'userRef':
@@ -965,27 +943,6 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                       r'''$.shiftCount''',
                                                     );
                                                     FFAppState().update(() {});
-                                                    _model.shiftidhive2 =
-                                                        await actions
-                                                            .shiftIdtoInt(
-                                                      getJsonField(
-                                                        widget!.shiftDetails,
-                                                        r'''$.shiftId''',
-                                                      ).toString(),
-                                                    );
-                                                    _shouldSetState = true;
-                                                    _model.getOfflineShiftdetails =
-                                                        await actions
-                                                            .hiveShiftCrud(
-                                                      _model.shiftidhive2,
-                                                      FFAppState().shiftDetails,
-                                                      'get',
-                                                    );
-                                                    _shouldSetState = true;
-                                                    FFAppState().shiftDetails =
-                                                        _model
-                                                            .getOfflineShiftdetails!;
-                                                    safeSetState(() {});
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(
@@ -1026,7 +983,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                               .shiftdetailds23!;
                                                       safeSetState(() {});
 
-                                                      context.pushNamed(
+                                                      context.goNamed(
                                                         'VehicleEntry',
                                                         queryParameters: {
                                                           'shiftDoc':
