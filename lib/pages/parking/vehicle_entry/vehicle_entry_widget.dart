@@ -2213,24 +2213,32 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                 ),
                                                 child: Stack(
                                                   children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.7,
-                                                      height: double.infinity,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x4C989FDE),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                      ),
-                                                    ).animateOnActionTrigger(
-                                                        animationsMap[
-                                                            'containerOnActionTriggerAnimation18']!,
-                                                        hasBeenTriggered:
-                                                            hasContainerTriggered18),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.7,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0x4C989FDE),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                      ).animateOnActionTrigger(
+                                                          animationsMap[
+                                                              'containerOnActionTriggerAnimation18']!,
+                                                          hasBeenTriggered:
+                                                              hasContainerTriggered18),
+                                                    ),
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(

@@ -637,7 +637,16 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed('UserAccount');
+                                          context.pushNamed(
+                                            'UserAccount',
+                                            queryParameters: {
+                                              'mobile': serializeParam(
+                                                FFAppState()
+                                                    .currentMobileString,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -768,12 +777,11 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                           ],
                                         ),
                                       ),
-                                      if (false)
-                                        Divider(
-                                          thickness: 0.5,
-                                          color: FlutterFlowTheme.of(context)
-                                              .customColor2,
-                                        ),
+                                      Divider(
+                                        thickness: 0.5,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor2,
+                                      ),
                                       if (false)
                                         InkWell(
                                           splashColor: Colors.transparent,

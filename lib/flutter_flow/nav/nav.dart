@@ -827,7 +827,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AddUser',
               path: 'addUser',
-              builder: (context, params) => AddUserWidget(),
+              builder: (context, params) => AddUserWidget(
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+              ),
             ),
             FFRoute(
               name: 'ParkingLogin',

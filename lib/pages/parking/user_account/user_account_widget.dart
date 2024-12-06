@@ -147,7 +147,9 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                         queryBuilder: (userProfileRecord) => userProfileRecord
                             .where(
                               'outlets',
-                              arrayContains: FFAppState().outletId,
+                              arrayContains: FFAppState().outletId != ''
+                                  ? FFAppState().outletId
+                                  : null,
                             )
                             .where(
                               'isDeleted',

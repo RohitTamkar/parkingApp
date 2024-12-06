@@ -246,41 +246,39 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                           ),
                       ],
                     ),
-                    if (false)
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          StreamBuilder<List<PaymentModeRecord>>(
-                            stream: queryPaymentModeRecord(),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    child: SpinKitFadingCircle(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 40.0,
-                                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        StreamBuilder<List<PaymentModeRecord>>(
+                          stream: queryPaymentModeRecord(),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  child: SpinKitFadingCircle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 40.0,
                                   ),
-                                );
-                              }
-                              List<PaymentModeRecord>
-                                  paymentModePaymentModeRecordList =
-                                  snapshot.data!;
-
-                              return wrapWithModel(
-                                model: _model.paymentModeModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: PaymentModeWidget(),
+                                ),
                               );
-                            },
-                          ),
-                        ],
-                      ),
+                            }
+                            List<PaymentModeRecord>
+                                paymentModePaymentModeRecordList =
+                                snapshot.data!;
+
+                            return wrapWithModel(
+                              model: _model.paymentModeModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: PaymentModeWidget(),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
