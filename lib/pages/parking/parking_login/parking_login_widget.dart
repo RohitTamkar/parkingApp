@@ -681,14 +681,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                       await queryShiftRecordOnce(
                                                                     parent: FFAppState()
                                                                         .outletIdRef,
-                                                                    queryBuilder:
-                                                                        (shiftRecord) =>
-                                                                            shiftRecord.where(
-                                                                      'dayId',
-                                                                      isEqualTo:
-                                                                          FFAppState()
-                                                                              .dId,
-                                                                    ),
                                                                   );
                                                                   _shouldSetState =
                                                                       true;
