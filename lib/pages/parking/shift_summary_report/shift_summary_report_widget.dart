@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -270,6 +269,26 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
+                                              FFAppState().userName,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
+                                            Text(
                                               valueOrDefault<String>(
                                                 widget!.docRef?.shiftId,
                                                 '0',
@@ -291,29 +310,6 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                            ),
-                                            AuthUserStreamWidget(
-                                              builder: (context) => Text(
-                                                valueOrDefault(
-                                                    currentUserDocument?.name,
-                                                    ''),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                              ),
                                             ),
                                           ].divide(SizedBox(width: 20.0)),
                                         ),
