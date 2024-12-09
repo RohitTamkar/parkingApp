@@ -172,7 +172,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 3.0, 0.0),
                                 child: Text(
-                                  '₹ ${FFAppState().orderType == 'MONTHLYPASS' ? '' : functions.calculateRemainingAmount(functions.calculateParkingCharges12hours(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch), widget!.invdoc?.advancePaid).toString()}',
+                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(functions.calculateParkingCharges12hours(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displayMedium
