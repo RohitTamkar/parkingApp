@@ -890,6 +890,13 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                         await queryShiftRecordOnce(
                                                       parent: FFAppState()
                                                           .outletIdRef,
+                                                      queryBuilder:
+                                                          (shiftRecord) =>
+                                                              shiftRecord.where(
+                                                        'dayId',
+                                                        isEqualTo:
+                                                            FFAppState().dId,
+                                                      ),
                                                     );
                                                     _shouldSetState = true;
                                                     _model.newShift =
@@ -966,6 +973,13 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                         await queryShiftRecordOnce(
                                                       parent: FFAppState()
                                                           .outletIdRef,
+                                                      queryBuilder:
+                                                          (shiftRecord) =>
+                                                              shiftRecord.where(
+                                                        'dayId',
+                                                        isEqualTo:
+                                                            FFAppState().dId,
+                                                      ),
                                                     );
                                                     _shouldSetState = true;
                                                     _model.shiftdetailds23 =

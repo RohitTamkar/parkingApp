@@ -19,6 +19,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -218,62 +220,62 @@ Future printShiftSummaryReport(
               bold: false,
               align: PosAlign.center));
 
-      String title = "Start Date";
-
-      printLine += title;
-      final DateFormat formatter2 = DateFormat('dd/MM/yyyy');
-      final String formatted2 = formatter2.format(now!);
-      dateString1 = formatted2.toString();
-
-      for (int i = 1; i <= (size - (title.length + dateString1.length)); i++) {
-        printLine += " ";
-      }
-
-      printLine += dateString1;
-
-      bytes += generator.text(printLine,
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false));
-      printLine = '';
-
-      String title2 = "End Date";
-      final DateTime? now2 = FFAppState().endDate;
-
-      printLine += title2;
-      final DateFormat formatter22 = DateFormat('yyyy-MM-dd');
-      final String formatted22 = formatter2.format(now2!);
-      dateStringend = FFAppState().filterDate.toString();
-
-      for (int i = 1;
-          i <= (size - (title2.length + dateStringend.length));
-          i++) {
-        printLine += " ";
-      }
-
-      printLine += dateStringend;
-
-      // bytes += generator.text("Shift ID: $getShiftId",
+      // String title = "Start Date";
+      //
+      // printLine += title;
+      // final DateFormat formatter2 = DateFormat('dd/MM/yyyy');
+      // final String formatted2 = formatter2.format(now!);
+      // dateString1 = formatted2.toString();
+      //
+      // for (int i = 1; i <= (size - (title.length + dateString1.length)); i++) {
+      //   printLine += " ";
+      // }
+      //
+      // printLine += dateString1;
+      //
+      // bytes += generator.text(printLine,
       //     styles: const PosStyles(
       //         height: PosTextSize.size1,
       //         width: PosTextSize.size1,
-      //         bold: true,
-      //         align: PosAlign.left));
-
-      bytes += generator.text(printLine,
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false));
-      printLine = '';
+      //         bold: false));
+      // printLine = '';
+      //
+      // String title2 = "End Date";
+      // final DateTime? now2 = FFAppState().endDate;
+      //
+      // printLine += title2;
+      // final DateFormat formatter22 = DateFormat('yyyy-MM-dd');
+      // final String formatted22 = formatter2.format(now2!);
+      // dateStringend = FFAppState().filterDate.toString();
+      //
+      // for (int i = 1;
+      //     i <= (size - (title2.length + dateStringend.length));
+      //     i++) {
+      //   printLine += " ";
+      // }
+      //
+      // printLine += dateStringend;
+      //
+      // // bytes += generator.text("Shift ID: $getShiftId",
+      // //     styles: const PosStyles(
+      // //         height: PosTextSize.size1,
+      // //         width: PosTextSize.size1,
+      // //         bold: true,
+      // //         align: PosAlign.left));
+      //
+      // bytes += generator.text(printLine,
+      //     styles: const PosStyles(
+      //         height: PosTextSize.size1,
+      //         width: PosTextSize.size1,
+      //         bold: false));
+      // printLine = '';
 
       bytes += generator.text("Shift ID: $shiftId",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: true,
-              align: PosAlign.left));
+              align: PosAlign.center));
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
