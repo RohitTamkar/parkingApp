@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 Future<dynamic> shiftDetailNewpark(List<ShiftRecord>? shiftlist) async {
   List<dynamic> docRecord = [];
   bool flag = false;
@@ -57,8 +59,18 @@ Future<dynamic> shiftDetailNewpark(List<ShiftRecord>? shiftlist) async {
       }
     } else {
       // The shift has ended, so start a new shift
-      shiftCount++;
-      print('shcount$shiftCount');
+      DateTime currentDateTime = DateTime.now();
+      var formatter = DateFormat('yyyy-MM-dd');
+      String currentDate = formatter.format(currentDateTime);
+      DateTime shiftStartTime =
+          DateTime.fromMillisecondsSinceEpoch(doc.startTime);
+      String shiftDate = formatter.format(shiftStartTime);
+      if (currentDate == shiftDate) {
+        shiftCount++;
+        print('shcount$shiftCount');
+      } else {
+        print('The day end time is not updated');
+      }
     }
   }
   if (flag == false && shiftlist.isNotEmpty) {
