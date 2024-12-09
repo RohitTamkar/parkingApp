@@ -1886,7 +1886,34 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed('AppSettings');
+                                              if (containerUserProfileRecord
+                                                      ?.role ==
+                                                  'admin') {
+                                                context
+                                                    .pushNamed('AppSettings');
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'User Permission Is Not Authorised',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                  ),
+                                                );
+                                                return;
+                                              }
                                             },
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)

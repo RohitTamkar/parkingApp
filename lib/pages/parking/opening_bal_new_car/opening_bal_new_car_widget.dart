@@ -513,8 +513,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                             children: [
                                               FFButtonWidget(
                                                 onPressed: () async {
-                                                  context.pushNamed(
-                                                      'businessProfileAdminfinal');
+                                                  context.safePop();
                                                 },
                                                 text:
                                                     FFLocalizations.of(context)
