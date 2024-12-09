@@ -2985,9 +2985,9 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                                             (alertDialogContext) {
                                                                           return AlertDialog(
                                                                             title:
-                                                                                Text('Product'),
+                                                                                Text('Vehicle'),
                                                                             content:
-                                                                                Text('Product Update successfully'),
+                                                                                Text('Vehicle update successfully'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),

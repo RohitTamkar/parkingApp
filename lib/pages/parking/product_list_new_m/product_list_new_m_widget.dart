@@ -426,7 +426,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                           builder:
                                                                               (alertDialogContext) {
                                                                             return AlertDialog(
-                                                                              title: Text('Delete Product'),
+                                                                              title: Text('Delete Vehicle'),
                                                                               content: Text('Are you sure ?'),
                                                                               actions: [
                                                                                 TextButton(

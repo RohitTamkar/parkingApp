@@ -3626,9 +3626,9 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                         (alertDialogContext) {
                                                                       return AlertDialog(
                                                                         title: Text(
-                                                                            'Product'),
+                                                                            'Vehicle'),
                                                                         content:
-                                                                            Text('Product added successfully'),
+                                                                            Text('Vehicle added successfully'),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed: () =>

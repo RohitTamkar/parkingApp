@@ -700,6 +700,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             size: 18.0,
                                           ),
                                           onPressed: () async {
+                                            var _shouldSetState = false;
                                             _model.outletDoc =
                                                 await queryOutletRecordOnce(
                                               queryBuilder: (outletRecord) =>
@@ -711,27 +712,56 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               ),
                                               singleRecord: true,
                                             ).then((s) => s.firstOrNull);
+                                            _shouldSetState = true;
+                                            if (containerUserProfileRecord
+                                                    ?.role ==
+                                                'admin') {
+                                              context.pushNamed(
+                                                'dashboard',
+                                                queryParameters: {
+                                                  'outletId': serializeParam(
+                                                    FFAppState().outletIdRef,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'userId': serializeParam(
+                                                    containerUserProfileRecord
+                                                        ?.id,
+                                                    ParamType.String,
+                                                  ),
+                                                  'mobile': serializeParam(
+                                                    FFAppState().currentMobile,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'User Permission Is Not Authorised',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
 
-                                            context.pushNamed(
-                                              'dashboard',
-                                              queryParameters: {
-                                                'outletId': serializeParam(
-                                                  FFAppState().outletIdRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'userId': serializeParam(
-                                                  containerUserProfileRecord
-                                                      ?.id,
-                                                  ParamType.String,
-                                                ),
-                                                'mobile': serializeParam(
-                                                  FFAppState().currentMobile,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-
-                                            safeSetState(() {});
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
                                           },
                                         ),
                                         FlutterFlowIconButton(
@@ -745,19 +775,45 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             size: 22.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
-                                              'editUserprofile',
-                                              queryParameters: {
-                                                'docRef': serializeParam(
-                                                  containerUserProfileRecord,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'docRef':
+                                            if (containerUserProfileRecord
+                                                    ?.role ==
+                                                'admin') {
+                                              context.pushNamed(
+                                                'editUserprofile',
+                                                queryParameters: {
+                                                  'docRef': serializeParam(
                                                     containerUserProfileRecord,
-                                              },
-                                            );
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'docRef':
+                                                      containerUserProfileRecord,
+                                                },
+                                              );
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'User Permission Is Not Authorised',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              return;
+                                            }
                                           },
                                         ),
                                       ],
