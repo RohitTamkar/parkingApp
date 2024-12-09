@@ -147,8 +147,8 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                         queryBuilder: (userProfileRecord) => userProfileRecord
                             .where(
                               'outlets',
-                              arrayContains: FFAppState().outletId != ''
-                                  ? FFAppState().outletId
+                              arrayContains: FFAppState().outletIdRef?.id != ''
+                                  ? FFAppState().outletIdRef?.id
                                   : null,
                             )
                             .where(
