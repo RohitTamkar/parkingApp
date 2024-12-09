@@ -35,6 +35,7 @@ Future printShiftSummaryReport(
   String printerSize,
   List<InvoiceRecord> dataDocument,
   List<InvoiceRecord> uniquelist,
+  String shiftId,
 ) async {
   // Add your function code here!
   int size = 32;
@@ -253,12 +254,26 @@ Future printShiftSummaryReport(
 
       printLine += dateStringend;
 
+      // bytes += generator.text("Shift ID: $getShiftId",
+      //     styles: const PosStyles(
+      //         height: PosTextSize.size1,
+      //         width: PosTextSize.size1,
+      //         bold: true,
+      //         align: PosAlign.left));
+
       bytes += generator.text(printLine,
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: false));
       printLine = '';
+
+      bytes += generator.text("Shift ID: $shiftId",
+          styles: const PosStyles(
+              height: PosTextSize.size1,
+              width: PosTextSize.size1,
+              bold: true,
+              align: PosAlign.left));
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(

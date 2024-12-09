@@ -33,23 +33,7 @@ class QrparkingModel extends FlutterFlowModel<QrparkingWidget> {
   OutletRecord? outletdocqr;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   InvoiceRecord? docinvqr2;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  ShiftRecord? shiftfierbase;
-  // Stores action output result for [Custom Action - shiftDetailNewpark2] action in Button widget.
-  dynamic? shiftDetailsNewcar;
-  // Stores action output result for [Custom Action - calShiftSummary2] action in Button widget.
-  dynamic? shiftSummarRkiosk23;
-  // Stores action output result for [Custom Action - scanPrinter] action in Button widget.
-  bool? resDevice2qr22;
-  // Stores action output result for [Custom Action - connectDevice] action in Button widget.
-  bool? connectdeviceqr22;
-  // Stores action output result for [Custom Action - selectBillPrint] action in Button widget.
-  List<dynamic>? returnedList2qr223;
-  // Stores action output result for [Custom Action - newCustomAction] action in Button widget.
-  List<dynamic>? deviceqr23;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  OutletRecord? outletdocqr23;
-  // Stores action output result for [Custom Action - calShiftSummary2] action in Button widget.
+  // Stores action output result for [Custom Action - calShiftSummary] action in Button widget.
   dynamic? shiftupdate;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   ShiftRecord? shiftref2;
@@ -65,13 +49,7 @@ class QrparkingModel extends FlutterFlowModel<QrparkingWidget> {
   OutletRecord? outletdocqr2;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   InvoiceRecord? savebill;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  ShiftRecord? shiftfierbase2;
-  // Stores action output result for [Custom Action - shiftDetailNewpark2] action in Button widget.
-  dynamic? shiftDetailsNewcar2;
-  // Stores action output result for [Custom Action - calShiftSummary2] action in Button widget.
-  dynamic? shiftSummarRkiosk233;
-  // Stores action output result for [Custom Action - calShiftSummary2] action in Button widget.
+  // Stores action output result for [Custom Action - calShiftSummary] action in Button widget.
   dynamic? shiftupdate2;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   ShiftRecord? shiftref23;

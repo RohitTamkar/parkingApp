@@ -51,13 +51,14 @@ Future<dynamic> shiftDetailNewpark(List<ShiftRecord>? shiftlist) async {
           "paymentJson": doc.paymentJson
         });
       } else {
-        // New day, start a new shift
-        print('new day end time is not updated');
+        // The shift has ended, so start a new shift
+        shiftCount++;
+        print('shcount$shiftCount');
       }
     } else {
-      // The shift has ended, so start a new shift
-      shiftCount++;
-      print('shcount$shiftCount');
+      // New day, start a new shift
+
+      print('new day end time is not updated');
     }
   }
   if (flag == false && shiftlist.isNotEmpty) {
