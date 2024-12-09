@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -16,8 +17,7 @@ class ShiftSummaryReportModel
     extends FlutterFlowModel<ShiftSummaryReportWidget> {
   ///  State fields for stateful widgets in this page.
 
-  DateTime? datePicked1;
-  DateTime? datePicked2;
+  DateTime? datePicked;
   // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
   DateTime? datenext;
   // Stores action output result for [Custom Action - scanPrinter] action in IconButton widget.

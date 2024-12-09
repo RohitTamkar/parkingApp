@@ -774,7 +774,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 await _model.shiftref23!.reference
                                     .update(createShiftRecordData(
                                   billCount: valueOrDefault<int>(
-                                    FFAppState().count,
+                                    FFAppState().billcount,
                                     0,
                                   ),
                                   totalSale: getJsonField(

@@ -1368,12 +1368,16 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               FFAppState().count + 1;
                                           FFAppState().newcount =
                                               FFAppState().newcount + 1;
+                                          FFAppState().billcount =
+                                              FFAppState().billcount + 1;
                                           safeSetState(() {});
                                         } else {
                                           FFAppState().count =
                                               FFAppState().count + 1;
                                           FFAppState().newcount =
                                               FFAppState().newcount + 1;
+                                          FFAppState().billcount =
+                                              FFAppState().billcount + 1;
                                           safeSetState(() {});
                                         }
 
@@ -1543,7 +1547,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           await _model.shiftref!.reference
                                               .update(createShiftRecordData(
                                             billCount: valueOrDefault<int>(
-                                              FFAppState().count,
+                                              FFAppState().billcount,
                                               0,
                                             ),
                                             totalSale: valueOrDefault<double>(
@@ -1834,12 +1838,16 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               FFAppState().count + 1;
                                           FFAppState().newcount =
                                               FFAppState().newcount + 1;
+                                          FFAppState().billcount =
+                                              FFAppState().billcount + 1;
                                           safeSetState(() {});
                                         } else {
                                           FFAppState().count =
                                               FFAppState().count + 1;
                                           FFAppState().newcount =
                                               FFAppState().newcount + 1;
+                                          FFAppState().billcount =
+                                              FFAppState().billcount + 1;
                                           safeSetState(() {});
                                         }
 
@@ -2006,7 +2014,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           await _model.shiftref2!.reference
                                               .update(createShiftRecordData(
                                             billCount: valueOrDefault<int>(
-                                              FFAppState().count,
+                                              FFAppState().billcount,
                                               0,
                                             ),
                                             totalSale: getJsonField(

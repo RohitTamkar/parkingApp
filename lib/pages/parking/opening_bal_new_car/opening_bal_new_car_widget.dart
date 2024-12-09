@@ -903,6 +903,11 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                       FFAppState()
                                                               .shiftDetailsNEw =
                                                           _model.newShift!;
+                                                      FFAppState().billcount =
+                                                          getJsonField(
+                                                        _model.newShift,
+                                                        r'''$.billCount''',
+                                                      );
                                                       safeSetState(() {});
 
                                                       context.goNamed(
@@ -980,6 +985,11 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                               .shiftDetailsNEw =
                                                           _model
                                                               .shiftdetailds23!;
+                                                      FFAppState().billcount =
+                                                          getJsonField(
+                                                        _model.shiftdetailds23,
+                                                        r'''$.billCount''',
+                                                      );
                                                       safeSetState(() {});
 
                                                       context.goNamed(
