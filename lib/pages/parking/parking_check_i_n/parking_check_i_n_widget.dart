@@ -1702,7 +1702,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             'VehicleEntry',
                                             queryParameters: {
                                               'shiftDoc': serializeParam(
-                                                FFAppState().shiftDetailsNEw,
+                                                widget!.shiftDoc,
                                                 ParamType.JSON,
                                               ),
                                               'userRef': serializeParam(
@@ -2075,7 +2075,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             'VehicleEntry',
                                             queryParameters: {
                                               'shiftDoc': serializeParam(
-                                                FFAppState().shiftDetailsNEw,
+                                                widget!.shiftDoc,
                                                 ParamType.JSON,
                                               ),
                                               'userRef': serializeParam(
