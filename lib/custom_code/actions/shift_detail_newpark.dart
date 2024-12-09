@@ -62,7 +62,7 @@ Future<dynamic> shiftDetailNewpark(List<ShiftRecord>? shiftlist) async {
     }
   }
   if (flag == false && shiftlist.isNotEmpty) {
-    shiftCount = 1;
+    shiftCount++;
     print('shcountne$shiftCount');
     docRecord.add({
       "msg": "Start new Shift for today",
