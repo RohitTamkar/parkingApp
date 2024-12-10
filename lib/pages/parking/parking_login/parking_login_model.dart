@@ -48,6 +48,8 @@ class ParkingLoginModel extends FlutterFlowModel<ParkingLoginWidget> {
   bool? internetconnection;
   // Stores action output result for [Custom Action - shiftDetailNewparkMultishift] action in Button widget.
   dynamic? shiftDetailsNew;
+  // Stores action output result for [Custom Action - shiftDetailNewpark] action in Button widget.
+  dynamic? shiftDetailsNew2;
 
   @override
   void initState(BuildContext context) {}

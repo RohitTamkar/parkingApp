@@ -41,10 +41,14 @@ class OpeningBalNewCarModel extends FlutterFlowModel<OpeningBalNewCarWidget> {
   List<ShiftRecord>? shiftList;
   // Stores action output result for [Custom Action - shiftDetailNewparkMultishift] action in Button widget.
   dynamic? newShift;
+  // Stores action output result for [Custom Action - shiftDetailNewpark] action in Button widget.
+  dynamic? newShift2;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<ShiftRecord>? shiftresumed;
   // Stores action output result for [Custom Action - shiftDetailNewparkMultishift] action in Button widget.
   dynamic? shiftdetailds23;
+  // Stores action output result for [Custom Action - shiftDetailNewpark] action in Button widget.
+  dynamic? shiftdetailds232;
 
   @override
   void initState(BuildContext context) {}

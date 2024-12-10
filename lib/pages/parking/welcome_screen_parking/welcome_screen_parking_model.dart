@@ -47,6 +47,8 @@ class WelcomeScreenParkingModel
   OutletRecord? outletdetails23;
   // Stores action output result for [Custom Action - shiftDetailNewparkMultishift] action in welcomeScreenParking widget.
   dynamic? shiftDetailsNewcar;
+  // Stores action output result for [Custom Action - shiftDetailNewpark] action in welcomeScreenParking widget.
+  dynamic? shiftDetailsNewcar2;
 
   @override
   void initState(BuildContext context) {}

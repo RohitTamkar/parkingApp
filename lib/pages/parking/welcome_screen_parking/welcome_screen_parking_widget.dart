@@ -213,30 +213,60 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
       safeSetState(() {});
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
         if ((_model.userProfile != null) == true) {
-          _model.shiftDetailsNewcar =
-              await actions.shiftDetailNewparkMultishift(
-            _model.shiftdetailfirebase?.toList(),
-          );
-          FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
-          safeSetState(() {});
-          await Future.delayed(const Duration(milliseconds: 2000));
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            enableDrag: false,
-            context: context,
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.viewInsetsOf(context),
-                child: OpeningBalNewCarWidget(
-                  shiftDetails: _model.shiftDetailsNewcar,
-                  doc: _model.userProfile?.reference,
-                ),
-              );
-            },
-          ).then((value) => safeSetState(() {}));
+          if (widget!.appSettings!.settingList
+              .where((e) => e.title == 'enableTerminal')
+              .toList()
+              .first
+              .value) {
+            _model.shiftDetailsNewcar =
+                await actions.shiftDetailNewparkMultishift(
+              _model.shiftdetailfirebase?.toList(),
+            );
+            FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
+            safeSetState(() {});
+            await Future.delayed(const Duration(milliseconds: 2000));
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              enableDrag: false,
+              context: context,
+              builder: (context) {
+                return Padding(
+                  padding: MediaQuery.viewInsetsOf(context),
+                  child: OpeningBalNewCarWidget(
+                    shiftDetails: _model.shiftDetailsNewcar,
+                    doc: _model.userProfile?.reference,
+                  ),
+                );
+              },
+            ).then((value) => safeSetState(() {}));
 
-          return;
+            return;
+          } else {
+            _model.shiftDetailsNewcar2 = await actions.shiftDetailNewpark(
+              _model.shiftdetailfirebase?.toList(),
+            );
+            FFAppState().shiftdetails = _model.shiftDetailsNewcar2!;
+            safeSetState(() {});
+            await Future.delayed(const Duration(milliseconds: 2000));
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              enableDrag: false,
+              context: context,
+              builder: (context) {
+                return Padding(
+                  padding: MediaQuery.viewInsetsOf(context),
+                  child: OpeningBalNewCarWidget(
+                    shiftDetails: _model.shiftDetailsNewcar2,
+                    doc: _model.userProfile?.reference,
+                  ),
+                );
+              },
+            ).then((value) => safeSetState(() {}));
+
+            return;
+          }
         } else {
           await showDialog(
             context: context,
@@ -354,38 +384,80 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Title(
-        title: 'welcomeScreenParking',
-        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Color(0xFF1E2429),
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  FlutterFlowTheme.of(context).primaryBtnText,
-                  FlutterFlowTheme.of(context).error
-                ],
-                stops: [1.0, 1.0],
-                begin: AlignmentDirectional(0.0, -1.0),
-                end: AlignmentDirectional(0, 1.0),
+    return StreamBuilder<List<AppSettingsRecord>>(
+      stream: queryAppSettingsRecord(
+        parent: FFAppState().outletIdRef,
+        queryBuilder: (appSettingsRecord) => appSettingsRecord.where(
+          'deviceId',
+          isEqualTo: FFAppState().dId,
+        ),
+        singleRecord: true,
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: Color(0xFF1E2429),
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: SpinKitFadingCircle(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 40.0,
+                ),
               ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/98092-loading.gif',
-                  height: 180.0,
-                  fit: BoxFit.contain,
-                ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
-              ],
-            ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
-          ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
-        ));
+          );
+        }
+        List<AppSettingsRecord> welcomeScreenParkingAppSettingsRecordList =
+            snapshot.data!;
+        // Return an empty Container when the item does not exist.
+        if (snapshot.data!.isEmpty) {
+          return Container();
+        }
+        final welcomeScreenParkingAppSettingsRecord =
+            welcomeScreenParkingAppSettingsRecordList.isNotEmpty
+                ? welcomeScreenParkingAppSettingsRecordList.first
+                : null;
+
+        return Title(
+            title: 'welcomeScreenParking',
+            color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: Color(0xFF1E2429),
+              body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).primaryBtnText,
+                      FlutterFlowTheme.of(context).error
+                    ],
+                    stops: [1.0, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/98092-loading.gif',
+                      height: 180.0,
+                      fit: BoxFit.contain,
+                    ).animateOnPageLoad(
+                        animationsMap['imageOnPageLoadAnimation']!),
+                  ],
+                ).animateOnPageLoad(
+                    animationsMap['columnOnPageLoadAnimation']!),
+              ).animateOnPageLoad(
+                  animationsMap['containerOnPageLoadAnimation']!),
+            ));
+      },
+    );
   }
 }

@@ -262,113 +262,155 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                             ),
                                       ),
                                     ),
-                                    Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(),
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, -1.0),
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 5.0),
-                                            child: StreamBuilder<
-                                                List<UserProfileRecord>>(
-                                              stream: queryUserProfileRecord(
-                                                queryBuilder:
-                                                    (userProfileRecord) =>
-                                                        userProfileRecord.where(
-                                                  'outlets',
-                                                  arrayContains: containerDeviceRecord
-                                                                  ?.outletId ==
-                                                              null ||
-                                                          containerDeviceRecord
-                                                                  ?.outletId ==
-                                                              ''
-                                                      ? '0'
-                                                      : containerDeviceRecord
-                                                                  ?.outletId !=
-                                                              ''
-                                                          ? containerDeviceRecord
-                                                                          ?.outletId ==
-                                                                      null ||
-                                                                  containerDeviceRecord
-                                                                          ?.outletId ==
-                                                                      ''
-                                                              ? '0'
-                                                              : containerDeviceRecord
-                                                                  ?.outletId
-                                                          : null,
-                                                ),
+                                    StreamBuilder<List<AppSettingsRecord>>(
+                                      stream: queryAppSettingsRecord(
+                                        parent:
+                                            containerDeviceRecord?.outletRef,
+                                        queryBuilder: (appSettingsRecord) =>
+                                            appSettingsRecord.where(
+                                          'deviceId',
+                                          isEqualTo: FFAppState().dId != ''
+                                              ? FFAppState().dId
+                                              : null,
+                                        ),
+                                        singleRecord: true,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 40.0,
+                                              height: 40.0,
+                                              child: SpinKitFadingCircle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 40.0,
                                               ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 40.0,
-                                                      height: 40.0,
-                                                      child:
-                                                          SpinKitFadingCircle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 40.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<UserProfileRecord>
-                                                    pinUserProfileRecordList =
-                                                    snapshot.data!;
+                                            ),
+                                          );
+                                        }
+                                        List<AppSettingsRecord>
+                                            loginAppSettingsRecordList =
+                                            snapshot.data!;
+                                        final loginAppSettingsRecord =
+                                            loginAppSettingsRecordList
+                                                    .isNotEmpty
+                                                ? loginAppSettingsRecordList
+                                                    .first
+                                                : null;
 
-                                                return Container(
-                                                  width: double.infinity,
-                                                  height: 300.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      10.0),
+                                        return Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(),
+                                          child: Stack(
+                                            alignment:
+                                                AlignmentDirectional(0.0, -1.0),
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 5.0),
+                                                child: StreamBuilder<
+                                                    List<UserProfileRecord>>(
+                                                  stream:
+                                                      queryUserProfileRecord(
+                                                    queryBuilder:
+                                                        (userProfileRecord) =>
+                                                            userProfileRecord
+                                                                .where(
+                                                      'outlets',
+                                                      arrayContains: containerDeviceRecord
+                                                                      ?.outletId ==
+                                                                  null ||
+                                                              containerDeviceRecord
+                                                                      ?.outletId ==
+                                                                  ''
+                                                          ? '0'
+                                                          : containerDeviceRecord
+                                                                      ?.outletId !=
+                                                                  ''
+                                                              ? containerDeviceRecord
+                                                                              ?.outletId ==
+                                                                          null ||
+                                                                      containerDeviceRecord
+                                                                              ?.outletId ==
+                                                                          ''
+                                                                  ? '0'
+                                                                  : containerDeviceRecord
+                                                                      ?.outletId
+                                                              : null,
+                                                    ),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 40.0,
+                                                          height: 40.0,
                                                           child:
-                                                              FlutterFlowDropDown<
-                                                                  String>(
-                                                            controller: _model
-                                                                    .dropDownNameValueController ??=
-                                                                FormFieldController<
-                                                                        String>(
-                                                                    null),
-                                                            options:
-                                                                pinUserProfileRecordList
+                                                              SpinKitFadingCircle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            size: 40.0,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<UserProfileRecord>
+                                                        pinUserProfileRecordList =
+                                                        snapshot.data!;
+
+                                                    return Container(
+                                                      width: double.infinity,
+                                                      height: 300.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0),
+                                                              child:
+                                                                  FlutterFlowDropDown<
+                                                                      String>(
+                                                                controller: _model
+                                                                        .dropDownNameValueController ??=
+                                                                    FormFieldController<
+                                                                            String>(
+                                                                        null),
+                                                                options: pinUserProfileRecordList
                                                                     .map((e) =>
                                                                         e.name)
                                                                     .toList(),
-                                                            onChanged: (val) =>
-                                                                safeSetState(() =>
-                                                                    _model.dropDownNameValue =
-                                                                        val),
-                                                            width:
-                                                                double.infinity,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                                                onChanged: (val) =>
+                                                                    safeSetState(() =>
+                                                                        _model.dropDownNameValue =
+                                                                            val),
+                                                                width: double
+                                                                    .infinity,
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleMedium
                                                                     .override(
@@ -382,199 +424,210 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleMediumFamily),
                                                                     ),
-                                                            hintText:
-                                                                FFLocalizations.of(
+                                                                hintText:
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                  'b9tv67wp' /* Please Select User... */,
+                                                                ),
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .keyboard_arrow_down,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  size: 24.0,
+                                                                ),
+                                                                fillColor: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .getText(
-                                                              'b9tv67wp' /* Please Select User... */,
-                                                            ),
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .keyboard_arrow_down,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            elevation: 2.0,
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .customColor1,
-                                                            borderWidth: 0.5,
-                                                            borderRadius: 10.0,
-                                                            margin:
-                                                                EdgeInsetsDirectional
+                                                                    .secondaryBackground,
+                                                                elevation: 2.0,
+                                                                borderColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .customColor1,
+                                                                borderWidth:
+                                                                    0.5,
+                                                                borderRadius:
+                                                                    10.0,
+                                                                margin: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         4.0,
                                                                         12.0,
                                                                         4.0),
-                                                            hidesUnderline:
-                                                                true,
-                                                            isSearchable: false,
-                                                            isMultiSelect:
-                                                                false,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child:
-                                                              FlutterFlowDropDown<
-                                                                  String>(
-                                                            controller: _model
-                                                                    .dropDownTerminalValueController ??=
-                                                                FormFieldController<
+                                                                hidesUnderline:
+                                                                    true,
+                                                                isSearchable:
+                                                                    false,
+                                                                isMultiSelect:
+                                                                    false,
+                                                              ),
+                                                            ),
+                                                            if (loginAppSettingsRecord
+                                                                    ?.settingList
+                                                                    ?.where((e) =>
+                                                                        e.title ==
+                                                                        'enableTerminal')
+                                                                    .toList()
+                                                                    ?.first
+                                                                    ?.value ??
+                                                                true)
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                child:
+                                                                    FlutterFlowDropDown<
                                                                         String>(
-                                                                    null),
-                                                            options: [
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'cc2fsc35' /* Terminal 1 */,
-                                                              ),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'fjv315j2' /* Terminal 2 */,
-                                                              ),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'k0g7iuoi' /* Terminal 3 */,
-                                                              ),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'lxs6ds5n' /* Terminal 4 */,
-                                                              ),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'm1cegpjz' /* Terminal 5 */,
-                                                              ),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '5bmifi4f' /* Terminal 6 */,
-                                                              ),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '28go9499' /* Terminal 7 */,
-                                                              )
-                                                            ],
-                                                            onChanged: (val) =>
-                                                                safeSetState(() =>
-                                                                    _model.dropDownTerminalValue =
-                                                                        val),
-                                                            width:
-                                                                double.infinity,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                  controller: _model
+                                                                          .dropDownTerminalValueController ??=
+                                                                      FormFieldController<
+                                                                              String>(
+                                                                          null),
+                                                                  options: [
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'cc2fsc35' /* Terminal 1 */,
                                                                     ),
-                                                            hintText:
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                              'ww9ldfi8' /* Please Select Terminal... */,
-                                                            ),
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .keyboard_arrow_down,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            elevation: 2.0,
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .customColor1,
-                                                            borderWidth: 0.5,
-                                                            borderRadius: 10.0,
-                                                            margin:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        12.0,
-                                                                        4.0,
-                                                                        12.0,
-                                                                        4.0),
-                                                            hidesUnderline:
-                                                                true,
-                                                            isSearchable: false,
-                                                            isMultiSelect:
-                                                                false,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      20.0),
-                                                          child: TextFormField(
-                                                            controller: _model
-                                                                .quickPinTextController,
-                                                            focusNode: _model
-                                                                .quickPinFocusNode,
-                                                            onChanged: (_) =>
-                                                                EasyDebounce
-                                                                    .debounce(
-                                                              '_model.quickPinTextController',
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      2000),
-                                                              () async {
-                                                                FFAppState()
-                                                                        .quickPin =
-                                                                    _model
-                                                                        .quickPinTextController
-                                                                        .text;
-                                                                safeSetState(
-                                                                    () {});
-                                                              },
-                                                            ),
-                                                            autofocus: false,
-                                                            obscureText: false,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              isDense: false,
-                                                              hintText:
-                                                                  FFLocalizations.of(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'fjv315j2' /* Terminal 2 */,
+                                                                    ),
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'k0g7iuoi' /* Terminal 3 */,
+                                                                    ),
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'lxs6ds5n' /* Terminal 4 */,
+                                                                    ),
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'm1cegpjz' /* Terminal 5 */,
+                                                                    ),
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      '5bmifi4f' /* Terminal 6 */,
+                                                                    ),
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      '28go9499' /* Terminal 7 */,
+                                                                    )
+                                                                  ],
+                                                                  onChanged: (val) =>
+                                                                      safeSetState(() =>
+                                                                          _model.dropDownTerminalValue =
+                                                                              val),
+                                                                  width: double
+                                                                      .infinity,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                      ),
+                                                                  hintText: FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'vclqgyny' /* Password */,
+                                                                    'ww9ldfi8' /* Please Select Terminal... */,
+                                                                  ),
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .keyboard_arrow_down,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                  fillColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  elevation:
+                                                                      2.0,
+                                                                  borderColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .customColor1,
+                                                                  borderWidth:
+                                                                      0.5,
+                                                                  borderRadius:
+                                                                      10.0,
+                                                                  margin: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12.0,
+                                                                          4.0,
+                                                                          12.0,
+                                                                          4.0),
+                                                                  hidesUnderline:
+                                                                      true,
+                                                                  isSearchable:
+                                                                      false,
+                                                                  isMultiSelect:
+                                                                      false,
+                                                                ),
                                                               ),
-                                                              hintStyle:
-                                                                  FlutterFlowTheme.of(
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          20.0),
+                                                              child:
+                                                                  TextFormField(
+                                                                controller: _model
+                                                                    .quickPinTextController,
+                                                                focusNode: _model
+                                                                    .quickPinFocusNode,
+                                                                onChanged: (_) =>
+                                                                    EasyDebounce
+                                                                        .debounce(
+                                                                  '_model.quickPinTextController',
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          2000),
+                                                                  () async {
+                                                                    FFAppState()
+                                                                            .quickPin =
+                                                                        _model
+                                                                            .quickPinTextController
+                                                                            .text;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                ),
+                                                                autofocus:
+                                                                    false,
+                                                                obscureText:
+                                                                    false,
+                                                                decoration:
+                                                                    InputDecoration(
+                                                                  isDense:
+                                                                      false,
+                                                                  hintText: FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'vclqgyny' /* Password */,
+                                                                  ),
+                                                                  hintStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
                                                                       .override(
@@ -585,153 +638,98 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                       ),
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .customColor1,
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10.0),
-                                                              ),
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10.0),
-                                                              ),
-                                                              errorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10.0),
-                                                              ),
-                                                              focusedErrorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
-                                                                  width: 0.5,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10.0),
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
-                                                                ),
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            validator: _model
-                                                                .quickPinTextControllerValidator
-                                                                .asValidator(
-                                                                    context),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      5.0),
-                                                          child: StreamBuilder<
-                                                              List<
-                                                                  AppSettingsRecord>>(
-                                                            stream:
-                                                                queryAppSettingsRecord(
-                                                              parent:
-                                                                  containerDeviceRecord
-                                                                      ?.outletRef,
-                                                              queryBuilder:
-                                                                  (appSettingsRecord) =>
-                                                                      appSettingsRecord
-                                                                          .where(
-                                                                'deviceId',
-                                                                isEqualTo: FFAppState()
-                                                                            .dId !=
-                                                                        ''
-                                                                    ? FFAppState()
-                                                                        .dId
-                                                                    : null,
-                                                              ),
-                                                              singleRecord:
-                                                                  true,
-                                                            ),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 40.0,
-                                                                    height:
-                                                                        40.0,
-                                                                    child:
-                                                                        SpinKitFadingCircle(
+                                                                  enabledBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primary,
-                                                                      size:
-                                                                          40.0,
+                                                                          .customColor1,
+                                                                      width:
+                                                                          0.5,
                                                                     ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
                                                                   ),
-                                                                );
-                                                              }
-                                                              List<AppSettingsRecord>
-                                                                  buttonAppSettingsRecordList =
-                                                                  snapshot
-                                                                      .data!;
-                                                              final buttonAppSettingsRecord =
-                                                                  buttonAppSettingsRecordList
-                                                                          .isNotEmpty
-                                                                      ? buttonAppSettingsRecordList
-                                                                          .first
-                                                                      : null;
-
-                                                              return FFButtonWidget(
+                                                                  focusedBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      width:
+                                                                          0.5,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                  ),
+                                                                  errorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width:
+                                                                          0.5,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width:
+                                                                          0.5,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineSmallFamily,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                    ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                validator: _model
+                                                                    .quickPinTextControllerValidator
+                                                                    .asValidator(
+                                                                        context),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                              child:
+                                                                  FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
                                                                   var _shouldSetState =
@@ -754,12 +752,21 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           s.firstOrNull);
                                                                   _shouldSetState =
                                                                       true;
-                                                                  FFAppState()
-                                                                          .terminalNo =
-                                                                      _model
-                                                                          .dropDownTerminalValue!;
-                                                                  safeSetState(
-                                                                      () {});
+                                                                  if (loginAppSettingsRecord!
+                                                                      .settingList
+                                                                      .where((e) =>
+                                                                          e.title ==
+                                                                          'enableTerminal')
+                                                                      .toList()
+                                                                      .first
+                                                                      .value) {
+                                                                    FFAppState()
+                                                                            .terminalNo =
+                                                                        _model
+                                                                            .dropDownTerminalValue!;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  }
                                                                   _model.outletDoc =
                                                                       await queryOutletRecordOnce(
                                                                     queryBuilder:
@@ -831,57 +838,104 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                               .renewalDate) {
                                                                         if (_model.userProfile?.reference !=
                                                                             null) {
-                                                                          _model.shiftDetailsNew =
-                                                                              await actions.shiftDetailNewparkMultishift(
-                                                                            _model.shiftlist?.toList(),
-                                                                          );
-                                                                          _shouldSetState =
-                                                                              true;
-                                                                          FFAppState().userName = _model
-                                                                              .userProfile!
-                                                                              .name;
-                                                                          FFAppState().currentMobileString = _model
-                                                                              .userProfile!
-                                                                              .mobile;
-                                                                          safeSetState(
-                                                                              () {});
-
-                                                                          context
-                                                                              .pushNamed(
-                                                                            'welcomeScreenParking',
-                                                                            queryParameters:
-                                                                                {
-                                                                              'deviceDoc': serializeParam(
-                                                                                containerDeviceRecord,
-                                                                                ParamType.Document,
-                                                                              ),
-                                                                              'appSettings': serializeParam(
-                                                                                buttonAppSettingsRecord,
-                                                                                ParamType.Document,
-                                                                              ),
-                                                                              'shiftDoc': serializeParam(
-                                                                                _model.shiftDetailsNew,
-                                                                                ParamType.JSON,
-                                                                              ),
-                                                                              'userDoc': serializeParam(
-                                                                                _model.userProfile?.reference,
-                                                                                ParamType.DocumentReference,
-                                                                              ),
-                                                                              'outletRef': serializeParam(
-                                                                                _model.outletDoc?.reference,
-                                                                                ParamType.DocumentReference,
-                                                                              ),
-                                                                            }.withoutNulls,
-                                                                            extra: <String,
-                                                                                dynamic>{
-                                                                              'deviceDoc': containerDeviceRecord,
-                                                                              'appSettings': buttonAppSettingsRecord,
-                                                                            },
-                                                                          );
-
-                                                                          if (_shouldSetState)
+                                                                          if (loginAppSettingsRecord!
+                                                                              .settingList
+                                                                              .where((e) => e.title == 'enableTerminal')
+                                                                              .toList()
+                                                                              .first
+                                                                              .value) {
+                                                                            _model.shiftDetailsNew =
+                                                                                await actions.shiftDetailNewparkMultishift(
+                                                                              _model.shiftlist?.toList(),
+                                                                            );
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                            FFAppState().userName =
+                                                                                _model.userProfile!.name;
+                                                                            FFAppState().currentMobileString =
+                                                                                _model.userProfile!.mobile;
                                                                             safeSetState(() {});
-                                                                          return;
+
+                                                                            context.pushNamed(
+                                                                              'welcomeScreenParking',
+                                                                              queryParameters: {
+                                                                                'deviceDoc': serializeParam(
+                                                                                  containerDeviceRecord,
+                                                                                  ParamType.Document,
+                                                                                ),
+                                                                                'appSettings': serializeParam(
+                                                                                  loginAppSettingsRecord,
+                                                                                  ParamType.Document,
+                                                                                ),
+                                                                                'shiftDoc': serializeParam(
+                                                                                  _model.shiftDetailsNew,
+                                                                                  ParamType.JSON,
+                                                                                ),
+                                                                                'userDoc': serializeParam(
+                                                                                  _model.userProfile?.reference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                                'outletRef': serializeParam(
+                                                                                  _model.outletDoc?.reference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                              extra: <String, dynamic>{
+                                                                                'deviceDoc': containerDeviceRecord,
+                                                                                'appSettings': loginAppSettingsRecord,
+                                                                              },
+                                                                            );
+
+                                                                            if (_shouldSetState)
+                                                                              safeSetState(() {});
+                                                                            return;
+                                                                          } else {
+                                                                            _model.shiftDetailsNew2 =
+                                                                                await actions.shiftDetailNewpark(
+                                                                              _model.shiftlist?.toList(),
+                                                                            );
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                            FFAppState().userName =
+                                                                                _model.userProfile!.name;
+                                                                            FFAppState().currentMobileString =
+                                                                                _model.userProfile!.mobile;
+                                                                            safeSetState(() {});
+
+                                                                            context.pushNamed(
+                                                                              'welcomeScreenParking',
+                                                                              queryParameters: {
+                                                                                'deviceDoc': serializeParam(
+                                                                                  containerDeviceRecord,
+                                                                                  ParamType.Document,
+                                                                                ),
+                                                                                'appSettings': serializeParam(
+                                                                                  loginAppSettingsRecord,
+                                                                                  ParamType.Document,
+                                                                                ),
+                                                                                'shiftDoc': serializeParam(
+                                                                                  _model.shiftDetailsNew2,
+                                                                                  ParamType.JSON,
+                                                                                ),
+                                                                                'userDoc': serializeParam(
+                                                                                  _model.userProfile?.reference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                                'outletRef': serializeParam(
+                                                                                  _model.outletDoc?.reference,
+                                                                                  ParamType.DocumentReference,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                              extra: <String, dynamic>{
+                                                                                'deviceDoc': containerDeviceRecord,
+                                                                                'appSettings': loginAppSettingsRecord,
+                                                                              },
+                                                                            );
+
+                                                                            if (_shouldSetState)
+                                                                              safeSetState(() {});
+                                                                            return;
+                                                                          }
                                                                         } else {
                                                                           await showDialog(
                                                                             context:
@@ -1011,103 +1065,108 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           .circular(
                                                                               10.0),
                                                                 ),
-                                                              );
-                                                            },
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                'Version:${FFAppState().version}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyLargeFamily,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                              if (FFAppState().show)
+                                                Container(
+                                                  width: 285.0,
+                                                  height: 310.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBtnText,
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Container(
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          child: custom_widgets
+                                                              .QrCode(
+                                                            width:
+                                                                double.infinity,
+                                                            height:
+                                                                double.infinity,
+                                                            data:
+                                                                _model.platform,
+                                                            size: 250.0,
+                                                            backgroundColor:
+                                                                Colors.black,
+                                                            foregroundColor:
+                                                                Colors.white,
                                                           ),
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Version:${FFAppState().version}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge
+                                                      ),
+                                                      Text(
+                                                        FFAppState().dId,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyLargeFamily,
+                                                                      .titleSmallFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
                                                                           FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily),
+                                                                              .titleSmallFamily),
                                                                 ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          if (FFAppState().show)
-                                            Container(
-                                              width: 285.0,
-                                              height: 310.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      height: double.infinity,
-                                                      child:
-                                                          custom_widgets.QrCode(
-                                                        width: double.infinity,
-                                                        height: double.infinity,
-                                                        data: _model.platform,
-                                                        size: 250.0,
-                                                        backgroundColor:
-                                                            Colors.black,
-                                                        foregroundColor:
-                                                            Colors.white,
                                                       ),
-                                                    ),
+                                                    ],
                                                   ),
-                                                  Text(
-                                                    FFAppState().dId,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmallFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmallFamily),
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                        ],
-                                      ),
+                                                ),
+                                            ],
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
