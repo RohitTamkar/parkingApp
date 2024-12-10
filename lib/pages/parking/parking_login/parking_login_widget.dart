@@ -464,15 +464,18 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     false,
                                                               ),
                                                             ),
-                                                            if (loginAppSettingsRecord
-                                                                    ?.settingList
-                                                                    ?.where((e) =>
-                                                                        e.title ==
-                                                                        'enableTerminal')
-                                                                    .toList()
-                                                                    ?.first
-                                                                    ?.value ??
-                                                                true)
+                                                            if (valueOrDefault<
+                                                                bool>(
+                                                              loginAppSettingsRecord
+                                                                  ?.settingList
+                                                                  ?.where((e) =>
+                                                                      e.title ==
+                                                                      'enableTerminal')
+                                                                  .toList()
+                                                                  ?.first
+                                                                  ?.value,
+                                                              false,
+                                                            ))
                                                               Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
