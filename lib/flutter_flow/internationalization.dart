@@ -4756,13 +4756,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'vuikjnjv': {
-      'en': 'Receipt Entry',
+      'en': 'Bill entry without chekout',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
     'w60jae91': {
+      'en': 'OR',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '33zb0yae': {
+      'en': 'Receipt Entry',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '843orszr': {
       'en': 'OR',
       'hi': '',
       'kn': '',

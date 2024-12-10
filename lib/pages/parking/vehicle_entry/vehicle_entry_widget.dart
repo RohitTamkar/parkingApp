@@ -450,6 +450,28 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
           ),
         ],
       ),
+      'iconOnPageLoadAnimation3': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.35, 1.35),
+          ),
+          TintEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            color: Color(0xFFFFDD42),
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -2504,6 +2526,123 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        if (widget!.appSetting?.settingList
+                                ?.where((e) => e.title == 'enableShiftEnd')
+                                .toList()
+                                ?.first
+                                ?.value ??
+                            true)
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'ParkingCheckINCopy',
+                                queryParameters: {
+                                  'shiftDoc': serializeParam(
+                                    widget!.shiftDoc,
+                                    ParamType.JSON,
+                                  ),
+                                  'userRef': serializeParam(
+                                    widget!.userRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.6,
+                              height: MediaQuery.sizeOf(context).height * 0.15,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).info,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 12.0,
+                                    color: Color(0x26000000),
+                                    offset: Offset(
+                                      9.0,
+                                      9.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Icon(
+                                        Icons.receipt_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        size: 30.0,
+                                      ).animateOnPageLoad(animationsMap[
+                                          'iconOnPageLoadAnimation1']!),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'vuikjnjv' /* Bill entry without chekout */,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLargeFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLargeFamily),
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        if (widget!.appSetting?.settingList
+                                ?.where((e) => e.title == 'enableShiftEnd')
+                                .toList()
+                                ?.first
+                                ?.value ??
+                            true)
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 25.0, 0.0, 25.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'w60jae91' /* OR */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .displayLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .displayLargeFamily,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 30.0,
+                                    letterSpacing: 5.0,
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .displayLargeFamily),
+                                  ),
+                            ),
+                          ),
                         InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -2553,13 +2692,13 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                           .primaryBtnText,
                                       size: 30.0,
                                     ).animateOnPageLoad(animationsMap[
-                                        'iconOnPageLoadAnimation1']!),
+                                        'iconOnPageLoadAnimation2']!),
                                   ),
                                   Expanded(
                                     flex: 3,
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'vuikjnjv' /* Receipt Entry */,
+                                        '33zb0yae' /* Receipt Entry */,
                                       ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -2588,7 +2727,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                               0.0, 25.0, 0.0, 25.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'w60jae91' /* OR */,
+                              '843orszr' /* OR */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .displayLarge
@@ -2656,7 +2795,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             .primaryBtnText,
                                         size: 30.0,
                                       ).animateOnPageLoad(animationsMap[
-                                          'iconOnPageLoadAnimation2']!),
+                                          'iconOnPageLoadAnimation3']!),
                                     ),
                                   ),
                                   Expanded(
