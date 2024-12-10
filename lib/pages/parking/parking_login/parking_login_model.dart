@@ -29,11 +29,11 @@ class ParkingLoginModel extends FlutterFlowModel<ParkingLoginWidget> {
   // Stores action output result for [Custom Action - checkPlatform] action in ParkingLogin widget.
   String? platform;
   // State field(s) for DropDownName widget.
-  String? dropDownNameValue1;
-  FormFieldController<String>? dropDownNameValueController1;
-  // State field(s) for DropDownName widget.
-  String? dropDownNameValue2;
-  FormFieldController<String>? dropDownNameValueController2;
+  String? dropDownNameValue;
+  FormFieldController<String>? dropDownNameValueController;
+  // State field(s) for DropDownTerminal widget.
+  String? dropDownTerminalValue;
+  FormFieldController<String>? dropDownTerminalValueController;
   // State field(s) for quickPin widget.
   FocusNode? quickPinFocusNode;
   TextEditingController? quickPinTextController;

@@ -352,7 +352,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                               FlutterFlowDropDown<
                                                                   String>(
                                                             controller: _model
-                                                                    .dropDownNameValueController1 ??=
+                                                                    .dropDownNameValueController ??=
                                                                 FormFieldController<
                                                                         String>(
                                                                     null),
@@ -363,7 +363,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     .toList(),
                                                             onChanged: (val) =>
                                                                 safeSetState(() =>
-                                                                    _model.dropDownNameValue1 =
+                                                                    _model.dropDownNameValue =
                                                                         val),
                                                             width:
                                                                 double.infinity,
@@ -432,7 +432,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                               FlutterFlowDropDown<
                                                                   String>(
                                                             controller: _model
-                                                                    .dropDownNameValueController2 ??=
+                                                                    .dropDownTerminalValueController ??=
                                                                 FormFieldController<
                                                                         String>(
                                                                     null),
@@ -475,7 +475,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                             ],
                                                             onChanged: (val) =>
                                                                 safeSetState(() =>
-                                                                    _model.dropDownNameValue2 =
+                                                                    _model.dropDownTerminalValue =
                                                                         val),
                                                             width:
                                                                 double.infinity,
@@ -730,7 +730,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                         userProfileRecord
                                                                             .where(
                                                                               'name',
-                                                                              isEqualTo: _model.dropDownNameValue1,
+                                                                              isEqualTo: _model.dropDownNameValue,
                                                                             )
                                                                             .where(
                                                                               'quickPin',
@@ -745,7 +745,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                   FFAppState()
                                                                           .terminalNo =
                                                                       _model
-                                                                          .dropDownNameValue2!;
+                                                                          .dropDownTerminalValue!;
                                                                   safeSetState(
                                                                       () {});
                                                                   _model.outletDoc =
