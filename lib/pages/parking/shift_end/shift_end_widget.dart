@@ -22,9 +22,11 @@ class ShiftEndWidget extends StatefulWidget {
   const ShiftEndWidget({
     super.key,
     this.setting,
+    this.shiftDetail,
   });
 
   final AppSettingsStruct? setting;
+  final dynamic shiftDetail;
 
   @override
   State<ShiftEndWidget> createState() => _ShiftEndWidgetState();
@@ -179,9 +181,9 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                             isEqualTo: 0,
                           )
                           .where(
-                            'dayId',
-                            isEqualTo: functions.getDayId() != ''
-                                ? functions.getDayId()
+                            'shiftId',
+                            isEqualTo: widget!.shiftDetail?.toString() != ''
+                                ? widget!.shiftDetail?.toString()
                                 : null,
                           ),
                       singleRecord: true,

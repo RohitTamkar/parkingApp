@@ -928,6 +928,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   isList: false,
                   structBuilder: AppSettingsStruct.fromSerializableMap,
                 ),
+                shiftDetail: params.getParam(
+                  'shiftDetail',
+                  ParamType.JSON,
+                ),
               ),
             ),
             FFRoute(
