@@ -420,118 +420,118 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                 false,
                                                           ),
                                                         ),
-                                                        if (false)
-                                                          Padding(
-                                                            padding:
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child:
+                                                              FlutterFlowDropDown<
+                                                                  String>(
+                                                            controller: _model
+                                                                    .dropDownNameValueController2 ??=
+                                                                FormFieldController<
+                                                                        String>(
+                                                                    null),
+                                                            options: [
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'cc2fsc35' /* Terminal 1 */,
+                                                              ),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'fjv315j2' /* Terminal 2 */,
+                                                              ),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'k0g7iuoi' /* Terminal 3 */,
+                                                              ),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'lxs6ds5n' /* Terminal 4 */,
+                                                              ),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'm1cegpjz' /* Terminal 5 */,
+                                                              ),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '5bmifi4f' /* Terminal 6 */,
+                                                              ),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '28go9499' /* Terminal 7 */,
+                                                              )
+                                                            ],
+                                                            onChanged: (val) =>
+                                                                safeSetState(() =>
+                                                                    _model.dropDownNameValue2 =
+                                                                        val),
+                                                            width:
+                                                                double.infinity,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                    ),
+                                                            hintText:
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                              'ww9ldfi8' /* Please Select Terminal... */,
+                                                            ),
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_down,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
+                                                            fillColor: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            elevation: 2.0,
+                                                            borderColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .customColor1,
+                                                            borderWidth: 0.5,
+                                                            borderRadius: 10.0,
+                                                            margin:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        10.0),
-                                                            child:
-                                                                FlutterFlowDropDown<
-                                                                    String>(
-                                                              controller: _model
-                                                                      .dropDownNameValueController2 ??=
-                                                                  FormFieldController<
-                                                                          String>(
-                                                                      null),
-                                                              options: [
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'cc2fsc35' /* Terminal 1 */,
-                                                                ),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'fjv315j2' /* Terminal 2 */,
-                                                                ),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'k0g7iuoi' /* Terminal 3 */,
-                                                                ),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'lxs6ds5n' /* Terminal 4 */,
-                                                                ),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'm1cegpjz' /* Terminal 5 */,
-                                                                ),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '5bmifi4f' /* Terminal 6 */,
-                                                                ),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '28go9499' /* Terminal 7 */,
-                                                                )
-                                                              ],
-                                                              onChanged: (val) =>
-                                                                  safeSetState(() =>
-                                                                      _model.dropDownNameValue2 =
-                                                                          val),
-                                                              width: double
-                                                                  .infinity,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                      ),
-                                                              hintText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                'ww9ldfi8' /* Please Select Terminal... */,
-                                                              ),
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                size: 24.0,
-                                                              ),
-                                                              fillColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              elevation: 2.0,
-                                                              borderColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .customColor1,
-                                                              borderWidth: 0.5,
-                                                              borderRadius:
-                                                                  10.0,
-                                                              margin:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12.0,
-                                                                          4.0,
-                                                                          12.0,
-                                                                          4.0),
-                                                              hidesUnderline:
-                                                                  true,
-                                                              isSearchable:
-                                                                  false,
-                                                              isMultiSelect:
-                                                                  false,
-                                                            ),
+                                                                        12.0,
+                                                                        4.0,
+                                                                        12.0,
+                                                                        4.0),
+                                                            hidesUnderline:
+                                                                true,
+                                                            isSearchable: false,
+                                                            isMultiSelect:
+                                                                false,
                                                           ),
+                                                        ),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -742,6 +742,12 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           s.firstOrNull);
                                                                   _shouldSetState =
                                                                       true;
+                                                                  FFAppState()
+                                                                          .terminalNo =
+                                                                      _model
+                                                                          .dropDownNameValue2!;
+                                                                  safeSetState(
+                                                                      () {});
                                                                   _model.outletDoc =
                                                                       await queryOutletRecordOnce(
                                                                     queryBuilder:

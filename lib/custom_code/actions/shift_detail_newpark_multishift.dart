@@ -52,7 +52,7 @@ Future<dynamic> shiftDetailNewparkMultishift(
           "openingAmt": doc.openingAmt,
           "cashSale": doc.cashSale,
           "paymentJson": doc.paymentJson,
-          "deviceId": doc.deviceId,
+          "ter": doc.deviceId,
         });
       } else {
         // New day, start a new shift
@@ -60,19 +60,21 @@ Future<dynamic> shiftDetailNewparkMultishift(
         print('new day end time is not updated');
       }
     } else {
-      // The shift has ended, so start a new shift
-      DateTime currentDateTime = DateTime.now();
-      var formatter = DateFormat('yyyy-MM-dd');
-      String currentDate = formatter.format(currentDateTime);
-      DateTime shiftStartTime =
-          DateTime.fromMillisecondsSinceEpoch(doc.startTime);
-      String shiftDate = formatter.format(shiftStartTime);
-      if (currentDate == shiftDate) {
-        shiftCount++;
-        print('shcount$shiftCount');
-      } else {
-        print('The day end time is not updated');
+      if (doc.terminalNo == FFAppState().terminalNo) {
+        DateTime currentDateTime = DateTime.now();
+        var formatter = DateFormat('yyyy-MM-dd');
+        String currentDate = formatter.format(currentDateTime);
+        DateTime shiftStartTime =
+            DateTime.fromMillisecondsSinceEpoch(doc.startTime);
+        String shiftDate = formatter.format(shiftStartTime);
+        if (currentDate == shiftDate) {
+          shiftCount++;
+          print('shcount$shiftCount');
+        } else {
+          print('The day end time is not updated');
+        }
       }
+      // The shift has ended, so start a new shift
     }
   }
   if (flag == false && shiftlist.isNotEmpty) {

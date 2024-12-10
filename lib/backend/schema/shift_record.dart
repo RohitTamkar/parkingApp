@@ -161,6 +161,11 @@ class ShiftRecord extends FirestoreRecord {
   List<SelItemListStruct> get productSaleList => _productSaleList ?? const [];
   bool hasProductSaleList() => _productSaleList != null;
 
+  // "terminalNo" field.
+  String? _terminalNo;
+  String get terminalNo => _terminalNo ?? '';
+  bool hasTerminalNo() => _terminalNo != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -197,6 +202,7 @@ class ShiftRecord extends FirestoreRecord {
       snapshotData['productSaleList'],
       SelItemListStruct.fromMap,
     );
+    _terminalNo = snapshotData['terminalNo'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -266,6 +272,7 @@ Map<String, dynamic> createShiftRecordData({
   String? userId,
   String? deviceId,
   String? paymentJson,
+  String? terminalNo,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -297,6 +304,7 @@ Map<String, dynamic> createShiftRecordData({
       'userId': userId,
       'deviceId': deviceId,
       'paymentJson': paymentJson,
+      'terminalNo': terminalNo,
     }.withoutNulls,
   );
 
@@ -337,7 +345,8 @@ class ShiftRecordDocumentEquality implements Equality<ShiftRecord> {
         e1?.userId == e2?.userId &&
         e1?.deviceId == e2?.deviceId &&
         e1?.paymentJson == e2?.paymentJson &&
-        listEquality.equals(e1?.productSaleList, e2?.productSaleList);
+        listEquality.equals(e1?.productSaleList, e2?.productSaleList) &&
+        e1?.terminalNo == e2?.terminalNo;
   }
 
   @override
@@ -370,7 +379,8 @@ class ShiftRecordDocumentEquality implements Equality<ShiftRecord> {
         e?.userId,
         e?.deviceId,
         e?.paymentJson,
-        e?.productSaleList
+        e?.productSaleList,
+        e?.terminalNo
       ]);
 
   @override

@@ -3548,6 +3548,12 @@ class FFAppState extends ChangeNotifier {
   set invoiceRef2(DocumentReference? value) {
     _invoiceRef2 = value;
   }
+
+  String _terminalNo = '';
+  String get terminalNo => _terminalNo;
+  set terminalNo(String value) {
+    _terminalNo = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {
