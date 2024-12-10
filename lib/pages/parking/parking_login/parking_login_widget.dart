@@ -326,7 +326,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
 
                                                 return Container(
                                                   width: double.infinity,
-                                                  height: 200.0,
+                                                  height: 300.0,
                                                   decoration: BoxDecoration(),
                                                   child: Padding(
                                                     padding:
