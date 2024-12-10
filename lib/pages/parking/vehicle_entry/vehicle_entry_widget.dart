@@ -2303,7 +2303,16 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed('ShiftEnd');
+                                                context.pushNamed(
+                                                  'ShiftEnd',
+                                                  queryParameters: {
+                                                    'shiftDetail':
+                                                        serializeParam(
+                                                      widget!.shiftDoc,
+                                                      ParamType.JSON,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
                                               },
                                               child: Container(
                                                 height:
