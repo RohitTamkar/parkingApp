@@ -182,8 +182,15 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                           )
                           .where(
                             'shiftId',
-                            isEqualTo: widget!.shiftDetail?.toString() != ''
-                                ? widget!.shiftDetail?.toString()
+                            isEqualTo: getJsonField(
+                                      widget!.shiftDetail,
+                                      r'''$.shiftId''',
+                                    ).toString() !=
+                                    ''
+                                ? getJsonField(
+                                    widget!.shiftDetail,
+                                    r'''$.shiftId''',
+                                  ).toString()
                                 : null,
                           ),
                       singleRecord: true,
