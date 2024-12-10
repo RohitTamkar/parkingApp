@@ -754,25 +754,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           s.firstOrNull);
                                                                   _shouldSetState =
                                                                       true;
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        content:
-                                                                            Text('ok'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
                                                                   FFAppState()
                                                                           .terminalNo =
                                                                       _model
