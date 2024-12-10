@@ -13,6 +13,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 Future<dynamic> shiftDetailNewparkMultishift(
     List<ShiftRecord>? shiftlist) async {
   List<dynamic> docRecord = [];
@@ -29,35 +31,37 @@ Future<dynamic> shiftDetailNewparkMultishift(
           DateTime.fromMillisecondsSinceEpoch(doc.startTime);
       String shiftDate = formatter.format(shiftStartTime);
       if (currentDate == shiftDate) {
-        // Same day, the shift is resumed
-        // Same day, the shift is resumed
-        flag = true;
-        docRecord.add({
-          "ref": doc.id,
-          "shiftId": doc.shiftId,
-          "dayId": doc.dayId,
-          "billCount": doc.billCount,
-          "msg": "Shift resumed",
-          "shiftExists": true,
-          "totalSale": doc.totalSale,
-          "lastBillNo": doc.lastBillNo,
-          "deliveryCharges": doc.deliveryCharges,
-          "discount": doc.discount,
-          "tax": doc.tax,
-          "shiftCount": ++shiftCount,
-          "endTime": doc.endTime,
-          "startTime": doc.startTime,
-          "startTimeFormat": doc.startTime, //"dd-mmm-yyyy  h:MM:ss"),
-          "lastBillTime": doc.lastBillTime,
-          "openingAmt": doc.openingAmt,
-          "cashSale": doc.cashSale,
-          "paymentJson": doc.paymentJson,
-          "ter": doc.deviceId,
-        });
-      } else {
-        // New day, start a new shift
-
-        print('new day end time is not updated');
+        if (doc.terminalNo == FFAppState().terminalNo) {
+          // Same day, the shift is resumed
+          // Same day, the shift is resumed
+          flag = true;
+          docRecord.add({
+            "ref": doc.id,
+            "shiftId": doc.shiftId,
+            "dayId": doc.dayId,
+            "billCount": doc.billCount,
+            "msg": "Shift resumed",
+            "shiftExists": true,
+            "totalSale": doc.totalSale,
+            "lastBillNo": doc.lastBillNo,
+            "deliveryCharges": doc.deliveryCharges,
+            "discount": doc.discount,
+            "tax": doc.tax,
+            "shiftCount": ++shiftCount,
+            "endTime": doc.endTime,
+            "startTime": doc.startTime,
+            "startTimeFormat": doc.startTime, //"dd-mmm-yyyy  h:MM:ss"),
+            "lastBillTime": doc.lastBillTime,
+            "openingAmt": doc.openingAmt,
+            "cashSale": doc.cashSale,
+            "paymentJson": doc.paymentJson,
+            "ter": doc.deviceId,
+          });
+        } else {
+          // New day, start a new shift
+          shiftCount++;
+          print('new day end time is not updated');
+        }
       }
     } else {
       if (doc.terminalNo == FFAppState().terminalNo) {
