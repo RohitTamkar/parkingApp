@@ -820,7 +820,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                         if (_model.userProfile?.reference !=
                                                                             null) {
                                                                           _model.shiftDetailsNew =
-                                                                              await actions.shiftDetailNewpark(
+                                                                              await actions.shiftDetailNewparkMultishift(
                                                                             _model.shiftlist?.toList(),
                                                                           );
                                                                           _shouldSetState =

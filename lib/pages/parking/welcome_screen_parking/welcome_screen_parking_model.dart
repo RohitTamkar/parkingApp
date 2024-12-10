@@ -45,7 +45,7 @@ class WelcomeScreenParkingModel
   List<ShiftRecord>? shiftdetailfirebase;
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
   OutletRecord? outletdetails23;
-  // Stores action output result for [Custom Action - shiftDetailNewpark] action in welcomeScreenParking widget.
+  // Stores action output result for [Custom Action - shiftDetailNewparkMultishift] action in welcomeScreenParking widget.
   dynamic? shiftDetailsNewcar;
 
   @override

@@ -897,9 +897,8 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                           .outletIdRef,
                                                     );
                                                     _shouldSetState = true;
-                                                    _model.newShift =
-                                                        await actions
-                                                            .shiftDetailNewpark(
+                                                    _model.newShift = await actions
+                                                        .shiftDetailNewparkMultishift(
                                                       _model.shiftList
                                                           ?.toList(),
                                                     );
@@ -980,7 +979,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                     _shouldSetState = true;
                                                     _model.shiftdetailds23 =
                                                         await actions
-                                                            .shiftDetailNewpark(
+                                                            .shiftDetailNewparkMultishift(
                                                       _model.shiftresumed
                                                           ?.toList(),
                                                     );

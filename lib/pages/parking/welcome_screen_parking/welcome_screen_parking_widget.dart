@@ -213,7 +213,8 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
       safeSetState(() {});
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
         if ((_model.userProfile != null) == true) {
-          _model.shiftDetailsNewcar = await actions.shiftDetailNewpark(
+          _model.shiftDetailsNewcar =
+              await actions.shiftDetailNewparkMultishift(
             _model.shiftdetailfirebase?.toList(),
           );
           FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
