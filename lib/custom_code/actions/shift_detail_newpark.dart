@@ -50,7 +50,8 @@ Future<dynamic> shiftDetailNewpark(List<ShiftRecord>? shiftlist) async {
           "lastBillTime": doc.lastBillTime,
           "openingAmt": doc.openingAmt,
           "cashSale": doc.cashSale,
-          "paymentJson": doc.paymentJson
+          "paymentJson": doc.paymentJson,
+          "deviceId": doc.deviceId,
         });
       } else {
         // New day, start a new shift

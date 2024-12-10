@@ -823,6 +823,8 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                         paymentJson:
                                                             '{\"cash\":0,\"credit\":0,\"cheque\":0,\"digital\":0,\"card\":0,\"googlepay\":0,\"phonepe\":0,\"paytm\":0,\"other\":0,\"loyaltypoint\":0,\"upi_qr\":0,\"complementary\":0.0}',
                                                         userId: widget!.doc?.id,
+                                                        deviceId:
+                                                            FFAppState().dId,
                                                       ));
                                                       _model.shiftDoc1 = ShiftRecord
                                                           .getDocumentFromData(
@@ -854,6 +856,9 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                                     '{\"cash\":0,\"credit\":0,\"cheque\":0,\"digital\":0,\"card\":0,\"googlepay\":0,\"phonepe\":0,\"paytm\":0,\"other\":0,\"loyaltypoint\":0,\"upi_qr\":0,\"complementary\":0.0}',
                                                                 userId: widget!
                                                                     .doc?.id,
+                                                                deviceId:
+                                                                    FFAppState()
+                                                                        .dId,
                                                               ),
                                                               shiftRecordReference);
                                                       _shouldSetState = true;
