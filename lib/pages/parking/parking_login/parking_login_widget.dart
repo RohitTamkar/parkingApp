@@ -683,6 +683,18 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                               parent:
                                                                   containerDeviceRecord
                                                                       ?.outletRef,
+                                                              queryBuilder:
+                                                                  (appSettingsRecord) =>
+                                                                      appSettingsRecord
+                                                                          .where(
+                                                                'deviceId',
+                                                                isEqualTo: FFAppState()
+                                                                            .dId !=
+                                                                        ''
+                                                                    ? FFAppState()
+                                                                        .dId
+                                                                    : null,
+                                                              ),
                                                               singleRecord:
                                                                   true,
                                                             ),
@@ -742,6 +754,25 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           s.firstOrNull);
                                                                   _shouldSetState =
                                                                       true;
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return AlertDialog(
+                                                                        content:
+                                                                            Text('ok'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                            child:
+                                                                                Text('Ok'),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  );
                                                                   FFAppState()
                                                                           .terminalNo =
                                                                       _model
