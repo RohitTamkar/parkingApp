@@ -71,10 +71,15 @@ class _ShiftWiseVehicleReportWidgetState
     return StreamBuilder<List<InvoiceRecord>>(
       stream: queryInvoiceRecord(
         parent: FFAppState().outletIdRef,
-        queryBuilder: (invoiceRecord) => invoiceRecord.where(
-          'vechicleType',
-          isEqualTo: widget!.vehicleType,
-        ),
+        queryBuilder: (invoiceRecord) => invoiceRecord
+            .where(
+              'vechicleType',
+              isEqualTo: widget!.vehicleType,
+            )
+            .where(
+              'shiftId',
+              isEqualTo: widget!.docRef2?.shiftId,
+            ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
