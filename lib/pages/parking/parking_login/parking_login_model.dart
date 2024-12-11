@@ -37,6 +37,7 @@ class ParkingLoginModel extends FlutterFlowModel<ParkingLoginWidget> {
   // State field(s) for quickPin widget.
   FocusNode? quickPinFocusNode;
   TextEditingController? quickPinTextController;
+  late bool quickPinVisibility;
   String? Function(BuildContext, String?)? quickPinTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   UserProfileRecord? userProfile;
@@ -52,7 +53,9 @@ class ParkingLoginModel extends FlutterFlowModel<ParkingLoginWidget> {
   dynamic? shiftDetailsNew2;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    quickPinVisibility = false;
+  }
 
   @override
   void dispose() {

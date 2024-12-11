@@ -619,8 +619,8 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                 ),
                                                                 autofocus:
                                                                     false,
-                                                                obscureText:
-                                                                    false,
+                                                                obscureText: !_model
+                                                                    .quickPinVisibility,
                                                                 decoration:
                                                                     InputDecoration(
                                                                   isDense:
@@ -699,6 +699,31 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                   fillColor: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
+                                                                  suffixIcon:
+                                                                      InkWell(
+                                                                    onTap: () =>
+                                                                        safeSetState(
+                                                                      () => _model
+                                                                              .quickPinVisibility =
+                                                                          !_model
+                                                                              .quickPinVisibility,
+                                                                    ),
+                                                                    focusNode: FocusNode(
+                                                                        skipTraversal:
+                                                                            true),
+                                                                    child: Icon(
+                                                                      _model.quickPinVisibility
+                                                                          ? Icons
+                                                                              .visibility_outlined
+                                                                          : Icons
+                                                                              .visibility_off_outlined,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      size:
+                                                                          15.0,
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
