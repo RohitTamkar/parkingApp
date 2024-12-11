@@ -366,6 +366,8 @@ class _ShiftWiseVehicleReportWidgetState
                                     padding: EdgeInsets.all(5.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Expanded(
                                           child: Text(
@@ -415,6 +417,7 @@ class _ShiftWiseVehicleReportWidgetState
                                           ),
                                         ),
                                         Expanded(
+                                          flex: 2,
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               'gu7i0b3v' /* Shift Id */,
@@ -438,6 +441,7 @@ class _ShiftWiseVehicleReportWidgetState
                                           ),
                                         ),
                                         Expanded(
+                                          flex: 2,
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               'dvc9hibv' /* Net Amt */,
@@ -563,7 +567,7 @@ class _ShiftWiseVehicleReportWidgetState
                                                           ),
                                                         ),
                                                         Expanded(
-                                                          flex: 1,
+                                                          flex: 2,
                                                           child: Text(
                                                             billWiseSaleReportVarItem
                                                                 .shiftId,
@@ -585,6 +589,7 @@ class _ShiftWiseVehicleReportWidgetState
                                                           ),
                                                         ),
                                                         Expanded(
+                                                          flex: 2,
                                                           child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -614,29 +619,30 @@ class _ShiftWiseVehicleReportWidgetState
                                                                               FlutterFlowTheme.of(context).labelSmallFamily),
                                                                     ),
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  billWiseSaleReportVarItem
-                                                                      .finalBillAmt
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                      ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    billWiseSaleReportVarItem
+                                                                        .finalBillAmt
+                                                                        .toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                        ),
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
