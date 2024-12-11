@@ -153,7 +153,7 @@ class _ShiftWiseVehicleReportWidgetState
                               FFAppState().paperSize,
                               shiftWiseVehicleReportInvoiceRecordList.toList(),
                               widget!.vehicleType!,
-                              '',
+                              widget!.docRef2!.shiftId,
                             );
                           } else {
                             await showDialog(
