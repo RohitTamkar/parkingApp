@@ -194,6 +194,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),
                         ),
+                    keyboardType: TextInputType.number,
                     validator:
                         _model.textControllerValidator.asValidator(context),
                   ),

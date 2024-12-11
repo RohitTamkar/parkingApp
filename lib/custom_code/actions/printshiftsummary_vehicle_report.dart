@@ -249,14 +249,14 @@ Future printshiftsummaryVehicleReport(
       //         bold: false));
       // printLine = '';
 
-      bytes += generator.text("Vehicle Type: $vehicleType",
+      bytes += generator.text("Vehicle Type : $vehicleType",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
               bold: true,
               align: PosAlign.center));
 
-      bytes += generator.text("Shift ID: $shiftId",
+      bytes += generator.text("Shift ID : $shiftId",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
@@ -305,7 +305,7 @@ Future printshiftsummaryVehicleReport(
           ),
           PosColumn(
               text: invoice.vechicleNo.toString(),
-              width: 5,
+              width: 3,
               styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
@@ -313,7 +313,7 @@ Future printshiftsummaryVehicleReport(
               )),
           PosColumn(
             text: invoice.shiftId,
-            width: 3,
+            width: 5,
             styles: PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
