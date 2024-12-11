@@ -2535,12 +2535,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (widget!.appSetting?.settingList
-                                ?.where((e) => e.title == 'enableShiftEnd')
-                                .toList()
-                                ?.first
-                                ?.value ??
-                            true)
+                        if (false)
                           InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -2623,12 +2618,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                               ),
                             ),
                           ),
-                        if (widget!.appSetting?.settingList
-                                ?.where((e) => e.title == 'enableShiftEnd')
-                                .toList()
-                                ?.first
-                                ?.value ??
-                            true)
+                        if (false)
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 25.0, 0.0, 25.0),

@@ -176,6 +176,16 @@ class InvoiceRecord extends FirestoreRecord {
   String get kotStatus => _kotStatus ?? '';
   bool hasKotStatus() => _kotStatus != null;
 
+  // "checkInTerminal" field.
+  String? _checkInTerminal;
+  String get checkInTerminal => _checkInTerminal ?? '';
+  bool hasCheckInTerminal() => _checkInTerminal != null;
+
+  // "checkOutTerminal" field.
+  String? _checkOutTerminal;
+  String get checkOutTerminal => _checkOutTerminal ?? '';
+  bool hasCheckOutTerminal() => _checkOutTerminal != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -214,6 +224,8 @@ class InvoiceRecord extends FirestoreRecord {
     _duration = castToType<double>(snapshotData['duration']);
     _orderType = snapshotData['orderType'] as String?;
     _kotStatus = snapshotData['kotStatus'] as String?;
+    _checkInTerminal = snapshotData['checkInTerminal'] as String?;
+    _checkOutTerminal = snapshotData['checkOutTerminal'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -287,6 +299,8 @@ Map<String, dynamic> createInvoiceRecordData({
   double? duration,
   String? orderType,
   String? kotStatus,
+  String? checkInTerminal,
+  String? checkOutTerminal,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -321,6 +335,8 @@ Map<String, dynamic> createInvoiceRecordData({
       'duration': duration,
       'orderType': orderType,
       'kotStatus': kotStatus,
+      'checkInTerminal': checkInTerminal,
+      'checkOutTerminal': checkOutTerminal,
     }.withoutNulls,
   );
 
@@ -364,7 +380,9 @@ class InvoiceRecordDocumentEquality implements Equality<InvoiceRecord> {
         e1?.count == e2?.count &&
         e1?.duration == e2?.duration &&
         e1?.orderType == e2?.orderType &&
-        e1?.kotStatus == e2?.kotStatus;
+        e1?.kotStatus == e2?.kotStatus &&
+        e1?.checkInTerminal == e2?.checkInTerminal &&
+        e1?.checkOutTerminal == e2?.checkOutTerminal;
   }
 
   @override
@@ -400,7 +418,9 @@ class InvoiceRecordDocumentEquality implements Equality<InvoiceRecord> {
         e?.count,
         e?.duration,
         e?.orderType,
-        e?.kotStatus
+        e?.kotStatus,
+        e?.checkInTerminal,
+        e?.checkOutTerminal
       ]);
 
   @override

@@ -302,6 +302,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           .millisecondsSinceEpoch),
                                   0.0,
                                 ),
+                                checkOutTerminal: FFAppState().terminalNo,
                               ));
                               _model.docinvqr = await queryInvoiceRecordOnce(
                                 parent: FFAppState().outletIdRef,
@@ -438,6 +439,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           .millisecondsSinceEpoch),
                                   0.0,
                                 ),
+                                checkOutTerminal: FFAppState().terminalNo,
                               ));
                               _model.docinvqr2 = await queryInvoiceRecordOnce(
                                 parent: FFAppState().outletIdRef,
@@ -681,6 +683,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           .millisecondsSinceEpoch),
                                   0.0,
                                 ),
+                                checkOutTerminal: FFAppState().terminalNo,
                               ));
                               await showDialog(
                                 context: context,
@@ -736,6 +739,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           .millisecondsSinceEpoch),
                                   0.0,
                                 ),
+                                checkOutTerminal: FFAppState().terminalNo,
                               ));
                               _model.savebill = await queryInvoiceRecordOnce(
                                 parent: FFAppState().outletIdRef,

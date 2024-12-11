@@ -1441,6 +1441,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 _model.dropDownvechicleValue,
                                             count: FFAppState().newcount,
                                             checkOutTime: 0,
+                                            checkInTerminal:
+                                                FFAppState().terminalNo,
+                                            checkOutTerminal: '0',
                                           ),
                                           ...mapToFirestore(
                                             {
@@ -1499,6 +1502,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 _model.dropDownvechicleValue,
                                             count: FFAppState().newcount,
                                             checkOutTime: 0,
+                                            checkInTerminal:
+                                                FFAppState().terminalNo,
+                                            checkOutTerminal: '0',
                                           ),
                                           ...mapToFirestore(
                                             {
@@ -1911,6 +1917,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 _model.dropDownvechicleValue,
                                             count: FFAppState().newcount,
                                             checkOutTime: 0,
+                                            checkInTerminal:
+                                                FFAppState().terminalNo,
+                                            checkOutTerminal: '0',
                                           ),
                                           ...mapToFirestore(
                                             {
@@ -1969,6 +1978,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 _model.dropDownvechicleValue,
                                             count: FFAppState().newcount,
                                             checkOutTime: 0,
+                                            checkInTerminal:
+                                                FFAppState().terminalNo,
+                                            checkOutTerminal: '0',
                                           ),
                                           ...mapToFirestore(
                                             {
