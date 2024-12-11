@@ -717,6 +717,9 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                 textAlign:
                                                                     TextAlign
                                                                         .start,
+                                                                keyboardType:
+                                                                    TextInputType
+                                                                        .number,
                                                                 validator: _model
                                                                     .quickPinTextControllerValidator
                                                                     .asValidator(
