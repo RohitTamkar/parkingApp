@@ -250,7 +250,7 @@ class _ShiftWiseVehicleReportWidgetState
                                         ),
                                         AutoSizeText(
                                           FFLocalizations.of(context).getText(
-                                            'jnpohwyk' /* Bill Summary */,
+                                            'jnpohwyk' /* Shift Summary Vehicle Report */,
                                           ),
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
@@ -328,11 +328,9 @@ class _ShiftWiseVehicleReportWidgetState
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          dateTimeFormat(
-                                            "d/M/y",
-                                            FFAppState().startDate,
-                                            locale: FFLocalizations.of(context)
-                                                .languageCode,
+                                          valueOrDefault<String>(
+                                            widget!.docRef2?.shiftId,
+                                            '0',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -477,8 +475,6 @@ class _ShiftWiseVehicleReportWidgetState
                                       builder: (context) {
                                         final billWiseSaleReportVar =
                                             shiftWiseVehicleReportInvoiceRecordList
-                                                .where(
-                                                    (e) => e.checkOutTime != 0)
                                                 .toList();
                                         if (billWiseSaleReportVar.isEmpty) {
                                           return Center(

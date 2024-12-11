@@ -8642,7 +8642,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // shiftWiseVehicleReport
   {
     'jnpohwyk': {
-      'en': 'Bill Summary',
+      'en': 'Shift Summary Vehicle Report',
       'hi': '',
       'kn': '',
       'mr': '',
