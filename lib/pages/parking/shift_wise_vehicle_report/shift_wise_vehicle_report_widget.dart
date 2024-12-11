@@ -243,18 +243,7 @@ class _ShiftWiseVehicleReportWidgetState
                                             size: 24.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
-                                              'shiftSummaryReport',
-                                              queryParameters: {
-                                                'docRef': serializeParam(
-                                                  widget!.docRef2,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'docRef': widget!.docRef2,
-                                              },
-                                            );
+                                            context.safePop();
                                           },
                                         ),
                                         AutoSizeText(
