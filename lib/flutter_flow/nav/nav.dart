@@ -958,9 +958,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ShiftDetailsWidget(),
             ),
             FFRoute(
-              name: 'billwisesalereportCopy',
-              path: 'billwisesalereportCopy',
-              builder: (context, params) => BillwisesalereportCopyWidget(),
+              name: 'shiftWiseVehicleReport',
+              path: 'shiftWiseVehicleReport',
+              builder: (context, params) => ShiftWiseVehicleReportWidget(
+                vehicleType: params.getParam(
+                  'vehicleType',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

@@ -8639,7 +8639,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
-  // billwisesalereportCopy
+  // shiftWiseVehicleReport
   {
     'jnpohwyk': {
       'en': 'Bill Summary',
@@ -8663,7 +8663,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'gu7i0b3v': {
-      'en': 'Out Date',
+      'en': 'Shift Id',
       'hi': '',
       'kn': '',
       'mr': '',
