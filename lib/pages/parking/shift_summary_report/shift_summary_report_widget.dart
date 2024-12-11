@@ -313,7 +313,14 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                     listItem.vechicleType,
                                                     ParamType.String,
                                                   ),
+                                                  'docRef2': serializeParam(
+                                                    widget!.docRef,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'docRef2': widget!.docRef,
+                                                },
                                               );
                                             },
                                             child: Container(

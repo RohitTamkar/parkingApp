@@ -20,9 +20,11 @@ class ShiftWiseVehicleReportWidget extends StatefulWidget {
   const ShiftWiseVehicleReportWidget({
     super.key,
     this.vehicleType,
+    this.docRef2,
   });
 
   final String? vehicleType;
+  final ShiftRecord? docRef2;
 
   @override
   State<ShiftWiseVehicleReportWidget> createState() =>

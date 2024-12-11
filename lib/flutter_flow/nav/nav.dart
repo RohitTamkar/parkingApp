@@ -960,10 +960,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'shiftWiseVehicleReport',
               path: 'shiftWiseVehicleReport',
+              asyncParams: {
+                'docRef2':
+                    getDoc(['OUTLET', 'SHIFT'], ShiftRecord.fromSnapshot),
+              },
               builder: (context, params) => ShiftWiseVehicleReportWidget(
                 vehicleType: params.getParam(
                   'vehicleType',
                   ParamType.String,
+                ),
+                docRef2: params.getParam(
+                  'docRef2',
+                  ParamType.Document,
                 ),
               ),
             )
