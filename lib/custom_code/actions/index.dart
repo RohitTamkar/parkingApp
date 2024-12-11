@@ -122,6 +122,8 @@ export 'barcode_random_generated.dart' show barcodeRandomGenerated;
 export 'product_details.dart' show productDetails;
 export 'check_dup_product.dart' show checkDupProduct;
 export 'genarate_category_code.dart' show genarateCategoryCode;
+export 'printshiftsummary_vehicle_report.dart'
+    show printshiftsummaryVehicleReport;
 export 'check_dup_category.dart' show checkDupCategory;
 export 'access_dropdown.dart' show accessDropdown;
 export 'user_access_new.dart' show userAccessNew;

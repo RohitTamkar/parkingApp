@@ -191,7 +191,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pushNamed('ShiftDetails');
+                                      context.safePop();
                                     },
                                   ),
                                   Text(

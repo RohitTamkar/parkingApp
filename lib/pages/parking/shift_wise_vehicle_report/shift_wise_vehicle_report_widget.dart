@@ -243,18 +243,7 @@ class _ShiftWiseVehicleReportWidgetState
                                             size: 24.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
-                                              'shiftSummaryReport',
-                                              queryParameters: {
-                                                'docRef': serializeParam(
-                                                  widget!.docRef2,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'docRef': widget!.docRef2,
-                                              },
-                                            );
+                                            context.safePop();
                                           },
                                         ),
                                         AutoSizeText(
@@ -576,15 +565,8 @@ class _ShiftWiseVehicleReportWidgetState
                                                         Expanded(
                                                           flex: 1,
                                                           child: Text(
-                                                            dateTimeFormat(
-                                                              "d/M/y",
-                                                              DateTime.fromMillisecondsSinceEpoch(
-                                                                  billWiseSaleReportVarItem
-                                                                      .checkOutTime),
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            ),
+                                                            billWiseSaleReportVarItem
+                                                                .shiftId,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelSmall
