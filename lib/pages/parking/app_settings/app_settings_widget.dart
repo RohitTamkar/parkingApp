@@ -148,98 +148,109 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                                     .headlineSmallFamily),
                                       ),
                                 ),
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    await appSettingsAppSettingsRecord!
-                                        .reference
-                                        .update({
-                                      ...mapToFirestore(
-                                        {
-                                          'settingList':
-                                              getAppSettingsListFirestoreData(
-                                            FFAppState().appSettings,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      await appSettingsAppSettingsRecord!
+                                          .reference
+                                          .update({
+                                        ...mapToFirestore(
+                                          {
+                                            'settingList':
+                                                getAppSettingsListFirestoreData(
+                                              FFAppState().appSettings,
+                                            ),
+                                          },
+                                        ),
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Changes Applied....!',
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmallFamily,
+                                                  color: Color(0x00000000),
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineSmallFamily),
+                                                ),
                                           ),
-                                        },
-                                      ),
-                                    });
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Changes Applied....!',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmallFamily,
-                                                color: Color(0x00000000),
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineSmallFamily),
-                                              ),
-                                        ),
-                                        duration: Duration(milliseconds: 3000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                      ),
-                                    );
-
-                                    context.pushNamed(
-                                      'welcomeScreenParking',
-                                      queryParameters: {
-                                        'appSettings': serializeParam(
-                                          appSettingsAppSettingsRecord,
-                                          ParamType.Document,
-                                        ),
-                                        'shiftDoc': serializeParam(
-                                          FFAppState().shiftDetailsNEw,
-                                          ParamType.JSON,
-                                        ),
-                                        'outletRef': serializeParam(
-                                          FFAppState().outletIdRef,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'appSettings':
-                                            appSettingsAppSettingsRecord,
-                                      },
-                                    );
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    '44kpbe66' /* Apply */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    padding: EdgeInsets.all(20.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .parkingSecondaryBackground,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily:
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
-                                          color: Colors.white,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                                  .alternate,
                                         ),
-                                    elevation: 2.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                      );
+
+                                      context.pushNamed(
+                                        'welcomeScreenParking',
+                                        queryParameters: {
+                                          'appSettings': serializeParam(
+                                            appSettingsAppSettingsRecord,
+                                            ParamType.Document,
+                                          ),
+                                          'shiftDoc': serializeParam(
+                                            FFAppState().shiftDetailsNEw,
+                                            ParamType.JSON,
+                                          ),
+                                          'outletRef': serializeParam(
+                                            FFAppState().outletIdRef,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSettings':
+                                              appSettingsAppSettingsRecord,
+                                        },
+                                      );
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '44kpbe66' /* Apply */,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    options: FFButtonOptions(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.25,
+                                      height: 40.0,
+                                      padding: EdgeInsets.all(20.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .parkingSecondaryBackground,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: Colors.white,
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                      elevation: 2.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                   ),
                                 ),
                               ],

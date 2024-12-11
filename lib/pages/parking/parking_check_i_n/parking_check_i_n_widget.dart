@@ -1889,15 +1889,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               0.0,
                                             ),
                                             taxAmt: 0.0,
-                                            billAmt: valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
-                                            finalBillAmt:
-                                                valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
+                                            billAmt: 0.0,
+                                            finalBillAmt: 0.0,
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
                                               widget!.shiftDoc,
@@ -1950,15 +1943,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               0.0,
                                             ),
                                             taxAmt: 0.0,
-                                            billAmt: valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
-                                            finalBillAmt:
-                                                valueOrDefault<double>(
-                                              FFAppState().parkingCharges,
-                                              0.0,
-                                            ),
+                                            billAmt: 0.0,
+                                            finalBillAmt: 0.0,
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
                                               widget!.shiftDoc,
