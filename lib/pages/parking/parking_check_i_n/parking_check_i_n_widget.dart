@@ -26,10 +26,12 @@ class ParkingCheckINWidget extends StatefulWidget {
     super.key,
     this.shiftDoc,
     this.userRef,
+    this.appSetting,
   });
 
   final dynamic shiftDoc;
   final DocumentReference? userRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<ParkingCheckINWidget> createState() => _ParkingCheckINWidgetState();
@@ -1413,8 +1415,26 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               0.0,
                                             ),
                                             taxAmt: 0.0,
-                                            billAmt: 0.0,
-                                            finalBillAmt: 0.0,
+                                            billAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
+                                            finalBillAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
                                               widget!.shiftDoc,
@@ -1467,8 +1487,26 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               0.0,
                                             ),
                                             taxAmt: 0.0,
-                                            billAmt: 0.0,
-                                            finalBillAmt: 0.0,
+                                            billAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
+                                            finalBillAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
                                               widget!.shiftDoc,
@@ -1875,8 +1913,26 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               0.0,
                                             ),
                                             taxAmt: 0.0,
-                                            billAmt: 0.0,
-                                            finalBillAmt: 0.0,
+                                            billAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
+                                            finalBillAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
                                               widget!.shiftDoc,
@@ -1929,8 +1985,26 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               0.0,
                                             ),
                                             taxAmt: 0.0,
-                                            billAmt: 0.0,
-                                            finalBillAmt: 0.0,
+                                            billAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
+                                            finalBillAmt: widget!
+                                                    .appSetting!.settingList
+                                                    .where((e) =>
+                                                        e.title ==
+                                                        'parkingChargeZero')
+                                                    .toList()
+                                                    .first
+                                                    .value
+                                                ? 0.0
+                                                : FFAppState().parkingCharges,
                                             roundOff: 0.0,
                                             shiftId: getJsonField(
                                               widget!.shiftDoc,

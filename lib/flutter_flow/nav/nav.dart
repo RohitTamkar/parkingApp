@@ -338,6 +338,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ParkingCheckIN',
               path: 'parkingCheckIN',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => ParkingCheckINWidget(
                 shiftDoc: params.getParam(
                   'shiftDoc',
@@ -348,6 +352,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['USER_PROFILE'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
