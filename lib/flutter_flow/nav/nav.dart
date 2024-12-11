@@ -956,6 +956,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ShiftDetails',
               path: 'shiftDetails',
               builder: (context, params) => ShiftDetailsWidget(),
+            ),
+            FFRoute(
+              name: 'billwisesalereportCopy',
+              path: 'billwisesalereportCopy',
+              builder: (context, params) => BillwisesalereportCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

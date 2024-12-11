@@ -147,3 +147,5 @@ export '/pages/parking/shift_summary_report/shift_summary_report_widget.dart'
     show ShiftSummaryReportWidget;
 export '/pages/parking/shift_details/shift_details_widget.dart'
     show ShiftDetailsWidget;
+export '/pages/parking/billwisesalereport_copy/billwisesalereport_copy_widget.dart'
+    show BillwisesalereportCopyWidget;

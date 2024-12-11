@@ -8639,6 +8639,58 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
+  // billwisesalereportCopy
+  {
+    'jnpohwyk': {
+      'en': 'Bill Summary',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'lvdxet1o': {
+      'en': 'No',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ku2mbyas': {
+      'en': 'vehicle No',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'gu7i0b3v': {
+      'en': 'Out Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'dvc9hibv': {
+      'en': 'Net Amt',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'z3r3jw7n': {
+      'en': '₹',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'finjdl60': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
   // Keyboard
   {
     '6bhkeqbn': {

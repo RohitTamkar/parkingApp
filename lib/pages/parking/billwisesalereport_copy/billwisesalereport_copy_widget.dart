@@ -1,8 +1,11 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/parking/email_input/email_input_widget.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -13,37 +16,39 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'dailly_collection_report_model.dart';
-export 'dailly_collection_report_model.dart';
+import 'billwisesalereport_copy_model.dart';
+export 'billwisesalereport_copy_model.dart';
 
-class DaillyCollectionReportWidget extends StatefulWidget {
+class BillwisesalereportCopyWidget extends StatefulWidget {
   /// parking app
-  const DaillyCollectionReportWidget({super.key});
+  const BillwisesalereportCopyWidget({super.key});
 
   @override
-  State<DaillyCollectionReportWidget> createState() =>
-      _DaillyCollectionReportWidgetState();
+  State<BillwisesalereportCopyWidget> createState() =>
+      _BillwisesalereportCopyWidgetState();
 }
 
-class _DaillyCollectionReportWidgetState
-    extends State<DaillyCollectionReportWidget> {
-  late DaillyCollectionReportModel _model;
+class _BillwisesalereportCopyWidgetState
+    extends State<BillwisesalereportCopyWidget> {
+  late BillwisesalereportCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DaillyCollectionReportModel());
+    _model = createModel(context, () => BillwisesalereportCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().filterDate = getCurrentTimestamp.toString();
-      FFAppState().update(() {});
-      FFAppState().filterDate = functions.getDayId();
+      FFAppState().filterDate = dateTimeFormat(
+        "d/M/y",
+        getCurrentTimestamp,
+        locale: FFLocalizations.of(context).languageCode,
+      );
       FFAppState().startDate = getCurrentTimestamp;
       FFAppState().endDate = getCurrentTimestamp;
-      FFAppState().update(() {});
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -91,11 +96,11 @@ class _DaillyCollectionReportWidgetState
             ),
           );
         }
-        List<InvoiceRecord> daillyCollectionReportInvoiceRecordList =
+        List<InvoiceRecord> billwisesalereportCopyInvoiceRecordList =
             snapshot.data!;
 
         return Title(
-            title: 'DaillyCollectionReport',
+            title: 'billwisesalereportCopy',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -139,12 +144,14 @@ class _DaillyCollectionReportWidgetState
                           );
                           _shouldSetState = true;
                           if (_model.printer!) {
-                            await actions.printDailyCollectionReport(
+                            await actions.printbillsummaryReport(
                               FFAppState().printerDevice,
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
                               FFAppState().paperSize,
-                              daillyCollectionReportInvoiceRecordList.toList(),
+                              billwisesalereportCopyInvoiceRecordList
+                                  .where((e) => e.checkOutTime != 0)
+                                  .toList(),
                             );
                           } else {
                             await showDialog(
@@ -176,82 +183,229 @@ class _DaillyCollectionReportWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFFAC47),
+                        flex: 4,
+                        child: StreamBuilder<List<OutletRecord>>(
+                          stream: queryOutletRecord(
+                            singleRecord: true,
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.chevron_left,
-                                        color: Color(0xFF0D0801),
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pop();
-                                      },
-                                    ),
-                                    AutoSizeText(
-                                      FFLocalizations.of(context).getText(
-                                        '8ox03xzb' /* Dailly Collection Report */,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMediumFamily,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMediumFamily),
-                                          ),
-                                    ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.email,
-                                        color: FlutterFlowTheme.of(context)
-                                            .parkingPrimary,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                  ],
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  child: SpinKitFadingCircle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 40.0,
+                                  ),
                                 ),
+                              );
+                            }
+                            List<OutletRecord> containerOutletRecordList =
+                                snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final containerOutletRecord =
+                                containerOutletRecordList.isNotEmpty
+                                    ? containerOutletRecordList.first
+                                    : null;
+
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFFFAC47),
                               ),
-                            ],
-                          ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 50.0,
+                                          icon: Icon(
+                                            Icons.chevron_left,
+                                            color: Color(0xFF0D0801),
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            context.pop();
+                                          },
+                                        ),
+                                        AutoSizeText(
+                                          FFLocalizations.of(context).getText(
+                                            'jnpohwyk' /* Bill Summary */,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMediumFamily,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMediumFamily),
+                                              ),
+                                        ),
+                                        if (false)
+                                          Builder(
+                                            builder: (context) =>
+                                                FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 20.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 50.0,
+                                              icon: Icon(
+                                                Icons.email,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .parkingPrimary,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () async {
+                                                FFAppState().emailForReport =
+                                                    currentUserEmail;
+                                                safeSetState(() {});
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus(),
+                                                        child:
+                                                            EmailInputWidget(),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+
+                                                _model.base64Link2 = await actions
+                                                    .genExcelForBillWiseReport(
+                                                  FFAppState()
+                                                      .startDate
+                                                      ?.toString(),
+                                                  containerOutletRecord?.name,
+                                                  billwisesalereportCopyInvoiceRecordList
+                                                      .toList(),
+                                                  FFAppState()
+                                                      .endDate
+                                                      ?.toString(),
+                                                );
+                                                _model.apiResult6yc2 =
+                                                    await SendMailCall.call(
+                                                  mobileNo: FFAppState()
+                                                      .currentMobileString,
+                                                  username: valueOrDefault(
+                                                      currentUserDocument?.name,
+                                                      ''),
+                                                  roll: FFAppState()
+                                                      .currentUserRole,
+                                                  toEmail: FFAppState()
+                                                      .emailForReport,
+                                                  fileName:
+                                                      'BillWiseSaleReport',
+                                                  outletName:
+                                                      containerOutletRecord
+                                                          ?.name,
+                                                  branchName:
+                                                      containerOutletRecord
+                                                          ?.branch,
+                                                  file: _model.base64Link2,
+                                                  reportType:
+                                                      'Bill Wise Sale Report',
+                                                );
+
+                                                if ((_model.apiResult6yc2
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        content: Text(
+                                                            'Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        content: Text(
+                                                            'Email Not Sent ! Try Again'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
+
+                                                safeSetState(() {});
+                                              },
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Expanded(
-                        flex: 8,
+                        flex: 26,
                         child: Container(
                           width: double.infinity,
                           height: 100.0,
@@ -259,8 +413,8 @@ class _DaillyCollectionReportWidgetState
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
-                              topLeft: Radius.circular(0.0),
-                              topRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(40.0),
+                              topRight: Radius.circular(40.0),
                             ),
                           ),
                           child: Padding(
@@ -505,10 +659,7 @@ class _DaillyCollectionReportWidgetState
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Text(
-                                                valueOrDefault<String>(
-                                                  FFAppState().filterDate,
-                                                  '0',
-                                                ),
+                                                FFAppState().filterDate,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -557,23 +708,19 @@ class _DaillyCollectionReportWidgetState
                                     padding: EdgeInsets.all(5.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Expanded(
-                                          flex: 2,
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'vu9wbfaq' /* No */,
+                                              'lvdxet1o' /* No */,
                                             ),
-                                            textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
-                                                .titleMedium
+                                                .labelSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .titleMediumFamily,
+                                                          .labelSmallFamily,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                   useGoogleFonts: GoogleFonts
@@ -581,31 +728,7 @@ class _DaillyCollectionReportWidgetState
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .titleMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 3,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'lhkc22re' /*  Date&time */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMediumFamily),
+                                                              .labelSmallFamily),
                                                 ),
                                           ),
                                         ),
@@ -613,15 +736,15 @@ class _DaillyCollectionReportWidgetState
                                           flex: 2,
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              'wvoz9myr' /* Amt */,
+                                              'ku2mbyas' /* vehicle No */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .titleMedium
+                                                .labelSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .titleMediumFamily,
+                                                          .labelSmallFamily,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                   useGoogleFonts: GoogleFonts
@@ -629,11 +752,57 @@ class _DaillyCollectionReportWidgetState
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .titleMediumFamily),
+                                                              .labelSmallFamily),
                                                 ),
                                           ),
                                         ),
-                                      ],
+                                        Expanded(
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'gu7i0b3v' /* Out Date */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallFamily),
+                                                ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'dvc9hibv' /* Net Amt */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmallFamily),
+                                                ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 5.0)),
                                     ),
                                   ),
                                 ),
@@ -642,149 +811,165 @@ class _DaillyCollectionReportWidgetState
                                     width: double.infinity,
                                     height: 100.0,
                                     decoration: BoxDecoration(),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 5.0, 0.0, 0.0),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final billWiseSaleReportVar =
-                                              daillyCollectionReportInvoiceRecordList
-                                                  .toList();
-                                          if (billWiseSaleReportVar.isEmpty) {
-                                            return Center(
-                                              child: ListViewMsgWidget(),
-                                            );
-                                          }
+                                    child: Builder(
+                                      builder: (context) {
+                                        final billWiseSaleReportVar =
+                                            billwisesalereportCopyInvoiceRecordList
+                                                .where(
+                                                    (e) => e.checkOutTime != 0)
+                                                .toList();
+                                        if (billWiseSaleReportVar.isEmpty) {
+                                          return Center(
+                                            child: ListViewMsgWidget(),
+                                          );
+                                        }
 
-                                          return ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                billWiseSaleReportVar.length,
-                                            itemBuilder: (context,
-                                                billWiseSaleReportVarIndex) {
-                                              final billWiseSaleReportVarItem =
-                                                  billWiseSaleReportVar[
-                                                      billWiseSaleReportVarIndex];
-                                              return Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 5.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {},
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5.0,
-                                                                  10.0,
-                                                                  5.0,
-                                                                  10.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            flex: 2,
-                                                            child: Text(
-                                                              billWiseSaleReportVarItem
-                                                                  .count
-                                                                  .toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 3,
-                                                            child: Text(
-                                                              dateTimeFormat(
-                                                                "d/M/y h:mm a",
-                                                                DateTime.fromMillisecondsSinceEpoch(
-                                                                    billWiseSaleReportVarItem
-                                                                        .invoiceDate),
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 2,
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          3.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'dfynh1ze' /* ₹ */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                        ),
-                                                                  ),
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount:
+                                              billWiseSaleReportVar.length,
+                                          itemBuilder: (context,
+                                              billWiseSaleReportVarIndex) {
+                                            final billWiseSaleReportVarItem =
+                                                billWiseSaleReportVar[
+                                                    billWiseSaleReportVarIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {},
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 10.0,
+                                                                5.0, 10.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Text(
+                                                            billWiseSaleReportVarItem
+                                                                .count
+                                                                .toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelSmallFamily),
                                                                 ),
-                                                                Text(
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Text(
+                                                            billWiseSaleReportVarItem
+                                                                .vechicleNo,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelSmallFamily),
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            dateTimeFormat(
+                                                              "d/M/y",
+                                                              DateTime.fromMillisecondsSinceEpoch(
+                                                                  billWiseSaleReportVarItem
+                                                                      .checkOutTime),
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelSmallFamily),
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'z3r3jw7n' /* ₹ */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelSmallFamily,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                    ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
                                                                   billWiseSaleReportVarItem
                                                                       .finalBillAmt
                                                                       .toString(),
@@ -800,19 +985,20 @@ class _DaillyCollectionReportWidgetState
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                       ),
                                                                 ),
-                                                              ],
-                                                            ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ].divide(
+                                                          SizedBox(width: 5.0)),
                                                     ),
                                                   ),
                                                 ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
                                   ),
                                 ),
