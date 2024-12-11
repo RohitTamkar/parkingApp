@@ -146,7 +146,7 @@ class _ShiftWiseVehicleReportWidgetState
                           );
                           _shouldSetState = true;
                           if (_model.printer!) {
-                            await actions.printbillsummaryReport(
+                            await actions.printshiftsummaryVehicleReport(
                               FFAppState().printerDevice,
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
