@@ -151,9 +151,7 @@ class _ShiftWiseVehicleReportWidgetState
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
                               FFAppState().paperSize,
-                              shiftWiseVehicleReportInvoiceRecordList
-                                  .where((e) => e.checkOutTime != 0)
-                                  .toList(),
+                              shiftWiseVehicleReportInvoiceRecordList.toList(),
                             );
                           } else {
                             await showDialog(
