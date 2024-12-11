@@ -152,6 +152,8 @@ class _ShiftWiseVehicleReportWidgetState
                               FFAppState().printerName,
                               FFAppState().paperSize,
                               shiftWiseVehicleReportInvoiceRecordList.toList(),
+                              widget!.vehicleType!,
+                              '',
                             );
                           } else {
                             await showDialog(

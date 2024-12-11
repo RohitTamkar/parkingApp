@@ -25,6 +25,8 @@ Future printshiftsummaryVehicleReport(
   String statusName,
   String printerSize,
   List<InvoiceRecord> dataDocument,
+  String vehicleType,
+  String shiftId,
 ) async {
   // Add your function code here!
   int size = 32;
@@ -204,48 +206,62 @@ Future printshiftsummaryVehicleReport(
               bold: false,
               align: PosAlign.center));
 
-      String title = "Start Date";
+      // String title = "Start Date";
 
-      printLine += title;
-      final DateFormat formatter2 = DateFormat('dd/MM/yyyy');
-      final String formatted2 = formatter2.format(now!);
-      dateString1 = formatted2.toString();
+      // printLine += title;
+      // final DateFormat formatter2 = DateFormat('dd/MM/yyyy');
+      // final String formatted2 = formatter2.format(now!);
+      // dateString1 = formatted2.toString();
 
-      for (int i = 1; i <= (size - (title.length + dateString1.length)); i++) {
-        printLine += " ";
-      }
+      // for (int i = 1; i <= (size - (title.length + dateString1.length)); i++) {
+      //   printLine += " ";
+      // }
 
-      printLine += dateString1;
+      // printLine += dateString1;
 
-      bytes += generator.text(printLine,
+      // bytes += generator.text(printLine,
+      //     styles: const PosStyles(
+      //         height: PosTextSize.size1,
+      //         width: PosTextSize.size1,
+      //         bold: false));
+      // printLine = '';
+
+      // String title2 = "End Date";
+      // final DateTime? now2 = FFAppState().endDate;
+
+      // printLine += title2;
+      // final DateFormat formatter22 = DateFormat('dd/MM/yyyy');
+      // final String formatted22 = formatter2.format(now2!);
+      // dateStringend = FFAppState().filterDate.toString();
+
+      // for (int i = 1;
+      //     i <= (size - (title2.length + dateStringend.length));
+      //     i++) {
+      //   printLine += " ";
+      // }
+
+      // printLine += dateStringend;
+
+      // bytes += generator.text(printLine,
+      //     styles: const PosStyles(
+      //         height: PosTextSize.size1,
+      //         width: PosTextSize.size1,
+      //         bold: false));
+      // printLine = '';
+
+      bytes += generator.text("Vehicle Type: $vehicleType",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
-              bold: false));
-      printLine = '';
+              bold: true,
+              align: PosAlign.center));
 
-      String title2 = "End Date";
-      final DateTime? now2 = FFAppState().endDate;
-
-      printLine += title2;
-      final DateFormat formatter22 = DateFormat('dd/MM/yyyy');
-      final String formatted22 = formatter2.format(now2!);
-      dateStringend = FFAppState().filterDate.toString();
-
-      for (int i = 1;
-          i <= (size - (title2.length + dateStringend.length));
-          i++) {
-        printLine += " ";
-      }
-
-      printLine += dateStringend;
-
-      bytes += generator.text(printLine,
+      bytes += generator.text("Shift ID: $shiftId",
           styles: const PosStyles(
               height: PosTextSize.size1,
               width: PosTextSize.size1,
-              bold: false));
-      printLine = '';
+              bold: true,
+              align: PosAlign.center));
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
