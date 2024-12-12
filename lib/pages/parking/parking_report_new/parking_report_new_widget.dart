@@ -17,9 +17,11 @@ class ParkingReportNewWidget extends StatefulWidget {
   const ParkingReportNewWidget({
     super.key,
     this.quickPin,
+    this.appSetting,
   });
 
   final String? quickPin;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<ParkingReportNewWidget> createState() => _ParkingReportNewWidgetState();
@@ -155,7 +157,14 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           currentUserReference,
                                           ParamType.DocumentReference,
                                         ),
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
                                     );
                                   },
                                 ),

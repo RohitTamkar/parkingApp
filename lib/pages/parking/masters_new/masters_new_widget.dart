@@ -16,9 +16,11 @@ class MastersNewWidget extends StatefulWidget {
   const MastersNewWidget({
     super.key,
     this.isListSelected,
+    this.appSetting,
   });
 
   final bool? isListSelected;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<MastersNewWidget> createState() => _MastersNewWidgetState();
@@ -137,7 +139,14 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                                 ?.reference,
                                             ParamType.DocumentReference,
                                           ),
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
                                         }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
                                       );
                                     },
                                   ),

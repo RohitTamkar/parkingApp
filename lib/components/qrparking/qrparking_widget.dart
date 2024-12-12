@@ -399,7 +399,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                       widget!.usrref,
                                       ParamType.DocumentReference,
                                     ),
+                                    'appSetting': serializeParam(
+                                      widget!.settings,
+                                      ParamType.Document,
+                                    ),
                                   }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    'appSetting': widget!.settings,
+                                  },
                                 );
 
                                 if (_shouldSetState) safeSetState(() {});
@@ -616,7 +623,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                             widget!.usrref,
                                             ParamType.DocumentReference,
                                           ),
+                                          'appSetting': serializeParam(
+                                            widget!.settings,
+                                            ParamType.Document,
+                                          ),
                                         }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.settings,
+                                        },
                                       );
 
                                       if (_shouldSetState) safeSetState(() {});
@@ -779,7 +793,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                             widget!.usrref,
                                             ParamType.DocumentReference,
                                           ),
+                                          'appSetting': serializeParam(
+                                            widget!.settings,
+                                            ParamType.Document,
+                                          ),
                                         }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.settings,
+                                        },
                                       );
 
                                       if (_shouldSetState) safeSetState(() {});
@@ -939,7 +960,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           widget!.usrref,
                                           ParamType.DocumentReference,
                                         ),
+                                        'appSetting': serializeParam(
+                                          widget!.settings,
+                                          ParamType.Document,
+                                        ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.settings,
+                                      },
                                     );
 
                                     if (_shouldSetState) safeSetState(() {});
@@ -1066,7 +1094,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     widget!.usrref,
                                     ParamType.DocumentReference,
                                   ),
+                                  'appSetting': serializeParam(
+                                    widget!.settings,
+                                    ParamType.Document,
+                                  ),
                                 }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'appSetting': widget!.settings,
+                                },
                               );
                             } else {
                               await widget!.invdoc!.reference
@@ -1209,7 +1244,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           widget!.usrref,
                                           ParamType.DocumentReference,
                                         ),
+                                        'appSetting': serializeParam(
+                                          widget!.settings,
+                                          ParamType.Document,
+                                        ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.settings,
+                                      },
                                     );
                                   } else {
                                     _model.shiftupdate2 =
@@ -1297,7 +1339,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                           widget!.usrref,
                                           ParamType.DocumentReference,
                                         ),
+                                        'appSetting': serializeParam(
+                                          widget!.settings,
+                                          ParamType.Document,
+                                        ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.settings,
+                                      },
                                     );
                                   }
                                 } else {
@@ -1383,7 +1432,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                         widget!.usrref,
                                         ParamType.DocumentReference,
                                       ),
+                                      'appSetting': serializeParam(
+                                        widget!.settings,
+                                        ParamType.Document,
+                                      ),
                                     }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.settings,
+                                    },
                                   );
                                 }
                               } else {

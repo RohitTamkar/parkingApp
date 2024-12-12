@@ -353,7 +353,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 widget!.userRef,
                                                 ParamType.DocumentReference,
                                               ),
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
                                             }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
                                           );
                                         } else {
                                           await showDialog(
@@ -407,8 +414,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                     widget!.userRef,
                                                     ParamType.DocumentReference,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
                                                 extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
                                                   kTransitionInfoKey:
                                                       TransitionInfo(
                                                     hasTransition: true,
@@ -1719,7 +1732,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 widget!.userRef,
                                                 ParamType.DocumentReference,
                                               ),
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
                                             }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
                                           );
 
                                           if (_shouldSetState)
@@ -2124,7 +2144,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 widget!.userRef,
                                                 ParamType.DocumentReference,
                                               ),
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
                                             }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
                                           );
 
                                           if (_shouldSetState)
