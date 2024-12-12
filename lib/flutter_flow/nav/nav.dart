@@ -589,6 +589,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'BillEntry',
               path: 'billEntry',
+              asyncParams: {
+                'appsetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => BillEntryWidget(
                 shiftDoc: params.getParam(
                   'shiftDoc',
@@ -599,6 +603,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['USER_PROFILE'],
+                ),
+                appsetting: params.getParam(
+                  'appsetting',
+                  ParamType.Document,
                 ),
               ),
             ),

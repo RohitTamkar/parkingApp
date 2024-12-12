@@ -2666,7 +2666,14 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                   widget!.userRef,
                                   ParamType.DocumentReference,
                                 ),
+                                'appSetting': serializeParam(
+                                  widget!.appSetting,
+                                  ParamType.Document,
+                                ),
                               }.withoutNulls,
+                              extra: <String, dynamic>{
+                                'appSetting': widget!.appSetting,
+                              },
                             );
                           },
                           child: Container(
@@ -2767,7 +2774,14 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                   widget!.userRef,
                                   ParamType.DocumentReference,
                                 ),
+                                'appsetting': serializeParam(
+                                  widget!.appSetting,
+                                  ParamType.Document,
+                                ),
                               }.withoutNulls,
+                              extra: <String, dynamic>{
+                                'appsetting': widget!.appSetting,
+                              },
                             );
                           },
                           child: Container(

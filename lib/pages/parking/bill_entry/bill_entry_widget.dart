@@ -23,10 +23,12 @@ class BillEntryWidget extends StatefulWidget {
     super.key,
     this.shiftDoc,
     this.userRef,
+    this.appsetting,
   });
 
   final dynamic shiftDoc;
   final DocumentReference? userRef;
+  final AppSettingsRecord? appsetting;
 
   @override
   State<BillEntryWidget> createState() => _BillEntryWidgetState();
@@ -254,6 +256,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                                 usrref: widget!.userRef,
                                                 invdoc: _model.search,
                                                 shiftdoc: widget!.shiftDoc!,
+                                                settings: widget!.appsetting,
                                               ),
                                             ),
                                           );
@@ -328,6 +331,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                                 usrref: widget!.userRef,
                                                 invdoc: _model.search3,
                                                 shiftdoc: widget!.shiftDoc!,
+                                                settings: widget!.appsetting,
                                               ),
                                             ),
                                           );
@@ -542,6 +546,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                           usrref: widget!.userRef,
                                           invdoc: _model.getinvout,
                                           shiftdoc: widget!.shiftDoc!,
+                                          settings: widget!.appsetting,
                                         ),
                                       ),
                                     );
