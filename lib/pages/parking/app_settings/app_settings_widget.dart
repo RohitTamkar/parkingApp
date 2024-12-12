@@ -228,7 +228,8 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmallFamily,
-                                          color: Colors.white,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
