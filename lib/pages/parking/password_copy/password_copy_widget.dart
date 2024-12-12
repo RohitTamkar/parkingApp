@@ -16,9 +16,11 @@ class PasswordCopyWidget extends StatefulWidget {
   const PasswordCopyWidget({
     super.key,
     this.quickPin,
+    this.appSetting,
   });
 
   final String? quickPin;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<PasswordCopyWidget> createState() => _PasswordCopyWidgetState();
@@ -219,7 +221,18 @@ class _PasswordCopyWidgetState extends State<PasswordCopyWidget> {
                       ).then((s) => s.firstOrNull);
                       if (_model.result?.quickPin ==
                           _model.textController.text) {
-                        context.pushNamed('productListNewM');
+                        context.pushNamed(
+                          'productListNewM',
+                          queryParameters: {
+                            'appSetting': serializeParam(
+                              widget!.appSetting,
+                              ParamType.Document,
+                            ),
+                          }.withoutNulls,
+                          extra: <String, dynamic>{
+                            'appSetting': widget!.appSetting,
+                          },
+                        );
                       } else {
                         await showDialog(
                           context: context,

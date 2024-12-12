@@ -18,9 +18,11 @@ class ProductListNewMWidget extends StatefulWidget {
   const ProductListNewMWidget({
     super.key,
     this.outletId,
+    this.appSetting,
   });
 
   final DocumentReference? outletId;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<ProductListNewMWidget> createState() => _ProductListNewMWidgetState();
