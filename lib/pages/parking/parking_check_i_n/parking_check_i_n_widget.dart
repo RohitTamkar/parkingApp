@@ -956,7 +956,13 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                     ),
                                 ],
                               ),
-                              if (false)
+                              if (widget!.appSetting?.settingList
+                                      ?.where(
+                                          (e) => e.title == 'enablePaymentMode')
+                                      .toList()
+                                      ?.firstOrNull
+                                      ?.value ??
+                                  true)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 10.0),
@@ -964,124 +970,91 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                          '₹ ${valueOrDefault<String>(
-                                            FFAppState()
-                                                .parkingCharges
-                                                .toString(),
-                                            '0',
-                                          )}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
-                                              ),
-                                        ),
-                                      ),
-                                      Expanded(
                                         flex: 2,
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: StreamBuilder<
-                                              List<PaymentModeRecord>>(
-                                            stream: queryPaymentModeRecord(),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 40.0,
-                                                    height: 40.0,
-                                                    child: SpinKitFadingCircle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      size: 40.0,
-                                                    ),
+                                        child: StreamBuilder<
+                                            List<PaymentModeRecord>>(
+                                          stream: queryPaymentModeRecord(),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  child: SpinKitFadingCircle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 40.0,
                                                   ),
-                                                );
-                                              }
-                                              List<PaymentModeRecord>
-                                                  dropDownPaymentModePaymentModeRecordList =
-                                                  snapshot.data!;
-
-                                              return FlutterFlowDropDown<
-                                                  String>(
-                                                controller: _model
-                                                        .dropDownPaymentModeValueController ??=
-                                                    FormFieldController<String>(
-                                                        null),
-                                                options:
-                                                    dropDownPaymentModePaymentModeRecordList
-                                                        .map((e) => e.name)
-                                                        .toList(),
-                                                onChanged: (val) =>
-                                                    safeSetState(() => _model
-                                                            .dropDownPaymentModeValue =
-                                                        val),
-                                                width: 300.0,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLargeFamily,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily),
-                                                        ),
-                                                hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'iwj46d94' /* Payment Mode */,
                                                 ),
-                                                icon: Icon(
-                                                  Icons
-                                                      .keyboard_arrow_down_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24.0,
-                                                ),
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                elevation: 2.0,
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                                borderWidth: 2.0,
-                                                borderRadius: 8.0,
-                                                margin: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 4.0, 5.0, 4.0),
-                                                hidesUnderline: true,
-                                                isOverButton: true,
-                                                isSearchable: false,
-                                                isMultiSelect: false,
                                               );
-                                            },
-                                          ),
+                                            }
+                                            List<PaymentModeRecord>
+                                                dropDownPaymentModePaymentModeRecordList =
+                                                snapshot.data!;
+
+                                            return FlutterFlowDropDown<String>(
+                                              controller: _model
+                                                      .dropDownPaymentModeValueController ??=
+                                                  FormFieldController<String>(
+                                                      null),
+                                              options:
+                                                  dropDownPaymentModePaymentModeRecordList
+                                                      .map((e) => e.name)
+                                                      .toList(),
+                                              onChanged: (val) => safeSetState(
+                                                  () => _model
+                                                          .dropDownPaymentModeValue =
+                                                      val),
+                                              width: 300.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLargeFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeFamily),
+                                                      ),
+                                              hintText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'iwj46d94' /* Payment Mode */,
+                                              ),
+                                              icon: Icon(
+                                                Icons
+                                                    .keyboard_arrow_down_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              elevation: 2.0,
+                                              borderColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent3,
+                                              borderWidth: 2.0,
+                                              borderRadius: 8.0,
+                                              margin: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 4.0, 5.0, 4.0),
+                                              hidesUnderline: true,
+                                              isOverButton: true,
+                                              isSearchable: false,
+                                              isMultiSelect: false,
+                                            );
+                                          },
                                         ),
                                       ),
                                     ],

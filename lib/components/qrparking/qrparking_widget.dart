@@ -248,7 +248,12 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                           ),
                       ],
                     ),
-                    if (false)
+                    if (widget!.settings?.settingList
+                            ?.where((e) => e.title == 'enablePaymentMode')
+                            .toList()
+                            ?.firstOrNull
+                            ?.value ??
+                        true)
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -422,14 +427,20 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   .update(createInvoiceRecordData(
                                 checkOutTime:
                                     getCurrentTimestamp.millisecondsSinceEpoch,
-                                billAmt:
-                                    functions.calculateParkingCharges12hours(
+                                billAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'COMPLEMENTARY'
+                                    ? 0.0
+                                    : functions.calculateParkingCharges12hours(
                                         widget!.invdoc?.vechicleType,
                                         widget!.invdoc?.checkInTime,
                                         getCurrentTimestamp
                                             .millisecondsSinceEpoch),
-                                finalBillAmt:
-                                    functions.calculateParkingCharges12hours(
+                                finalBillAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'COMPLEMENTARY'
+                                    ? 0.0
+                                    : functions.calculateParkingCharges12hours(
                                         widget!.invdoc?.vechicleType,
                                         widget!.invdoc?.checkInTime,
                                         getCurrentTimestamp
@@ -457,161 +468,501 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 widget!.shiftdoc,
                                 r'''$.shiftExists''',
                               )) {
-                                _model.shiftupdate =
-                                    await actions.calShiftSummary(
-                                  _model.docinvqr2!,
-                                  widget!.shiftdoc!,
-                                );
-                                _shouldSetState = true;
-                                _model.shiftref2 = await queryShiftRecordOnce(
-                                  parent: FFAppState().outletIdRef,
-                                  queryBuilder: (shiftRecord) =>
-                                      shiftRecord.where(
-                                    'shiftId',
-                                    isEqualTo: getJsonField(
-                                      widget!.shiftdoc,
-                                      r'''$.shiftId''',
-                                    ).toString(),
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                _shouldSetState = true;
+                                if (widget!.settings!.settingList
+                                    .where(
+                                        (e) => e.title == 'enablePaymentMode')
+                                    .toList()
+                                    .firstOrNull!
+                                    .value) {
+                                  if (_model.paymentModeModel.dropDownValue ==
+                                      'COMPLEMENTARY') {
+                                    _model.shiftfierbase =
+                                        await queryShiftRecordOnce(
+                                      parent: FFAppState().outletIdRef,
+                                      queryBuilder: (shiftRecord) =>
+                                          shiftRecord.where(
+                                        'shiftId',
+                                        isEqualTo: widget!.invdoc?.shiftId,
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    _shouldSetState = true;
+                                    _model.shiftDetailsNewcar =
+                                        await actions.shiftDetailNewpark2(
+                                      _model.shiftfierbase,
+                                    );
+                                    _shouldSetState = true;
+                                    _model.shiftSummarRkiosk23 =
+                                        await actions.calShiftSummary2(
+                                      widget!.invdoc!,
+                                      _model.shiftDetailsNewcar!,
+                                      widget!.invdoc!.finalBillAmt,
+                                      _model.paymentModeModel.dropDownValue!,
+                                    );
+                                    _shouldSetState = true;
 
-                                await _model.shiftref2!.reference
-                                    .update(createShiftRecordData(
-                                  billCount: valueOrDefault<int>(
-                                    FFAppState().count,
-                                    0,
-                                  ),
-                                  totalSale: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.totalSale''',
-                                  ),
-                                  deliveryCharges: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.deliveryCharges''',
-                                  ),
-                                  lastBillNo: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.lastBillNo''',
-                                  ).toString(),
-                                  discount: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.discount''',
-                                  ),
-                                  lastBillTime: functions
-                                      .timestampToMili(getCurrentTimestamp),
-                                  cashSale: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.cashSale''',
-                                  ),
-                                  paymentJson: getJsonField(
-                                    _model.shiftupdate,
-                                    r'''$.paymentJson''',
-                                  ).toString(),
-                                ));
-                                if (!functions.isPrinterSelected(
-                                    FFAppState().printerDevice)!) {
-                                  _model.resDevice2qr2 =
-                                      await actions.scanPrinter(
-                                    FFAppState().posMode,
+                                    await _model.shiftfierbase!.reference
+                                        .update(createShiftRecordData(
+                                      billCount: valueOrDefault<int>(
+                                        FFAppState().billcount,
+                                        0,
+                                      ),
+                                      totalSale: getJsonField(
+                                        _model.shiftSummarRkiosk23,
+                                        r'''$.totalSale''',
+                                      ),
+                                      deliveryCharges: getJsonField(
+                                        _model.shiftSummarRkiosk23,
+                                        r'''$.deliveryCharges''',
+                                      ),
+                                      lastBillNo: getJsonField(
+                                        _model.shiftSummarRkiosk23,
+                                        r'''$.lastBillNo''',
+                                      ).toString(),
+                                      discount: getJsonField(
+                                        _model.shiftSummarRkiosk23,
+                                        r'''$.discount''',
+                                      ),
+                                      lastBillTime: functions
+                                          .timestampToMili(getCurrentTimestamp),
+                                      cashSale: getJsonField(
+                                        _model.shiftSummarRkiosk23,
+                                        r'''$.cashSale''',
+                                      ),
+                                      paymentJson: getJsonField(
+                                        _model.shiftSummarRkiosk23,
+                                        r'''$.paymentJson''',
+                                      ).toString(),
+                                    ));
+                                    if (!functions.isPrinterSelected(
+                                        FFAppState().printerDevice)!) {
+                                      _model.resDevice2qr22 =
+                                          await actions.scanPrinter(
+                                        FFAppState().posMode,
+                                      );
+                                      _shouldSetState = true;
+                                    }
+                                    _model.connectdeviceqr22 =
+                                        await actions.connectDevice(
+                                      FFAppState().printerDevice,
+                                      FFAppState().printerIndex,
+                                    );
+                                    _shouldSetState = true;
+                                    if (FFAppState().printerName != null &&
+                                        FFAppState().printerName != '') {
+                                      _model.returnedList2qr223 =
+                                          await actions.selectBillPrint(
+                                        FFAppState().selBill.toString(),
+                                        FFAppState().allBillsList.toList(),
+                                      );
+                                      _shouldSetState = true;
+                                      _model.deviceqr23 =
+                                          await actions.newCustomAction(
+                                        FFAppState().printerIndex,
+                                      );
+                                      _shouldSetState = true;
+                                      _model.outletdocqr23 =
+                                          await queryOutletRecordOnce(
+                                        queryBuilder: (outletRecord) =>
+                                            outletRecord.where(
+                                          'id',
+                                          isEqualTo:
+                                              FFAppState().outletIdRef?.id,
+                                        ),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+                                      _shouldSetState = true;
+                                      await actions.printBillParking(
+                                        _model.deviceqr23!.toList(),
+                                        FFAppState().isPrinterConnected,
+                                        FFAppState().printerName,
+                                        getJsonField(
+                                          functions.outletDocToJson(
+                                              _model.outletdocqr23!),
+                                          r'''$''',
+                                        ),
+                                        _model.docinvqr2!,
+                                        FFAppState().paperSize,
+                                      );
+                                      await actions.removeFromAllBillList(
+                                        FFAppState().selBill,
+                                      );
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content:
+                                                Text('Check Out SuccessFull!'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      Navigator.pop(context);
+
+                                      context.pushNamed(
+                                        'VehicleEntry',
+                                        queryParameters: {
+                                          'shiftDoc': serializeParam(
+                                            widget!.shiftdoc,
+                                            ParamType.JSON,
+                                          ),
+                                          'userRef': serializeParam(
+                                            widget!.usrref,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('printer connection'),
+                                            content:
+                                                Text('printer not connected'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+                                  } else {
+                                    _model.shiftupdatenew =
+                                        await actions.calShiftSummary2(
+                                      _model.docinvqr2!,
+                                      widget!.shiftdoc!,
+                                      widget!.invdoc!.finalBillAmt,
+                                      _model.paymentModeModel.dropDownValue!,
+                                    );
+                                    _shouldSetState = true;
+                                    _model.shiftref2new =
+                                        await queryShiftRecordOnce(
+                                      parent: FFAppState().outletIdRef,
+                                      queryBuilder: (shiftRecord) =>
+                                          shiftRecord.where(
+                                        'shiftId',
+                                        isEqualTo: getJsonField(
+                                          widget!.shiftdoc,
+                                          r'''$.shiftId''',
+                                        ).toString(),
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    _shouldSetState = true;
+
+                                    await _model.shiftref2new!.reference
+                                        .update(createShiftRecordData(
+                                      billCount: valueOrDefault<int>(
+                                        FFAppState().billcount,
+                                        0,
+                                      ),
+                                      totalSale: getJsonField(
+                                        _model.shiftupdatenew,
+                                        r'''$.totalSale''',
+                                      ),
+                                      deliveryCharges: getJsonField(
+                                        _model.shiftupdatenew,
+                                        r'''$.deliveryCharges''',
+                                      ),
+                                      lastBillNo: getJsonField(
+                                        _model.shiftupdatenew,
+                                        r'''$.lastBillNo''',
+                                      ).toString(),
+                                      discount: getJsonField(
+                                        _model.shiftupdatenew,
+                                        r'''$.discount''',
+                                      ),
+                                      lastBillTime: functions
+                                          .timestampToMili(getCurrentTimestamp),
+                                      cashSale: getJsonField(
+                                        _model.shiftupdatenew,
+                                        r'''$.cashSale''',
+                                      ),
+                                      paymentJson: getJsonField(
+                                        _model.shiftupdatenew,
+                                        r'''$.paymentJson''',
+                                      ).toString(),
+                                    ));
+                                    if (!functions.isPrinterSelected(
+                                        FFAppState().printerDevice)!) {
+                                      _model.resDevice2qrnew =
+                                          await actions.scanPrinter(
+                                        FFAppState().posMode,
+                                      );
+                                      _shouldSetState = true;
+                                    }
+                                    _model.connectdeviceqr2new =
+                                        await actions.connectDevice(
+                                      FFAppState().printerDevice,
+                                      FFAppState().printerIndex,
+                                    );
+                                    _shouldSetState = true;
+                                    if (FFAppState().printerName != null &&
+                                        FFAppState().printerName != '') {
+                                      _model.returnedList2qrnew =
+                                          await actions.selectBillPrint(
+                                        FFAppState().selBill.toString(),
+                                        FFAppState().allBillsList.toList(),
+                                      );
+                                      _shouldSetState = true;
+                                      _model.deviceqr2new =
+                                          await actions.newCustomAction(
+                                        FFAppState().printerIndex,
+                                      );
+                                      _shouldSetState = true;
+                                      _model.outletdocqr2new =
+                                          await queryOutletRecordOnce(
+                                        queryBuilder: (outletRecord) =>
+                                            outletRecord.where(
+                                          'id',
+                                          isEqualTo:
+                                              FFAppState().outletIdRef?.id,
+                                        ),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+                                      _shouldSetState = true;
+                                      await actions.printBillParking(
+                                        _model.deviceqr2new!.toList(),
+                                        FFAppState().isPrinterConnected,
+                                        FFAppState().printerName,
+                                        getJsonField(
+                                          functions.outletDocToJson(
+                                              _model.outletdocqr2new!),
+                                          r'''$''',
+                                        ),
+                                        _model.docinvqr2!,
+                                        FFAppState().paperSize,
+                                      );
+                                      await actions.removeFromAllBillList(
+                                        FFAppState().selBill,
+                                      );
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content:
+                                                Text('Check Out SuccessFull!'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      Navigator.pop(context);
+
+                                      context.pushNamed(
+                                        'VehicleEntry',
+                                        queryParameters: {
+                                          'shiftDoc': serializeParam(
+                                            widget!.shiftdoc,
+                                            ParamType.JSON,
+                                          ),
+                                          'userRef': serializeParam(
+                                            widget!.usrref,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('printer connection'),
+                                            content:
+                                                Text('printer not connected'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+                                  }
+                                } else {
+                                  _model.shiftupdate =
+                                      await actions.calShiftSummary(
+                                    _model.docinvqr2!,
+                                    widget!.shiftdoc!,
                                   );
                                   _shouldSetState = true;
-                                }
-                                _model.connectdeviceqr2 =
-                                    await actions.connectDevice(
-                                  FFAppState().printerDevice,
-                                  FFAppState().printerIndex,
-                                );
-                                _shouldSetState = true;
-                                if (FFAppState().printerName != null &&
-                                    FFAppState().printerName != '') {
-                                  _model.returnedList2qr22 =
-                                      await actions.selectBillPrint(
-                                    FFAppState().selBill.toString(),
-                                    FFAppState().allBillsList.toList(),
-                                  );
-                                  _shouldSetState = true;
-                                  _model.deviceqr2 =
-                                      await actions.newCustomAction(
-                                    FFAppState().printerIndex,
-                                  );
-                                  _shouldSetState = true;
-                                  _model.outletdocqr2 =
-                                      await queryOutletRecordOnce(
-                                    queryBuilder: (outletRecord) =>
-                                        outletRecord.where(
-                                      'id',
-                                      isEqualTo: FFAppState().outletIdRef?.id,
+                                  _model.shiftref2 = await queryShiftRecordOnce(
+                                    parent: FFAppState().outletIdRef,
+                                    queryBuilder: (shiftRecord) =>
+                                        shiftRecord.where(
+                                      'shiftId',
+                                      isEqualTo: getJsonField(
+                                        widget!.shiftdoc,
+                                        r'''$.shiftId''',
+                                      ).toString(),
                                     ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
                                   _shouldSetState = true;
-                                  await actions.printBillParking(
-                                    _model.deviceqr2!.toList(),
-                                    FFAppState().isPrinterConnected,
-                                    FFAppState().printerName,
-                                    getJsonField(
-                                      functions.outletDocToJson(
-                                          _model.outletdocqr2!),
-                                      r'''$''',
+
+                                  await _model.shiftref2!.reference
+                                      .update(createShiftRecordData(
+                                    billCount: valueOrDefault<int>(
+                                      FFAppState().billcount,
+                                      0,
                                     ),
-                                    _model.docinvqr2!,
-                                    FFAppState().paperSize,
+                                    totalSale: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.totalSale''',
+                                    ),
+                                    deliveryCharges: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.deliveryCharges''',
+                                    ),
+                                    lastBillNo: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.lastBillNo''',
+                                    ).toString(),
+                                    discount: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.discount''',
+                                    ),
+                                    lastBillTime: functions
+                                        .timestampToMili(getCurrentTimestamp),
+                                    cashSale: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.cashSale''',
+                                    ),
+                                    paymentJson: getJsonField(
+                                      _model.shiftupdate,
+                                      r'''$.paymentJson''',
+                                    ).toString(),
+                                  ));
+                                  if (!functions.isPrinterSelected(
+                                      FFAppState().printerDevice)!) {
+                                    _model.resDevice2qr2 =
+                                        await actions.scanPrinter(
+                                      FFAppState().posMode,
+                                    );
+                                    _shouldSetState = true;
+                                  }
+                                  _model.connectdeviceqr2 =
+                                      await actions.connectDevice(
+                                    FFAppState().printerDevice,
+                                    FFAppState().printerIndex,
                                   );
-                                  await actions.removeFromAllBillList(
-                                    FFAppState().selBill,
-                                  );
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        content: Text('Check Out SuccessFull!'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                  Navigator.pop(context);
-
-                                  context.pushNamed(
-                                    'VehicleEntry',
-                                    queryParameters: {
-                                      'shiftDoc': serializeParam(
-                                        widget!.shiftdoc,
-                                        ParamType.JSON,
+                                  _shouldSetState = true;
+                                  if (FFAppState().printerName != null &&
+                                      FFAppState().printerName != '') {
+                                    _model.returnedList2qr22 =
+                                        await actions.selectBillPrint(
+                                      FFAppState().selBill.toString(),
+                                      FFAppState().allBillsList.toList(),
+                                    );
+                                    _shouldSetState = true;
+                                    _model.deviceqr2 =
+                                        await actions.newCustomAction(
+                                      FFAppState().printerIndex,
+                                    );
+                                    _shouldSetState = true;
+                                    _model.outletdocqr2 =
+                                        await queryOutletRecordOnce(
+                                      queryBuilder: (outletRecord) =>
+                                          outletRecord.where(
+                                        'id',
+                                        isEqualTo: FFAppState().outletIdRef?.id,
                                       ),
-                                      'userRef': serializeParam(
-                                        widget!.usrref,
-                                        ParamType.DocumentReference,
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    _shouldSetState = true;
+                                    await actions.printBillParking(
+                                      _model.deviceqr2!.toList(),
+                                      FFAppState().isPrinterConnected,
+                                      FFAppState().printerName,
+                                      getJsonField(
+                                        functions.outletDocToJson(
+                                            _model.outletdocqr2!),
+                                        r'''$''',
                                       ),
-                                    }.withoutNulls,
-                                  );
+                                      _model.docinvqr2!,
+                                      FFAppState().paperSize,
+                                    );
+                                    await actions.removeFromAllBillList(
+                                      FFAppState().selBill,
+                                    );
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          content:
+                                              Text('Check Out SuccessFull!'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    Navigator.pop(context);
 
-                                  if (_shouldSetState) safeSetState(() {});
-                                  return;
-                                } else {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('printer connection'),
-                                        content: Text('printer not connected'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
+                                    context.pushNamed(
+                                      'VehicleEntry',
+                                      queryParameters: {
+                                        'shiftDoc': serializeParam(
+                                          widget!.shiftdoc,
+                                          ParamType.JSON,
+                                        ),
+                                        'userRef': serializeParam(
+                                          widget!.usrref,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('printer connection'),
+                                          content:
+                                              Text('printer not connected'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
