@@ -19,9 +19,11 @@ class UserAccountWidget extends StatefulWidget {
   const UserAccountWidget({
     super.key,
     this.mobile,
+    this.appSetting,
   });
 
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<UserAccountWidget> createState() => _UserAccountWidgetState();
@@ -99,7 +101,18 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed('mastersNew');
+                                    context.pushNamed(
+                                      'mastersNew',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                 ),
                                 AutoSizeText(

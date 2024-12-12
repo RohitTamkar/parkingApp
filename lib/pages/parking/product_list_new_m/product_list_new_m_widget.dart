@@ -95,7 +95,18 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.goNamed('mastersNew');
+                                  context.goNamed(
+                                    'mastersNew',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(
