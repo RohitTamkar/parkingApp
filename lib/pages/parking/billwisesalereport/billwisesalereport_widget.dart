@@ -269,138 +269,134 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                             .titleMediumFamily),
                                               ),
                                         ),
-                                        if (false)
-                                          Builder(
-                                            builder: (context) =>
-                                                FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 50.0,
-                                              icon: Icon(
-                                                Icons.email,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .parkingPrimary,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () async {
-                                                FFAppState().emailForReport =
-                                                    currentUserEmail;
-                                                safeSetState(() {});
+                                        Builder(
+                                          builder: (context) =>
+                                              FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 20.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 50.0,
+                                            icon: Icon(
+                                              Icons.email,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .parkingPrimary,
+                                              size: 24.0,
+                                            ),
+                                            onPressed: () async {
+                                              FFAppState().emailForReport =
+                                                  currentUserEmail;
+                                              safeSetState(() {});
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: EmailInputWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+
+                                              _model.base64Link2 = await actions
+                                                  .genExcelForBillWiseReport(
+                                                FFAppState()
+                                                    .startDate
+                                                    ?.toString(),
+                                                containerOutletRecord?.name,
+                                                billwisesalereportInvoiceRecordList
+                                                    .toList(),
+                                                FFAppState()
+                                                    .endDate
+                                                    ?.toString(),
+                                              );
+                                              _model.apiResult6yc2 =
+                                                  await SendMailCall.call(
+                                                mobileNo: FFAppState()
+                                                    .currentMobileString,
+                                                username: valueOrDefault(
+                                                    currentUserDocument?.name,
+                                                    ''),
+                                                roll: FFAppState()
+                                                    .currentUserRole,
+                                                toEmail:
+                                                    FFAppState().emailForReport,
+                                                fileName: 'BillWiseSaleReport',
+                                                outletName:
+                                                    containerOutletRecord?.name,
+                                                branchName:
+                                                    containerOutletRecord
+                                                        ?.branch,
+                                                file: _model.base64Link2,
+                                                reportType:
+                                                    'Bill Wise Sale Report',
+                                              );
+
+                                              if ((_model.apiResult6yc2
+                                                      ?.succeeded ??
+                                                  true)) {
                                                 await showDialog(
                                                   context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      elevation: 0,
-                                                      insetPadding:
-                                                          EdgeInsets.zero,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          FocusScope.of(
-                                                                  dialogContext)
-                                                              .unfocus();
-                                                          FocusManager.instance
-                                                              .primaryFocus
-                                                              ?.unfocus();
-                                                        },
-                                                        child:
-                                                            EmailInputWidget(),
-                                                      ),
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: Text(
+                                                          'Email Sent Successfully. Wait 5-8 Minutes..'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
                                                     );
                                                   },
                                                 );
-
-                                                _model.base64Link2 = await actions
-                                                    .genExcelForBillWiseReport(
-                                                  FFAppState()
-                                                      .startDate
-                                                      ?.toString(),
-                                                  containerOutletRecord?.name,
-                                                  billwisesalereportInvoiceRecordList
-                                                      .toList(),
-                                                  FFAppState()
-                                                      .endDate
-                                                      ?.toString(),
+                                              } else {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      content: Text(
+                                                          'Email Not Sent ! Try Again'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
                                                 );
-                                                _model.apiResult6yc2 =
-                                                    await SendMailCall.call(
-                                                  mobileNo: FFAppState()
-                                                      .currentMobileString,
-                                                  username: valueOrDefault(
-                                                      currentUserDocument?.name,
-                                                      ''),
-                                                  roll: FFAppState()
-                                                      .currentUserRole,
-                                                  toEmail: FFAppState()
-                                                      .emailForReport,
-                                                  fileName:
-                                                      'BillWiseSaleReport',
-                                                  outletName:
-                                                      containerOutletRecord
-                                                          ?.name,
-                                                  branchName:
-                                                      containerOutletRecord
-                                                          ?.branch,
-                                                  file: _model.base64Link2,
-                                                  reportType:
-                                                      'Bill Wise Sale Report',
-                                                );
+                                              }
 
-                                                if ((_model.apiResult6yc2
-                                                        ?.succeeded ??
-                                                    true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: Text(
-                                                            'Email Sent Successfully. Wait 5-8 Minutes..'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                } else {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: Text(
-                                                            'Email Not Sent ! Try Again'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                }
-
-                                                safeSetState(() {});
-                                              },
-                                            ),
+                                              safeSetState(() {});
+                                            },
                                           ),
+                                        ),
                                       ],
                                     ),
                                   ),
