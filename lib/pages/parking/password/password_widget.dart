@@ -16,9 +16,11 @@ class PasswordWidget extends StatefulWidget {
   const PasswordWidget({
     super.key,
     this.quickPin,
+    this.appSetting,
   });
 
   final String? quickPin;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<PasswordWidget> createState() => _PasswordWidgetState();
@@ -219,7 +221,18 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                       ).then((s) => s.firstOrNull);
                       if (_model.result?.quickPin ==
                           _model.textController.text) {
-                        context.pushNamed('parkingReportNew');
+                        context.pushNamed(
+                          'parkingReportNew',
+                          queryParameters: {
+                            'appSetting': serializeParam(
+                              widget!.appSetting,
+                              ParamType.Document,
+                            ),
+                          }.withoutNulls,
+                          extra: <String, dynamic>{
+                            'appSetting': widget!.appSetting,
+                          },
+                        );
                       } else {
                         await showDialog(
                           context: context,

@@ -1157,7 +1157,20 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                                           0.0));
                                                 }
 
-                                                context.pushNamed('mastersNew');
+                                                context.pushNamed(
+                                                  'mastersNew',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
                                               } else {
                                                 await showDialog(
                                                   context: context,
@@ -1355,6 +1368,8 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                           quickPin:
                                                               containerUserProfileRecord
                                                                   ?.quickPin,
+                                                          appSetting: widget!
+                                                              .appSetting,
                                                         ),
                                                       ),
                                                     );
