@@ -80,7 +80,10 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
         title: 'ParkingCheckIN',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: Color(0x2712191C),
@@ -1421,7 +1424,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -1431,7 +1434,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -1493,7 +1496,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -1503,7 +1506,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -1919,7 +1922,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -1929,7 +1932,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -1991,7 +1994,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,
@@ -2001,7 +2004,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                         e.title ==
                                                         'parkingChargeZero')
                                                     .toList()
-                                                    .first
+                                                    .firstOrNull!
                                                     .value
                                                 ? 0.0
                                                 : FFAppState().parkingCharges,

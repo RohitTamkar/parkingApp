@@ -76,7 +76,10 @@ class _EditOutletPageWidgetState extends State<EditOutletPageWidget> {
         title: 'EditOutletPage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -1709,9 +1712,13 @@ class _EditOutletPageWidgetState extends State<EditOutletPageWidget> {
                                                   context: context,
                                                   builder: (context) {
                                                     return GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(context)
-                                                              .unfocus(),
+                                                      onTap: () {
+                                                        FocusScope.of(context)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
                                                       child: Padding(
                                                         padding: MediaQuery
                                                             .viewInsetsOf(
@@ -1828,15 +1835,16 @@ class _EditOutletPageWidgetState extends State<EditOutletPageWidget> {
                                       while (
                                           FFAppState().updateOutletStartLoop <
                                               _model.devieList!.length) {
-                                        await _model
-                                            .devieList![FFAppState()
-                                                .updateOutletStartLoop]
+                                        await _model.devieList!
+                                            .elementAtOrNull(FFAppState()
+                                                .updateOutletStartLoop)!
                                             .reference
                                             .update(createDeviceRecordData(
-                                          outletName:
-                                              _model.textController1.text,
-                                          branch: _model.textController2.text,
-                                        ));
+                                              outletName:
+                                                  _model.textController1.text,
+                                              branch:
+                                                  _model.textController2.text,
+                                            ));
                                         FFAppState().updateOutletStartLoop = 1;
                                         safeSetState(() {});
                                       }

@@ -71,7 +71,10 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
         title: 'ParkingLogin',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: WillPopScope(
             onWillPop: () async => false,
             child: Scaffold(
@@ -472,7 +475,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                       e.title ==
                                                                       'enableTerminal')
                                                                   .toList()
-                                                                  ?.first
+                                                                  ?.firstOrNull
                                                                   ?.value,
                                                               false,
                                                             ))
@@ -789,7 +792,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           e.title ==
                                                                           'enableTerminal')
                                                                       .toList()
-                                                                      .first
+                                                                      .firstOrNull!
                                                                       .value) {
                                                                     FFAppState()
                                                                             .terminalNo =
@@ -873,7 +876,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                               .settingList
                                                                               .where((e) => e.title == 'enableTerminal')
                                                                               .toList()
-                                                                              .first
+                                                                              .firstOrNull!
                                                                               .value) {
                                                                             _model.shiftDetailsNew =
                                                                                 await actions.shiftDetailNewparkMultishift(

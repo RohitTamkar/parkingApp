@@ -232,7 +232,9 @@ class UserProfileRecord extends FirestoreRecord {
     _isDealer = snapshotData['isDealer'] as bool?;
     _dealerCode = snapshotData['dealerCode'] as String?;
     _code = castToType<int>(snapshotData['code']);
-    _userAccess = UserListStruct.maybeFromMap(snapshotData['userAccess']);
+    _userAccess = snapshotData['userAccess'] is UserListStruct
+        ? snapshotData['userAccess']
+        : UserListStruct.maybeFromMap(snapshotData['userAccess']);
   }
 
   static CollectionReference get collection =>

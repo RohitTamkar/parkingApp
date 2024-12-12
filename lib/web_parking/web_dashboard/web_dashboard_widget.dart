@@ -102,7 +102,10 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
             title: 'WebDashboard',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               child: WillPopScope(
                 onWillPop: () async => false,
                 child: Scaffold(
@@ -2186,7 +2189,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                               children: [
                                                                                                 AutoSizeText(
                                                                                                   FFLocalizations.of(context).getText(
-                                                                                                    '0pnyccih' /* ExtraDlvr Ch. */,
+                                                                                                    '0pnyccih' /* Extra/Dlvr Ch. */,
                                                                                                   ),
                                                                                                   style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,

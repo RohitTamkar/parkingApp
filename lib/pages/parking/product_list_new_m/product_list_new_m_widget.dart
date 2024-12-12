@@ -54,7 +54,10 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
         title: 'productListNewM',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
@@ -528,7 +531,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                   'productDocument':
                                                                       serializeParam(
                                                                     containerProductRecordList
-                                                                        .first,
+                                                                        .firstOrNull,
                                                                     ParamType
                                                                         .Document,
                                                                   ),
@@ -537,7 +540,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                     dynamic>{
                                                                   'productDocument':
                                                                       containerProductRecordList
-                                                                          .first,
+                                                                          .firstOrNull,
                                                                 },
                                                               );
                                                             },

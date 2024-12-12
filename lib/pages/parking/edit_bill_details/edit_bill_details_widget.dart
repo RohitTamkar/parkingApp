@@ -77,7 +77,10 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
         title: 'editBillDetails',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: WillPopScope(
             onWillPop: () async => false,
             child: Scaffold(
@@ -669,7 +672,7 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                                                           Text(
                                                                         FFLocalizations.of(context)
                                                                             .getText(
-                                                                          'u2meuxfi' /* DateTime */,
+                                                                          'u2meuxfi' /* Date/Time */,
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
@@ -884,9 +887,9 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                                                                 Colors.transparent,
                                                                             onTap:
                                                                                 () async {
-                                                                              FFAppState().PayMode = containerPaymentModeRecordList.first.name;
+                                                                              FFAppState().PayMode = containerPaymentModeRecordList.firstOrNull!.name;
                                                                               FFAppState().dropDown = true;
-                                                                              FFAppState().curMode = containerPaymentModeRecordList.first.name;
+                                                                              FFAppState().curMode = containerPaymentModeRecordList.firstOrNull!.name;
                                                                               FFAppState().prevMode = containerInvoiceRecord!.paymentMode;
                                                                               safeSetState(() {});
                                                                             },

@@ -76,7 +76,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         title: 'dashboard',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: WillPopScope(
             onWillPop: () async => false,
             child: Scaffold(
@@ -1992,7 +1995,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                                                                     children: [
                                                                                                       AutoSizeText(
                                                                                                         FFLocalizations.of(context).getText(
-                                                                                                          '8tdzlav5' /* ExtraDlvr Ch. */,
+                                                                                                          '8tdzlav5' /* Extra/Dlvr Ch. */,
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                               fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,

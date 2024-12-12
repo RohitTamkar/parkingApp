@@ -67,7 +67,10 @@ class _CategoryWiseSaleReportWidgetState
         title: 'categoryWiseSaleReport',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: WillPopScope(
             onWillPop: () async => false,
             child: Scaffold(
@@ -188,9 +191,13 @@ class _CategoryWiseSaleReportWidgetState
                                               context: context,
                                               builder: (context) {
                                                 return GestureDetector(
-                                                  onTap: () =>
-                                                      FocusScope.of(context)
-                                                          .unfocus(),
+                                                  onTap: () {
+                                                    FocusScope.of(context)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
                                                   child: Padding(
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
@@ -248,9 +255,13 @@ class _CategoryWiseSaleReportWidgetState
                                                     .resolve(Directionality.of(
                                                         context)),
                                                 child: GestureDetector(
-                                                  onTap: () => FocusScope.of(
-                                                          dialogContext)
-                                                      .unfocus(),
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
                                                   child: EmailInputWidget(),
                                                 ),
                                               );

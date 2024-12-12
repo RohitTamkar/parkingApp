@@ -498,7 +498,10 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
         title: 'VehicleEntry',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -1340,10 +1343,14 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                                   Directionality.of(
                                                                       context)),
                                                       child: GestureDetector(
-                                                        onTap: () =>
-                                                            FocusScope.of(
-                                                                    dialogContext)
-                                                                .unfocus(),
+                                                        onTap: () {
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
                                                         child: PasswordWidget(
                                                           quickPin:
                                                               containerUserProfileRecord
@@ -2288,7 +2295,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               ?.where((e) =>
                                                   e.title == 'enableShiftEnd')
                                               .toList()
-                                              ?.first
+                                              ?.firstOrNull
                                               ?.value ??
                                           true)
                                         Row(

@@ -216,7 +216,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           if (widget!.appSettings!.settingList
               .where((e) => e.title == 'enableTerminal')
               .toList()
-              .first
+              .firstOrNull!
               .value) {
             _model.shiftDetailsNewcar =
                 await actions.shiftDetailNewparkMultishift(

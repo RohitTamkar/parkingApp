@@ -97,7 +97,10 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
             title: 'MonthlyPass2',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               child: Scaffold(
                 key: scaffoldKey,
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -240,7 +243,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                                 .dropDownValue ==
                                                             e.name)
                                                         .toList()
-                                                        .first;
+                                                        .firstOrNull;
                                                 safeSetState(() {});
                                               },
                                               width: double.infinity,
@@ -1457,9 +1460,14 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                               Directionality.of(
                                                                   context)),
                                                   child: GestureDetector(
-                                                    onTap: () => FocusScope.of(
-                                                            dialogContext)
-                                                        .unfocus(),
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
                                                     child: EmailInputWidget(),
                                                   ),
                                                 );

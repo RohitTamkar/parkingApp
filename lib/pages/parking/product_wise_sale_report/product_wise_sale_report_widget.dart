@@ -102,7 +102,10 @@ class _ProductWiseSaleReportWidgetState
             title: 'productWiseSaleReport',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               child: WillPopScope(
                 onWillPop: () async => false,
                 child: Scaffold(
@@ -238,10 +241,15 @@ class _ProductWiseSaleReportWidgetState
                                                       context: context,
                                                       builder: (context) {
                                                         return GestureDetector(
-                                                          onTap: () =>
-                                                              FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
                                                           child: Padding(
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
@@ -304,10 +312,15 @@ class _ProductWiseSaleReportWidgetState
                                                                         context)),
                                                             child:
                                                                 GestureDetector(
-                                                              onTap: () =>
-                                                                  FocusScope.of(
-                                                                          dialogContext)
-                                                                      .unfocus(),
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
                                                               child:
                                                                   EmailInputWidget(),
                                                             ),

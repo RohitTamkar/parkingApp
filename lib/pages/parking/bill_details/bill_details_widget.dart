@@ -90,7 +90,10 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
             title: 'billDetails',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
+              onTap: () {
+                FocusScope.of(context).unfocus();
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               child: WillPopScope(
                 onWillPop: () async => false,
                 child: Scaffold(
@@ -987,7 +990,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                                           child:
                                                                               Text(
                                                                             FFLocalizations.of(context).getText(
-                                                                              '5y4l9ger' /* DateTime */,
+                                                                              '5y4l9ger' /* Date/Time */,
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,

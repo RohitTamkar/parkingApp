@@ -991,7 +991,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                                 e.title ==
                                                                 'enableTerminal')
                                                             .toList()
-                                                            .first
+                                                            .firstOrNull!
                                                             .value) {
                                                           _model.newShift =
                                                               await actions
@@ -1140,7 +1140,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                                 e.title ==
                                                                 'enableTerminal')
                                                             .toList()
-                                                            .first
+                                                            .firstOrNull!
                                                             .value) {
                                                           _model.shiftdetailds23 =
                                                               await actions

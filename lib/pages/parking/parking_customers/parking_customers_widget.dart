@@ -96,7 +96,10 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
         title: 'ParkingCustomers',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
@@ -240,9 +243,13 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                                     .resolve(Directionality.of(
                                                         context)),
                                                 child: GestureDetector(
-                                                  onTap: () => FocusScope.of(
-                                                          dialogContext)
-                                                      .unfocus(),
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
                                                   child: QrparkingWidget(
                                                     usrref: widget!.userRef,
                                                     invdoc: _model.getinvout,

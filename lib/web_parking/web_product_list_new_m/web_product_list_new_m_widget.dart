@@ -56,7 +56,10 @@ class _WebProductListNewMWidgetState extends State<WebProductListNewMWidget> {
         title: 'WebProductListNewM',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
@@ -522,7 +525,7 @@ class _WebProductListNewMWidgetState extends State<WebProductListNewMWidget> {
                                                                         'productDocument':
                                                                             serializeParam(
                                                                           containerProductRecordList
-                                                                              .first,
+                                                                              .firstOrNull,
                                                                           ParamType
                                                                               .Document,
                                                                         ),
@@ -530,7 +533,7 @@ class _WebProductListNewMWidgetState extends State<WebProductListNewMWidget> {
                                                                       extra: <String,
                                                                           dynamic>{
                                                                         'productDocument':
-                                                                            containerProductRecordList.first,
+                                                                            containerProductRecordList.firstOrNull,
                                                                       },
                                                                     );
                                                                   },
