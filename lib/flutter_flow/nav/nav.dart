@@ -198,10 +198,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'account',
               path: 'account',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => AccountWidget(
                 isList: params.getParam(
                   'isList',
                   ParamType.bool,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -211,6 +219,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               asyncParams: {
                 'docRef':
                     getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => EditUserprofileWidget(
                 docRef: params.getParam(
@@ -228,6 +238,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 mobile: params.getParam(
                   'mobile',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -543,6 +557,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dashboard',
               path: 'dashboard',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => DashboardWidget(
                 outletId: params.getParam(
                   'outletId',
@@ -563,6 +581,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 mobile: params.getParam(
                   'mobile',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),

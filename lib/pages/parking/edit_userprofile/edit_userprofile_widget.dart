@@ -20,12 +20,14 @@ class EditUserprofileWidget extends StatefulWidget {
     this.nextP,
     this.id,
     this.mobile,
+    this.appSetting,
   });
 
   final UserProfileRecord? docRef;
   final int? nextP;
   final String? id;
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditUserprofileWidget> createState() => _EditUserprofileWidgetState();
@@ -1204,7 +1206,33 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                                       );
 
                                                       context.pushNamed(
-                                                          'VehicleEntry');
+                                                        'VehicleEntry',
+                                                        queryParameters: {
+                                                          'shiftDoc':
+                                                              serializeParam(
+                                                            FFAppState()
+                                                                .shiftDetailsNEw,
+                                                            ParamType.JSON,
+                                                          ),
+                                                          'userRef':
+                                                              serializeParam(
+                                                            widget!.docRef
+                                                                ?.reference,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'appSetting':
+                                                              serializeParam(
+                                                            widget!.appSetting,
+                                                            ParamType.Document,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'appSetting': widget!
+                                                              .appSetting,
+                                                        },
+                                                      );
                                                     } else {
                                                       if (_model.formKey
                                                                   .currentState ==

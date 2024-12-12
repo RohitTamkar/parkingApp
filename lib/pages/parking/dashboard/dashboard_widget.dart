@@ -27,12 +27,14 @@ class DashboardWidget extends StatefulWidget {
     this.shiftRef,
     this.userId,
     this.mobile,
+    this.appSetting,
   });
 
   final DocumentReference? outletId;
   final DocumentReference? shiftRef;
   final String? userId;
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<DashboardWidget> createState() => _DashboardWidgetState();
@@ -157,7 +159,15 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                   currentUserReference,
                                                   ParamType.DocumentReference,
                                                 ),
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
                                             );
                                           },
                                         ),
