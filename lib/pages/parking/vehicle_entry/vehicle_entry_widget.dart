@@ -1340,41 +1340,67 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      elevation: 0,
-                                                      insetPadding:
-                                                          EdgeInsets.zero,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          FocusScope.of(
-                                                                  dialogContext)
-                                                              .unfocus();
-                                                          FocusManager.instance
-                                                              .primaryFocus
-                                                              ?.unfocus();
-                                                        },
-                                                        child: PasswordWidget(
-                                                          quickPin:
-                                                              containerUserProfileRecord
-                                                                  ?.quickPin,
-                                                          appSetting: widget!
-                                                              .appSetting,
+                                                if (containerUserProfileRecord
+                                                        ?.role ==
+                                                    'admin') {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: PasswordWidget(
+                                                            quickPin:
+                                                                containerUserProfileRecord
+                                                                    ?.quickPin,
+                                                            appSetting: widget!
+                                                                .appSetting,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'User Permission Is Not Authorised',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                         ),
                                                       ),
-                                                    );
-                                                  },
-                                                );
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
                                               },
                                               child: Container(
                                                 width:

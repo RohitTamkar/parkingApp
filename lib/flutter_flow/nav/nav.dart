@@ -252,12 +252,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'categories',
               path: 'categories',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => CategoriesWidget(
                 outletId: params.getParam(
                   'outletId',
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['OUTLET'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),

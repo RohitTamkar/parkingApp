@@ -18,9 +18,11 @@ class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({
     super.key,
     this.outletId,
+    this.appSetting,
   });
 
   final DocumentReference? outletId;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<CategoriesWidget> createState() => _CategoriesWidgetState();
@@ -93,7 +95,18 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('mastersNew');
+                                  context.pushNamed(
+                                    'mastersNew',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(
