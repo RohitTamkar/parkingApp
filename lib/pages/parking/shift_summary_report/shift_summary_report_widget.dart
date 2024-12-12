@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -36,20 +35,6 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ShiftSummaryReportModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().filterDate = getCurrentTimestamp.toString();
-      FFAppState().update(() {});
-      FFAppState().filterDate = dateTimeFormat(
-        "d/M/y",
-        getCurrentTimestamp,
-        locale: FFLocalizations.of(context).languageCode,
-      );
-      FFAppState().startDate = getCurrentTimestamp;
-      FFAppState().endDate = getCurrentTimestamp;
-      safeSetState(() {});
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
