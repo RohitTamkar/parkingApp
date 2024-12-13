@@ -897,10 +897,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                   containerDeviceRecord,
                                                                                   ParamType.Document,
                                                                                 ),
-                                                                                'appSettings': serializeParam(
-                                                                                  loginAppSettingsRecord,
-                                                                                  ParamType.Document,
-                                                                                ),
                                                                                 'shiftDoc': serializeParam(
                                                                                   _model.shiftDetailsNew,
                                                                                   ParamType.JSON,
@@ -913,10 +909,14 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                   _model.outletDoc?.reference,
                                                                                   ParamType.DocumentReference,
                                                                                 ),
+                                                                                'appSetting': serializeParam(
+                                                                                  loginAppSettingsRecord,
+                                                                                  ParamType.Document,
+                                                                                ),
                                                                               }.withoutNulls,
                                                                               extra: <String, dynamic>{
                                                                                 'deviceDoc': containerDeviceRecord,
-                                                                                'appSettings': loginAppSettingsRecord,
+                                                                                'appSetting': loginAppSettingsRecord,
                                                                               },
                                                                             );
 
@@ -943,10 +943,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                   containerDeviceRecord,
                                                                                   ParamType.Document,
                                                                                 ),
-                                                                                'appSettings': serializeParam(
-                                                                                  loginAppSettingsRecord,
-                                                                                  ParamType.Document,
-                                                                                ),
                                                                                 'shiftDoc': serializeParam(
                                                                                   _model.shiftDetailsNew2,
                                                                                   ParamType.JSON,
@@ -959,10 +955,14 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                   _model.outletDoc?.reference,
                                                                                   ParamType.DocumentReference,
                                                                                 ),
+                                                                                'appSetting': serializeParam(
+                                                                                  loginAppSettingsRecord,
+                                                                                  ParamType.Document,
+                                                                                ),
                                                                               }.withoutNulls,
                                                                               extra: <String, dynamic>{
                                                                                 'deviceDoc': containerDeviceRecord,
-                                                                                'appSettings': loginAppSettingsRecord,
+                                                                                'appSetting': loginAppSettingsRecord,
                                                                               },
                                                                             );
 

@@ -194,10 +194,6 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                     context.pushNamed(
                                       'welcomeScreenParking',
                                       queryParameters: {
-                                        'appSettings': serializeParam(
-                                          appSettingsAppSettingsRecord,
-                                          ParamType.Document,
-                                        ),
                                         'shiftDoc': serializeParam(
                                           FFAppState().shiftDetailsNEw,
                                           ParamType.JSON,
@@ -206,9 +202,13 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                           FFAppState().outletIdRef,
                                           ParamType.DocumentReference,
                                         ),
+                                        'appSetting': serializeParam(
+                                          appSettingsAppSettingsRecord,
+                                          ParamType.Document,
+                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
-                                        'appSettings':
+                                        'appSetting':
                                             appSettingsAppSettingsRecord,
                                       },
                                     );

@@ -482,16 +482,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'welcomeScreenParking',
               asyncParams: {
                 'deviceDoc': getDoc(['DEVICE'], DeviceRecord.fromSnapshot),
-                'appSettings': getDoc(
+                'appSetting': getDoc(
                     ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => WelcomeScreenParkingWidget(
                 deviceDoc: params.getParam(
                   'deviceDoc',
-                  ParamType.Document,
-                ),
-                appSettings: params.getParam(
-                  'appSettings',
                   ParamType.Document,
                 ),
                 mobile: params.getParam(
@@ -513,6 +509,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['OUTLET'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),

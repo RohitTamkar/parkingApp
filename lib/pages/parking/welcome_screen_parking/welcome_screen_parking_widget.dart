@@ -23,19 +23,19 @@ class WelcomeScreenParkingWidget extends StatefulWidget {
   const WelcomeScreenParkingWidget({
     super.key,
     this.deviceDoc,
-    this.appSettings,
     this.mobile,
     this.shiftDoc,
     this.userDoc,
     this.outletRef,
+    this.appSetting,
   });
 
   final DeviceRecord? deviceDoc;
-  final AppSettingsRecord? appSettings;
   final String? mobile;
   final dynamic shiftDoc;
   final DocumentReference? userDoc;
   final DocumentReference? outletRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<WelcomeScreenParkingWidget> createState() =>
@@ -90,20 +90,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: Text('ok1'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       if (_model.invcode != null) {
         FFAppState().newcount = _model.invcode!.count;
         safeSetState(() {});
@@ -206,20 +192,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: Text('ok2'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       _model.userProfile = await queryUserProfileRecordOnce(
         queryBuilder: (userProfileRecord) => userProfileRecord.where(
           'mobile',
@@ -335,35 +307,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            content: Text('ok3'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              content: Text('ok4'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
         if ((_model.userProfile != null) == true) {
           await showDialog(
             context: context,
@@ -379,7 +323,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
               );
             },
           );
-          if (widget!.appSettings!.settingList
+          if (_model.devicew!.settingList
               .where((e) => e.title == 'enableTerminal')
               .toList()
               .firstOrNull!
