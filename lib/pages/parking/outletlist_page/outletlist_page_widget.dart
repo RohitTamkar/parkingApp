@@ -24,9 +24,11 @@ class OutletlistPageWidget extends StatefulWidget {
   const OutletlistPageWidget({
     super.key,
     this.mobileNo,
+    this.appSetting,
   });
 
   final String? mobileNo;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<OutletlistPageWidget> createState() => _OutletlistPageWidgetState();
