@@ -365,6 +365,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           },
         );
         if ((_model.userProfile != null) == true) {
+          await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                content: Text('ok5'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text('Ok'),
+                  ),
+                ],
+              );
+            },
+          );
           if (widget!.appSettings!.settingList
               .where((e) => e.title == 'enableTerminal')
               .toList()
