@@ -24,9 +24,11 @@ class BusinessProfileAdminfinalWidget extends StatefulWidget {
   const BusinessProfileAdminfinalWidget({
     super.key,
     this.mobileNo,
+    this.appSetting,
   });
 
   final String? mobileNo;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<BusinessProfileAdminfinalWidget> createState() =>
@@ -1141,11 +1143,18 @@ class _BusinessProfileAdminfinalWidgetState
                                                                             _model.devicedetails2,
                                                                             ParamType.Document,
                                                                           ),
+                                                                          'appSettings':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <String,
                                                                             dynamic>{
                                                                           'deviceDoc':
                                                                               _model.devicedetails2,
+                                                                          'appSettings':
+                                                                              widget!.appSetting,
                                                                         },
                                                                       );
                                                                     } else {

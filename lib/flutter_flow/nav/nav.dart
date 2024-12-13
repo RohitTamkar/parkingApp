@@ -126,10 +126,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'businessProfileAdminfinal',
               path: 'businessProfileAdminfinal',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => BusinessProfileAdminfinalWidget(
                 mobileNo: params.getParam(
                   'mobileNo',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
