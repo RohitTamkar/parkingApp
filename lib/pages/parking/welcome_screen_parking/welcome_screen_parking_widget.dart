@@ -309,20 +309,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
       ).then((s) => s.firstOrNull);
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
         if ((_model.userProfile != null) == true) {
-          await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                content: Text('ok5'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text('Ok'),
-                  ),
-                ],
-              );
-            },
-          );
           if (_model.devicew!.settingList
               .where((e) => e.title == 'enableTerminal')
               .toList()

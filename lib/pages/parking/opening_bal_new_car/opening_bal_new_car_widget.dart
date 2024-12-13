@@ -987,7 +987,7 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                               .outletIdRef,
                                                         );
                                                         _shouldSetState = true;
-                                                        if (containerAppSettingsRecord!
+                                                        if (_model.devicew!
                                                             .settingList
                                                             .where((e) =>
                                                                 e.title ==
