@@ -90,6 +90,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            content: Text('ok1'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
       if (_model.invcode != null) {
         FFAppState().newcount = _model.invcode!.count;
         safeSetState(() {});
