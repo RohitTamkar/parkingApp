@@ -364,7 +364,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
               context: context,
               builder: (alertDialogContext) {
                 return AlertDialog(
-                  content: Text('ok3'),
+                  content: Text('ok4'),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(alertDialogContext),
