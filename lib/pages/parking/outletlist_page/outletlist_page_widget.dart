@@ -613,11 +613,18 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                                                             _model.devicedetails2,
                                                                             ParamType.Document,
                                                                           ),
+                                                                          'appSettings':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <String,
                                                                             dynamic>{
                                                                           'deviceDoc':
                                                                               _model.devicedetails2,
+                                                                          'appSettings':
+                                                                              widget!.appSetting,
                                                                         },
                                                                       );
                                                                     } else {
