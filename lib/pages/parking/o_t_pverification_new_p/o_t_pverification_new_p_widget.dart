@@ -24,11 +24,13 @@ class OTPverificationNewPWidget extends StatefulWidget {
     this.isMobileExists,
     this.userDoc,
     this.mobile,
+    this.appSetting,
   });
 
   final bool? isMobileExists;
   final UserProfileRecord? userDoc;
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<OTPverificationNewPWidget> createState() =>
@@ -631,7 +633,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                   ParamType
                                                                       .String,
                                                                 ),
+                                                                'appSetting':
+                                                                    serializeParam(
+                                                                  widget!
+                                                                      .appSetting,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
                                                               }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'appSetting':
+                                                                    widget!
+                                                                        .appSetting,
+                                                              },
                                                             );
                                                           } else {
                                                             context
@@ -646,7 +661,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                   ParamType
                                                                       .String,
                                                                 ),
+                                                                'appSetting':
+                                                                    serializeParam(
+                                                                  widget!
+                                                                      .appSetting,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
                                                               }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'appSetting':
+                                                                    widget!
+                                                                        .appSetting,
+                                                              },
                                                             );
                                                           }
                                                         } else {
@@ -663,7 +691,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                   ParamType
                                                                       .String,
                                                                 ),
+                                                                'appSetting':
+                                                                    serializeParam(
+                                                                  widget!
+                                                                      .appSetting,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
                                                               }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'appSetting':
+                                                                    widget!
+                                                                        .appSetting,
+                                                              },
                                                             );
                                                           } else {
                                                             context
@@ -678,7 +719,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                   ParamType
                                                                       .String,
                                                                 ),
+                                                                'appSetting':
+                                                                    serializeParam(
+                                                                  widget!
+                                                                      .appSetting,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
                                                               }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'appSetting':
+                                                                    widget!
+                                                                        .appSetting,
+                                                              },
                                                             );
                                                           }
                                                         }

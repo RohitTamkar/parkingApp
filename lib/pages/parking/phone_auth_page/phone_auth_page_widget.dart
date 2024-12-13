@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,7 +11,12 @@ import 'phone_auth_page_model.dart';
 export 'phone_auth_page_model.dart';
 
 class PhoneAuthPageWidget extends StatefulWidget {
-  const PhoneAuthPageWidget({super.key});
+  const PhoneAuthPageWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<PhoneAuthPageWidget> createState() => _PhoneAuthPageWidgetState();
@@ -458,7 +464,17 @@ class _PhoneAuthPageWidgetState extends State<PhoneAuthPageWidget> {
                                                                 .currentMobileString,
                                                             ParamType.String,
                                                           ),
+                                                          'appSetting':
+                                                              serializeParam(
+                                                            widget!.appSetting,
+                                                            ParamType.Document,
+                                                          ),
                                                         }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'appSetting': widget!
+                                                              .appSetting,
+                                                        },
                                                         ignoreRedirect: true,
                                                       );
                                                     },

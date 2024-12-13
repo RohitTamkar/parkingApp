@@ -99,7 +99,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'phoneAuthPage',
               path: 'phoneAuthPage',
-              builder: (context, params) => PhoneAuthPageWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => PhoneAuthPageWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'OTPverificationNewP',
@@ -107,6 +116,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               asyncParams: {
                 'userDoc':
                     getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => OTPverificationNewPWidget(
                 isMobileExists: params.getParam(
@@ -120,6 +131,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 mobile: params.getParam(
                   'mobile',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
