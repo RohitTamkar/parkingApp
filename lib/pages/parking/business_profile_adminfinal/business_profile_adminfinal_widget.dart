@@ -1148,6 +1148,21 @@ class _BusinessProfileAdminfinalWidgetState
                                                                             widget!.appSetting,
                                                                             ParamType.Document,
                                                                           ),
+                                                                          'mobile':
+                                                                              serializeParam(
+                                                                            widget!.mobileNo,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'userDoc':
+                                                                              serializeParam(
+                                                                            containerUserProfileRecord?.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
+                                                                          'outletRef':
+                                                                              serializeParam(
+                                                                            listViewOutletRecord.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <String,
                                                                             dynamic>{
