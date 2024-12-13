@@ -335,6 +335,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            content: Text('ok3'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
         if ((_model.userProfile != null) == true) {
           if (widget!.appSettings!.settingList
