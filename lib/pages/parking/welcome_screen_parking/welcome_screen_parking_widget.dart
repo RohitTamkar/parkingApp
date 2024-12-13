@@ -206,6 +206,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            content: Text('ok2'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
       _model.userProfile = await queryUserProfileRecordOnce(
         queryBuilder: (userProfileRecord) => userProfileRecord.where(
           'mobile',
@@ -331,6 +345,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
             _model.shiftDetailsNewcar =
                 await actions.shiftDetailNewparkMultishift(
               _model.shiftdetailfirebase?.toList(),
+            );
+            await showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  content: Text('ok3'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Ok'),
+                    ),
+                  ],
+                );
+              },
             );
             FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
             safeSetState(() {});
