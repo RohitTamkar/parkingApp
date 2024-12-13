@@ -384,9 +384,37 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
               .toList()
               .firstOrNull!
               .value) {
+            await showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  content: Text('ok6'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Ok'),
+                    ),
+                  ],
+                );
+              },
+            );
             _model.shiftDetailsNewcar =
                 await actions.shiftDetailNewparkMultishift(
               _model.shiftdetailfirebase?.toList(),
+            );
+            await showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  content: Text('ok7'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Ok'),
+                    ),
+                  ],
+                );
+              },
             );
             FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
             safeSetState(() {});
