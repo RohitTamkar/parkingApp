@@ -350,6 +350,20 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         },
       );
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              content: Text('ok4'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         if ((_model.userProfile != null) == true) {
           if (widget!.appSettings!.settingList
               .where((e) => e.title == 'enableTerminal')
@@ -359,20 +373,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
             _model.shiftDetailsNewcar =
                 await actions.shiftDetailNewparkMultishift(
               _model.shiftdetailfirebase?.toList(),
-            );
-            await showDialog(
-              context: context,
-              builder: (alertDialogContext) {
-                return AlertDialog(
-                  content: Text('ok4'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext),
-                      child: Text('Ok'),
-                    ),
-                  ],
-                );
-              },
             );
             FFAppState().shiftdetails = _model.shiftDetailsNewcar!;
             safeSetState(() {});
