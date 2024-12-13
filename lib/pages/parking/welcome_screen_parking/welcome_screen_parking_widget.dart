@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -211,6 +212,101 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
       FFAppState().userName = _model.userProfile!.name;
       FFAppState().outletName = _model.outletdetails23!.name;
       safeSetState(() {});
+      _model.isAppSetExistsNew = await queryAppSettingsRecordOnce(
+        parent: FFAppState().outletIdRef,
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
+      _model.masterAppsetting = await queryAppSettingsMasterRecordOnce();
+      _model.returnAppsettiing = await actions.returnAppsetting(
+        _model.masterAppsetting!.toList(),
+        FFAppState().appSettings.toList(),
+      );
+      if (_model.isAppSetExistsNew != null) {
+        FFAppState().appSettings = _model.isAppSetExistsNew!.settingList
+            .toList()
+            .cast<AppSettingsStruct>();
+        safeSetState(() {});
+        _model.returnAppsettiingupdate = await actions.returnAppsetting(
+          _model.masterAppsetting!.toList(),
+          FFAppState().appSettings.toList(),
+        );
+
+        await _model.isAppSetExistsNew!.reference.update({
+          ...createAppSettingsRecordData(
+            deviceId: FFAppState().dId,
+          ),
+          ...mapToFirestore(
+            {
+              'settingList': getAppSettingsListFirestoreData(
+                _model.returnAppsettiingupdate,
+              ),
+            },
+          ),
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'App Settings Updated !',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).secondary,
+          ),
+        );
+      } else {
+        var appSettingsRecordReference =
+            AppSettingsRecord.createDoc(FFAppState().outletIdRef!);
+        await appSettingsRecordReference.set({
+          ...createAppSettingsRecordData(
+            deviceId: FFAppState().dId,
+          ),
+          ...mapToFirestore(
+            {
+              'settingList': getAppSettingsListFirestoreData(
+                _model.returnAppsettiing,
+              ),
+            },
+          ),
+        });
+        _model.doc = AppSettingsRecord.getDocumentFromData({
+          ...createAppSettingsRecordData(
+            deviceId: FFAppState().dId,
+          ),
+          ...mapToFirestore(
+            {
+              'settingList': getAppSettingsListFirestoreData(
+                _model.returnAppsettiing,
+              ),
+            },
+          ),
+        }, appSettingsRecordReference);
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Alert'),
+              content: Text('App settings created'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+
+      _model.devicew = await queryAppSettingsRecordOnce(
+        parent: FFAppState().outletIdRef,
+        queryBuilder: (appSettingsRecord) => appSettingsRecord.where(
+          'deviceId',
+          isEqualTo: FFAppState().dId,
+        ),
+        singleRecord: true,
+      ).then((s) => s.firstOrNull);
       if (_model.deviceexist!.active && _model.outletdetails23!.active) {
         if ((_model.userProfile != null) == true) {
           if (widget!.appSettings!.settingList
@@ -236,6 +332,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
                   child: OpeningBalNewCarWidget(
                     shiftDetails: _model.shiftDetailsNewcar,
                     doc: _model.userProfile?.reference,
+                    appSetting: _model.devicew,
                   ),
                 );
               },
@@ -260,6 +357,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
                   child: OpeningBalNewCarWidget(
                     shiftDetails: _model.shiftDetailsNewcar2,
                     doc: _model.userProfile?.reference,
+                    appSetting: _model.devicew,
                   ),
                 );
               },

@@ -20,10 +20,12 @@ class OpeningBalNewCarWidget extends StatefulWidget {
     super.key,
     this.shiftDetails,
     this.doc,
+    this.appSetting,
   });
 
   final dynamic shiftDetails;
   final DocumentReference? doc;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<OpeningBalNewCarWidget> createState() => _OpeningBalNewCarWidgetState();

@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,6 +46,18 @@ class WelcomeScreenParkingModel
   List<ShiftRecord>? shiftdetailfirebase;
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
   OutletRecord? outletdetails23;
+  // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
+  AppSettingsRecord? isAppSetExistsNew;
+  // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
+  List<AppSettingsMasterRecord>? masterAppsetting;
+  // Stores action output result for [Custom Action - returnAppsetting] action in welcomeScreenParking widget.
+  List<AppSettingsStruct>? returnAppsettiing;
+  // Stores action output result for [Custom Action - returnAppsetting] action in welcomeScreenParking widget.
+  List<AppSettingsStruct>? returnAppsettiingupdate;
+  // Stores action output result for [Backend Call - Create Document] action in welcomeScreenParking widget.
+  AppSettingsRecord? doc;
+  // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
+  AppSettingsRecord? devicew;
   // Stores action output result for [Custom Action - shiftDetailNewparkMultishift] action in welcomeScreenParking widget.
   dynamic? shiftDetailsNewcar;
   // Stores action output result for [Custom Action - shiftDetailNewpark] action in welcomeScreenParking widget.
