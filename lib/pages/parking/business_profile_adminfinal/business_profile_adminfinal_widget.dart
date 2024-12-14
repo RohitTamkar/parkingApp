@@ -1143,11 +1143,18 @@ class _BusinessProfileAdminfinalWidgetState
                                                                             _model.devicedetails2,
                                                                             ParamType.Document,
                                                                           ),
+                                                                          'appSetting':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <String,
                                                                             dynamic>{
                                                                           'deviceDoc':
                                                                               _model.devicedetails2,
+                                                                          'appSetting':
+                                                                              widget!.appSetting,
                                                                         },
                                                                       );
                                                                     } else {
@@ -1455,6 +1462,20 @@ class _BusinessProfileAdminfinalWidgetState
                                                                                 safeSetState(() => hasIconButtonTriggered2 = true);
                                                                                 SchedulerBinding.instance.addPostFrameCallback((_) async => await animationsMap['iconButtonOnActionTriggerAnimation2']!.controller.forward(from: 0.0));
                                                                               }
+
+                                                                              context.pushNamed(
+                                                                                'EditOutletPage',
+                                                                                queryParameters: {
+                                                                                  'outletRef': serializeParam(
+                                                                                    listViewOutletRecord.reference,
+                                                                                    ParamType.DocumentReference,
+                                                                                  ),
+                                                                                  'id': serializeParam(
+                                                                                    listViewOutletRecord.id,
+                                                                                    ParamType.String,
+                                                                                  ),
+                                                                                }.withoutNulls,
+                                                                              );
                                                                             },
                                                                           ).animateOnActionTrigger(
                                                                               animationsMap['iconButtonOnActionTriggerAnimation2']!,

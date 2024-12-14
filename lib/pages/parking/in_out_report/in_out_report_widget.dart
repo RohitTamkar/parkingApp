@@ -548,7 +548,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                           ),
                                         ),
                                         Expanded(
-                                          flex: 2,
+                                          flex: 1,
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               '2219olqj' /* Vehicle No */,

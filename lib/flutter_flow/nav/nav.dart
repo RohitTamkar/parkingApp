@@ -1083,6 +1083,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.Document,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'SplashParking',
+              path: 'splashParking',
+              builder: (context, params) => SplashParkingWidget(),
+            ),
+            FFRoute(
+              name: 'splashScreenParking',
+              path: 'splashScreenParking',
+              builder: (context, params) => SplashScreenParkingWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

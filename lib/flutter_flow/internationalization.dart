@@ -8691,6 +8691,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
+  // SplashParking
+  {
+    'cbwfle8n': {
+      'en': 'PARK',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'omgs6vwc': {
+      'en': 'SENSE',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'cx7f0ada': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // splashScreenParking
+  {
+    'pst8lkdb': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
   // Keyboard
   {
     '6bhkeqbn': {
