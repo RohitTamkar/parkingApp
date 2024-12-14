@@ -936,12 +936,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AddUser',
               path: 'addUser',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => AddUserWidget(
                 userRef: params.getParam(
                   'userRef',
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['USER_PROFILE'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),

@@ -19,9 +19,11 @@ class AddUserWidget extends StatefulWidget {
   const AddUserWidget({
     super.key,
     this.userRef,
+    this.appSetting,
   });
 
   final DocumentReference? userRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AddUserWidget> createState() => _AddUserWidgetState();
@@ -691,7 +693,7 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                         Duration(milliseconds: 2000),
                                         () => safeSetState(() {}),
                                       ),
-                                      autofocus: true,
+                                      autofocus: false,
                                       obscureText:
                                           !_model.pinnTextFieldVisibility,
                                       decoration: InputDecoration(
@@ -919,7 +921,15 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                                   '+91${_model.textFieldMobileTextController.text}',
                                                   ParamType.String,
                                                 ),
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
                                             );
 
                                             safeSetState(() {
