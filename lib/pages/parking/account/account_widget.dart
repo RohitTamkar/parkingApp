@@ -2121,8 +2121,8 @@ class _AccountWidgetState extends State<AccountWidget>
                                             GoRouter.of(context)
                                                 .clearRedirectLocation();
 
-                                            context.goNamedAuth('SplashParking',
-                                                context.mounted);
+                                            context.goNamedAuth(
+                                                'StartScreen', context.mounted);
                                           },
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)

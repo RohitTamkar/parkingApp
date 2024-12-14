@@ -36,7 +36,7 @@ class _SplashParkingWidgetState extends State<SplashParkingWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 3000));
 
-      context.pushNamed('StartScreen');
+      context.pushNamed('ParkingLogin');
     });
 
     animationsMap.addAll({

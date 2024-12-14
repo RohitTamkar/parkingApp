@@ -2245,8 +2245,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               GoRouter.of(context)
                                                   .clearRedirectLocation();
 
-                                              context.goNamedAuth(
-                                                  'SplashParking',
+                                              context.goNamedAuth('StartScreen',
                                                   context.mounted);
                                             },
                                             child: Container(
