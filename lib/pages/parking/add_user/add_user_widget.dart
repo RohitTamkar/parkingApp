@@ -135,7 +135,15 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                                   '',
                                                   ParamType.String,
                                                 ),
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
                                             );
                                           },
                                         ),
