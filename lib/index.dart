@@ -149,6 +149,5 @@ export '/pages/parking/shift_details/shift_details_widget.dart'
     show ShiftDetailsWidget;
 export '/pages/parking/shift_wise_vehicle_report/shift_wise_vehicle_report_widget.dart'
     show ShiftWiseVehicleReportWidget;
-export '/splash_parking/splash_parking_widget.dart' show SplashParkingWidget;
-export '/pages/parking/splash_screen_parking/splash_screen_parking_widget.dart'
-    show SplashScreenParkingWidget;
+export '/pages/parking/splash_parking/splash_parking_widget.dart'
+    show SplashParkingWidget;

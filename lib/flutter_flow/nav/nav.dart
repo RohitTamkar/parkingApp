@@ -82,14 +82,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
           ? ParkingLoginWidget()
-          : StartScreenWidget(),
+          : SplashParkingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
               ? ParkingLoginWidget()
-              : StartScreenWidget(),
+              : SplashParkingWidget(),
           routes: [
             FFRoute(
               name: 'StartScreen',
@@ -1088,11 +1088,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SplashParking',
               path: 'splashParking',
               builder: (context, params) => SplashParkingWidget(),
-            ),
-            FFRoute(
-              name: 'splashScreenParking',
-              path: 'splashScreenParking',
-              builder: (context, params) => SplashScreenParkingWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -1267,7 +1262,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/startScreen';
+            return '/splashParking';
           }
           return null;
         },

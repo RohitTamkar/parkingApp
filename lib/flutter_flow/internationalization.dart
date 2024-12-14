@@ -8715,16 +8715,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
-  // splashScreenParking
-  {
-    'pst8lkdb': {
-      'en': 'Home',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-  },
   // Keyboard
   {
     '6bhkeqbn': {
