@@ -15,7 +15,12 @@ import 'pass_details_model.dart';
 export 'pass_details_model.dart';
 
 class PassDetailsWidget extends StatefulWidget {
-  const PassDetailsWidget({super.key});
+  const PassDetailsWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<PassDetailsWidget> createState() => _PassDetailsWidgetState();

@@ -589,11 +589,21 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                       ParamType
                                                                           .String,
                                                                     ),
+                                                                    'appSetting':
+                                                                        serializeParam(
+                                                                      widget!
+                                                                          .appSetting,
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
                                                                   }.withoutNulls,
                                                                   extra: <String,
                                                                       dynamic>{
                                                                     'docRef':
                                                                         listItem,
+                                                                    'appSetting':
+                                                                        widget!
+                                                                            .appSetting,
                                                                   },
                                                                 );
 
@@ -648,7 +658,18 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('AddUser');
+                                    context.pushNamed(
+                                      'AddUser',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'dezuzy2m' /* + */,

@@ -25,10 +25,12 @@ class AddproductAPPWidget extends StatefulWidget {
     super.key,
     this.catcodeLen,
     this.proRef,
+    this.appSetting,
   });
 
   final int? catcodeLen;
   final DocumentReference? proRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AddproductAPPWidget> createState() => _AddproductAPPWidgetState();
@@ -129,7 +131,18 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('productListNewM');
+                                  context.pushNamed(
+                                    'productListNewM',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(
@@ -3644,8 +3657,26 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                     },
                                                                   );
 
-                                                                  context.pushNamed(
-                                                                      'productListNewM');
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'productListNewM',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'appSetting':
+                                                                          serializeParam(
+                                                                        widget!
+                                                                            .appSetting,
+                                                                        ParamType
+                                                                            .Document,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      'appSetting':
+                                                                          widget!
+                                                                              .appSetting,
+                                                                    },
+                                                                  );
 
                                                                   FFAppState()
                                                                       .barcode = '';

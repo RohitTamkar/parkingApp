@@ -591,7 +591,14 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                         ),
                                         ParamType.int,
                                       ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
                                     }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
                                   );
 
                                   safeSetState(() {});

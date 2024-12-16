@@ -340,6 +340,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               asyncParams: {
                 'productDocument':
                     getDoc(['OUTLET', 'PRODUCT'], ProductRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => EditproductNewMWidget(
                 codeLen: params.getParam(
@@ -360,11 +362,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'productDocument',
                   ParamType.Document,
                 ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
               name: 'addproductAPP',
               path: 'addproductApp',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => AddproductAPPWidget(
                 catcodeLen: params.getParam(
                   'catcodeLen',
@@ -375,6 +385,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['OUTLET', 'PRODUCT'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -632,7 +646,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'PassDetails',
               path: 'passDetails',
-              builder: (context, params) => PassDetailsWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => PassDetailsWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'vehicleWiseSaleReport',

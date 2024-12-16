@@ -26,12 +26,14 @@ class EditproductNewMWidget extends StatefulWidget {
     this.proRef,
     this.id,
     this.productDocument,
+    this.appSetting,
   });
 
   final int? codeLen;
   final DocumentReference? proRef;
   final String? id;
   final ProductRecord? productDocument;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditproductNewMWidget> createState() => _EditproductNewMWidgetState();
@@ -133,7 +135,18 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('productListNewM');
+                                  context.pushNamed(
+                                    'productListNewM',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(
@@ -3001,8 +3014,23 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                                         },
                                                                       );
 
-                                                                      context.pushNamed(
-                                                                          'productListNewM');
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'productListNewM',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'appSetting':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                        extra: <String,
+                                                                            dynamic>{
+                                                                          'appSetting':
+                                                                              widget!.appSetting,
+                                                                        },
+                                                                      );
 
                                                                       ScaffoldMessenger.of(
                                                                               context)

@@ -124,10 +124,28 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                             widget!.docRef?.reference,
                                             ParamType.DocumentReference,
                                           ),
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
                                         }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
                                       );
                                     } else {
-                                      context.pushNamed('UserAccount');
+                                      context.pushNamed(
+                                        'UserAccount',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
 
                                       return;
                                     }

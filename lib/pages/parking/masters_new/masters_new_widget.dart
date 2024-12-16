@@ -1034,7 +1034,18 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed('PassDetails');
+                                          context.pushNamed(
+                                            'PassDetails',
+                                            queryParameters: {
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
+                                          );
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
