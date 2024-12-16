@@ -768,24 +768,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     () async {
                                                                   var _shouldSetState =
                                                                       false;
-                                                                  _model.userProfile =
-                                                                      await queryUserProfileRecordOnce(
-                                                                    queryBuilder: (userProfileRecord) =>
-                                                                        userProfileRecord
-                                                                            .where(
-                                                                              'name',
-                                                                              isEqualTo: _model.dropDownNameValue,
-                                                                            )
-                                                                            .where(
-                                                                              'quickPin',
-                                                                              isEqualTo: _model.quickPinTextController.text,
-                                                                            ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
                                                                   await showDialog(
                                                                     context:
                                                                         context,
@@ -805,6 +787,24 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                       );
                                                                     },
                                                                   );
+                                                                  _model.userProfile =
+                                                                      await queryUserProfileRecordOnce(
+                                                                    queryBuilder: (userProfileRecord) =>
+                                                                        userProfileRecord
+                                                                            .where(
+                                                                              'name',
+                                                                              isEqualTo: _model.dropDownNameValue,
+                                                                            )
+                                                                            .where(
+                                                                              'quickPin',
+                                                                              isEqualTo: _model.quickPinTextController.text,
+                                                                            ),
+                                                                    singleRecord:
+                                                                        true,
+                                                                  ).then((s) =>
+                                                                          s.firstOrNull);
+                                                                  _shouldSetState =
+                                                                      true;
                                                                   if (loginAppSettingsRecord!
                                                                       .settingList
                                                                       .where((e) =>
