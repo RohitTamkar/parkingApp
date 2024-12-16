@@ -768,25 +768,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     () async {
                                                                   var _shouldSetState =
                                                                       false;
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        content:
-                                                                            Text('ok1'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
                                                                   _model.userProfile =
                                                                       await queryUserProfileRecordOnce(
                                                                     queryBuilder: (userProfileRecord) =>

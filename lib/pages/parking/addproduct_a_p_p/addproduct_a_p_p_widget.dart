@@ -3700,7 +3700,7 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                         title: Text(
                                                                             'Alert'),
                                                                         content:
-                                                                            Text('Product is already added'),
+                                                                            Text('Vehicle is already added'),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed: () =>

@@ -9302,6 +9302,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
+  // monthlyPassCheckin
+  {
+    'e5alyz8v': {
+      'en': 'SAVE',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
   // Miscellaneous
   {
     'c0tsq8sj': {
