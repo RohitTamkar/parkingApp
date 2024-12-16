@@ -786,6 +786,25 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                           s.firstOrNull);
                                                                   _shouldSetState =
                                                                       true;
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return AlertDialog(
+                                                                        content:
+                                                                            Text('ok1'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                            child:
+                                                                                Text('Ok'),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  );
                                                                   if (loginAppSettingsRecord!
                                                                       .settingList
                                                                       .where((e) =>
