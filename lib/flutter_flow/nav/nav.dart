@@ -81,14 +81,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? SplashParkingWidget()
+          ? ParkingLoginWidget()
           : StartScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? SplashParkingWidget()
+              ? ParkingLoginWidget()
               : StartScreenWidget(),
           routes: [
             FFRoute(

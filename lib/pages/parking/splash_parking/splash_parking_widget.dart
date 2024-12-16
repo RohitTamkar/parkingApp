@@ -33,11 +33,7 @@ class _SplashParkingWidgetState extends State<SplashParkingWidget>
     _model = createModel(context, () => SplashParkingModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 3000));
-
-      context.pushNamed('ParkingLogin');
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     animationsMap.addAll({
       'imageOnPageLoadAnimation': AnimationInfo(
