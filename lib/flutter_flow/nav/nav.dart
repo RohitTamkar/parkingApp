@@ -979,7 +979,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ParkingLogin',
               path: 'parkingLogin',
-              builder: (context, params) => ParkingLoginWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+                'userRef':
+                    getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+              },
+              builder: (context, params) => ParkingLoginWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.JSON,
+                ),
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'EditOutletPage',
@@ -1061,6 +1080,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ShiftEnd',
               path: 'shiftEnd',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+                'userRef':
+                    getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+              },
               builder: (context, params) => ShiftEndWidget(
                 setting: params.getParam(
                   'setting',
@@ -1071,6 +1096,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 shiftDetail: params.getParam(
                   'shiftDetail',
                   ParamType.JSON,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.Document,
                 ),
               ),
             ),

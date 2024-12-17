@@ -23,10 +23,14 @@ class ShiftEndWidget extends StatefulWidget {
     super.key,
     this.setting,
     this.shiftDetail,
+    this.appSetting,
+    this.userRef,
   });
 
   final AppSettingsStruct? setting;
   final dynamic shiftDetail;
+  final AppSettingsRecord? appSetting;
+  final UserProfileRecord? userRef;
 
   @override
   State<ShiftEndWidget> createState() => _ShiftEndWidgetState();
@@ -2017,7 +2021,27 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                       },
                                     );
 
-                                    context.pushNamed('ParkingLogin');
+                                    context.pushNamed(
+                                      'ParkingLogin',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                        'shiftDoc': serializeParam(
+                                          widget!.shiftDetail,
+                                          ParamType.JSON,
+                                        ),
+                                        'userRef': serializeParam(
+                                          widget!.userRef,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                        'userRef': widget!.userRef,
+                                      },
+                                    );
                                   } else {
                                     return;
                                   }

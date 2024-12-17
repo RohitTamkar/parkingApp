@@ -23,7 +23,16 @@ import 'parking_login_model.dart';
 export 'parking_login_model.dart';
 
 class ParkingLoginWidget extends StatefulWidget {
-  const ParkingLoginWidget({super.key});
+  const ParkingLoginWidget({
+    super.key,
+    this.appSetting,
+    this.shiftDoc,
+    this.userRef,
+  });
+
+  final AppSettingsRecord? appSetting;
+  final dynamic shiftDoc;
+  final UserProfileRecord? userRef;
 
   @override
   State<ParkingLoginWidget> createState() => _ParkingLoginWidgetState();

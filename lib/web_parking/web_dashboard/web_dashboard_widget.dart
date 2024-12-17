@@ -501,9 +501,8 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                         0.0,
                                                                         20.0,
                                                                         0.0),
-                                                            child: FaIcon(
-                                                              FontAwesomeIcons
-                                                                  .bicycle,
+                                                            child: Icon(
+                                                              Icons.fire_truck,
                                                               color: Color(
                                                                   0xFFEFED91),
                                                               size: 30.0,
@@ -548,7 +547,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'lzzsqsfc' /* Bicycles */,
+                                                                  'lzzsqsfc' /* Vendor */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -696,7 +695,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                         0.0),
                                                             child: Icon(
                                                               Icons
-                                                                  .electric_rickshaw,
+                                                                  .directions_bus_sharp,
                                                               color: Color(
                                                                   0xFF98EDBD),
                                                               size: 40.0,
@@ -741,7 +740,7 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  '9e3lknr0' /* Three Wheelers */,
+                                                                  '9e3lknr0' /* Bus */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1011,6 +1010,24 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                   scrollDirection:
                                                                       Axis.horizontal,
                                                                   children: [
+                                                                    Container(
+                                                                      width:
+                                                                          200.0,
+                                                                      child:
+                                                                          Text(
+                                                                        functions
+                                                                            .totalShiftSale(rowShiftRecord!,
+                                                                                rowShiftRecord!.totalSale)
+                                                                            .toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                     FlutterFlowChoiceChips(
                                                                       options: webDashboardShiftRecordList
                                                                           .map((e) => e

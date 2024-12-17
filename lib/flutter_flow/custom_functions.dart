@@ -1434,3 +1434,18 @@ String genInvoiceNumyear(int? count) {
 
   return invNum;
 }
+
+double? totalShiftSale(
+  ShiftRecord shiftId,
+  double totalSale,
+) {
+  double total = 0;
+
+  total = total + shiftId.totalSale;
+
+  double totalShiftsSale = 0;
+
+  totalShiftsSale = totalShiftsSale + total;
+
+  return totalShiftsSale;
+}

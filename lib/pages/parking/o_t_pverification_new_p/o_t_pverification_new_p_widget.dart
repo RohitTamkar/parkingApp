@@ -621,33 +621,10 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                 .docId?.role ==
                                                             'admin') {
                                                           if (isWeb) {
-                                                            context
-                                                                .pushNamedAuth(
-                                                              'businessProfileAdminfinal',
-                                                              context.mounted,
-                                                              queryParameters: {
-                                                                'mobileNo':
-                                                                    serializeParam(
-                                                                  FFAppState()
-                                                                      .currentMobileString,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'appSetting':
-                                                                    serializeParam(
-                                                                  widget!
-                                                                      .appSetting,
-                                                                  ParamType
-                                                                      .Document,
-                                                                ),
-                                                              }.withoutNulls,
-                                                              extra: <String,
-                                                                  dynamic>{
-                                                                'appSetting':
-                                                                    widget!
-                                                                        .appSetting,
-                                                              },
-                                                            );
+                                                            context.pushNamedAuth(
+                                                                'WebDashboard',
+                                                                context
+                                                                    .mounted);
                                                           } else {
                                                             context
                                                                 .pushNamedAuth(
@@ -679,33 +656,10 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                           }
                                                         } else {
                                                           if (isWeb) {
-                                                            context
-                                                                .pushNamedAuth(
-                                                              'businessProfileAdminfinal',
-                                                              context.mounted,
-                                                              queryParameters: {
-                                                                'mobileNo':
-                                                                    serializeParam(
-                                                                  FFAppState()
-                                                                      .currentMobileString,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'appSetting':
-                                                                    serializeParam(
-                                                                  widget!
-                                                                      .appSetting,
-                                                                  ParamType
-                                                                      .Document,
-                                                                ),
-                                                              }.withoutNulls,
-                                                              extra: <String,
-                                                                  dynamic>{
-                                                                'appSetting':
-                                                                    widget!
-                                                                        .appSetting,
-                                                              },
-                                                            );
+                                                            context.pushNamedAuth(
+                                                                'WebDashboard',
+                                                                context
+                                                                    .mounted);
                                                           } else {
                                                             context
                                                                 .pushNamedAuth(
