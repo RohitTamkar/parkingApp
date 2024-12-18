@@ -1111,6 +1111,17 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                               ),
                                                                             ),
                                                                           );
+                                                                          _model.shiftdoc =
+                                                                              await actions.shiftTotalSale(
+                                                                            webDashboardShiftRecordList.toList(),
+                                                                          );
+                                                                          _model.shiftDoc =
+                                                                              _model.shiftdoc;
+                                                                          safeSetState(
+                                                                              () {});
+
+                                                                          safeSetState(
+                                                                              () {});
                                                                         },
                                                                         child:
                                                                             Container(
