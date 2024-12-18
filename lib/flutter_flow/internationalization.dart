@@ -7991,174 +7991,167 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // editBillDetails
   {
     'kjb5s68q': {
-      'en': 'Bill Details',
+      'en': 'Edit Bill Details',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '7opj7tiy': {
-      'en': 'Bill Details',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '432hwudk': {
+    'qxa0tbcm': {
       'en': 'Bill No',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '60b768eh': {
+    'q7cyn1b4': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'ntgdk7sr': {
+    'b4obtmbv': {
       'en': 'Vehicle No',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'gpe7eomx': {
+    'k7mzcsj7': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '6dfy1421': {
+    'zmzf5f4t': {
       'en': 'TextField',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'u2meuxfi': {
+    'esqwu4va': {
       'en': 'Date/Time',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'opgayunw': {
+    '0re3a5sn': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'epul8xhm': {
+    'jo52m4ud': {
       'en': 'Payment Mode',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'omes66c1': {
+    '1swt721o': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '9auawkmu': {
+    '25h6o5fd': {
       'en': 'Amount',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'l38zfelx': {
+    's9jl42rl': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'kh41cj13': {
+    'hb3mkeh9': {
       'en': '₹',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'zoat8scy': {
+    '6b6zaykv': {
       'en': 'TextField',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'cens31qu': {
+    '3ih6gdq6': {
       'en': 'Tax Amount',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'wz62n27x': {
+    '9l8mb9hv': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'k7n1szhb': {
+    '90mfqlbe': {
       'en': '₹',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '5x7sbnb7': {
+    'b44k2ra8': {
       'en': 'Discount Amount',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'qvxengyi': {
+    '13ov3xg0': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'ig9zkqrm': {
+    'wpio9i7d': {
       'en': '₹',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'd8sdodxi': {
+    'uxkpekd5': {
       'en': 'Total Amount',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'vzssxnwi': {
+    'mynqtg80': {
       'en': ':',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'je754hex': {
+    'n89d6v8s': {
       'en': '₹',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'w73dkxff': {
+    '3vljblwp': {
       'en': 'Save',
       'hi': '',
       'kn': '',

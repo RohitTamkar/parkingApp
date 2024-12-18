@@ -34,6 +34,8 @@ class WebDashboardModel extends FlutterFlowModel<WebDashboardWidget> {
   bool? shiftExist;
   // Model for NavBarWebParking component.
   late NavBarWebParkingModel navBarWebParkingModel;
+  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
+  List<ShiftRecord>? totalShift;
   // Stores action output result for [Custom Action - shiftTotalSale] action in Container widget.
   ShiftRecord? shiftdoc;
   // State field(s) for ChoiceChips widget.

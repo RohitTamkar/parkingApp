@@ -101,24 +101,21 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
             )
           ],
           onChanged: (val) => safeSetState(() => _model.dropDownValue = val),
-          width: 300.0,
-          textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 14.0,
+          textStyle: FlutterFlowTheme.of(context).labelLarge.override(
+                fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                 letterSpacing: 0.0,
                 useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                    .containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
               ),
           hintText: FFLocalizations.of(context).getText(
             'itmkmxu3' /* Payment Mode */,
           ),
           icon: Icon(
             Icons.keyboard_arrow_down_rounded,
-            color: FlutterFlowTheme.of(context).primaryBtnText,
+            color: FlutterFlowTheme.of(context).primaryText,
             size: 20.0,
           ),
-          fillColor: Color(0xFF274287),
+          fillColor: FlutterFlowTheme.of(context).customColor2,
           elevation: 2.0,
           borderColor: Colors.transparent,
           borderWidth: 0.0,
