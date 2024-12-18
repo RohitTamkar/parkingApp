@@ -1299,7 +1299,10 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                                                                                                 child: AutoSizeText(
-                                                                                                  '₹${rowShiftRecord?.totalSale?.toString()}',
+                                                                                                  valueOrDefault<String>(
+                                                                                                    '₹${_model.shiftDoc?.totalSale?.toString()}',
+                                                                                                    '0',
+                                                                                                  ),
                                                                                                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                                                                                                         fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
                                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1382,7 +1385,10 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                                       ),
                                                                                                     ),
                                                                                                     AutoSizeText(
-                                                                                                      functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'cash'),
+                                                                                                      valueOrDefault<String>(
+                                                                                                        functions.paymentModeStrToJson(_model.shiftDoc!.paymentJson, 'cash'),
+                                                                                                        '0',
+                                                                                                      ),
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1467,7 +1473,10 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                                       ),
                                                                                                     ),
                                                                                                     AutoSizeText(
-                                                                                                      functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'googlepay + paytm + phonepe'),
+                                                                                                      valueOrDefault<String>(
+                                                                                                        functions.paymentModeStrToJson(_model.shiftDoc!.paymentJson, 'googlepay + paytm + phonepe'),
+                                                                                                        '0',
+                                                                                                      ),
                                                                                                       style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                             fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
