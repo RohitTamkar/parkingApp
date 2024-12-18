@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import '/web_parking/nav_bar_web_parking/nav_bar_web_parking_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -109,71 +110,74 @@ class _WebDailyCollectionReportWidgetState
                   key: scaffoldKey,
                   backgroundColor:
                       FlutterFlowTheme.of(context).primaryBackground,
-                  floatingActionButton: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                    child: FloatingActionButton.extended(
-                      onPressed: () {
-                        print('FloatingActionButton pressed ...');
-                      },
-                      backgroundColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 8.0,
-                      label: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 50.0,
-                        buttonSize: 50.0,
-                        icon: Icon(
-                          Icons.print,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 30.0,
-                        ),
-                        onPressed: () async {
-                          var _shouldSetState = false;
-                          if (!functions
-                              .isPrinterSelected(FFAppState().printerDevice)!) {
-                            _model.resDevice2 = await actions.scanPrinter(
-                              FFAppState().posMode,
+                  floatingActionButton: Visibility(
+                    visible: false,
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                      child: FloatingActionButton.extended(
+                        onPressed: () {
+                          print('FloatingActionButton pressed ...');
+                        },
+                        backgroundColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        elevation: 8.0,
+                        label: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 50.0,
+                          buttonSize: 50.0,
+                          icon: Icon(
+                            Icons.print,
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 30.0,
+                          ),
+                          onPressed: () async {
+                            var _shouldSetState = false;
+                            if (!functions.isPrinterSelected(
+                                FFAppState().printerDevice)!) {
+                              _model.resDevice2 = await actions.scanPrinter(
+                                FFAppState().posMode,
+                              );
+                              _shouldSetState = true;
+                            }
+                            _model.printer = await actions.connectDevice(
+                              FFAppState().printerDevice,
+                              FFAppState().printerIndex,
                             );
                             _shouldSetState = true;
-                          }
-                          _model.printer = await actions.connectDevice(
-                            FFAppState().printerDevice,
-                            FFAppState().printerIndex,
-                          );
-                          _shouldSetState = true;
-                          if (_model.printer!) {
-                            await actions.printDailyCollectionReport(
-                              FFAppState().printerDevice,
-                              FFAppState().isPrinterConnected,
-                              FFAppState().printerName,
-                              FFAppState().paperSize,
-                              webDailyCollectionReportInvoiceRecordList
-                                  .toList(),
-                            );
-                          } else {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('printer connection'),
-                                  content: Text('printer not connected'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          }
+                            if (_model.printer!) {
+                              await actions.printDailyCollectionReport(
+                                FFAppState().printerDevice,
+                                FFAppState().isPrinterConnected,
+                                FFAppState().printerName,
+                                FFAppState().paperSize,
+                                webDailyCollectionReportInvoiceRecordList
+                                    .toList(),
+                              );
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('printer connection'),
+                                    content: Text('printer not connected'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
 
-                          if (_shouldSetState) safeSetState(() {});
-                        },
+                            if (_shouldSetState) safeSetState(() {});
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -200,7 +204,7 @@ class _WebDailyCollectionReportWidgetState
                                 height: 100.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                      .secondaryBackground,
                                 ),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -258,6 +262,8 @@ class _WebDailyCollectionReportWidgetState
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 100.0,
                                 decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0.0),
                                     bottomRight: Radius.circular(0.0),

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -244,8 +245,7 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
+                                    padding: EdgeInsets.all(7.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -255,15 +255,15 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                           flex: 3,
                                           child: Container(
                                             decoration: BoxDecoration(),
-                                            child: Row(
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
+                                                          0.0, 0.0, 5.0, 5.0),
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -313,6 +313,8 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                                               .lineColor,
                                                           fontSize: 15.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -330,15 +332,15 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                           flex: 5,
                                           child: Container(
                                             decoration: BoxDecoration(),
-                                            child: Row(
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
+                                                          0.0, 0.0, 5.0, 5.0),
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -389,6 +391,8 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                                               .lineColor,
                                                           fontSize: 15.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(

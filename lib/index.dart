@@ -143,7 +143,7 @@ export '/pages/parking/app_settings/app_settings_widget.dart'
 export '/pages/parking/shift_end/shift_end_widget.dart' show ShiftEndWidget;
 export '/pages/parking/welcome_screen_new/welcome_screen_new_widget.dart'
     show WelcomeScreenNewWidget;
-export '/pages/parking/shift_summary_report/shift_summary_report_widget.dart'
+export '/pages/shift_summary_report/shift_summary_report_widget.dart'
     show ShiftSummaryReportWidget;
 export '/pages/parking/shift_details/shift_details_widget.dart'
     show ShiftDetailsWidget;
@@ -151,3 +151,11 @@ export '/pages/parking/shift_wise_vehicle_report/shift_wise_vehicle_report_widge
     show ShiftWiseVehicleReportWidget;
 export '/pages/parking/splash_parking/splash_parking_widget.dart'
     show SplashParkingWidget;
+export '/web_parking/web_edit_userprofile/web_edit_userprofile_widget.dart'
+    show WebEditUserprofileWidget;
+export '/web_parking/web_user_account/web_user_account_widget.dart'
+    show WebUserAccountWidget;
+export '/web_parking/web_edit_user_permission/web_edit_user_permission_widget.dart'
+    show WebEditUserPermissionWidget;
+export '/web_parking/web_add_user/web_add_user_widget.dart'
+    show WebAddUserWidget;

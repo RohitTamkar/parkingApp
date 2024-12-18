@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -867,30 +868,30 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                                 .doc(user.uid)
                                                 .update({
                                               ...createUserProfileRecordData(
+                                                createdDate:
+                                                    functions.getcreatedDate(),
+                                                email: _model
+                                                    .textFieldNameTextController
+                                                    .text,
+                                                isDeleted: false,
+                                                mobile:
+                                                    '+91${_model.textFieldMobileTextController.text}',
                                                 name: functions.toCapitalLetter(
                                                     _model
                                                         .textFieldNameTextController
                                                         .text),
-                                                mobile:
-                                                    '+91${_model.textFieldMobileTextController.text}',
-                                                quickPin: _model
-                                                    .pinnTextFieldTextController
-                                                    .text,
-                                                role: 'user',
                                                 outletId: buttonOutletRecord
                                                     ?.reference.id,
-                                                email: _model
-                                                    .emailTextFieldTextController
-                                                    .text,
-                                                isDeleted: false,
                                                 password: _model
                                                     .confirmpwdlTextFieldTextController
                                                     .text,
-                                                createdDate:
-                                                    functions.getcreatedDate(),
+                                                quickPin: _model
+                                                    .pinnTextFieldTextController
+                                                    .text,
                                                 renewalDate: functions
                                                     .setRenewalDateInMili(
                                                         getCurrentTimestamp),
+                                                role: 'user',
                                               ),
                                               ...mapToFirestore(
                                                 {

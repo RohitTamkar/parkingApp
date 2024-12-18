@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/web_parking/nav_bar_web_parking/nav_bar_web_parking_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'web_editproduct_new_m_widget.dart' show WebEditproductNewMWidget;
 import 'package:auto_size_text/auto_size_text.dart';

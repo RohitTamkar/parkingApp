@@ -1435,17 +1435,25 @@ String genInvoiceNumyear(int? count) {
   return invNum;
 }
 
-double? totalShiftSale(
-  ShiftRecord shiftId,
-  double totalSale,
-) {
+double? totalShiftSaleToday(List<ShiftRecord> allShifts) {
   double total = 0;
 
-  total = total + shiftId.totalSale;
+  String todayId = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-  double totalShiftsSale = 0;
+  // Filter shifts for the current day based on dayId and sum their totalSale
+  for (final shift in allShifts) {
+    if (shift.dayId == todayId) {
+      total += shift.totalSale ?? 0.0;
+    }
+  }
 
-  totalShiftsSale = totalShiftsSale + total;
+  return total;
+}
 
-  return totalShiftsSale;
+double? totalShiftSale(ShiftRecord shiftSale) {
+  double total = 0;
+
+  total = total + shiftSale.totalSale;
+
+  return total;
 }

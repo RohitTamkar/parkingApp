@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -501,20 +502,6 @@ class _ParkingCheckINCopyWidgetState extends State<ParkingCheckINCopyWidget> {
                                                 safeSetState(() {
                                                   _model.textController1?.text =
                                                       _model.prd5456!.vehicleNo;
-                                                  _model.textFieldFocusNode
-                                                      ?.requestFocus();
-                                                  WidgetsBinding.instance
-                                                      .addPostFrameCallback(
-                                                          (_) {
-                                                    _model.textController1
-                                                            ?.selection =
-                                                        TextSelection.collapsed(
-                                                      offset: _model
-                                                          .textController1!
-                                                          .text
-                                                          .length,
-                                                    );
-                                                  });
                                                 });
                                                 safeSetState(() {
                                                   _model.dropDownvechicleValueController
@@ -922,19 +909,6 @@ class _ParkingCheckINCopyWidgetState extends State<ParkingCheckINCopyWidget> {
                                             safeSetState(() {
                                               _model.textController1?.text =
                                                   FFAppState().resultText;
-                                              _model.textFieldFocusNode
-                                                  ?.requestFocus();
-                                              WidgetsBinding.instance
-                                                  .addPostFrameCallback((_) {
-                                                _model.textController1
-                                                        ?.selection =
-                                                    TextSelection.collapsed(
-                                                  offset: _model
-                                                      .textController1!
-                                                      .text
-                                                      .length,
-                                                );
-                                              });
                                             });
                                             FFAppState().showNumber = true;
                                             safeSetState(() {});

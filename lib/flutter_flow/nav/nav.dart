@@ -23,6 +23,8 @@ export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
 
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
+
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
@@ -80,15 +82,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? ParkingLoginWidget()
+          ? WebDashboardWidget()
           : StartScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? ParkingLoginWidget()
+              ? WebDashboardWidget()
               : StartScreenWidget(),
           routes: [
             FFRoute(
@@ -1152,6 +1155,88 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SplashParking',
               path: 'splashParking',
               builder: (context, params) => SplashParkingWidget(),
+            ),
+            FFRoute(
+              name: 'WebEditUserprofile',
+              path: 'webEditUserprofile',
+              asyncParams: {
+                'docRef':
+                    getDoc(['USER_PROFILE'], UserProfileRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => WebEditUserprofileWidget(
+                docRef: params.getParam(
+                  'docRef',
+                  ParamType.Document,
+                ),
+                nextP: params.getParam(
+                  'nextP',
+                  ParamType.int,
+                ),
+                id: params.getParam(
+                  'id',
+                  ParamType.String,
+                ),
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebUserAccount',
+              path: 'webUserAccount',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => WebUserAccountWidget(
+                mobile: params.getParam(
+                  'mobile',
+                  ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebEditUserPermission',
+              path: 'webEditUserPermission',
+              builder: (context, params) => WebEditUserPermissionWidget(
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'WebAddUser',
+              path: 'webAddUser',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => WebAddUserWidget(
+                userRef: params.getParam(
+                  'userRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['USER_PROFILE'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

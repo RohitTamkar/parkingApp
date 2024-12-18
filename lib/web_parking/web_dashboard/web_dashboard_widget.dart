@@ -7,10 +7,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/web_parking/nav_bar_web_parking/nav_bar_web_parking_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -403,467 +405,536 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                     children: [
                                       Expanded(
                                         flex: 3,
-                                        child: Container(
-                                          width: 100.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(30.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 5.0),
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'nodbznbp' /* Today's Overview  */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineSmallFamily,
-                                                          fontSize: 22.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 25.0),
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'sbk97oxm' /* 22-11-2024, Friday */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLargeFamily,
-                                                          color:
-                                                              Color(0xFF01020D),
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily),
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 15.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsets.all(15.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        20.0,
-                                                                        0.0),
-                                                            child: Icon(
-                                                              Icons.fire_truck,
-                                                              color: Color(
-                                                                  0xFFEFED91),
-                                                              size: 30.0,
-                                                            ),
-                                                          ),
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    '6ab3l0pz' /* 15 */,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'lzzsqsfc' /* Vendor */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 15.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsets.all(15.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        20.0,
-                                                                        0.0),
-                                                            child: Icon(
-                                                              Icons.two_wheeler,
-                                                              color: Color(
-                                                                  0xFFFFA6B4),
-                                                              size: 40.0,
-                                                            ),
-                                                          ),
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'ndgzyr6l' /* 24 */,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'p3u3q6yp' /* Two Wheelers */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 15.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsets.all(15.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        20.0,
-                                                                        0.0),
-                                                            child: Icon(
-                                                              Icons
-                                                                  .directions_bus_sharp,
-                                                              color: Color(
-                                                                  0xFF98EDBD),
-                                                              size: 40.0,
-                                                            ),
-                                                          ),
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    '50uiore8' /* 2 */,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '9e3lknr0' /* Bus */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 15.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsets.all(15.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        20.0,
-                                                                        0.0),
-                                                            child: FaIcon(
-                                                              FontAwesomeIcons
-                                                                  .carSide,
-                                                              color: Color(
-                                                                  0xFFA3BEF0),
-                                                              size: 30.0,
-                                                            ),
-                                                          ),
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    '3yvqv6g9' /* 9 */,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).headlineLargeFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'xap1xv7u' /* Four Wheelers */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                        child:
+                                            StreamBuilder<List<InvoiceRecord>>(
+                                          stream: queryInvoiceRecord(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (invoiceRecord) =>
+                                                invoiceRecord.where(
+                                              'dayId',
+                                              isEqualTo: functions.getToday(
+                                                  getCurrentTimestamp),
                                             ),
                                           ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  child: SpinKitFadingCircle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 40.0,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<InvoiceRecord>
+                                                containerInvoiceRecordList =
+                                                snapshot.data!;
+
+                                            return Container(
+                                              width: 100.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(30.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'nodbznbp' /* Today's Overview  */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily,
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineSmallFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  25.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'sbk97oxm' /* 22-11-2024, Friday */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeFamily,
+                                                                  color: Color(
+                                                                      0xFF01020D),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelLargeFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  15.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  15.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .fire_truck,
+                                                                  color: Color(
+                                                                      0xFFEFED91),
+                                                                  size: 30.0,
+                                                                ),
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                    child: Text(
+                                                                      containerInvoiceRecordList
+                                                                          .where((e) =>
+                                                                              e.vechicleType ==
+                                                                              'VENDOR')
+                                                                          .toList()
+                                                                          .length
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).headlineLargeFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'lzzsqsfc' /* Vendor */,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  15.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  15.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .two_wheeler,
+                                                                  color: Color(
+                                                                      0xFFFFA6B4),
+                                                                  size: 40.0,
+                                                                ),
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                    child: Text(
+                                                                      containerInvoiceRecordList
+                                                                          .where((e) =>
+                                                                              e.vechicleType ==
+                                                                              'TWO WHEELER')
+                                                                          .toList()
+                                                                          .length
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).headlineLargeFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'p3u3q6yp' /* Two Wheelers */,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  15.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  15.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .directions_bus_sharp,
+                                                                  color: Color(
+                                                                      0xFF98EDBD),
+                                                                  size: 40.0,
+                                                                ),
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                    child: Text(
+                                                                      containerInvoiceRecordList
+                                                                          .where((e) =>
+                                                                              e.vechicleType ==
+                                                                              'BUS')
+                                                                          .toList()
+                                                                          .length
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).headlineLargeFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      '9e3lknr0' /* Bus */,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  15.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  15.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                child: FaIcon(
+                                                                  FontAwesomeIcons
+                                                                      .carSide,
+                                                                  color: Color(
+                                                                      0xFFA3BEF0),
+                                                                  size: 30.0,
+                                                                ),
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            5.0),
+                                                                    child: Text(
+                                                                      containerInvoiceRecordList
+                                                                          .where((e) =>
+                                                                              e.vechicleType ==
+                                                                              'FOUR WHEELER')
+                                                                          .toList()
+                                                                          .length
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).headlineLargeFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'xap1xv7u' /* Four Wheelers */,
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
                                         ),
                                       ),
                                       Expanded(
@@ -1010,22 +1081,51 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                   scrollDirection:
                                                                       Axis.horizontal,
                                                                   children: [
-                                                                    Container(
-                                                                      width:
-                                                                          200.0,
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
                                                                       child:
-                                                                          Text(
-                                                                        functions
-                                                                            .totalShiftSale(rowShiftRecord!,
-                                                                                rowShiftRecord!.totalSale)
-                                                                            .toString(),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                              letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await queryShiftRecordOnce(
+                                                                            parent:
+                                                                                FFAppState().outletIdRef,
+                                                                            queryBuilder: (shiftRecord) =>
+                                                                                shiftRecord.where(
+                                                                              'dayId',
+                                                                              isEqualTo: valueOrDefault<String>(
+                                                                                functions.getDayId(),
+                                                                                '0',
+                                                                              ),
                                                                             ),
+                                                                          );
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          child:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'pymd743c' /* Total */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                ),
+                                                                          ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                     FlutterFlowChoiceChips(
@@ -1037,8 +1137,15 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                               ChipData(label))
                                                                           .toList(),
                                                                       onChanged:
-                                                                          (val) =>
-                                                                              safeSetState(() => _model.choiceChipsValue = val?.firstOrNull),
+                                                                          (val) async {
+                                                                        safeSetState(() =>
+                                                                            _model.choiceChipsValue =
+                                                                                val?.firstOrNull);
+                                                                        _model.shiftDoc =
+                                                                            rowShiftRecord;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
                                                                       selectedChipStyle:
                                                                           ChipStyle(
                                                                         backgroundColor:
@@ -1122,880 +1229,906 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                             Expanded(
                                                               child: Stack(
                                                                 children: [
-                                                                  StreamBuilder<
-                                                                      List<
-                                                                          ShiftRecord>>(
-                                                                    stream:
-                                                                        queryShiftRecord(
-                                                                      parent: FFAppState()
-                                                                          .outletIdRef,
-                                                                      queryBuilder:
-                                                                          (shiftRecord) =>
-                                                                              shiftRecord.where(
-                                                                        'shiftId',
-                                                                        isEqualTo: _model.choiceChipsValue !=
-                                                                                ''
-                                                                            ? _model.choiceChipsValue
-                                                                            : null,
-                                                                      ),
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ),
-                                                                    builder:
-                                                                        (context,
-                                                                            snapshot) {
-                                                                      // Customize what your widget looks like when it's loading.
-                                                                      if (!snapshot
-                                                                          .hasData) {
-                                                                        return Center(
-                                                                          child:
-                                                                              SizedBox(
-                                                                            width:
-                                                                                40.0,
-                                                                            height:
-                                                                                40.0,
+                                                                  Container(
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child:
+                                                                        SingleChildScrollView(
+                                                                      primary:
+                                                                          false,
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.stretch,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                20.0),
                                                                             child:
-                                                                                SpinKitFadingCircle(
-                                                                              color: FlutterFlowTheme.of(context).primary,
-                                                                              size: 40.0,
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      }
-                                                                      List<ShiftRecord>
-                                                                          containerShiftRecordList =
-                                                                          snapshot
-                                                                              .data!;
-                                                                      final containerShiftRecord = containerShiftRecordList
-                                                                              .isNotEmpty
-                                                                          ? containerShiftRecordList
-                                                                              .first
-                                                                          : null;
-
-                                                                      return Container(
-                                                                        decoration:
-                                                                            BoxDecoration(),
-                                                                        child:
-                                                                            SingleChildScrollView(
-                                                                          primary:
-                                                                              false,
-                                                                          child:
-                                                                              Column(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.stretch,
-                                                                            children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                                                                                child: Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    Expanded(
-                                                                                      child: Container(
-                                                                                        width: 100.0,
-                                                                                        decoration: BoxDecoration(
-                                                                                          gradient: LinearGradient(
-                                                                                            colors: [
-                                                                                              Color(0xFFEA6C95),
-                                                                                              Color(0xFFA90035)
-                                                                                            ],
-                                                                                            stops: [0.0, 1.0],
-                                                                                            begin: AlignmentDirectional(0.98, -1.0),
-                                                                                            end: AlignmentDirectional(-0.98, 1.0),
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                Expanded(
+                                                                                  child: Container(
+                                                                                    width: 100.0,
+                                                                                    decoration: BoxDecoration(
+                                                                                      gradient: LinearGradient(
+                                                                                        colors: [
+                                                                                          Color(0xFFEA6C95),
+                                                                                          Color(0xFFA90035)
+                                                                                        ],
+                                                                                        stops: [0.0, 1.0],
+                                                                                        begin: AlignmentDirectional(0.98, -1.0),
+                                                                                        end: AlignmentDirectional(-0.98, 1.0),
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(5.0),
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: EdgeInsets.all(20.0),
+                                                                                      child: Row(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        children: [
+                                                                                          Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
+                                                                                            child: FaIcon(
+                                                                                              FontAwesomeIcons.coins,
+                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              size: 30.0,
+                                                                                            ),
                                                                                           ),
-                                                                                          borderRadius: BorderRadius.circular(5.0),
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(20.0),
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                          Column(
+                                                                                            mainAxisSize: MainAxisSize.min,
+                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
                                                                                             children: [
                                                                                               Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
-                                                                                                child: FaIcon(
-                                                                                                  FontAwesomeIcons.coins,
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                  size: 30.0,
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                child: AutoSizeText(
+                                                                                                  '₹${rowShiftRecord?.totalSale?.toString()}',
+                                                                                                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                                                                                                        fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                        fontSize: 20.0,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                                      ),
                                                                                                 ),
                                                                                               ),
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                children: [
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                    child: AutoSizeText(
-                                                                                                      '₹${rowShiftRecord?.totalSale?.toString()}',
-                                                                                                      style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).headlineMediumFamily,
+                                                                                              Text(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'q8ga6y36' /* Total Sale */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                      fontSize: 16.0,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Expanded(
+                                                                                  child: Container(
+                                                                                    width: 100.0,
+                                                                                    decoration: BoxDecoration(
+                                                                                      gradient: LinearGradient(
+                                                                                        colors: [
+                                                                                          Color(0xFF45CF3A),
+                                                                                          Color(0xFF097000)
+                                                                                        ],
+                                                                                        stops: [0.0, 1.0],
+                                                                                        begin: AlignmentDirectional(0.98, -1.0),
+                                                                                        end: AlignmentDirectional(-0.98, 1.0),
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(5.0),
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: EdgeInsets.all(20.0),
+                                                                                      child: Row(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        children: [
+                                                                                          Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
+                                                                                            child: FaIcon(
+                                                                                              FontAwesomeIcons.moneyBillAlt,
+                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              size: 30.0,
+                                                                                            ),
+                                                                                          ),
+                                                                                          Column(
+                                                                                            mainAxisSize: MainAxisSize.min,
+                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                            children: [
+                                                                                              Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                child: Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        FFLocalizations.of(context).getText(
+                                                                                                          'deu2ap15' /* ₹ */,
+                                                                                                        ),
+                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                              fontSize: 20.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    AutoSizeText(
+                                                                                                      functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'cash'),
+                                                                                                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                             fontSize: 20.0,
                                                                                                             letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineMediumFamily),
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                                           ),
                                                                                                     ),
-                                                                                                  ),
-                                                                                                  Text(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'q8ga6y36' /* Total Sale */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          fontSize: 16.0,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Expanded(
-                                                                                      child: Container(
-                                                                                        width: 100.0,
-                                                                                        decoration: BoxDecoration(
-                                                                                          gradient: LinearGradient(
-                                                                                            colors: [
-                                                                                              Color(0xFF45CF3A),
-                                                                                              Color(0xFF097000)
-                                                                                            ],
-                                                                                            stops: [0.0, 1.0],
-                                                                                            begin: AlignmentDirectional(0.98, -1.0),
-                                                                                            end: AlignmentDirectional(-0.98, 1.0),
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(5.0),
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(20.0),
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            children: [
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
-                                                                                                child: FaIcon(
-                                                                                                  FontAwesomeIcons.moneyBillAlt,
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                  size: 30.0,
+                                                                                                  ],
                                                                                                 ),
                                                                                               ),
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                children: [
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                    child: Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                                          child: Text(
-                                                                                                            FFLocalizations.of(context).getText(
-                                                                                                              'deu2ap15' /* ₹ */,
-                                                                                                            ),
-                                                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                  fontSize: 20.0,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        AutoSizeText(
-                                                                                                          functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'cash'),
-                                                                                                          style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                fontSize: 20.0,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Text(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'npe0ex3c' /* Cash in Hand */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          fontSize: 16.0,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Expanded(
-                                                                                      child: Container(
-                                                                                        width: 100.0,
-                                                                                        decoration: BoxDecoration(
-                                                                                          gradient: LinearGradient(
-                                                                                            colors: [
-                                                                                              Color(0xFF605CE8),
-                                                                                              Color(0xFF16137F)
-                                                                                            ],
-                                                                                            stops: [0.0, 1.0],
-                                                                                            begin: AlignmentDirectional(0.98, -1.0),
-                                                                                            end: AlignmentDirectional(-0.98, 1.0),
-                                                                                          ),
-                                                                                          borderRadius: BorderRadius.circular(5.0),
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsets.all(20.0),
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            children: [
-                                                                                              Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
-                                                                                                child: Icon(
-                                                                                                  Icons.install_mobile_outlined,
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                  size: 30.0,
-                                                                                                ),
-                                                                                              ),
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                children: [
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                    child: Row(
-                                                                                                      mainAxisSize: MainAxisSize.max,
-                                                                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                                                                      children: [
-                                                                                                        Padding(
-                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                                          child: Text(
-                                                                                                            FFLocalizations.of(context).getText(
-                                                                                                              'gfpdu4iw' /* ₹ */,
-                                                                                                            ),
-                                                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                  fontSize: 20.0,
-                                                                                                                  letterSpacing: 0.0,
-                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                ),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        AutoSizeText(
-                                                                                                          functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'googlepay + paytm + phonepe'),
-                                                                                                          style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                fontSize: 20.0,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Text(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'axlisxdl' /* UPI Sale */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          fontSize: 16.0,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ].divide(SizedBox(width: 15.0)),
-                                                                                ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
-                                                                                child: Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                  children: [
-                                                                                    Expanded(
-                                                                                      child: Container(
-                                                                                        width: MediaQuery.sizeOf(context).width * 0.95,
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.only(
-                                                                                            bottomLeft: Radius.circular(0.0),
-                                                                                            bottomRight: Radius.circular(10.0),
-                                                                                            topLeft: Radius.circular(10.0),
-                                                                                            topRight: Radius.circular(0.0),
-                                                                                          ),
-                                                                                        ),
-                                                                                        child: Column(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          mainAxisAlignment: MainAxisAlignment.start,
-                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                          children: [
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
-                                                                                              child: AutoSizeText(
+                                                                                              Text(
                                                                                                 FFLocalizations.of(context).getText(
-                                                                                                  'x1kl1yx0' /* Payment Modes */,
+                                                                                                  'npe0ex3c' /* Cash in Hand */,
                                                                                                 ),
-                                                                                                style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                                                      color: FlutterFlowTheme.of(context).info,
+                                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                      fontSize: 16.0,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                                     ),
                                                                                               ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Expanded(
+                                                                                  child: Container(
+                                                                                    width: 100.0,
+                                                                                    decoration: BoxDecoration(
+                                                                                      gradient: LinearGradient(
+                                                                                        colors: [
+                                                                                          Color(0xFF605CE8),
+                                                                                          Color(0xFF16137F)
+                                                                                        ],
+                                                                                        stops: [0.0, 1.0],
+                                                                                        begin: AlignmentDirectional(0.98, -1.0),
+                                                                                        end: AlignmentDirectional(-0.98, 1.0),
+                                                                                      ),
+                                                                                      borderRadius: BorderRadius.circular(5.0),
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: EdgeInsets.all(20.0),
+                                                                                      child: Row(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        children: [
+                                                                                          Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
+                                                                                            child: Icon(
+                                                                                              Icons.install_mobile_outlined,
+                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                              size: 30.0,
                                                                                             ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  Expanded(
-                                                                                                    child: Container(
-                                                                                                      width: 100.0,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                        borderRadius: BorderRadius.circular(5.0),
+                                                                                          ),
+                                                                                          Column(
+                                                                                            mainAxisSize: MainAxisSize.min,
+                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                            children: [
+                                                                                              Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                child: Row(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                                      child: Text(
+                                                                                                        FFLocalizations.of(context).getText(
+                                                                                                          'gfpdu4iw' /* ₹ */,
+                                                                                                        ),
+                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                              fontSize: 20.0,
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                            ),
                                                                                                       ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                        child: Column(
+                                                                                                    ),
+                                                                                                    AutoSizeText(
+                                                                                                      functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'googlepay + paytm + phonepe'),
+                                                                                                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                            fontSize: 20.0,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ),
+                                                                                              Text(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'axlisxdl' /* UPI Sale */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                      fontSize: 16.0,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ].divide(SizedBox(width: 15.0)),
+                                                                            ),
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                25.0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                              children: [
+                                                                                Expanded(
+                                                                                  child: Container(
+                                                                                    width: MediaQuery.sizeOf(context).width * 0.95,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.only(
+                                                                                        bottomLeft: Radius.circular(0.0),
+                                                                                        bottomRight: Radius.circular(10.0),
+                                                                                        topLeft: Radius.circular(10.0),
+                                                                                        topRight: Radius.circular(0.0),
+                                                                                      ),
+                                                                                    ),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: [
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                                                                                          child: AutoSizeText(
+                                                                                            FFLocalizations.of(context).getText(
+                                                                                              'x1kl1yx0' /* Payment Modes */,
+                                                                                            ),
+                                                                                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                                                  color: FlutterFlowTheme.of(context).info,
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                                                ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            children: [
+                                                                                              Expanded(
+                                                                                                child: Container(
+                                                                                                  width: 100.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                                                  ),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                    child: Column(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                          child: AutoSizeText(
+                                                                                                            FFLocalizations.of(context).getText(
+                                                                                                              'ovwrvm3b' /* GPay */,
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
-                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                           children: [
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                              child: AutoSizeText(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                              child: Text(
                                                                                                                 FFLocalizations.of(context).getText(
-                                                                                                                  'ovwrvm3b' /* GPay */,
+                                                                                                                  'rl1miu2r' /* ₹ */,
                                                                                                                 ),
-                                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
-                                                                                                            Row(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              children: [
-                                                                                                                Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                  child: Text(
-                                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                                      'rl1miu2r' /* ₹ */,
-                                                                                                                    ),
-                                                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                AutoSizeText(
-                                                                                                                  functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'googlepay'),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ],
-                                                                                                            ),
-                                                                                                          ],
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Expanded(
-                                                                                                    child: Container(
-                                                                                                      width: 100.0,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                        borderRadius: BorderRadius.circular(5.0),
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                        child: Column(
-                                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                          children: [
-                                                                                                            Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                            Flexible(
                                                                                                               child: AutoSizeText(
-                                                                                                                FFLocalizations.of(context).getText(
-                                                                                                                  'szr4jeit' /* Paytm */,
-                                                                                                                ),
-                                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'googlepay'),
+                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
-                                                                                                            Row(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              children: [
-                                                                                                                Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                  child: Text(
-                                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                                      'nqx6n7kz' /* ₹ */,
-                                                                                                                    ),
-                                                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                AutoSizeText(
-                                                                                                                  functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'paytm'),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ],
-                                                                                                            ),
                                                                                                           ],
                                                                                                         ),
-                                                                                                      ),
+                                                                                                      ],
                                                                                                     ),
                                                                                                   ),
-                                                                                                  Expanded(
-                                                                                                    child: Container(
-                                                                                                      width: 100.0,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                        borderRadius: BorderRadius.circular(5.0),
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                        child: Column(
+                                                                                                ),
+                                                                                              ),
+                                                                                              Expanded(
+                                                                                                child: Container(
+                                                                                                  width: 100.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                                                  ),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                    child: Column(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                          child: AutoSizeText(
+                                                                                                            FFLocalizations.of(context).getText(
+                                                                                                              'szr4jeit' /* Paytm */,
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Row(
                                                                                                           mainAxisSize: MainAxisSize.max,
-                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                           children: [
                                                                                                             Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                              child: AutoSizeText(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                              child: Text(
                                                                                                                 FFLocalizations.of(context).getText(
-                                                                                                                  '8onom4sq' /* PhonePe */,
+                                                                                                                  'nqx6n7kz' /* ₹ */,
                                                                                                                 ),
-                                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
-                                                                                                            Row(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              children: [
-                                                                                                                Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                  child: Text(
-                                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                                      's8y5yoe9' /* ₹ */,
-                                                                                                                    ),
-                                                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                AutoSizeText(
-                                                                                                                  functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'phonepe'),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ],
-                                                                                                            ),
-                                                                                                          ],
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Expanded(
-                                                                                                    child: Container(
-                                                                                                      width: 100.0,
-                                                                                                      decoration: BoxDecoration(
-                                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                        borderRadius: BorderRadius.circular(5.0),
-                                                                                                      ),
-                                                                                                      child: Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                        child: Column(
-                                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                          children: [
-                                                                                                            Padding(
-                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                            Flexible(
                                                                                                               child: AutoSizeText(
-                                                                                                                FFLocalizations.of(context).getText(
-                                                                                                                  '433kfs8x' /* Cash */,
-                                                                                                                ),
-                                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'paytm'),
+                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                                       letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                                     ),
                                                                                                               ),
                                                                                                             ),
-                                                                                                            Row(
-                                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                                              children: [
-                                                                                                                Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                  child: Text(
-                                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                                      '7mgr8tl0' /* ₹ */,
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                              Expanded(
+                                                                                                child: Container(
+                                                                                                  width: 100.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                                                  ),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                    child: Column(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                          child: AutoSizeText(
+                                                                                                            FFLocalizations.of(context).getText(
+                                                                                                              '8onom4sq' /* PhonePe */,
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          children: [
+                                                                                                            Padding(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                              child: Text(
+                                                                                                                FFLocalizations.of(context).getText(
+                                                                                                                  's8y5yoe9' /* ₹ */,
+                                                                                                                ),
+                                                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                                     ),
-                                                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                                                                                AutoSizeText(
-                                                                                                                  functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'cash'),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ],
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                            Flexible(
+                                                                                                              child: AutoSizeText(
+                                                                                                                functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'phonepe'),
+                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                                    ),
+                                                                                                              ),
                                                                                                             ),
                                                                                                           ],
                                                                                                         ),
-                                                                                                      ),
+                                                                                                      ],
                                                                                                     ),
                                                                                                   ),
-                                                                                                ].divide(SizedBox(width: 10.0)),
+                                                                                                ),
+                                                                                              ),
+                                                                                              Expanded(
+                                                                                                child: Container(
+                                                                                                  width: 100.0,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                                                  ),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                    child: Column(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                          child: AutoSizeText(
+                                                                                                            FFLocalizations.of(context).getText(
+                                                                                                              '433kfs8x' /* Cash */,
+                                                                                                            ),
+                                                                                                            style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                  fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                  letterSpacing: 0.0,
+                                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          children: [
+                                                                                                            Padding(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                              child: Text(
+                                                                                                                FFLocalizations.of(context).getText(
+                                                                                                                  '7mgr8tl0' /* ₹ */,
+                                                                                                                ),
+                                                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                                    ),
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                            Flexible(
+                                                                                                              child: AutoSizeText(
+                                                                                                                functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'cash'),
+                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                                    ),
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ].divide(SizedBox(width: 10.0)),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          children: [
+                                                                                            Expanded(
+                                                                                              child: Container(
+                                                                                                width: 100.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
+                                                                                                ),
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                        child: AutoSizeText(
+                                                                                                          FFLocalizations.of(context).getText(
+                                                                                                            'j92bljzf' /* Card */,
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Row(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          Padding(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                            child: Text(
+                                                                                                              FFLocalizations.of(context).getText(
+                                                                                                                'mfwsq3iw' /* ₹ */,
+                                                                                                              ),
+                                                                                                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                          Flexible(
+                                                                                                            child: AutoSizeText(
+                                                                                                              functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'card'),
+                                                                                                              style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ),
                                                                                               ),
                                                                                             ),
-                                                                                            Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Expanded(
-                                                                                                  child: Container(
-                                                                                                    width: 100.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                      child: Column(
+                                                                                            Expanded(
+                                                                                              child: Container(
+                                                                                                width: 100.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
+                                                                                                ),
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                        child: AutoSizeText(
+                                                                                                          FFLocalizations.of(context).getText(
+                                                                                                            'n713blzr' /* Cheque */,
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
-                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                            child: AutoSizeText(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                            child: Text(
                                                                                                               FFLocalizations.of(context).getText(
-                                                                                                                'j92bljzf' /* Card */,
+                                                                                                                'hirehmw8' /* ₹ */,
                                                                                                               ),
-                                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          Row(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            children: [
-                                                                                                              Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                child: Text(
-                                                                                                                  FFLocalizations.of(context).getText(
-                                                                                                                    'mfwsq3iw' /* ₹ */,
-                                                                                                                  ),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                              AutoSizeText(
-                                                                                                                functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'card'),
-                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                    ),
-                                                                                                              ),
-                                                                                                            ],
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Expanded(
-                                                                                                  child: Container(
-                                                                                                    width: 100.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                      child: Column(
-                                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                        children: [
-                                                                                                          Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                          Flexible(
                                                                                                             child: AutoSizeText(
-                                                                                                              FFLocalizations.of(context).getText(
-                                                                                                                'n713blzr' /* Cheque */,
-                                                                                                              ),
-                                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                              functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'cheque'),
+                                                                                                              style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          Row(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            children: [
-                                                                                                              Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                child: Text(
-                                                                                                                  FFLocalizations.of(context).getText(
-                                                                                                                    'hirehmw8' /* ₹ */,
-                                                                                                                  ),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                              AutoSizeText(
-                                                                                                                functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'cheque'),
-                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                    ),
-                                                                                                              ),
-                                                                                                            ],
-                                                                                                          ),
                                                                                                         ],
                                                                                                       ),
-                                                                                                    ),
+                                                                                                    ],
                                                                                                   ),
                                                                                                 ),
-                                                                                                Expanded(
-                                                                                                  child: Container(
-                                                                                                    width: 100.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                      child: Column(
+                                                                                              ),
+                                                                                            ),
+                                                                                            Expanded(
+                                                                                              child: Container(
+                                                                                                width: 100.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
+                                                                                                ),
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                        child: AutoSizeText(
+                                                                                                          FFLocalizations.of(context).getText(
+                                                                                                            '36ufo7sq' /* Other */,
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
-                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                            child: AutoSizeText(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                            child: Text(
                                                                                                               FFLocalizations.of(context).getText(
-                                                                                                                '36ufo7sq' /* Other */,
+                                                                                                                'w6piacdz' /* ₹ */,
                                                                                                               ),
-                                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          Row(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            children: [
-                                                                                                              Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                child: Text(
-                                                                                                                  FFLocalizations.of(context).getText(
-                                                                                                                    'w6piacdz' /* ₹ */,
+                                                                                                          Flexible(
+                                                                                                            child: AutoSizeText(
+                                                                                                              functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'other'),
+                                                                                                              style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                                   ),
-                                                                                                                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                              AutoSizeText(
-                                                                                                                functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'other'),
-                                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                                    ),
-                                                                                                              ),
-                                                                                                            ],
+                                                                                                            ),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
-                                                                                                    ),
+                                                                                                    ],
                                                                                                   ),
                                                                                                 ),
-                                                                                                Expanded(
-                                                                                                  child: Container(
-                                                                                                    width: 100.0,
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
-                                                                                                    ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
-                                                                                                      child: Column(
+                                                                                              ),
+                                                                                            ),
+                                                                                            Expanded(
+                                                                                              child: Container(
+                                                                                                width: 100.0,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                  borderRadius: BorderRadius.circular(5.0),
+                                                                                                ),
+                                                                                                child: Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                                                                                                  child: Column(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    children: [
+                                                                                                      Padding(
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                                        child: AutoSizeText(
+                                                                                                          FFLocalizations.of(context).getText(
+                                                                                                            'bkuvds3g' /* Credit */,
+                                                                                                          ),
+                                                                                                          style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                                                fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                                                fontSize: 14.0,
+                                                                                                                letterSpacing: 0.0,
+                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Row(
                                                                                                         mainAxisSize: MainAxisSize.max,
-                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                         children: [
                                                                                                           Padding(
-                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                                            child: AutoSizeText(
+                                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                            child: Text(
                                                                                                               FFLocalizations.of(context).getText(
-                                                                                                                'bkuvds3g' /* Credit */,
+                                                                                                                'cykkymri' /* ₹ */,
                                                                                                               ),
-                                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                                                              style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                                                                                                                     color: FlutterFlowTheme.of(context).primary,
                                                                                                                     fontSize: 14.0,
                                                                                                                     letterSpacing: 0.0,
-                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
                                                                                                                   ),
                                                                                                             ),
                                                                                                           ),
-                                                                                                          Row(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            children: [
-                                                                                                              Padding(
-                                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                                child: Text(
-                                                                                                                  FFLocalizations.of(context).getText(
-                                                                                                                    'cykkymri' /* ₹ */,
+                                                                                                          Flexible(
+                                                                                                            child: AutoSizeText(
+                                                                                                              functions.paymentModeStrToJson(rowShiftRecord!.paymentJson, 'credit'),
+                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                                                    fontSize: 16.0,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                                                   ),
-                                                                                                                  style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                                        fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                                        color: FlutterFlowTheme.of(context).primary,
-                                                                                                                        fontSize: 14.0,
-                                                                                                                        letterSpacing: 0.0,
-                                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                                      ),
-                                                                                                                ),
-                                                                                                              ),
-                                                                                                              AutoSizeText(
-                                                                                                                functions.paymentModeStrToJson(containerShiftRecord!.paymentJson, 'credit'),
-                                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                                                      color: FlutterFlowTheme.of(context).primary,
-                                                                                                                      fontSize: 16.0,
-                                                                                                                      letterSpacing: 0.0,
-                                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                                                    ),
-                                                                                                              ),
-                                                                                                            ],
+                                                                                                            ),
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
-                                                                                                    ),
+                                                                                                    ],
                                                                                                   ),
                                                                                                 ),
-                                                                                              ].divide(SizedBox(width: 10.0)),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                              Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                children: [
-                                                                                  Expanded(
-                                                                                    child: Container(
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                        borderRadius: BorderRadius.circular(5.0),
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(20.0),
-                                                                                        child: Column(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                          children: [
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
-                                                                                              child: AutoSizeText(
-                                                                                                FFLocalizations.of(context).getText(
-                                                                                                  'cc3e6do0' /* Summary */,
-                                                                                                ),
-                                                                                                style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                                                      color: FlutterFlowTheme.of(context).info,
-                                                                                                      letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
-                                                                                                    ),
                                                                                               ),
                                                                                             ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'kj3bvda8' /* No. of Bills */,
+                                                                                          ].divide(SizedBox(width: 10.0)),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                          Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
+                                                                            children:
+                                                                                [
+                                                                              Expanded(
+                                                                                child: Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsets.all(20.0),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: [
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                                                                                          child: AutoSizeText(
+                                                                                            FFLocalizations.of(context).getText(
+                                                                                              'cc3e6do0' /* Summary */,
+                                                                                            ),
+                                                                                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                                                  color: FlutterFlowTheme.of(context).info,
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                                                ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'kj3bvda8' /* No. of Bills */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                                     ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
+                                                                                              ),
+                                                                                              AutoSizeText(
+                                                                                                valueOrDefault<String>(
+                                                                                                  rowShiftRecord?.billCount?.toString(),
+                                                                                                  '0',
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'w8mbdunx' /* Total Tax */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        '0kdmr12u' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                          ),
+                                                                                                    ),
                                                                                                   ),
                                                                                                   AutoSizeText(
                                                                                                     valueOrDefault<String>(
-                                                                                                      containerShiftRecord?.billCount?.toString(),
+                                                                                                      rowShiftRecord?.tax?.toString(),
                                                                                                       '0',
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -2006,479 +2139,430 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'w8mbdunx' /* Total Tax */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.end,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            '0kdmr12u' /* ₹ */,
-                                                                                                          ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          containerShiftRecord?.tax?.toString(),
-                                                                                                          '0',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'vg8hw0vz' /* Refund Amount */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            '743pwats' /* ₹ */,
-                                                                                                          ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          containerShiftRecord?.refoundAmount?.toString(),
-                                                                                                          '0',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      '4dmdsnmv' /* Total Discount */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            'qv8td3vk' /* ₹ */,
-                                                                                                          ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          containerShiftRecord?.discount?.toString(),
-                                                                                                          '0',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'afydr36j' /* Opening Blnc */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            'cuq5anyt' /* ₹ */,
-                                                                                                          ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          containerShiftRecord?.openingAmt?.toString(),
-                                                                                                          '0',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                            Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                              children: [
-                                                                                                AutoSizeText(
-                                                                                                  FFLocalizations.of(context).getText(
-                                                                                                    '0pnyccih' /* Extra/Dlvr Ch. */,
-                                                                                                  ),
-                                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                      ),
-                                                                                                ),
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                      child: Text(
-                                                                                                        FFLocalizations.of(context).getText(
-                                                                                                          'w4jkt761' /* ₹ */,
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    AutoSizeText(
-                                                                                                      valueOrDefault<String>(
-                                                                                                        containerShiftRecord?.deliveryCharges?.toString(),
-                                                                                                        '0',
-                                                                                                      ),
-                                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                          ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ],
+                                                                                            ],
+                                                                                          ),
                                                                                         ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    child: Container(
-                                                                                      decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                        borderRadius: BorderRadius.circular(0.0),
-                                                                                      ),
-                                                                                      child: Padding(
-                                                                                        padding: EdgeInsets.all(20.0),
-                                                                                        child: Column(
-                                                                                          mainAxisSize: MainAxisSize.max,
-                                                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                          children: [
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: AutoSizeText(
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
                                                                                                 FFLocalizations.of(context).getText(
-                                                                                                  'jxht7n1y' /* Expenses */,
+                                                                                                  'vg8hw0vz' /* Refund Amount */,
                                                                                                 ),
-                                                                                                style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                                      fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
-                                                                                                      color: FlutterFlowTheme.of(context).info,
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                                       letterSpacing: 0.0,
-                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                                     ),
                                                                                               ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
+                                                                                              Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                 children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'a95yg1wu' /* Total Expense */,
-                                                                                                    ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            'kk894qmp' /* ₹ */,
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        '743pwats' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                           ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  AutoSizeText(
+                                                                                                    valueOrDefault<String>(
+                                                                                                      rowShiftRecord?.refoundAmount?.toString(),
+                                                                                                      '0',
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                         ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        FFLocalizations.of(context).getText(
-                                                                                                          'w7ennhzq' /* 0 */,
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'eekcvubz' /* Received Amt. of Customer Cred... */,
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  '4dmdsnmv' /* Total Discount */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                                     ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            '8606yte0' /* ₹ */,
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        'qv8td3vk' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                           ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  AutoSizeText(
+                                                                                                    valueOrDefault<String>(
+                                                                                                      rowShiftRecord?.discount?.toString(),
+                                                                                                      '0',
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                         ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          containerShiftRecord?.customerReciveAmtTotal?.toString(),
-                                                                                                          '0',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
-                                                                                            ),
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                                                                                              child: Row(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  AutoSizeText(
-                                                                                                    FFLocalizations.of(context).getText(
-                                                                                                      'zbitcj6p' /* Advance */,
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'afydr36j' /* Opening Blnc */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                                                     ),
-                                                                                                    style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    children: [
-                                                                                                      Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                        child: Text(
-                                                                                                          FFLocalizations.of(context).getText(
-                                                                                                            '0v7n36vo' /* ₹ */,
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        'cuq5anyt' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                           ),
-                                                                                                          style: FlutterFlowTheme.of(context).labelMedium.override(
-                                                                                                                fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
-                                                                                                                letterSpacing: 0.0,
-                                                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                                                              ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  AutoSizeText(
+                                                                                                    valueOrDefault<String>(
+                                                                                                      rowShiftRecord?.openingAmt?.toString(),
+                                                                                                      '0',
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                         ),
-                                                                                                      ),
-                                                                                                      AutoSizeText(
-                                                                                                        valueOrDefault<String>(
-                                                                                                          containerShiftRecord?.advanceAmtTotal?.toString(),
-                                                                                                          '0',
-                                                                                                        ),
-                                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                          children: [
+                                                                                            AutoSizeText(
+                                                                                              FFLocalizations.of(context).getText(
+                                                                                                '0pnyccih' /* Extra/Dlvr Ch. */,
+                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  ),
                                                                                             ),
                                                                                             Row(
                                                                                               mainAxisSize: MainAxisSize.max,
-                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                               children: [
-                                                                                                AutoSizeText(
-                                                                                                  FFLocalizations.of(context).getText(
-                                                                                                    'ypdhqj2i' /* Extra Rcvd Amt */,
-                                                                                                  ),
-                                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                                        letterSpacing: 0.0,
-                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                                                      ),
-                                                                                                ),
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
-                                                                                                      child: Text(
-                                                                                                        FFLocalizations.of(context).getText(
-                                                                                                          '32rkzdgp' /* ₹ */,
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                  child: Text(
+                                                                                                    FFLocalizations.of(context).getText(
+                                                                                                      'w4jkt761' /* ₹ */,
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
                                                                                                         ),
-                                                                                                        style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                                              fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                              fontWeight: FontWeight.w500,
-                                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                                                            ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                                AutoSizeText(
+                                                                                                  valueOrDefault<String>(
+                                                                                                    rowShiftRecord?.deliveryCharges?.toString(),
+                                                                                                    '0',
+                                                                                                  ),
+                                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
                                                                                                       ),
-                                                                                                    ),
-                                                                                                    AutoSizeText(
-                                                                                                      valueOrDefault<String>(
-                                                                                                        containerShiftRecord?.receiveAmtTotal?.toString(),
-                                                                                                        '0',
-                                                                                                      ),
-                                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
-                                                                                                          ),
-                                                                                                    ),
-                                                                                                  ],
                                                                                                 ),
                                                                                               ],
                                                                                             ),
                                                                                           ],
                                                                                         ),
-                                                                                      ),
+                                                                                      ],
                                                                                     ),
                                                                                   ),
-                                                                                ].divide(SizedBox(width: 25.0)),
+                                                                                ),
                                                                               ),
-                                                                            ],
+                                                                              Expanded(
+                                                                                child: Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                    borderRadius: BorderRadius.circular(0.0),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsets.all(20.0),
+                                                                                    child: Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: [
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: AutoSizeText(
+                                                                                            FFLocalizations.of(context).getText(
+                                                                                              'jxht7n1y' /* Expenses */,
+                                                                                            ),
+                                                                                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                                                                                  fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
+                                                                                                  color: FlutterFlowTheme.of(context).info,
+                                                                                                  letterSpacing: 0.0,
+                                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleLargeFamily),
+                                                                                                ),
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'a95yg1wu' /* Total Expense */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        'kk894qmp' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  AutoSizeText(
+                                                                                                    FFLocalizations.of(context).getText(
+                                                                                                      'w7ennhzq' /* 0 */,
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'eekcvubz' /* Received Amt. of Customer Cred... */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        '8606yte0' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  AutoSizeText(
+                                                                                                    valueOrDefault<String>(
+                                                                                                      rowShiftRecord?.customerReciveAmtTotal?.toString(),
+                                                                                                      '0',
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                                                                                          child: Row(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                            children: [
+                                                                                              AutoSizeText(
+                                                                                                FFLocalizations.of(context).getText(
+                                                                                                  'zbitcj6p' /* Advance */,
+                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                      letterSpacing: 0.0,
+                                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                    ),
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                    child: Text(
+                                                                                                      FFLocalizations.of(context).getText(
+                                                                                                        '0v7n36vo' /* ₹ */,
+                                                                                                      ),
+                                                                                                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                                            fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                                                                                                            letterSpacing: 0.0,
+                                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                                                          ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  AutoSizeText(
+                                                                                                    valueOrDefault<String>(
+                                                                                                      rowShiftRecord?.advanceAmtTotal?.toString(),
+                                                                                                      '0',
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                        Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                          children: [
+                                                                                            AutoSizeText(
+                                                                                              FFLocalizations.of(context).getText(
+                                                                                                'ypdhqj2i' /* Extra Rcvd Amt */,
+                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                                  ),
+                                                                                            ),
+                                                                                            Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              children: [
+                                                                                                Padding(
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                                                                                  child: Text(
+                                                                                                    FFLocalizations.of(context).getText(
+                                                                                                      '32rkzdgp' /* ₹ */,
+                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                                                                                                          fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
+                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w500,
+                                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                                AutoSizeText(
+                                                                                                  valueOrDefault<String>(
+                                                                                                    rowShiftRecord?.receiveAmtTotal?.toString(),
+                                                                                                    '0',
+                                                                                                  ),
+                                                                                                  style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                        fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
+                                                                                                        letterSpacing: 0.0,
+                                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ].divide(SizedBox(width: 25.0)),
                                                                           ),
-                                                                        ),
-                                                                      );
-                                                                    },
+                                                                        ],
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                   if (!FFAppState()
                                                                       .isVisible)

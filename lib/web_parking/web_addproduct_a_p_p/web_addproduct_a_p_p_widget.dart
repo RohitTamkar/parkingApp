@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/web_parking/nav_bar_web_parking/nav_bar_web_parking_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -119,8 +120,8 @@ class _WebAddproductAPPWidgetState extends State<WebAddproductAPPWidget> {
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 100.0,
                           decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -200,7 +201,7 @@ class _WebAddproductAPPWidgetState extends State<WebAddproductAPPWidget> {
                               height: 100.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .parkingPrimaryBackground,
+                                    .primaryBackground,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
@@ -3568,7 +3569,7 @@ class _WebAddproductAPPWidgetState extends State<WebAddproductAPPWidget> {
                                                                         );
 
                                                                         context.pushNamed(
-                                                                            'productListNewM');
+                                                                            'WebProductListNewM');
 
                                                                         FFAppState().barcode =
                                                                             '';

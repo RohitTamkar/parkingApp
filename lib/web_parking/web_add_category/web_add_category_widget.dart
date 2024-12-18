@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/web_parking/nav_bar_web_parking/nav_bar_web_parking_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -101,8 +102,8 @@ class _WebAddCategoryWidgetState extends State<WebAddCategoryWidget> {
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 100.0,
                           decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -182,7 +183,7 @@ class _WebAddCategoryWidgetState extends State<WebAddCategoryWidget> {
                               height: 100.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .parkingPrimaryBackground,
+                                    .primaryBackground,
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
@@ -614,7 +615,8 @@ class _WebAddCategoryWidgetState extends State<WebAddCategoryWidget> {
                                                   },
                                                 );
 
-                                                context.pushNamed('categories');
+                                                context.pushNamed(
+                                                    'WebCategoryList');
 
                                                 FFAppState().catCodelength = 0;
                                                 FFAppState().setCategoryRef =
