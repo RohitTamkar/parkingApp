@@ -148,22 +148,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
-                    child: Container(
-                      width: double.infinity,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.asset(
-                            'assets/images/33819284_2209_w054_n005_164b_p1_164.jpg',
-                          ).image,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
                     flex: 17,
                     child: StreamBuilder<List<DeviceRecord>>(
                       stream: queryDeviceRecord(
@@ -1533,6 +1517,22 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                           ),
                         );
                       },
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      width: double.infinity,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: Image.asset(
+                            'assets/images/33819284_2209_w054_n005_164b_p1_164.jpg',
+                          ).image,
+                        ),
+                      ),
                     ),
                   ),
                 ],
