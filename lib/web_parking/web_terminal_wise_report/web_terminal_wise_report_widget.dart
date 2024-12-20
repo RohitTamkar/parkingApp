@@ -6,38 +6,50 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import '/web_parking/nav_bar_web_parking/nav_bar_web_parking_widget.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
+import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'web_userwise_report_model.dart';
-export 'web_userwise_report_model.dart';
+import 'web_terminal_wise_report_model.dart';
+export 'web_terminal_wise_report_model.dart';
 
-class WebUserwiseReportWidget extends StatefulWidget {
+class WebTerminalWiseReportWidget extends StatefulWidget {
   /// parking app
-  const WebUserwiseReportWidget({
-    super.key,
-    this.docRef,
-  });
-
-  final ShiftRecord? docRef;
+  const WebTerminalWiseReportWidget({super.key});
 
   @override
-  State<WebUserwiseReportWidget> createState() =>
-      _WebUserwiseReportWidgetState();
+  State<WebTerminalWiseReportWidget> createState() =>
+      _WebTerminalWiseReportWidgetState();
 }
 
-class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
-  late WebUserwiseReportModel _model;
+class _WebTerminalWiseReportWidgetState
+    extends State<WebTerminalWiseReportWidget> {
+  late WebTerminalWiseReportModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WebUserwiseReportModel());
+    _model = createModel(context, () => WebTerminalWiseReportModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().filterDate = getCurrentTimestamp.toString();
+      FFAppState().update(() {});
+      FFAppState().filterDate = dateTimeFormat(
+        "d/M/y",
+        getCurrentTimestamp,
+        locale: FFLocalizations.of(context).languageCode,
+      );
+      FFAppState().startDate = getCurrentTimestamp;
+      FFAppState().endDate = getCurrentTimestamp;
+      safeSetState(() {});
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -53,13 +65,19 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<InvoiceRecord>>(
-      stream: queryInvoiceRecord(
+    return StreamBuilder<List<ShiftRecord>>(
+      stream: queryShiftRecord(
         parent: FFAppState().outletIdRef,
-        queryBuilder: (invoiceRecord) => invoiceRecord.where(
-          'shiftId',
-          isEqualTo: widget!.docRef?.shiftId,
-        ),
+        queryBuilder: (shiftRecord) => shiftRecord
+            .where(
+              'startTime',
+              isGreaterThanOrEqualTo:
+                  FFAppState().startDate?.millisecondsSinceEpoch,
+            )
+            .where(
+              'startTime',
+              isLessThanOrEqualTo: FFAppState().endDate?.millisecondsSinceEpoch,
+            ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -78,10 +96,10 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
             ),
           );
         }
-        List<InvoiceRecord> webUserwiseReportInvoiceRecordList = snapshot.data!;
+        List<ShiftRecord> webTerminalWiseReportShiftRecordList = snapshot.data!;
 
         return Title(
-            title: 'WebUserwiseReport',
+            title: 'WebTerminalWiseReport',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
             child: GestureDetector(
               onTap: () {
@@ -167,7 +185,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                             child: AutoSizeText(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '7esq4j6y' /* User Wise Report */,
+                                                '8ew0is8d' /* Terminal Wise Report */,
                                               ),
                                               textAlign: TextAlign.center,
                                               style:
@@ -226,78 +244,268 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                         height: 50.0,
                                         decoration: BoxDecoration(),
                                         child: Row(
-                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'iiew5ex3' /* Total */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final _datePicked1Date =
+                                                    await showDatePicker(
+                                                  context: context,
+                                                  initialDate:
+                                                      getCurrentTimestamp,
+                                                  firstDate: DateTime(1900),
+                                                  lastDate: DateTime(2050),
+                                                  builder: (context, child) {
+                                                    return wrapInMaterialDatePickerTheme(
+                                                      context,
+                                                      child!,
+                                                      headerBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      headerForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      headerTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineLarge
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelLargeFamily),
-                                                      ),
-                                            ),
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '5kev6oj5' /* : */,
+                                                                    .headlineLargeFamily,
+                                                                fontSize: 32.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily),
+                                                              ),
+                                                      pickerBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryBackground,
+                                                      pickerForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      selectedDateTimeBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      selectedDateTimeForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      actionButtonForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      iconSize: 24.0,
+                                                    );
+                                                  },
+                                                );
+
+                                                if (_datePicked1Date != null) {
+                                                  safeSetState(() {
+                                                    _model.datePicked1 =
+                                                        DateTime(
+                                                      _datePicked1Date.year,
+                                                      _datePicked1Date.month,
+                                                      _datePicked1Date.day,
+                                                    );
+                                                  });
+                                                }
+                                                FFAppState().startDate =
+                                                    _model.datePicked1;
+                                                safeSetState(() {});
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    dateTimeFormat(
+                                                      "d/M/y",
+                                                      FFAppState().startDate,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.calendar_month,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                ].divide(SizedBox(width: 20.0)),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLargeFamily),
-                                                      ),
                                             ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                widget!.docRef?.totalSale
-                                                    ?.toString(),
-                                                '0',
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final _datePicked2Date =
+                                                    await showDatePicker(
+                                                  context: context,
+                                                  initialDate:
+                                                      getCurrentTimestamp,
+                                                  firstDate: DateTime(1900),
+                                                  lastDate: DateTime(2050),
+                                                  builder: (context, child) {
+                                                    return wrapInMaterialDatePickerTheme(
+                                                      context,
+                                                      child!,
+                                                      headerBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      headerForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      headerTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineLarge
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeFamily,
+                                                                fontSize: 32.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineLargeFamily),
+                                                              ),
+                                                      pickerBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryBackground,
+                                                      pickerForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      selectedDateTimeBackgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      selectedDateTimeForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      actionButtonForegroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      iconSize: 24.0,
+                                                    );
+                                                  },
+                                                );
+
+                                                if (_datePicked2Date != null) {
+                                                  safeSetState(() {
+                                                    _model.datePicked2 =
+                                                        DateTime(
+                                                      _datePicked2Date.year,
+                                                      _datePicked2Date.month,
+                                                      _datePicked2Date.day,
+                                                    );
+                                                  });
+                                                }
+                                                _model.datenext = await actions
+                                                    .returnDateNextday(
+                                                  _model.datePicked2!,
+                                                );
+                                                FFAppState().endDate =
+                                                    _model.datenext;
+                                                FFAppState().filterDate =
+                                                    dateTimeFormat(
+                                                  "d/M/y",
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                                safeSetState(() {});
+
+                                                safeSetState(() {});
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    FFAppState().filterDate,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.calendar_month,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                ].divide(SizedBox(width: 20.0)),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelLargeFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLargeFamily),
-                                                      ),
                                             ),
-                                          ],
+                                          ].divide(SizedBox(width: 50.0)),
                                         ),
                                       ),
                                       Padding(
@@ -353,7 +561,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              'pduls20e' /* Name */,
+                                                              'tv2vubuc' /* Date */,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -400,7 +608,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'u6bm1rup' /* Total Check in */,
+                                                            'er0ci4oy' /* Terminal */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -446,7 +654,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            '7a7hrio2' /* Total Check out */,
+                                                            '23iv22vf' /* Bill Count */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -492,7 +700,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'a09fiycr' /* Total Amount */,
+                                                            'h9sf6e56' /* Total Amount */,
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -533,12 +741,11 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                   .fromSTEB(0.0, 5.0, 0.0, 0.0),
                                               child: Builder(
                                                 builder: (context) {
-                                                  final list =
-                                                      webUserwiseReportInvoiceRecordList
-                                                          .unique((e) =>
-                                                              e.vechicleType)
+                                                  final billWiseSaleReportVar =
+                                                      webTerminalWiseReportShiftRecordList
                                                           .toList();
-                                                  if (list.isEmpty) {
+                                                  if (billWiseSaleReportVar
+                                                      .isEmpty) {
                                                     return Center(
                                                       child:
                                                           ListViewMsgWidget(),
@@ -549,11 +756,14 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                     padding: EdgeInsets.zero,
                                                     scrollDirection:
                                                         Axis.vertical,
-                                                    itemCount: list.length,
-                                                    itemBuilder:
-                                                        (context, listIndex) {
-                                                      final listItem =
-                                                          list[listIndex];
+                                                    itemCount:
+                                                        billWiseSaleReportVar
+                                                            .length,
+                                                    itemBuilder: (context,
+                                                        billWiseSaleReportVarIndex) {
+                                                      final billWiseSaleReportVarItem =
+                                                          billWiseSaleReportVar[
+                                                              billWiseSaleReportVarIndex];
                                                       return Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -618,7 +828,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                                               CrossAxisAlignment.start,
                                                                           children: [
                                                                             Text(
-                                                                              listItem.vechicleType,
+                                                                              billWiseSaleReportVarItem.shiftId,
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                     letterSpacing: 0.0,
@@ -651,7 +861,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                                             MainAxisAlignment.center,
                                                                         children: [
                                                                           Text(
-                                                                            webUserwiseReportInvoiceRecordList.where((e) => (e.vechicleType == listItem.vechicleType) && ((e.checkInTime >= FFAppState().startDate!.millisecondsSinceEpoch) && (e.checkInTime <= FFAppState().endDate!.millisecondsSinceEpoch))).toList().length.toString(),
+                                                                            billWiseSaleReportVarItem.terminalNo,
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                   letterSpacing: 0.0,
@@ -683,7 +893,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                                             MainAxisAlignment.center,
                                                                         children: [
                                                                           Text(
-                                                                            webUserwiseReportInvoiceRecordList.where((e) => (e.vechicleType == listItem.vechicleType) && ((e.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) && (e.checkOutTime <= FFAppState().endDate!.millisecondsSinceEpoch))).toList().length.toString(),
+                                                                            billWiseSaleReportVarItem.billCount.toString(),
                                                                             style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                   fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                   letterSpacing: 0.0,
@@ -722,7 +932,7 @@ class _WebUserwiseReportWidgetState extends State<WebUserwiseReportWidget> {
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              '₹ ${functions.returntoatlamt(webUserwiseReportInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                                              '₹${billWiseSaleReportVarItem.totalSale.toString()}',
                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                                                                                     letterSpacing: 0.0,

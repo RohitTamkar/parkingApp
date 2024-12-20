@@ -6410,8 +6410,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'iiew5ex3': {
+      'en': 'Total',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '5kev6oj5': {
+      'en': ':',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'pduls20e': {
-      'en': 'User Name',
+      'en': 'Name',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -6433,41 +6447,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'a09fiycr': {
       'en': 'Total Amount',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'cn38myfz': {
-      'en': 'Name',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'kukweqfr': {
-      'en': '20',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'ldq4oa4o': {
-      'en': '18',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'e6s5qcqy': {
-      'en': '₹',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'kru40a69': {
-      'en': '10123',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -9705,6 +9684,75 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
+  // WebTerminalWiseReport
+  {
+    '8ew0is8d': {
+      'en': 'Terminal Wise Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'tv2vubuc': {
+      'en': 'Date',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'er0ci4oy': {
+      'en': 'Terminal',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '23iv22vf': {
+      'en': 'Bill Count',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'h9sf6e56': {
+      'en': 'Total Amount',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'nb1c3i36': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
+  // WebUserDetailsReport
+  {
+    'imhph9og': {
+      'en': 'User Wise Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'kfi7xxn4': {
+      'en': 'Name',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'ahhjh3ez': {
+      'en': 'Home',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+  },
   // Keyboard
   {
     '6bhkeqbn': {
@@ -10245,6 +10293,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'e7fx97pm': {
       'en': 'User Wise Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '4ypyz1iw': {
+      'en': 'Terminal Wise Report',
       'hi': '',
       'kn': '',
       'mr': '',

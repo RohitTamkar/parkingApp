@@ -159,3 +159,7 @@ export '/web_parking/web_edit_user_permission/web_edit_user_permission_widget.da
     show WebEditUserPermissionWidget;
 export '/web_parking/web_add_user/web_add_user_widget.dart'
     show WebAddUserWidget;
+export '/web_parking/web_terminal_wise_report/web_terminal_wise_report_widget.dart'
+    show WebTerminalWiseReportWidget;
+export '/web_parking/web_user_details_report/web_user_details_report_widget.dart'
+    show WebUserDetailsReportWidget;

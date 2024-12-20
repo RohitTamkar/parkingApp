@@ -265,6 +265,184 @@ double? calculateParkingChargesHourly(
   return parkingCharges;
 }
 
+double? calculateParkingChargesPerHourly(
+  String? vehicleType,
+  int? checkInTimeMillisecond,
+  int? checkoutTimeMillisecond,
+) {
+  // Calculate the duration of parking in hours
+  double? durationInMinutes;
+  if (checkInTimeMillisecond != null && checkoutTimeMillisecond != null) {
+    durationInMinutes =
+        ((checkoutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60))
+            .toDouble();
+    print('Duration in minutes: $durationInMinutes');
+  }
+
+  // Initialize parking charges
+  double? parkingCharges = 0;
+
+  // Skip charges for the first 15 minutes
+  if (durationInMinutes != null && durationInMinutes <= 5) {
+    return parkingCharges; // No charges for the first 15 minutes
+  }
+
+  // If parking duration exceeds 15 minutes
+  if (vehicleType != null && durationInMinutes != null) {
+    // Convert remaining minutes (after free 15 minutes) to hours
+    double durationInHours = (durationInMinutes - 5) / 60;
+
+    switch (vehicleType.toUpperCase()) {
+      case 'TWO WHEELER':
+        if (durationInHours <= 2) {
+          // Charge ₹30 for the first 2 hours
+          parkingCharges = 10;
+        } else {
+          // Charge ₹30 for the first 2 hours and ₹20 for each additional hour
+          parkingCharges = 10 + ((durationInHours - 2).ceil() * 10);
+        }
+        break;
+
+      case 'FOUR WHEELER':
+        if (durationInHours <= 2) {
+          // Charge ₹50 for the first 2 hours
+          parkingCharges = 30;
+        } else {
+          // Charge ₹50 for the first 2 hours and ₹25 for each additional hour
+          parkingCharges = 30 + ((durationInHours - 2).ceil() * 30);
+        }
+        break;
+
+      case 'THREE WHEELER':
+        if (durationInHours <= 2) {
+          // Charge ₹40 for the first 2 hours
+          parkingCharges = 20;
+        } else {
+          // Charge ₹40 for the first 2 hours and ₹40 for each additional hour
+          parkingCharges = 20 + ((durationInHours - 2).ceil() * 20);
+        }
+        break;
+
+      case 'BUS':
+        if (durationInHours <= 2) {
+          // Charge ₹180 for the first 2 hours
+          parkingCharges = 50;
+        } else {
+          // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
+          parkingCharges = 50 + ((durationInHours - 2).ceil() * 50);
+        }
+        break;
+
+      case 'TRUCK':
+        if (durationInHours <= 2) {
+          // Charge ₹180 for the first 2 hours
+          parkingCharges = 50;
+        } else {
+          // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
+          parkingCharges = 50 + ((durationInHours - 2).ceil() * 50);
+        }
+        break;
+
+      case 'SUMO':
+        if (durationInHours <= 2) {
+          // Charge ₹180 for the first 2 hours
+          parkingCharges = 100;
+        } else {
+          // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
+          parkingCharges = 100 + ((durationInHours - 2).ceil() * 100);
+        }
+        break;
+
+      case 'TRAVELLER':
+        if (durationInHours <= 2) {
+          // Charge ₹180 for the first 2 hours
+          parkingCharges = 200;
+        } else {
+          // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
+          parkingCharges = 200 + ((durationInHours - 2).ceil() * 200);
+        }
+        break;
+
+      // Additional cases for other vehicle types can be added here
+      default:
+        print('Vehicle type not supported for specific pricing rules');
+        return null; // Invalid or unsupported vehicle type
+    }
+  }
+
+  print('Parking charges: $parkingCharges');
+  return parkingCharges;
+}
+
+double? calculateParkingChargesPerHourly1(
+  String? vehicleType,
+  int? checkInTimeMillisecond,
+  int? checkoutTimeMillisecond,
+) {
+  // Calculate the duration of parking in hours
+  double? durationInMinutes;
+  if (checkInTimeMillisecond != null && checkoutTimeMillisecond != null) {
+    durationInMinutes =
+        ((checkoutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60))
+            .toDouble();
+    print('Duration in minutes: $durationInMinutes');
+  }
+
+  // Initialize parking charges
+  double? parkingCharges = 0;
+
+  // Skip charges for the first 15 minutes
+  // if (durationInMinutes != null && durationInMinutes <= 5) {
+  //   return parkingCharges; // No charges for the first 15 minutes
+  // }
+
+  // If parking duration exceeds 15 minutes
+  if (vehicleType != null && durationInMinutes != null) {
+    // Convert remaining minutes (after free 15 minutes) to hours
+    double durationInHours = durationInMinutes / 60;
+
+    switch (vehicleType.toUpperCase()) {
+      case 'TWO WHEELER':
+        if (durationInHours <= 1) {
+          // Charge ₹30 for the first 2 hours
+          parkingCharges = 10;
+        } else {
+          // Charge ₹30 for the first 2 hours and ₹20 for each additional hour
+          parkingCharges = 10 + ((durationInHours - 2).ceil() * 5);
+        }
+        break;
+
+      case 'FOUR WHEELER':
+        if (durationInHours <= 1) {
+          // Charge ₹50 for the first 2 hours
+          parkingCharges = 20;
+        } else {
+          // Charge ₹50 for the first 2 hours and ₹25 for each additional hour
+          parkingCharges = 20 + ((durationInHours - 2).ceil() * 10);
+        }
+        break;
+
+      case 'TRUCK':
+        if (durationInHours <= 1) {
+          // Charge ₹180 for the first 2 hours
+          parkingCharges = 50;
+        } else {
+          // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
+          parkingCharges = 50 + ((durationInHours - 2).ceil() * 25);
+        }
+        break;
+
+      // Additional cases for other vehicle types can be added here
+      default:
+        print('Vehicle type not supported for specific pricing rules');
+        return null; // Invalid or unsupported vehicle type
+    }
+  }
+
+  print('Parking charges: $parkingCharges');
+  return parkingCharges;
+}
+
 String genInvoiceNum(
   int? count,
   int? shiftCount,

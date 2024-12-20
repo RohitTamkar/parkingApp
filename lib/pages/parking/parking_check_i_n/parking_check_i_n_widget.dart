@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/pages/parking/monthly_pass_checkin/monthly_pass_checkin_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -221,108 +220,171 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           FFAppState().update(() {});
                                         },
                                       ),
-                                    Builder(
-                                      builder: (context) =>
-                                          FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        borderRadius: 20.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 40.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        icon: Icon(
-                                          Icons.qr_code_scanner,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 24.0,
-                                        ),
-                                        onPressed: () async {
-                                          _model.qrResult =
-                                              await FlutterBarcodeScanner
-                                                  .scanBarcode(
-                                            '#C62828', // scanning line color
-                                            FFLocalizations.of(context).getText(
-                                              'zqkor18t' /* Cancel */,
-                                            ), // cancel button text
-                                            true, // whether to show the flash icon
-                                            ScanMode.QR,
-                                          );
+                                    FlutterFlowIconButton(
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: 20.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      icon: Icon(
+                                        Icons.qr_code_scanner,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        _model.qrResult =
+                                            await FlutterBarcodeScanner
+                                                .scanBarcode(
+                                          '#C62828', // scanning line color
+                                          FFLocalizations.of(context).getText(
+                                            'zqkor18t' /* Cancel */,
+                                          ), // cancel button text
+                                          true, // whether to show the flash icon
+                                          ScanMode.QR,
+                                        );
 
-                                          _model.getinvout =
-                                              await queryMonthlyPassRecordOnce(
+                                        _model.getinvout =
+                                            await queryMonthlyPassRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (monthlyPassRecord) =>
+                                              monthlyPassRecord.where(
+                                            'id',
+                                            isEqualTo: _model.qrResult,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        if (getCurrentTimestamp
+                                                .millisecondsSinceEpoch <=
+                                            _model.getinvout!.passEndDate) {
+                                          FFAppState().newcount =
+                                              FFAppState().newcount + 1;
+                                          safeSetState(() {});
+                                          _model.invoiceParty =
+                                              await queryPartyRecordOnce(
                                             parent: FFAppState().outletIdRef,
-                                            queryBuilder: (monthlyPassRecord) =>
-                                                monthlyPassRecord.where(
+                                            queryBuilder: (partyRecord) =>
+                                                partyRecord.where(
                                               'id',
-                                              isEqualTo: _model.qrResult,
+                                              isEqualTo:
+                                                  _model.getinvout?.custRef?.id,
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          if (getCurrentTimestamp
-                                                  .millisecondsSinceEpoch <=
-                                              _model.getinvout!.passEndDate) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (dialogContext) {
-                                                return Dialog(
-                                                  elevation: 0,
-                                                  insetPadding: EdgeInsets.zero,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      FocusScope.of(
-                                                              dialogContext)
-                                                          .unfocus();
-                                                      FocusManager
-                                                          .instance.primaryFocus
-                                                          ?.unfocus();
-                                                    },
-                                                    child:
-                                                        MonthlyPassCheckinWidget(
-                                                      shiftDoc:
-                                                          widget!.shiftDoc,
-                                                      userRef: widget!.userRef,
-                                                      appSetting:
-                                                          widget!.appSetting,
-                                                      passDetails:
-                                                          _model.getinvout,
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  content:
-                                                      Text('Pass is expired !'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
 
-                                          safeSetState(() {});
-                                        },
-                                      ),
+                                          var invoiceRecordReference =
+                                              InvoiceRecord.createDoc(
+                                                  FFAppState().outletIdRef!);
+                                          await invoiceRecordReference
+                                              .set(createInvoiceRecordData(
+                                            party: _model.invoiceParty?.id,
+                                            vechicleNo:
+                                                _model.invoiceParty?.vehicleNo,
+                                            vechicleType: _model
+                                                .invoiceParty?.vehicleType,
+                                            checkInTime: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            invoiceDate: getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            orderType: 'MONTHLYPASS',
+                                            checkOutTime: 0,
+                                            finalBillAmt: 0.0,
+                                            billAmt: 0.0,
+                                            dayId: functions.getDayId(),
+                                            count: FFAppState().newcount,
+                                          ));
+                                          _model.invoice =
+                                              InvoiceRecord.getDocumentFromData(
+                                                  createInvoiceRecordData(
+                                                    party:
+                                                        _model.invoiceParty?.id,
+                                                    vechicleNo: _model
+                                                        .invoiceParty
+                                                        ?.vehicleNo,
+                                                    vechicleType: _model
+                                                        .invoiceParty
+                                                        ?.vehicleType,
+                                                    checkInTime: getCurrentTimestamp
+                                                        .millisecondsSinceEpoch,
+                                                    invoiceDate: getCurrentTimestamp
+                                                        .millisecondsSinceEpoch,
+                                                    orderType: 'MONTHLYPASS',
+                                                    checkOutTime: 0,
+                                                    finalBillAmt: 0.0,
+                                                    billAmt: 0.0,
+                                                    dayId: functions.getDayId(),
+                                                    count:
+                                                        FFAppState().newcount,
+                                                  ),
+                                                  invoiceRecordReference);
+
+                                          await _model.invoice!.reference
+                                              .update(createInvoiceRecordData(
+                                            id: _model.invoice?.reference.id,
+                                          ));
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: Text(
+                                                    'Check-in Successful !'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          Navigator.pop(context);
+
+                                          context.goNamed(
+                                            'VehicleEntry',
+                                            queryParameters: {
+                                              'shiftDoc': serializeParam(
+                                                widget!.shiftDoc,
+                                                ParamType.JSON,
+                                              ),
+                                              'userRef': serializeParam(
+                                                widget!.userRef,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
+                                          );
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content:
+                                                    Text('Pass is expired !'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+
+                                        safeSetState(() {});
+                                      },
                                     ),
                                     Expanded(
                                       child: Row(

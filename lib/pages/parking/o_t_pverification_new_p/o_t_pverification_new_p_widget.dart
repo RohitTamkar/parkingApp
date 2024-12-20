@@ -622,10 +622,33 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                 .docId?.role ==
                                                             'admin') {
                                                           if (isWeb) {
-                                                            context.pushNamedAuth(
-                                                                'WebDashboard',
-                                                                context
-                                                                    .mounted);
+                                                            context
+                                                                .pushNamedAuth(
+                                                              'businessProfileAdminfinal',
+                                                              context.mounted,
+                                                              queryParameters: {
+                                                                'mobileNo':
+                                                                    serializeParam(
+                                                                  FFAppState()
+                                                                      .currentMobileString,
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                                'appSetting':
+                                                                    serializeParam(
+                                                                  widget!
+                                                                      .appSetting,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
+                                                              }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'appSetting':
+                                                                    widget!
+                                                                        .appSetting,
+                                                              },
+                                                            );
                                                           } else {
                                                             context
                                                                 .pushNamedAuth(

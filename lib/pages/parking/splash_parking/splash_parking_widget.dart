@@ -35,11 +35,9 @@ class _SplashParkingWidgetState extends State<SplashParkingWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (isWeb) {
-        context.pushNamed('webLogin');
-      } else {
-        context.pushNamed('ParkingLogin');
-      }
+      await Future.delayed(const Duration(milliseconds: 3000));
+
+      context.pushNamed('ParkingLogin');
     });
 
     animationsMap.addAll({

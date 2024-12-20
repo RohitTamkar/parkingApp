@@ -175,7 +175,42 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 3.0, 0.0),
                                 child: Text(
-                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(widget!.settings!.settingList.where((e) => e.title == 'calculateHourlyCharges').toList().firstOrNull!.value ? functions.calculateParkingChargesHourly(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch) : functions.calculateParkingCharges12hours(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch), widget!.invdoc?.advancePaid).toString()}',
+                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(() {
+                                      if (widget!.settings!.settingList
+                                          .where((e) =>
+                                              e.title ==
+                                              'calculateHourlyCharges')
+                                          .toList()
+                                          .firstOrNull!
+                                          .value) {
+                                        return functions
+                                            .calculateParkingChargesPerHourly(
+                                                widget!.invdoc?.vechicleType,
+                                                widget!.invdoc?.checkInTime,
+                                                getCurrentTimestamp
+                                                    .millisecondsSinceEpoch);
+                                      } else if (widget!.settings!.settingList
+                                          .where((e) =>
+                                              e.title ==
+                                              'calculateParkingCharges')
+                                          .toList()
+                                          .firstOrNull!
+                                          .value) {
+                                        return functions
+                                            .calculateParkingChargesPerHourly1(
+                                                widget!.invdoc?.vechicleType,
+                                                widget!.invdoc?.checkInTime,
+                                                getCurrentTimestamp
+                                                    .millisecondsSinceEpoch);
+                                      } else {
+                                        return functions
+                                            .calculateParkingCharges12hours(
+                                                widget!.invdoc?.vechicleType,
+                                                widget!.invdoc?.checkInTime,
+                                                getCurrentTimestamp
+                                                    .millisecondsSinceEpoch);
+                                      }
+                                    }(), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displayMedium
@@ -439,49 +474,82 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                             .paymentModeModel.dropDownValue ==
                                         'COMPLEMENTARY'
                                     ? 0.0
-                                    : (widget!.settings!.settingList
-                                            .where(
-                                                (e) =>
-                                                    e.title ==
-                                                    'calculateHourlyCharges')
-                                            .toList()
-                                            .firstOrNull!
-                                            .value
-                                        ? functions
-                                            .calculateParkingChargesHourly(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
-                                finalBillAmt: _model
-                                            .paymentModeModel.dropDownValue ==
-                                        'COMPLEMENTARY'
-                                    ? 0.0
-                                    : (widget!.settings!.settingList
+                                    : () {
+                                        if (widget!.settings!.settingList
                                             .where((e) =>
                                                 e.title ==
                                                 'calculateHourlyCharges')
                                             .toList()
                                             .firstOrNull!
-                                            .value
-                                        ? functions
-                                            .calculateParkingChargesHourly(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else if (widget!.settings!.settingList
+                                            .where((e) =>
+                                                e.title ==
+                                                'calculateParkingCharges')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly1(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else {
+                                          return functions
+                                              .calculateParkingCharges12hours(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        }
+                                      }(),
+                                finalBillAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'COMPLEMENTARY'
+                                    ? 0.0
+                                    : () {
+                                        if (widget!.settings!.settingList
+                                            .where((e) =>
+                                                e.title ==
+                                                'calculateHourlyCharges')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else if (widget!.settings!.settingList
+                                            .where((e) =>
+                                                e.title ==
+                                                'calculateParkingCharges')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly1(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else {
+                                          return functions
+                                              .calculateParkingCharges12hours(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        }
+                                      }(),
                                 duration: valueOrDefault<double>(
                                   functions.calculateHour(
                                       widget!.invdoc?.checkInTime,
@@ -1142,49 +1210,82 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                             .paymentModeModel.dropDownValue ==
                                         'COMPLEMENTARY'
                                     ? 0.0
-                                    : (widget!.settings!.settingList
-                                            .where(
-                                                (e) =>
-                                                    e.title ==
-                                                    'calculateHourlyCharges')
-                                            .toList()
-                                            .firstOrNull!
-                                            .value
-                                        ? functions
-                                            .calculateParkingChargesHourly(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
-                                finalBillAmt: _model
-                                            .paymentModeModel.dropDownValue ==
-                                        'COMPLEMENTARY'
-                                    ? 0.0
-                                    : (widget!.settings!.settingList
+                                    : () {
+                                        if (widget!.settings!.settingList
                                             .where((e) =>
                                                 e.title ==
                                                 'calculateHourlyCharges')
                                             .toList()
                                             .firstOrNull!
-                                            .value
-                                        ? functions
-                                            .calculateParkingChargesHourly(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else if (widget!.settings!.settingList
+                                            .where((e) =>
+                                                e.title ==
+                                                'calculateParkingCharges')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly1(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else {
+                                          return functions
+                                              .calculateParkingCharges12hours(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        }
+                                      }(),
+                                finalBillAmt: _model
+                                            .paymentModeModel.dropDownValue ==
+                                        'COMPLEMENTARY'
+                                    ? 0.0
+                                    : () {
+                                        if (widget!.settings!.settingList
+                                            .where((e) =>
+                                                e.title ==
+                                                'calculateHourlyCharges')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else if (widget!.settings!.settingList
+                                            .where((e) =>
+                                                e.title ==
+                                                'calculateParkingCharges')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          return functions
+                                              .calculateParkingChargesPerHourly1(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        } else {
+                                          return functions
+                                              .calculateParkingCharges12hours(
+                                                  widget!.invdoc?.vechicleType,
+                                                  widget!.invdoc?.checkInTime,
+                                                  getCurrentTimestamp
+                                                      .millisecondsSinceEpoch);
+                                        }
+                                      }(),
                                 duration: valueOrDefault<double>(
                                   functions.calculateHour(
                                       widget!.invdoc?.checkInTime,

@@ -984,7 +984,7 @@ class _NavBarWebParkingWidgetState extends State<NavBarWebParkingWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('WebUserwiseReport');
+                                  context.pushNamed('WebUserDetailsReport');
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -1015,6 +1015,69 @@ class _NavBarWebParkingWidgetState extends State<NavBarWebParkingWidget> {
                                       Text(
                                         FFLocalizations.of(context).getText(
                                           'e7fx97pm' /* User Wise Report */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily),
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 5.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('WebTerminalWiseReport');
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 45.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF7CD7E),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 10.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 8.0,
+                                          buttonSize: 40.0,
+                                          icon: Icon(
+                                            Icons.insert_chart_outlined,
+                                            color: Color(0x000D0801),
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () {
+                                            print('IconButton pressed ...');
+                                          },
+                                        ),
+                                      ),
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '4ypyz1iw' /* Terminal Wise Report */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .labelLarge

@@ -878,7 +878,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'WebUserwiseReport',
               path: 'webUserwiseReport',
-              builder: (context, params) => WebUserwiseReportWidget(),
+              asyncParams: {
+                'docRef': getDoc(['OUTLET', 'SHIFT'], ShiftRecord.fromSnapshot),
+              },
+              builder: (context, params) => WebUserwiseReportWidget(
+                docRef: params.getParam(
+                  'docRef',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'WebProductListNewM',
@@ -1237,6 +1245,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.Document,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'WebTerminalWiseReport',
+              path: 'webTerminalWiseReport',
+              builder: (context, params) => WebTerminalWiseReportWidget(),
+            ),
+            FFRoute(
+              name: 'WebUserDetailsReport',
+              path: 'webUserDetailsReport',
+              builder: (context, params) => WebUserDetailsReportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
