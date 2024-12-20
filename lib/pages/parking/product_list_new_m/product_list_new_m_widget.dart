@@ -215,8 +215,11 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                     decoration: BoxDecoration(),
                                     child: Builder(
                                       builder: (context) {
-                                        final list =
-                                            containerProductRecordList.toList();
+                                        final list = containerProductRecordList
+                                            .sortedList(
+                                                keyOf: (e) => e.code,
+                                                desc: false)
+                                            .toList();
                                         if (list.isEmpty) {
                                           return Image.asset(
                                             'assets/images/IMG_20220412_140945.png',
