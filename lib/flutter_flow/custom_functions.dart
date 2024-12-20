@@ -408,7 +408,7 @@ double? calculateParkingChargesPerHourly1(
           parkingCharges = 10;
         } else {
           // Charge ₹30 for the first 2 hours and ₹20 for each additional hour
-          parkingCharges = 10 + ((durationInHours - 2).ceil() * 5);
+          parkingCharges = 10 + ((durationInHours - 1).ceil() * 5);
         }
         break;
 
@@ -418,7 +418,7 @@ double? calculateParkingChargesPerHourly1(
           parkingCharges = 20;
         } else {
           // Charge ₹50 for the first 2 hours and ₹25 for each additional hour
-          parkingCharges = 20 + ((durationInHours - 2).ceil() * 10);
+          parkingCharges = 20 + ((durationInHours - 1).ceil() * 10);
         }
         break;
 
@@ -428,7 +428,7 @@ double? calculateParkingChargesPerHourly1(
           parkingCharges = 50;
         } else {
           // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
-          parkingCharges = 50 + ((durationInHours - 2).ceil() * 25);
+          parkingCharges = 50 + ((durationInHours - 1).ceil() * 25);
         }
         break;
 
