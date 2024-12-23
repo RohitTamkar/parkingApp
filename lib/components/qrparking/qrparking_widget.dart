@@ -24,12 +24,14 @@ class QrparkingWidget extends StatefulWidget {
     this.invdoc,
     required this.shiftdoc,
     this.settings,
+    this.productDoc,
   });
 
   final DocumentReference? usrref;
   final InvoiceRecord? invdoc;
   final dynamic shiftdoc;
   final AppSettingsRecord? settings;
+  final ProductRecord? productDoc;
 
   @override
   State<QrparkingWidget> createState() => _QrparkingWidgetState();
@@ -177,10 +179,14 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     0.0, 0.0, 3.0, 0.0),
                                 child: Text(
                                   '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(functions.calculateParkingCharges2(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch, VehicleBillStruct(
-                                        baseRate: 10.0,
-                                        baseDuration: 1.0,
-                                        hourlyRate: 10.0,
-                                        freeMinutes: 0,
+                                        baseRate: widget!.productDoc
+                                            ?.parkingCharges?.baseRate,
+                                        baseDuration: widget!.productDoc
+                                            ?.parkingCharges?.baseDuration,
+                                        hourlyRate: widget!.productDoc
+                                            ?.parkingCharges?.hourlyRate,
+                                        freeMinutes: widget!.productDoc
+                                            ?.parkingCharges?.freeMinutes,
                                       )), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
