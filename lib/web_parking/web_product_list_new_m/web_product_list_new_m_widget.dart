@@ -199,6 +199,9 @@ class _WebProductListNewMWidgetState extends State<WebProductListNewMWidget> {
                                             builder: (context) {
                                               final list =
                                                   containerProductRecordList
+                                                      .sortedList(
+                                                          keyOf: (e) => e.code,
+                                                          desc: false)
                                                       .toList();
                                               if (list.isEmpty) {
                                                 return Image.asset(

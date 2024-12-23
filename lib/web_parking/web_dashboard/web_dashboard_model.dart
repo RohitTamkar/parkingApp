@@ -13,7 +13,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'web_dashboard_widget.dart' show WebDashboardWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,8 +33,6 @@ class WebDashboardModel extends FlutterFlowModel<WebDashboardWidget> {
   bool? shiftExist;
   // Model for NavBarWebParking component.
   late NavBarWebParkingModel navBarWebParkingModel;
-  // Stores action output result for [Custom Action - shiftTotalSale] action in Container widget.
-  ShiftRecord? shiftdoc;
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   String? get choiceChipsValue =>

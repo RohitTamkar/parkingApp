@@ -175,6 +175,56 @@ int getLastMonth(String? index) {
   }
 }
 
+double? calculateParkingCharges2(
+  String? vehicleType,
+  int? checkInTimeMillisecond,
+  int? checkOutTimeMillisecond,
+  VehicleBillStruct parkingPlans,
+) {
+  if (vehicleType == null ||
+      checkInTimeMillisecond == null ||
+      checkOutTimeMillisecond == null) {
+    print('Invalid inputs provided');
+    return null;
+  }
+
+  final plan = parkingPlans;
+  if (plan == null) {
+    print('Vehicle type not supported');
+    return null;
+  }
+
+  // Extract plan details
+  final baseRate = plan.baseRate;
+  final baseDuration = plan.baseDuration;
+  final hourlyRate = plan.hourlyRate;
+  final freeMinutes = plan.freeMinutes;
+
+  // Calculate duration in minutes
+  final durationInMinutes =
+      ((checkOutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60))
+          .toDouble();
+  print('Duration in minutes: $durationInMinutes');
+
+  // Skip charges for free minutes
+  if (durationInMinutes <= freeMinutes) {
+    return 0.0; // No charges within free time
+  }
+
+  // Calculate parking charges
+  final durationInHours = (durationInMinutes - freeMinutes) / 60;
+  double parkingCharges;
+  if (durationInHours <= baseDuration) {
+    parkingCharges = baseRate;
+  } else {
+    parkingCharges =
+        baseRate + ((durationInHours - baseDuration).ceil() * hourlyRate);
+  }
+
+  print('Parking charges: $parkingCharges');
+  return parkingCharges;
+}
+
 double getTotal(
   double? qty,
   double? price,

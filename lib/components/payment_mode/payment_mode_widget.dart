@@ -101,6 +101,7 @@ class _PaymentModeWidgetState extends State<PaymentModeWidget> {
             )
           ],
           onChanged: (val) => safeSetState(() => _model.dropDownValue = val),
+          width: 300.0,
           textStyle: FlutterFlowTheme.of(context).labelLarge.override(
                 fontFamily: FlutterFlowTheme.of(context).labelLargeFamily,
                 letterSpacing: 0.0,

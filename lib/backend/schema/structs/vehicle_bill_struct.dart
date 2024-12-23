@@ -10,68 +10,60 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class VehicleBillStruct extends FFFirebaseStruct {
   VehicleBillStruct({
-    String? vehicleNo,
-    String? vehicleType,
-    double? billAmt,
-    double? finalBillAmt,
-    int? count,
+    double? baseRate,
+    double? baseDuration,
+    double? hourlyRate,
+    int? freeMinutes,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _vehicleNo = vehicleNo,
-        _vehicleType = vehicleType,
-        _billAmt = billAmt,
-        _finalBillAmt = finalBillAmt,
-        _count = count,
+  })  : _baseRate = baseRate,
+        _baseDuration = baseDuration,
+        _hourlyRate = hourlyRate,
+        _freeMinutes = freeMinutes,
         super(firestoreUtilData);
 
-  // "vehicleNo" field.
-  String? _vehicleNo;
-  String get vehicleNo => _vehicleNo ?? '';
-  set vehicleNo(String? val) => _vehicleNo = val;
+  // "baseRate" field.
+  double? _baseRate;
+  double get baseRate => _baseRate ?? 0.0;
+  set baseRate(double? val) => _baseRate = val;
 
-  bool hasVehicleNo() => _vehicleNo != null;
+  void incrementBaseRate(double amount) => baseRate = baseRate + amount;
 
-  // "vehicleType" field.
-  String? _vehicleType;
-  String get vehicleType => _vehicleType ?? '';
-  set vehicleType(String? val) => _vehicleType = val;
+  bool hasBaseRate() => _baseRate != null;
 
-  bool hasVehicleType() => _vehicleType != null;
+  // "baseDuration" field.
+  double? _baseDuration;
+  double get baseDuration => _baseDuration ?? 0.0;
+  set baseDuration(double? val) => _baseDuration = val;
 
-  // "billAmt" field.
-  double? _billAmt;
-  double get billAmt => _billAmt ?? 0.0;
-  set billAmt(double? val) => _billAmt = val;
+  void incrementBaseDuration(double amount) =>
+      baseDuration = baseDuration + amount;
 
-  void incrementBillAmt(double amount) => billAmt = billAmt + amount;
+  bool hasBaseDuration() => _baseDuration != null;
 
-  bool hasBillAmt() => _billAmt != null;
+  // "hourlyRate" field.
+  double? _hourlyRate;
+  double get hourlyRate => _hourlyRate ?? 0.0;
+  set hourlyRate(double? val) => _hourlyRate = val;
 
-  // "finalBillAmt" field.
-  double? _finalBillAmt;
-  double get finalBillAmt => _finalBillAmt ?? 0.0;
-  set finalBillAmt(double? val) => _finalBillAmt = val;
+  void incrementHourlyRate(double amount) => hourlyRate = hourlyRate + amount;
 
-  void incrementFinalBillAmt(double amount) =>
-      finalBillAmt = finalBillAmt + amount;
+  bool hasHourlyRate() => _hourlyRate != null;
 
-  bool hasFinalBillAmt() => _finalBillAmt != null;
+  // "freeMinutes" field.
+  int? _freeMinutes;
+  int get freeMinutes => _freeMinutes ?? 0;
+  set freeMinutes(int? val) => _freeMinutes = val;
 
-  // "count" field.
-  int? _count;
-  int get count => _count ?? 0;
-  set count(int? val) => _count = val;
+  void incrementFreeMinutes(int amount) => freeMinutes = freeMinutes + amount;
 
-  void incrementCount(int amount) => count = count + amount;
-
-  bool hasCount() => _count != null;
+  bool hasFreeMinutes() => _freeMinutes != null;
 
   static VehicleBillStruct fromMap(Map<String, dynamic> data) =>
       VehicleBillStruct(
-        vehicleNo: data['vehicleNo'] as String?,
-        vehicleType: data['vehicleType'] as String?,
-        billAmt: castToType<double>(data['billAmt']),
-        finalBillAmt: castToType<double>(data['finalBillAmt']),
-        count: castToType<int>(data['count']),
+        baseRate: castToType<double>(data['baseRate']),
+        baseDuration: castToType<double>(data['baseDuration']),
+        hourlyRate: castToType<double>(data['hourlyRate']),
+        freeMinutes: castToType<int>(data['freeMinutes']),
       );
 
   static VehicleBillStruct? maybeFromMap(dynamic data) => data is Map
@@ -79,61 +71,51 @@ class VehicleBillStruct extends FFFirebaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'vehicleNo': _vehicleNo,
-        'vehicleType': _vehicleType,
-        'billAmt': _billAmt,
-        'finalBillAmt': _finalBillAmt,
-        'count': _count,
+        'baseRate': _baseRate,
+        'baseDuration': _baseDuration,
+        'hourlyRate': _hourlyRate,
+        'freeMinutes': _freeMinutes,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'vehicleNo': serializeParam(
-          _vehicleNo,
-          ParamType.String,
-        ),
-        'vehicleType': serializeParam(
-          _vehicleType,
-          ParamType.String,
-        ),
-        'billAmt': serializeParam(
-          _billAmt,
+        'baseRate': serializeParam(
+          _baseRate,
           ParamType.double,
         ),
-        'finalBillAmt': serializeParam(
-          _finalBillAmt,
+        'baseDuration': serializeParam(
+          _baseDuration,
           ParamType.double,
         ),
-        'count': serializeParam(
-          _count,
+        'hourlyRate': serializeParam(
+          _hourlyRate,
+          ParamType.double,
+        ),
+        'freeMinutes': serializeParam(
+          _freeMinutes,
           ParamType.int,
         ),
       }.withoutNulls;
 
   static VehicleBillStruct fromSerializableMap(Map<String, dynamic> data) =>
       VehicleBillStruct(
-        vehicleNo: deserializeParam(
-          data['vehicleNo'],
-          ParamType.String,
-          false,
-        ),
-        vehicleType: deserializeParam(
-          data['vehicleType'],
-          ParamType.String,
-          false,
-        ),
-        billAmt: deserializeParam(
-          data['billAmt'],
+        baseRate: deserializeParam(
+          data['baseRate'],
           ParamType.double,
           false,
         ),
-        finalBillAmt: deserializeParam(
-          data['finalBillAmt'],
+        baseDuration: deserializeParam(
+          data['baseDuration'],
           ParamType.double,
           false,
         ),
-        count: deserializeParam(
-          data['count'],
+        hourlyRate: deserializeParam(
+          data['hourlyRate'],
+          ParamType.double,
+          false,
+        ),
+        freeMinutes: deserializeParam(
+          data['freeMinutes'],
           ParamType.int,
           false,
         ),
@@ -145,35 +127,32 @@ class VehicleBillStruct extends FFFirebaseStruct {
   @override
   bool operator ==(Object other) {
     return other is VehicleBillStruct &&
-        vehicleNo == other.vehicleNo &&
-        vehicleType == other.vehicleType &&
-        billAmt == other.billAmt &&
-        finalBillAmt == other.finalBillAmt &&
-        count == other.count;
+        baseRate == other.baseRate &&
+        baseDuration == other.baseDuration &&
+        hourlyRate == other.hourlyRate &&
+        freeMinutes == other.freeMinutes;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([vehicleNo, vehicleType, billAmt, finalBillAmt, count]);
+      .hash([baseRate, baseDuration, hourlyRate, freeMinutes]);
 }
 
 VehicleBillStruct createVehicleBillStruct({
-  String? vehicleNo,
-  String? vehicleType,
-  double? billAmt,
-  double? finalBillAmt,
-  int? count,
+  double? baseRate,
+  double? baseDuration,
+  double? hourlyRate,
+  int? freeMinutes,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
   bool delete = false,
 }) =>
     VehicleBillStruct(
-      vehicleNo: vehicleNo,
-      vehicleType: vehicleType,
-      billAmt: billAmt,
-      finalBillAmt: finalBillAmt,
-      count: count,
+      baseRate: baseRate,
+      baseDuration: baseDuration,
+      hourlyRate: hourlyRate,
+      freeMinutes: freeMinutes,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

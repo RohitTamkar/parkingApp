@@ -181,6 +181,12 @@ class ProductRecord extends FirestoreRecord {
   bool get isEnable => _isEnable ?? false;
   bool hasIsEnable() => _isEnable != null;
 
+  // "parkingCharges" field.
+  VehicleBillStruct? _parkingCharges;
+  VehicleBillStruct get parkingCharges =>
+      _parkingCharges ?? VehicleBillStruct();
+  bool hasParkingCharges() => _parkingCharges != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -217,6 +223,9 @@ class ProductRecord extends FirestoreRecord {
     _subCategoryRefId = snapshotData['subCategoryRefId'] as String?;
     _subCategoryRef = snapshotData['subCategoryRef'] as DocumentReference?;
     _isEnable = snapshotData['isEnable'] as bool?;
+    _parkingCharges = snapshotData['parkingCharges'] is VehicleBillStruct
+        ? snapshotData['parkingCharges']
+        : VehicleBillStruct.maybeFromMap(snapshotData['parkingCharges']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -291,6 +300,7 @@ Map<String, dynamic> createProductRecordData({
   String? subCategoryRefId,
   DocumentReference? subCategoryRef,
   bool? isEnable,
+  VehicleBillStruct? parkingCharges,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -326,8 +336,12 @@ Map<String, dynamic> createProductRecordData({
       'subCategoryRefId': subCategoryRefId,
       'subCategoryRef': subCategoryRef,
       'isEnable': isEnable,
+      'parkingCharges': VehicleBillStruct().toMap(),
     }.withoutNulls,
   );
+
+  // Handle nested data for "parkingCharges" field.
+  addVehicleBillStructData(firestoreData, parkingCharges, 'parkingCharges');
 
   return firestoreData;
 }
@@ -370,7 +384,8 @@ class ProductRecordDocumentEquality implements Equality<ProductRecord> {
         e1?.recipeId == e2?.recipeId &&
         e1?.subCategoryRefId == e2?.subCategoryRefId &&
         e1?.subCategoryRef == e2?.subCategoryRef &&
-        e1?.isEnable == e2?.isEnable;
+        e1?.isEnable == e2?.isEnable &&
+        e1?.parkingCharges == e2?.parkingCharges;
   }
 
   @override
@@ -407,7 +422,8 @@ class ProductRecordDocumentEquality implements Equality<ProductRecord> {
         e?.recipeId,
         e?.subCategoryRefId,
         e?.subCategoryRef,
-        e?.isEnable
+        e?.isEnable,
+        e?.parkingCharges
       ]);
 
   @override

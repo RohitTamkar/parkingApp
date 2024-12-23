@@ -915,72 +915,49 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                                             );
                                                           }
                                                           List<PaymentModeRecord>
-                                                              containerPaymentModeRecordList =
+                                                              paymentModePaymentModeRecordList =
                                                               snapshot.data!;
 
-                                                          return Container(
-                                                            width: 100.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child:
-                                                                      InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      FFAppState()
-                                                                              .PayMode =
-                                                                          containerPaymentModeRecordList
-                                                                              .firstOrNull!
-                                                                              .name;
-                                                                      FFAppState()
-                                                                              .dropDown =
-                                                                          true;
-                                                                      FFAppState()
-                                                                              .curMode =
-                                                                          containerPaymentModeRecordList
-                                                                              .firstOrNull!
-                                                                              .name;
-                                                                      FFAppState()
-                                                                              .prevMode =
-                                                                          containerInvoiceRecord!
-                                                                              .paymentMode;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    },
-                                                                    child:
-                                                                        wrapWithModel(
-                                                                      model: _model
-                                                                          .paymentModeModel,
-                                                                      updateCallback:
-                                                                          () =>
-                                                                              safeSetState(() {}),
-                                                                      child:
-                                                                          PaymentModeWidget(),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
+                                                          return InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              FFAppState()
+                                                                      .PayMode =
+                                                                  paymentModePaymentModeRecordList
+                                                                      .firstOrNull!
+                                                                      .name;
+                                                              FFAppState()
+                                                                      .dropDown =
+                                                                  true;
+                                                              FFAppState()
+                                                                      .curMode =
+                                                                  paymentModePaymentModeRecordList
+                                                                      .firstOrNull!
+                                                                      .name;
+                                                              FFAppState()
+                                                                      .prevMode =
+                                                                  containerInvoiceRecord!
+                                                                      .paymentMode;
+                                                              safeSetState(
+                                                                  () {});
+                                                            },
+                                                            child:
+                                                                wrapWithModel(
+                                                              model: _model
+                                                                  .paymentModeModel,
+                                                              updateCallback: () =>
+                                                                  safeSetState(
+                                                                      () {}),
+                                                              child:
+                                                                  PaymentModeWidget(),
                                                             ),
                                                           );
                                                         },

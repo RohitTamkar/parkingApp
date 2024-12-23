@@ -12,7 +12,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -1081,64 +1080,6 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                   scrollDirection:
                                                                       Axis.horizontal,
                                                                   children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        splashColor:
-                                                                            Colors.transparent,
-                                                                        focusColor:
-                                                                            Colors.transparent,
-                                                                        hoverColor:
-                                                                            Colors.transparent,
-                                                                        highlightColor:
-                                                                            Colors.transparent,
-                                                                        onTap:
-                                                                            () async {
-                                                                          await queryShiftRecordOnce(
-                                                                            parent:
-                                                                                FFAppState().outletIdRef,
-                                                                            queryBuilder: (shiftRecord) =>
-                                                                                shiftRecord.where(
-                                                                              'dayId',
-                                                                              isEqualTo: valueOrDefault<String>(
-                                                                                functions.getDayId(),
-                                                                                '0',
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                          _model.shiftdoc =
-                                                                              await actions.shiftTotalSale(
-                                                                            webDashboardShiftRecordList.toList(),
-                                                                          );
-                                                                          _model.shiftDoc =
-                                                                              _model.shiftdoc;
-                                                                          safeSetState(
-                                                                              () {});
-
-                                                                          safeSetState(
-                                                                              () {});
-                                                                        },
-                                                                        child:
-                                                                            Container(
-                                                                          child:
-                                                                              Text(
-                                                                            FFLocalizations.of(context).getText(
-                                                                              'pymd743c' /* Total */,
-                                                                            ),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
                                                                     FlutterFlowChoiceChips(
                                                                       options: webDashboardShiftRecordList
                                                                           .map((e) => e
