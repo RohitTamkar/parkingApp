@@ -252,18 +252,17 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                       ),
                                       singleRecord: true,
                                     ).then((s) => s.firstOrNull);
+                                    _model.productDoc =
+                                        await queryProductRecordOnce(
+                                      parent: FFAppState().outletIdRef,
+                                      queryBuilder: (productRecord) =>
+                                          productRecord.where(
+                                        'name',
+                                        isEqualTo: _model.search?.vechicleType,
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
                                     if (_model.search?.checkOutTime == 0) {
-                                      _model.productDoc =
-                                          await queryProductRecordOnce(
-                                        parent: FFAppState().outletIdRef,
-                                        queryBuilder: (productRecord) =>
-                                            productRecord.where(
-                                          'name',
-                                          isEqualTo:
-                                              _model.search?.vechicleType,
-                                        ),
-                                        singleRecord: true,
-                                      ).then((s) => s.firstOrNull);
                                       await showDialog(
                                         context: context,
                                         builder: (dialogContext) {
@@ -339,18 +338,17 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                       ),
                                       singleRecord: true,
                                     ).then((s) => s.firstOrNull);
+                                    _model.productDoc2 =
+                                        await queryProductRecordOnce(
+                                      parent: FFAppState().outletIdRef,
+                                      queryBuilder: (productRecord) =>
+                                          productRecord.where(
+                                        'name',
+                                        isEqualTo: _model.search3?.vechicleType,
+                                      ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
                                     if (_model.search3?.checkOutTime == 0) {
-                                      _model.productDoc2 =
-                                          await queryProductRecordOnce(
-                                        parent: FFAppState().outletIdRef,
-                                        queryBuilder: (productRecord) =>
-                                            productRecord.where(
-                                          'name',
-                                          isEqualTo:
-                                              _model.search3?.vechicleType,
-                                        ),
-                                        singleRecord: true,
-                                      ).then((s) => s.firstOrNull);
                                       await showDialog(
                                         context: context,
                                         builder: (dialogContext) {
@@ -569,17 +567,16 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                 ),
                                 singleRecord: true,
                               ).then((s) => s.firstOrNull);
+                              _model.productDoc3 = await queryProductRecordOnce(
+                                parent: FFAppState().outletIdRef,
+                                queryBuilder: (productRecord) =>
+                                    productRecord.where(
+                                  'name',
+                                  isEqualTo: _model.getinvout?.vechicleType,
+                                ),
+                                singleRecord: true,
+                              ).then((s) => s.firstOrNull);
                               if (_model.getinvout?.checkOutTime == 0) {
-                                _model.productDoc3 =
-                                    await queryProductRecordOnce(
-                                  parent: FFAppState().outletIdRef,
-                                  queryBuilder: (productRecord) =>
-                                      productRecord.where(
-                                    'name',
-                                    isEqualTo: _model.getinvout?.vechicleType,
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
                                 await showDialog(
                                   context: context,
                                   builder: (dialogContext) {
