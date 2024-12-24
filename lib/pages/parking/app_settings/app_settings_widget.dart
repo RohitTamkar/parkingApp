@@ -17,7 +17,12 @@ import 'app_settings_model.dart';
 export 'app_settings_model.dart';
 
 class AppSettingsWidget extends StatefulWidget {
-  const AppSettingsWidget({super.key});
+  const AppSettingsWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AppSettingsWidget> createState() => _AppSettingsWidgetState();
@@ -129,7 +134,27 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.safePop();
+                                    context.pushNamed(
+                                      'VehicleEntry',
+                                      queryParameters: {
+                                        'shiftDoc': serializeParam(
+                                          FFAppState().shiftDetailsNEw,
+                                          ParamType.JSON,
+                                        ),
+                                        'userRef': serializeParam(
+                                          currentUserReference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'appSetting': serializeParam(
+                                          appSettingsAppSettingsRecord,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting':
+                                            appSettingsAppSettingsRecord,
+                                      },
+                                    );
                                   },
                                 ),
                                 AutoSizeText(

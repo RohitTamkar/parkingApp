@@ -17,7 +17,12 @@ export 'todays_summary_report_model.dart';
 
 class TodaysSummaryReportWidget extends StatefulWidget {
   /// Parking
-  const TodaysSummaryReportWidget({super.key});
+  const TodaysSummaryReportWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<TodaysSummaryReportWidget> createState() =>
@@ -202,7 +207,18 @@ class _TodaysSummaryReportWidgetState extends State<TodaysSummaryReportWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pop();
+                                      context.pushNamed(
+                                        'parkingReportNew',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
                                     },
                                   ),
                                   Text(

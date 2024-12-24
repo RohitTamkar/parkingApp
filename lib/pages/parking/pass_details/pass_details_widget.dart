@@ -145,7 +145,18 @@ class _PassDetailsWidgetState extends State<PassDetailsWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.safePop();
+                                      context.pushNamed(
+                                        'mastersNew',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
                                     },
                                   ),
                                   AutoSizeText(

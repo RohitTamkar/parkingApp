@@ -116,7 +116,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pop();
+                                  context.pushNamed('MonthlyPass2');
                                 },
                               ),
                               AutoSizeText(

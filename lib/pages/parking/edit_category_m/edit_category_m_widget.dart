@@ -20,10 +20,12 @@ class EditCategoryMWidget extends StatefulWidget {
     super.key,
     this.catRef,
     this.id,
+    this.appSetting,
   });
 
   final DocumentReference? catRef;
   final String? id;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditCategoryMWidget> createState() => _EditCategoryMWidgetState();
@@ -99,7 +101,18 @@ class _EditCategoryMWidgetState extends State<EditCategoryMWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pop();
+                                  context.pushNamed(
+                                    'categories',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

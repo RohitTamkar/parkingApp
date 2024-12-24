@@ -215,6 +215,10 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
       safeSetState(() {});
       _model.isAppSetExistsNew = await queryAppSettingsRecordOnce(
         parent: FFAppState().outletIdRef,
+        queryBuilder: (appSettingsRecord) => appSettingsRecord.where(
+          'deviceId',
+          isEqualTo: FFAppState().dId,
+        ),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       _model.masterAppsetting = await queryAppSettingsMasterRecordOnce();

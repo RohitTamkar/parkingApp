@@ -22,9 +22,11 @@ class AddCategoryMWidget extends StatefulWidget {
   const AddCategoryMWidget({
     super.key,
     this.codeLen,
+    this.appSetting,
   });
 
   final int? codeLen;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AddCategoryMWidget> createState() => _AddCategoryMWidgetState();
@@ -111,7 +113,18 @@ class _AddCategoryMWidgetState extends State<AddCategoryMWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('categories');
+                                  context.pushNamed(
+                                    'categories',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

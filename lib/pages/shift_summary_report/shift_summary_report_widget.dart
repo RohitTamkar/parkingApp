@@ -18,9 +18,11 @@ class ShiftSummaryReportWidget extends StatefulWidget {
   const ShiftSummaryReportWidget({
     super.key,
     this.docRef,
+    this.appSetting,
   });
 
   final ShiftRecord? docRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<ShiftSummaryReportWidget> createState() =>
@@ -195,7 +197,23 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.safePop();
+                                      context.pushNamed(
+                                        'ShiftDetails',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                          'shiftDoc': serializeParam(
+                                            widget!.docRef,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                          'shiftDoc': widget!.docRef,
+                                        },
+                                      );
                                     },
                                   ),
                                   Text(

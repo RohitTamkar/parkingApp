@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -14,7 +16,12 @@ import 'printersetting_car_model.dart';
 export 'printersetting_car_model.dart';
 
 class PrintersettingCarWidget extends StatefulWidget {
-  const PrintersettingCarWidget({super.key});
+  const PrintersettingCarWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<PrintersettingCarWidget> createState() =>
@@ -86,7 +93,26 @@ class _PrintersettingCarWidgetState extends State<PrintersettingCarWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        FFAppState().shiftDetailsNEw,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        currentUserReference,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               Text(

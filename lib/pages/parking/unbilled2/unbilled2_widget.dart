@@ -18,7 +18,12 @@ export 'unbilled2_model.dart';
 
 class Unbilled2Widget extends StatefulWidget {
   /// Parking
-  const Unbilled2Widget({super.key});
+  const Unbilled2Widget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<Unbilled2Widget> createState() => _Unbilled2WidgetState();
@@ -206,7 +211,18 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pop();
+                                      context.pushNamed(
+                                        'parkingReportNew',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
                                     },
                                   ),
                                   Text(

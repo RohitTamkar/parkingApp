@@ -1307,18 +1307,21 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             await queryInvoiceRecordOnce(
                                           parent: FFAppState().outletIdRef,
                                           queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord
-                                                  .where(
-                                                    'invoiceDate',
-                                                    isLessThanOrEqualTo:
-                                                        getCurrentTimestamp
-                                                            .millisecondsSinceEpoch,
-                                                  )
-                                                  .orderBy('invoiceDate',
-                                                      descending: true),
+                                              invoiceRecord.orderBy(
+                                                  'invoiceDate',
+                                                  descending: true),
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
                                         _shouldSetState = true;
+                                        if (_model.countdatagetPRINT != null) {
+                                          FFAppState().newcount =
+                                              _model.countdatagetPRINT!.count;
+                                          safeSetState(() {});
+                                        } else {
+                                          FFAppState().newcount = 0;
+                                          safeSetState(() {});
+                                        }
+
                                         FFAppState().count =
                                             valueOrDefault<int>(
                                           _model.countdatagetPRINT?.count,
@@ -1815,18 +1818,21 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             await queryInvoiceRecordOnce(
                                           parent: FFAppState().outletIdRef,
                                           queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord
-                                                  .where(
-                                                    'invoiceDate',
-                                                    isLessThanOrEqualTo:
-                                                        getCurrentTimestamp
-                                                            .millisecondsSinceEpoch,
-                                                  )
-                                                  .orderBy('invoiceDate',
-                                                      descending: true),
+                                              invoiceRecord.orderBy(
+                                                  'invoiceDate',
+                                                  descending: true),
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
                                         _shouldSetState = true;
+                                        if (_model.countdatagetPRINT != null) {
+                                          FFAppState().newcount =
+                                              _model.countdatagetPRINT!.count;
+                                          safeSetState(() {});
+                                        } else {
+                                          FFAppState().newcount = 0;
+                                          safeSetState(() {});
+                                        }
+
                                         FFAppState().count =
                                             _model.countdataget!.count;
                                         safeSetState(() {});

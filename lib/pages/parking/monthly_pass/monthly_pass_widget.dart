@@ -22,7 +22,12 @@ import 'monthly_pass_model.dart';
 export 'monthly_pass_model.dart';
 
 class MonthlyPassWidget extends StatefulWidget {
-  const MonthlyPassWidget({super.key});
+  const MonthlyPassWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<MonthlyPassWidget> createState() => _MonthlyPassWidgetState();
@@ -136,7 +141,26 @@ class _MonthlyPassWidgetState extends State<MonthlyPassWidget> {
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pop();
+                                    context.pushNamed(
+                                      'VehicleEntry',
+                                      queryParameters: {
+                                        'shiftDoc': serializeParam(
+                                          FFAppState().shiftDetailsNEw,
+                                          ParamType.JSON,
+                                        ),
+                                        'userRef': serializeParam(
+                                          currentUserReference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                 ),
                                 Text(

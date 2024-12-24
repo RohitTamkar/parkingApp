@@ -17,7 +17,14 @@ import 'shift_details_model.dart';
 export 'shift_details_model.dart';
 
 class ShiftDetailsWidget extends StatefulWidget {
-  const ShiftDetailsWidget({super.key});
+  const ShiftDetailsWidget({
+    super.key,
+    this.appSetting,
+    this.shiftDoc,
+  });
+
+  final AppSettingsRecord? appSetting;
+  final ShiftRecord? shiftDoc;
 
   @override
   State<ShiftDetailsWidget> createState() => _ShiftDetailsWidgetState();
@@ -139,7 +146,18 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pop();
+                                      context.pushNamed(
+                                        'parkingReportNew',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
                                     },
                                   ),
                                   AutoSizeText(

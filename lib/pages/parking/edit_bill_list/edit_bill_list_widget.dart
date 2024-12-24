@@ -17,7 +17,12 @@ import 'edit_bill_list_model.dart';
 export 'edit_bill_list_model.dart';
 
 class EditBillListWidget extends StatefulWidget {
-  const EditBillListWidget({super.key});
+  const EditBillListWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditBillListWidget> createState() => _EditBillListWidgetState();

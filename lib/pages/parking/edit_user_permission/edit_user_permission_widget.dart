@@ -24,9 +24,11 @@ class EditUserPermissionWidget extends StatefulWidget {
   const EditUserPermissionWidget({
     super.key,
     this.userRef,
+    this.appSetting,
   });
 
   final DocumentReference? userRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditUserPermissionWidget> createState() =>
@@ -106,7 +108,18 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                   size: 30.0,
                                 ),
                                 onPressed: () async {
-                                  context.pop();
+                                  context.pushNamed(
+                                    'editUserprofile',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

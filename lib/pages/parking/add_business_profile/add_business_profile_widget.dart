@@ -23,10 +23,12 @@ class AddBusinessProfileWidget extends StatefulWidget {
     super.key,
     this.premiseRef,
     this.mobile,
+    this.appSetting,
   });
 
   final DocumentReference? premiseRef;
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AddBusinessProfileWidget> createState() =>
@@ -103,7 +105,18 @@ class _AddBusinessProfileWidgetState extends State<AddBusinessProfileWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pop();
+                                  context.pushNamed(
+                                    'CreateUserProfileNewP',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

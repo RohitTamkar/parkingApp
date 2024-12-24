@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -14,7 +15,12 @@ import 'subscription_new2_model.dart';
 export 'subscription_new2_model.dart';
 
 class SubscriptionNew2Widget extends StatefulWidget {
-  const SubscriptionNew2Widget({super.key});
+  const SubscriptionNew2Widget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<SubscriptionNew2Widget> createState() => _SubscriptionNew2WidgetState();
@@ -86,7 +92,26 @@ class _SubscriptionNew2WidgetState extends State<SubscriptionNew2Widget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        FFAppState().shiftDetailsNEw,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        currentUserReference,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

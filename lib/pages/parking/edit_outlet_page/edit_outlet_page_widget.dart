@@ -25,11 +25,13 @@ class EditOutletPageWidget extends StatefulWidget {
     this.outletRef,
     this.id,
     this.docRef,
+    this.appSetting,
   });
 
   final DocumentReference? outletRef;
   final String? id;
   final DocumentReference? docRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditOutletPageWidget> createState() => _EditOutletPageWidgetState();
@@ -125,7 +127,14 @@ class _EditOutletPageWidgetState extends State<EditOutletPageWidget> {
                                         FFAppState().currentMobileString,
                                         ParamType.String,
                                       ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
                                     }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
                                   );
                                 },
                               ),

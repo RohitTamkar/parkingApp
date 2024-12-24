@@ -17,7 +17,12 @@ export 'vehicle_wise_sale2_model.dart';
 
 class VehicleWiseSale2Widget extends StatefulWidget {
   /// Parking
-  const VehicleWiseSale2Widget({super.key});
+  const VehicleWiseSale2Widget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<VehicleWiseSale2Widget> createState() => _VehicleWiseSale2WidgetState();
@@ -203,7 +208,18 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                       size: 25.0,
                                     ),
                                     onPressed: () async {
-                                      context.pop();
+                                      context.pushNamed(
+                                        'parkingReportNew',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
                                     },
                                   ),
                                   Text(

@@ -180,26 +180,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'addOutletPage',
               path: 'addOutletPage',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => AddOutletPageWidget(
                 mobile: params.getParam(
                   'mobile',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
             FFRoute(
               name: 'CreateUserProfileNewP',
               path: 'createUserProfileNewP',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => CreateUserProfileNewPWidget(
                 mobile: params.getParam(
                   'mobile',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
             FFRoute(
               name: 'AddBusinessProfile',
               path: 'addBusinessProfile',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => AddBusinessProfileWidget(
                 premiseRef: params.getParam(
                   'premiseRef',
@@ -211,11 +231,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'mobile',
                   ParamType.String,
                 ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
               name: 'editBusinesProfile',
               path: 'editBusinesProfile',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => EditBusinesProfileWidget(
                 businessMRef: params.getParam(
                   'businessMRef',
@@ -226,6 +254,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 id: params.getParam(
                   'id',
                   ParamType.String,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -398,6 +430,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'editCategoryM',
               path: 'editCategoryM',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => EditCategoryMWidget(
                 catRef: params.getParam(
                   'catRef',
@@ -409,15 +445,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'id',
                   ParamType.String,
                 ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
               name: 'addCategoryM',
               path: 'addCategoryM',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => AddCategoryMWidget(
                 codeLen: params.getParam(
                   'codeLen',
                   ParamType.int,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -480,12 +528,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'editUserPermission',
               path: 'editUserPermission',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => EditUserPermissionWidget(
                 userRef: params.getParam(
                   'userRef',
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['USER_PROFILE'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -536,12 +592,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'PrintersettingCar',
               path: 'printersettingCar',
-              builder: (context, params) => PrintersettingCarWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => PrintersettingCarWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'subscriptionNew2',
               path: 'subscriptionNew2',
-              builder: (context, params) => SubscriptionNew2Widget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => SubscriptionNew2Widget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Deviceqr',
@@ -566,7 +640,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'billwisesalereport',
               path: 'billwisesalereport',
-              builder: (context, params) => BillwisesalereportWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => BillwisesalereportWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'categoryWiseSaleReport',
@@ -588,7 +671,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dayWiseSaleReport',
               path: 'dayWiseSaleReport',
-              builder: (context, params) => DayWiseSaleReportWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => DayWiseSaleReportWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'billDetails',
@@ -644,7 +736,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MonthlyPass',
               path: 'monthlyPass',
-              builder: (context, params) => MonthlyPassWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => MonthlyPassWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'PassDetails',
@@ -739,32 +840,86 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'vehicleWiseSale2',
               path: 'vehicleWiseSale2',
-              builder: (context, params) => VehicleWiseSale2Widget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => VehicleWiseSale2Widget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Unbilled2',
               path: 'Unbilled5',
-              builder: (context, params) => Unbilled2Widget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => Unbilled2Widget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'InOutReport',
               path: 'inOut',
-              builder: (context, params) => InOutReportWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => InOutReportWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'TodaysSummaryReport',
               path: 'todaysSummaryReport',
-              builder: (context, params) => TodaysSummaryReportWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => TodaysSummaryReportWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'DaillyCollectionReport',
               path: 'daillyCollectionReport',
-              builder: (context, params) => DaillyCollectionReportWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => DaillyCollectionReportWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'MonthlyPass2',
               path: 'monthlyPass2',
-              builder: (context, params) => MonthlyPass2Widget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => MonthlyPass2Widget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'WebDashboard',
@@ -1014,6 +1169,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'EditOutletPage',
               path: 'editOutletPage',
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
               builder: (context, params) => EditOutletPageWidget(
                 outletRef: params.getParam(
                   'outletRef',
@@ -1030,6 +1189,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.DocumentReference,
                   isList: false,
                   collectionNamePath: ['OUTLET'],
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -1052,7 +1215,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'EditBillList',
               path: 'editBillList',
-              builder: (context, params) => EditBillListWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => EditBillListWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'editBillDetails',
@@ -1086,7 +1258,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AppSettings',
               path: 'appSettings',
-              builder: (context, params) => AppSettingsWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => AppSettingsWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'ShiftEnd',
@@ -1128,10 +1309,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'shiftSummaryReport',
               asyncParams: {
                 'docRef': getDoc(['OUTLET', 'SHIFT'], ShiftRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => ShiftSummaryReportWidget(
                 docRef: params.getParam(
                   'docRef',
+                  ParamType.Document,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
                   ParamType.Document,
                 ),
               ),
@@ -1139,7 +1326,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'ShiftDetails',
               path: 'shiftDetails',
-              builder: (context, params) => ShiftDetailsWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+                'shiftDoc':
+                    getDoc(['OUTLET', 'SHIFT'], ShiftRecord.fromSnapshot),
+              },
+              builder: (context, params) => ShiftDetailsWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+                shiftDoc: params.getParam(
+                  'shiftDoc',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'shiftWiseVehicleReport',
@@ -1147,6 +1349,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               asyncParams: {
                 'docRef2':
                     getDoc(['OUTLET', 'SHIFT'], ShiftRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => ShiftWiseVehicleReportWidget(
                 vehicleType: params.getParam(
@@ -1155,6 +1359,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
                 docRef2: params.getParam(
                   'docRef2',
+                  ParamType.Document,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
                   ParamType.Document,
                 ),
               ),

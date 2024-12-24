@@ -216,7 +216,14 @@ class _BusinessProfileAdminfinalWidgetState
                                         false,
                                         ParamType.bool,
                                       ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
                                     }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
                                   );
                                 },
                               ),

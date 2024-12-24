@@ -20,9 +20,11 @@ class CreateUserProfileNewPWidget extends StatefulWidget {
   const CreateUserProfileNewPWidget({
     super.key,
     this.mobile,
+    this.appSetting,
   });
 
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<CreateUserProfileNewPWidget> createState() =>
@@ -117,7 +119,18 @@ class _CreateUserProfileNewPWidgetState
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.safePop();
+                                    context.pushNamed(
+                                      'OTPverificationNewP',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                 ),
                                 AutoSizeText(

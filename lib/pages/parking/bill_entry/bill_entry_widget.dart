@@ -105,7 +105,26 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                 size: 24.0,
                               ),
                               onPressed: () async {
-                                context.pop();
+                                context.pushNamed(
+                                  'VehicleEntry',
+                                  queryParameters: {
+                                    'shiftDoc': serializeParam(
+                                      widget!.shiftDoc,
+                                      ParamType.JSON,
+                                    ),
+                                    'userRef': serializeParam(
+                                      widget!.userRef,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'appSetting': serializeParam(
+                                      widget!.appsetting,
+                                      ParamType.Document,
+                                    ),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    'appSetting': widget!.appsetting,
+                                  },
+                                );
                               },
                             ),
                             AutoSizeText(

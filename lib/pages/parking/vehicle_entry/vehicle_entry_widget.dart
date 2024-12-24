@@ -1237,7 +1237,16 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                           .currentMobileString,
                                                       ParamType.String,
                                                     ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
                                                 );
 
                                                 return;
@@ -1576,7 +1585,19 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed('MonthlyPass2');
+                                              context.pushNamed(
+                                                'MonthlyPass2',
+                                                queryParameters: {
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
+                                              );
                                             },
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)
@@ -1741,7 +1762,19 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                       ?.role ==
                                                   'admin') {
                                                 context.pushNamed(
-                                                    'subscriptionNew2');
+                                                  'subscriptionNew2',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
                                               } else {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -1915,7 +1948,18 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               }
 
                                               context.pushNamed(
-                                                  'PrintersettingCar');
+                                                'PrintersettingCar',
+                                                queryParameters: {
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
+                                              );
                                             },
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)
@@ -2052,8 +2096,20 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               if (containerUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context
-                                                    .pushNamed('AppSettings');
+                                                context.pushNamed(
+                                                  'AppSettings',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
                                               } else {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -2396,7 +2452,16 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                       widget!.shiftDoc,
                                                       ParamType.JSON,
                                                     ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
                                                 );
                                               },
                                               child: Container(

@@ -614,11 +614,33 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                                                             _model.devicedetails2,
                                                                             ParamType.Document,
                                                                           ),
+                                                                          'appSetting':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
+                                                                          'shiftDoc':
+                                                                              serializeParam(
+                                                                            FFAppState().shiftDetailsNEw,
+                                                                            ParamType.JSON,
+                                                                          ),
+                                                                          'userDoc':
+                                                                              serializeParam(
+                                                                            outletlistPageUserProfileRecord?.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
+                                                                          'outletRef':
+                                                                              serializeParam(
+                                                                            listViewOutletRecord.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <String,
                                                                             dynamic>{
                                                                           'deviceDoc':
                                                                               _model.devicedetails2,
+                                                                          'appSetting':
+                                                                              widget!.appSetting,
                                                                         },
                                                                       );
                                                                     } else {

@@ -22,10 +22,12 @@ class EditBusinesProfileWidget extends StatefulWidget {
     super.key,
     this.businessMRef,
     this.id,
+    this.appSetting,
   });
 
   final DocumentReference? businessMRef;
   final String? id;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditBusinesProfileWidget> createState() =>
@@ -101,7 +103,18 @@ class _EditBusinesProfileWidgetState extends State<EditBusinesProfileWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  context.pushNamed(
+                                    'businessProfileAdminfinal',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

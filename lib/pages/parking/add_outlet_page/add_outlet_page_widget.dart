@@ -26,9 +26,11 @@ class AddOutletPageWidget extends StatefulWidget {
   const AddOutletPageWidget({
     super.key,
     required this.mobile,
+    this.appSetting,
   });
 
   final String? mobile;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AddOutletPageWidget> createState() => _AddOutletPageWidgetState();
