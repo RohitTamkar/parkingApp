@@ -179,14 +179,10 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     0.0, 0.0, 3.0, 0.0),
                                 child: Text(
                                   '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(functions.calculateParkingCharges2(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch, VehicleBillStruct(
-                                        baseRate: widget!.productDoc
-                                            ?.parkingCharges?.baseRate,
-                                        baseDuration: widget!.productDoc
-                                            ?.parkingCharges?.baseDuration,
-                                        hourlyRate: widget!.productDoc
-                                            ?.parkingCharges?.hourlyRate,
-                                        freeMinutes: widget!.productDoc
-                                            ?.parkingCharges?.freeMinutes,
+                                        baseRate: 10.0,
+                                        baseDuration: 1.0,
+                                        hourlyRate: 10.0,
+                                        freeMinutes: 0,
                                       )), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
