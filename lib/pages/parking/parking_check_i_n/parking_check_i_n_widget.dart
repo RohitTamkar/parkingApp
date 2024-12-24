@@ -1824,9 +1824,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
                                         _shouldSetState = true;
-                                        if (_model.countdatagetPRINT != null) {
+                                        if (_model.countdataget != null) {
                                           FFAppState().newcount =
-                                              _model.countdatagetPRINT!.count;
+                                              _model.countdataget!.count;
                                           safeSetState(() {});
                                         } else {
                                           FFAppState().newcount = 0;

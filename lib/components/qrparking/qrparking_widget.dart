@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/payment_mode/payment_mode_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -177,42 +178,16 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 3.0, 0.0),
                                 child: Text(
-                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(() {
-                                      if (widget!.settings!.settingList
-                                          .where((e) =>
-                                              e.title ==
-                                              'calculateHourlyCharges')
-                                          .toList()
-                                          .firstOrNull!
-                                          .value) {
-                                        return functions
-                                            .calculateParkingChargesPerHourly(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch);
-                                      } else if (widget!.settings!.settingList
-                                          .where((e) =>
-                                              e.title ==
-                                              'calculateParkingCharges')
-                                          .toList()
-                                          .firstOrNull!
-                                          .value) {
-                                        return functions
-                                            .calculateParkingChargesPerHourly1(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch);
-                                      } else {
-                                        return functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch);
-                                      }
-                                    }(), widget!.invdoc?.advancePaid).toString()}',
+                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(functions.calculateParkingCharges2(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch, VehicleBillStruct(
+                                        baseRate: widget!.productDoc
+                                            ?.parkingCharges?.baseRate,
+                                        baseDuration: widget!.productDoc
+                                            ?.parkingCharges?.baseDuration,
+                                        hourlyRate: widget!.productDoc
+                                            ?.parkingCharges?.hourlyRate,
+                                        freeMinutes: widget!.productDoc
+                                            ?.parkingCharges?.freeMinutes,
+                                      )), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displayMedium
