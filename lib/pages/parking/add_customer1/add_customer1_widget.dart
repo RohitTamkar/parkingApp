@@ -17,7 +17,12 @@ import 'add_customer1_model.dart';
 export 'add_customer1_model.dart';
 
 class AddCustomer1Widget extends StatefulWidget {
-  const AddCustomer1Widget({super.key});
+  const AddCustomer1Widget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<AddCustomer1Widget> createState() => _AddCustomer1WidgetState();
@@ -116,7 +121,18 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('MonthlyPass2');
+                                  context.pushNamed(
+                                    'MonthlyPass2',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(

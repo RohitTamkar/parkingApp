@@ -731,7 +731,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'addCustomer1',
               path: 'addCustomer1',
-              builder: (context, params) => AddCustomer1Widget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => AddCustomer1Widget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'MonthlyPass',
