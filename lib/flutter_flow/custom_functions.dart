@@ -179,70 +179,49 @@ double? calculateParkingCharges2(
   String? vehicleType,
   int? checkInTimeMillisecond,
   int? checkOutTimeMillisecond,
-  VehicleBillStruct planConfig,
+  VehicleBillStruct parkingPlans,
 ) {
-  // Calculate duration in hours
-  if (checkInTimeMillisecond == null || checkOutTimeMillisecond == null) {
-    print('Invalid check-in or checkout time');
+  if (vehicleType == null ||
+      checkInTimeMillisecond == null ||
+      checkOutTimeMillisecond == null) {
+    print('Invalid inputs provided');
     return null;
   }
 
-  double durationInMinutes =
-      (checkOutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60);
-  double durationInHours = durationInMinutes / 60;
-  print('Duration in hours: $durationInHours');
-
-  // Initialize parking charges
-  double parkingCharges = 0;
-
-  // Extract the vehicle-specific configuration
-  final vehicleConfig = planConfig;
-  if (vehicleConfig == null) {
-    print('No configuration found for vehicle type: $vehicleType');
+  final plan = parkingPlans;
+  if (plan == null) {
+    print('Vehicle type not supported');
     return null;
   }
 
-  // Free minutes logic
-  int freeMinutes = vehicleConfig.freeMinutes ?? 0;
+  // Extract plan details
+  final baseRate = plan.baseRate;
+  final baseDuration = plan.baseDuration;
+  final hourlyRate = plan.hourlyRate;
+  final freeMinutes = plan.freeMinutes;
+
+  // Calculate duration in minutes
+  final durationInMinutes =
+      ((checkOutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60))
+          .toDouble();
+  print('Duration in minutes: $durationInMinutes');
+
+  // Skip charges for free minutes
   if (durationInMinutes <= freeMinutes) {
-    print('Parking duration is within free time. No charges applied.');
-    return parkingCharges;
+    return 0.0; // No charges within free time
   }
 
-  // Adjust duration after free time
-  durationInMinutes -= freeMinutes;
-  durationInHours = durationInMinutes / 60;
-
-  // Calculate charges
-  double baseRate = vehicleConfig.baseRate ?? 0; // Initial flat rate
-  double baseDuration = vehicleConfig.baseDuration ?? 0; // Hours for flat rate
-  double hourlyRate = vehicleConfig.hourlyRate ?? 0; // Rate per additional hour
-  double? dailyMax = vehicleConfig.dailyMax; // Max charge per day, optional
-
-  if (dailyMax != null && dailyMax > 0) {
-    // Scenario: dailyMax is provided and greater than 0
-    // Calculate charges for full days
-    int fullDays = (durationInHours / 24).floor();
-    parkingCharges += fullDays * dailyMax;
-
-    // Calculate remaining hours for the last partial day
-    double remainingHours = durationInHours % 24;
-    parkingCharges += remainingHours * hourlyRate;
-
-    print('Parking charges with daily max: $parkingCharges');
+  // Calculate parking charges
+  final durationInHours = (durationInMinutes - freeMinutes) / 60;
+  double parkingCharges;
+  if (durationInHours <= baseDuration) {
+    parkingCharges = baseRate;
   } else {
-    // Scenario: dailyMax is zero or not provided
-    // Calculate charges continuously based on hourly rates
-    if (durationInHours <= baseDuration) {
-      parkingCharges += baseRate;
-    } else {
-      parkingCharges +=
-          baseRate + ((durationInHours - baseDuration).ceil() * hourlyRate);
-    }
-
-    print('Parking charges without daily max: $parkingCharges');
+    parkingCharges =
+        baseRate + ((durationInHours - baseDuration).ceil() * hourlyRate);
   }
 
+  print('Parking charges: $parkingCharges');
   return parkingCharges;
 }
 

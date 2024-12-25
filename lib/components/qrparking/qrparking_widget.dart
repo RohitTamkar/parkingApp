@@ -187,8 +187,6 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                             ?.parkingCharges?.hourlyRate,
                                         freeMinutes: widget!.productDoc
                                             ?.parkingCharges?.freeMinutes,
-                                        dailyMax: widget!.productDoc
-                                            ?.parkingCharges?.dailyMax,
                                       )) : functions.calculateParkingCharges12hours(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)

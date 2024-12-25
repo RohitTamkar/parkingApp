@@ -84,9 +84,6 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
     _model.textFieldFreeMinutesTextController ??= TextEditingController();
     _model.textFieldFreeMinutesFocusNode ??= FocusNode();
 
-    _model.textFieldDailyMaxTextController ??= TextEditingController();
-    _model.textFieldDailyMaxFocusNode ??= FocusNode();
-
     _model.textFieldHSNCodeTextController ??= TextEditingController();
     _model.textFieldHSNCodeFocusNode ??= FocusNode();
 
@@ -2680,185 +2677,6 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                               ],
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                3.0, 0.0),
-                                                    child: Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        5.0),
-                                                            child:
-                                                                SelectionArea(
-                                                                    child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'zkq99ilf' /* DailyMax */,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelMediumFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                  ),
-                                                            )),
-                                                          ),
-                                                          TextFormField(
-                                                            controller: _model
-                                                                .textFieldDailyMaxTextController,
-                                                            focusNode: _model
-                                                                .textFieldDailyMaxFocusNode,
-                                                            onChanged: (_) =>
-                                                                EasyDebounce
-                                                                    .debounce(
-                                                              '_model.textFieldDailyMaxTextController',
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      2000),
-                                                              () =>
-                                                                  safeSetState(
-                                                                      () {}),
-                                                            ),
-                                                            autofocus: false,
-                                                            obscureText: false,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              isDense: false,
-                                                              hintStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodySmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                      ),
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              errorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              focusedErrorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: Color(
-                                                                      0x00000000),
-                                                                  width: 1.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .titleMediumFamily),
-                                                                ),
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            validator: _model
-                                                                .textFieldDailyMaxTextControllerValidator
-                                                                .asValidator(
-                                                                    context),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
                                           if (!true)
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -4438,10 +4256,6 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                   .tryParse(_model
                                                                       .textFieldFreeMinutesTextController
                                                                       .text),
-                                                              dailyMax: double
-                                                                  .tryParse(_model
-                                                                      .textFieldDailyMaxTextController
-                                                                      .text),
                                                               clearUnsetFields:
                                                                   false,
                                                               create: true,
@@ -4566,9 +4380,6 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                           .text),
                                                                       freeMinutes: int.tryParse(_model
                                                                           .textFieldFreeMinutesTextController
-                                                                          .text),
-                                                                      dailyMax: double.tryParse(_model
-                                                                          .textFieldDailyMaxTextController
                                                                           .text),
                                                                       clearUnsetFields:
                                                                           false,
