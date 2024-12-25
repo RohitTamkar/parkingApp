@@ -784,7 +784,7 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                       queryBuilder: (outletRecord) =>
                                           outletRecord.where(
                                         'id',
-                                        isEqualTo: FFAppState().outletId,
+                                        isEqualTo: FFAppState().outletIdRef?.id,
                                       ),
                                       singleRecord: true,
                                     ),
