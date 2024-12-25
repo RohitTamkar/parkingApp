@@ -102,6 +102,26 @@ class EditproductNewMModel extends FlutterFlowModel<EditproductNewMWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController10;
   String? Function(BuildContext, String?)? textController10Validator;
+  // State field(s) for TextFieldBaseRate widget.
+  FocusNode? textFieldBaseRateFocusNode;
+  TextEditingController? textFieldBaseRateTextController;
+  String? Function(BuildContext, String?)?
+      textFieldBaseRateTextControllerValidator;
+  // State field(s) for TextFieldBaseDuration widget.
+  FocusNode? textFieldBaseDurationFocusNode;
+  TextEditingController? textFieldBaseDurationTextController;
+  String? Function(BuildContext, String?)?
+      textFieldBaseDurationTextControllerValidator;
+  // State field(s) for TextFieldHourlyRate widget.
+  FocusNode? textFieldHourlyRateFocusNode;
+  TextEditingController? textFieldHourlyRateTextController;
+  String? Function(BuildContext, String?)?
+      textFieldHourlyRateTextControllerValidator;
+  // State field(s) for TextFieldFreeMinutes widget.
+  FocusNode? textFieldFreeMinutesFocusNode;
+  TextEditingController? textFieldFreeMinutesTextController;
+  String? Function(BuildContext, String?)?
+      textFieldFreeMinutesTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -139,5 +159,17 @@ class EditproductNewMModel extends FlutterFlowModel<EditproductNewMWidget> {
 
     textFieldFocusNode?.dispose();
     textController10?.dispose();
+
+    textFieldBaseRateFocusNode?.dispose();
+    textFieldBaseRateTextController?.dispose();
+
+    textFieldBaseDurationFocusNode?.dispose();
+    textFieldBaseDurationTextController?.dispose();
+
+    textFieldHourlyRateFocusNode?.dispose();
+    textFieldHourlyRateTextController?.dispose();
+
+    textFieldFreeMinutesFocusNode?.dispose();
+    textFieldFreeMinutesTextController?.dispose();
   }
 }
