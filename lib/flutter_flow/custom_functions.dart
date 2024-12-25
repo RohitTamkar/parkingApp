@@ -179,49 +179,70 @@ double? calculateParkingCharges2(
   String? vehicleType,
   int? checkInTimeMillisecond,
   int? checkOutTimeMillisecond,
-  VehicleBillStruct parkingPlans,
+  VehicleBillStruct planConfig,
 ) {
-  if (vehicleType == null ||
-      checkInTimeMillisecond == null ||
-      checkOutTimeMillisecond == null) {
-    print('Invalid inputs provided');
+  // Calculate duration in hours
+  if (checkInTimeMillisecond == null || checkOutTimeMillisecond == null) {
+    print('Invalid check-in or checkout time');
     return null;
   }
 
-  final plan = parkingPlans;
-  if (plan == null) {
-    print('Vehicle type not supported');
+  double durationInMinutes =
+      (checkOutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60);
+  double durationInHours = durationInMinutes / 60;
+  print('Duration in hours: $durationInHours');
+
+  // Initialize parking charges
+  double parkingCharges = 0;
+
+  // Extract the vehicle-specific configuration
+  final vehicleConfig = planConfig;
+  if (vehicleConfig == null) {
+    print('No configuration found for vehicle type: $vehicleType');
     return null;
   }
 
-  // Extract plan details
-  final baseRate = plan.baseRate;
-  final baseDuration = plan.baseDuration;
-  final hourlyRate = plan.hourlyRate;
-  final freeMinutes = plan.freeMinutes;
-
-  // Calculate duration in minutes
-  final durationInMinutes =
-      ((checkOutTimeMillisecond - checkInTimeMillisecond) / (1000 * 60))
-          .toDouble();
-  print('Duration in minutes: $durationInMinutes');
-
-  // Skip charges for free minutes
+  // Free minutes logic
+  int freeMinutes = planConfig.freeMinutes ?? 0;
   if (durationInMinutes <= freeMinutes) {
-    return 0.0; // No charges within free time
+    print('Parking duration is within free time. No charges applied.');
+    return parkingCharges;
   }
 
-  // Calculate parking charges
-  final durationInHours = (durationInMinutes - freeMinutes) / 60;
-  double parkingCharges;
-  if (durationInHours <= baseDuration) {
-    parkingCharges = baseRate;
+  // Adjust duration after free time
+  durationInMinutes -= freeMinutes;
+  durationInHours = durationInMinutes / 60;
+
+  // Calculate charges
+  double baseRate = vehicleConfig.baseRate ?? 0; // Initial flat rate
+  double baseDuration = vehicleConfig.baseDuration ?? 0; // Hours for flat rate
+  double hourlyRate = vehicleConfig.hourlyRate ?? 0; // Rate per additional hour
+  double dailyMax =
+      vehicleConfig.dailyMax ?? double.infinity; // Max charge per day
+
+  // Calculate charges for full days
+  int fullDays = (durationInHours / 24).floor();
+  parkingCharges += fullDays * dailyMax;
+
+  // Calculate remaining hours for the last partial day
+  double remainingHours = durationInHours % 24;
+  if (remainingHours <= baseDuration) {
+    parkingCharges += baseRate;
   } else {
-    parkingCharges =
-        baseRate + ((durationInHours - baseDuration).ceil() * hourlyRate);
+    parkingCharges +=
+        baseRate + ((remainingHours - baseDuration).ceil() * hourlyRate);
   }
 
+  // Ensure daily max limit is respected
+  double lastDayCharges = dailyMax != double.infinity
+      ? (remainingHours <= baseDuration
+          ? baseRate
+          : baseRate + ((remainingHours - baseDuration).ceil() * hourlyRate))
+      : parkingCharges;
+
+  parkingCharges = (fullDays * dailyMax) + lastDayCharges;
   print('Parking charges: $parkingCharges');
+
   return parkingCharges;
 }
 
@@ -429,7 +450,7 @@ double? calculateParkingChargesPerHourly1(
   int? checkInTimeMillisecond,
   int? checkoutTimeMillisecond,
 ) {
-  // Calculate the duration of parking in hours
+// Calculate the duration of parking in hours
   double? durationInMinutes;
   if (checkInTimeMillisecond != null && checkoutTimeMillisecond != null) {
     durationInMinutes =
@@ -441,43 +462,30 @@ double? calculateParkingChargesPerHourly1(
   // Initialize parking charges
   double? parkingCharges = 0;
 
-  // Skip charges for the first 15 minutes
-  // if (durationInMinutes != null && durationInMinutes <= 5) {
-  //   return parkingCharges; // No charges for the first 15 minutes
-  // }
-
-  // If parking duration exceeds 15 minutes
   if (vehicleType != null && durationInMinutes != null) {
-    // Convert remaining minutes (after free 15 minutes) to hours
     double durationInHours = durationInMinutes / 60;
 
     switch (vehicleType.toUpperCase()) {
       case 'TWO WHEELER':
         if (durationInHours <= 1) {
-          // Charge ₹30 for the first 2 hours
           parkingCharges = 10;
         } else {
-          // Charge ₹30 for the first 2 hours and ₹20 for each additional hour
           parkingCharges = 10 + ((durationInHours - 1).ceil() * 5);
         }
         break;
 
       case 'FOUR WHEELER':
         if (durationInHours <= 1) {
-          // Charge ₹50 for the first 2 hours
           parkingCharges = 20;
         } else {
-          // Charge ₹50 for the first 2 hours and ₹25 for each additional hour
           parkingCharges = 20 + ((durationInHours - 1).ceil() * 10);
         }
         break;
 
       case 'TRUCK':
         if (durationInHours <= 1) {
-          // Charge ₹180 for the first 2 hours
           parkingCharges = 50;
         } else {
-          // Charge ₹180 for the first 2 hours and ₹180 for each additional hour
           parkingCharges = 50 + ((durationInHours - 1).ceil() * 25);
         }
         break;

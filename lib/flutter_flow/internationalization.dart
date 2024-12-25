@@ -1811,6 +1811,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'zkq99ilf': {
+      'en': 'DailyMax',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    '84xkor7d': {
+      'en': '',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'hc0fu1ai': {
       'en': 'Weightable',
       'hi': '',

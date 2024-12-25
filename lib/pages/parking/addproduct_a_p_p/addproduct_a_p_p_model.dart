@@ -89,6 +89,11 @@ class AddproductAPPModel extends FlutterFlowModel<AddproductAPPWidget> {
   TextEditingController? textFieldFreeMinutesTextController;
   String? Function(BuildContext, String?)?
       textFieldFreeMinutesTextControllerValidator;
+  // State field(s) for TextFieldDailyMax widget.
+  FocusNode? textFieldDailyMaxFocusNode;
+  TextEditingController? textFieldDailyMaxTextController;
+  String? Function(BuildContext, String?)?
+      textFieldDailyMaxTextControllerValidator;
   // State field(s) for WightCheckbo widget.
   bool? wightCheckboValue;
   // State field(s) for StockCheckbox widget.
@@ -172,6 +177,9 @@ class AddproductAPPModel extends FlutterFlowModel<AddproductAPPWidget> {
 
     textFieldFreeMinutesFocusNode?.dispose();
     textFieldFreeMinutesTextController?.dispose();
+
+    textFieldDailyMaxFocusNode?.dispose();
+    textFieldDailyMaxTextController?.dispose();
 
     textFieldHSNCodeFocusNode?.dispose();
     textFieldHSNCodeTextController?.dispose();

@@ -178,7 +178,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 3.0, 0.0),
                                 child: Text(
-                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(functions.calculateParkingCharges2(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch, VehicleBillStruct(
+                                  '₹ ${widget!.invdoc?.orderType == 'MONTHLYPASS' ? '0' : functions.calculateRemainingAmount(widget!.settings!.settingList.where((e) => e.title == 'calculateHourlyCharges').toList().firstOrNull!.value ? functions.calculateParkingCharges2(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch, VehicleBillStruct(
                                         baseRate: widget!.productDoc
                                             ?.parkingCharges?.baseRate,
                                         baseDuration: widget!.productDoc
@@ -187,7 +187,9 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                             ?.parkingCharges?.hourlyRate,
                                         freeMinutes: widget!.productDoc
                                             ?.parkingCharges?.freeMinutes,
-                                      )), widget!.invdoc?.advancePaid).toString()}',
+                                        dailyMax: widget!.productDoc
+                                            ?.parkingCharges?.dailyMax,
+                                      )) : functions.calculateParkingCharges12hours(widget!.invdoc?.vechicleType, widget!.invdoc?.checkInTime, getCurrentTimestamp.millisecondsSinceEpoch), widget!.invdoc?.advancePaid).toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displayMedium

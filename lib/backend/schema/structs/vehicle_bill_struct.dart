@@ -14,11 +14,13 @@ class VehicleBillStruct extends FFFirebaseStruct {
     double? baseDuration,
     double? hourlyRate,
     int? freeMinutes,
+    double? dailyMax,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _baseRate = baseRate,
         _baseDuration = baseDuration,
         _hourlyRate = hourlyRate,
         _freeMinutes = freeMinutes,
+        _dailyMax = dailyMax,
         super(firestoreUtilData);
 
   // "baseRate" field.
@@ -58,12 +60,22 @@ class VehicleBillStruct extends FFFirebaseStruct {
 
   bool hasFreeMinutes() => _freeMinutes != null;
 
+  // "dailyMax" field.
+  double? _dailyMax;
+  double get dailyMax => _dailyMax ?? 0.0;
+  set dailyMax(double? val) => _dailyMax = val;
+
+  void incrementDailyMax(double amount) => dailyMax = dailyMax + amount;
+
+  bool hasDailyMax() => _dailyMax != null;
+
   static VehicleBillStruct fromMap(Map<String, dynamic> data) =>
       VehicleBillStruct(
         baseRate: castToType<double>(data['baseRate']),
         baseDuration: castToType<double>(data['baseDuration']),
         hourlyRate: castToType<double>(data['hourlyRate']),
         freeMinutes: castToType<int>(data['freeMinutes']),
+        dailyMax: castToType<double>(data['dailyMax']),
       );
 
   static VehicleBillStruct? maybeFromMap(dynamic data) => data is Map
@@ -75,6 +87,7 @@ class VehicleBillStruct extends FFFirebaseStruct {
         'baseDuration': _baseDuration,
         'hourlyRate': _hourlyRate,
         'freeMinutes': _freeMinutes,
+        'dailyMax': _dailyMax,
       }.withoutNulls;
 
   @override
@@ -94,6 +107,10 @@ class VehicleBillStruct extends FFFirebaseStruct {
         'freeMinutes': serializeParam(
           _freeMinutes,
           ParamType.int,
+        ),
+        'dailyMax': serializeParam(
+          _dailyMax,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -119,6 +136,11 @@ class VehicleBillStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        dailyMax: deserializeParam(
+          data['dailyMax'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -130,12 +152,13 @@ class VehicleBillStruct extends FFFirebaseStruct {
         baseRate == other.baseRate &&
         baseDuration == other.baseDuration &&
         hourlyRate == other.hourlyRate &&
-        freeMinutes == other.freeMinutes;
+        freeMinutes == other.freeMinutes &&
+        dailyMax == other.dailyMax;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([baseRate, baseDuration, hourlyRate, freeMinutes]);
+      .hash([baseRate, baseDuration, hourlyRate, freeMinutes, dailyMax]);
 }
 
 VehicleBillStruct createVehicleBillStruct({
@@ -143,6 +166,7 @@ VehicleBillStruct createVehicleBillStruct({
   double? baseDuration,
   double? hourlyRate,
   int? freeMinutes,
+  double? dailyMax,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -153,6 +177,7 @@ VehicleBillStruct createVehicleBillStruct({
       baseDuration: baseDuration,
       hourlyRate: hourlyRate,
       freeMinutes: freeMinutes,
+      dailyMax: dailyMax,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

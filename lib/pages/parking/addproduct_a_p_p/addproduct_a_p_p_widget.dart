@@ -84,6 +84,9 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
     _model.textFieldFreeMinutesTextController ??= TextEditingController();
     _model.textFieldFreeMinutesFocusNode ??= FocusNode();
 
+    _model.textFieldDailyMaxTextController ??= TextEditingController();
+    _model.textFieldDailyMaxFocusNode ??= FocusNode();
+
     _model.textFieldHSNCodeTextController ??= TextEditingController();
     _model.textFieldHSNCodeFocusNode ??= FocusNode();
 
@@ -1974,736 +1977,888 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                 ],
                                               ),
                                             ),
-                                          if (false)
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 10.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  3.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0),
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'a5x8k97u' /* BaseRate  */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            TextFormField(
-                                                              controller: _model
-                                                                  .textFieldBaseRateTextController,
-                                                              focusNode: _model
-                                                                  .textFieldBaseRateFocusNode,
-                                                              onChanged: (_) =>
-                                                                  EasyDebounce
-                                                                      .debounce(
-                                                                '_model.textFieldBaseRateTextController',
-                                                                Duration(
-                                                                    milliseconds:
-                                                                        2000),
-                                                                () =>
-                                                                    safeSetState(
-                                                                        () {}),
-                                                              ),
-                                                              autofocus: false,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                isDense: false,
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                    ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                3.0, 0.0),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0),
+                                                            child:
+                                                                SelectionArea(
+                                                                    child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'a5x8k97u' /* BaseRate  */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .titleMedium
+                                                                  .labelMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily,
+                                                                            .labelMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
                                                                             .asMap()
                                                                         .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
                                                                   ),
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              validator: _model
-                                                                  .textFieldBaseRateTextControllerValidator
-                                                                  .asValidator(
-                                                                      context),
+                                                            )),
+                                                          ),
+                                                          TextFormField(
+                                                            controller: _model
+                                                                .textFieldBaseRateTextController,
+                                                            focusNode: _model
+                                                                .textFieldBaseRateFocusNode,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.textFieldBaseRateTextController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () =>
+                                                                  safeSetState(
+                                                                      () {}),
                                                             ),
-                                                          ],
-                                                        ),
+                                                            autofocus: false,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              isDense: false,
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              filled: true,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily),
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textFieldBaseRateTextControllerValidator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  3.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0),
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'nk2zy2kd' /* BaseDuration  */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            TextFormField(
-                                                              controller: _model
-                                                                  .textFieldBaseDurationTextController,
-                                                              focusNode: _model
-                                                                  .textFieldBaseDurationFocusNode,
-                                                              onChanged: (_) =>
-                                                                  EasyDebounce
-                                                                      .debounce(
-                                                                '_model.textFieldBaseDurationTextController',
-                                                                Duration(
-                                                                    milliseconds:
-                                                                        2000),
-                                                                () =>
-                                                                    safeSetState(
-                                                                        () {}),
-                                                              ),
-                                                              autofocus: false,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                isDense: false,
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                    ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(3.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0),
+                                                            child:
+                                                                SelectionArea(
+                                                                    child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'nk2zy2kd' /* BaseDuration  */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .titleMedium
+                                                                  .labelMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily,
+                                                                            .labelMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
                                                                             .asMap()
                                                                         .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
                                                                   ),
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              validator: _model
-                                                                  .textFieldBaseDurationTextControllerValidator
-                                                                  .asValidator(
-                                                                      context),
+                                                            )),
+                                                          ),
+                                                          TextFormField(
+                                                            controller: _model
+                                                                .textFieldBaseDurationTextController,
+                                                            focusNode: _model
+                                                                .textFieldBaseDurationFocusNode,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.textFieldBaseDurationTextController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () =>
+                                                                  safeSetState(
+                                                                      () {}),
                                                             ),
-                                                          ],
-                                                        ),
+                                                            autofocus: false,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              isDense: false,
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              filled: true,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily),
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textFieldBaseDurationTextControllerValidator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                          if (false)
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 10.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  3.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0),
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'p9ziq04z' /* HourlyRate */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            TextFormField(
-                                                              controller: _model
-                                                                  .textFieldHourlyRateTextController,
-                                                              focusNode: _model
-                                                                  .textFieldHourlyRateFocusNode,
-                                                              onChanged: (_) =>
-                                                                  EasyDebounce
-                                                                      .debounce(
-                                                                '_model.textFieldHourlyRateTextController',
-                                                                Duration(
-                                                                    milliseconds:
-                                                                        2000),
-                                                                () =>
-                                                                    safeSetState(
-                                                                        () {}),
-                                                              ),
-                                                              autofocus: false,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                isDense: false,
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                    ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                3.0, 0.0),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0),
+                                                            child:
+                                                                SelectionArea(
+                                                                    child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'p9ziq04z' /* HourlyRate */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .titleMedium
+                                                                  .labelMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily,
+                                                                            .labelMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
                                                                             .asMap()
                                                                         .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
                                                                   ),
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              validator: _model
-                                                                  .textFieldHourlyRateTextControllerValidator
-                                                                  .asValidator(
-                                                                      context),
+                                                            )),
+                                                          ),
+                                                          TextFormField(
+                                                            controller: _model
+                                                                .textFieldHourlyRateTextController,
+                                                            focusNode: _model
+                                                                .textFieldHourlyRateFocusNode,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.textFieldHourlyRateTextController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () =>
+                                                                  safeSetState(
+                                                                      () {}),
                                                             ),
-                                                          ],
-                                                        ),
+                                                            autofocus: false,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              isDense: false,
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              filled: true,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily),
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textFieldHourlyRateTextControllerValidator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                          if (false)
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 10.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  3.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          5.0),
-                                                              child:
-                                                                  SelectionArea(
-                                                                      child:
-                                                                          Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '994d4nz9' /* FreeMinutes  */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).labelMediumFamily),
-                                                                    ),
-                                                              )),
-                                                            ),
-                                                            TextFormField(
-                                                              controller: _model
-                                                                  .textFieldFreeMinutesTextController,
-                                                              focusNode: _model
-                                                                  .textFieldFreeMinutesFocusNode,
-                                                              onChanged: (_) =>
-                                                                  EasyDebounce
-                                                                      .debounce(
-                                                                '_model.textFieldFreeMinutesTextController',
-                                                                Duration(
-                                                                    milliseconds:
-                                                                        2000),
-                                                                () =>
-                                                                    safeSetState(
-                                                                        () {}),
-                                                              ),
-                                                              autofocus: false,
-                                                              obscureText:
-                                                                  false,
-                                                              decoration:
-                                                                  InputDecoration(
-                                                                isDense: false,
-                                                                hintStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
-                                                                    ),
-                                                                enabledBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                errorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                focusedErrorBorder:
-                                                                    OutlineInputBorder(
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: Color(
-                                                                        0x00000000),
-                                                                    width: 1.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                3.0, 0.0),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0),
+                                                            child:
+                                                                SelectionArea(
+                                                                    child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '994d4nz9' /* FreeMinutes  */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .titleMedium
+                                                                  .labelMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         FlutterFlowTheme.of(context)
-                                                                            .titleMediumFamily,
+                                                                            .labelMediumFamily,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     useGoogleFonts: GoogleFonts
                                                                             .asMap()
                                                                         .containsKey(
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
                                                                   ),
-                                                              keyboardType:
-                                                                  TextInputType
-                                                                      .number,
-                                                              validator: _model
-                                                                  .textFieldFreeMinutesTextControllerValidator
-                                                                  .asValidator(
-                                                                      context),
+                                                            )),
+                                                          ),
+                                                          TextFormField(
+                                                            controller: _model
+                                                                .textFieldFreeMinutesTextController,
+                                                            focusNode: _model
+                                                                .textFieldFreeMinutesFocusNode,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.textFieldFreeMinutesTextController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () =>
+                                                                  safeSetState(
+                                                                      () {}),
                                                             ),
-                                                          ],
-                                                        ),
+                                                            autofocus: false,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              isDense: false,
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              filled: true,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily),
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textFieldFreeMinutesTextControllerValidator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                3.0, 0.0),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        5.0),
+                                                            child:
+                                                                SelectionArea(
+                                                                    child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'zkq99ilf' /* DailyMax */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelMediumFamily),
+                                                                  ),
+                                                            )),
+                                                          ),
+                                                          TextFormField(
+                                                            controller: _model
+                                                                .textFieldDailyMaxTextController,
+                                                            focusNode: _model
+                                                                .textFieldDailyMaxFocusNode,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.textFieldDailyMaxTextController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () =>
+                                                                  safeSetState(
+                                                                      () {}),
+                                                            ),
+                                                            autofocus: false,
+                                                            obscureText: false,
+                                                            decoration:
+                                                                InputDecoration(
+                                                              isDense: false,
+                                                              hintStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                              enabledBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              errorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                              filled: true,
+                                                              fillColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMediumFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleMediumFamily),
+                                                                ),
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .number,
+                                                            validator: _model
+                                                                .textFieldDailyMaxTextControllerValidator
+                                                                .asValidator(
+                                                                    context),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                           if (!true)
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -3970,220 +4125,331 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                               decoration: BoxDecoration(),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.center,
                                                 children: [
-                                                  Expanded(
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.4,
-                                                      height: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .height *
-                                                          0.05,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              var _shouldSetState =
-                                                                  false;
-                                                              if ((_model.productDropDownValue !=
-                                                                          null &&
-                                                                      _model.productDropDownValue !=
-                                                                          '') &&
-                                                                  (_model.catDropDownValue !=
-                                                                          null &&
-                                                                      _model.catDropDownValue !=
-                                                                          '')) {
-                                                                _model.notSame =
-                                                                    await actions
-                                                                        .checkDupProduct(
-                                                                  _model
-                                                                      .productDropDownValue,
-                                                                  containerProductRecordList
-                                                                      .toList(),
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-                                                                if (!_model
-                                                                    .notSame!) {
-                                                                  _model.jsonData =
-                                                                      await actions
-                                                                          .productDetails(
-                                                                    _model
-                                                                        .textFieldRegionalNameTextController
-                                                                        .text,
-                                                                    _model
-                                                                        .dropDownSubCategoryValue,
-                                                                    _model
-                                                                        .dropDownUnitTypeValue,
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      _model
-                                                                          .dropDownServicePointValue,
-                                                                      '0',
-                                                                    ),
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      _model
-                                                                          .dropDownTaxValue,
-                                                                      '0',
-                                                                    ),
-                                                                    int.tryParse(_model
-                                                                        .textFieldRecorderLevelTextController
-                                                                        .text),
-                                                                    valueOrDefault<
-                                                                        double>(
-                                                                      double.tryParse(_model
-                                                                          .textFieldDiscountPerTextController
-                                                                          .text),
-                                                                      0.0,
-                                                                    ),
-                                                                    valueOrDefault<
-                                                                        double>(
-                                                                      double.tryParse(_model
-                                                                          .textFieldDiscountAmtTextController
-                                                                          .text),
-                                                                      0.0,
-                                                                    ),
-                                                                    _model
-                                                                        .catDropDownValue,
-                                                                  );
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.productDoc =
-                                                                      await queryProductMasterRecordOnce(
-                                                                    queryBuilder:
-                                                                        (productMasterRecord) =>
-                                                                            productMasterRecord.where(
-                                                                      'name',
-                                                                      isEqualTo:
-                                                                          _model
-                                                                              .productDropDownValue,
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.subDoc =
-                                                                      await querySubCategoryRecordOnce(
-                                                                    queryBuilder:
-                                                                        (subCategoryRecord) =>
-                                                                            subCategoryRecord.where(
-                                                                      'name',
-                                                                      isEqualTo:
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                        _model
-                                                                            .dropDownSubCategoryValue,
-                                                                        'DEFAULT',
-                                                                      ),
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.taxDoc =
-                                                                      await queryTaxMasterRecordOnce(
-                                                                    queryBuilder:
-                                                                        (taxMasterRecord) =>
-                                                                            taxMasterRecord.where(
-                                                                      'name',
-                                                                      isEqualTo:
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                        _model
-                                                                            .dropDownTaxValue,
-                                                                        'GST @ 0%',
-                                                                      ),
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.unitDoc =
-                                                                      await queryUnitTypeRecordOnce(
-                                                                    queryBuilder:
-                                                                        (unitTypeRecord) =>
-                                                                            unitTypeRecord.where(
-                                                                      'name',
-                                                                      isEqualTo:
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                        _model
-                                                                            .dropDownUnitTypeValue,
-                                                                        'NUMBER',
-                                                                      ),
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.serviceDoc =
-                                                                      await queryServicePointOutletRecordOnce(
-                                                                    parent: FFAppState()
-                                                                        .outletIdRef,
-                                                                    queryBuilder:
-                                                                        (servicePointOutletRecord) =>
-                                                                            servicePointOutletRecord.where(
-                                                                      'name',
-                                                                      isEqualTo:
-                                                                          _model
-                                                                              .dropDownServicePointValue,
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.catDoc =
-                                                                      await queryCategoryRecordOnce(
-                                                                    parent: FFAppState()
-                                                                        .outletIdRef,
-                                                                    queryBuilder:
-                                                                        (categoryRecord) =>
-                                                                            categoryRecord.where(
-                                                                      'name',
-                                                                      isEqualTo:
-                                                                          _model
-                                                                              .catDropDownValue,
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
+                                                  FFButtonWidget(
+                                                    onPressed: () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      if ((_model.productDropDownValue !=
+                                                                  null &&
+                                                              _model.productDropDownValue !=
+                                                                  '') &&
+                                                          (_model.catDropDownValue !=
+                                                                  null &&
+                                                              _model.catDropDownValue !=
+                                                                  '')) {
+                                                        _model.notSame =
+                                                            await actions
+                                                                .checkDupProduct(
+                                                          _model
+                                                              .productDropDownValue,
+                                                          containerProductRecordList
+                                                              .toList(),
+                                                        );
+                                                        _shouldSetState = true;
+                                                        if (!_model.notSame!) {
+                                                          _model.jsonData =
+                                                              await actions
+                                                                  .productDetails(
+                                                            _model
+                                                                .textFieldRegionalNameTextController
+                                                                .text,
+                                                            _model
+                                                                .dropDownSubCategoryValue,
+                                                            _model
+                                                                .dropDownUnitTypeValue,
+                                                            valueOrDefault<
+                                                                String>(
+                                                              _model
+                                                                  .dropDownServicePointValue,
+                                                              '0',
+                                                            ),
+                                                            valueOrDefault<
+                                                                String>(
+                                                              _model
+                                                                  .dropDownTaxValue,
+                                                              '0',
+                                                            ),
+                                                            int.tryParse(_model
+                                                                .textFieldRecorderLevelTextController
+                                                                .text),
+                                                            valueOrDefault<
+                                                                double>(
+                                                              double.tryParse(_model
+                                                                  .textFieldDiscountPerTextController
+                                                                  .text),
+                                                              0.0,
+                                                            ),
+                                                            valueOrDefault<
+                                                                double>(
+                                                              double.tryParse(_model
+                                                                  .textFieldDiscountAmtTextController
+                                                                  .text),
+                                                              0.0,
+                                                            ),
+                                                            _model
+                                                                .catDropDownValue,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.productDoc =
+                                                              await queryProductMasterRecordOnce(
+                                                            queryBuilder:
+                                                                (productMasterRecord) =>
+                                                                    productMasterRecord
+                                                                        .where(
+                                                              'name',
+                                                              isEqualTo: _model
+                                                                  .productDropDownValue,
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.subDoc =
+                                                              await querySubCategoryRecordOnce(
+                                                            queryBuilder:
+                                                                (subCategoryRecord) =>
+                                                                    subCategoryRecord
+                                                                        .where(
+                                                              'name',
+                                                              isEqualTo:
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                _model
+                                                                    .dropDownSubCategoryValue,
+                                                                'DEFAULT',
+                                                              ),
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.taxDoc =
+                                                              await queryTaxMasterRecordOnce(
+                                                            queryBuilder:
+                                                                (taxMasterRecord) =>
+                                                                    taxMasterRecord
+                                                                        .where(
+                                                              'name',
+                                                              isEqualTo:
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                _model
+                                                                    .dropDownTaxValue,
+                                                                'GST @ 0%',
+                                                              ),
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.unitDoc =
+                                                              await queryUnitTypeRecordOnce(
+                                                            queryBuilder:
+                                                                (unitTypeRecord) =>
+                                                                    unitTypeRecord
+                                                                        .where(
+                                                              'name',
+                                                              isEqualTo:
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                _model
+                                                                    .dropDownUnitTypeValue,
+                                                                'NUMBER',
+                                                              ),
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.serviceDoc =
+                                                              await queryServicePointOutletRecordOnce(
+                                                            parent: FFAppState()
+                                                                .outletIdRef,
+                                                            queryBuilder:
+                                                                (servicePointOutletRecord) =>
+                                                                    servicePointOutletRecord
+                                                                        .where(
+                                                              'name',
+                                                              isEqualTo: _model
+                                                                  .dropDownServicePointValue,
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.catDoc =
+                                                              await queryCategoryRecordOnce(
+                                                            parent: FFAppState()
+                                                                .outletIdRef,
+                                                            queryBuilder:
+                                                                (categoryRecord) =>
+                                                                    categoryRecord
+                                                                        .where(
+                                                              'name',
+                                                              isEqualTo: _model
+                                                                  .catDropDownValue,
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
 
-                                                                  var productRecordReference =
-                                                                      ProductRecord.createDoc(
-                                                                          FFAppState()
-                                                                              .outletIdRef!);
-                                                                  await productRecordReference
-                                                                      .set(
-                                                                          createProductRecordData(
+                                                          var productRecordReference =
+                                                              ProductRecord.createDoc(
+                                                                  FFAppState()
+                                                                      .outletIdRef!);
+                                                          await productRecordReference
+                                                              .set(
+                                                                  createProductRecordData(
+                                                            sellingPrice: double
+                                                                .tryParse(_model
+                                                                    .textFieldSellingPriceTextController
+                                                                    .text),
+                                                            mrpPrice: double
+                                                                .tryParse(_model
+                                                                    .textFieldMRPPriceTextController
+                                                                    .text),
+                                                            regionalName: functions
+                                                                .toCapitalLetter1(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                              _model
+                                                                  .textFieldRegionalNameTextController
+                                                                  .text,
+                                                              'NA',
+                                                            )),
+                                                            discountPer:
+                                                                valueOrDefault<
+                                                                    double>(
+                                                              getJsonField(
+                                                                _model.jsonData,
+                                                                r'''$.discountP''',
+                                                              ),
+                                                              0.0,
+                                                            ),
+                                                            purchasePrice: double
+                                                                .tryParse(_model
+                                                                    .textFieldPurchasePriceTextController
+                                                                    .text),
+                                                            discountAmt:
+                                                                valueOrDefault<
+                                                                    double>(
+                                                              getJsonField(
+                                                                _model.jsonData,
+                                                                r'''$.discountAmt''',
+                                                              ),
+                                                              0.0,
+                                                            ),
+                                                            code: int.tryParse(
+                                                                _model
+                                                                    .textFieldCodeTextController
+                                                                    .text),
+                                                            categoryRef: functions
+                                                                .getCatDocRefFromIdCategory(
+                                                                    _model
+                                                                        .catDoc
+                                                                        ?.id,
+                                                                    FFAppState()
+                                                                        .outletIdRef),
+                                                            productMasterRef:
+                                                                _model
+                                                                    .productDoc
+                                                                    ?.reference,
+                                                            name: _model
+                                                                .productDropDownValue,
+                                                            weightable: _model
+                                                                .wightCheckboValue,
+                                                            stockable: _model
+                                                                .stockCheckboxValue,
+                                                            type: 0,
+                                                            taxRef: _model
+                                                                .taxDoc
+                                                                ?.reference,
+                                                            barcode:
+                                                                FFAppState()
+                                                                    .barcode,
+                                                            subCategoryRefId:
+                                                                getJsonField(
+                                                                          _model
+                                                                              .jsonData,
+                                                                          r'''$.subCat''',
+                                                                        ) !=
+                                                                        '#'
+                                                                    ? _model
+                                                                        .subDoc
+                                                                        ?.id
+                                                                    : valueOrDefault<
+                                                                        String>(
+                                                                        '',
+                                                                        'jelwkw5tJA7I8AhjrCX4',
+                                                                      ),
+                                                            reorderLevel:
+                                                                valueOrDefault<
+                                                                    int>(
+                                                              int.tryParse(_model
+                                                                  .textFieldRecorderLevelTextController
+                                                                  .text),
+                                                              0,
+                                                            ),
+                                                            hsncode: int
+                                                                .tryParse(_model
+                                                                    .textFieldHSNCodeTextController
+                                                                    .text),
+                                                            isDeleted: false,
+                                                            subCategoryRef:
+                                                                _model.subDoc
+                                                                    ?.reference,
+                                                            unitRef: _model
+                                                                .unitDoc
+                                                                ?.reference,
+                                                            category: _model
+                                                                .catDoc?.id,
+                                                            serviceOutletRef:
+                                                                _model
+                                                                    .serviceDoc
+                                                                    ?.reference,
+                                                            parkingCharges:
+                                                                createVehicleBillStruct(
+                                                              baseRate: double
+                                                                  .tryParse(_model
+                                                                      .textFieldBaseRateTextController
+                                                                      .text),
+                                                              baseDuration: double
+                                                                  .tryParse(_model
+                                                                      .textFieldBaseDurationTextController
+                                                                      .text),
+                                                              hourlyRate: double
+                                                                  .tryParse(_model
+                                                                      .textFieldHourlyRateTextController
+                                                                      .text),
+                                                              freeMinutes: int
+                                                                  .tryParse(_model
+                                                                      .textFieldFreeMinutesTextController
+                                                                      .text),
+                                                              dailyMax: double
+                                                                  .tryParse(_model
+                                                                      .textFieldDailyMaxTextController
+                                                                      .text),
+                                                              clearUnsetFields:
+                                                                  false,
+                                                              create: true,
+                                                            ),
+                                                          ));
+                                                          _model.proDoc = ProductRecord
+                                                              .getDocumentFromData(
+                                                                  createProductRecordData(
                                                                     sellingPrice:
                                                                         double.tryParse(_model
                                                                             .textFieldSellingPriceTextController
@@ -4301,260 +4567,167 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                       freeMinutes: int.tryParse(_model
                                                                           .textFieldFreeMinutesTextController
                                                                           .text),
+                                                                      dailyMax: double.tryParse(_model
+                                                                          .textFieldDailyMaxTextController
+                                                                          .text),
                                                                       clearUnsetFields:
                                                                           false,
                                                                       create:
                                                                           true,
                                                                     ),
-                                                                  ));
-                                                                  _model.proDoc =
-                                                                      ProductRecord.getDocumentFromData(
-                                                                          createProductRecordData(
-                                                                            sellingPrice:
-                                                                                double.tryParse(_model.textFieldSellingPriceTextController.text),
-                                                                            mrpPrice:
-                                                                                double.tryParse(_model.textFieldMRPPriceTextController.text),
-                                                                            regionalName:
-                                                                                functions.toCapitalLetter1(valueOrDefault<String>(
-                                                                              _model.textFieldRegionalNameTextController.text,
-                                                                              'NA',
-                                                                            )),
-                                                                            discountPer:
-                                                                                valueOrDefault<double>(
-                                                                              getJsonField(
-                                                                                _model.jsonData,
-                                                                                r'''$.discountP''',
-                                                                              ),
-                                                                              0.0,
-                                                                            ),
-                                                                            purchasePrice:
-                                                                                double.tryParse(_model.textFieldPurchasePriceTextController.text),
-                                                                            discountAmt:
-                                                                                valueOrDefault<double>(
-                                                                              getJsonField(
-                                                                                _model.jsonData,
-                                                                                r'''$.discountAmt''',
-                                                                              ),
-                                                                              0.0,
-                                                                            ),
-                                                                            code:
-                                                                                int.tryParse(_model.textFieldCodeTextController.text),
-                                                                            categoryRef:
-                                                                                functions.getCatDocRefFromIdCategory(_model.catDoc?.id, FFAppState().outletIdRef),
-                                                                            productMasterRef:
-                                                                                _model.productDoc?.reference,
-                                                                            name:
-                                                                                _model.productDropDownValue,
-                                                                            weightable:
-                                                                                _model.wightCheckboValue,
-                                                                            stockable:
-                                                                                _model.stockCheckboxValue,
-                                                                            type:
-                                                                                0,
-                                                                            taxRef:
-                                                                                _model.taxDoc?.reference,
-                                                                            barcode:
-                                                                                FFAppState().barcode,
-                                                                            subCategoryRefId: getJsonField(
-                                                                                      _model.jsonData,
-                                                                                      r'''$.subCat''',
-                                                                                    ) !=
-                                                                                    '#'
-                                                                                ? _model.subDoc?.id
-                                                                                : valueOrDefault<String>(
-                                                                                    '',
-                                                                                    'jelwkw5tJA7I8AhjrCX4',
-                                                                                  ),
-                                                                            reorderLevel:
-                                                                                valueOrDefault<int>(
-                                                                              int.tryParse(_model.textFieldRecorderLevelTextController.text),
-                                                                              0,
-                                                                            ),
-                                                                            hsncode:
-                                                                                int.tryParse(_model.textFieldHSNCodeTextController.text),
-                                                                            isDeleted:
-                                                                                false,
-                                                                            subCategoryRef:
-                                                                                _model.subDoc?.reference,
-                                                                            unitRef:
-                                                                                _model.unitDoc?.reference,
-                                                                            category:
-                                                                                _model.catDoc?.id,
-                                                                            serviceOutletRef:
-                                                                                _model.serviceDoc?.reference,
-                                                                            parkingCharges:
-                                                                                createVehicleBillStruct(
-                                                                              baseRate: double.tryParse(_model.textFieldBaseRateTextController.text),
-                                                                              baseDuration: double.tryParse(_model.textFieldBaseDurationTextController.text),
-                                                                              hourlyRate: double.tryParse(_model.textFieldHourlyRateTextController.text),
-                                                                              freeMinutes: int.tryParse(_model.textFieldFreeMinutesTextController.text),
-                                                                              clearUnsetFields: false,
-                                                                              create: true,
-                                                                            ),
-                                                                          ),
-                                                                          productRecordReference);
-                                                                  _shouldSetState =
-                                                                      true;
+                                                                  ),
+                                                                  productRecordReference);
+                                                          _shouldSetState =
+                                                              true;
 
-                                                                  await _model
-                                                                      .proDoc!
-                                                                      .reference
-                                                                      .update(
-                                                                          createProductRecordData(
-                                                                    id: _model
-                                                                        .proDoc
-                                                                        ?.reference
-                                                                        .id,
-                                                                  ));
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Vehicle'),
-                                                                        content:
-                                                                            Text('Vehicle added successfully'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
-
-                                                                  context
-                                                                      .pushNamed(
-                                                                    'productListNewM',
-                                                                    queryParameters:
-                                                                        {
-                                                                      'appSetting':
-                                                                          serializeParam(
-                                                                        widget!
-                                                                            .appSetting,
-                                                                        ParamType
-                                                                            .Document,
-                                                                      ),
-                                                                    }.withoutNulls,
-                                                                    extra: <String,
-                                                                        dynamic>{
-                                                                      'appSetting':
-                                                                          widget!
-                                                                              .appSetting,
-                                                                    },
-                                                                  );
-
-                                                                  FFAppState()
-                                                                      .barcode = '';
-                                                                  FFAppState()
-                                                                          .codeUpdate =
-                                                                      FFAppState()
-                                                                          .codeUpdate
-                                                                          .toList()
-                                                                          .cast<
-                                                                              int>();
-                                                                  FFAppState()
-                                                                      .update(
-                                                                          () {});
-                                                                } else {
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Alert'),
-                                                                        content:
-                                                                            Text('Vehicle is already added'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
-                                                                  if (_shouldSetState)
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  return;
-                                                                }
-                                                              } else {
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
-                                                              }
-
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
+                                                          await _model
+                                                              .proDoc!.reference
+                                                              .update(
+                                                                  createProductRecordData(
+                                                            id: _model.proDoc
+                                                                ?.reference.id,
+                                                          ));
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Vehicle'),
+                                                                content: Text(
+                                                                    'Vehicle added successfully'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
                                                             },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              '2cmid1bk' /* Save */,
-                                                            ),
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 120.0,
-                                                              height: 50.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .parkingSecondaryBackground,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).titleMediumFamily,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryBtnText,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
-                                                                      ),
-                                                              elevation: 2.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
+                                                          );
+
+                                                          context.pushNamed(
+                                                            'productListNewM',
+                                                            queryParameters: {
+                                                              'appSetting':
+                                                                  serializeParam(
+                                                                widget!
+                                                                    .appSetting,
+                                                                ParamType
+                                                                    .Document,
                                                               ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
-                                                            ),
-                                                          ),
-                                                        ],
+                                                            }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              'appSetting':
+                                                                  widget!
+                                                                      .appSetting,
+                                                            },
+                                                          );
+
+                                                          FFAppState().barcode =
+                                                              '';
+                                                          FFAppState()
+                                                                  .codeUpdate =
+                                                              FFAppState()
+                                                                  .codeUpdate
+                                                                  .toList()
+                                                                  .cast<int>();
+                                                          FFAppState()
+                                                              .update(() {});
+                                                        } else {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Alert'),
+                                                                content: Text(
+                                                                    'Vehicle is already added'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                    },
+                                                    text: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      '2cmid1bk' /* Save */,
+                                                    ),
+                                                    options: FFButtonOptions(
+                                                      width: 120.0,
+                                                      height: 50.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .parkingSecondaryBackground,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .titleMediumFamily),
+                                                              ),
+                                                      elevation: 2.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
                                                       ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
                                                     ),
                                                   ),
                                                 ],
