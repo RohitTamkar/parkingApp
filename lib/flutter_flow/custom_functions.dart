@@ -227,14 +227,8 @@ double? calculateParkingCharges2(
 
     // Calculate remaining hours for the last partial day
     double remainingHours = durationInHours % 24;
-    if (remainingHours <= baseDuration) {
-      parkingCharges += baseRate;
-    } else {
-      parkingCharges +=
-          baseRate + ((remainingHours - baseDuration).ceil() * hourlyRate);
-    }
+    parkingCharges += remainingHours * hourlyRate;
 
-    // Ensure daily max limit is respected
     print('Parking charges with daily max: $parkingCharges');
   } else {
     // Scenario: dailyMax is zero or not provided
