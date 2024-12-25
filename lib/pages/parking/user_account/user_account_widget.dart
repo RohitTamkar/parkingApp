@@ -631,12 +631,77 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                             size: 24.0,
                                                           ),
                                                           onPressed: () async {
-                                                            await listItem
-                                                                .reference
-                                                                .update(
-                                                                    createUserProfileRecordData(
-                                                              isDeleted: true,
-                                                            ));
+                                                            var confirmDialogResponse =
+                                                                await showDialog<
+                                                                        bool>(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('Delete Vehicle'),
+                                                                          content:
+                                                                              Text('Are you sure ?'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                              child: Text('Cancel'),
+                                                                            ),
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                              child: Text('Delete'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    ) ??
+                                                                    false;
+                                                            if (confirmDialogResponse) {
+                                                              await listItem
+                                                                  .reference
+                                                                  .delete();
+
+                                                              context.pushNamed(
+                                                                'UserAccount',
+                                                                queryParameters:
+                                                                    {
+                                                                  'appSetting':
+                                                                      serializeParam(
+                                                                    widget!
+                                                                        .appSetting,
+                                                                    ParamType
+                                                                        .Document,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                                extra: <String,
+                                                                    dynamic>{
+                                                                  'appSetting':
+                                                                      widget!
+                                                                          .appSetting,
+                                                                },
+                                                              );
+                                                            } else {
+                                                              context.pushNamed(
+                                                                'UserAccount',
+                                                                queryParameters:
+                                                                    {
+                                                                  'appSetting':
+                                                                      serializeParam(
+                                                                    widget!
+                                                                        .appSetting,
+                                                                    ParamType
+                                                                        .Document,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                                extra: <String,
+                                                                    dynamic>{
+                                                                  'appSetting':
+                                                                      widget!
+                                                                          .appSetting,
+                                                                },
+                                                              );
+                                                            }
                                                           },
                                                         ),
                                                       ],

@@ -706,6 +706,10 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                                   widget!.appSetting,
                                                   ParamType.Document,
                                                 ),
+                                                'mobile': serializeParam(
+                                                  '',
+                                                  ParamType.String,
+                                                ),
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
                                                 'appSetting':
