@@ -8023,7 +8023,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // EditBillList
   {
     'e00kqka7': {
-      'en': 'Bill List',
+      'en': 'Edit Bill List',
       'hi': '',
       'kn': '',
       'mr': '',

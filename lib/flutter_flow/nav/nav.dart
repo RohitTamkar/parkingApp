@@ -1250,6 +1250,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               asyncParams: {
                 'invdoc':
                     getDoc(['OUTLET', 'INVOICE'], InvoiceRecord.fromSnapshot),
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => EditBillDetailsWidget(
                 docRef: params.getParam(
@@ -1265,6 +1267,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 shiftdoc: params.getParam(
                   'shiftdoc',
                   ParamType.JSON,
+                ),
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
                 ),
               ),
             ),

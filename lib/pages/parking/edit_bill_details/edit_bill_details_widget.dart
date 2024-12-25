@@ -25,11 +25,13 @@ class EditBillDetailsWidget extends StatefulWidget {
     this.docRef,
     this.invdoc,
     required this.shiftdoc,
+    this.appSetting,
   });
 
   final DocumentReference? docRef;
   final InvoiceRecord? invdoc;
   final dynamic shiftdoc;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<EditBillDetailsWidget> createState() => _EditBillDetailsWidgetState();
@@ -139,7 +141,18 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                       size: 30.0,
                                     ),
                                     onPressed: () async {
-                                      context.pushNamed('EditBillList');
+                                      context.pushNamed(
+                                        'EditBillList',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
                                     },
                                   ),
                                   AutoSizeText(

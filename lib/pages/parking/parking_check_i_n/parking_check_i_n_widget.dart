@@ -150,7 +150,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                       onPressed: () async {
                                         context.pushNamed(
                                           'PrintersettingCar',
+                                          queryParameters: {
+                                            'appSetting': serializeParam(
+                                              widget!.appSetting,
+                                              ParamType.Document,
+                                            ),
+                                          }.withoutNulls,
                                           extra: <String, dynamic>{
+                                            'appSetting': widget!.appSetting,
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
                                               transitionType: PageTransitionType

@@ -149,7 +149,14 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                             currentUserReference,
                                             ParamType.DocumentReference,
                                           ),
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
                                         }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
                                       );
                                     },
                                   ),
@@ -163,7 +170,7 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                     },
                                     child: AutoSizeText(
                                       FFLocalizations.of(context).getText(
-                                        'e00kqka7' /* Bill List */,
+                                        'e00kqka7' /* Edit Bill List */,
                                       ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -409,10 +416,17 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                                       billWiseSaleReportVarItem,
                                                       ParamType.Document,
                                                     ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     'invdoc':
                                                         billWiseSaleReportVarItem,
+                                                    'appSetting':
+                                                        widget!.appSetting,
                                                   },
                                                 );
                                               },

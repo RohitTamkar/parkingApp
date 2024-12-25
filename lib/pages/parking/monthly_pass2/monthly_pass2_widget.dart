@@ -191,7 +191,18 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed('addCustomer1');
+                                  context.pushNamed(
+                                    'addCustomer1',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                             ],
