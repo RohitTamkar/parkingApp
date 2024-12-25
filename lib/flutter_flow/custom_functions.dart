@@ -203,7 +203,7 @@ double? calculateParkingCharges2(
   }
 
   // Free minutes logic
-  int freeMinutes = planConfig.freeMinutes ?? 0;
+  int freeMinutes = vehicleConfig.freeMinutes ?? 0;
   if (durationInMinutes <= freeMinutes) {
     print('Parking duration is within free time. No charges applied.');
     return parkingCharges;
@@ -217,31 +217,37 @@ double? calculateParkingCharges2(
   double baseRate = vehicleConfig.baseRate ?? 0; // Initial flat rate
   double baseDuration = vehicleConfig.baseDuration ?? 0; // Hours for flat rate
   double hourlyRate = vehicleConfig.hourlyRate ?? 0; // Rate per additional hour
-  double dailyMax =
-      vehicleConfig.dailyMax ?? double.infinity; // Max charge per day
+  double? dailyMax = vehicleConfig.dailyMax; // Max charge per day, optional
 
-  // Calculate charges for full days
-  int fullDays = (durationInHours / 24).floor();
-  parkingCharges += fullDays * dailyMax;
+  if (dailyMax != null && dailyMax > 0) {
+    // Scenario: dailyMax is provided and greater than 0
+    // Calculate charges for full days
+    int fullDays = (durationInHours / 24).floor();
+    parkingCharges += fullDays * dailyMax;
 
-  // Calculate remaining hours for the last partial day
-  double remainingHours = durationInHours % 24;
-  if (remainingHours <= baseDuration) {
-    parkingCharges += baseRate;
+    // Calculate remaining hours for the last partial day
+    double remainingHours = durationInHours % 24;
+    if (remainingHours <= baseDuration) {
+      parkingCharges += baseRate;
+    } else {
+      parkingCharges +=
+          baseRate + ((remainingHours - baseDuration).ceil() * hourlyRate);
+    }
+
+    // Ensure daily max limit is respected
+    print('Parking charges with daily max: $parkingCharges');
   } else {
-    parkingCharges +=
-        baseRate + ((remainingHours - baseDuration).ceil() * hourlyRate);
+    // Scenario: dailyMax is zero or not provided
+    // Calculate charges continuously based on hourly rates
+    if (durationInHours <= baseDuration) {
+      parkingCharges += baseRate;
+    } else {
+      parkingCharges +=
+          baseRate + ((durationInHours - baseDuration).ceil() * hourlyRate);
+    }
+
+    print('Parking charges without daily max: $parkingCharges');
   }
-
-  // Ensure daily max limit is respected
-  double lastDayCharges = dailyMax != double.infinity
-      ? (remainingHours <= baseDuration
-          ? baseRate
-          : baseRate + ((remainingHours - baseDuration).ceil() * hourlyRate))
-      : parkingCharges;
-
-  parkingCharges = (fullDays * dailyMax) + lastDayCharges;
-  print('Parking charges: $parkingCharges');
 
   return parkingCharges;
 }
