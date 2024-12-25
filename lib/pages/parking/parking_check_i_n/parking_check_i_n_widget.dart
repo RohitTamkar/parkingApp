@@ -175,7 +175,18 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed('NumberPlateScanner');
+                                        context.pushNamed(
+                                          'NumberPlateScanner',
+                                          queryParameters: {
+                                            'appSetting': serializeParam(
+                                              widget!.appSetting,
+                                              ParamType.Document,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'appSetting': widget!.appSetting,
+                                          },
+                                        );
                                       },
                                     ),
                                     if (false)

@@ -635,7 +635,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'NumberPlateScanner',
               path: 'numberPlateScanner',
-              builder: (context, params) => NumberPlateScannerWidget(),
+              asyncParams: {
+                'appSetting': getDoc(
+                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
+              },
+              builder: (context, params) => NumberPlateScannerWidget(
+                appSetting: params.getParam(
+                  'appSetting',
+                  ParamType.Document,
+                ),
+              ),
             ),
             FFRoute(
               name: 'billwisesalereport',

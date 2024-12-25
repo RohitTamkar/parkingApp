@@ -339,9 +339,15 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                     widget!.docRef,
                                                     ParamType.Document,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
                                                 extra: <String, dynamic>{
                                                   'docRef2': widget!.docRef,
+                                                  'appSetting':
+                                                      widget!.appSetting,
                                                 },
                                               );
                                             },

@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -11,7 +12,12 @@ import 'number_plate_scanner_model.dart';
 export 'number_plate_scanner_model.dart';
 
 class NumberPlateScannerWidget extends StatefulWidget {
-  const NumberPlateScannerWidget({super.key});
+  const NumberPlateScannerWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<NumberPlateScannerWidget> createState() =>

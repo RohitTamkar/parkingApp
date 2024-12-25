@@ -636,10 +636,17 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                                       dayWiseShiftReportVarItem,
                                                       ParamType.Document,
                                                     ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     'docRef':
                                                         dayWiseShiftReportVarItem,
+                                                    'appSetting':
+                                                        widget!.appSetting,
                                                   },
                                                 );
                                               },

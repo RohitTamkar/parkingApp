@@ -232,7 +232,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     safeSetState(() {});
 
-                                    context.pushNamed('vehicleWiseSale2');
+                                    context.pushNamed(
+                                      'vehicleWiseSale2',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'cunxzywe' /* Vehicle Wise Report */,
@@ -286,7 +297,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('InOutReport');
+                                    context.pushNamed(
+                                      'InOutReport',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'h1uk5mv9' /* In \ Out Report */,
@@ -336,7 +358,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('TodaysSummaryReport');
+                                    context.pushNamed(
+                                      'TodaysSummaryReport',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'pjk8h3oq' /* Today Summary Report */,
@@ -390,7 +423,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('billwisesalereport');
+                                    context.pushNamed(
+                                      'billwisesalereport',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     '13p2te3m' /* Bill Summary */,
@@ -440,7 +484,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('DaillyCollectionReport');
+                                    context.pushNamed(
+                                      'DaillyCollectionReport',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     '30hlh3sh' /* Daily Collection Report */,
@@ -493,7 +548,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('Unbilled2');
+                                    context.pushNamed(
+                                      'Unbilled2',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'hqcj4zau' /* Unbilled Receipts */,
@@ -546,7 +612,18 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                     FFAppState().endDate = getCurrentTimestamp;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed('ShiftDetails');
+                                    context.pushNamed(
+                                      'ShiftDetails',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'tvoh4pyy' /* Shift Summary Report */,
