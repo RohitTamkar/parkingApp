@@ -872,7 +872,13 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .customColor2,
                                       ),
-                                      if (false)
+                                      if (widget!.appSetting?.settingList
+                                              ?.where(
+                                                  (e) => e.title == 'editBill')
+                                              .toList()
+                                              ?.firstOrNull
+                                              ?.value ??
+                                          true)
                                         InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -1039,7 +1045,13 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                             ],
                                           ),
                                         ),
-                                      if (false)
+                                      if (widget!.appSetting?.settingList
+                                              ?.where(
+                                                  (e) => e.title == 'editBill')
+                                              .toList()
+                                              ?.firstOrNull
+                                              ?.value ??
+                                          true)
                                         Divider(
                                           thickness: 0.5,
                                           color: FlutterFlowTheme.of(context)

@@ -2798,26 +2798,53 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed(
-                              'ParkingCheckIN',
-                              queryParameters: {
-                                'shiftDoc': serializeParam(
-                                  widget!.shiftDoc,
-                                  ParamType.JSON,
-                                ),
-                                'userRef': serializeParam(
-                                  widget!.userRef,
-                                  ParamType.DocumentReference,
-                                ),
-                                'appSetting': serializeParam(
-                                  widget!.appSetting,
-                                  ParamType.Document,
-                                ),
-                              }.withoutNulls,
-                              extra: <String, dynamic>{
-                                'appSetting': widget!.appSetting,
-                              },
-                            );
+                            if (widget!.appSetting!.settingList
+                                .where((e) => e.title == 'enableVehicleIcon')
+                                .toList()
+                                .firstOrNull!
+                                .value) {
+                              context.pushNamed(
+                                'ParkingProduct',
+                                queryParameters: {
+                                  'shiftdoc': serializeParam(
+                                    widget!.shiftDoc,
+                                    ParamType.JSON,
+                                  ),
+                                  'userRef': serializeParam(
+                                    widget!.userRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'appSetting': serializeParam(
+                                    widget!.appSetting,
+                                    ParamType.Document,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'appSetting': widget!.appSetting,
+                                },
+                              );
+                            } else {
+                              context.pushNamed(
+                                'ParkingCheckIN',
+                                queryParameters: {
+                                  'shiftDoc': serializeParam(
+                                    widget!.shiftDoc,
+                                    ParamType.JSON,
+                                  ),
+                                  'userRef': serializeParam(
+                                    widget!.userRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'appSetting': serializeParam(
+                                    widget!.appSetting,
+                                    ParamType.Document,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'appSetting': widget!.appSetting,
+                                },
+                              );
+                            }
                           },
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.6,

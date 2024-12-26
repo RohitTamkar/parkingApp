@@ -910,7 +910,15 @@ class _AccountWidgetState extends State<AccountWidget>
                                                     FFAppState().currentMobile,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             } else {
                                               context.pushNamed(
@@ -920,7 +928,15 @@ class _AccountWidgetState extends State<AccountWidget>
                                                     FFAppState().currentMobile,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             }
                                           } else {
@@ -952,7 +968,15 @@ class _AccountWidgetState extends State<AccountWidget>
                                                     FFAppState().currentMobile,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             } else {
                                               context.pushNamed(
@@ -962,7 +986,15 @@ class _AccountWidgetState extends State<AccountWidget>
                                                     FFAppState().currentMobile,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             }
 

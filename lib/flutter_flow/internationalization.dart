@@ -2393,8 +2393,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ParkingProduct
   {
-    '8stalh87': {
-      'en': 'Parking Name',
+    'myg8oj7s': {
+      'en': 'TextField',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'vgnqqm8w': {
+      'en': 'Print',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'jbp8nmhz': {
+      'en': 'Save',
       'hi': '',
       'kn': '',
       'mr': '',

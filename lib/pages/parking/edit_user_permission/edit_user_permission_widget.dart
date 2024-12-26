@@ -3483,7 +3483,18 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                         },
                                       );
 
-                                      context.pushNamed('UserAccount');
+                                      context.pushNamed(
+                                        'UserAccount',
+                                        queryParameters: {
+                                          'appSetting': serializeParam(
+                                            widget!.appSetting,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting': widget!.appSetting,
+                                        },
+                                      );
 
                                       FFAppState().accessPo = 0;
                                       FFAppState().accessSo = 0;

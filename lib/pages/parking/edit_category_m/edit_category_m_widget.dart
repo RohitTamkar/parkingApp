@@ -476,7 +476,18 @@ class _EditCategoryMWidgetState extends State<EditCategoryMWidget> {
                                       },
                                     );
 
-                                    context.pushNamed('categories');
+                                    context.pushNamed(
+                                      'categories',
+                                      queryParameters: {
+                                        'appSetting': serializeParam(
+                                          widget!.appSetting,
+                                          ParamType.Document,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        'appSetting': widget!.appSetting,
+                                      },
+                                    );
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'efplktyy' /* Update */,

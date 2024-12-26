@@ -446,7 +446,18 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                   FFAppState().catCodelength = _model.catcode!;
                                   FFAppState().update(() {});
 
-                                  context.pushNamed('addCategoryM');
+                                  context.pushNamed(
+                                    'addCategoryM',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
 
                                   safeSetState(() {});
                                 },

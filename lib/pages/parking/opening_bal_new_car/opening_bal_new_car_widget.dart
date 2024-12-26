@@ -563,7 +563,21 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                 children: [
                                                   FFButtonWidget(
                                                     onPressed: () async {
-                                                      context.safePop();
+                                                      context.pushNamed(
+                                                        'welcomeScreenParking',
+                                                        queryParameters: {
+                                                          'appSetting':
+                                                              serializeParam(
+                                                            widget!.appSetting,
+                                                            ParamType.Document,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'appSetting': widget!
+                                                              .appSetting,
+                                                        },
+                                                      );
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
