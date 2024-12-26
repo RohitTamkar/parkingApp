@@ -277,11 +277,11 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                                         fadeInDuration:
                                                             Duration(
                                                                 milliseconds:
-                                                                    500),
+                                                                    200),
                                                         fadeOutDuration:
                                                             Duration(
                                                                 milliseconds:
-                                                                    500),
+                                                                    200),
                                                         imageUrl:
                                                             listItem.imageUrl,
                                                         width: double.infinity,
@@ -396,7 +396,7 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'myg8oj7s' /* TextField */,
+                                        'p1eryulv' /* Enter Vehicle Number */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
