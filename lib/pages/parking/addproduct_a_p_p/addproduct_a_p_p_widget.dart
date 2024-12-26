@@ -4260,6 +4260,9 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                   false,
                                                               create: true,
                                                             ),
+                                                            imageUrl: _model
+                                                                .productDoc
+                                                                ?.imageUrl,
                                                           ));
                                                           _model.proDoc = ProductRecord
                                                               .getDocumentFromData(
@@ -4386,6 +4389,9 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                                       create:
                                                                           true,
                                                                     ),
+                                                                    imageUrl: _model
+                                                                        .productDoc
+                                                                        ?.imageUrl,
                                                                   ),
                                                                   productRecordReference);
                                                           _shouldSetState =
