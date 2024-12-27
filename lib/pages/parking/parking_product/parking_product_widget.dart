@@ -1056,7 +1056,7 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                       );
                                       if (getJsonField(
                                         widget!.shiftdoc,
-                                        r'''$.shiftExsists''',
+                                        r'''$.shiftExists''',
                                       )) {
                                         FFAppState().count =
                                             FFAppState().count + 1;
