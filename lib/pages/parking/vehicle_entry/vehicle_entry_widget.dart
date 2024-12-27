@@ -2629,14 +2629,10 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                         color: FlutterFlowTheme.of(context)
                                             .customColor1,
                                       ),
-                                      if (widget!.appSetting?.settingList
-                                              ?.where((e) =>
-                                                  e.title == 'enableShiftEnd')
-                                              .toList()
-                                              ?.firstOrNull
-                                              ?.value ??
-                                          true)
-                                        Row(
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 20.0),
+                                        child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -2655,7 +2651,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     return AlertDialog(
                                                       title: Text('Close'),
                                                       content: Text(
-                                                          'Are You Sure You Want To Close'),
+                                                          'Are You Sure You Want To Close ParkSense'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -2809,6 +2805,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     hasContainerTriggered19),
                                           ],
                                         ),
+                                      ),
                                     ],
                                   ),
                                 ),

@@ -2393,8 +2393,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ParkingProduct
   {
-    'p1eryulv': {
-      'en': 'Enter Vehicle Number',
+    'dzvr59z9': {
+      'en': 'Vehicle Number',
       'hi': '',
       'kn': '',
       'mr': '',

@@ -12,7 +12,9 @@ import 'parking_product_widget.dart' show ParkingProductWidget;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +30,8 @@ class ParkingProductModel extends FlutterFlowModel<ParkingProductWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in TextField widget.
+  InvoiceRecord? db;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   InvoiceRecord? countdatagetPRINT2;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.

@@ -86,7 +86,7 @@ export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
 export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
     show TodaysSummaryReportWidget;
-export '/pages/parking/dailly_collection_report/dailly_collection_report_widget.dart'
+export '/pages/dailly_collection_report/dailly_collection_report_widget.dart'
     show DaillyCollectionReportWidget;
 export '/pages/parking/monthly_pass2/monthly_pass2_widget.dart'
     show MonthlyPass2Widget;
