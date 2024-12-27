@@ -1012,6 +1012,21 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                         singleRecord: true,
                                       ).then((s) => s.firstOrNull);
                                       _shouldSetState = true;
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text('ok1'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       if (_model.countdataget2 != null) {
                                         FFAppState().newcount =
                                             _model.countdataget2!.count;
@@ -1024,6 +1039,21 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                       FFAppState().count =
                                           _model.countdataget2!.count;
                                       safeSetState(() {});
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text('ok2'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       if (getJsonField(
                                         widget!.shiftdoc,
                                         r'''$.shiftExsists''',
@@ -1052,6 +1082,21 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                         price: FFAppState().parkingCharges,
                                       ));
                                       safeSetState(() {});
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text('ok3'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
 
                                       var invoiceRecordReference =
                                           InvoiceRecord.createDoc(
