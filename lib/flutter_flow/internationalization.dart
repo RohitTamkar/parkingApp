@@ -4881,6 +4881,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    '916ppd5j': {
+      'en': 'App Close',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'vuikjnjv': {
       'en': 'Bill entry without chekout',
       'hi': '',

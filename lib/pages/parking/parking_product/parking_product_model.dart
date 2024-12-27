@@ -44,6 +44,14 @@ class ParkingProductModel extends FlutterFlowModel<ParkingProductWidget> {
   List<dynamic>? device2;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   OutletRecord? outletdoc2;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? countdataget2;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  InvoiceRecord? docInvoicecars2Copy2;
+  // Stores action output result for [Custom Action - calShiftSummary] action in Button widget.
+  dynamic? shiftSummarRkiosk22new;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ShiftRecord? shiftref2Copy2;
 
   @override
   void initState(BuildContext context) {}

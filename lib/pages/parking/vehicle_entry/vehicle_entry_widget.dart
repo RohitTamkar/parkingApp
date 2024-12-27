@@ -62,6 +62,8 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
   var hasContainerTriggered16 = false;
   var hasContainerTriggered17 = false;
   var hasContainerTriggered18 = false;
+  var hasContainerTriggered19 = false;
+  var hasContainerTriggered20 = false;
   final animationsMap = <String, AnimationInfo>{};
 
   @override
@@ -387,6 +389,40 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
         ],
       ),
       'containerOnActionTriggerAnimation18': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 375.0.ms,
+            begin: 1.0,
+            end: 0.8,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 375.0.ms,
+            begin: Offset(1.2, 1.2),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation19': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: Offset(0.88, 0.88),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation20': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -2531,7 +2567,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                               buttonSize: 60.0,
                                                               icon: Icon(
                                                                 Icons
-                                                                    .add_business_outlined,
+                                                                    .switch_account,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .info,
@@ -2584,6 +2620,193 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     'containerOnActionTriggerAnimation17']!,
                                                 hasBeenTriggered:
                                                     hasContainerTriggered17),
+                                          ],
+                                        ),
+                                      Divider(
+                                        thickness: 0.5,
+                                        indent: 40.0,
+                                        endIndent: 40.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .customColor1,
+                                      ),
+                                      if (widget!.appSetting?.settingList
+                                              ?.where((e) =>
+                                                  e.title == 'enableShiftEnd')
+                                              .toList()
+                                              ?.firstOrNull
+                                              ?.value ??
+                                          true)
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text('Close'),
+                                                      content: Text(
+                                                          'Are You Sure You Want To Close'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+
+                                                context.pushNamed(
+                                                  'ParkingLogin',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                    'shiftDoc': serializeParam(
+                                                      widget!.shiftDoc,
+                                                      ParamType.JSON,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.06,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0x00691E1E),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Stack(
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.7,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF83654),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                        ),
+                                                      ).animateOnActionTrigger(
+                                                          animationsMap[
+                                                              'containerOnActionTriggerAnimation20']!,
+                                                          hasBeenTriggered:
+                                                              hasContainerTriggered20),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.15,
+                                                            height:
+                                                                double.infinity,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child:
+                                                                FlutterFlowIconButton(
+                                                              borderColor: Colors
+                                                                  .transparent,
+                                                              borderRadius:
+                                                                  30.0,
+                                                              borderWidth: 1.0,
+                                                              buttonSize: 60.0,
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .power_settings_new,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                size: 24.0,
+                                                              ),
+                                                              onPressed: () {
+                                                                print(
+                                                                    'IconButton pressed ...');
+                                                              },
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: AutoSizeText(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '916ppd5j' /* App Close */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ).animateOnActionTrigger(
+                                                animationsMap[
+                                                    'containerOnActionTriggerAnimation19']!,
+                                                hasBeenTriggered:
+                                                    hasContainerTriggered19),
                                           ],
                                         ),
                                     ],

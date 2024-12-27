@@ -1893,8 +1893,22 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                                     );
                                                   },
                                                 );
-                                                Navigator.pop(context);
-                                                context.safePop();
+
+                                                context.pushNamed(
+                                                  'EditBillList',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
+
                                                 if (_shouldSetState)
                                                   safeSetState(() {});
                                                 return;

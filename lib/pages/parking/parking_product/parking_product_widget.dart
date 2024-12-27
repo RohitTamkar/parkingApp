@@ -105,7 +105,26 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        widget!.shiftdoc,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        widget!.userRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               Text(
@@ -186,8 +205,10 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                 ),
                                 child: Builder(
                                   builder: (context) {
-                                    final list =
-                                        containerProductRecordList.toList();
+                                    final list = containerProductRecordList
+                                        .sortedList(
+                                            keyOf: (e) => e.code, desc: false)
+                                        .toList();
 
                                     return GridView.builder(
                                       padding: EdgeInsets.zero,
@@ -488,8 +509,9 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     var _shouldSetState = false;
-                                    if (_model.textController.text != null &&
-                                        _model.textController.text != '') {
+                                    if ((_model.textController.text != null &&
+                                            _model.textController.text != '') &&
+                                        (_model.vehicleType != null)) {
                                       _model.countdatagetPRINT2 =
                                           await queryInvoiceRecordOnce(
                                         parent: FFAppState().outletIdRef,
@@ -937,8 +959,356 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                   ),
                                 ),
                                 FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    var _shouldSetState = false;
+                                    if ((_model.textController.text != null &&
+                                            _model.textController.text != '') &&
+                                        (_model.vehicleType != null)) {
+                                      _model.countdataget2 =
+                                          await queryInvoiceRecordOnce(
+                                        parent: FFAppState().outletIdRef,
+                                        queryBuilder: (invoiceRecord) =>
+                                            invoiceRecord.orderBy('invoiceDate',
+                                                descending: true),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+                                      _shouldSetState = true;
+                                      if (_model.countdataget2 != null) {
+                                        FFAppState().newcount =
+                                            _model.countdataget2!.count;
+                                        safeSetState(() {});
+                                      } else {
+                                        FFAppState().newcount = 0;
+                                        safeSetState(() {});
+                                      }
+
+                                      FFAppState().count =
+                                          _model.countdataget2!.count;
+                                      safeSetState(() {});
+                                      if (getJsonField(
+                                        widget!.shiftdoc,
+                                        r'''$.shiftExsists''',
+                                      )) {
+                                        FFAppState().count =
+                                            FFAppState().count + 1;
+                                        FFAppState().newcount =
+                                            FFAppState().newcount + 1;
+                                        FFAppState().billcount =
+                                            FFAppState().billcount + 1;
+                                        safeSetState(() {});
+                                      } else {
+                                        FFAppState().count =
+                                            FFAppState().count + 1;
+                                        FFAppState().newcount =
+                                            FFAppState().newcount + 1;
+                                        FFAppState().billcount =
+                                            FFAppState().billcount + 1;
+                                        safeSetState(() {});
+                                      }
+
+                                      FFAppState()
+                                          .addToListCars(SelItemListStruct(
+                                        name: functions.toCapitalLetter(
+                                            _model.textController.text),
+                                        price: FFAppState().parkingCharges,
+                                      ));
+                                      safeSetState(() {});
+
+                                      var invoiceRecordReference =
+                                          InvoiceRecord.createDoc(
+                                              FFAppState().outletIdRef!);
+                                      await invoiceRecordReference.set({
+                                        ...createInvoiceRecordData(
+                                          invoice: functions.genInvoiceNum(
+                                              FFAppState().newcount,
+                                              FFAppState().shiftCount),
+                                          invoiceDate:
+                                              functions.timestampToMili(
+                                                  getCurrentTimestamp),
+                                          dayId: functions.getDayId(),
+                                          discountPer: valueOrDefault<double>(
+                                            FFAppState().disPer,
+                                            0.0,
+                                          ),
+                                          taxAmt: 0.0,
+                                          billAmt: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'parkingChargeZero')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? 0.0
+                                              : FFAppState().parkingCharges,
+                                          finalBillAmt: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'parkingChargeZero')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? 0.0
+                                              : FFAppState().parkingCharges,
+                                          roundOff: 0.0,
+                                          shiftId: getJsonField(
+                                            widget!.shiftdoc,
+                                            r'''$.shiftId''',
+                                          ).toString(),
+                                          vechicleNo: functions.toCapitalLetter(
+                                              _model.textController.text),
+                                          checkInTime: valueOrDefault<int>(
+                                            getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            0,
+                                          ),
+                                          vechicleType:
+                                              _model.vehicleType?.name,
+                                          count: FFAppState().newcount,
+                                          checkOutTime: 0,
+                                          checkInTerminal:
+                                              FFAppState().terminalNo,
+                                          checkOutTerminal: '0',
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'productList':
+                                                getSelItemListListFirestoreData(
+                                              FFAppState().listCars,
+                                            ),
+                                          },
+                                        ),
+                                      });
+                                      _model.docInvoicecars2Copy2 =
+                                          InvoiceRecord.getDocumentFromData({
+                                        ...createInvoiceRecordData(
+                                          invoice: functions.genInvoiceNum(
+                                              FFAppState().newcount,
+                                              FFAppState().shiftCount),
+                                          invoiceDate:
+                                              functions.timestampToMili(
+                                                  getCurrentTimestamp),
+                                          dayId: functions.getDayId(),
+                                          discountPer: valueOrDefault<double>(
+                                            FFAppState().disPer,
+                                            0.0,
+                                          ),
+                                          taxAmt: 0.0,
+                                          billAmt: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'parkingChargeZero')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? 0.0
+                                              : FFAppState().parkingCharges,
+                                          finalBillAmt: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'parkingChargeZero')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? 0.0
+                                              : FFAppState().parkingCharges,
+                                          roundOff: 0.0,
+                                          shiftId: getJsonField(
+                                            widget!.shiftdoc,
+                                            r'''$.shiftId''',
+                                          ).toString(),
+                                          vechicleNo: functions.toCapitalLetter(
+                                              _model.textController.text),
+                                          checkInTime: valueOrDefault<int>(
+                                            getCurrentTimestamp
+                                                .millisecondsSinceEpoch,
+                                            0,
+                                          ),
+                                          vechicleType:
+                                              _model.vehicleType?.name,
+                                          count: FFAppState().newcount,
+                                          checkOutTime: 0,
+                                          checkInTerminal:
+                                              FFAppState().terminalNo,
+                                          checkOutTerminal: '0',
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'productList':
+                                                getSelItemListListFirestoreData(
+                                              FFAppState().listCars,
+                                            ),
+                                          },
+                                        ),
+                                      }, invoiceRecordReference);
+                                      _shouldSetState = true;
+
+                                      await _model
+                                          .docInvoicecars2Copy2!.reference
+                                          .update(createInvoiceRecordData(
+                                        id: _model
+                                            .docInvoicecars2Copy2?.reference.id,
+                                      ));
+                                      if (getJsonField(
+                                        widget!.shiftdoc,
+                                        r'''$.shiftExists''',
+                                      )) {
+                                        _model.shiftSummarRkiosk22new =
+                                            await actions.calShiftSummary(
+                                          _model.docInvoicecars2Copy2!,
+                                          widget!.shiftdoc!,
+                                        );
+                                        _shouldSetState = true;
+                                        _model.shiftref2Copy2 =
+                                            await queryShiftRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (shiftRecord) =>
+                                              shiftRecord.where(
+                                            'shiftId',
+                                            isEqualTo: getJsonField(
+                                              widget!.shiftdoc,
+                                              r'''$.shiftId''',
+                                            ).toString(),
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        _shouldSetState = true;
+
+                                        await _model.shiftref2Copy2!.reference
+                                            .update(createShiftRecordData(
+                                          billCount: valueOrDefault<int>(
+                                            FFAppState().billcount,
+                                            0,
+                                          ),
+                                          totalSale: getJsonField(
+                                            _model.shiftSummarRkiosk22new,
+                                            r'''$.totalSale''',
+                                          ),
+                                          deliveryCharges: getJsonField(
+                                            _model.shiftSummarRkiosk22new,
+                                            r'''$.deliveryCharges''',
+                                          ),
+                                          lastBillNo: getJsonField(
+                                            _model.shiftSummarRkiosk22new,
+                                            r'''$.lastBillNo''',
+                                          ).toString(),
+                                          discount: getJsonField(
+                                            _model.shiftSummarRkiosk22new,
+                                            r'''$.discount''',
+                                          ),
+                                          lastBillTime:
+                                              functions.timestampToMili(
+                                                  getCurrentTimestamp),
+                                          cashSale: getJsonField(
+                                            _model.shiftSummarRkiosk22new,
+                                            r'''$.cashSale''',
+                                          ),
+                                          paymentJson: getJsonField(
+                                            _model.shiftSummarRkiosk22new,
+                                            r'''$.paymentJson''',
+                                          ).toString(),
+                                        ));
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Alert'),
+                                              content: Text(
+                                                  'Check In Successfull !'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        await actions.removeFromAllBillList(
+                                          FFAppState().selBill,
+                                        );
+                                        await actions.clearValue();
+                                        FFAppState().subTotal = 0.0;
+                                        FFAppState().listCars = [];
+                                        FFAppState().update(() {});
+                                        FFAppState().finalAmt = 0.0;
+                                        FFAppState().billAmt = 0.0;
+                                        FFAppState().count = FFAppState().count;
+                                        FFAppState().cartItem = [];
+                                        FFAppState().shiftDetailsNEw =
+                                            _model.shiftSummarRkiosk22new!;
+                                        FFAppState().update(() {});
+
+                                        context.pushNamed(
+                                          'VehicleEntry',
+                                          queryParameters: {
+                                            'shiftDoc': serializeParam(
+                                              widget!.shiftdoc,
+                                              ParamType.JSON,
+                                            ),
+                                            'userRef': serializeParam(
+                                              widget!.userRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'appSetting': serializeParam(
+                                              widget!.appSetting,
+                                              ParamType.Document,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'appSetting': widget!.appSetting,
+                                          },
+                                        );
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Login again to start Shift ',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor: Color(0x00000000),
+                                          ),
+                                        );
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      }
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            content: Text(
+                                                'Add Vechicle No & Vehicle Type'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+
+                                    if (_shouldSetState) safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'jbp8nmhz' /* Save */,
