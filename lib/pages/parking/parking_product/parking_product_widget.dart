@@ -236,6 +236,9 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                             safeSetState(() {});
                                             _model.vehicleType = listItem;
                                             safeSetState(() {});
+                                            FFAppState().categoryColor =
+                                                listItem.id;
+                                            safeSetState(() {});
                                           },
                                           child: Container(
                                             width: 100.0,
