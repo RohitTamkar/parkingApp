@@ -908,7 +908,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           textAlign: TextAlign.center,
                                           maxLength: 10,
                                           maxLengthEnforcement:
-                                              MaxLengthEnforcement.none,
+                                              MaxLengthEnforcement.enforced,
                                           buildCounter: (context,
                                                   {required currentLength,
                                                   required isFocused,

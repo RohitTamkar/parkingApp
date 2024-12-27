@@ -2651,7 +2651,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                               (alertDialogContext) {
                                                             return AlertDialog(
                                                               content: Text(
-                                                                  'Are You Sure You Want To Close ParkSenseAre You Sure You Want To Close ParkSense'),
+                                                                  'Are You Sure You Want To Close ParkSense'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
