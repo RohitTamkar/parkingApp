@@ -236,9 +236,6 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                             safeSetState(() {});
                                             _model.vehicleType = listItem;
                                             safeSetState(() {});
-                                            FFAppState().categoryColor =
-                                                listItem.id;
-                                            safeSetState(() {});
                                           },
                                           child: Container(
                                             width: 100.0,
@@ -894,6 +891,7 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                         await actions.clearValue();
                                         FFAppState().subTotal = 0.0;
                                         FFAppState().listCars = [];
+                                        FFAppState().categoryColor = '';
                                         FFAppState().update(() {});
                                         FFAppState().finalAmt = 0.0;
                                         FFAppState().billAmt = 0.0;
@@ -902,6 +900,8 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                         FFAppState().shiftDetailsNEw =
                                             _model.shiftSummarRkiosk21!;
                                         FFAppState().update(() {});
+                                        _model.vehicleType = null;
+                                        safeSetState(() {});
 
                                         context.pushNamed(
                                           'VehicleEntry',
