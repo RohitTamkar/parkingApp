@@ -2644,44 +2644,82 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Close'),
-                                                      content: Text(
-                                                          'Are You Sure You Want To Close ParkSense'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-
-                                                context.pushNamed(
-                                                  'ParkingLogin',
-                                                  queryParameters: {
-                                                    'appSetting':
-                                                        serializeParam(
-                                                      widget!.appSetting,
-                                                      ParamType.Document,
-                                                    ),
-                                                    'shiftDoc': serializeParam(
-                                                      widget!.shiftDoc,
-                                                      ParamType.JSON,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'appSetting':
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              content: Text(
+                                                                  'Are You Sure You Want To Close ParkSenseAre You Sure You Want To Close ParkSense'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Confirm'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  context.pushNamed(
+                                                    'ParkingLogin',
+                                                    queryParameters: {
+                                                      'appSetting':
+                                                          serializeParam(
                                                         widget!.appSetting,
-                                                  },
-                                                );
+                                                        ParamType.Document,
+                                                      ),
+                                                      'shiftDoc':
+                                                          serializeParam(
+                                                        widget!.shiftDoc,
+                                                        ParamType.JSON,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'appSetting':
+                                                          widget!.appSetting,
+                                                    },
+                                                  );
+                                                } else {
+                                                  context.pushNamed(
+                                                    'VehicleEntry',
+                                                    queryParameters: {
+                                                      'shiftDoc':
+                                                          serializeParam(
+                                                        widget!.shiftDoc,
+                                                        ParamType.JSON,
+                                                      ),
+                                                      'userRef': serializeParam(
+                                                        widget!.userRef,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'appSetting':
+                                                          serializeParam(
+                                                        widget!.appSetting,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'appSetting':
+                                                          widget!.appSetting,
+                                                    },
+                                                  );
+                                                }
                                               },
                                               child: Container(
                                                 height:
