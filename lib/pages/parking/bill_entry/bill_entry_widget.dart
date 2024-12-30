@@ -309,7 +309,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                               },
                                             );
                                           } else {
-                                            if (_model.search?.checkOutTime !=
+                                            if (_model.search!.checkOutTime >
                                                 0) {
                                               await showDialog(
                                                 context: context,
