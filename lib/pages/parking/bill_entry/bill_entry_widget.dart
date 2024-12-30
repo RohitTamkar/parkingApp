@@ -230,291 +230,547 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                             verticalAlignment: WrapCrossAlignment.start,
                           ),
                         ),
-                        Builder(
-                          builder: (context) => Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 50.0),
-                            child: TextFormField(
-                              controller: _model.textController,
-                              focusNode: _model.textFieldFocusNode,
-                              onFieldSubmitted: (_) async {
-                                if (_model.radioButtonValue == 'Token No') {
-                                  if (_model.textController.text != null &&
-                                      _model.textController.text != '') {
-                                    _model.search =
-                                        await queryInvoiceRecordOnce(
-                                      parent: FFAppState().outletIdRef,
-                                      queryBuilder: (invoiceRecord) =>
-                                          invoiceRecord.where(
-                                        'count',
-                                        isEqualTo: int.tryParse(
-                                            _model.textController.text),
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _model.productDoc =
-                                        await queryProductRecordOnce(
-                                      parent: FFAppState().outletIdRef,
-                                      queryBuilder: (productRecord) =>
-                                          productRecord.where(
-                                        'name',
-                                        isEqualTo: _model.search?.vechicleType,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    if (_model.search?.checkOutTime == 0) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (dialogContext) {
-                                          return Dialog(
-                                            elevation: 0,
-                                            insetPadding: EdgeInsets.zero,
-                                            backgroundColor: Colors.transparent,
-                                            alignment: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(dialogContext)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: QrparkingWidget(
-                                                usrref: widget!.userRef,
-                                                invdoc: _model.search,
-                                                shiftdoc: widget!.shiftDoc!,
-                                                settings: widget!.appsetting,
-                                                productDoc: _model.productDoc,
-                                              ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 50.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Builder(
+                                  builder: (context) => TextFormField(
+                                    controller: _model.textController,
+                                    focusNode: _model.textFieldFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      if (_model.radioButtonValue ==
+                                          'Token No') {
+                                        if (_model.textController.text !=
+                                                null &&
+                                            _model.textController.text != '') {
+                                          _model.search =
+                                              await queryInvoiceRecordOnce(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (invoiceRecord) =>
+                                                invoiceRecord.where(
+                                              'count',
+                                              isEqualTo: int.tryParse(
+                                                  _model.textController.text),
                                             ),
-                                          );
-                                        },
-                                      );
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                                'The Vehicle checkout process is already completed!'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    }
-                                  } else {
-                                    _model.search2 =
-                                        await queryInvoiceRecordOnce(
-                                      parent: FFAppState().outletIdRef,
-                                      queryBuilder: (invoiceRecord) =>
-                                          invoiceRecord.where(
-                                        'checkOutTime',
-                                        isEqualTo: 0,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _model.listcars = _model.search2;
-                                    safeSetState(() {});
-                                  }
-                                } else {
-                                  if (_model.textController.text != null &&
-                                      _model.textController.text != '') {
-                                    _model.search3 =
-                                        await queryInvoiceRecordOnce(
-                                      parent: FFAppState().outletIdRef,
-                                      queryBuilder: (invoiceRecord) =>
-                                          invoiceRecord.where(
-                                        'vechicleNo',
-                                        isEqualTo: _model.textController.text,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _model.productDoc2 =
-                                        await queryProductRecordOnce(
-                                      parent: FFAppState().outletIdRef,
-                                      queryBuilder: (productRecord) =>
-                                          productRecord.where(
-                                        'name',
-                                        isEqualTo: _model.search3?.vechicleType,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    if (_model.search3?.checkOutTime == 0) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (dialogContext) {
-                                          return Dialog(
-                                            elevation: 0,
-                                            insetPadding: EdgeInsets.zero,
-                                            backgroundColor: Colors.transparent,
-                                            alignment: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(dialogContext)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: QrparkingWidget(
-                                                usrref: widget!.userRef,
-                                                invdoc: _model.search3,
-                                                shiftdoc: widget!.shiftDoc!,
-                                                settings: widget!.appsetting,
-                                                productDoc: _model.productDoc2,
-                                              ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          _model.productDoc =
+                                              await queryProductRecordOnce(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (productRecord) =>
+                                                productRecord.where(
+                                              'name',
+                                              isEqualTo:
+                                                  _model.search?.vechicleType,
                                             ),
-                                          );
-                                        },
-                                      );
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content: Text(
-                                                'The Vehicle checkout process is already completed!'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    }
-                                  } else {
-                                    _model.search4 =
-                                        await queryInvoiceRecordOnce(
-                                      parent: FFAppState().outletIdRef,
-                                      queryBuilder: (invoiceRecord) =>
-                                          invoiceRecord.where(
-                                        'checkOutTime',
-                                        isEqualTo: 0,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _model.listcars = _model.search4;
-                                    safeSetState(() {});
-                                  }
-                                }
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          if (_model.search?.checkOutTime ==
+                                              0) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
+                                                    child: QrparkingWidget(
+                                                      usrref: widget!.userRef,
+                                                      invdoc: _model.search,
+                                                      shiftdoc:
+                                                          widget!.shiftDoc!,
+                                                      settings:
+                                                          widget!.appsetting,
+                                                      productDoc:
+                                                          _model.productDoc,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  content: Text(
+                                                      'The Vehicle checkout process is already completed!'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else {
+                                          _model.search2 =
+                                              await queryInvoiceRecordOnce(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (invoiceRecord) =>
+                                                invoiceRecord.where(
+                                              'checkOutTime',
+                                              isEqualTo: 0,
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          _model.listcars = _model.search2;
+                                          safeSetState(() {});
+                                        }
+                                      } else {
+                                        if (_model.textController.text !=
+                                                null &&
+                                            _model.textController.text != '') {
+                                          _model.search3 =
+                                              await queryInvoiceRecordOnce(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (invoiceRecord) =>
+                                                invoiceRecord.where(
+                                              'vechicleNo',
+                                              isEqualTo:
+                                                  _model.textController.text,
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          _model.productDoc2 =
+                                              await queryProductRecordOnce(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (productRecord) =>
+                                                productRecord.where(
+                                              'name',
+                                              isEqualTo:
+                                                  _model.search3?.vechicleType,
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          if (_model.search3?.checkOutTime ==
+                                              0) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
+                                                    child: QrparkingWidget(
+                                                      usrref: widget!.userRef,
+                                                      invdoc: _model.search3,
+                                                      shiftdoc:
+                                                          widget!.shiftDoc!,
+                                                      settings:
+                                                          widget!.appsetting,
+                                                      productDoc:
+                                                          _model.productDoc2,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  content: Text(
+                                                      'The Vehicle checkout process is already completed!'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else {
+                                          _model.search4 =
+                                              await queryInvoiceRecordOnce(
+                                            parent: FFAppState().outletIdRef,
+                                            queryBuilder: (invoiceRecord) =>
+                                                invoiceRecord.where(
+                                              'checkOutTime',
+                                              isEqualTo: 0,
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          _model.listcars = _model.search4;
+                                          safeSetState(() {});
+                                        }
+                                      }
 
-                                safeSetState(() {});
-                              },
-                              autofocus: false,
-                              textCapitalization: TextCapitalization.characters,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: FFLocalizations.of(context).getText(
-                                  '7hjkrwde' /* Search Vehicle */,
-                                ),
-                                labelStyle: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelLargeFamily,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLargeFamily),
+                                      safeSetState(() {});
+                                    },
+                                    autofocus: false,
+                                    textCapitalization:
+                                        TextCapitalization.characters,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          FFLocalizations.of(context).getText(
+                                        '7hjkrwde' /* Search Vehicle */,
+                                      ),
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLargeFamily,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLargeFamily),
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily),
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                     ),
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelMediumFamily,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily),
-                                    ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    width: 1.0,
+                                                  .bodyMediumFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
+                                    validator: _model.textControllerValidator
+                                        .asValidator(context),
                                   ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(0.0),
-                                    bottomRight: Radius.circular(0.0),
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                  ),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).info,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(0.0),
-                                    bottomRight: Radius.circular(0.0),
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                  ),
-                                ),
-                                errorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(0.0),
-                                    bottomRight: Radius.circular(0.0),
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                  ),
-                                ),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(0.0),
-                                    bottomRight: Radius.circular(0.0),
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0),
-                                  ),
-                                ),
-                                filled: true,
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                suffixIcon: Icon(
-                                  Icons.search,
-                                  color: FlutterFlowTheme.of(context)
-                                      .parkingPrimary,
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                              Builder(
+                                builder: (context) => FFButtonWidget(
+                                  onPressed: () async {
+                                    if (_model.radioButtonValue == 'Token No') {
+                                      if (_model.textController.text != null &&
+                                          _model.textController.text != '') {
+                                        _model.searchCopy =
+                                            await queryInvoiceRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (invoiceRecord) =>
+                                              invoiceRecord.where(
+                                            'count',
+                                            isEqualTo: int.tryParse(
+                                                _model.textController.text),
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        _model.productDocCopy =
+                                            await queryProductRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (productRecord) =>
+                                              productRecord.where(
+                                            'name',
+                                            isEqualTo:
+                                                _model.searchCopy?.vechicleType,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        if (_model.searchCopy?.checkOutTime ==
+                                            0) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: QrparkingWidget(
+                                                    usrref: widget!.userRef,
+                                                    invdoc: _model.searchCopy,
+                                                    shiftdoc: widget!.shiftDoc!,
+                                                    settings:
+                                                        widget!.appsetting,
+                                                    productDoc:
+                                                        _model.productDocCopy,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: Text(
+                                                    'The Vehicle checkout process is already completed!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                      } else {
+                                        _model.search2Copy =
+                                            await queryInvoiceRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (invoiceRecord) =>
+                                              invoiceRecord.where(
+                                            'checkOutTime',
+                                            isEqualTo: 0,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        _model.listcars = _model.search2Copy;
+                                        safeSetState(() {});
+                                      }
+                                    } else {
+                                      if (_model.textController.text != null &&
+                                          _model.textController.text != '') {
+                                        _model.search3Copy =
+                                            await queryInvoiceRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (invoiceRecord) =>
+                                              invoiceRecord.where(
+                                            'vechicleNo',
+                                            isEqualTo:
+                                                _model.textController.text,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        _model.productDoc2Copy =
+                                            await queryProductRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (productRecord) =>
+                                              productRecord.where(
+                                            'name',
+                                            isEqualTo: _model
+                                                .search3Copy?.vechicleType,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        if (_model.search3Copy?.checkOutTime ==
+                                            0) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: QrparkingWidget(
+                                                    usrref: widget!.userRef,
+                                                    invdoc: _model.search3Copy,
+                                                    shiftdoc: widget!.shiftDoc!,
+                                                    settings:
+                                                        widget!.appsetting,
+                                                    productDoc:
+                                                        _model.productDoc2Copy,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                content: Text(
+                                                    'The Vehicle checkout process is already completed!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                      } else {
+                                        _model.search4Copy =
+                                            await queryInvoiceRecordOnce(
+                                          parent: FFAppState().outletIdRef,
+                                          queryBuilder: (invoiceRecord) =>
+                                              invoiceRecord.where(
+                                            'checkOutTime',
+                                            isEqualTo: 0,
+                                          ),
+                                          singleRecord: true,
+                                        ).then((s) => s.firstOrNull);
+                                        _model.listcars = _model.search4Copy;
+                                        safeSetState(() {});
+                                      }
+                                    }
+
+                                    safeSetState(() {});
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'w8aggafp' /* Search */,
                                   ),
-                              validator: _model.textControllerValidator
-                                  .asValidator(context),
-                            ),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         Padding(

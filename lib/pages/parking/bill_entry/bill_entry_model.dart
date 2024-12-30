@@ -43,6 +43,18 @@ class BillEntryModel extends FlutterFlowModel<BillEntryWidget> {
   ProductRecord? productDoc2;
   // Stores action output result for [Firestore Query - Query a collection] action in TextField widget.
   InvoiceRecord? search4;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? searchCopy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ProductRecord? productDocCopy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? search2Copy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? search3Copy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ProductRecord? productDoc2Copy;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  InvoiceRecord? search4Copy;
   var qrResult = '';
   // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
   InvoiceRecord? getinvout;

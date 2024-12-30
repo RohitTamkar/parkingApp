@@ -4968,6 +4968,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
+    'w8aggafp': {
+      'en': 'Search',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'yz45d649': {
       'en': 'OR',
       'hi': '',
@@ -5557,34 +5564,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sbk97oxm': {
       'en': '22-11-2024, Friday',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'lzzsqsfc': {
-      'en': 'Vendor',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'p3u3q6yp': {
-      'en': 'Two Wheelers',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '9e3lknr0': {
-      'en': 'Bus',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'xap1xv7u': {
-      'en': 'Four Wheelers',
       'hi': '',
       'kn': '',
       'mr': '',
