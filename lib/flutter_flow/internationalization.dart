@@ -4968,13 +4968,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'w8aggafp': {
-      'en': 'Search',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'yz45d649': {
       'en': 'OR',
       'hi': '',

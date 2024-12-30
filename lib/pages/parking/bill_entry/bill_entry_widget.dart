@@ -550,7 +550,16 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                 ),
                               ),
                               Builder(
-                                builder: (context) => FFButtonWidget(
+                                builder: (context) => FlutterFlowIconButton(
+                                  borderRadius: 8.0,
+                                  buttonSize: 50.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: Icon(
+                                    Icons.search_sharp,
+                                    color: FlutterFlowTheme.of(context).warning,
+                                    size: 30.0,
+                                  ),
                                   onPressed: () async {
                                     if (_model.radioButtonValue == 'Token No') {
                                       if (_model.textController.text != null &&
@@ -742,32 +751,6 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
 
                                     safeSetState(() {});
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    'w8aggafp' /* Search */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
                                 ),
                               ),
                             ],
