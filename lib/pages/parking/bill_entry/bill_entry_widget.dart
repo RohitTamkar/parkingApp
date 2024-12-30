@@ -333,8 +333,8 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                                 context: context,
                                                 builder: (alertDialogContext) {
                                                   return AlertDialog(
-                                                    content:
-                                                        Text('The Vehicle !'),
+                                                    content: Text(
+                                                        'The Vehicle token is invalid!'),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
