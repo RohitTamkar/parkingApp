@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1114,6 +1115,66 @@ class _NavBarWebParkingWidgetState extends State<NavBarWebParkingWidget> {
                           hasIcon: true,
                         ),
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 3.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    GoRouter.of(context).prepareAuthEvent();
+                    await authManager.signOut();
+                    GoRouter.of(context).clearRedirectLocation();
+
+                    context.goNamedAuth('StartScreen', context.mounted);
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 45.0,
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 10.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 8.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              Icons.power_settings_new,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
+                          ),
+                        ),
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'xohryz6w' /* Logout */,
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .labelLargeFamily,
+                                fontSize: 16.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .labelLargeFamily),
+                              ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

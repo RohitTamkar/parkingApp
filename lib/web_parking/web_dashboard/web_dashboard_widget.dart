@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -300,24 +299,9 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                       color: Color(0xFF0D0801),
                                                       size: 30.0,
                                                     ),
-                                                    onPressed: () async {
-                                                      context.pushNamed(
-                                                        'VehicleEntry',
-                                                        queryParameters: {
-                                                          'shiftDoc':
-                                                              serializeParam(
-                                                            FFAppState()
-                                                                .shiftDetailsNEw,
-                                                            ParamType.JSON,
-                                                          ),
-                                                          'userRef':
-                                                              serializeParam(
-                                                            currentUserReference,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                        }.withoutNulls,
-                                                      );
+                                                    onPressed: () {
+                                                      print(
+                                                          'IconButton pressed ...');
                                                     },
                                                   ),
                                                 ),

@@ -2391,7 +2391,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
   },
-  // ParkingProduct
+  // ParkingIconCheckin
   {
     'dzvr59z9': {
       'en': 'Vehicle Number',
@@ -10426,6 +10426,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4ypyz1iw': {
       'en': 'Terminal Wise Report',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'xohryz6w': {
+      'en': 'Logout',
       'hi': '',
       'kn': '',
       'mr': '',

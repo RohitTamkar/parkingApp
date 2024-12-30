@@ -3062,7 +3062,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                 .firstOrNull!
                                 .value) {
                               context.pushNamed(
-                                'ParkingProduct',
+                                'ParkingIconCheckin',
                                 queryParameters: {
                                   'shiftdoc': serializeParam(
                                     widget!.shiftDoc,

@@ -37,8 +37,8 @@ export '/pages/parking/parking_check_i_n/parking_check_i_n_widget.dart'
     show ParkingCheckINWidget;
 export '/pages/parking/parking_customers/parking_customers_widget.dart'
     show ParkingCustomersWidget;
-export '/pages/parking/parking_product/parking_product_widget.dart'
-    show ParkingProductWidget;
+export '/pages/parking/parking_icon_checkin/parking_icon_checkin_widget.dart'
+    show ParkingIconCheckinWidget;
 export '/pages/parking/edit_user_permission/edit_user_permission_widget.dart'
     show EditUserPermissionWidget;
 export '/pages/parking/parking_product_copy/parking_product_copy_widget.dart'

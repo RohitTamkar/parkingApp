@@ -17,11 +17,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'parking_product_model.dart';
-export 'parking_product_model.dart';
+import 'parking_icon_checkin_model.dart';
+export 'parking_icon_checkin_model.dart';
 
-class ParkingProductWidget extends StatefulWidget {
-  const ParkingProductWidget({
+class ParkingIconCheckinWidget extends StatefulWidget {
+  const ParkingIconCheckinWidget({
     super.key,
     this.shiftdoc,
     this.userRef,
@@ -33,18 +33,19 @@ class ParkingProductWidget extends StatefulWidget {
   final AppSettingsRecord? appSetting;
 
   @override
-  State<ParkingProductWidget> createState() => _ParkingProductWidgetState();
+  State<ParkingIconCheckinWidget> createState() =>
+      _ParkingIconCheckinWidgetState();
 }
 
-class _ParkingProductWidgetState extends State<ParkingProductWidget> {
-  late ParkingProductModel _model;
+class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
+  late ParkingIconCheckinModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ParkingProductModel());
+    _model = createModel(context, () => ParkingIconCheckinModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -64,7 +65,7 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'ParkingProduct',
+        title: 'ParkingIconCheckin',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () {
@@ -102,31 +103,12 @@ class _ParkingProductWidgetState extends State<ParkingProductWidget> {
                                 buttonSize: 40.0,
                                 icon: Icon(
                                   Icons.keyboard_arrow_left_sharp,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
+                                  color: FlutterFlowTheme.of(context)
+                                      .parkingPrimary,
                                   size: 24.0,
                                 ),
-                                onPressed: () async {
-                                  context.pushNamed(
-                                    'VehicleEntry',
-                                    queryParameters: {
-                                      'shiftDoc': serializeParam(
-                                        widget!.shiftdoc,
-                                        ParamType.JSON,
-                                      ),
-                                      'userRef': serializeParam(
-                                        widget!.userRef,
-                                        ParamType.DocumentReference,
-                                      ),
-                                      'appSetting': serializeParam(
-                                        widget!.appSetting,
-                                        ParamType.Document,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      'appSetting': widget!.appSetting,
-                                    },
-                                  );
+                                onPressed: () {
+                                  print('IconButton pressed ...');
                                 },
                               ),
                               Text(

@@ -8,7 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'parking_product_widget.dart' show ParkingProductWidget;
+import 'parking_icon_checkin_widget.dart' show ParkingIconCheckinWidget;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -19,7 +19,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ParkingProductModel extends FlutterFlowModel<ParkingProductWidget> {
+class ParkingIconCheckinModel
+    extends FlutterFlowModel<ParkingIconCheckinWidget> {
   ///  Local state fields for this page.
 
   ProductRecord? vehicleType;

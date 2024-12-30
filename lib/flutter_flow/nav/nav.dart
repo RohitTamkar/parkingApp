@@ -510,13 +510,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'ParkingProduct',
-              path: 'parkingProduct',
+              name: 'ParkingIconCheckin',
+              path: 'parkingIconCheckin',
               asyncParams: {
                 'appSetting': getDoc(
                     ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
-              builder: (context, params) => ParkingProductWidget(
+              builder: (context, params) => ParkingIconCheckinWidget(
                 shiftdoc: params.getParam(
                   'shiftdoc',
                   ParamType.JSON,
