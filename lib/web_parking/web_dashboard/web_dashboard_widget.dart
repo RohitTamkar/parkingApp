@@ -506,171 +506,167 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                 ),
                                                       ),
                                                     ),
-                                                    Builder(
-                                                      builder: (context) {
-                                                        final list =
-                                                            containerInvoiceRecordList
-                                                                .unique((e) => e
-                                                                    .vechicleType)
-                                                                .toList();
+                                                    Expanded(
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          final list =
+                                                              containerInvoiceRecordList
+                                                                  .unique((e) =>
+                                                                      e.vechicleType)
+                                                                  .toList();
 
-                                                        return ListView.builder(
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          shrinkWrap: true,
-                                                          scrollDirection:
-                                                              Axis.vertical,
-                                                          itemCount:
-                                                              list.length,
-                                                          itemBuilder: (context,
-                                                              listIndex) {
-                                                            final listItem =
-                                                                list[listIndex];
-                                                            return Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          15.0),
-                                                              child: StreamBuilder<
-                                                                  List<
-                                                                      ProductRecord>>(
-                                                                stream:
-                                                                    queryProductRecord(
-                                                                  parent: FFAppState()
-                                                                      .outletIdRef,
-                                                                  queryBuilder:
-                                                                      (productRecord) =>
-                                                                          productRecord
-                                                                              .where(
-                                                                    'name',
-                                                                    isEqualTo:
-                                                                        listItem
-                                                                            .vechicleType,
+                                                          return ListView
+                                                              .builder(
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            shrinkWrap: true,
+                                                            scrollDirection:
+                                                                Axis.vertical,
+                                                            itemCount:
+                                                                list.length,
+                                                            itemBuilder:
+                                                                (context,
+                                                                    listIndex) {
+                                                              final listItem =
+                                                                  list[
+                                                                      listIndex];
+                                                              return Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            15.0),
+                                                                child: StreamBuilder<
+                                                                    List<
+                                                                        ProductRecord>>(
+                                                                  stream:
+                                                                      queryProductRecord(
+                                                                    parent: FFAppState()
+                                                                        .outletIdRef,
+                                                                    queryBuilder:
+                                                                        (productRecord) =>
+                                                                            productRecord.where(
+                                                                      'name',
+                                                                      isEqualTo:
+                                                                          listItem
+                                                                              .vechicleType,
+                                                                    ),
+                                                                    singleRecord:
+                                                                        true,
                                                                   ),
-                                                                  singleRecord:
-                                                                      true,
-                                                                ),
-                                                                builder: (context,
-                                                                    snapshot) {
-                                                                  // Customize what your widget looks like when it's loading.
-                                                                  if (!snapshot
-                                                                      .hasData) {
-                                                                    return Center(
-                                                                      child:
-                                                                          SizedBox(
-                                                                        width:
-                                                                            40.0,
-                                                                        height:
-                                                                            40.0,
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    // Customize what your widget looks like when it's loading.
+                                                                    if (!snapshot
+                                                                        .hasData) {
+                                                                      return Center(
                                                                         child:
-                                                                            SpinKitFadingCircle(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          size:
+                                                                            SizedBox(
+                                                                          width:
                                                                               40.0,
+                                                                          height:
+                                                                              40.0,
+                                                                          child:
+                                                                              SpinKitFadingCircle(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            size:
+                                                                                40.0,
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }
+                                                                    List<ProductRecord>
+                                                                        containerProductRecordList =
+                                                                        snapshot
+                                                                            .data!;
+                                                                    // Return an empty Container when the item does not exist.
+                                                                    if (snapshot
+                                                                        .data!
+                                                                        .isEmpty) {
+                                                                      return Container();
+                                                                    }
+                                                                    final containerProductRecord = containerProductRecordList
+                                                                            .isNotEmpty
+                                                                        ? containerProductRecordList
+                                                                            .first
+                                                                        : null;
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            15.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.only(
+                                                                                  bottomLeft: Radius.circular(0.0),
+                                                                                  bottomRight: Radius.circular(0.0),
+                                                                                  topLeft: Radius.circular(20.0),
+                                                                                  topRight: Radius.circular(20.0),
+                                                                                ),
+                                                                                child: CachedNetworkImage(
+                                                                                  fadeInDuration: Duration(milliseconds: 200),
+                                                                                  fadeOutDuration: Duration(milliseconds: 200),
+                                                                                  imageUrl: containerProductRecord!.imageUrl,
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                  child: Text(
+                                                                                    containerInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().length.toString(),
+                                                                                    style: FlutterFlowTheme.of(context).headlineLarge.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
+                                                                                          letterSpacing: 0.0,
+                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
+                                                                                Text(
+                                                                                  listItem.vechicleType,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                        letterSpacing: 0.0,
+                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                     );
-                                                                  }
-                                                                  List<ProductRecord>
-                                                                      containerProductRecordList =
-                                                                      snapshot
-                                                                          .data!;
-                                                                  // Return an empty Container when the item does not exist.
-                                                                  if (snapshot
-                                                                      .data!
-                                                                      .isEmpty) {
-                                                                    return Container();
-                                                                  }
-                                                                  final containerProductRecord = containerProductRecordList
-                                                                          .isNotEmpty
-                                                                      ? containerProductRecordList
-                                                                          .first
-                                                                      : null;
-
-                                                                  return Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                    ),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          15.0),
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                20.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                ClipRRect(
-                                                                              borderRadius: BorderRadius.only(
-                                                                                bottomLeft: Radius.circular(0.0),
-                                                                                bottomRight: Radius.circular(0.0),
-                                                                                topLeft: Radius.circular(20.0),
-                                                                                topRight: Radius.circular(20.0),
-                                                                              ),
-                                                                              child: CachedNetworkImage(
-                                                                                fadeInDuration: Duration(milliseconds: 200),
-                                                                                fadeOutDuration: Duration(milliseconds: 200),
-                                                                                imageUrl: containerProductRecord!.imageUrl,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                          Column(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
-                                                                            children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                child: Text(
-                                                                                  containerInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().length.toString(),
-                                                                                  style: FlutterFlowTheme.of(context).headlineLarge.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
-                                                                                        letterSpacing: 0.0,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineLargeFamily),
-                                                                                      ),
-                                                                                ),
-                                                                              ),
-                                                                              Text(
-                                                                                listItem.vechicleType,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                      letterSpacing: 0.0,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
+                                                                  },
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

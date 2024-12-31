@@ -63,6 +63,7 @@ class _AppSettingComponentWidgetState extends State<AppSettingComponentWidget> {
                 value: _model.shiftEndValue,
                 display: widget!.settingStruct?.display,
                 isDeleted: widget!.settingStruct?.isDeleted,
+                settingType: widget!.settingStruct?.settingType,
               ),
               widget!.allSettings!.toList(),
             );

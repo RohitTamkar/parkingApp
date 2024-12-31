@@ -9,28 +9,41 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-// Imports other custom actions
+import 'index.dart'; // Imports other custom actions
 
+// Imports other custom actions
 Future<List<AppSettingsStruct>> returnAppsetting(
   List<AppSettingsMasterRecord> appSettingMaster,
   List<AppSettingsStruct> appSettinglist,
 ) async {
-  // Add your function code here!
-
   for (var masterRecord in appSettingMaster) {
-    // Check if the record already exists in appSettinglist
-    bool exists = appSettinglist.any((item) =>
-        item.title == masterRecord.title &&
-        item.display == masterRecord.display &&
-        item.isDeleted == masterRecord.isDeleted);
+    // Find the matching record in appSettinglist
+    var existingRecord = appSettinglist.firstWhere(
+      (item) =>
+          item.title == masterRecord.title &&
+          item.display == masterRecord.display &&
+          item.isDeleted == masterRecord.isDeleted,
+      orElse: () => AppSettingsStruct(
+        title: '', // Default placeholder values
+        display: '',
+        value: false,
+        isDeleted: false,
+        settingType: '', // Adjust based on your data structure
+      ), // Return null if no match is found
+    );
 
-    // If it doesn't exist, add it to the list with default value false
-    if (!exists) {
+    if (existingRecord.title != null && existingRecord.title != '') {
+      // Update settingType if the record exists
+      existingRecord.settingType = masterRecord.settingType;
+    } else {
+      // If it doesn't exist, add it to the list with default value false
       appSettinglist.add(AppSettingsStruct(
-          title: masterRecord.title,
-          display: masterRecord.display,
-          value: false,
-          isDeleted: masterRecord.isDeleted));
+        title: masterRecord.title,
+        display: masterRecord.display,
+        value: false,
+        isDeleted: masterRecord.isDeleted,
+        settingType: masterRecord.settingType,
+      ));
     }
   }
 

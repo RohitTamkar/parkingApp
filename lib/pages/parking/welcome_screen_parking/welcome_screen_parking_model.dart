@@ -52,9 +52,9 @@ class WelcomeScreenParkingModel
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.
   List<AppSettingsMasterRecord>? masterAppsetting;
   // Stores action output result for [Custom Action - returnAppsetting] action in welcomeScreenParking widget.
-  List<AppSettingsStruct>? returnAppsettiing;
-  // Stores action output result for [Custom Action - returnAppsetting] action in welcomeScreenParking widget.
   List<AppSettingsStruct>? returnAppsettiingupdate;
+  // Stores action output result for [Custom Action - returnAppsetting] action in welcomeScreenParking widget.
+  List<AppSettingsStruct>? returnAppsettiing;
   // Stores action output result for [Backend Call - Create Document] action in welcomeScreenParking widget.
   AppSettingsRecord? doc;
   // Stores action output result for [Firestore Query - Query a collection] action in welcomeScreenParking widget.

@@ -809,18 +809,6 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     await queryAppSettingsMasterRecordOnce();
                                                                 _shouldSetState =
                                                                     true;
-                                                                _model.returnAppsettiing =
-                                                                    await actions
-                                                                        .returnAppsetting(
-                                                                  _model
-                                                                      .masterAppsetting!
-                                                                      .toList(),
-                                                                  FFAppState()
-                                                                      .appSettings
-                                                                      .toList(),
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
                                                                 if (_model
                                                                         .isAppSetExistsNew !=
                                                                     null) {
@@ -886,6 +874,19 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                     ),
                                                                   );
                                                                 } else {
+                                                                  _model.returnAppsettiing =
+                                                                      await actions
+                                                                          .returnAppsetting(
+                                                                    _model
+                                                                        .masterAppsetting!
+                                                                        .toList(),
+                                                                    FFAppState()
+                                                                        .appSettings
+                                                                        .toList(),
+                                                                  );
+                                                                  _shouldSetState =
+                                                                      true;
+
                                                                   var appSettingsRecordReference =
                                                                       AppSettingsRecord.createDoc(
                                                                           FFAppState()

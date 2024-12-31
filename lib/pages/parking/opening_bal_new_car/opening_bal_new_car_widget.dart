@@ -661,16 +661,6 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                       _model.masterAppsetting =
                                                           await queryAppSettingsMasterRecordOnce();
                                                       _shouldSetState = true;
-                                                      _model.returnAppsettiing =
-                                                          await actions
-                                                              .returnAppsetting(
-                                                        _model.masterAppsetting!
-                                                            .toList(),
-                                                        FFAppState()
-                                                            .appSettings
-                                                            .toList(),
-                                                      );
-                                                      _shouldSetState = true;
                                                       if (_model
                                                               .isAppSetExistsNew !=
                                                           null) {
@@ -736,6 +726,18 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                           ),
                                                         );
                                                       } else {
+                                                        _model.returnAppsettiing =
+                                                            await actions
+                                                                .returnAppsetting(
+                                                          _model
+                                                              .masterAppsetting!
+                                                              .toList(),
+                                                          FFAppState()
+                                                              .appSettings
+                                                              .toList(),
+                                                        );
+                                                        _shouldSetState = true;
+
                                                         var appSettingsRecordReference =
                                                             AppSettingsRecord
                                                                 .createDoc(

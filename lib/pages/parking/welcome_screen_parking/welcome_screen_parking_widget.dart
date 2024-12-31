@@ -222,10 +222,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       _model.masterAppsetting = await queryAppSettingsMasterRecordOnce();
-      _model.returnAppsettiing = await actions.returnAppsetting(
-        _model.masterAppsetting!.toList(),
-        FFAppState().appSettings.toList(),
-      );
       if (_model.isAppSetExistsNew != null) {
         FFAppState().appSettings = _model.isAppSetExistsNew!.settingList
             .toList()
@@ -261,6 +257,11 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           ),
         );
       } else {
+        _model.returnAppsettiing = await actions.returnAppsetting(
+          _model.masterAppsetting!.toList(),
+          FFAppState().appSettings.toList(),
+        );
+
         var appSettingsRecordReference =
             AppSettingsRecord.createDoc(FFAppState().outletIdRef!);
         await appSettingsRecordReference.set({

@@ -14,11 +14,13 @@ class AppSettingsStruct extends FFFirebaseStruct {
     bool? value,
     String? display,
     bool? isDeleted,
+    String? settingType,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _title = title,
         _value = value,
         _display = display,
         _isDeleted = isDeleted,
+        _settingType = settingType,
         super(firestoreUtilData);
 
   // "title" field.
@@ -49,12 +51,20 @@ class AppSettingsStruct extends FFFirebaseStruct {
 
   bool hasIsDeleted() => _isDeleted != null;
 
+  // "settingType" field.
+  String? _settingType;
+  String get settingType => _settingType ?? '';
+  set settingType(String? val) => _settingType = val;
+
+  bool hasSettingType() => _settingType != null;
+
   static AppSettingsStruct fromMap(Map<String, dynamic> data) =>
       AppSettingsStruct(
         title: data['title'] as String?,
         value: data['value'] as bool?,
         display: data['display'] as String?,
         isDeleted: data['isDeleted'] as bool?,
+        settingType: data['settingType'] as String?,
       );
 
   static AppSettingsStruct? maybeFromMap(dynamic data) => data is Map
@@ -66,6 +76,7 @@ class AppSettingsStruct extends FFFirebaseStruct {
         'value': _value,
         'display': _display,
         'isDeleted': _isDeleted,
+        'settingType': _settingType,
       }.withoutNulls;
 
   @override
@@ -85,6 +96,10 @@ class AppSettingsStruct extends FFFirebaseStruct {
         'isDeleted': serializeParam(
           _isDeleted,
           ParamType.bool,
+        ),
+        'settingType': serializeParam(
+          _settingType,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -110,6 +125,11 @@ class AppSettingsStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        settingType: deserializeParam(
+          data['settingType'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -121,12 +141,13 @@ class AppSettingsStruct extends FFFirebaseStruct {
         title == other.title &&
         value == other.value &&
         display == other.display &&
-        isDeleted == other.isDeleted;
+        isDeleted == other.isDeleted &&
+        settingType == other.settingType;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([title, value, display, isDeleted]);
+  int get hashCode => const ListEquality()
+      .hash([title, value, display, isDeleted, settingType]);
 }
 
 AppSettingsStruct createAppSettingsStruct({
@@ -134,6 +155,7 @@ AppSettingsStruct createAppSettingsStruct({
   bool? value,
   String? display,
   bool? isDeleted,
+  String? settingType,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -144,6 +166,7 @@ AppSettingsStruct createAppSettingsStruct({
       value: value,
       display: display,
       isDeleted: isDeleted,
+      settingType: settingType,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
