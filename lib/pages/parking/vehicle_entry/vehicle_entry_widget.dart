@@ -794,7 +794,15 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     FFAppState().currentMobile,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             } else {
                                               ScaffoldMessenger.of(context)
@@ -847,10 +855,16 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     containerUserProfileRecord,
                                                     ParamType.Document,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
                                                 extra: <String, dynamic>{
                                                   'docRef':
                                                       containerUserProfileRecord,
+                                                  'appSetting':
+                                                      widget!.appSetting,
                                                 },
                                               );
                                             } else {
