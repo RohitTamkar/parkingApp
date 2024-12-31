@@ -41,12 +41,18 @@ class AppSettingsMasterRecord extends FirestoreRecord {
   bool get isDeleted => _isDeleted ?? false;
   bool hasIsDeleted() => _isDeleted != null;
 
+  // "settingType" field.
+  String? _settingType;
+  String get settingType => _settingType ?? '';
+  bool hasSettingType() => _settingType != null;
+
   void _initializeFields() {
     _display = snapshotData['display'] as String?;
     _title = snapshotData['title'] as String?;
     _id = snapshotData['id'] as String?;
     _code = castToType<int>(snapshotData['code']);
     _isDeleted = snapshotData['isDeleted'] as bool?;
+    _settingType = snapshotData['settingType'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -90,6 +96,7 @@ Map<String, dynamic> createAppSettingsMasterRecordData({
   String? id,
   int? code,
   bool? isDeleted,
+  String? settingType,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -98,6 +105,7 @@ Map<String, dynamic> createAppSettingsMasterRecordData({
       'id': id,
       'code': code,
       'isDeleted': isDeleted,
+      'settingType': settingType,
     }.withoutNulls,
   );
 
@@ -114,12 +122,13 @@ class AppSettingsMasterRecordDocumentEquality
         e1?.title == e2?.title &&
         e1?.id == e2?.id &&
         e1?.code == e2?.code &&
-        e1?.isDeleted == e2?.isDeleted;
+        e1?.isDeleted == e2?.isDeleted &&
+        e1?.settingType == e2?.settingType;
   }
 
   @override
-  int hash(AppSettingsMasterRecord? e) => const ListEquality()
-      .hash([e?.display, e?.title, e?.id, e?.code, e?.isDeleted]);
+  int hash(AppSettingsMasterRecord? e) => const ListEquality().hash(
+      [e?.display, e?.title, e?.id, e?.code, e?.isDeleted, e?.settingType]);
 
   @override
   bool isValidKey(Object? o) => o is AppSettingsMasterRecord;
