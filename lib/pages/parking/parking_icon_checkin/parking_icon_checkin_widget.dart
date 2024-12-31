@@ -218,6 +218,11 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             safeSetState(() {});
                                             _model.vehicleType = listItem;
                                             safeSetState(() {});
+                                            FFAppState().parkingCharges = 0.0;
+                                            safeSetState(() {});
+                                            FFAppState().parkingCharges =
+                                                listItem.sellingPrice;
+                                            safeSetState(() {});
                                           },
                                           child: Container(
                                             width: 100.0,
