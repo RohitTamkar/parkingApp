@@ -103,12 +103,31 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                 buttonSize: 40.0,
                                 icon: Icon(
                                   Icons.keyboard_arrow_left_sharp,
-                                  color: FlutterFlowTheme.of(context)
-                                      .parkingPrimary,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 24.0,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        widget!.shiftdoc,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        widget!.userRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               Text(
