@@ -597,26 +597,9 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             0.0,
                                           ),
                                           taxAmt: 0.0,
-                                          billAmt: widget!
-                                                  .appSetting!.settingList
-                                                  .where((e) =>
-                                                      e.title ==
-                                                      'parkingChargeZero')
-                                                  .toList()
-                                                  .firstOrNull!
-                                                  .value
-                                              ? 0.0
-                                              : FFAppState().parkingCharges,
-                                          finalBillAmt: widget!
-                                                  .appSetting!.settingList
-                                                  .where((e) =>
-                                                      e.title ==
-                                                      'parkingChargeZero')
-                                                  .toList()
-                                                  .firstOrNull!
-                                                  .value
-                                              ? 0.0
-                                              : FFAppState().parkingCharges,
+                                          billAmt: FFAppState().parkingCharges,
+                                          finalBillAmt:
+                                              FFAppState().parkingCharges,
                                           roundOff: 0.0,
                                           shiftId: getJsonField(
                                             widget!.shiftdoc,
@@ -671,26 +654,9 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             0.0,
                                           ),
                                           taxAmt: 0.0,
-                                          billAmt: widget!
-                                                  .appSetting!.settingList
-                                                  .where((e) =>
-                                                      e.title ==
-                                                      'parkingChargeZero')
-                                                  .toList()
-                                                  .firstOrNull!
-                                                  .value
-                                              ? 0.0
-                                              : FFAppState().parkingCharges,
-                                          finalBillAmt: widget!
-                                                  .appSetting!.settingList
-                                                  .where((e) =>
-                                                      e.title ==
-                                                      'parkingChargeZero')
-                                                  .toList()
-                                                  .firstOrNull!
-                                                  .value
-                                              ? 0.0
-                                              : FFAppState().parkingCharges,
+                                          billAmt: FFAppState().parkingCharges,
+                                          finalBillAmt:
+                                              FFAppState().parkingCharges,
                                           roundOff: 0.0,
                                           shiftId: getJsonField(
                                             widget!.shiftdoc,
