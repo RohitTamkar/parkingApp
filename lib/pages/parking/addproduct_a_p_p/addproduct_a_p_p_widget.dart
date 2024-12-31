@@ -2180,7 +2180,7 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                'nk2zy2kd' /* BaseDuration  */,
+                                                                'nk2zy2kd' /* BaseDuration */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)

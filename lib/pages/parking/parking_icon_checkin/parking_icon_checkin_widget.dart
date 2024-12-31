@@ -630,7 +630,17 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             0,
                                           ),
                                           count: FFAppState().newcount,
-                                          checkOutTime: 0,
+                                          checkOutTime: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'oneTimeCheckin')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? getCurrentTimestamp
+                                                  .millisecondsSinceEpoch
+                                              : 0,
                                           checkInTerminal:
                                               FFAppState().terminalNo,
                                           checkOutTerminal: '0',
@@ -694,7 +704,17 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             0,
                                           ),
                                           count: FFAppState().newcount,
-                                          checkOutTime: 0,
+                                          checkOutTime: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'oneTimeCheckin')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? getCurrentTimestamp
+                                                  .millisecondsSinceEpoch
+                                              : 0,
                                           checkInTerminal:
                                               FFAppState().terminalNo,
                                           checkOutTerminal: '0',
@@ -855,60 +875,124 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
                                         _shouldSetState = true;
-                                        await actions.printBillParking(
-                                          _model.device2!.toList(),
-                                          FFAppState().isPrinterConnected,
-                                          FFAppState().printerName,
-                                          getJsonField(
-                                            functions.outletDocToJson(
-                                                _model.outletdoc2!),
-                                            r'''$''',
-                                          ),
-                                          _model.docInvoicecars2!,
-                                          FFAppState().paperSize,
-                                        );
-                                        await actions.removeFromAllBillList(
-                                          FFAppState().selBill,
-                                        );
-                                        await actions.clearValue();
-                                        FFAppState().subTotal = 0.0;
-                                        FFAppState().listCars = [];
-                                        FFAppState().categoryColor = '';
-                                        FFAppState().update(() {});
-                                        FFAppState().finalAmt = 0.0;
-                                        FFAppState().billAmt = 0.0;
-                                        FFAppState().count = FFAppState().count;
-                                        FFAppState().cartItem = [];
-                                        FFAppState().shiftDetailsNEw =
-                                            _model.shiftSummarRkiosk21!;
-                                        FFAppState().update(() {});
-                                        _model.vehicleType = null;
-                                        safeSetState(() {});
-
-                                        context.pushNamed(
-                                          'VehicleEntry',
-                                          queryParameters: {
-                                            'shiftDoc': serializeParam(
-                                              widget!.shiftdoc,
-                                              ParamType.JSON,
+                                        if (widget!.appSetting!.settingList
+                                            .where((e) =>
+                                                e.title == 'oneTimeCheckin')
+                                            .toList()
+                                            .firstOrNull!
+                                            .value) {
+                                          await actions.printBillParkingOneTime(
+                                            _model.device2!.toList(),
+                                            FFAppState().isPrinterConnected,
+                                            FFAppState().printerName,
+                                            getJsonField(
+                                              functions.outletDocToJson(
+                                                  _model.outletdoc2!),
+                                              r'''$''',
                                             ),
-                                            'userRef': serializeParam(
-                                              widget!.userRef,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'appSetting': serializeParam(
-                                              widget!.appSetting,
-                                              ParamType.Document,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            'appSetting': widget!.appSetting,
-                                          },
-                                        );
-
-                                        if (_shouldSetState)
+                                            _model.docInvoicecars2!,
+                                            FFAppState().paperSize,
+                                          );
+                                          await actions.removeFromAllBillList(
+                                            FFAppState().selBill,
+                                          );
+                                          await actions.clearValue();
+                                          FFAppState().subTotal = 0.0;
+                                          FFAppState().listCars = [];
+                                          FFAppState().categoryColor = '';
+                                          FFAppState().update(() {});
+                                          FFAppState().finalAmt = 0.0;
+                                          FFAppState().billAmt = 0.0;
+                                          FFAppState().count =
+                                              FFAppState().count;
+                                          FFAppState().cartItem = [];
+                                          FFAppState().shiftDetailsNEw =
+                                              _model.shiftSummarRkiosk21!;
+                                          FFAppState().update(() {});
+                                          _model.vehicleType = null;
                                           safeSetState(() {});
-                                        return;
+
+                                          context.pushNamed(
+                                            'VehicleEntry',
+                                            queryParameters: {
+                                              'shiftDoc': serializeParam(
+                                                widget!.shiftdoc,
+                                                ParamType.JSON,
+                                              ),
+                                              'userRef': serializeParam(
+                                                widget!.userRef,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
+                                          );
+
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        } else {
+                                          await actions.printBillParking(
+                                            _model.device2!.toList(),
+                                            FFAppState().isPrinterConnected,
+                                            FFAppState().printerName,
+                                            getJsonField(
+                                              functions.outletDocToJson(
+                                                  _model.outletdoc2!),
+                                              r'''$''',
+                                            ),
+                                            _model.docInvoicecars2!,
+                                            FFAppState().paperSize,
+                                          );
+                                          await actions.removeFromAllBillList(
+                                            FFAppState().selBill,
+                                          );
+                                          await actions.clearValue();
+                                          FFAppState().subTotal = 0.0;
+                                          FFAppState().listCars = [];
+                                          FFAppState().categoryColor = '';
+                                          FFAppState().update(() {});
+                                          FFAppState().finalAmt = 0.0;
+                                          FFAppState().billAmt = 0.0;
+                                          FFAppState().count =
+                                              FFAppState().count;
+                                          FFAppState().cartItem = [];
+                                          FFAppState().shiftDetailsNEw =
+                                              _model.shiftSummarRkiosk21!;
+                                          FFAppState().update(() {});
+                                          _model.vehicleType = null;
+                                          safeSetState(() {});
+
+                                          context.pushNamed(
+                                            'VehicleEntry',
+                                            queryParameters: {
+                                              'shiftDoc': serializeParam(
+                                                widget!.shiftdoc,
+                                                ParamType.JSON,
+                                              ),
+                                              'userRef': serializeParam(
+                                                widget!.userRef,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
+                                          );
+
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
                                       } else {
                                         await showDialog(
                                           context: context,
@@ -1087,7 +1171,17 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                           vechicleType:
                                               _model.vehicleType?.name,
                                           count: FFAppState().newcount,
-                                          checkOutTime: 0,
+                                          checkOutTime: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'oneTimeCheckin')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? getCurrentTimestamp
+                                                  .millisecondsSinceEpoch
+                                              : 0,
                                           checkInTerminal:
                                               FFAppState().terminalNo,
                                           checkOutTerminal: '0',
@@ -1151,7 +1245,17 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                           vechicleType:
                                               _model.vehicleType?.name,
                                           count: FFAppState().newcount,
-                                          checkOutTime: 0,
+                                          checkOutTime: widget!
+                                                  .appSetting!.settingList
+                                                  .where((e) =>
+                                                      e.title ==
+                                                      'oneTimeCheckin')
+                                                  .toList()
+                                                  .firstOrNull!
+                                                  .value
+                                              ? getCurrentTimestamp
+                                                  .millisecondsSinceEpoch
+                                              : 0,
                                           checkInTerminal:
                                               FFAppState().terminalNo,
                                           checkOutTerminal: '0',
