@@ -874,6 +874,7 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                           FFAppState().cartItem = [];
                                           FFAppState().shiftDetailsNEw =
                                               _model.shiftSummarRkiosk21!;
+                                          FFAppState().parkingCharges = 0.0;
                                           FFAppState().update(() {});
                                           _model.vehicleType = null;
                                           safeSetState(() {});
@@ -922,6 +923,7 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                           FFAppState().subTotal = 0.0;
                                           FFAppState().listCars = [];
                                           FFAppState().categoryColor = '';
+                                          FFAppState().parkingCharges = 0.0;
                                           FFAppState().update(() {});
                                           FFAppState().finalAmt = 0.0;
                                           FFAppState().billAmt = 0.0;
