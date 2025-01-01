@@ -221,8 +221,8 @@ class _SetHeaderFooterWidgetState extends State<SetHeaderFooterWidget>
                                 Align(
                                   alignment: Alignment(0.0, 0),
                                   child: TabBar(
-                                    labelColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                    labelColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     unselectedLabelColor:
                                         FlutterFlowTheme.of(context)
                                             .secondaryText,
@@ -240,8 +240,8 @@ class _SetHeaderFooterWidgetState extends State<SetHeaderFooterWidget>
                                                       .titleMediumFamily),
                                         ),
                                     unselectedLabelStyle: TextStyle(),
-                                    indicatorColor:
-                                        FlutterFlowTheme.of(context).error,
+                                    indicatorColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     padding: EdgeInsets.all(4.0),
                                     tabs: [
                                       Tab(
