@@ -2748,7 +2748,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                             .height *
                                                         0.06,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFF83654),
+                                                  color: Color(0x65F83654),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           5.0),
@@ -2769,7 +2769,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              Color(0xFFF83654),
+                                                              Color(0x5BF83654),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -2833,7 +2833,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                '916ppd5j' /* App Close */,
+                                                                '916ppd5j' /*  Close App */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
