@@ -2028,7 +2028,7 @@ class _SetHeaderFooterWidgetState extends State<SetHeaderFooterWidget>
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
+                                                        .parkingSecondaryBackground,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -3118,7 +3118,7 @@ class _SetHeaderFooterWidgetState extends State<SetHeaderFooterWidget>
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
+                                                        .parkingSecondaryBackground,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
