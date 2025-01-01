@@ -1179,7 +1179,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'lgm2d4e5' /* Add Monthly Pass */,
+                                                        'lgm2d4e5' /*  Monthly Pass Details */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(

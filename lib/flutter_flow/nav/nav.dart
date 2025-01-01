@@ -1223,22 +1223,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'ParkingCheckINCopy',
-              path: 'parkingCheckINCopy',
-              builder: (context, params) => ParkingCheckINCopyWidget(
-                shiftDoc: params.getParam(
-                  'shiftDoc',
-                  ParamType.JSON,
-                ),
-                userRef: params.getParam(
-                  'userRef',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['USER_PROFILE'],
-                ),
-              ),
-            ),
-            FFRoute(
               name: 'EditBillList',
               path: 'editBillList',
               asyncParams: {

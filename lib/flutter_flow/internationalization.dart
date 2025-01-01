@@ -1058,7 +1058,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'lgm2d4e5': {
-      'en': 'Add Monthly Pass',
+      'en': ' Monthly Pass Details',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -4902,20 +4902,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    'vuikjnjv': {
-      'en': 'Bill entry without chekout',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'w60jae91': {
-      'en': 'OR',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     '33zb0yae': {
       'en': 'Receipt Entry',
       'hi': '',
@@ -7486,43 +7472,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // webLogin
   {
-    '604tusms': {
+    'e42loxu1': {
       'en': 'Welcome',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'jj8w4lyl': {
+    '8h59y96s': {
       'en': 'Manage Billing, Inventory & Franchise all at one Place',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'zjr6xd38': {
+    'fcffi86g': {
       'en': '+91',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'xcgvdr13': {
+    '6z1dliab': {
       'en': 'Mobile',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    'z31n77dq': {
+    'vhjv858i': {
       'en': 'Quick Pin',
       'hi': '',
       'kn': '',
       'mr': '',
       'ta': '',
     },
-    '2yqwwbhx': {
+    '2i2rd66m': {
       'en': 'Login',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
+    'm6dszp4i': {
+      'en': 'Switch To QR',
       'hi': '',
       'kn': '',
       'mr': '',
@@ -8024,114 +8017,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
     },
     'l1h3wggo': {
-      'en': 'Home',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-  },
-  // ParkingCheckINCopy
-  {
-    'jqoyacdi': {
-      'en': 'Cancel',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '9w24jtlk': {
-      'en': 'Customer',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'qkqww61n': {
-      'en': 'Search here...',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'gehni8v6': {
-      'en': 'Vehicle Type',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'fc43rkcp': {
-      'en': 'Search for an item...',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'p5aoe3id': {
-      'en': 'Vehicle Number',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '6gkmngfi': {
-      'en': 'CASH',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    '0xy85fzn': {
-      'en': 'UPI',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'v4nxy3u0': {
-      'en': 'Payment Mode',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'fe0is0yp': {
-      'en': 'Search for an item...',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'tpnne80i': {
-      'en': 'Advance Amount',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'saiyixb0': {
-      'en': 'Discount  Amount',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'yzwytqhe': {
-      'en': 'PRINT',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'z38auhkx': {
-      'en': 'SAVE',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
-    'tuelvai0': {
       'en': 'Home',
       'hi': '',
       'kn': '',
