@@ -2468,13 +2468,20 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                   hasContainerTriggered15),
                                         ],
                                       ),
-                                      Divider(
-                                        thickness: 0.5,
-                                        indent: 40.0,
-                                        endIndent: 40.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .customColor1,
-                                      ),
+                                      if (widget!.appSetting?.settingList
+                                              ?.where((e) =>
+                                                  e.title == 'enableShiftEnd')
+                                              .toList()
+                                              ?.firstOrNull
+                                              ?.value ??
+                                          true)
+                                        Divider(
+                                          thickness: 0.5,
+                                          indent: 40.0,
+                                          endIndent: 40.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .customColor1,
+                                        ),
                                       if (widget!.appSetting?.settingList
                                               ?.where((e) =>
                                                   e.title == 'enableShiftEnd')

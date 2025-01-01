@@ -1237,13 +1237,29 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                           ],
                                         ),
                                       ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          context.pushNamed('SetHeaderFooter');
+                                          context.pushNamed(
+                                            'SetHeaderFooter',
+                                            queryParameters: {
+                                              'appSetting': serializeParam(
+                                                widget!.appSetting,
+                                                ParamType.Document,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'appSetting': widget!.appSetting,
+                                            },
+                                          );
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1588,11 +1604,6 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                             ],
                                           ),
                                         ),
-                                      Divider(
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent4,
-                                      ),
                                     ],
                                   ),
                                 ),

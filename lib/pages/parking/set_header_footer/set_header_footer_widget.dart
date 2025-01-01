@@ -19,7 +19,12 @@ import 'set_header_footer_model.dart';
 export 'set_header_footer_model.dart';
 
 class SetHeaderFooterWidget extends StatefulWidget {
-  const SetHeaderFooterWidget({super.key});
+  const SetHeaderFooterWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<SetHeaderFooterWidget> createState() => _SetHeaderFooterWidgetState();
@@ -136,7 +141,18 @@ class _SetHeaderFooterWidgetState extends State<SetHeaderFooterWidget>
                                   size: 30.0,
                                 ),
                                 onPressed: () async {
-                                  context.pop();
+                                  context.pushNamed(
+                                    'mastersNew',
+                                    queryParameters: {
+                                      'appSetting': serializeParam(
+                                        widget!.appSetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appSetting,
+                                    },
+                                  );
                                 },
                               ),
                               AutoSizeText(
