@@ -1495,6 +1495,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'WebUserDetailsReport',
               path: 'webUserDetailsReport',
               builder: (context, params) => WebUserDetailsReportWidget(),
+            ),
+            FFRoute(
+              name: 'SetHeaderFooter',
+              path: 'setHeaderFooter',
+              builder: (context, params) => SetHeaderFooterWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

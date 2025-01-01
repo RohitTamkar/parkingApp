@@ -615,19 +615,24 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                                                                              child: ClipRRect(
-                                                                                borderRadius: BorderRadius.only(
-                                                                                  bottomLeft: Radius.circular(0.0),
-                                                                                  bottomRight: Radius.circular(0.0),
-                                                                                  topLeft: Radius.circular(20.0),
-                                                                                  topRight: Radius.circular(20.0),
-                                                                                ),
-                                                                                child: CachedNetworkImage(
-                                                                                  fadeInDuration: Duration(milliseconds: 200),
-                                                                                  fadeOutDuration: Duration(milliseconds: 200),
-                                                                                  imageUrl: containerProductRecord!.imageUrl,
-                                                                                  fit: BoxFit.cover,
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 20.0, 0.0),
+                                                                              child: Container(
+                                                                                width: 50.0,
+                                                                                height: 50.0,
+                                                                                decoration: BoxDecoration(),
+                                                                                child: ClipRRect(
+                                                                                  borderRadius: BorderRadius.only(
+                                                                                    bottomLeft: Radius.circular(0.0),
+                                                                                    bottomRight: Radius.circular(0.0),
+                                                                                    topLeft: Radius.circular(20.0),
+                                                                                    topRight: Radius.circular(20.0),
+                                                                                  ),
+                                                                                  child: CachedNetworkImage(
+                                                                                    fadeInDuration: Duration(milliseconds: 200),
+                                                                                    fadeOutDuration: Duration(milliseconds: 200),
+                                                                                    imageUrl: containerProductRecord!.imageUrl,
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                             ),

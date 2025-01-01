@@ -86,7 +86,7 @@ export '/pages/parking/in_out_report/in_out_report_widget.dart'
     show InOutReportWidget;
 export '/pages/parking/todays_summary_report/todays_summary_report_widget.dart'
     show TodaysSummaryReportWidget;
-export '/pages/dailly_collection_report/dailly_collection_report_widget.dart'
+export '/pages/parking/dailly_collection_report/dailly_collection_report_widget.dart'
     show DaillyCollectionReportWidget;
 export '/pages/parking/monthly_pass2/monthly_pass2_widget.dart'
     show MonthlyPass2Widget;
@@ -141,9 +141,9 @@ export '/web_parking/web_vehicle_wise_sale2/web_vehicle_wise_sale2_widget.dart'
 export '/pages/parking/app_settings/app_settings_widget.dart'
     show AppSettingsWidget;
 export '/pages/parking/shift_end/shift_end_widget.dart' show ShiftEndWidget;
-export '/pages/welcome_screen_new/welcome_screen_new_widget.dart'
+export '/pages/parking/welcome_screen_new/welcome_screen_new_widget.dart'
     show WelcomeScreenNewWidget;
-export '/pages/shift_summary_report/shift_summary_report_widget.dart'
+export '/pages/parking/shift_summary_report/shift_summary_report_widget.dart'
     show ShiftSummaryReportWidget;
 export '/pages/parking/shift_details/shift_details_widget.dart'
     show ShiftDetailsWidget;
@@ -163,3 +163,5 @@ export '/web_parking/web_terminal_wise_report/web_terminal_wise_report_widget.da
     show WebTerminalWiseReportWidget;
 export '/web_parking/web_user_details_report/web_user_details_report_widget.dart'
     show WebUserDetailsReportWidget;
+export '/pages/parking/set_header_footer/set_header_footer_widget.dart'
+    show SetHeaderFooterWidget;
