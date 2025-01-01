@@ -2748,9 +2748,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                             .height *
                                                         0.06,
                                                 decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
+                                                  color: Color(0xFFF83654),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           5.0),
