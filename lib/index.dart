@@ -50,25 +50,15 @@ export '/pages/parking/printersetting_car/printersetting_car_widget.dart'
 export '/pages/parking/subscription_new2/subscription_new2_widget.dart'
     show SubscriptionNew2Widget;
 export '/pages/parking/deviceqr/deviceqr_widget.dart' show DeviceqrWidget;
-export '/pages/parking/parking_report/parking_report_widget.dart'
-    show ParkingReportWidget;
 export '/pages/parking/number_plate_scanner/number_plate_scanner_widget.dart'
     show NumberPlateScannerWidget;
 export '/pages/parking/billwisesalereport/billwisesalereport_widget.dart'
     show BillwisesalereportWidget;
-export '/pages/parking/category_wise_sale_report/category_wise_sale_report_widget.dart'
-    show CategoryWiseSaleReportWidget;
 export '/pages/parking/product_wise_sale_report/product_wise_sale_report_widget.dart'
     show ProductWiseSaleReportWidget;
-export '/pages/parking/day_wise_sale_report/day_wise_sale_report_widget.dart'
-    show DayWiseSaleReportWidget;
-export '/pages/parking/bill_details/bill_details_widget.dart'
-    show BillDetailsWidget;
 export '/pages/parking/dashboard/dashboard_widget.dart' show DashboardWidget;
 export '/pages/parking/add_customer1/add_customer1_widget.dart'
     show AddCustomer1Widget;
-export '/pages/parking/monthly_pass/monthly_pass_widget.dart'
-    show MonthlyPassWidget;
 export '/pages/parking/pass_details/pass_details_widget.dart'
     show PassDetailsWidget;
 export '/pages/parking/vehicle_wise_sale_report/vehicle_wise_sale_report_widget.dart'
@@ -76,7 +66,6 @@ export '/pages/parking/vehicle_wise_sale_report/vehicle_wise_sale_report_widget.
 export '/pages/parking/vehicle_entry/vehicle_entry_widget.dart'
     show VehicleEntryWidget;
 export '/pages/parking/bill_entry/bill_entry_widget.dart' show BillEntryWidget;
-export '/pages/parking/unbilled/unbilled_widget.dart' show UnbilledWidget;
 export '/pages/parking/parking_report_new/parking_report_new_widget.dart'
     show ParkingReportNewWidget;
 export '/pages/parking/vehicle_wise_sale2/vehicle_wise_sale2_widget.dart'
@@ -139,8 +128,6 @@ export '/web_parking/web_vehicle_wise_sale2/web_vehicle_wise_sale2_widget.dart'
 export '/pages/parking/app_settings/app_settings_widget.dart'
     show AppSettingsWidget;
 export '/pages/parking/shift_end/shift_end_widget.dart' show ShiftEndWidget;
-export '/pages/parking/welcome_screen_new/welcome_screen_new_widget.dart'
-    show WelcomeScreenNewWidget;
 export '/pages/parking/shift_summary_report/shift_summary_report_widget.dart'
     show ShiftSummaryReportWidget;
 export '/pages/parking/shift_details/shift_details_widget.dart'

@@ -298,7 +298,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Icons.email,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .parkingPrimary,
+                                                      .primaryText,
                                               size: 24.0,
                                             ),
                                             onPressed: () async {
@@ -342,6 +342,8 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                     ?.toString(),
                                                 containerOutletRecord?.name,
                                                 billwisesalereportInvoiceRecordList
+                                                    .where((e) =>
+                                                        e.checkOutTime != 0)
                                                     .toList(),
                                                 FFAppState()
                                                     .endDate

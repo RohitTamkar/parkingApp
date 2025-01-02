@@ -709,7 +709,10 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               controller: _model
                                                       .dropDownvechicleValueController ??=
                                                   FormFieldController<String>(
-                                                      null),
+                                                _model.dropDownvechicleValue ??=
+                                                    dropDownvechicleProductRecordList
+                                                        .firstOrNull?.name,
+                                              ),
                                               options:
                                                   dropDownvechicleProductRecordList
                                                       .map((e) => e.name)
@@ -951,52 +954,45 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                         ),
                                       ),
                                     if (!FFAppState().showNumber)
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(),
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              safeSetState(() {
-                                                _model.textController1?.text =
-                                                    FFAppState().resultText;
-                                              });
-                                              FFAppState().showNumber = true;
-                                              safeSetState(() {});
-                                            },
-                                            child: Text(
-                                              FFAppState().resultText,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 20.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                            ),
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                1.0,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.06,
+                                        decoration: BoxDecoration(),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            safeSetState(() {
+                                              _model.textController1?.text =
+                                                  FFAppState().resultText;
+                                            });
+                                            FFAppState().showNumber = true;
+                                            safeSetState(() {});
+                                          },
+                                          child: Text(
+                                            FFAppState().resultText,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
                                           ),
                                         ),
                                       ),
@@ -1780,29 +1776,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             FFAppState().shiftDetailsNEw =
                                                 _model.shiftSummarRkiosk!;
                                             FFAppState().update(() {});
-
-                                            context.pushNamed(
-                                              'VehicleEntry',
-                                              queryParameters: {
-                                                'shiftDoc': serializeParam(
-                                                  widget!.shiftDoc,
-                                                  ParamType.JSON,
-                                                ),
-                                                'userRef': serializeParam(
-                                                  widget!.userRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'appSetting': serializeParam(
-                                                  widget!.appSetting,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'appSetting':
-                                                    widget!.appSetting,
-                                              },
-                                            );
-
+                                            safeSetState(() {
+                                              _model.textController1?.clear();
+                                            });
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;

@@ -22,7 +22,7 @@ Future<List<dynamic>> addToHoldList(
   List<dynamic> itemList = [];
   Map<String, dynamic> itemMapList = new Map();
   var y = 1.0;
-  //print(document);
+  // print(document);
   final data = {
     "name": document!.name,
     "price": (document.sellingPrice)!.toDouble(),

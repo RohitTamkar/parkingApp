@@ -33,23 +33,23 @@ Future<String> genExcelForBillWiseReport(
   var sheet = excel['Sheet1'];
   CellStyle boldStyle = CellStyle(bold: true);
 
-  double totalBillAmount = 0;
-  double totalTaxAmount = 0;
-  double totalDiscountAmount = 0;
-  double totalDeliveyChargAmount = 0;
+  double count = 0;
+  String vechicleNo = "";
+  String outDate = "";
+  double totalAmount = 0;
 
   for (var product in docList!) {
-    totalBillAmount += product.finalBillAmt;
-    totalTaxAmount += product.taxAmt;
-    totalDiscountAmount += product.discountAmt;
-    totalDeliveyChargAmount += product.delliveryChrg;
+    count += product.count;
+    vechicleNo += product.vechicleNo;
+    outDate += product.checkOutTerminal;
+    totalAmount += product.finalBillAmt;
   }
 
   // Add headers to the sheet
-  sheet.appendRow([
-    TextCellValue('Shop Name'),
-    TextCellValue(shopName ?? ''),
-  ]);
+  // sheet.appendRow([
+  //   TextCellValue('Shop Name'),
+  //   TextCellValue(shopName ?? ''),
+  // ]);
 
 /*
   sheet.appendRow([
@@ -64,22 +64,22 @@ Future<String> genExcelForBillWiseReport(
 
   sheet.appendRow([
     TextCellValue('Total Bill Amount'),
-    TextCellValue(totalBillAmount.toString() ?? ''),
+    TextCellValue(count.toString() ?? ''),
   ]);
 
   sheet.appendRow([
     TextCellValue('Total Tax Amount'),
-    TextCellValue(totalTaxAmount.toString() ?? ''),
+    TextCellValue(vechicleNo.toString() ?? ''),
   ]);
 
   sheet.appendRow([
     TextCellValue('Total Discount Amount'),
-    TextCellValue(totalDiscountAmount.toString() ?? ''),
+    TextCellValue(outDate.toString() ?? ''),
   ]);
 
   sheet.appendRow([
     TextCellValue('Total Delivery Charges'),
-    TextCellValue(totalDeliveyChargAmount.toString() ?? ''),
+    TextCellValue(totalAmount.toString() ?? ''),
   ]);
 
   sheet.appendRow([TextCellValue('')]); // Add an empty row for spacing

@@ -640,16 +640,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'parkingReport',
-              path: 'parkingReport',
-              builder: (context, params) => ParkingReportWidget(
-                quickPin: params.getParam(
-                  'quickPin',
-                  ParamType.String,
-                ),
-              ),
-            ),
-            FFRoute(
               name: 'NumberPlateScanner',
               path: 'numberPlateScanner',
               asyncParams: {
@@ -678,40 +668,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'categoryWiseSaleReport',
-              path: 'categoryWiseSaleReport',
-              builder: (context, params) => CategoryWiseSaleReportWidget(),
-            ),
-            FFRoute(
               name: 'productWiseSaleReport',
               path: 'productWiseSaleReport',
               builder: (context, params) => ProductWiseSaleReportWidget(
-                docRef: params.getParam(
-                  'docRef',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['OUTLET', 'INVOICE'],
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'dayWiseSaleReport',
-              path: 'dayWiseSaleReport',
-              asyncParams: {
-                'appSetting': getDoc(
-                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
-              },
-              builder: (context, params) => DayWiseSaleReportWidget(
-                appSetting: params.getParam(
-                  'appSetting',
-                  ParamType.Document,
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'billDetails',
-              path: 'billDetails',
-              builder: (context, params) => BillDetailsWidget(
                 docRef: params.getParam(
                   'docRef',
                   ParamType.DocumentReference,
@@ -762,20 +721,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
               },
               builder: (context, params) => AddCustomer1Widget(
-                appSetting: params.getParam(
-                  'appSetting',
-                  ParamType.Document,
-                ),
-              ),
-            ),
-            FFRoute(
-              name: 'MonthlyPass',
-              path: 'monthlyPass',
-              asyncParams: {
-                'appSetting': getDoc(
-                    ['OUTLET', 'APP_SETTINGS'], AppSettingsRecord.fromSnapshot),
-              },
-              builder: (context, params) => MonthlyPassWidget(
                 appSetting: params.getParam(
                   'appSetting',
                   ParamType.Document,
@@ -848,11 +793,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.Document,
                 ),
               ),
-            ),
-            FFRoute(
-              name: 'Unbilled',
-              path: 'unbilled1',
-              builder: (context, params) => UnbilledWidget(),
             ),
             FFRoute(
               name: 'parkingReportNew',
@@ -1323,11 +1263,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.Document,
                 ),
               ),
-            ),
-            FFRoute(
-              name: 'welcomeScreenNew',
-              path: 'welcomeScreenNew',
-              builder: (context, params) => WelcomeScreenNewWidget(),
             ),
             FFRoute(
               name: 'shiftSummaryReport',
