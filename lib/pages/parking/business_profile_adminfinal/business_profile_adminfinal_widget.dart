@@ -908,7 +908,17 @@ class _BusinessProfileAdminfinalWidgetState
                                                                             listViewBusinesssMasterRecord.id,
                                                                             ParamType.String,
                                                                           ),
+                                                                          'appSetting':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
+                                                                        extra: <String,
+                                                                            dynamic>{
+                                                                          'appSetting':
+                                                                              widget!.appSetting,
+                                                                        },
                                                                       );
                                                                     },
                                                                   ).animateOnActionTrigger(
@@ -1166,6 +1176,21 @@ class _BusinessProfileAdminfinalWidgetState
                                                                                 serializeParam(
                                                                               widget!.appSetting,
                                                                               ParamType.Document,
+                                                                            ),
+                                                                            'userDoc':
+                                                                                serializeParam(
+                                                                              containerUserProfileRecord?.reference,
+                                                                              ParamType.DocumentReference,
+                                                                            ),
+                                                                            'outletRef':
+                                                                                serializeParam(
+                                                                              listViewOutletRecord.reference,
+                                                                              ParamType.DocumentReference,
+                                                                            ),
+                                                                            'shiftDoc':
+                                                                                serializeParam(
+                                                                              FFAppState().shiftDetailsNEw,
+                                                                              ParamType.JSON,
                                                                             ),
                                                                           }.withoutNulls,
                                                                           extra: <String,
@@ -1474,7 +1499,14 @@ class _BusinessProfileAdminfinalWidgetState
                                                                                       listViewOutletRecord.id,
                                                                                       ParamType.String,
                                                                                     ),
+                                                                                    'appSetting': serializeParam(
+                                                                                      widget!.appSetting,
+                                                                                      ParamType.Document,
+                                                                                    ),
                                                                                   }.withoutNulls,
+                                                                                  extra: <String, dynamic>{
+                                                                                    'appSetting': widget!.appSetting,
+                                                                                  },
                                                                                 );
                                                                               },
                                                                             ).animateOnActionTrigger(animationsMap['iconButtonOnActionTriggerAnimation2']!,
@@ -1541,7 +1573,15 @@ class _BusinessProfileAdminfinalWidgetState
                                                         .currentMobileString,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
 
                                               safeSetState(() {});

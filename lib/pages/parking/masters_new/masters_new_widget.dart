@@ -1277,7 +1277,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                         Divider(
                                           thickness: 1.0,
                                           color: FlutterFlowTheme.of(context)
-                                              .accent4,
+                                              .customColor2,
                                         ),
                                         InkWell(
                                           splashColor: Colors.transparent,

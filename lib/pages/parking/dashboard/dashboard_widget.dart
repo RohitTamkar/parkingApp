@@ -326,7 +326,16 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                         ParamType
                                                             .DocumentReference,
                                                       ),
+                                                      'appSetting':
+                                                          serializeParam(
+                                                        widget!.appSetting,
+                                                        ParamType.Document,
+                                                      ),
                                                     }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'appSetting':
+                                                          widget!.appSetting,
+                                                    },
                                                   );
                                                 },
                                               ),

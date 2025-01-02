@@ -704,27 +704,6 @@ class _OpeningBalNewCarWidgetState extends State<OpeningBalNewCarWidget> {
                                                             },
                                                           ),
                                                         });
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'App Settings Updated !',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                          ),
-                                                        );
                                                       } else {
                                                         _model.returnAppsettiing =
                                                             await actions

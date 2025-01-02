@@ -1192,8 +1192,23 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                         },
                                                                       );
 
-                                                                      context.pushNamed(
-                                                                          'ParkingLogin');
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'Deviceqr',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'appSetting':
+                                                                              serializeParam(
+                                                                            widget!.appSetting,
+                                                                            ParamType.Document,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                        extra: <String,
+                                                                            dynamic>{
+                                                                          'appSetting':
+                                                                              widget!.appSetting,
+                                                                        },
+                                                                      );
                                                                     }
                                                                   } else {
                                                                     await showDialog(

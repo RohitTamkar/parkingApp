@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,7 +13,12 @@ import 'deviceqr_model.dart';
 export 'deviceqr_model.dart';
 
 class DeviceqrWidget extends StatefulWidget {
-  const DeviceqrWidget({super.key});
+  const DeviceqrWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<DeviceqrWidget> createState() => _DeviceqrWidgetState();

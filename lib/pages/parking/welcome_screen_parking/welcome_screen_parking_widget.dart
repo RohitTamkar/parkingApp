@@ -244,18 +244,6 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
             },
           ),
         });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'App Settings Updated !',
-              style: TextStyle(
-                color: FlutterFlowTheme.of(context).primaryText,
-              ),
-            ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).secondary,
-          ),
-        );
       } else {
         _model.returnAppsettiing = await actions.returnAppsetting(
           _model.masterAppsetting!.toList(),
@@ -404,7 +392,18 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           },
         );
 
-        context.pushNamed('Deviceqr');
+        context.pushNamed(
+          'Deviceqr',
+          queryParameters: {
+            'appSetting': serializeParam(
+              widget!.appSetting,
+              ParamType.Document,
+            ),
+          }.withoutNulls,
+          extra: <String, dynamic>{
+            'appSetting': widget!.appSetting,
+          },
+        );
       }
     });
 
