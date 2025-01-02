@@ -90,545 +90,547 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                 FocusScope.of(context).unfocus();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: Scaffold(
-                key: scaffoldKey,
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                floatingActionButton: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                  child: FloatingActionButton.extended(
-                    onPressed: () {
-                      print('FloatingActionButton pressed ...');
-                    },
-                    backgroundColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    elevation: 8.0,
-                    label: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 50.0,
-                      buttonSize: 50.0,
-                      icon: Icon(
-                        Icons.print,
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 30.0,
-                      ),
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        if (!functions
-                            .isPrinterSelected(FFAppState().printerDevice)!) {
-                          _model.resDevice2 = await actions.scanPrinter(
-                            FFAppState().posMode,
+              child: WillPopScope(
+                onWillPop: () async => false,
+                child: Scaffold(
+                  key: scaffoldKey,
+                  backgroundColor:
+                      FlutterFlowTheme.of(context).primaryBackground,
+                  floatingActionButton: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                    child: FloatingActionButton.extended(
+                      onPressed: () {
+                        print('FloatingActionButton pressed ...');
+                      },
+                      backgroundColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 8.0,
+                      label: FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 50.0,
+                        buttonSize: 50.0,
+                        icon: Icon(
+                          Icons.print,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 30.0,
+                        ),
+                        onPressed: () async {
+                          var _shouldSetState = false;
+                          if (!functions
+                              .isPrinterSelected(FFAppState().printerDevice)!) {
+                            _model.resDevice2 = await actions.scanPrinter(
+                              FFAppState().posMode,
+                            );
+                            _shouldSetState = true;
+                          }
+                          _model.printer = await actions.connectDevice(
+                            FFAppState().printerDevice,
+                            FFAppState().printerIndex,
                           );
                           _shouldSetState = true;
-                        }
-                        _model.printer = await actions.connectDevice(
-                          FFAppState().printerDevice,
-                          FFAppState().printerIndex,
-                        );
-                        _shouldSetState = true;
-                        if (_model.printer!) {
-                          await actions.printShiftSummaryReport(
-                            FFAppState().printerDevice,
-                            FFAppState().isPrinterConnected,
-                            FFAppState().printerName,
-                            FFAppState().paperSize,
-                            shiftSummaryReportInvoiceRecordList.toList(),
-                            shiftSummaryReportInvoiceRecordList
-                                .unique((e) => e.vechicleType)
-                                .toList(),
-                            widget!.docRef!.shiftId,
-                          );
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('printer connection'),
-                                content: Text('printer not connected'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          if (_shouldSetState) safeSetState(() {});
-                          return;
-                        }
+                          if (_model.printer!) {
+                            await actions.printShiftSummaryReport(
+                              FFAppState().printerDevice,
+                              FFAppState().isPrinterConnected,
+                              FFAppState().printerName,
+                              FFAppState().paperSize,
+                              shiftSummaryReportInvoiceRecordList.toList(),
+                              shiftSummaryReportInvoiceRecordList
+                                  .unique((e) => e.vechicleType)
+                                  .toList(),
+                              widget!.docRef!.shiftId,
+                            );
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('printer connection'),
+                                  content: Text('printer not connected'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            if (_shouldSetState) safeSetState(() {});
+                            return;
+                          }
 
-                        if (_shouldSetState) safeSetState(() {});
-                      },
-                    ),
-                  ),
-                ),
-                body: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).parkingPrimary,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 0.0, 15.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 50.0,
-                                    icon: Icon(
-                                      Icons.arrow_back_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
-                                      context.pushNamed(
-                                        'ShiftDetails',
-                                        queryParameters: {
-                                          'appSetting': serializeParam(
-                                            widget!.appSetting,
-                                            ParamType.Document,
-                                          ),
-                                          'shiftDoc': serializeParam(
-                                            widget!.docRef,
-                                            ParamType.Document,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          'appSetting': widget!.appSetting,
-                                          'shiftDoc': widget!.docRef,
-                                        },
-                                      );
-                                    },
-                                  ),
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'bvtqu2ud' /* Shift Summary Report  */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMediumFamily,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
-                                        ),
-                                  ),
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 50.0,
-                                    icon: Icon(
-                                      Icons.arrow_back_rounded,
-                                      color: Color(0x000D0801),
-                                      size: 30.0,
-                                    ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          if (_shouldSetState) safeSetState(() {});
+                        },
                       ),
                     ),
-                    Expanded(
-                      flex: 8,
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(0.0),
-                            topLeft: Radius.circular(40.0),
-                            topRight: Radius.circular(40.0),
+                  ),
+                  body: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).parkingPrimary,
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 15.0),
+                                    15.0, 0.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
+                                    FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 50.0,
+                                      icon: Icon(
+                                        Icons.arrow_back_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                          'ShiftDetails',
+                                          queryParameters: {
+                                            'appSetting': serializeParam(
+                                              widget!.appSetting,
+                                              ParamType.Document,
+                                            ),
+                                            'shiftDoc': serializeParam(
+                                              widget!.docRef,
+                                              ParamType.Document,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'appSetting': widget!.appSetting,
+                                            'shiftDoc': widget!.docRef,
+                                          },
+                                        );
+                                      },
+                                    ),
                                     Text(
-                                      valueOrDefault<String>(
-                                        widget!.docRef?.shiftId,
-                                        '0',
+                                      FFLocalizations.of(context).getText(
+                                        'bvtqu2ud' /* Shift Summary Report  */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .titleMedium
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            fontSize: 20.0,
+                                                    .titleMediumFamily,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                                        .titleMediumFamily),
                                           ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Builder(
-                                  builder: (context) {
-                                    final list =
-                                        shiftSummaryReportInvoiceRecordList
-                                            .unique((e) => e.vechicleType)
-                                            .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: list.length,
-                                      itemBuilder: (context, listIndex) {
-                                        final listItem = list[listIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 10.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed(
-                                                'shiftWiseVehicleReport',
-                                                queryParameters: {
-                                                  'vehicleType': serializeParam(
-                                                    listItem.vechicleType,
-                                                    ParamType.String,
-                                                  ),
-                                                  'docRef2': serializeParam(
-                                                    widget!.docRef,
-                                                    ParamType.Document,
-                                                  ),
-                                                  'appSetting': serializeParam(
-                                                    widget!.appSetting,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'docRef2': widget!.docRef,
-                                                  'appSetting':
-                                                      widget!.appSetting,
-                                                },
-                                              );
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(10.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  8.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            listItem
-                                                                .vechicleType,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  fontSize:
-                                                                      18.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  8.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'gh3a8fwd' /* Total Check In */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            shiftSummaryReportInvoiceRecordList
-                                                                .where((e) =>
-                                                                    (e.vechicleType ==
-                                                                        listItem
-                                                                            .vechicleType) &&
-                                                                    ((e.checkInTime >=
-                                                                            FFAppState()
-                                                                                .startDate!
-                                                                                .millisecondsSinceEpoch) &&
-                                                                        (e.checkInTime <=
-                                                                            FFAppState().endDate!.millisecondsSinceEpoch)))
-                                                                .toList()
-                                                                .length
-                                                                .toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  8.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '8zyctzdk' /* Total Check out */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            shiftSummaryReportInvoiceRecordList
-                                                                .where((e) =>
-                                                                    (e.vechicleType ==
-                                                                        listItem
-                                                                            .vechicleType) &&
-                                                                    ((e.checkOutTime >=
-                                                                            FFAppState()
-                                                                                .startDate!
-                                                                                .millisecondsSinceEpoch) &&
-                                                                        (e.checkOutTime <=
-                                                                            FFAppState().endDate!.millisecondsSinceEpoch)))
-                                                                .toList()
-                                                                .length
-                                                                .toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLargeFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .labelLargeFamily),
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'zqggusqj' /* Total Amt */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          '₹ ${functions.returntoatlamt(shiftSummaryReportInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLargeFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        );
+                                    FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 50.0,
+                                      icon: Icon(
+                                        Icons.arrow_back_rounded,
+                                        color: Color(0x000D0801),
+                                        size: 30.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
                                       },
-                                    );
-                                  },
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        flex: 8,
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(40.0),
+                              topRight: Radius.circular(40.0),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 15.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        valueOrDefault<String>(
+                                          widget!.docRef?.shiftId,
+                                          '0',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 20.0,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Builder(
+                                    builder: (context) {
+                                      final list =
+                                          shiftSummaryReportInvoiceRecordList
+                                              .unique((e) => e.vechicleType)
+                                              .toList();
+
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: list.length,
+                                        itemBuilder: (context, listIndex) {
+                                          final listItem = list[listIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'shiftWiseVehicleReport',
+                                                  queryParameters: {
+                                                    'vehicleType':
+                                                        serializeParam(
+                                                      listItem.vechicleType,
+                                                      ParamType.String,
+                                                    ),
+                                                    'docRef2': serializeParam(
+                                                      widget!.docRef,
+                                                      ParamType.Document,
+                                                    ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'docRef2': widget!.docRef,
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(10.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    8.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              listItem
+                                                                  .vechicleType,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                    fontSize:
+                                                                        18.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    8.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'gh3a8fwd' /* Total Check In */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelLargeFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                  ),
+                                                            ),
+                                                            Text(
+                                                              shiftSummaryReportInvoiceRecordList
+                                                                  .where((e) =>
+                                                                      (e.vechicleType ==
+                                                                          listItem
+                                                                              .vechicleType) &&
+                                                                      ((e.checkInTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                          (e.checkInTime <=
+                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
+                                                                  .toList()
+                                                                  .length
+                                                                  .toString(),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelLargeFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    8.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '8zyctzdk' /* Total Check out */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelLargeFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                  ),
+                                                            ),
+                                                            Text(
+                                                              shiftSummaryReportInvoiceRecordList
+                                                                  .where((e) =>
+                                                                      (e.vechicleType ==
+                                                                          listItem
+                                                                              .vechicleType) &&
+                                                                      ((e.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                          (e.checkOutTime <=
+                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
+                                                                  .toList()
+                                                                  .length
+                                                                  .toString(),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelLargeFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'zqggusqj' /* Total Amt */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelLargeFamily),
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            '₹ ${functions.returntoatlamt(shiftSummaryReportInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelLargeFamily),
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ));

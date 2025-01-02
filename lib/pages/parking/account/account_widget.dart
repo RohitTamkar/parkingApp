@@ -364,107 +364,571 @@ class _AccountWidgetState extends State<AccountWidget>
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
-            body: StreamBuilder<List<UserProfileRecord>>(
-              stream: queryUserProfileRecord(
-                queryBuilder: (userProfileRecord) => userProfileRecord.where(
-                  'mobile',
-                  isEqualTo: FFAppState().currentMobileString,
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
+              body: StreamBuilder<List<UserProfileRecord>>(
+                stream: queryUserProfileRecord(
+                  queryBuilder: (userProfileRecord) => userProfileRecord.where(
+                    'mobile',
+                    isEqualTo: FFAppState().currentMobileString,
+                  ),
+                  singleRecord: true,
                 ),
-                singleRecord: true,
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 40.0,
-                      height: 40.0,
-                      child: SpinKitFadingCircle(
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 40.0,
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 40.0,
+                        height: 40.0,
+                        child: SpinKitFadingCircle(
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 40.0,
+                        ),
                       ),
-                    ),
-                  );
-                }
-                List<UserProfileRecord> containerUserProfileRecordList =
-                    snapshot.data!;
-                // Return an empty Container when the item does not exist.
-                if (snapshot.data!.isEmpty) {
-                  return Container();
-                }
-                final containerUserProfileRecord =
-                    containerUserProfileRecordList.isNotEmpty
-                        ? containerUserProfileRecordList.first
-                        : null;
+                    );
+                  }
+                  List<UserProfileRecord> containerUserProfileRecordList =
+                      snapshot.data!;
+                  // Return an empty Container when the item does not exist.
+                  if (snapshot.data!.isEmpty) {
+                    return Container();
+                  }
+                  final containerUserProfileRecord =
+                      containerUserProfileRecordList.isNotEmpty
+                          ? containerUserProfileRecordList.first
+                          : null;
 
-                return Container(
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 15.0),
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.85,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.2,
-                                  decoration: BoxDecoration(),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1,
-                                            decoration: BoxDecoration(),
-                                            child: FlutterFlowIconButton(
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              icon: Icon(
-                                                Icons.chevron_left,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .lineColor,
-                                                size: 24.0,
+                  return Container(
+                    decoration: BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 15.0),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.85,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.2,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1,
+                                              decoration: BoxDecoration(),
+                                              child: FlutterFlowIconButton(
+                                                borderRadius: 20.0,
+                                                borderWidth: 1.0,
+                                                buttonSize: 40.0,
+                                                icon: Icon(
+                                                  Icons.chevron_left,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .lineColor,
+                                                  size: 24.0,
+                                                ),
+                                                onPressed: () async {
+                                                  context.pushNamed(
+                                                    'VehicleEntry',
+                                                    queryParameters: {
+                                                      'shiftDoc':
+                                                          serializeParam(
+                                                        FFAppState()
+                                                            .shiftDetailsNEw,
+                                                        ParamType.JSON,
+                                                      ),
+                                                      'userRef': serializeParam(
+                                                        containerUserProfileRecord
+                                                            ?.reference,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'appSetting':
+                                                          serializeParam(
+                                                        widget!.appSetting,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'appSetting':
+                                                          widget!.appSetting,
+                                                    },
+                                                  );
+                                                },
                                               ),
-                                              onPressed: () async {
-                                                context.pushNamed(
-                                                  'VehicleEntry',
-                                                  queryParameters: {
-                                                    'shiftDoc': serializeParam(
-                                                      FFAppState()
-                                                          .shiftDetailsNEw,
-                                                      ParamType.JSON,
-                                                    ),
-                                                    'userRef': serializeParam(
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1,
+                                              decoration: BoxDecoration(),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.15,
+                                              decoration: BoxDecoration(),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Icon(
+                                                    Icons.person_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .lineColor,
+                                                    size: 28.0,
+                                                  ),
+                                                  Icon(
+                                                    Icons.phone,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .lineColor,
+                                                    size: 20.0,
+                                                  ),
+                                                  Icon(
+                                                    Icons.group_work_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .lineColor,
+                                                    size: 20.0,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.6,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.15,
+                                              decoration: BoxDecoration(),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  AutoSizeText(
+                                                    valueOrDefault<String>(
                                                       containerUserProfileRecord
-                                                          ?.reference,
-                                                      ParamType
-                                                          .DocumentReference,
+                                                          ?.name,
+                                                      'null',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .lineColor,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily),
+                                                        ),
+                                                  ),
+                                                  AutoSizeText(
+                                                    valueOrDefault<String>(
+                                                      containerUserProfileRecord
+                                                          ?.mobile,
+                                                      '0',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmallFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .lineColor,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily),
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      containerUserProfileRecord
+                                                          ?.role,
+                                                      '0',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLargeFamily,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .lineColor,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeFamily),
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.15,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.15,
+                                              decoration: BoxDecoration(),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 8.0,
+                                                    buttonSize: 45.0,
+                                                    icon: Icon(
+                                                      Icons.addchart,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .lineColor,
+                                                      size: 18.0,
+                                                    ),
+                                                    onPressed: () {
+                                                      print(
+                                                          'IconButton pressed ...');
+                                                    },
+                                                  ),
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 8.0,
+                                                    buttonSize: 45.0,
+                                                    icon: Icon(
+                                                      Icons.home,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .lineColor,
+                                                      size: 18.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      _model.outletDoc =
+                                                          await queryOutletRecordOnce(
+                                                        queryBuilder:
+                                                            (outletRecord) =>
+                                                                outletRecord
+                                                                    .where(
+                                                          'id',
+                                                          isEqualTo:
+                                                              FFAppState()
+                                                                  .outletIdRef
+                                                                  ?.id,
+                                                        ),
+                                                        singleRecord: true,
+                                                      ).then((s) =>
+                                                              s.firstOrNull);
+                                                      _shouldSetState = true;
+                                                      if (containerUserProfileRecord
+                                                              ?.role ==
+                                                          'admin') {
+                                                        context.pushNamed(
+                                                          'dashboard',
+                                                          queryParameters: {
+                                                            'outletId':
+                                                                serializeParam(
+                                                              FFAppState()
+                                                                  .outletIdRef,
+                                                              ParamType
+                                                                  .DocumentReference,
+                                                            ),
+                                                            'userId':
+                                                                serializeParam(
+                                                              containerUserProfileRecord
+                                                                  ?.id,
+                                                              ParamType.String,
+                                                            ),
+                                                            'mobile':
+                                                                serializeParam(
+                                                              FFAppState()
+                                                                  .currentMobile,
+                                                              ParamType.String,
+                                                            ),
+                                                            'appSetting':
+                                                                serializeParam(
+                                                              widget!
+                                                                  .appSetting,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'appSetting':
+                                                                widget!
+                                                                    .appSetting,
+                                                          },
+                                                        );
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'User Permission Is Not Authorised',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                          ),
+                                                        );
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                    },
+                                                  ),
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 30.0,
+                                                    buttonSize: 45.0,
+                                                    icon: Icon(
+                                                      Icons.edit_sharp,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .lineColor,
+                                                      size: 22.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      if (containerUserProfileRecord
+                                                              ?.role ==
+                                                          'admin') {
+                                                        context.pushNamed(
+                                                          'editUserprofile',
+                                                          queryParameters: {
+                                                            'docRef':
+                                                                serializeParam(
+                                                              containerUserProfileRecord,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                            'appSetting':
+                                                                serializeParam(
+                                                              widget!
+                                                                  .appSetting,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'docRef':
+                                                                containerUserProfileRecord,
+                                                            'appSetting':
+                                                                widget!
+                                                                    .appSetting,
+                                                          },
+                                                        );
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'User Permission Is Not Authorised',
+                                                              style: TextStyle(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                          ),
+                                                        );
+                                                        return;
+                                                      }
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 7,
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .parkingPrimaryBackground,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(0.0),
+                                bottomRight: Radius.circular(0.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 0.0),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (FFAppState().outletIdRef !=
+                                                null) {
+                                              if (animationsMap[
+                                                      'containerOnActionTriggerAnimation2'] !=
+                                                  null) {
+                                                safeSetState(() =>
+                                                    hasContainerTriggered2 =
+                                                        true);
+                                                SchedulerBinding.instance
+                                                    .addPostFrameCallback(
+                                                        (_) async =>
+                                                            await animationsMap[
+                                                                    'containerOnActionTriggerAnimation2']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0));
+                                              }
+                                              if (animationsMap[
+                                                      'containerOnActionTriggerAnimation1'] !=
+                                                  null) {
+                                                safeSetState(() =>
+                                                    hasContainerTriggered1 =
+                                                        true);
+                                                SchedulerBinding.instance
+                                                    .addPostFrameCallback(
+                                                        (_) async =>
+                                                            await animationsMap[
+                                                                    'containerOnActionTriggerAnimation1']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0));
+                                              }
+                                              if (containerUserProfileRecord
+                                                      ?.role ==
+                                                  'admin') {
+                                                context.pushNamed(
+                                                  'businessProfileAdminfinal',
+                                                  queryParameters: {
+                                                    'mobileNo': serializeParam(
+                                                      FFAppState()
+                                                          .currentMobile,
+                                                      ParamType.String,
                                                     ),
                                                     'appSetting':
                                                         serializeParam(
@@ -477,1812 +941,1419 @@ class _AccountWidgetState extends State<AccountWidget>
                                                         widget!.appSetting,
                                                   },
                                                 );
-                                              },
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1,
-                                            decoration: BoxDecoration(),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.15,
-                                            decoration: BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Icon(
-                                                  Icons.person_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .lineColor,
-                                                  size: 28.0,
-                                                ),
-                                                Icon(
-                                                  Icons.phone,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .lineColor,
-                                                  size: 20.0,
-                                                ),
-                                                Icon(
-                                                  Icons.group_work_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .lineColor,
-                                                  size: 20.0,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.6,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.15,
-                                            decoration: BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                AutoSizeText(
-                                                  valueOrDefault<String>(
-                                                    containerUserProfileRecord
-                                                        ?.name,
-                                                    'null',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .lineColor,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
-                                                      ),
-                                                ),
-                                                AutoSizeText(
-                                                  valueOrDefault<String>(
-                                                    containerUserProfileRecord
-                                                        ?.mobile,
-                                                    '0',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmallFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .lineColor,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily),
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    containerUserProfileRecord
-                                                        ?.role,
-                                                    '0',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelLargeFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .lineColor,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLargeFamily),
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.15,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.15,
-                                            decoration: BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 8.0,
-                                                  buttonSize: 45.0,
-                                                  icon: Icon(
-                                                    Icons.addchart,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .lineColor,
-                                                    size: 18.0,
-                                                  ),
-                                                  onPressed: () {
-                                                    print(
-                                                        'IconButton pressed ...');
+                                              } else {
+                                                context.pushNamed(
+                                                  'outletlistPage',
+                                                  queryParameters: {
+                                                    'mobileNo': serializeParam(
+                                                      FFAppState()
+                                                          .currentMobile,
+                                                      ParamType.String,
+                                                    ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
                                                   },
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 8.0,
-                                                  buttonSize: 45.0,
-                                                  icon: Icon(
-                                                    Icons.home,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .lineColor,
-                                                    size: 18.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    var _shouldSetState = false;
-                                                    _model.outletDoc =
-                                                        await queryOutletRecordOnce(
-                                                      queryBuilder:
-                                                          (outletRecord) =>
-                                                              outletRecord
-                                                                  .where(
-                                                        'id',
-                                                        isEqualTo: FFAppState()
-                                                            .outletIdRef
-                                                            ?.id,
+                                                );
+                                              }
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Alert'),
+                                                    content: Text(
+                                                        'Please Add outlet'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('OK'),
                                                       ),
-                                                      singleRecord: true,
-                                                    ).then((s) =>
-                                                            s.firstOrNull);
-                                                    _shouldSetState = true;
-                                                    if (containerUserProfileRecord
-                                                            ?.role ==
-                                                        'admin') {
-                                                      context.pushNamed(
-                                                        'dashboard',
-                                                        queryParameters: {
-                                                          'outletId':
-                                                              serializeParam(
-                                                            FFAppState()
-                                                                .outletIdRef,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                          'userId':
-                                                              serializeParam(
-                                                            containerUserProfileRecord
-                                                                ?.id,
-                                                            ParamType.String,
-                                                          ),
-                                                          'mobile':
-                                                              serializeParam(
-                                                            FFAppState()
-                                                                .currentMobile,
-                                                            ParamType.String,
-                                                          ),
-                                                          'appSetting':
-                                                              serializeParam(
-                                                            widget!.appSetting,
-                                                            ParamType.Document,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'appSetting': widget!
-                                                              .appSetting,
-                                                        },
-                                                      );
-                                                    } else {
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            'User Permission Is Not Authorised',
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                            ),
-                                                          ),
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .error,
-                                                        ),
-                                                      );
-                                                      if (_shouldSetState)
-                                                        safeSetState(() {});
-                                                      return;
-                                                    }
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              if (containerUserProfileRecord
+                                                      ?.role ==
+                                                  'admin') {
+                                                context.pushNamed(
+                                                  'businessProfileAdminfinal',
+                                                  queryParameters: {
+                                                    'mobileNo': serializeParam(
+                                                      FFAppState()
+                                                          .currentMobile,
+                                                      ParamType.String,
+                                                    ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
+                                              } else {
+                                                context.pushNamed(
+                                                  'outletlistPage',
+                                                  queryParameters: {
+                                                    'mobileNo': serializeParam(
+                                                      FFAppState()
+                                                          .currentMobile,
+                                                      ParamType.String,
+                                                    ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
+                                              }
 
-                                                    if (_shouldSetState)
-                                                      safeSetState(() {});
-                                                  },
-                                                ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 30.0,
-                                                  buttonSize: 45.0,
-                                                  icon: Icon(
-                                                    Icons.edit_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .lineColor,
-                                                    size: 22.0,
+                                              return;
+                                            }
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
                                                   ),
-                                                  onPressed: () async {
-                                                    if (containerUserProfileRecord
-                                                            ?.role ==
-                                                        'admin') {
-                                                      context.pushNamed(
-                                                        'editUserprofile',
-                                                        queryParameters: {
-                                                          'docRef':
-                                                              serializeParam(
-                                                            containerUserProfileRecord,
-                                                            ParamType.Document,
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation2']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered2),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.15,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderRadius: 30.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 60.0,
+                                                          icon: Icon(
+                                                            Icons
+                                                                .add_business_outlined,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            size: 24.0,
                                                           ),
-                                                          'appSetting':
-                                                              serializeParam(
-                                                            widget!.appSetting,
-                                                            ParamType.Document,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'docRef':
-                                                              containerUserProfileRecord,
-                                                          'appSetting': widget!
-                                                              .appSetting,
-                                                        },
-                                                      );
-                                                    } else {
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            'User Permission Is Not Authorised',
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                            ),
-                                                          ),
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .error,
+                                                          onPressed: () {
+                                                            print(
+                                                                'IconButton pressed ...');
+                                                          },
                                                         ),
-                                                      );
-                                                      return;
-                                                    }
-                                                  },
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: AutoSizeText(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'b4gcbxte' /* Outlet List */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation1']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered1),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (FFAppState().outletIdRef !=
+                                                null) {
+                                              if (animationsMap[
+                                                      'containerOnActionTriggerAnimation2'] !=
+                                                  null) {
+                                                safeSetState(() =>
+                                                    hasContainerTriggered2 =
+                                                        true);
+                                                SchedulerBinding.instance
+                                                    .addPostFrameCallback(
+                                                        (_) async =>
+                                                            await animationsMap[
+                                                                    'containerOnActionTriggerAnimation2']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0));
+                                              }
+                                              if (animationsMap[
+                                                      'containerOnActionTriggerAnimation1'] !=
+                                                  null) {
+                                                safeSetState(() =>
+                                                    hasContainerTriggered1 =
+                                                        true);
+                                                SchedulerBinding.instance
+                                                    .addPostFrameCallback(
+                                                        (_) async =>
+                                                            await animationsMap[
+                                                                    'containerOnActionTriggerAnimation1']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0));
+                                              }
+
+                                              context.pushNamed('mastersNew');
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Alert'),
+                                                    content: Text(
+                                                        'Please Add outlet'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('OK'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+
+                                              context.pushNamed(
+                                                'businessProfileAdminfinal',
+                                                queryParameters: {
+                                                  'mobileNo': serializeParam(
+                                                    FFAppState()
+                                                        .currentMobileString,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+
+                                              return;
+                                            }
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation4']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered4),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.15,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderRadius: 30.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 60.0,
+                                                          icon: Icon(
+                                                            Icons.content_paste,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            size: 24.0,
+                                                          ),
+                                                          onPressed: () {
+                                                            print(
+                                                                'IconButton pressed ...');
+                                                          },
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: AutoSizeText(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '6vwby0ln' /* Masters */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation3']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered3),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation6'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered6 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation6']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation5'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered5 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation5']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            if (containerUserProfileRecord
+                                                    ?.role ==
+                                                'admin') {
+                                              context.pushNamed(
+                                                  'subscriptionNew2');
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'User Permission Is Not Authorised',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              return;
+                                            }
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.15,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderRadius: 30.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 60.0,
+                                                          icon: Icon(
+                                                            Icons.attach_money,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            size: 25.0,
+                                                          ),
+                                                          onPressed: () {
+                                                            print(
+                                                                'IconButton pressed ...');
+                                                          },
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: AutoSizeText(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'm3n7okd8' /* Subscription */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation6']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered6),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation5']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered5),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation7'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered7 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation7']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+
+                                            context
+                                                .pushNamed('PrintersettingCar');
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.15,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderRadius: 30.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 60.0,
+                                                          icon: Icon(
+                                                            Icons.print_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            size: 25.0,
+                                                          ),
+                                                          onPressed: () {
+                                                            print(
+                                                                'IconButton pressed ...');
+                                                          },
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: AutoSizeText(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'wnj2guip' /* Printer Setting */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation8']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered8),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation7']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered7),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation10'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered10 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation10']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation9'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered9 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation9']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation10']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered10),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.15,
+                                                      height: double.infinity,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 30.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 60.0,
+                                                        icon: Icon(
+                                                          Icons.chat,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () {
+                                                          print(
+                                                              'IconButton pressed ...');
+                                                        },
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: AutoSizeText(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '4fen2ss6' /* About */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineSmallFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation9']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered9),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation12'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered12 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation12']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation11'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered11 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation11']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+
+                                            context.pushNamed('Deviceqr');
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation12']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered12),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.15,
+                                                      height: double.infinity,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 30.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 60.0,
+                                                        icon: Icon(
+                                                          Icons.devices_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () {
+                                                          print(
+                                                              'IconButton pressed ...');
+                                                        },
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: AutoSizeText(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '7inj276m' /* Device */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineSmallFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation11']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered11),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation14'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered14 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation14']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation13'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered13 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation13']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation14']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered14),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.15,
+                                                      height: double.infinity,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 30.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 60.0,
+                                                        icon: Icon(
+                                                          Icons.business,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          size: 24.0,
+                                                        ),
+                                                        onPressed: () {
+                                                          print(
+                                                              'IconButton pressed ...');
+                                                        },
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: AutoSizeText(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '818avsdq' /* Sensible Connect Solutions */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmallFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .headlineSmallFamily),
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation13']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered13),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation16'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered16 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation16']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation15'] !=
+                                                null) {
+                                              safeSetState(() =>
+                                                  hasContainerTriggered15 =
+                                                      true);
+                                              SchedulerBinding.instance
+                                                  .addPostFrameCallback((_) async =>
+                                                      await animationsMap[
+                                                              'containerOnActionTriggerAnimation15']!
+                                                          .controller
+                                                          .forward(from: 0.0));
+                                            }
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
+
+                                            context.goNamedAuth(
+                                                'StartScreen', context.mounted);
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.06,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x4C989FDE),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation16']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered16),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.15,
+                                                        height: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: Colors
+                                                              .transparent,
+                                                          borderRadius: 30.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 60.0,
+                                                          icon: Icon(
+                                                            Icons.logout,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .info,
+                                                            size: 24.0,
+                                                          ),
+                                                          onPressed: () {
+                                                            print(
+                                                                'IconButton pressed ...');
+                                                          },
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: AutoSizeText(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            't5jubjjz' /* Logout */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'containerOnActionTriggerAnimation15']!,
+                                            hasBeenTriggered:
+                                                hasContainerTriggered15),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.5,
+                                      indent: 40.0,
+                                      endIndent: 40.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor2,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.9,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.06,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x00FFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.15,
+                                                height: double.infinity,
+                                                decoration: BoxDecoration(),
+                                                child: Icon(
+                                                  Icons.settings_sharp,
+                                                  size: 0.0,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.0, 0.0, 0.0, 0.0),
+                                                child: AutoSizeText(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'vlpbhdgi' /* Settings */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmallFamily,
+                                                        color:
+                                                            Color(0x00F4F3F8),
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily),
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 7,
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .parkingPrimaryBackground,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
-                              topLeft: Radius.circular(0.0),
-                              topRight: Radius.circular(0.0),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 0.0),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (FFAppState().outletIdRef !=
-                                              null) {
-                                            if (animationsMap[
-                                                    'containerOnActionTriggerAnimation2'] !=
-                                                null) {
-                                              safeSetState(() =>
-                                                  hasContainerTriggered2 =
-                                                      true);
-                                              SchedulerBinding.instance
-                                                  .addPostFrameCallback((_) async =>
-                                                      await animationsMap[
-                                                              'containerOnActionTriggerAnimation2']!
-                                                          .controller
-                                                          .forward(from: 0.0));
-                                            }
-                                            if (animationsMap[
-                                                    'containerOnActionTriggerAnimation1'] !=
-                                                null) {
-                                              safeSetState(() =>
-                                                  hasContainerTriggered1 =
-                                                      true);
-                                              SchedulerBinding.instance
-                                                  .addPostFrameCallback((_) async =>
-                                                      await animationsMap[
-                                                              'containerOnActionTriggerAnimation1']!
-                                                          .controller
-                                                          .forward(from: 0.0));
-                                            }
-                                            if (containerUserProfileRecord
-                                                    ?.role ==
-                                                'admin') {
-                                              context.pushNamed(
-                                                'businessProfileAdminfinal',
-                                                queryParameters: {
-                                                  'mobileNo': serializeParam(
-                                                    FFAppState().currentMobile,
-                                                    ParamType.String,
-                                                  ),
-                                                  'appSetting': serializeParam(
-                                                    widget!.appSetting,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'appSetting':
-                                                      widget!.appSetting,
-                                                },
-                                              );
-                                            } else {
-                                              context.pushNamed(
-                                                'outletlistPage',
-                                                queryParameters: {
-                                                  'mobileNo': serializeParam(
-                                                    FFAppState().currentMobile,
-                                                    ParamType.String,
-                                                  ),
-                                                  'appSetting': serializeParam(
-                                                    widget!.appSetting,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'appSetting':
-                                                      widget!.appSetting,
-                                                },
-                                              );
-                                            }
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Alert'),
-                                                  content:
-                                                      Text('Please Add outlet'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('OK'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                            if (containerUserProfileRecord
-                                                    ?.role ==
-                                                'admin') {
-                                              context.pushNamed(
-                                                'businessProfileAdminfinal',
-                                                queryParameters: {
-                                                  'mobileNo': serializeParam(
-                                                    FFAppState().currentMobile,
-                                                    ParamType.String,
-                                                  ),
-                                                  'appSetting': serializeParam(
-                                                    widget!.appSetting,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'appSetting':
-                                                      widget!.appSetting,
-                                                },
-                                              );
-                                            } else {
-                                              context.pushNamed(
-                                                'outletlistPage',
-                                                queryParameters: {
-                                                  'mobileNo': serializeParam(
-                                                    FFAppState().currentMobile,
-                                                    ParamType.String,
-                                                  ),
-                                                  'appSetting': serializeParam(
-                                                    widget!.appSetting,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'appSetting':
-                                                      widget!.appSetting,
-                                                },
-                                              );
-                                            }
-
-                                            return;
-                                          }
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation2']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered2),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.15,
-                                                      height: double.infinity,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30.0,
-                                                        borderWidth: 1.0,
-                                                        buttonSize: 60.0,
-                                                        icon: Icon(
-                                                          Icons
-                                                              .add_business_outlined,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          size: 24.0,
-                                                        ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: AutoSizeText(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'b4gcbxte' /* Outlet List */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation1']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered1),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (FFAppState().outletIdRef !=
-                                              null) {
-                                            if (animationsMap[
-                                                    'containerOnActionTriggerAnimation2'] !=
-                                                null) {
-                                              safeSetState(() =>
-                                                  hasContainerTriggered2 =
-                                                      true);
-                                              SchedulerBinding.instance
-                                                  .addPostFrameCallback((_) async =>
-                                                      await animationsMap[
-                                                              'containerOnActionTriggerAnimation2']!
-                                                          .controller
-                                                          .forward(from: 0.0));
-                                            }
-                                            if (animationsMap[
-                                                    'containerOnActionTriggerAnimation1'] !=
-                                                null) {
-                                              safeSetState(() =>
-                                                  hasContainerTriggered1 =
-                                                      true);
-                                              SchedulerBinding.instance
-                                                  .addPostFrameCallback((_) async =>
-                                                      await animationsMap[
-                                                              'containerOnActionTriggerAnimation1']!
-                                                          .controller
-                                                          .forward(from: 0.0));
-                                            }
-
-                                            context.pushNamed('mastersNew');
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Alert'),
-                                                  content:
-                                                      Text('Please Add outlet'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('OK'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-
-                                            context.pushNamed(
-                                              'businessProfileAdminfinal',
-                                              queryParameters: {
-                                                'mobileNo': serializeParam(
-                                                  FFAppState()
-                                                      .currentMobileString,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-
-                                            return;
-                                          }
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation4']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered4),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.15,
-                                                      height: double.infinity,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30.0,
-                                                        borderWidth: 1.0,
-                                                        buttonSize: 60.0,
-                                                        icon: Icon(
-                                                          Icons.content_paste,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          size: 24.0,
-                                                        ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: AutoSizeText(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '6vwby0ln' /* Masters */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation3']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered3),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation6'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered6 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation6']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation5'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered5 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation5']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          if (containerUserProfileRecord
-                                                  ?.role ==
-                                              'admin') {
-                                            context
-                                                .pushNamed('subscriptionNew2');
-                                          } else {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'User Permission Is Not Authorised',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                              ),
-                                            );
-                                            return;
-                                          }
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.15,
-                                                      height: double.infinity,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30.0,
-                                                        borderWidth: 1.0,
-                                                        buttonSize: 60.0,
-                                                        icon: Icon(
-                                                          Icons.attach_money,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          size: 25.0,
-                                                        ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: AutoSizeText(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'm3n7okd8' /* Subscription */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation6']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered6),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation5']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered5),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation7'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered7 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation7']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-
-                                          context
-                                              .pushNamed('PrintersettingCar');
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.15,
-                                                      height: double.infinity,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30.0,
-                                                        borderWidth: 1.0,
-                                                        buttonSize: 60.0,
-                                                        icon: Icon(
-                                                          Icons.print_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          size: 25.0,
-                                                        ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: AutoSizeText(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'wnj2guip' /* Printer Setting */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation8']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered8),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation7']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered7),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation10'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered10 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation10']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation9'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered9 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation9']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation10']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered10),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        0.15,
-                                                    height: double.infinity,
-                                                    decoration: BoxDecoration(),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
-                                                      borderRadius: 30.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 60.0,
-                                                      icon: Icon(
-                                                        Icons.chat,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        size: 24.0,
-                                                      ),
-                                                      onPressed: () {
-                                                        print(
-                                                            'IconButton pressed ...');
-                                                      },
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: AutoSizeText(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '4fen2ss6' /* About */,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineSmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation9']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered9),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation12'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered12 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation12']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation11'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered11 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation11']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-
-                                          context.pushNamed('Deviceqr');
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation12']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered12),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        0.15,
-                                                    height: double.infinity,
-                                                    decoration: BoxDecoration(),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
-                                                      borderRadius: 30.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 60.0,
-                                                      icon: Icon(
-                                                        Icons.devices_rounded,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        size: 24.0,
-                                                      ),
-                                                      onPressed: () {
-                                                        print(
-                                                            'IconButton pressed ...');
-                                                      },
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: AutoSizeText(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '7inj276m' /* Device */,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineSmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation11']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered11),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation14'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered14 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation14']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation13'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered13 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation13']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation14']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered14),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        0.15,
-                                                    height: double.infinity,
-                                                    decoration: BoxDecoration(),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
-                                                      borderRadius: 30.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 60.0,
-                                                      icon: Icon(
-                                                        Icons.business,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        size: 24.0,
-                                                      ),
-                                                      onPressed: () {
-                                                        print(
-                                                            'IconButton pressed ...');
-                                                      },
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: AutoSizeText(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '818avsdq' /* Sensible Connect Solutions */,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineSmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmallFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation13']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered13),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation16'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered16 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation16']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          if (animationsMap[
-                                                  'containerOnActionTriggerAnimation15'] !=
-                                              null) {
-                                            safeSetState(() =>
-                                                hasContainerTriggered15 = true);
-                                            SchedulerBinding.instance
-                                                .addPostFrameCallback((_) async =>
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation15']!
-                                                        .controller
-                                                        .forward(from: 0.0));
-                                          }
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          await authManager.signOut();
-                                          GoRouter.of(context)
-                                              .clearRedirectLocation();
-
-                                          context.goNamedAuth(
-                                              'StartScreen', context.mounted);
-                                        },
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.06,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Container(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x4C989FDE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation16']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered16),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.15,
-                                                      height: double.infinity,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30.0,
-                                                        borderWidth: 1.0,
-                                                        buttonSize: 60.0,
-                                                        icon: Icon(
-                                                          Icons.logout,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          size: 24.0,
-                                                        ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: AutoSizeText(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          't5jubjjz' /* Logout */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .headlineSmallFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ).animateOnActionTrigger(
-                                          animationsMap[
-                                              'containerOnActionTriggerAnimation15']!,
-                                          hasBeenTriggered:
-                                              hasContainerTriggered15),
-                                    ],
-                                  ),
-                                  Divider(
-                                    thickness: 0.5,
-                                    indent: 40.0,
-                                    endIndent: 40.0,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor2,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.9,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.06,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x00FFFFFF),
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.15,
-                                              height: double.infinity,
-                                              decoration: BoxDecoration(),
-                                              child: Icon(
-                                                Icons.settings_sharp,
-                                                size: 0.0,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 0.0, 0.0),
-                                              child: AutoSizeText(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'vlpbhdgi' /* Settings */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineSmallFamily,
-                                                          color:
-                                                              Color(0x00F4F3F8),
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineSmallFamily),
-                                                        ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ));

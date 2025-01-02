@@ -76,110 +76,113 @@ class _SplashParkingWidgetState extends State<SplashParkingWidget>
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            body: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    FlutterFlowTheme.of(context).secondaryBackground,
-                    FlutterFlowTheme.of(context).secondaryBackground,
-                    Color(0xFFEBEDF4),
-                    Color(0xFF80879D)
-                  ],
-                  stops: [0.0, 0.5, 0.7, 1.0],
-                  begin: AlignmentDirectional(0.0, -1.0),
-                  end: AlignmentDirectional(0, 1.0),
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              body: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).secondaryBackground,
+                      FlutterFlowTheme.of(context).secondaryBackground,
+                      Color(0xFFEBEDF4),
+                      Color(0xFF80879D)
+                    ],
+                    stops: [0.0, 0.5, 0.7, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
                 ),
-              ),
-              child: Padding(
-                padding:
-                    EdgeInsetsDirectional.fromSTEB(50.0, 200.0, 50.0, 250.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/Car_2.png',
-                            width: 130.0,
-                            height: 50.0,
-                            fit: BoxFit.contain,
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(50.0, 200.0, 50.0, 250.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/Car_2.png',
+                              width: 130.0,
+                              height: 50.0,
+                              fit: BoxFit.contain,
+                            ),
+                          ).animateOnPageLoad(
+                              animationsMap['imageOnPageLoadAnimation']!),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/rb_1282.png',
+                              width: 35.0,
+                              height: 30.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ).animateOnPageLoad(
-                            animationsMap['imageOnPageLoadAnimation']!),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/rb_1282.png',
-                            width: 35.0,
-                            height: 30.0,
-                            fit: BoxFit.cover,
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'cbwfle8n' /* PARK */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .displayLarge
+                                .override(
+                                  fontFamily: 'Oswald',
+                                  color: FlutterFlowTheme.of(context).info,
+                                  fontSize: 42.0,
+                                  letterSpacing: 10.0,
+                                  fontWeight: FontWeight.w900,
+                                  shadows: [
+                                    Shadow(
+                                      color: Color(0x78B1AEB9),
+                                      offset: Offset(4.0, 8.0),
+                                      blurRadius: 1.5,
+                                    )
+                                  ],
+                                  useGoogleFonts:
+                                      GoogleFonts.asMap().containsKey('Oswald'),
+                                ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'cbwfle8n' /* PARK */,
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'omgs6vwc' /* SENSE */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .displayLarge
+                                .override(
+                                  fontFamily: 'Oswald',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 42.0,
+                                  letterSpacing: 5.0,
+                                  fontWeight: FontWeight.w900,
+                                  fontStyle: FontStyle.italic,
+                                  shadows: [
+                                    Shadow(
+                                      color: Color(0x78B1AEB9),
+                                      offset: Offset(4.0, 8.0),
+                                      blurRadius: 1.5,
+                                    )
+                                  ],
+                                  useGoogleFonts:
+                                      GoogleFonts.asMap().containsKey('Oswald'),
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .displayLarge
-                              .override(
-                                fontFamily: 'Oswald',
-                                color: FlutterFlowTheme.of(context).info,
-                                fontSize: 42.0,
-                                letterSpacing: 10.0,
-                                fontWeight: FontWeight.w900,
-                                shadows: [
-                                  Shadow(
-                                    color: Color(0x78B1AEB9),
-                                    offset: Offset(4.0, 8.0),
-                                    blurRadius: 1.5,
-                                  )
-                                ],
-                                useGoogleFonts:
-                                    GoogleFonts.asMap().containsKey('Oswald'),
-                              ),
-                        ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'omgs6vwc' /* SENSE */,
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .displayLarge
-                              .override(
-                                fontFamily: 'Oswald',
-                                color: FlutterFlowTheme.of(context).primary,
-                                fontSize: 42.0,
-                                letterSpacing: 5.0,
-                                fontWeight: FontWeight.w900,
-                                fontStyle: FontStyle.italic,
-                                shadows: [
-                                  Shadow(
-                                    color: Color(0x78B1AEB9),
-                                    offset: Offset(4.0, 8.0),
-                                    blurRadius: 1.5,
-                                  )
-                                ],
-                                useGoogleFonts:
-                                    GoogleFonts.asMap().containsKey('Oswald'),
-                              ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

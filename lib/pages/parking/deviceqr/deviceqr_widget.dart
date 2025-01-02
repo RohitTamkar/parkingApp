@@ -153,7 +153,7 @@ class _DeviceqrWidgetState extends State<DeviceqrWidget> {
                                           0.0, 0.0, 0.0, 10.0),
                                       child: Text(
                                         valueOrDefault<String>(
-                                          FFAppState().outletIdRef?.id,
+                                          FFAppState().outletName,
                                           '0',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -173,18 +173,6 @@ class _DeviceqrWidgetState extends State<DeviceqrWidget> {
                                                               context)
                                                           .titleSmallFamily),
                                             ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 250.0,
-                                      height: 250.0,
-                                      child: custom_widgets.QrCode(
-                                        width: 250.0,
-                                        height: 250.0,
-                                        data: FFAppState().outletId,
-                                        size: 250.0,
-                                        backgroundColor: Colors.black,
-                                        foregroundColor: Colors.white,
                                       ),
                                     ),
                                   ],

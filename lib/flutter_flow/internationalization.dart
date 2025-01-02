@@ -2407,6 +2407,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ParkingIconCheckin
   {
+    'apwi13is': {
+      'en': 'Cancel',
+      'hi': '',
+      'kn': '',
+      'mr': '',
+      'ta': '',
+    },
     'dzvr59z9': {
       'en': 'Vehicle Number',
       'hi': '',

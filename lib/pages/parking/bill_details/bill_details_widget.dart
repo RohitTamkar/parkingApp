@@ -95,12 +95,12 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                 FocusScope.of(context).unfocus();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: Scaffold(
-                key: scaffoldKey,
-                backgroundColor: Color(0xFFFFAC47),
-                body: SafeArea(
-                  top: true,
-                  child: FutureBuilder<OutletRecord>(
+              child: WillPopScope(
+                onWillPop: () async => false,
+                child: Scaffold(
+                  key: scaffoldKey,
+                  backgroundColor: Color(0xFFFFAC47),
+                  body: FutureBuilder<OutletRecord>(
                     future:
                         OutletRecord.getDocumentOnce(FFAppState().outletIdRef!),
                     builder: (context, snapshot) {

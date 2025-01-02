@@ -234,36 +234,41 @@ class _WelcomeScreenNewWidgetState extends State<WelcomeScreenNewWidget>
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    FlutterFlowTheme.of(context).primaryBtnText,
-                    FlutterFlowTheme.of(context).error
-                  ],
-                  stops: [1.0, 1.0],
-                  begin: AlignmentDirectional(0.0, -1.0),
-                  end: AlignmentDirectional(0, 1.0),
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).primaryBtnText,
+                      FlutterFlowTheme.of(context).error
+                    ],
+                    stops: [1.0, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
                 ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/Sensible_Connect_Logo_2.png',
-                    height: 180.0,
-                    fit: BoxFit.contain,
-                  ).animateOnPageLoad(
-                      animationsMap['imageOnPageLoadAnimation']!),
-                ],
-              ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
-            ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/Sensible_Connect_Logo_2.png',
+                      height: 180.0,
+                      fit: BoxFit.contain,
+                    ).animateOnPageLoad(
+                        animationsMap['imageOnPageLoadAnimation']!),
+                  ],
+                ).animateOnPageLoad(
+                    animationsMap['columnOnPageLoadAnimation']!),
+              ).animateOnPageLoad(
+                  animationsMap['containerOnPageLoadAnimation']!),
+            ),
           ),
         ));
   }

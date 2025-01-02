@@ -97,262 +97,275 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                 FocusScope.of(context).unfocus();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              child: Scaffold(
-                key: scaffoldKey,
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                body: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).parkingPrimary,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 45.0,
-                                  icon: Icon(
-                                    Icons.chevron_left,
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                      'VehicleEntry',
-                                      queryParameters: {
-                                        'shiftDoc': serializeParam(
-                                          FFAppState().shiftDetailsNEw,
-                                          ParamType.JSON,
-                                        ),
-                                        'userRef': serializeParam(
-                                          currentUserReference,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'appSetting': serializeParam(
-                                          appSettingsAppSettingsRecord,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'appSetting':
-                                            appSettingsAppSettingsRecord,
-                                      },
-                                    );
-                                  },
-                                ),
-                                AutoSizeText(
-                                  FFLocalizations.of(context).getText(
-                                    'ptpc7w13' /* App Settings */,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .headlineSmallFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .lineColor,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily),
-                                      ),
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    await appSettingsAppSettingsRecord!
-                                        .reference
-                                        .update({
-                                      ...mapToFirestore(
-                                        {
-                                          'settingList':
-                                              getAppSettingsListFirestoreData(
-                                            FFAppState().appSettings,
+              child: WillPopScope(
+                onWillPop: () async => false,
+                child: Scaffold(
+                  key: scaffoldKey,
+                  backgroundColor:
+                      FlutterFlowTheme.of(context).primaryBackground,
+                  body: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).parkingPrimary,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 30.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 45.0,
+                                    icon: Icon(
+                                      Icons.chevron_left,
+                                      color: FlutterFlowTheme.of(context)
+                                          .lineColor,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                        'VehicleEntry',
+                                        queryParameters: {
+                                          'shiftDoc': serializeParam(
+                                            FFAppState().shiftDetailsNEw,
+                                            ParamType.JSON,
                                           ),
-                                        },
-                                      ),
-                                    });
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Changes Applied....!',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmallFamily,
-                                                color: Color(0x00000000),
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(FlutterFlowTheme
-                                                            .of(context)
-                                                        .headlineSmallFamily),
-                                              ),
-                                        ),
-                                        duration: Duration(milliseconds: 3000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                      ),
-                                    );
-
-                                    context.pushNamed(
-                                      'welcomeScreenParking',
-                                      queryParameters: {
-                                        'shiftDoc': serializeParam(
-                                          FFAppState().shiftDetailsNEw,
-                                          ParamType.JSON,
-                                        ),
-                                        'outletRef': serializeParam(
-                                          FFAppState().outletIdRef,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'appSetting': serializeParam(
-                                          appSettingsAppSettingsRecord,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'appSetting':
+                                          'userRef': serializeParam(
+                                            currentUserReference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'appSetting': serializeParam(
                                             appSettingsAppSettingsRecord,
-                                      },
-                                    );
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    '44kpbe66' /* Apply */,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting':
+                                              appSettingsAppSettingsRecord,
+                                        },
+                                      );
+                                    },
                                   ),
-                                  options: FFButtonOptions(
-                                    padding: EdgeInsets.all(20.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .parkingSecondaryBackground,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
+                                  AutoSizeText(
+                                    FFLocalizations.of(context).getText(
+                                      'ptpc7w13' /* App Settings */,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
+                                                  .headlineSmallFamily,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          fontSize: 12.0,
+                                              .lineColor,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
+                                                      .headlineSmallFamily),
                                         ),
-                                    elevation: 2.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 3.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 2.0, 0.0),
-                                    child: Container(
-                                      width: 100.0,
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.78,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 5.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) {
-                                            final appSettingList =
-                                                appSettingsAppSettingsRecord
-                                                        ?.settingList
-                                                        ?.where((e) =>
-                                                            e.settingType ==
-                                                            'PARKING/')
-                                                        .toList()
-                                                        ?.toList() ??
-                                                    [];
-
-                                            return ListView.builder(
-                                              padding: EdgeInsets.zero,
-                                              scrollDirection: Axis.vertical,
-                                              itemCount: appSettingList.length,
-                                              itemBuilder: (context,
-                                                  appSettingListIndex) {
-                                                final appSettingListItem =
-                                                    appSettingList[
-                                                        appSettingListIndex];
-                                                return AppSettingComponentWidget(
-                                                  key: Key(
-                                                      'Key8fs_${appSettingListIndex}_of_${appSettingList.length}'),
-                                                  settingStruct:
-                                                      appSettingListItem,
-                                                  allSettings:
-                                                      appSettingsAppSettingsRecord
-                                                          ?.settingList,
-                                                );
-                                              },
-                                            );
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      await appSettingsAppSettingsRecord!
+                                          .reference
+                                          .update({
+                                        ...mapToFirestore(
+                                          {
+                                            'settingList':
+                                                getAppSettingsListFirestoreData(
+                                              FFAppState().appSettings,
+                                            ),
                                           },
                                         ),
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Changes Applied....!',
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmallFamily,
+                                                  color: Color(0x00000000),
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineSmallFamily),
+                                                ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 3000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                        ),
+                                      );
+
+                                      context.pushNamed(
+                                        'welcomeScreenParking',
+                                        queryParameters: {
+                                          'shiftDoc': serializeParam(
+                                            FFAppState().shiftDetailsNEw,
+                                            ParamType.JSON,
+                                          ),
+                                          'outletRef': serializeParam(
+                                            FFAppState().outletIdRef,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'appSetting': serializeParam(
+                                            appSettingsAppSettingsRecord,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'appSetting':
+                                              appSettingsAppSettingsRecord,
+                                        },
+                                      );
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '44kpbe66' /* Apply */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      padding: EdgeInsets.all(20.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .parkingSecondaryBackground,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                      elevation: 2.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 3.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 2.0, 0.0),
+                                      child: Container(
+                                        width: 100.0,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.78,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 5.0, 0.0),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final appSettingList =
+                                                  appSettingsAppSettingsRecord
+                                                          ?.settingList
+                                                          ?.where((e) =>
+                                                              e.settingType ==
+                                                              'PARKING/')
+                                                          .toList()
+                                                          ?.toList() ??
+                                                      [];
+
+                                              return ListView.builder(
+                                                padding: EdgeInsets.zero,
+                                                scrollDirection: Axis.vertical,
+                                                itemCount:
+                                                    appSettingList.length,
+                                                itemBuilder: (context,
+                                                    appSettingListIndex) {
+                                                  final appSettingListItem =
+                                                      appSettingList[
+                                                          appSettingListIndex];
+                                                  return AppSettingComponentWidget(
+                                                    key: Key(
+                                                        'Key8fs_${appSettingListIndex}_of_${appSettingList.length}'),
+                                                    settingStruct:
+                                                        appSettingListItem,
+                                                    allSettings:
+                                                        appSettingsAppSettingsRecord
+                                                            ?.settingList,
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ));

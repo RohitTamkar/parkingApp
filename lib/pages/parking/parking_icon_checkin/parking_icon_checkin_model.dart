@@ -15,6 +15,7 @@ import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,13 @@ class ParkingIconCheckinModel
 
   ///  State fields for stateful widgets in this page.
 
+  var qrResult = '';
+  // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
+  MonthlyPassRecord? getinvout;
+  // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
+  PartyRecord? invoiceParty;
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  InvoiceRecord? invoice;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

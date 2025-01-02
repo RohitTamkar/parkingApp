@@ -70,184 +70,517 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 100.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).parkingPrimary,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 45.0,
-                              icon: Icon(
-                                Icons.chevron_left,
-                                color: FlutterFlowTheme.of(context).lineColor,
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
-                                context.pushNamed(
-                                  'VehicleEntry',
-                                  queryParameters: {
-                                    'shiftDoc': serializeParam(
-                                      widget!.shiftDoc,
-                                      ParamType.JSON,
-                                    ),
-                                    'userRef': serializeParam(
-                                      widget!.userRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'appSetting': serializeParam(
-                                      widget!.appsetting,
-                                      ParamType.Document,
-                                    ),
-                                  }.withoutNulls,
-                                  extra: <String, dynamic>{
-                                    'appSetting': widget!.appsetting,
-                                  },
-                                );
-                              },
-                            ),
-                            AutoSizeText(
-                              FFLocalizations.of(context).getText(
-                                '09so15ok' /* Bill Entry */,
-                              ),
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .headlineSmallFamily,
-                                    color:
-                                        FlutterFlowTheme.of(context).lineColor,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
-                                  ),
-                            ),
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 45.0,
-                              icon: Icon(
-                                Icons.chevron_left,
-                                color: Colors.transparent,
-                                size: 30.0,
-                              ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              body: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).parkingPrimary,
+                    ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 100.0),
-                          child: FlutterFlowRadioButton(
-                            options: [
-                              FFLocalizations.of(context).getText(
-                                'azoeoer0' /* Token No */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'fmlor34i' /* Vehicle No */,
-                              )
-                            ].toList(),
-                            onChanged: (val) => safeSetState(() {}),
-                            controller: _model.radioButtonValueController ??=
-                                FormFieldController<String>(
-                                    FFLocalizations.of(context).getText(
-                              'geu4ygp4' /* Token No */,
-                            )),
-                            optionHeight: 32.0,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .labelMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelMediumFamily),
-                                ),
-                            selectedTextStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                            buttonPosition: RadioButtonPosition.left,
-                            direction: Axis.horizontal,
-                            radioButtonColor:
-                                FlutterFlowTheme.of(context).primary,
-                            inactiveRadioButtonColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                            toggleable: false,
-                            horizontalAlignment: WrapAlignment.start,
-                            verticalAlignment: WrapCrossAlignment.start,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 50.0),
+                              20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Builder(
-                                  builder: (context) => TextFormField(
-                                    controller: _model.textController,
-                                    focusNode: _model.textFieldFocusNode,
-                                    onFieldSubmitted: (_) async {
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 45.0,
+                                icon: Icon(
+                                  Icons.chevron_left,
+                                  color: FlutterFlowTheme.of(context).lineColor,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    'VehicleEntry',
+                                    queryParameters: {
+                                      'shiftDoc': serializeParam(
+                                        widget!.shiftDoc,
+                                        ParamType.JSON,
+                                      ),
+                                      'userRef': serializeParam(
+                                        widget!.userRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'appSetting': serializeParam(
+                                        widget!.appsetting,
+                                        ParamType.Document,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'appSetting': widget!.appsetting,
+                                    },
+                                  );
+                                },
+                              ),
+                              AutoSizeText(
+                                FFLocalizations.of(context).getText(
+                                  '09so15ok' /* Bill Entry */,
+                                ),
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .lineColor,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily),
+                                    ),
+                              ),
+                              FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 45.0,
+                                icon: Icon(
+                                  Icons.chevron_left,
+                                  color: Colors.transparent,
+                                  size: 30.0,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 100.0),
+                            child: FlutterFlowRadioButton(
+                              options: [
+                                FFLocalizations.of(context).getText(
+                                  'azoeoer0' /* Token No */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'fmlor34i' /* Vehicle No */,
+                                )
+                              ].toList(),
+                              onChanged: (val) => safeSetState(() {}),
+                              controller: _model.radioButtonValueController ??=
+                                  FormFieldController<String>(
+                                      FFLocalizations.of(context).getText(
+                                'geu4ygp4' /* Token No */,
+                              )),
+                              optionHeight: 32.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
+                                  ),
+                              selectedTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                              buttonPosition: RadioButtonPosition.left,
+                              direction: Axis.horizontal,
+                              radioButtonColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              inactiveRadioButtonColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              toggleable: false,
+                              horizontalAlignment: WrapAlignment.start,
+                              verticalAlignment: WrapCrossAlignment.start,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 50.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Builder(
+                                    builder: (context) => TextFormField(
+                                      controller: _model.textController,
+                                      focusNode: _model.textFieldFocusNode,
+                                      onFieldSubmitted: (_) async {
+                                        if (_model.radioButtonValue ==
+                                            'Token No') {
+                                          if (_model.textController.text !=
+                                                  null &&
+                                              _model.textController.text !=
+                                                  '') {
+                                            _model.search =
+                                                await queryInvoiceRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (invoiceRecord) =>
+                                                  invoiceRecord.where(
+                                                'count',
+                                                isEqualTo: int.tryParse(
+                                                    _model.textController.text),
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _model.productDoc =
+                                                await queryProductRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (productRecord) =>
+                                                  productRecord.where(
+                                                'name',
+                                                isEqualTo:
+                                                    _model.search?.vechicleType,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            if (_model.search?.checkOutTime ==
+                                                0) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: QrparkingWidget(
+                                                        usrref: widget!.userRef,
+                                                        invdoc: _model.search,
+                                                        shiftdoc:
+                                                            widget!.shiftDoc!,
+                                                        settings:
+                                                            widget!.appsetting,
+                                                        productDoc:
+                                                            _model.productDoc,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: Text(
+                                                        'The Vehicle checkout process is already completed!'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          } else {
+                                            _model.search2 =
+                                                await queryInvoiceRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (invoiceRecord) =>
+                                                  invoiceRecord.where(
+                                                'checkOutTime',
+                                                isEqualTo: 0,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _model.listcars = _model.search2;
+                                            safeSetState(() {});
+                                          }
+                                        } else {
+                                          if (_model.textController.text !=
+                                                  null &&
+                                              _model.textController.text !=
+                                                  '') {
+                                            _model.search3 =
+                                                await queryInvoiceRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (invoiceRecord) =>
+                                                  invoiceRecord.where(
+                                                'vechicleNo',
+                                                isEqualTo:
+                                                    _model.textController.text,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _model.productDoc2 =
+                                                await queryProductRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (productRecord) =>
+                                                  productRecord.where(
+                                                'name',
+                                                isEqualTo: _model
+                                                    .search3?.vechicleType,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            if (_model.search3?.checkOutTime ==
+                                                0) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: QrparkingWidget(
+                                                        usrref: widget!.userRef,
+                                                        invdoc: _model.search3,
+                                                        shiftdoc:
+                                                            widget!.shiftDoc!,
+                                                        settings:
+                                                            widget!.appsetting,
+                                                        productDoc:
+                                                            _model.productDoc2,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    content: Text(
+                                                        'The Vehicle checkout process is already completed!'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          } else {
+                                            _model.search4 =
+                                                await queryInvoiceRecordOnce(
+                                              parent: FFAppState().outletIdRef,
+                                              queryBuilder: (invoiceRecord) =>
+                                                  invoiceRecord.where(
+                                                'checkOutTime',
+                                                isEqualTo: 0,
+                                              ),
+                                              singleRecord: true,
+                                            ).then((s) => s.firstOrNull);
+                                            _model.listcars = _model.search4;
+                                            safeSetState(() {});
+                                          }
+                                        }
+
+                                        safeSetState(() {});
+                                      },
+                                      autofocus: false,
+                                      textCapitalization:
+                                          TextCapitalization.characters,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          '7hjkrwde' /* Search Vehicle */,
+                                        ),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLargeFamily),
+                                            ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
+                                            ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
+                                          ),
+                                      validator: _model.textControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                ),
+                                Builder(
+                                  builder: (context) => FlutterFlowIconButton(
+                                    borderRadius: 8.0,
+                                    buttonSize: 50.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.search_sharp,
+                                      color:
+                                          FlutterFlowTheme.of(context).warning,
+                                      size: 30.0,
+                                    ),
+                                    onPressed: () async {
                                       if (_model.radioButtonValue ==
                                           'Token No') {
                                         if (_model.textController.text !=
                                                 null &&
                                             _model.textController.text != '') {
-                                          _model.search =
+                                          _model.searchCopy =
                                               await queryInvoiceRecordOnce(
                                             parent: FFAppState().outletIdRef,
                                             queryBuilder: (invoiceRecord) =>
@@ -258,18 +591,18 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          _model.productDoc =
+                                          _model.productDocCopy =
                                               await queryProductRecordOnce(
                                             parent: FFAppState().outletIdRef,
                                             queryBuilder: (productRecord) =>
                                                 productRecord.where(
                                               'name',
-                                              isEqualTo:
-                                                  _model.search?.vechicleType,
+                                              isEqualTo: _model
+                                                  .searchCopy?.vechicleType,
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          if (_model.search?.checkOutTime ==
+                                          if (_model.searchCopy?.checkOutTime ==
                                               0) {
                                             await showDialog(
                                               context: context,
@@ -296,13 +629,13 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                                     },
                                                     child: QrparkingWidget(
                                                       usrref: widget!.userRef,
-                                                      invdoc: _model.search,
+                                                      invdoc: _model.searchCopy,
                                                       shiftdoc:
                                                           widget!.shiftDoc!,
                                                       settings:
                                                           widget!.appsetting,
                                                       productDoc:
-                                                          _model.productDoc,
+                                                          _model.productDocCopy,
                                                     ),
                                                   ),
                                                 );
@@ -328,7 +661,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                             );
                                           }
                                         } else {
-                                          _model.search2 =
+                                          _model.search2Copy =
                                               await queryInvoiceRecordOnce(
                                             parent: FFAppState().outletIdRef,
                                             queryBuilder: (invoiceRecord) =>
@@ -338,14 +671,14 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          _model.listcars = _model.search2;
+                                          _model.listcars = _model.search2Copy;
                                           safeSetState(() {});
                                         }
                                       } else {
                                         if (_model.textController.text !=
                                                 null &&
                                             _model.textController.text != '') {
-                                          _model.search3 =
+                                          _model.search3Copy =
                                               await queryInvoiceRecordOnce(
                                             parent: FFAppState().outletIdRef,
                                             queryBuilder: (invoiceRecord) =>
@@ -356,18 +689,19 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          _model.productDoc2 =
+                                          _model.productDoc2Copy =
                                               await queryProductRecordOnce(
                                             parent: FFAppState().outletIdRef,
                                             queryBuilder: (productRecord) =>
                                                 productRecord.where(
                                               'name',
-                                              isEqualTo:
-                                                  _model.search3?.vechicleType,
+                                              isEqualTo: _model
+                                                  .search3Copy?.vechicleType,
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          if (_model.search3?.checkOutTime ==
+                                          if (_model
+                                                  .search3Copy?.checkOutTime ==
                                               0) {
                                             await showDialog(
                                               context: context,
@@ -394,13 +728,14 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                                     },
                                                     child: QrparkingWidget(
                                                       usrref: widget!.userRef,
-                                                      invdoc: _model.search3,
+                                                      invdoc:
+                                                          _model.search3Copy,
                                                       shiftdoc:
                                                           widget!.shiftDoc!,
                                                       settings:
                                                           widget!.appsetting,
-                                                      productDoc:
-                                                          _model.productDoc2,
+                                                      productDoc: _model
+                                                          .productDoc2Copy,
                                                     ),
                                                   ),
                                                 );
@@ -426,7 +761,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                             );
                                           }
                                         } else {
-                                          _model.search4 =
+                                          _model.search4Copy =
                                               await queryInvoiceRecordOnce(
                                             parent: FFAppState().outletIdRef,
                                             queryBuilder: (invoiceRecord) =>
@@ -436,441 +771,138 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
-                                          _model.listcars = _model.search4;
+                                          _model.listcars = _model.search4Copy;
                                           safeSetState(() {});
                                         }
                                       }
 
                                       safeSetState(() {});
                                     },
-                                    autofocus: false,
-                                    textCapitalization:
-                                        TextCapitalization.characters,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '7hjkrwde' /* Search Vehicle */,
-                                      ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLargeFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLargeFamily),
-                                          ),
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily),
-                                          ),
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0.0),
-                                          bottomRight: Radius.circular(0.0),
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
-                                        ),
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
                                   ),
                                 ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 50.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'yz45d649' /* OR */,
                               ),
-                              Builder(
-                                builder: (context) => FlutterFlowIconButton(
-                                  borderRadius: 8.0,
-                                  buttonSize: 50.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  icon: Icon(
-                                    Icons.search_sharp,
-                                    color: FlutterFlowTheme.of(context).warning,
-                                    size: 30.0,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineLargeFamily,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineLargeFamily),
                                   ),
-                                  onPressed: () async {
-                                    if (_model.radioButtonValue == 'Token No') {
-                                      if (_model.textController.text != null &&
-                                          _model.textController.text != '') {
-                                        _model.searchCopy =
-                                            await queryInvoiceRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord.where(
-                                            'count',
-                                            isEqualTo: int.tryParse(
-                                                _model.textController.text),
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _model.productDocCopy =
-                                            await queryProductRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (productRecord) =>
-                                              productRecord.where(
-                                            'name',
-                                            isEqualTo:
-                                                _model.searchCopy?.vechicleType,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        if (_model.searchCopy?.checkOutTime ==
-                                            0) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                elevation: 0,
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    FocusScope.of(dialogContext)
-                                                        .unfocus();
-                                                    FocusManager
-                                                        .instance.primaryFocus
-                                                        ?.unfocus();
-                                                  },
-                                                  child: QrparkingWidget(
-                                                    usrref: widget!.userRef,
-                                                    invdoc: _model.searchCopy,
-                                                    shiftdoc: widget!.shiftDoc!,
-                                                    settings:
-                                                        widget!.appsetting,
-                                                    productDoc:
-                                                        _model.productDocCopy,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'The Vehicle checkout process is already completed!'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-                                      } else {
-                                        _model.search2Copy =
-                                            await queryInvoiceRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord.where(
-                                            'checkOutTime',
-                                            isEqualTo: 0,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _model.listcars = _model.search2Copy;
-                                        safeSetState(() {});
-                                      }
-                                    } else {
-                                      if (_model.textController.text != null &&
-                                          _model.textController.text != '') {
-                                        _model.search3Copy =
-                                            await queryInvoiceRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord.where(
-                                            'vechicleNo',
-                                            isEqualTo:
-                                                _model.textController.text,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _model.productDoc2Copy =
-                                            await queryProductRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (productRecord) =>
-                                              productRecord.where(
-                                            'name',
-                                            isEqualTo: _model
-                                                .search3Copy?.vechicleType,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        if (_model.search3Copy?.checkOutTime ==
-                                            0) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                elevation: 0,
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    FocusScope.of(dialogContext)
-                                                        .unfocus();
-                                                    FocusManager
-                                                        .instance.primaryFocus
-                                                        ?.unfocus();
-                                                  },
-                                                  child: QrparkingWidget(
-                                                    usrref: widget!.userRef,
-                                                    invdoc: _model.search3Copy,
-                                                    shiftdoc: widget!.shiftDoc!,
-                                                    settings:
-                                                        widget!.appsetting,
-                                                    productDoc:
-                                                        _model.productDoc2Copy,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                content: Text(
-                                                    'The Vehicle checkout process is already completed!'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-                                      } else {
-                                        _model.search4Copy =
-                                            await queryInvoiceRecordOnce(
-                                          parent: FFAppState().outletIdRef,
-                                          queryBuilder: (invoiceRecord) =>
-                                              invoiceRecord.where(
-                                            'checkOutTime',
-                                            isEqualTo: 0,
-                                          ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _model.listcars = _model.search4Copy;
-                                        safeSetState(() {});
-                                      }
-                                    }
-
-                                    safeSetState(() {});
-                                  },
-                                ),
+                            ),
+                          ),
+                          Builder(
+                            builder: (context) => FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              buttonSize: 116.0,
+                              icon: Icon(
+                                Icons.qr_code_scanner_sharp,
+                                color: FlutterFlowTheme.of(context).lineColor,
+                                size: 60.0,
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 50.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'yz45d649' /* OR */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineLargeFamily,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineLargeFamily),
-                                ),
-                          ),
-                        ),
-                        Builder(
-                          builder: (context) => FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 30.0,
-                            buttonSize: 116.0,
-                            icon: Icon(
-                              Icons.qr_code_scanner_sharp,
-                              color: FlutterFlowTheme.of(context).lineColor,
-                              size: 60.0,
-                            ),
-                            onPressed: () async {
-                              _model.qrResult =
-                                  await FlutterBarcodeScanner.scanBarcode(
-                                '#C62828', // scanning line color
-                                FFLocalizations.of(context).getText(
-                                  'mc3ydhlt' /* Cancel */,
-                                ), // cancel button text
-                                true, // whether to show the flash icon
-                                ScanMode.QR,
-                              );
-
-                              _model.getinvout = await queryInvoiceRecordOnce(
-                                parent: FFAppState().outletIdRef,
-                                queryBuilder: (invoiceRecord) =>
-                                    invoiceRecord.where(
-                                  'id',
-                                  isEqualTo: _model.qrResult,
-                                ),
-                                singleRecord: true,
-                              ).then((s) => s.firstOrNull);
-                              _model.productDoc3 = await queryProductRecordOnce(
-                                parent: FFAppState().outletIdRef,
-                                queryBuilder: (productRecord) =>
-                                    productRecord.where(
-                                  'name',
-                                  isEqualTo: _model.getinvout?.vechicleType,
-                                ),
-                                singleRecord: true,
-                              ).then((s) => s.firstOrNull);
-                              if (_model.getinvout?.checkOutTime == 0) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(dialogContext)
-                                              .unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: QrparkingWidget(
-                                          usrref: widget!.userRef,
-                                          invdoc: _model.getinvout,
-                                          shiftdoc: widget!.shiftDoc!,
-                                          settings: widget!.appsetting,
-                                          productDoc: _model.productDoc3,
-                                        ),
-                                      ),
-                                    );
-                                  },
+                              onPressed: () async {
+                                _model.qrResult =
+                                    await FlutterBarcodeScanner.scanBarcode(
+                                  '#C62828', // scanning line color
+                                  FFLocalizations.of(context).getText(
+                                    'mc3ydhlt' /* Cancel */,
+                                  ), // cancel button text
+                                  true, // whether to show the flash icon
+                                  ScanMode.QR,
                                 );
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      content: Text(
-                                          'The Vehicle checkout process is already completed!'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
 
-                              safeSetState(() {});
-                            },
+                                _model.getinvout = await queryInvoiceRecordOnce(
+                                  parent: FFAppState().outletIdRef,
+                                  queryBuilder: (invoiceRecord) =>
+                                      invoiceRecord.where(
+                                    'id',
+                                    isEqualTo: _model.qrResult,
+                                  ),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                _model.productDoc3 =
+                                    await queryProductRecordOnce(
+                                  parent: FFAppState().outletIdRef,
+                                  queryBuilder: (productRecord) =>
+                                      productRecord.where(
+                                    'name',
+                                    isEqualTo: _model.getinvout?.vechicleType,
+                                  ),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                if (_model.getinvout?.checkOutTime == 0) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: QrparkingWidget(
+                                            usrref: widget!.userRef,
+                                            invdoc: _model.getinvout,
+                                            shiftdoc: widget!.shiftDoc!,
+                                            settings: widget!.appsetting,
+                                            productDoc: _model.productDoc3,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        content: Text(
+                                            'The Vehicle checkout process is already completed!'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
+
+                                safeSetState(() {});
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));
