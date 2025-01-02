@@ -194,6 +194,10 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                         flex: 4,
                         child: StreamBuilder<List<OutletRecord>>(
                           stream: queryOutletRecord(
+                            queryBuilder: (outletRecord) => outletRecord.where(
+                              'id',
+                              isEqualTo: FFAppState().outletIdRef?.id,
+                            ),
                             singleRecord: true,
                           ),
                           builder: (context, snapshot) {
