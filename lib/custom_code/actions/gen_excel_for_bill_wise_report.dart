@@ -62,23 +62,23 @@ Future<String> genExcelForBillWiseReport(
     TextCellValue(startdate ?? ''),
   ]);
 
-  sheet.appendRow([
-    TextCellValue('Total Bill Amount'),
-    TextCellValue(count.toString() ?? ''),
-  ]);
+  // sheet.appendRow([
+  //   TextCellValue('Total Bill Amount'),
+  //   TextCellValue(count.toString() ?? ''),
+  // ]);
+
+  // sheet.appendRow([
+  //   TextCellValue('Total Tax Amount'),
+  //   TextCellValue(vechicleNo.toString() ?? ''),
+  // ]);
+
+  // sheet.appendRow([
+  //   TextCellValue('Total Discount Amount'),
+  //   TextCellValue(outDate.toString() ?? ''),
+  // ]);
 
   sheet.appendRow([
-    TextCellValue('Total Tax Amount'),
-    TextCellValue(vechicleNo.toString() ?? ''),
-  ]);
-
-  sheet.appendRow([
-    TextCellValue('Total Discount Amount'),
-    TextCellValue(outDate.toString() ?? ''),
-  ]);
-
-  sheet.appendRow([
-    TextCellValue('Total Delivery Charges'),
+    TextCellValue('Total  Amount'),
     TextCellValue(totalAmount.toString() ?? ''),
   ]);
 
@@ -86,15 +86,13 @@ Future<String> genExcelForBillWiseReport(
 
   // Add product details to the sheet
   sheet.appendRow([
-    TextCellValue('Date'),
-    TextCellValue('Bill No'),
-    TextCellValue('Bill Amount'),
-    TextCellValue('Tax Amount'),
-    TextCellValue('Discount Amount'),
-    TextCellValue('Delivery Charges'),
+    TextCellValue('Count'),
+    TextCellValue('Vechicle No'),
+    TextCellValue('Out Date'),
+    TextCellValue('Net Amount'),
   ]);
 
-  List<int> boldColumns = [0, 1, 2, 3, 4, 5, 7];
+  List<int> boldColumns = [0, 1, 2, 3];
   List<int> boldRows = [1, 2, 3, 4, 5];
 
   for (int columnIndex in boldColumns) {
@@ -110,10 +108,13 @@ Future<String> genExcelForBillWiseReport(
   }
 
   for (var product in docList!) {
+    final timestamp = product.checkOutTime; // Assuming this is in milliseconds.
+    final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
+    final formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(date);
     sheet.appendRow([
       TextCellValue(product.count.toString()),
       TextCellValue(product.vechicleNo),
-      TextCellValue(product.checkOutTime.toString()),
+      TextCellValue(formattedDate),
       TextCellValue(product.finalBillAmt.toString()),
       // TextCellValue(product.taxAmt.toString()),
       // TextCellValue(product.discountAmt.toString()),
