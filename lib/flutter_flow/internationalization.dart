@@ -4788,13 +4788,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'mr': '',
       'ta': '',
     },
-    '5ljc9mla': {
-      'en': 'Account',
-      'hi': '',
-      'kn': '',
-      'mr': '',
-      'ta': '',
-    },
     'nodbznbp': {
       'en': 'Today\'s Overview ',
       'hi': '',

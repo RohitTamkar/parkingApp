@@ -88,7 +88,7 @@ Future<String> genExcelForBillWiseReport(
 
   for (int rowIndex in boldRows) {
     var cell = sheet
-        .cell(CellIndex.indexByColumnRow(columnIndex: rowIndex, rowIndex: 7));
+        .cell(CellIndex.indexByColumnRow(columnIndex: rowIndex, rowIndex: 3));
     cell.cellStyle = boldStyle;
   }
 

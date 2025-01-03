@@ -1,6 +1,5 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -273,72 +272,6 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 5.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 10.0, 10.0, 0.0),
-                                                  child: FlutterFlowIconButton(
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderRadius: 30.0,
-                                                    borderWidth: 1.0,
-                                                    buttonSize: 45.0,
-                                                    icon: Icon(
-                                                      Icons
-                                                          .account_circle_outlined,
-                                                      color: Color(0xFF0D0801),
-                                                      size: 30.0,
-                                                    ),
-                                                    onPressed: () {
-                                                      print(
-                                                          'IconButton pressed ...');
-                                                    },
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '5ljc9mla' /* Account */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmallFamily,
-                                                          color:
-                                                              Color(0xFF0D0801),
-                                                          fontSize: 10.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodySmallFamily),
-                                                        ),
-                                                  ),
-                                                ),
-                                              ],
                                             ),
                                           ),
                                         ],
@@ -643,7 +576,10 @@ class _WebDashboardWidgetState extends State<WebDashboardWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                   child: Text(
-                                                                                    containerInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().length.toString(),
+                                                                                    valueOrDefault<String>(
+                                                                                      containerInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().length.toString(),
+                                                                                      '0',
+                                                                                    ),
                                                                                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                                                                                           fontFamily: FlutterFlowTheme.of(context).headlineLargeFamily,
                                                                                           letterSpacing: 0.0,
