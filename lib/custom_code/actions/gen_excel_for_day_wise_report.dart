@@ -9,6 +9,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'dart:convert';
+
+import 'package:path_provider/path_provider.dart';
+import 'package:excel/excel.dart';
+
 Future<String> genExcelForDayWiseReport(
   String? startdate,
   String? shopName,
@@ -23,7 +28,7 @@ Future<String> genExcelForDayWiseReport(
 
   double count = 0;
   String vechicleNo = "";
-  int outDate = 0;
+  double outDate = 0;
   double totalAmount = 0;
 
   for (var product in docList!) {
