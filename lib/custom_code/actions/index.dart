@@ -166,3 +166,4 @@ export 'return_date_nextday.dart' show returnDateNextday;
 export 'cal_complementary_mode_amount.dart' show calComplementaryModeAmount;
 export 'web_login.dart' show webLogin;
 export 'shift_total_sale.dart' show shiftTotalSale;
+export 'gen_excel_for_day_wise_report.dart' show genExcelForDayWiseReport;

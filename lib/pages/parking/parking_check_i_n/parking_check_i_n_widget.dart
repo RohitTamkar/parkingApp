@@ -51,8 +51,15 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      FFAppState().showDiscount = true;
-      safeSetState(() {});
+      if (!functions.isPrinterSelected(FFAppState().printerDevice)!) {
+        _model.resDevice2Copy = await actions.scanPrinter(
+          FFAppState().posMode,
+        );
+      }
+      await actions.connectDevice(
+        FFAppState().printerDevice,
+        FFAppState().printerIndex,
+      );
     });
 
     _model.textController1 ??= TextEditingController();

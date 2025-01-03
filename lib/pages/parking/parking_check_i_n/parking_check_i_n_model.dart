@@ -25,6 +25,8 @@ import 'package:provider/provider.dart';
 class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - scanPrinter] action in ParkingCheckIN widget.
+  bool? resDevice2Copy;
   var qrResult = '';
   // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
   MonthlyPassRecord? getinvout;
