@@ -1672,3 +1672,7 @@ double? totalShiftSale(ShiftRecord shiftSale) {
 
   return total;
 }
+
+DateTime returnDatePreviousday(DateTime date) {
+  return date.add(Duration(days: -1));
+}

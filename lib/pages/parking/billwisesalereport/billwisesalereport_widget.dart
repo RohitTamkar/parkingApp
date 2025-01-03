@@ -341,25 +341,18 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
 
                                               _model.base64Link2 = await actions
                                                   .genExcelForBillWiseReport(
-                                                dateTimeFormat(
-                                                  "d/M/y",
-                                                  FFAppState().startDate,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ),
+                                                FFAppState()
+                                                    .startDate
+                                                    ?.toString(),
                                                 containerOutletRecord?.name,
                                                 billwisesalereportInvoiceRecordList
                                                     .where((e) =>
                                                         e.checkOutTime != 0)
                                                     .toList(),
-                                                dateTimeFormat(
-                                                  "d/M/y",
-                                                  FFAppState().endDate,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ),
+                                                functions
+                                                    .returnDatePreviousday(
+                                                        FFAppState().endDate!)
+                                                    .toString(),
                                                 containerOutletRecord?.branch,
                                               );
                                               _model.apiResult6yc2 =
