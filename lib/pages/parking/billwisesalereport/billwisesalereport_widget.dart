@@ -352,6 +352,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                                 FFAppState()
                                                     .endDate
                                                     ?.toString(),
+                                                containerOutletRecord?.branch,
                                               );
                                               _model.apiResult6yc2 =
                                                   await SendMailCall.call(
