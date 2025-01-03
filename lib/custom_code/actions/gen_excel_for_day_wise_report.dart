@@ -29,7 +29,7 @@ Future<String> genExcelForDayWiseReport(
   for (var product in docList!) {
     count += product.count;
     vechicleNo += product.vechicleNo;
-    outDate += product.checkOutTime;
+    outDate += product.invoiceDate;
     totalAmount += product.finalBillAmt;
   }
 
