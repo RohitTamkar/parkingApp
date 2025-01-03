@@ -57,12 +57,6 @@ Future<String> genExcelForBillWiseReport(
     TextCellValue(branch ?? ''),
   ]);
 
-/*
-  sheet.appendRow([
-    TextCellValue('Date & Time'),
-    TextCellValue(dateTime ?? '')\,
-  ]);*/
-
   sheet.appendRow([
     TextCellValue('Start Date'),
     TextCellValue(startdate ?? ''),
@@ -74,7 +68,7 @@ Future<String> genExcelForBillWiseReport(
   ]);
 
   sheet.appendRow([
-    TextCellValue('Total  Amount'),
+    TextCellValue('Total Amount'),
     TextCellValue(totalAmount.toString() ?? ''),
   ]);
 
@@ -106,7 +100,7 @@ Future<String> genExcelForBillWiseReport(
   for (var product in docList!) {
     final timestamp = product.checkOutTime; // Assuming this is in milliseconds.
     final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
-    final formattedDate = DateFormat('yyyy-MM-dd').format(date);
+    final formattedDate = DateFormat('dd-MM-yyyy').format(date);
     sheet.appendRow([
       TextCellValue(product.count.toString()),
       TextCellValue(product.vechicleNo),

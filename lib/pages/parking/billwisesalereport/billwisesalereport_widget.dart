@@ -341,17 +341,25 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
 
                                               _model.base64Link2 = await actions
                                                   .genExcelForBillWiseReport(
-                                                FFAppState()
-                                                    .startDate
-                                                    ?.toString(),
+                                                dateTimeFormat(
+                                                  "d/M/y",
+                                                  FFAppState().startDate,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 containerOutletRecord?.name,
                                                 billwisesalereportInvoiceRecordList
                                                     .where((e) =>
                                                         e.checkOutTime != 0)
                                                     .toList(),
-                                                FFAppState()
-                                                    .endDate
-                                                    ?.toString(),
+                                                dateTimeFormat(
+                                                  "d/M/y",
+                                                  FFAppState().endDate,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 containerOutletRecord?.branch,
                                               );
                                               _model.apiResult6yc2 =
