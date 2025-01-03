@@ -11,10 +11,6 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
-import 'index.dart'; // Imports other custom actions
-
-import 'index.dart'; // Imports other custom actions
-
 import 'dart:convert';
 
 import 'dart:io';
@@ -69,7 +65,7 @@ Future<String> genExcelForBillWiseReport(
 
   sheet.appendRow([
     TextCellValue('Total Amount'),
-    TextCellValue(totalAmount.toString() ?? ''),
+    TextCellValue(totalAmount.toString()),
   ]);
 
   sheet.appendRow([TextCellValue('')]); // Add an empty row for spacing
