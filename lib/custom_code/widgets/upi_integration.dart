@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+//  DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
 
 class UpiIntegration extends StatefulWidget {

@@ -35,21 +35,21 @@ Future<String> genExcelForBillWiseReport(
 
   double count = 0;
   String vechicleNo = "";
-  String outDate = "";
+  int outDate = 0;
   double totalAmount = 0;
 
   for (var product in docList!) {
     count += product.count;
     vechicleNo += product.vechicleNo;
-    outDate += product.checkOutTerminal;
+    outDate += product.checkOutTime;
     totalAmount += product.finalBillAmt;
   }
 
   // Add headers to the sheet
-  // sheet.appendRow([
-  //   TextCellValue('Shop Name'),
-  //   TextCellValue(shopName ?? ''),
-  // ]);
+  sheet.appendRow([
+    TextCellValue('Shop Name'),
+    TextCellValue(shopName ?? ''),
+  ]);
 
 /*
   sheet.appendRow([
@@ -61,21 +61,6 @@ Future<String> genExcelForBillWiseReport(
     TextCellValue('Report Date'),
     TextCellValue(startdate ?? ''),
   ]);
-
-  // sheet.appendRow([
-  //   TextCellValue('Total Bill Amount'),
-  //   TextCellValue(count.toString() ?? ''),
-  // ]);
-
-  // sheet.appendRow([
-  //   TextCellValue('Total Tax Amount'),
-  //   TextCellValue(vechicleNo.toString() ?? ''),
-  // ]);
-
-  // sheet.appendRow([
-  //   TextCellValue('Total Discount Amount'),
-  //   TextCellValue(outDate.toString() ?? ''),
-  // ]);
 
   sheet.appendRow([
     TextCellValue('Total  Amount'),
@@ -110,15 +95,12 @@ Future<String> genExcelForBillWiseReport(
   for (var product in docList!) {
     final timestamp = product.checkOutTime; // Assuming this is in milliseconds.
     final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
-    final formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(date);
+    final formattedDate = DateFormat('yyyy-MM-dd').format(date);
     sheet.appendRow([
       TextCellValue(product.count.toString()),
       TextCellValue(product.vechicleNo),
       TextCellValue(formattedDate),
       TextCellValue(product.finalBillAmt.toString()),
-      // TextCellValue(product.taxAmt.toString()),
-      // TextCellValue(product.discountAmt.toString()),
-      // TextCellValue(product.delliveryChrg.toString()),
     ]);
   }
 

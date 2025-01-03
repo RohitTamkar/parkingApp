@@ -302,7 +302,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                               Icons.email,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .parkingPrimary,
                                               size: 24.0,
                                             ),
                                             onPressed: () async {
