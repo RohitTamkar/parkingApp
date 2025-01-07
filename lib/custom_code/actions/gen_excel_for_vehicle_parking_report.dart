@@ -72,10 +72,10 @@ Future<String> genExcelForVehicleParkingReport(
       TextCellValue(enddate ?? ''),
     ]);
 
-    // sheet.appendRow([
-    //   TextCellValue('Total Amount'),
-    //   TextCellValue(totalAmount.toString()),
-    // ]);
+    sheet.appendRow([
+      TextCellValue('Total Amount'),
+      TextCellValue(totalAmt2.toString()),
+    ]);
 
     sheet.appendRow([TextCellValue('')]); // Add an empty row for spacing
 
