@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom actions
-
 import '/flutter_flow/custom_functions.dart'
     as functions; // Imports custom functions
 
@@ -21,7 +19,7 @@ import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import 'package:excel/excel.dart';
 
-Future<String> genExcelForVehicleParkingReport(
+Future<String> genExcelForTodaySummaryReport(
   String? startdate,
   String? shopName,
   List<InvoiceRecord> docList,
@@ -39,7 +37,6 @@ Future<String> genExcelForVehicleParkingReport(
   double qty = 0;
   double totalAmount = 0;
   dynamic obj;
-
   if (docList.isNotEmpty) {
     obj = docList[0];
 
@@ -77,7 +74,7 @@ Future<String> genExcelForVehicleParkingReport(
 
     sheet.appendRow([
       TextCellValue('Total Amount'),
-      TextCellValue(totalAmount.toString()),
+      TextCellValue(totalAmt2.toString()),
     ]);
 
     sheet.appendRow([TextCellValue('')]); // Add an empty row for spacing
@@ -118,8 +115,6 @@ Future<String> genExcelForVehicleParkingReport(
           .map((e) => e.finalBillAmt)
           .toList());
       Vechicltype = product.vechicleType;
-
-      totalAmount += totalAmt2;
 
       sheet.appendRow([
         TextCellValue(Vechicltype),

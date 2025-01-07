@@ -6,6 +6,8 @@ export 'gen_excel_for_vehicle_parking_report.dart'
 export 'cal_shift_summary3.dart' show calShiftSummary3;
 export 'print_shift_summary_report.dart' show printShiftSummaryReport;
 export 'cal_shift_summary2.dart' show calShiftSummary2;
+export 'gen_excel_for_today_summary_report.dart'
+    show genExcelForTodaySummaryReport;
 export 'print_unbilled_report.dart' show printUnbilledReport;
 export 'printbillsummary_report.dart' show printbillsummaryReport;
 export 'print_billnewhive.dart' show printBillnewhive;
