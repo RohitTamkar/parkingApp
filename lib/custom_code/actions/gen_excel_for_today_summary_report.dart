@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 import '/flutter_flow/custom_functions.dart'
     as functions; // Imports custom functions
 
@@ -36,6 +38,9 @@ Future<String> genExcelForTodaySummaryReport(
   String vechicleType = "";
   double qty = 0;
   double totalAmount = 0;
+  double totalcheckin = 0;
+  double totalcheckout = 0;
+
   dynamic obj;
   if (docList.isNotEmpty) {
     obj = docList[0];
@@ -48,6 +53,7 @@ Future<String> genExcelForTodaySummaryReport(
 
     double totalAmt = 0;
     double totalAmt2 = 0;
+
     // Add headers to the sheet
     sheet.appendRow([
       TextCellValue('Vehicle Parking Report'),
@@ -72,9 +78,19 @@ Future<String> genExcelForTodaySummaryReport(
       TextCellValue(enddate ?? ''),
     ]);
 
+    // sheet.appendRow([
+    //   TextCellValue('Total Checkin'),
+    //   TextCellValue(totalcheckin.toString()),
+    // ]);
+    //
+    // sheet.appendRow([
+    //   TextCellValue('Total Checkout'),
+    //   TextCellValue(totalcheckout.toString()),
+    // ]);
+
     sheet.appendRow([
       TextCellValue('Total Amount'),
-      TextCellValue(totalAmt2.toString()),
+      TextCellValue(totalAmount.toString()),
     ]);
 
     sheet.appendRow([TextCellValue('')]); // Add an empty row for spacing
@@ -82,7 +98,8 @@ Future<String> genExcelForTodaySummaryReport(
     // Add product details to the sheet
     sheet.appendRow([
       TextCellValue('Vechicle Type'),
-      TextCellValue('Qty'),
+      TextCellValue('Total Checkin'),
+      TextCellValue('Total Checkout'),
       TextCellValue('Net Amount'),
     ]);
 
@@ -103,7 +120,6 @@ Future<String> genExcelForTodaySummaryReport(
 
     for (var product in uniqeList!) {
       String Vechicltype = '';
-
       totalAmt2 += functions.returntoatlamt(docList
           .where((e) => e.vechicleType == product.vechicleType)
           .toList()
@@ -115,11 +131,46 @@ Future<String> genExcelForTodaySummaryReport(
           .map((e) => e.finalBillAmt)
           .toList());
       Vechicltype = product.vechicleType;
+      totalcheckin += docList
+          .where((e) =>
+              (e.vechicleType == product.vechicleType) &&
+              ((e.checkInTime >=
+                      FFAppState().startDate!.millisecondsSinceEpoch) &&
+                  (e.checkInTime <=
+                      FFAppState().endDate!.millisecondsSinceEpoch)))
+          .toList()
+          .length;
+      totalcheckout += docList
+          .where((e) =>
+              (e.vechicleType == product.vechicleType) &&
+              ((e.checkOutTime >=
+                      FFAppState().startDate!.millisecondsSinceEpoch) &&
+                  (e.checkOutTime <=
+                      FFAppState().endDate!.millisecondsSinceEpoch)))
+          .toList()
+          .length;
+
+      totalAmount += totalAmt2;
 
       sheet.appendRow([
         TextCellValue(Vechicltype),
         TextCellValue(docList
-            .where((e) => e.vechicleType == product.vechicleType)
+            .where((e) =>
+                (e.vechicleType == product.vechicleType) &&
+                ((e.checkInTime >=
+                        FFAppState().startDate!.millisecondsSinceEpoch) &&
+                    (e.checkInTime <=
+                        FFAppState().endDate!.millisecondsSinceEpoch)))
+            .toList()
+            .length
+            .toString()),
+        TextCellValue(docList
+            .where((e) =>
+                (e.vechicleType == product.vechicleType) &&
+                ((e.checkOutTime >=
+                        FFAppState().startDate!.millisecondsSinceEpoch) &&
+                    (e.checkOutTime <=
+                        FFAppState().endDate!.millisecondsSinceEpoch)))
             .toList()
             .length
             .toString()),
