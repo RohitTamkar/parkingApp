@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import '/flutter_flow/custom_functions.dart'
+    as functions; // Imports custom functions
+
 // DO NOT REMOVE OR MODIFY THE CODE A!
 
 import 'dart:convert';
@@ -43,6 +46,8 @@ Future<String> genExcelForVehicleParkingReport(
       totalAmount += product.finalBillAmt;
     }
 
+    double totalAmt = 0;
+    double totalAmt2 = 0;
     // Add headers to the sheet
     sheet.appendRow([
       TextCellValue('Vehicle Parking Report'),
@@ -67,10 +72,10 @@ Future<String> genExcelForVehicleParkingReport(
       TextCellValue(enddate ?? ''),
     ]);
 
-    sheet.appendRow([
-      TextCellValue('Total Amount'),
-      TextCellValue(totalAmount.toString()),
-    ]);
+    // sheet.appendRow([
+    //   TextCellValue('Total Amount'),
+    //   TextCellValue(totalAmount.toString()),
+    // ]);
 
     sheet.appendRow([TextCellValue('')]); // Add an empty row for spacing
 
@@ -98,10 +103,7 @@ Future<String> genExcelForVehicleParkingReport(
 
     for (var product in uniqeList!) {
       String Vechicltype = '';
-      double totalAmt = 0;
-      double totalAmt2 = 0;
 
-      var functions;
       totalAmt2 += functions.returntoatlamt(docList
           .where((e) => e.vechicleType == product.vechicleType)
           .toList()
