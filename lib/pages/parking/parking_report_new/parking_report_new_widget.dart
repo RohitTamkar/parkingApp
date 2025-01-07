@@ -304,7 +304,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       FFAppState().update(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'InOutReport',
                                         queryParameters: {
                                           'appSetting': serializeParam(
@@ -367,7 +367,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       FFAppState().update(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'TodaysSummaryReport',
                                         queryParameters: {
                                           'appSetting': serializeParam(
@@ -434,7 +434,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       FFAppState().update(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'billwisesalereport',
                                         queryParameters: {
                                           'appSetting': serializeParam(
@@ -497,7 +497,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       FFAppState().update(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'DaillyCollectionReport',
                                         queryParameters: {
                                           'appSetting': serializeParam(
@@ -563,7 +563,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       FFAppState().update(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'Unbilled2',
                                         queryParameters: {
                                           'appSetting': serializeParam(
@@ -629,7 +629,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       FFAppState().update(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'ShiftDetails',
                                         queryParameters: {
                                           'appSetting': serializeParam(

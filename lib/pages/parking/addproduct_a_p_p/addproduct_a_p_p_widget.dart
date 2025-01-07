@@ -147,7 +147,7 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'productListNewM',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -4497,7 +4497,7 @@ class _AddproductAPPWidgetState extends State<AddproductAPPWidget> {
                                                               },
                                                             );
 
-                                                            context.pushNamed(
+                                                            context.goNamed(
                                                               'productListNewM',
                                                               queryParameters: {
                                                                 'appSetting':

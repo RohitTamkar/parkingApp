@@ -617,7 +617,7 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                                                               .active ==
                                                                           true) {
                                                                         context
-                                                                            .pushNamed(
+                                                                            .goNamed(
                                                                           'welcomeScreenParking',
                                                                           queryParameters:
                                                                               {
@@ -965,7 +965,7 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                           },
                                         );
 
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'addOutletPage',
                                           queryParameters: {
                                             'mobile': serializeParam(

@@ -111,7 +111,7 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'VehicleEntry',
                                       queryParameters: {
                                         'shiftDoc': serializeParam(
@@ -456,11 +456,11 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                                           fadeInDuration:
                                                               Duration(
                                                                   milliseconds:
-                                                                      200),
+                                                                      100),
                                                           fadeOutDuration:
                                                               Duration(
                                                                   milliseconds:
-                                                                      200),
+                                                                      100),
                                                           imageUrl:
                                                               listItem.imageUrl,
                                                           width:
@@ -988,23 +988,23 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                               r'''$.paymentJson''',
                                             ).toString(),
                                           ));
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Alert'),
-                                                content: Text(
-                                                    'Check In Successfull !'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Check In Successfull !',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
                                           );
                                         } else {
                                           ScaffoldMessenger.of(context)
@@ -1106,29 +1106,9 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             FFAppState().update(() {});
                                             _model.vehicleType = null;
                                             safeSetState(() {});
-
-                                            context.pushNamed(
-                                              'VehicleEntry',
-                                              queryParameters: {
-                                                'shiftDoc': serializeParam(
-                                                  widget!.shiftdoc,
-                                                  ParamType.JSON,
-                                                ),
-                                                'userRef': serializeParam(
-                                                  widget!.userRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'appSetting': serializeParam(
-                                                  widget!.appSetting,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'appSetting':
-                                                    widget!.appSetting,
-                                              },
-                                            );
-
+                                            safeSetState(() {
+                                              _model.textController?.clear();
+                                            });
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;
@@ -1165,7 +1145,7 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                             _model.vehicleType = null;
                                             safeSetState(() {});
 
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'VehicleEntry',
                                               queryParameters: {
                                                 'shiftDoc': serializeParam(
@@ -1541,23 +1521,23 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                               r'''$.paymentJson''',
                                             ).toString(),
                                           ));
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Alert'),
-                                                content: Text(
-                                                    'Check In Successfull !'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Check In Successfull !',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
                                           );
                                           await actions.removeFromAllBillList(
                                             FFAppState().selBill,
@@ -1579,7 +1559,7 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                           _model.vehicleType = null;
                                           safeSetState(() {});
 
-                                          context.pushNamed(
+                                          context.goNamed(
                                             'VehicleEntry',
                                             queryParameters: {
                                               'shiftDoc': serializeParam(

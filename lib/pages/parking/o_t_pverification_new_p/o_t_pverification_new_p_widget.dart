@@ -622,8 +622,7 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                 .docId?.role ==
                                                             'admin') {
                                                           if (isWeb) {
-                                                            context
-                                                                .pushNamedAuth(
+                                                            context.goNamedAuth(
                                                               'businessProfileAdminfinal',
                                                               context.mounted,
                                                               queryParameters: {
@@ -650,8 +649,7 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                               },
                                                             );
                                                           } else {
-                                                            context
-                                                                .pushNamedAuth(
+                                                            context.goNamedAuth(
                                                               'businessProfileAdminfinal',
                                                               context.mounted,
                                                               queryParameters: {
@@ -680,8 +678,7 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                           }
                                                         } else {
                                                           if (isWeb) {
-                                                            context
-                                                                .pushNamedAuth(
+                                                            context.goNamedAuth(
                                                               'businessProfileAdminfinal',
                                                               context.mounted,
                                                               queryParameters: {
@@ -708,8 +705,7 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                               },
                                                             );
                                                           } else {
-                                                            context
-                                                                .pushNamedAuth(
+                                                            context.goNamedAuth(
                                                               'businessProfileAdminfinal',
                                                               context.mounted,
                                                               queryParameters: {
@@ -738,7 +734,7 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                           }
                                                         }
                                                       } else {
-                                                        context.pushNamedAuth(
+                                                        context.goNamedAuth(
                                                           'CreateUserProfileNewP',
                                                           context.mounted,
                                                           queryParameters: {

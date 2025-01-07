@@ -130,7 +130,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'VehicleEntry',
                                           queryParameters: {
                                             'shiftDoc': serializeParam(
@@ -292,7 +292,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                               if (mastersNewUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'categories',
                                                   queryParameters: {
                                                     'appSetting':
@@ -699,7 +699,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                             if (mastersNewUserProfileRecord
                                                     ?.role ==
                                                 'admin') {
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'UserAccount',
                                                 queryParameters: {
                                                   'appSetting': serializeParam(
@@ -901,7 +901,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                               if (mastersNewUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'EditBillList',
                                                   queryParameters: {
                                                     'appSetting':
@@ -1273,7 +1273,7 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'SetHeaderFooter',
                                               queryParameters: {
                                                 'appSetting': serializeParam(

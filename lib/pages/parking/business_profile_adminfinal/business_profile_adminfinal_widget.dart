@@ -212,7 +212,7 @@ class _BusinessProfileAdminfinalWidgetState
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'account',
                                       queryParameters: {
                                         'isList': serializeParam(
@@ -894,7 +894,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                                       }
 
                                                                       context
-                                                                          .pushNamed(
+                                                                          .goNamed(
                                                                         'editBusinesProfile',
                                                                         queryParameters:
                                                                             {
@@ -1163,7 +1163,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                                               .active ==
                                                                           true) {
                                                                         context
-                                                                            .pushNamed(
+                                                                            .goNamed(
                                                                           'welcomeScreenParking',
                                                                           queryParameters:
                                                                               {
@@ -1488,7 +1488,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                                                   SchedulerBinding.instance.addPostFrameCallback((_) async => await animationsMap['iconButtonOnActionTriggerAnimation2']!.controller.forward(from: 0.0));
                                                                                 }
 
-                                                                                context.pushNamed(
+                                                                                context.goNamed(
                                                                                   'EditOutletPage',
                                                                                   queryParameters: {
                                                                                     'outletRef': serializeParam(
@@ -1565,7 +1565,7 @@ class _BusinessProfileAdminfinalWidgetState
                                                 },
                                               );
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'addOutletPage',
                                                 queryParameters: {
                                                   'mobile': serializeParam(

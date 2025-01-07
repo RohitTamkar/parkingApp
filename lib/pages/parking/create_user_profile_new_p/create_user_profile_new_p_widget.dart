@@ -122,7 +122,7 @@ class _CreateUserProfileNewPWidgetState
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'OTPverificationNewP',
                                         queryParameters: {
                                           'appSetting': serializeParam(
@@ -1271,7 +1271,7 @@ class _CreateUserProfileNewPWidgetState
                                                     ?.clear();
                                               });
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'AddBusinessProfile',
                                                 queryParameters: {
                                                   'mobile': serializeParam(

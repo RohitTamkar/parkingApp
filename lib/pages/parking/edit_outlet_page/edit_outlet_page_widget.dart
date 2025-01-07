@@ -123,7 +123,7 @@ class _EditOutletPageWidgetState extends State<EditOutletPageWidget> {
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'businessProfileAdminfinal',
                                       queryParameters: {
                                         'mobileNo': serializeParam(

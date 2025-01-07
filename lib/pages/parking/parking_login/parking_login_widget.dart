@@ -1055,7 +1055,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                 _model.userProfile!.mobile;
                                                                             safeSetState(() {});
 
-                                                                            context.pushNamed(
+                                                                            context.goNamed(
                                                                               'welcomeScreenParking',
                                                                               queryParameters: {
                                                                                 'deviceDoc': serializeParam(
@@ -1101,7 +1101,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                                 _model.userProfile!.mobile;
                                                                             safeSetState(() {});
 
-                                                                            context.pushNamed(
+                                                                            context.goNamed(
                                                                               'welcomeScreenParking',
                                                                               queryParameters: {
                                                                                 'deviceDoc': serializeParam(
@@ -1193,7 +1193,7 @@ class _ParkingLoginWidgetState extends State<ParkingLoginWidget> {
                                                                       );
 
                                                                       context
-                                                                          .pushNamed(
+                                                                          .goNamed(
                                                                         'Deviceqr',
                                                                         queryParameters:
                                                                             {

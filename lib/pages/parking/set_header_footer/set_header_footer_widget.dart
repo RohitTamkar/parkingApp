@@ -143,7 +143,7 @@ class _SetHeaderFooterWidgetState extends State<SetHeaderFooterWidget>
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'mastersNew',
                                       queryParameters: {
                                         'appSetting': serializeParam(

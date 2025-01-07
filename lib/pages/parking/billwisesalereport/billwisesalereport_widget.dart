@@ -255,7 +255,7 @@ class _BillwisesalereportWidgetState extends State<BillwisesalereportWidget> {
                                             size: 24.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'parkingReportNew',
                                               queryParameters: {
                                                 'appSetting': serializeParam(

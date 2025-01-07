@@ -102,7 +102,7 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'mastersNew',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -558,8 +558,7 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                       .id,
                                                                 ));
 
-                                                                context
-                                                                    .pushNamed(
+                                                                context.goNamed(
                                                                   'editUserprofile',
                                                                   queryParameters:
                                                                       {
@@ -667,8 +666,7 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                     .reference
                                                                     .delete();
 
-                                                                context
-                                                                    .pushNamed(
+                                                                context.goNamed(
                                                                   'UserAccount',
                                                                   queryParameters:
                                                                       {
@@ -688,8 +686,7 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                   },
                                                                 );
                                                               } else {
-                                                                context
-                                                                    .pushNamed(
+                                                                context.goNamed(
                                                                   'UserAccount',
                                                                   queryParameters:
                                                                       {
@@ -726,7 +723,7 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'AddUser',
                                       queryParameters: {
                                         'appSetting': serializeParam(

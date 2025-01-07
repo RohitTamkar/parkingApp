@@ -222,7 +222,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                       ).then((s) => s.firstOrNull);
                       if (_model.result?.quickPin ==
                           _model.textController.text) {
-                        context.pushNamed(
+                        context.goNamed(
                           'parkingReportNew',
                           queryParameters: {
                             'appSetting': serializeParam(

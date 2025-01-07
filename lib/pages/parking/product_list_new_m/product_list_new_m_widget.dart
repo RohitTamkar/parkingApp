@@ -475,7 +475,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                         .delete();
 
                                                                     context
-                                                                        .pushNamed(
+                                                                        .goNamed(
                                                                       'productListNewM',
                                                                       queryParameters:
                                                                           {
@@ -486,11 +486,23 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                           ParamType
                                                                               .DocumentReference,
                                                                         ),
+                                                                        'appSetting':
+                                                                            serializeParam(
+                                                                          widget!
+                                                                              .appSetting,
+                                                                          ParamType
+                                                                              .Document,
+                                                                        ),
                                                                       }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        'appSetting':
+                                                                            widget!.appSetting,
+                                                                      },
                                                                     );
                                                                   } else {
                                                                     context
-                                                                        .pushNamed(
+                                                                        .goNamed(
                                                                       'productListNewM',
                                                                       queryParameters:
                                                                           {
@@ -501,7 +513,19 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                           ParamType
                                                                               .DocumentReference,
                                                                         ),
+                                                                        'appSetting':
+                                                                            serializeParam(
+                                                                          widget!
+                                                                              .appSetting,
+                                                                          ParamType
+                                                                              .Document,
+                                                                        ),
                                                                       }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        'appSetting':
+                                                                            widget!.appSetting,
+                                                                      },
                                                                     );
 
                                                                     return;
@@ -525,8 +549,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                               ),
                                                               onPressed:
                                                                   () async {
-                                                                context
-                                                                    .pushNamed(
+                                                                context.goNamed(
                                                                   'editproductNewM',
                                                                   queryParameters:
                                                                       {
@@ -558,12 +581,22 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                                                       ParamType
                                                                           .Document,
                                                                     ),
+                                                                    'appSetting':
+                                                                        serializeParam(
+                                                                      widget!
+                                                                          .appSetting,
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
                                                                   }.withoutNulls,
                                                                   extra: <String,
                                                                       dynamic>{
                                                                     'productDocument':
                                                                         containerProductRecordList
                                                                             .firstOrNull,
+                                                                    'appSetting':
+                                                                        widget!
+                                                                            .appSetting,
                                                                   },
                                                                 );
                                                               },
@@ -591,7 +624,7 @@ class _ProductListNewMWidgetState extends State<ProductListNewMWidget> {
                                     FFAppState().catCodelength = _model.len!;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'addproductAPP',
                                       queryParameters: {
                                         'catcodeLen': serializeParam(

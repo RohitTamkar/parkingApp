@@ -1078,7 +1078,7 @@ class _AddOutletPageWidgetState extends State<AddOutletPageWidget> {
                                                     buttonUserProfileRecord?.id,
                                               ));
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'businessProfileAdminfinal',
                                                 queryParameters: {
                                                   'mobileNo': serializeParam(

@@ -139,7 +139,7 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                     size: 25.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'VehicleEntry',
                                       queryParameters: {
                                         'shiftDoc': serializeParam(
@@ -2050,7 +2050,7 @@ class _ShiftEndWidgetState extends State<ShiftEndWidget>
                                         },
                                       );
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'ParkingLogin',
                                         queryParameters: {
                                           'appSetting': serializeParam(

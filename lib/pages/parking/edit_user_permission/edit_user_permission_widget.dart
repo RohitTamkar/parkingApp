@@ -111,7 +111,7 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'editUserprofile',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -3438,7 +3438,7 @@ class _EditUserPermissionWidgetState extends State<EditUserPermissionWidget> {
                                           },
                                         );
 
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'UserAccount',
                                           queryParameters: {
                                             'appSetting': serializeParam(

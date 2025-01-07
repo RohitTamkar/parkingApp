@@ -142,7 +142,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'VehicleEntry',
                                       queryParameters: {
                                         'shiftDoc': serializeParam(
@@ -194,7 +194,7 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'addCustomer1',
                                       queryParameters: {
                                         'appSetting': serializeParam(

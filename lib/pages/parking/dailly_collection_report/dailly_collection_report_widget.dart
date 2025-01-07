@@ -251,7 +251,7 @@ class _DaillyCollectionReportWidgetState
                                             size: 24.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'parkingReportNew',
                                               queryParameters: {
                                                 'appSetting': serializeParam(
@@ -336,7 +336,7 @@ class _DaillyCollectionReportWidgetState
                                               );
 
                                               _model.base64Link2 = await actions
-                                                  .genExcelForDayWiseReport(
+                                                  .genExcelForDaillyCollectionReport(
                                                 dateTimeFormat(
                                                   "d/M/y",
                                                   FFAppState().startDate,

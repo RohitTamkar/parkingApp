@@ -108,7 +108,7 @@ class _AddBusinessProfileWidgetState extends State<AddBusinessProfileWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'CreateUserProfileNewP',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -599,7 +599,7 @@ class _AddBusinessProfileWidgetState extends State<AddBusinessProfileWidget> {
                                                   },
                                                 );
 
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'businessProfileAdminfinal',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(

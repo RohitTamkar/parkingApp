@@ -99,7 +99,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'mastersNew',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -337,7 +337,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                     ),
                                                     showLoadingIndicator: true,
                                                     onPressed: () async {
-                                                      context.pushNamed(
+                                                      context.goNamed(
                                                         'editCategoryM',
                                                         queryParameters: {
                                                           'catRef':
@@ -350,7 +350,17 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                             listItem.id,
                                                             ParamType.String,
                                                           ),
+                                                          'appSetting':
+                                                              serializeParam(
+                                                            widget!.appSetting,
+                                                            ParamType.Document,
+                                                          ),
                                                         }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'appSetting': widget!
+                                                              .appSetting,
+                                                        },
                                                       );
                                                     },
                                                   ),
@@ -408,7 +418,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                           isDeleted: true,
                                                         ));
 
-                                                        context.pushNamed(
+                                                        context.goNamed(
                                                           'categories',
                                                           queryParameters: {
                                                             'outletId':
@@ -418,10 +428,23 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                               ParamType
                                                                   .DocumentReference,
                                                             ),
+                                                            'appSetting':
+                                                                serializeParam(
+                                                              widget!
+                                                                  .appSetting,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
                                                           }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'appSetting':
+                                                                widget!
+                                                                    .appSetting,
+                                                          },
                                                         );
                                                       } else {
-                                                        context.pushNamed(
+                                                        context.goNamed(
                                                           'categories',
                                                           queryParameters: {
                                                             'outletId':
@@ -431,7 +454,20 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                               ParamType
                                                                   .DocumentReference,
                                                             ),
+                                                            'appSetting':
+                                                                serializeParam(
+                                                              widget!
+                                                                  .appSetting,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
                                                           }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'appSetting':
+                                                                widget!
+                                                                    .appSetting,
+                                                          },
                                                         );
 
                                                         return;
@@ -457,7 +493,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                         _model.catcode!;
                                     FFAppState().update(() {});
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'addCategoryM',
                                       queryParameters: {
                                         'appSetting': serializeParam(

@@ -384,24 +384,23 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                 await actions.removeFromAllBillList(
                                   FFAppState().selBill,
                                 );
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      content: Text('Check Out SuccessFull!'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Check Out SuccessFull!',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
                                 );
                                 Navigator.pop(context);
 
-                                context.pushNamed(
+                                context.goNamed(
                                   'VehicleEntry',
                                   queryParameters: {
                                     'shiftDoc': serializeParam(
@@ -658,25 +657,27 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                       await actions.removeFromAllBillList(
                                         FFAppState().selBill,
                                       );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content:
-                                                Text('Check Out SuccessFull!'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Check Out SuccessFull!',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
                                       );
                                       Navigator.pop(context);
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'VehicleEntry',
                                         queryParameters: {
                                           'shiftDoc': serializeParam(
@@ -828,25 +829,27 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                       await actions.removeFromAllBillList(
                                         FFAppState().selBill,
                                       );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            content:
-                                                Text('Check Out SuccessFull!'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Check Out SuccessFull!',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
                                       );
                                       Navigator.pop(context);
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'VehicleEntry',
                                         queryParameters: {
                                           'shiftDoc': serializeParam(
@@ -995,25 +998,24 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     await actions.removeFromAllBillList(
                                       FFAppState().selBill,
                                     );
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          content:
-                                              Text('Check Out SuccessFull!'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Check Out SuccessFull!',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
                                     );
                                     Navigator.pop(context);
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'VehicleEntry',
                                       queryParameters: {
                                         'shiftDoc': serializeParam(
@@ -1145,9 +1147,23 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   );
                                 },
                               );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Check Out SuccessFull!',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
                               Navigator.pop(context);
 
-                              context.pushNamed(
+                              context.goNamed(
                                 'VehicleEntry',
                                 queryParameters: {
                                   'shiftDoc': serializeParam(
@@ -1330,25 +1346,24 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                         r'''$.paymentJson''',
                                       ).toString(),
                                     ));
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          content:
-                                              Text('Check Out SuccessFull!'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Check Out SuccessFull!',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
                                     );
                                     Navigator.pop(context);
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'VehicleEntry',
                                       queryParameters: {
                                         'shiftDoc': serializeParam(
@@ -1425,25 +1440,24 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                         r'''$.paymentJson''',
                                       ).toString(),
                                     ));
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          content:
-                                              Text('Check Out SuccessFull!'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Check Out SuccessFull!',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
                                     );
                                     Navigator.pop(context);
 
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'VehicleEntry',
                                       queryParameters: {
                                         'shiftDoc': serializeParam(
@@ -1519,24 +1533,24 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                       r'''$.paymentJson''',
                                     ).toString(),
                                   ));
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        content: Text('Check Out SuccessFull!'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
-                                      );
-                                    },
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Check Out SuccessFull!',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
                                   );
                                   Navigator.pop(context);
 
-                                  context.pushNamed(
+                                  context.goNamed(
                                     'VehicleEntry',
                                     queryParameters: {
                                       'shiftDoc': serializeParam(

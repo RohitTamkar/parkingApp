@@ -82,16 +82,6 @@ Future printVehicleWiseReport(
       for (var doc in querySnapshot.docs) {
         print(doc);
 
-/*      if (doc["recepitLogoUrl"] != null && doc["recepitLogoUrl"].isNotEmpty) {
-        final ByteData data =
-            await NetworkAssetBundle(Uri.parse(doc["recepitLogoUrl"])).load("");
-        final Uint8List imgBytes = data.buffer.asUint8List();
-        final img.Image image = img.decodeImage(imgBytes)!;
-
-        //   bytes += generator.imageRaster(image, imageFn: PosImageFn.graphics);
-        bytes += generator.image(image);
-        // bytes += generator.imageRaster(image);
-      }*/
         if (doc["title"] != null && doc["title"].isNotEmpty) {
           bytes += generator.text(doc["title"],
               styles: PosStyles(
@@ -257,7 +247,6 @@ Future printVehicleWiseReport(
               bold: false,
               align: PosAlign.center));
 
-//row1
       bytes += generator.row([
         PosColumn(
           text: billColumn3,

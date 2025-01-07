@@ -392,7 +392,7 @@ class _WelcomeScreenParkingWidgetState extends State<WelcomeScreenParkingWidget>
           },
         );
 
-        context.pushNamed(
+        context.goNamed(
           'Deviceqr',
           queryParameters: {
             'appSetting': serializeParam(

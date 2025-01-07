@@ -23,7 +23,7 @@ class DaillyCollectionReportModel
     extends FlutterFlowModel<DaillyCollectionReportWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Custom Action - genExcelForDayWiseReport] action in IconButton widget.
+  // Stores action output result for [Custom Action - genExcelForDaillyCollectionReport] action in IconButton widget.
   String? base64Link2;
   // Stores action output result for [Backend Call - API (sendMail)] action in IconButton widget.
   ApiCallResponse? apiResult6yc2;

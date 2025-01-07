@@ -107,7 +107,7 @@ class _BillEntryWidgetState extends State<BillEntryWidget> {
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed(
+                                  context.goNamed(
                                     'VehicleEntry',
                                     queryParameters: {
                                       'shiftDoc': serializeParam(

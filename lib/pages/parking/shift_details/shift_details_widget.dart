@@ -149,7 +149,7 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'parkingReportNew',
                                           queryParameters: {
                                             'appSetting': serializeParam(

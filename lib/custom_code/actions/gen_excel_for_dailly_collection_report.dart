@@ -9,19 +9,17 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom actions
+// DO NOT REMOVE OR MODIFY THE CODE A!
 
 import 'dart:convert';
-
-import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:excel/excel.dart';
 
-Future<String> genExcelForBillWiseReport(
+Future<String> genExcelForDaillyCollectionReport(
   String? startdate,
   String? shopName,
-  List<InvoiceRecord>? docList,
+  List<InvoiceRecord> docList,
   String? enddate,
   String? branch,
 ) async {
@@ -32,19 +30,19 @@ Future<String> genExcelForBillWiseReport(
 
   double count = 0;
   String vechicleNo = "";
-  int outDate = 0;
+  double outDate = 0;
   double totalAmount = 0;
 
   for (var product in docList!) {
     count += product.count;
     vechicleNo += product.vechicleNo;
-    outDate += product.checkOutTime;
+    outDate += product.invoiceDate;
     totalAmount += product.finalBillAmt;
   }
 
   // Add headers to the sheet
   sheet.appendRow([
-    TextCellValue('Bill Summary Report'),
+    TextCellValue('Daily Collection Report'),
   ]);
   sheet.appendRow([
     TextCellValue('Shop Name'),
@@ -76,12 +74,11 @@ Future<String> genExcelForBillWiseReport(
   // Add product details to the sheet
   sheet.appendRow([
     TextCellValue('Count'),
-    TextCellValue('Vechicle No'),
-    TextCellValue('Out Date'),
+    TextCellValue('Date'),
     TextCellValue('Net Amount'),
   ]);
 
-  List<int> boldColumns = [0, 1, 2, 3];
+  List<int> boldColumns = [0, 1, 2];
   List<int> boldRows = [1, 2, 3, 4, 5];
 
   for (int columnIndex in boldColumns) {
@@ -92,17 +89,16 @@ Future<String> genExcelForBillWiseReport(
 
   for (int rowIndex in boldRows) {
     var cell = sheet
-        .cell(CellIndex.indexByColumnRow(columnIndex: rowIndex, rowIndex: 3));
+        .cell(CellIndex.indexByColumnRow(columnIndex: rowIndex, rowIndex: 2));
     cell.cellStyle = boldStyle;
   }
 
   for (var product in docList!) {
-    final timestamp = product.checkOutTime; // Assuming this is in milliseconds.
+    final timestamp = product.invoiceDate; // Assuming this is in milliseconds.
     final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
-    final formattedDate = DateFormat('dd-MM-yyyy').format(date);
+    final formattedDate = DateFormat('dd-MM-yyyy hh:mm').format(date);
     sheet.appendRow([
       TextCellValue(product.count.toString()),
-      TextCellValue(product.vechicleNo),
       TextCellValue(formattedDate),
       TextCellValue(product.finalBillAmt.toString()),
     ]);

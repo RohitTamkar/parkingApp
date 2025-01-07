@@ -149,7 +149,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                             size: 20.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'VehicleEntry',
                                               queryParameters: {
                                                 'shiftDoc': serializeParam(
@@ -312,7 +312,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                                   size: 30.0,
                                                 ),
                                                 onPressed: () async {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'VehicleEntry',
                                                     queryParameters: {
                                                       'shiftDoc':

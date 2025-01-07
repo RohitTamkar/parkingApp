@@ -106,7 +106,7 @@ class _EditBusinesProfileWidgetState extends State<EditBusinesProfileWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'businessProfileAdminfinal',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -673,7 +673,7 @@ class _EditBusinesProfileWidgetState extends State<EditBusinesProfileWidget> {
                                                             },
                                                           );
 
-                                                          context.pushNamed(
+                                                          context.goNamed(
                                                             'businessProfileAdminfinal',
                                                             queryParameters: {
                                                               'mobileNo':

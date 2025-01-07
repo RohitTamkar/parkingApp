@@ -129,7 +129,7 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                             size: 30.0,
                                           ),
                                           onPressed: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'UserAccount',
                                               queryParameters: {
                                                 'mobile': serializeParam(
@@ -923,7 +923,7 @@ class _AddUserWidgetState extends State<AddUserWidget> {
                                               },
                                             );
 
-                                            context.pushNamedAuth(
+                                            context.goNamedAuth(
                                               'UserAccount',
                                               context.mounted,
                                               queryParameters: {

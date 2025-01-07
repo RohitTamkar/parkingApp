@@ -117,7 +117,7 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                     ),
                                     onPressed: () async {
                                       if (widget!.nextP == 1 ? true : false) {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'VehicleEntry',
                                           queryParameters: {
                                             'shiftDoc': serializeParam(
@@ -138,7 +138,7 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                           },
                                         );
                                       } else {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'UserAccount',
                                           queryParameters: {
                                             'appSetting': serializeParam(
@@ -1241,7 +1241,7 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                                           },
                                                         );
 
-                                                        context.pushNamed(
+                                                        context.goNamed(
                                                           'VehicleEntry',
                                                           queryParameters: {
                                                             'shiftDoc':

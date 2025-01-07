@@ -104,7 +104,7 @@ class _EditCategoryMWidgetState extends State<EditCategoryMWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'categories',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -490,7 +490,7 @@ class _EditCategoryMWidgetState extends State<EditCategoryMWidget> {
                                         },
                                       );
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'categories',
                                         queryParameters: {
                                           'appSetting': serializeParam(

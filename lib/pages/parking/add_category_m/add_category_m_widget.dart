@@ -116,7 +116,7 @@ class _AddCategoryMWidgetState extends State<AddCategoryMWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'categories',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -598,7 +598,7 @@ class _AddCategoryMWidgetState extends State<AddCategoryMWidget> {
                                               },
                                             );
 
-                                            context.pushNamed('categories');
+                                            context.goNamed('categories');
 
                                             FFAppState().catCodelength = 0;
                                             FFAppState().setCategoryRef = null;

@@ -147,7 +147,7 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'productListNewM',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -3711,7 +3711,7 @@ class _EditproductNewMWidgetState extends State<EditproductNewMWidget> {
                                                                         );
 
                                                                         context
-                                                                            .pushNamed(
+                                                                            .goNamed(
                                                                           'productListNewM',
                                                                           queryParameters:
                                                                               {

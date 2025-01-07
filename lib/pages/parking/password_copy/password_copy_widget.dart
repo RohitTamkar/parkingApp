@@ -222,7 +222,7 @@ class _PasswordCopyWidgetState extends State<PasswordCopyWidget> {
                       ).then((s) => s.firstOrNull);
                       if (_model.result?.quickPin ==
                           _model.textController.text) {
-                        context.pushNamed(
+                        context.goNamed(
                           'productListNewM',
                           queryParameters: {
                             'appSetting': serializeParam(

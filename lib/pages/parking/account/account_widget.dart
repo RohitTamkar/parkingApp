@@ -454,7 +454,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                   size: 24.0,
                                                 ),
                                                 onPressed: () async {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'VehicleEntry',
                                                     queryParameters: {
                                                       'shiftDoc':
@@ -704,7 +704,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                       if (containerUserProfileRecord
                                                               ?.role ==
                                                           'admin') {
-                                                        context.pushNamed(
+                                                        context.goNamed(
                                                           'dashboard',
                                                           queryParameters: {
                                                             'outletId':
@@ -922,7 +922,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                               if (containerUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'businessProfileAdminfinal',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
@@ -942,7 +942,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                   },
                                                 );
                                               } else {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'outletlistPage',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
@@ -984,7 +984,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                               if (containerUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'businessProfileAdminfinal',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
@@ -1004,7 +1004,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                   },
                                                 );
                                               } else {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'outletlistPage',
                                                   queryParameters: {
                                                     'mobileNo': serializeParam(
@@ -1189,7 +1189,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                                     from: 0.0));
                                               }
 
-                                              context.pushNamed('mastersNew');
+                                              context.goNamed('mastersNew');
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -1210,7 +1210,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                 },
                                               );
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'businessProfileAdminfinal',
                                                 queryParameters: {
                                                   'mobileNo': serializeParam(
@@ -1380,8 +1380,8 @@ class _AccountWidgetState extends State<AccountWidget>
                                             if (containerUserProfileRecord
                                                     ?.role ==
                                                 'admin') {
-                                              context.pushNamed(
-                                                  'subscriptionNew2');
+                                              context
+                                                  .goNamed('subscriptionNew2');
                                             } else {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
@@ -1548,7 +1548,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                             }
 
                                             context
-                                                .pushNamed('PrintersettingCar');
+                                                .goNamed('PrintersettingCar');
                                           },
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
@@ -1853,7 +1853,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                           .forward(from: 0.0));
                                             }
 
-                                            context.pushNamed('Deviceqr');
+                                            context.goNamed('Deviceqr');
                                           },
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)

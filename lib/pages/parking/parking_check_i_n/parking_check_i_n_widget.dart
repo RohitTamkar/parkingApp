@@ -158,7 +158,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           size: 20.0,
                                         ),
                                         onPressed: () async {
-                                          context.pushNamed(
+                                          context.goNamed(
                                             'PrintersettingCar',
                                             queryParameters: {
                                               'appSetting': serializeParam(
@@ -195,7 +195,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          context.pushNamed(
+                                          context.goNamed(
                                             'NumberPlateScanner',
                                             queryParameters: {
                                               'appSetting': serializeParam(
@@ -442,7 +442,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 size: 24.0,
                                               ),
                                               onPressed: () async {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'VehicleEntry',
                                                   queryParameters: {
                                                     'shiftDoc': serializeParam(
@@ -716,10 +716,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               controller: _model
                                                       .dropDownvechicleValueController ??=
                                                   FormFieldController<String>(
-                                                _model.dropDownvechicleValue ??=
-                                                    dropDownvechicleProductRecordList
-                                                        .firstOrNull?.name,
-                                              ),
+                                                      null),
                                               options:
                                                   dropDownvechicleProductRecordList
                                                       .map((e) => e.name)
@@ -1672,23 +1669,23 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 '0',
                                               ),
                                             ));
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Alert'),
-                                                  content: Text(
-                                                      'Check In Successfull !'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Check In Successfull !',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
                                             );
                                           } else {
                                             ScaffoldMessenger.of(context)
@@ -1784,7 +1781,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 _model.shiftSummarRkiosk!;
                                             FFAppState().update(() {});
 
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'VehicleEntry',
                                               queryParameters: {
                                                 'shiftDoc': serializeParam(
@@ -2179,23 +2176,23 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 r'''$.paymentJson''',
                                               ).toString(),
                                             ));
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Alert'),
-                                                  content: Text(
-                                                      'Check In Successfull !'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Check In Successfull !',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
                                             );
                                             await actions.removeFromAllBillList(
                                               FFAppState().selBill,
@@ -2213,7 +2210,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 _model.shiftSummarRkiosk2!;
                                             FFAppState().update(() {});
 
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'VehicleEntry',
                                               queryParameters: {
                                                 'shiftDoc': serializeParam(

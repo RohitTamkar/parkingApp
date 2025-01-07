@@ -124,7 +124,7 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed(
+                                    context.goNamed(
                                       'MonthlyPass2',
                                       queryParameters: {
                                         'appSetting': serializeParam(
@@ -1415,7 +1415,6 @@ class _AddCustomer1WidgetState extends State<AddCustomer1Widget> {
                                           _model.textVehicleNoTextController
                                               ?.clear();
                                         });
-                                        context.safePop();
                                       } else {
                                         if (_shouldSetState)
                                           safeSetState(() {});

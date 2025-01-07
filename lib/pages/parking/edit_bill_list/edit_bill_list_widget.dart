@@ -141,7 +141,7 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'VehicleEntry',
                                           queryParameters: {
                                             'shiftDoc': serializeParam(

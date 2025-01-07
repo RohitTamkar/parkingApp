@@ -307,7 +307,7 @@ class _UpdateLocationOutletWidgetState
                                 ),
                               );
 
-                              context.pushNamed('EditOutletPage');
+                              context.goNamed('EditOutletPage');
                             },
                             text: FFLocalizations.of(context).getText(
                               '6mkny4ac' /* Done */,

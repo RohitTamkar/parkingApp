@@ -18,7 +18,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:excel/excel.dart';
 
-Future<String> genExcelForBillWiseReport(
+Future<String> genExcelForUnbillReport(
   String? startdate,
   String? shopName,
   List<InvoiceRecord>? docList,
@@ -32,19 +32,21 @@ Future<String> genExcelForBillWiseReport(
 
   double count = 0;
   String vechicleNo = "";
-  int outDate = 0;
+  int inDate = 0;
+  int inTime = 0;
   double totalAmount = 0;
 
   for (var product in docList!) {
     count += product.count;
     vechicleNo += product.vechicleNo;
-    outDate += product.checkOutTime;
+    inDate += product.checkInTime;
+    inTime += product.checkInTime;
     totalAmount += product.finalBillAmt;
   }
 
   // Add headers to the sheet
   sheet.appendRow([
-    TextCellValue('Bill Summary Report'),
+    TextCellValue('Unbilled Report'),
   ]);
   sheet.appendRow([
     TextCellValue('Shop Name'),
@@ -75,10 +77,10 @@ Future<String> genExcelForBillWiseReport(
 
   // Add product details to the sheet
   sheet.appendRow([
-    TextCellValue('Count'),
+    TextCellValue('Token'),
     TextCellValue('Vechicle No'),
-    TextCellValue('Out Date'),
-    TextCellValue('Net Amount'),
+    TextCellValue('In Date'),
+    TextCellValue('In Time'),
   ]);
 
   List<int> boldColumns = [0, 1, 2, 3];
@@ -97,14 +99,18 @@ Future<String> genExcelForBillWiseReport(
   }
 
   for (var product in docList!) {
-    final timestamp = product.checkOutTime; // Assuming this is in milliseconds.
+    final timestamp = product.checkInTime; // Assuming this is in milliseconds.
     final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final formattedDate = DateFormat('dd-MM-yyyy').format(date);
+
+    final timestamp2 = product.checkInTime; // Assuming this is in milliseconds.
+    final date2 = DateTime.fromMillisecondsSinceEpoch(timestamp);
+    final formattedDate2 = DateFormat('hh:mm').format(date);
     sheet.appendRow([
       TextCellValue(product.count.toString()),
       TextCellValue(product.vechicleNo),
       TextCellValue(formattedDate),
-      TextCellValue(product.finalBillAmt.toString()),
+      TextCellValue(formattedDate2),
     ]);
   }
 

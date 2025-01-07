@@ -757,7 +757,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               if (containerUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'dashboard',
                                                   queryParameters: {
                                                     'outletId': serializeParam(
@@ -831,7 +831,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               if (containerUserProfileRecord
                                                       ?.role ==
                                                   'admin') {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'editUserprofile',
                                                   queryParameters: {
                                                     'docRef': serializeParam(
@@ -951,7 +951,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                   if (containerUserProfileRecord
                                                           ?.role ==
                                                       'admin') {
-                                                    context.pushNamed(
+                                                    context.goNamed(
                                                       'businessProfileAdminfinal',
                                                       queryParameters: {
                                                         'mobileNo':
@@ -972,7 +972,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                       },
                                                     );
                                                   } else {
-                                                    context.pushNamed(
+                                                    context.goNamed(
                                                       'outletlistPage',
                                                       queryParameters: {
                                                         'mobileNo':
@@ -1016,7 +1016,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                   if (containerUserProfileRecord
                                                           ?.role ==
                                                       'admin') {
-                                                    context.pushNamed(
+                                                    context.goNamed(
                                                       'businessProfileAdminfinal',
                                                       queryParameters: {
                                                         'mobileNo':
@@ -1037,7 +1037,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                       },
                                                     );
                                                   } else {
-                                                    context.pushNamed(
+                                                    context.goNamed(
                                                       'outletlistPage',
                                                       queryParameters: {
                                                         'mobileNo':
@@ -1226,7 +1226,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                                     from: 0.0));
                                                   }
 
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'mastersNew',
                                                     queryParameters: {
                                                       'appSetting':
@@ -1261,7 +1261,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                     },
                                                   );
 
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'businessProfileAdminfinal',
                                                     queryParameters: {
                                                       'mobileNo':
@@ -1632,7 +1632,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'MonthlyPass2',
                                                   queryParameters: {
                                                     'appSetting':
@@ -1816,7 +1816,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                 if (containerUserProfileRecord
                                                         ?.role ==
                                                     'admin') {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'subscriptionNew2',
                                                     queryParameters: {
                                                       'appSetting':
@@ -2007,7 +2007,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                                           0.0));
                                                 }
 
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'PrintersettingCar',
                                                   queryParameters: {
                                                     'appSetting':
@@ -2162,7 +2162,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                 if (containerUserProfileRecord
                                                         ?.role ==
                                                     'admin') {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'AppSettings',
                                                     queryParameters: {
                                                       'appSetting':
@@ -2528,7 +2528,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'ShiftEnd',
                                                     queryParameters: {
                                                       'shiftDetail':
@@ -2728,7 +2728,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                           ) ??
                                                           false;
                                                   if (confirmDialogResponse) {
-                                                    context.pushNamed(
+                                                    context.goNamed(
                                                       'ParkingLogin',
                                                       queryParameters: {
                                                         'appSetting':
@@ -2748,7 +2748,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                                       },
                                                     );
                                                   } else {
-                                                    context.pushNamed(
+                                                    context.goNamed(
                                                       'VehicleEntry',
                                                       queryParameters: {
                                                         'shiftDoc':
@@ -3014,7 +3014,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                   .toList()
                                   .firstOrNull!
                                   .value) {
-                                context.pushNamed(
+                                context.goNamed(
                                   'ParkingIconCheckin',
                                   queryParameters: {
                                     'shiftdoc': serializeParam(
@@ -3035,7 +3035,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                                   },
                                 );
                               } else {
-                                context.pushNamed(
+                                context.goNamed(
                                   'ParkingCheckIN',
                                   queryParameters: {
                                     'shiftDoc': serializeParam(
@@ -3148,7 +3148,7 @@ class _VehicleEntryWidgetState extends State<VehicleEntryWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed(
+                              context.goNamed(
                                 'BillEntry',
                                 queryParameters: {
                                   'shiftDoc': serializeParam(

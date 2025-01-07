@@ -143,7 +143,7 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                         size: 30.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'EditBillList',
                                           queryParameters: {
                                             'appSetting': serializeParam(
@@ -1902,7 +1902,7 @@ class _EditBillDetailsWidgetState extends State<EditBillDetailsWidget> {
                                                     },
                                                   );
 
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'EditBillList',
                                                     queryParameters: {
                                                       'appSetting':
