@@ -123,7 +123,7 @@ Future<String> genExcelForVehicleParkingReport(
             .toList()
             .length
             .toString()),
-        TextCellValue(product.finalBillAmt.toString()),
+        TextCellValue(totalAmt.toString()),
       ]);
     }
   }
