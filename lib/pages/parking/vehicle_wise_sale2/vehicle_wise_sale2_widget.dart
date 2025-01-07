@@ -368,7 +368,8 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                     .currentUserRole,
                                                 toEmail:
                                                     FFAppState().emailForReport,
-                                                fileName: 'BillWiseSaleReport',
+                                                fileName:
+                                                    'VehicleParkingReport',
                                                 outletName:
                                                     containerOutletRecord?.name,
                                                 branchName:
@@ -376,7 +377,7 @@ class _VehicleWiseSale2WidgetState extends State<VehicleWiseSale2Widget>
                                                         ?.branch,
                                                 file: _model.base64Link2,
                                                 reportType:
-                                                    'Bill Wise Sale Report',
+                                                    'Vehicle Parking Report',
                                               );
 
                                               if ((_model.apiResult6yc2
