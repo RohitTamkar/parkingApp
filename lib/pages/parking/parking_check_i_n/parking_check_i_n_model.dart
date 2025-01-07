@@ -13,7 +13,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'parking_check_i_n_widget.dart' show ParkingCheckINWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -48,8 +47,6 @@ class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
-  // Stores action output result for [Firestore Query - Query a collection] action in TextField widget.
-  InvoiceRecord? db;
   // State field(s) for DropDownPaymentMode widget.
   String? dropDownPaymentModeValue;
   FormFieldController<String>? dropDownPaymentModeValueController;

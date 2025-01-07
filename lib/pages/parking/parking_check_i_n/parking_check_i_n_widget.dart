@@ -12,7 +12,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -818,31 +817,6 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             controller: _model.textController1,
                                             focusNode:
                                                 _model.textFieldFocusNode,
-                                            onChanged: (_) =>
-                                                EasyDebounce.debounce(
-                                              '_model.textController1',
-                                              Duration(milliseconds: 2000),
-                                              () async {
-                                                _model.db =
-                                                    await queryInvoiceRecordOnce(
-                                                  parent:
-                                                      FFAppState().outletIdRef,
-                                                  queryBuilder:
-                                                      (invoiceRecord) =>
-                                                          invoiceRecord.where(
-                                                    'vechicleNo',
-                                                    isEqualTo: _model
-                                                        .textController1.text,
-                                                  ),
-                                                  singleRecord: true,
-                                                ).then((s) => s.firstOrNull);
-                                                FFAppState().outletId =
-                                                    _model.db!.vechicleNo;
-                                                safeSetState(() {});
-
-                                                safeSetState(() {});
-                                              },
-                                            ),
                                             autofocus: false,
                                             textCapitalization:
                                                 TextCapitalization.characters,
