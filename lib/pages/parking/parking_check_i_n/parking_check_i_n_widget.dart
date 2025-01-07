@@ -1754,29 +1754,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             FFAppState().shiftDetailsNEw =
                                                 _model.shiftSummarRkiosk!;
                                             FFAppState().update(() {});
-
-                                            context.goNamed(
-                                              'VehicleEntry',
-                                              queryParameters: {
-                                                'shiftDoc': serializeParam(
-                                                  widget!.shiftDoc,
-                                                  ParamType.JSON,
-                                                ),
-                                                'userRef': serializeParam(
-                                                  widget!.userRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'appSetting': serializeParam(
-                                                  widget!.appSetting,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'appSetting':
-                                                    widget!.appSetting,
-                                              },
-                                            );
-
+                                            safeSetState(() {
+                                              _model.textController1?.clear();
+                                            });
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;
