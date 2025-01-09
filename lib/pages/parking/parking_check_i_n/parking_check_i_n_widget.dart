@@ -96,7 +96,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
             onWillPop: () async => false,
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: Color(0x2712191C),
+              backgroundColor: Color(0xFF12191C),
               body: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
@@ -715,9 +715,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               controller: _model
                                                       .dropDownvechicleValueController ??=
                                                   FormFieldController<String>(
-                                                _model.dropDownvechicleValue ??=
-                                                    _model.vehicleType,
-                                              ),
+                                                      null),
                                               options:
                                                   dropDownvechicleProductRecordList
                                                       .map((e) => e.name)
