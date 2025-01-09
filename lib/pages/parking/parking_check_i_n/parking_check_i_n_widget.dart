@@ -715,7 +715,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               controller: _model
                                                       .dropDownvechicleValueController ??=
                                                   FormFieldController<String>(
-                                                      null),
+                                                _model.dropDownvechicleValue ??=
+                                                    _model.vehicleType?.name,
+                                              ),
                                               options:
                                                   dropDownvechicleProductRecordList
                                                       .map((e) => e.name)
@@ -2131,11 +2133,6 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             FFAppState().update(() {});
                                             safeSetState(() {
                                               _model.textController1?.clear();
-                                            });
-                                            safeSetState(() {
-                                              _model
-                                                  .dropDownvechicleValueController
-                                                  ?.value = _model.vehicleType!;
                                             });
                                             if (_shouldSetState)
                                               safeSetState(() {});

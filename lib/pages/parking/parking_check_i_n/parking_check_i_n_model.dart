@@ -24,7 +24,7 @@ import 'package:provider/provider.dart';
 class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
   ///  Local state fields for this page.
 
-  String? vehicleType;
+  ProductRecord? vehicleType;
 
   ///  State fields for stateful widgets in this page.
 
