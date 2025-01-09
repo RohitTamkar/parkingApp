@@ -22,6 +22,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
+  ///  Local state fields for this page.
+
+  String? vehicleType;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Custom Action - scanPrinter] action in ParkingCheckIN widget.
