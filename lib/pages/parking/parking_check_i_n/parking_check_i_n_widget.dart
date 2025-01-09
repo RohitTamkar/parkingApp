@@ -1741,11 +1741,6 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             });
                                             _model.vehicleType = null;
                                             safeSetState(() {});
-                                            safeSetState(() {
-                                              _model
-                                                  .dropDownvechicleValueController
-                                                  ?.value = _model.vehicleType!;
-                                            });
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;
