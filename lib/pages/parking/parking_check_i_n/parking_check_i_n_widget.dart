@@ -739,6 +739,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                   ),
                                                   singleRecord: true,
                                                 ).then((s) => s.firstOrNull);
+                                                _model.vehicleType = null;
+                                                safeSetState(() {});
                                                 FFAppState().parkingCharges =
                                                     0.0;
                                                 safeSetState(() {});
