@@ -1643,24 +1643,6 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 '0',
                                               ),
                                             ));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Check In Successfull !',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
-                                            );
                                           } else {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
@@ -1756,6 +1738,11 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             FFAppState().update(() {});
                                             safeSetState(() {
                                               _model.textController1?.clear();
+                                            });
+                                            safeSetState(() {
+                                              _model
+                                                  .dropDownvechicleValueController
+                                                  ?.value = 'V';
                                             });
                                             if (_shouldSetState)
                                               safeSetState(() {});
@@ -2130,24 +2117,6 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 r'''$.paymentJson''',
                                               ).toString(),
                                             ));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Check In Successfull !',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
-                                            );
                                             await actions.removeFromAllBillList(
                                               FFAppState().selBill,
                                             );
@@ -2163,29 +2132,14 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             FFAppState().shiftDetailsNEw =
                                                 _model.shiftSummarRkiosk2!;
                                             FFAppState().update(() {});
-
-                                            context.goNamed(
-                                              'VehicleEntry',
-                                              queryParameters: {
-                                                'shiftDoc': serializeParam(
-                                                  widget!.shiftDoc,
-                                                  ParamType.JSON,
-                                                ),
-                                                'userRef': serializeParam(
-                                                  widget!.userRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'appSetting': serializeParam(
-                                                  widget!.appSetting,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'appSetting':
-                                                    widget!.appSetting,
-                                              },
-                                            );
-
+                                            safeSetState(() {
+                                              _model.textController1?.clear();
+                                            });
+                                            safeSetState(() {
+                                              _model
+                                                  .dropDownvechicleValueController
+                                                  ?.value = 'V';
+                                            });
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;
