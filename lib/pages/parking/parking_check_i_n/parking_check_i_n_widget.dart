@@ -715,7 +715,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               controller: _model
                                                       .dropDownvechicleValueController ??=
                                                   FormFieldController<String>(
-                                                      null),
+                                                _model.dropDownvechicleValue ??=
+                                                    _model.vehicleType,
+                                              ),
                                               options:
                                                   dropDownvechicleProductRecordList
                                                       .map((e) => e.name)
