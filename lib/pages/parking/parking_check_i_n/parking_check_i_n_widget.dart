@@ -715,9 +715,7 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                               controller: _model
                                                       .dropDownvechicleValueController ??=
                                                   FormFieldController<String>(
-                                                _model.dropDownvechicleValue ??=
-                                                    _model.vehicleType?.name,
-                                              ),
+                                                      null),
                                               options:
                                                   dropDownvechicleProductRecordList
                                                       .map((e) => e.name)
@@ -739,8 +737,6 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                   ),
                                                   singleRecord: true,
                                                 ).then((s) => s.firstOrNull);
-                                                _model.vehicleType = null;
-                                                safeSetState(() {});
                                                 FFAppState().parkingCharges =
                                                     0.0;
                                                 safeSetState(() {});
@@ -1344,10 +1340,8 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                     null &&
                                                 _model.textController1.text !=
                                                     '') &&
-                                            (_model.dropDownvechicleValue !=
-                                                    null &&
-                                                _model.dropDownvechicleValue !=
-                                                    '')) {
+                                            (_model.dropDownvechicleValue ==
+                                                'Vehicle Type')) {
                                           _model.countdatagetPRINT =
                                               await queryInvoiceRecordOnce(
                                             parent: FFAppState().outletIdRef,
@@ -1742,6 +1736,11 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                             FFAppState().update(() {});
                                             safeSetState(() {
                                               _model.textController1?.clear();
+                                            });
+                                            safeSetState(() {
+                                              _model
+                                                  .dropDownvechicleValueController
+                                                  ?.value = 'Vehicle Type';
                                             });
                                             _model.vehicleType = null;
                                             safeSetState(() {});
