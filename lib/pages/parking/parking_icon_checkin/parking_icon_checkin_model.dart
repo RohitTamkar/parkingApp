@@ -14,6 +14,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -28,6 +29,8 @@ class ParkingIconCheckinModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - scanPrinter] action in ParkingIconCheckin widget.
+  bool? resDevice2Copy;
   var qrResult = '';
   // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
   MonthlyPassRecord? getinvout;

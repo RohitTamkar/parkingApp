@@ -13,6 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -47,6 +48,19 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ParkingIconCheckinModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (!functions.isPrinterSelected(FFAppState().printerDevice)!) {
+        _model.resDevice2Copy = await actions.scanPrinter(
+          FFAppState().posMode,
+        );
+      }
+      await actions.connectDevice(
+        FFAppState().printerDevice,
+        FFAppState().printerIndex,
+      );
+    });
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -988,24 +1002,6 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                               r'''$.paymentJson''',
                                             ).toString(),
                                           ));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Check In Successfull !',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -1216,6 +1212,10 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'vgnqqm8w' /* Print */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.print,
+                                      size: 20.0,
                                     ),
                                     options: FFButtonOptions(
                                       height: 40.0,
@@ -1521,24 +1521,6 @@ class _ParkingIconCheckinWidgetState extends State<ParkingIconCheckinWidget> {
                                               r'''$.paymentJson''',
                                             ).toString(),
                                           ));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Check In Successfull !',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
                                           await actions.removeFromAllBillList(
                                             FFAppState().selBill,
                                           );

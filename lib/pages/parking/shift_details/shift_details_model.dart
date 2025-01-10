@@ -16,6 +16,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ShiftDetailsModel extends FlutterFlowModel<ShiftDetailsWidget> {
+  ///  Local state fields for this page.
+
+  ShiftRecord? shiftDocRef;
+
   ///  State fields for stateful widgets in this page.
 
   DateTime? datePicked1;

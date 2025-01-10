@@ -52,6 +52,8 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
       FFAppState().startDate = getCurrentTimestamp;
       FFAppState().endDate = getCurrentTimestamp;
       safeSetState(() {});
+      _model.shiftDocRef = widget!.shiftDoc;
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
