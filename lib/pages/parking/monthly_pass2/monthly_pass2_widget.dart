@@ -1715,7 +1715,6 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                     );
                                                   },
                                                 );
-                                                context.safePop();
                                               } else {
                                                 await showDialog(
                                                   context: context,
