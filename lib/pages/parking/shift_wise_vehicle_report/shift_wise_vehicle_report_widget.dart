@@ -305,6 +305,8 @@ class _ShiftWiseVehicleReportWidgetState
                                       children: [
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Text(
                                               valueOrDefault<String>(

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/pages/parking/monthly_pass_checkin/monthly_pass_checkin_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -33,10 +34,6 @@ class ParkingCheckINModel extends FlutterFlowModel<ParkingCheckINWidget> {
   var qrResult = '';
   // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
   MonthlyPassRecord? getinvout;
-  // Stores action output result for [Firestore Query - Query a collection] action in IconButton widget.
-  PartyRecord? invoiceParty;
-  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
-  InvoiceRecord? invoice;
   // State field(s) for DropDowncustomer widget.
   String? dropDowncustomerValue;
   FormFieldController<String>? dropDowncustomerValueController;

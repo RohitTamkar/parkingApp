@@ -326,7 +326,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                                           ?.settingList
                                                           ?.where((e) =>
                                                               e.settingType ==
-                                                              'PARKING/')
+                                                              'PARKING')
                                                           .toList()
                                                           ?.toList() ??
                                                       [];

@@ -428,9 +428,12 @@ class _PassDetailsWidgetState extends State<PassDetailsWidget> {
                                                                             10.0,
                                                                             0.0),
                                                                     child: Text(
-                                                                      functions.milisecToTimestamp(
-                                                                          listItem
-                                                                              .passStartDate),
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        functions
+                                                                            .milisecToTimestamp(listItem.passStartDate),
+                                                                        '0',
+                                                                      ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelSmall
@@ -481,9 +484,12 @@ class _PassDetailsWidgetState extends State<PassDetailsWidget> {
                                                                             15.0,
                                                                             0.0),
                                                                     child: Text(
-                                                                      functions.milisecToTimestamp(
-                                                                          listItem
-                                                                              .passEndDate),
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        functions
+                                                                            .milisecToTimestamp(listItem.passEndDate),
+                                                                        '0',
+                                                                      ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodySmall

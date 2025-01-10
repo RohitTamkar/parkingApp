@@ -67,7 +67,7 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    'assets/images/WhatsApp_Image_2025-01-02_at_2.57.59_PM.jpeg',
+                    'assets/images/WhatsApp_Image_2025-01-10_at_4.50.33_PM.jpeg',
                     width: 300.0,
                     height: 300.0,
                     fit: BoxFit.cover,
