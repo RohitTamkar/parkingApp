@@ -155,7 +155,7 @@ class _MonthlyPassCheckinWidgetState extends State<MonthlyPassCheckinWidget> {
                                       ),
                                       onPressed: () async {
                                         context.pushNamed(
-                                          'VehicleEntry',
+                                          'ParkingCheckIN',
                                           queryParameters: {
                                             'shiftDoc': serializeParam(
                                               widget!.shiftDoc,
@@ -331,27 +331,6 @@ class _MonthlyPassCheckinWidgetState extends State<MonthlyPassCheckinWidget> {
                                   },
                                 );
                                 Navigator.pop(context);
-
-                                context.goNamed(
-                                  'VehicleEntry',
-                                  queryParameters: {
-                                    'shiftDoc': serializeParam(
-                                      widget!.shiftDoc,
-                                      ParamType.JSON,
-                                    ),
-                                    'userRef': serializeParam(
-                                      widget!.userRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'appSetting': serializeParam(
-                                      widget!.appSetting,
-                                      ParamType.Document,
-                                    ),
-                                  }.withoutNulls,
-                                  extra: <String, dynamic>{
-                                    'appSetting': widget!.appSetting,
-                                  },
-                                );
 
                                 safeSetState(() {});
                               },
