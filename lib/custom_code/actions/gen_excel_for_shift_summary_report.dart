@@ -88,6 +88,10 @@ Future<String> genExcelForShiftSummaryReport(
     //   TextCellValue('Total Checkout'),
     //   TextCellValue(totalcheckout.toString()),
     // ]);
+    sheet.appendRow([
+      TextCellValue('Shift Id'),
+      TextCellValue(shiftIdDate ?? ''),
+    ]);
 
     sheet.appendRow([
       TextCellValue('Total Amount'),

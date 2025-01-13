@@ -371,7 +371,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                     containerOutletRecord
                                                         ?.branch,
                                                 file: _model.base64Link2,
-                                                reportType: 'In \\ Out Report',
+                                                reportType: 'In  Out Report',
                                               );
 
                                               if ((_model.apiResult6yc2

@@ -109,9 +109,11 @@ Future<String> genExcelForShiftSummaryVehicleReport(
   }
 
   for (var product in docList!) {
-    final timestamp = product.shiftId; // Assuming this is in milliseconds.
-    final date = DateTime.fromMillisecondsSinceEpoch(timestamp as int);
+    final timestamp = int.tryParse(product.shiftId ?? '0') ??
+        0; // Parse string to int, default to 0 if null or invalid
+    final date = DateTime.fromMillisecondsSinceEpoch(timestamp);
     final formattedDate = DateFormat('dd-MM-yyyy').format(date);
+
     sheet.appendRow([
       TextCellValue(product.count.toString()),
       TextCellValue(product.vechicleNo),
