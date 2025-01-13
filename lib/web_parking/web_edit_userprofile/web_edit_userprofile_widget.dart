@@ -134,7 +134,7 @@ class _WebEditUserprofileWidgetState extends State<WebEditUserprofileWidget> {
                                           if (widget!.nextP == 1
                                               ? true
                                               : false) {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               'VehicleEntry',
                                               queryParameters: {
                                                 'shiftDoc': serializeParam(

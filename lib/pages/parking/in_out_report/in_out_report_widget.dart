@@ -364,15 +364,14 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                                     .currentUserRole,
                                                 toEmail:
                                                     FFAppState().emailForReport,
-                                                fileName: 'BillWiseSaleReport',
+                                                fileName: 'InOutReport',
                                                 outletName:
                                                     containerOutletRecord?.name,
                                                 branchName:
                                                     containerOutletRecord
                                                         ?.branch,
                                                 file: _model.base64Link2,
-                                                reportType:
-                                                    'Bill Wise Sale Report',
+                                                reportType: 'In \\ Out Report',
                                               );
 
                                               if ((_model.apiResult6yc2

@@ -26,10 +26,12 @@ class ParkingCustomersWidget extends StatefulWidget {
     super.key,
     this.shiftDoc,
     this.userRef,
+    this.appSetting,
   });
 
   final dynamic shiftDoc;
   final DocumentReference? userRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<ParkingCustomersWidget> createState() => _ParkingCustomersWidgetState();
@@ -108,7 +110,7 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
               backgroundColor: FlutterFlowTheme.of(context).parkingPrimary,
               floatingActionButton: FloatingActionButton(
                 onPressed: () async {
-                  context.pushNamed(
+                  context.goNamed(
                     'ParkingCheckIN',
                     queryParameters: {
                       'shiftDoc': serializeParam(
@@ -119,7 +121,14 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                         widget!.userRef,
                         ParamType.DocumentReference,
                       ),
+                      'appSetting': serializeParam(
+                        widget!.appSetting,
+                        ParamType.Document,
+                      ),
                     }.withoutNulls,
+                    extra: <String, dynamic>{
+                      'appSetting': widget!.appSetting,
+                    },
                   );
                 },
                 backgroundColor: FlutterFlowTheme.of(context).info,
@@ -161,8 +170,8 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                         FlutterFlowTheme.of(context).lineColor,
                                     size: 24.0,
                                   ),
-                                  onPressed: () async {
-                                    context.pop();
+                                  onPressed: () {
+                                    print('IconButton pressed ...');
                                   },
                                 ),
                                 Text(
@@ -198,7 +207,7 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                         size: 20.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed('account');
+                                        context.goNamed('account');
                                       },
                                     ),
                                     Builder(
@@ -1024,7 +1033,7 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                                                     );
 
                                                                     context
-                                                                        .pushNamed(
+                                                                        .goNamed(
                                                                       'ParkingCustomers',
                                                                       queryParameters:
                                                                           {
@@ -1042,7 +1051,19 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                                                           ParamType
                                                                               .DocumentReference,
                                                                         ),
+                                                                        'appSetting':
+                                                                            serializeParam(
+                                                                          widget!
+                                                                              .appSetting,
+                                                                          ParamType
+                                                                              .Document,
+                                                                        ),
                                                                       }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        'appSetting':
+                                                                            widget!.appSetting,
+                                                                      },
                                                                     );
                                                                   },
                                                                   text: FFLocalizations.of(
@@ -1279,7 +1300,7 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                                                     );
 
                                                                     context
-                                                                        .pushNamed(
+                                                                        .goNamed(
                                                                       'ParkingCustomers',
                                                                       queryParameters:
                                                                           {
@@ -1297,7 +1318,19 @@ class _ParkingCustomersWidgetState extends State<ParkingCustomersWidget> {
                                                                           ParamType
                                                                               .DocumentReference,
                                                                         ),
+                                                                        'appSetting':
+                                                                            serializeParam(
+                                                                          widget!
+                                                                              .appSetting,
+                                                                          ParamType
+                                                                              .Document,
+                                                                        ),
                                                                       }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        'appSetting':
+                                                                            widget!.appSetting,
+                                                                      },
                                                                     );
 
                                                                     if (_shouldSetState)

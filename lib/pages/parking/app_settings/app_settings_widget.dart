@@ -225,7 +225,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                         ),
                                       );
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'welcomeScreenParking',
                                         queryParameters: {
                                           'shiftDoc': serializeParam(
@@ -326,7 +326,7 @@ class _AppSettingsWidgetState extends State<AppSettingsWidget> {
                                                           ?.settingList
                                                           ?.where((e) =>
                                                               e.settingType ==
-                                                              'PARKING')
+                                                              'PARKING/')
                                                           .toList()
                                                           ?.toList() ??
                                                       [];

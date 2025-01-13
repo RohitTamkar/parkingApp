@@ -12,7 +12,12 @@ import 'categorypoup_model.dart';
 export 'categorypoup_model.dart';
 
 class CategorypoupWidget extends StatefulWidget {
-  const CategorypoupWidget({super.key});
+  const CategorypoupWidget({
+    super.key,
+    this.appSetting,
+  });
+
+  final AppSettingsRecord? appSetting;
 
   @override
   State<CategorypoupWidget> createState() => _CategorypoupWidgetState();
@@ -104,14 +109,21 @@ class _CategorypoupWidgetState extends State<CategorypoupWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed(
+                                context.goNamed(
                                   'addCategoryM',
                                   queryParameters: {
                                     'codeLen': serializeParam(
                                       FFAppState().catCodelength,
                                       ParamType.int,
                                     ),
+                                    'appSetting': serializeParam(
+                                      widget!.appSetting,
+                                      ParamType.Document,
+                                    ),
                                   }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    'appSetting': widget!.appSetting,
+                                  },
                                 );
                               },
                               child: Icon(
@@ -277,14 +289,22 @@ class _CategorypoupWidgetState extends State<CategorypoupWidget> {
                                                   true;
                                               FFAppState().update(() {});
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'addCategoryM',
                                                 queryParameters: {
                                                   'codeLen': serializeParam(
                                                     FFAppState().catCodelength,
                                                     ParamType.int,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             },
                                             child: Container(
@@ -380,14 +400,22 @@ class _CategorypoupWidgetState extends State<CategorypoupWidget> {
                                                   true;
                                               FFAppState().update(() {});
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 'addCategoryM',
                                                 queryParameters: {
                                                   'codeLen': serializeParam(
                                                     FFAppState().catCodelength,
                                                     ParamType.int,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
                                             },
                                             child: Container(

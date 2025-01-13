@@ -789,7 +789,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                       if (containerUserProfileRecord
                                                               ?.role ==
                                                           'admin') {
-                                                        context.pushNamed(
+                                                        context.goNamed(
                                                           'editUserprofile',
                                                           queryParameters: {
                                                             'docRef':
@@ -1189,7 +1189,19 @@ class _AccountWidgetState extends State<AccountWidget>
                                                                     from: 0.0));
                                               }
 
-                                              context.goNamed('mastersNew');
+                                              context.goNamed(
+                                                'mastersNew',
+                                                queryParameters: {
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
+                                              );
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -1218,7 +1230,15 @@ class _AccountWidgetState extends State<AccountWidget>
                                                         .currentMobileString,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
 
                                               return;
@@ -1380,8 +1400,19 @@ class _AccountWidgetState extends State<AccountWidget>
                                             if (containerUserProfileRecord
                                                     ?.role ==
                                                 'admin') {
-                                              context
-                                                  .goNamed('subscriptionNew2');
+                                              context.goNamed(
+                                                'subscriptionNew2',
+                                                queryParameters: {
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
+                                              );
                                             } else {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(
@@ -1547,8 +1578,19 @@ class _AccountWidgetState extends State<AccountWidget>
                                                           .forward(from: 0.0));
                                             }
 
-                                            context
-                                                .goNamed('PrintersettingCar');
+                                            context.goNamed(
+                                              'PrintersettingCar',
+                                              queryParameters: {
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
+                                            );
                                           },
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
@@ -1853,7 +1895,19 @@ class _AccountWidgetState extends State<AccountWidget>
                                                           .forward(from: 0.0));
                                             }
 
-                                            context.goNamed('Deviceqr');
+                                            context.goNamed(
+                                              'Deviceqr',
+                                              queryParameters: {
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
+                                            );
                                           },
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)

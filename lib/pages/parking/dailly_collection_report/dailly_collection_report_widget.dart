@@ -370,7 +370,8 @@ class _DaillyCollectionReportWidgetState
                                                     .currentUserRole,
                                                 toEmail:
                                                     FFAppState().emailForReport,
-                                                fileName: 'BillWiseSaleReport',
+                                                fileName:
+                                                    'DaillyCollectionReport',
                                                 outletName:
                                                     containerOutletRecord?.name,
                                                 branchName:
@@ -378,7 +379,7 @@ class _DaillyCollectionReportWidgetState
                                                         ?.branch,
                                                 file: _model.base64Link2,
                                                 reportType:
-                                                    'Bill Wise Sale Report',
+                                                    'Dailly Collection Report',
                                               );
 
                                               if ((_model.apiResult6yc2

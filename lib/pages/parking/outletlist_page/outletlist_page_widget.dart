@@ -972,7 +972,14 @@ class _OutletlistPageWidgetState extends State<OutletlistPageWidget>
                                               FFAppState().currentMobile,
                                               ParamType.String,
                                             ),
+                                            'appSetting': serializeParam(
+                                              widget!.appSetting,
+                                              ParamType.Document,
+                                            ),
                                           }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            'appSetting': widget!.appSetting,
+                                          },
                                         );
 
                                         safeSetState(() {});

@@ -367,7 +367,19 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                     FFAppState().update(() {});
 
                                                     context.goNamed(
-                                                        'phoneAuthPage');
+                                                      'phoneAuthPage',
+                                                      queryParameters: {
+                                                        'appSetting':
+                                                            serializeParam(
+                                                          widget!.appSetting,
+                                                          ParamType.Document,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        'appSetting':
+                                                            widget!.appSetting,
+                                                      },
+                                                    );
                                                   },
                                                 ),
                                               ],
@@ -744,7 +756,20 @@ class _OTPverificationNewPWidgetState extends State<OTPverificationNewPWidget> {
                                                                   .currentMobileString,
                                                               ParamType.String,
                                                             ),
+                                                            'appSetting':
+                                                                serializeParam(
+                                                              widget!
+                                                                  .appSetting,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
                                                           }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'appSetting':
+                                                                widget!
+                                                                    .appSetting,
+                                                          },
                                                         );
                                                       }
 

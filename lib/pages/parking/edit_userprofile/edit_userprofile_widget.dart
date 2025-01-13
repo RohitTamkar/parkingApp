@@ -1108,7 +1108,7 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                                           highlightColor: Colors
                                                               .transparent,
                                                           onTap: () async {
-                                                            context.pushNamed(
+                                                            context.goNamed(
                                                               'editUserPermission',
                                                               queryParameters: {
                                                                 'userRef':
@@ -1118,7 +1118,20 @@ class _EditUserprofileWidgetState extends State<EditUserprofileWidget> {
                                                                   ParamType
                                                                       .DocumentReference,
                                                                 ),
+                                                                'appSetting':
+                                                                    serializeParam(
+                                                                  widget!
+                                                                      .appSetting,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
                                                               }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'appSetting':
+                                                                    widget!
+                                                                        .appSetting,
+                                                              },
                                                             );
                                                           },
                                                           child: Container(

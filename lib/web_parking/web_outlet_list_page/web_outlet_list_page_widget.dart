@@ -26,9 +26,11 @@ class WebOutletListPageWidget extends StatefulWidget {
   const WebOutletListPageWidget({
     super.key,
     this.mobileNo,
+    this.appSetting,
   });
 
   final String? mobileNo;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<WebOutletListPageWidget> createState() =>
@@ -897,7 +899,15 @@ class _WebOutletListPageWidgetState extends State<WebOutletListPageWidget>
                                                   FFAppState().currentMobile,
                                                   ParamType.String,
                                                 ),
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
                                             );
 
                                             safeSetState(() {});

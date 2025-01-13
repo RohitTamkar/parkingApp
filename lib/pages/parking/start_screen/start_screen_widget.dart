@@ -29,9 +29,9 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (isWeb) {
-        context.pushNamed('webLogin');
+        context.goNamed('webLogin');
       } else {
-        context.pushNamed('phoneAuthPage');
+        context.goNamed('phoneAuthPage');
       }
     });
 

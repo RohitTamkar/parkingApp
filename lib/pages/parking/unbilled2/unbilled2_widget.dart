@@ -368,15 +368,14 @@ class _Unbilled2WidgetState extends State<Unbilled2Widget> {
                                                     .currentUserRole,
                                                 toEmail:
                                                     FFAppState().emailForReport,
-                                                fileName: 'BillWiseSaleReport',
+                                                fileName: 'UnbilledReport',
                                                 outletName:
                                                     containerOutletRecord?.name,
                                                 branchName:
                                                     containerOutletRecord
                                                         ?.branch,
                                                 file: _model.base64Link2,
-                                                reportType:
-                                                    'Bill Wise Sale Report',
+                                                reportType: 'Unbilled Report',
                                               );
 
                                               if ((_model.apiResult6yc2

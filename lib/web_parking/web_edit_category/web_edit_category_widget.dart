@@ -506,7 +506,7 @@ class _WebEditCategoryWidgetState extends State<WebEditCategoryWidget> {
                                             },
                                           );
 
-                                          context.pushNamed('categories');
+                                          context.pushNamed('WebEditCategory');
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(

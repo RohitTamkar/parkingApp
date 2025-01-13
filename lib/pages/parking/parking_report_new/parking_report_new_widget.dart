@@ -57,14 +57,21 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
           },
         );
 
-        context.pushNamed(
+        context.goNamed(
           'businessProfileAdminfinal',
           queryParameters: {
             'mobileNo': serializeParam(
               FFAppState().currentMobileString,
               ParamType.String,
             ),
+            'appSetting': serializeParam(
+              widget!.appSetting,
+              ParamType.Document,
+            ),
           }.withoutNulls,
+          extra: <String, dynamic>{
+            'appSetting': widget!.appSetting,
+          },
         );
 
         return;
@@ -237,7 +244,7 @@ class _ParkingReportNewWidgetState extends State<ParkingReportNewWidget> {
                                           getCurrentTimestamp;
                                       safeSetState(() {});
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'vehicleWiseSale2',
                                         queryParameters: {
                                           'appSetting': serializeParam(

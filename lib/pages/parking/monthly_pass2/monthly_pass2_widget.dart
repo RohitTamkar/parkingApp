@@ -1395,7 +1395,6 @@ class _MonthlyPass2WidgetState extends State<MonthlyPass2Widget> {
                                                 _model
                                                     .selectedParty!.vehicleType,
                                               );
-                                              context.safePop();
                                             } else {
                                               await showDialog(
                                                 context: context,

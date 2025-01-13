@@ -607,7 +607,16 @@ class _AddBusinessProfileWidgetState extends State<AddBusinessProfileWidget> {
                                                           .currentMobileString,
                                                       ParamType.String,
                                                     ),
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
                                                 );
                                               } else {
                                                 var confirmDialogResponse =

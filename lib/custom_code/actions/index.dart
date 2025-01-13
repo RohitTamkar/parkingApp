@@ -1,10 +1,14 @@
 export 'check_platform.dart' show checkPlatform;
+export 'gen_excel_for_shift_summary_vehicle_report.dart'
+    show genExcelForShiftSummaryVehicleReport;
 export 'gen_excel_for_unbill_report.dart' show genExcelForUnbillReport;
 export 'gen_excel_for_in_out_report.dart' show genExcelForInOutReport;
 export 'gen_excel_for_vehicle_parking_report.dart'
     show genExcelForVehicleParkingReport;
 export 'cal_shift_summary3.dart' show calShiftSummary3;
 export 'print_shift_summary_report.dart' show printShiftSummaryReport;
+export 'gen_excel_for_shift_summary_report.dart'
+    show genExcelForShiftSummaryReport;
 export 'cal_shift_summary2.dart' show calShiftSummary2;
 export 'gen_excel_for_today_summary_report.dart'
     show genExcelForTodaySummaryReport;

@@ -598,7 +598,19 @@ class _AddCategoryMWidgetState extends State<AddCategoryMWidget> {
                                               },
                                             );
 
-                                            context.goNamed('categories');
+                                            context.goNamed(
+                                              'categories',
+                                              queryParameters: {
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
+                                            );
 
                                             FFAppState().catCodelength = 0;
                                             FFAppState().setCategoryRef = null;

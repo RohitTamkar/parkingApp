@@ -1086,7 +1086,15 @@ class _AddOutletPageWidgetState extends State<AddOutletPageWidget> {
                                                         .currentMobileString,
                                                     ParamType.String,
                                                   ),
+                                                  'appSetting': serializeParam(
+                                                    widget!.appSetting,
+                                                    ParamType.Document,
+                                                  ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'appSetting':
+                                                      widget!.appSetting,
+                                                },
                                               );
 
                                               safeSetState(() {});

@@ -118,7 +118,7 @@ class _ParkingProductCopyWidgetState extends State<ParkingProductCopyWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.pushNamed('ParkingCustomers');
+                                    context.goNamed('ParkingCustomers');
                                   },
                                 ),
                               ],

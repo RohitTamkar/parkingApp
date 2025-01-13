@@ -402,7 +402,7 @@ class _EditBillListWidgetState extends State<EditBillListWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'editBillDetails',
                                                     queryParameters: {
                                                       'docRef': serializeParam(

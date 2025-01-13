@@ -656,7 +656,7 @@ class _ShiftDetailsWidgetState extends State<ShiftDetailsWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     'shiftSummaryReport',
                                                     queryParameters: {
                                                       'docRef': serializeParam(

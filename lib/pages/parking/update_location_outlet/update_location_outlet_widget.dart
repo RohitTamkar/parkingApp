@@ -20,10 +20,12 @@ class UpdateLocationOutletWidget extends StatefulWidget {
     super.key,
     this.id,
     this.outletRef,
+    this.appSetting,
   });
 
   final String? id;
   final DocumentReference? outletRef;
+  final AppSettingsRecord? appSetting;
 
   @override
   State<UpdateLocationOutletWidget> createState() =>
@@ -307,7 +309,26 @@ class _UpdateLocationOutletWidgetState
                                 ),
                               );
 
-                              context.goNamed('EditOutletPage');
+                              context.goNamed(
+                                'EditOutletPage',
+                                queryParameters: {
+                                  'appSetting': serializeParam(
+                                    widget!.appSetting,
+                                    ParamType.Document,
+                                  ),
+                                  'outletRef': serializeParam(
+                                    widget!.outletRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'id': serializeParam(
+                                    widget!.id,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'appSetting': widget!.appSetting,
+                                },
+                              );
                             },
                             text: FFLocalizations.of(context).getText(
                               '6mkny4ac' /* Done */,

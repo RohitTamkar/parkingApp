@@ -1728,7 +1728,20 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed('categories');
+                                                context.goNamed(
+                                                  'categories',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
                                               },
                                               child: Container(
                                                 width:
@@ -1802,8 +1815,20 @@ class _MastersNewWidgetState extends State<MastersNewWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed(
-                                                    'productListNewM');
+                                                context.goNamed(
+                                                  'productListNewM',
+                                                  queryParameters: {
+                                                    'appSetting':
+                                                        serializeParam(
+                                                      widget!.appSetting,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'appSetting':
+                                                        widget!.appSetting,
+                                                  },
+                                                );
                                               },
                                               child: Container(
                                                 width:

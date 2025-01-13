@@ -154,7 +154,7 @@ class _MonthlyPassCheckinWidgetState extends State<MonthlyPassCheckinWidget> {
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        context.pushNamed(
+                                        context.goNamed(
                                           'ParkingCheckIN',
                                           queryParameters: {
                                             'shiftDoc': serializeParam(
