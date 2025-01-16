@@ -2,9 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/pages/parking/email_input/email_input_widget.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import 'dart:ui';
@@ -25,6 +27,8 @@ class InOutReportModel extends FlutterFlowModel<InOutReportWidget> {
   String? base64Link2;
   // Stores action output result for [Backend Call - API (sendMail)] action in IconButton widget.
   ApiCallResponse? apiResult6yc2;
+  // State field(s) for RadioButton widget.
+  FormFieldController<String>? radioButtonValueController;
   DateTime? datePicked1;
   DateTime? datePicked2;
   // Stores action output result for [Custom Action - returnDateNextday] action in Row widget.
@@ -39,4 +43,7 @@ class InOutReportModel extends FlutterFlowModel<InOutReportWidget> {
 
   @override
   void dispose() {}
+
+  /// Additional helper methods.
+  String? get radioButtonValue => radioButtonValueController?.value;
 }

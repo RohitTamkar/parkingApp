@@ -2,9 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/pages/parking/email_input/email_input_widget.dart';
 import '/pages/parking/list_view_msg/list_view_msg_widget.dart';
 import 'dart:ui';
@@ -456,6 +458,76 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      FlutterFlowRadioButton(
+                                        options: [
+                                          FFLocalizations.of(context).getText(
+                                            'k6623el5' /* In */,
+                                          ),
+                                          FFLocalizations.of(context).getText(
+                                            'jc7oyuci' /* Out */,
+                                          )
+                                        ].toList(),
+                                        onChanged: (val) => safeSetState(() {}),
+                                        controller: _model
+                                                .radioButtonValueController ??=
+                                            FormFieldController<String>(null),
+                                        optionHeight: 32.0,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
+                                            ),
+                                        selectedTextStyle: FlutterFlowTheme.of(
+                                                context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                        buttonPosition:
+                                            RadioButtonPosition.left,
+                                        direction: Axis.horizontal,
+                                        radioButtonColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        inactiveRadioButtonColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                        toggleable: false,
+                                        horizontalAlignment:
+                                            WrapAlignment.start,
+                                        verticalAlignment:
+                                            WrapCrossAlignment.start,
+                                      ),
+                                    ].divide(SizedBox(width: 50.0)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 15.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
                                       InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -813,9 +885,18 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                     decoration: BoxDecoration(),
                                     child: Builder(
                                       builder: (context) {
-                                        final billWiseSaleReportVar =
-                                            inOutReportInvoiceRecordList
-                                                .toList();
+                                        final billWiseSaleReportVar = (_model
+                                                        .radioButtonValue ==
+                                                    'In'
+                                                ? inOutReportInvoiceRecordList
+                                                    .where((e) =>
+                                                        e.checkOutTime == 0)
+                                                    .toList()
+                                                : inOutReportInvoiceRecordList
+                                                    .where((e) =>
+                                                        e.checkOutTime != 0)
+                                                    .toList())
+                                            .toList();
                                         if (billWiseSaleReportVar.isEmpty) {
                                           return Center(
                                             child: ListViewMsgWidget(),
