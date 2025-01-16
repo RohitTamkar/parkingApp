@@ -470,7 +470,11 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                         onChanged: (val) => safeSetState(() {}),
                                         controller: _model
                                                 .radioButtonValueController ??=
-                                            FormFieldController<String>(null),
+                                            FormFieldController<String>(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                          'qgfj0c7l' /* In */,
+                                        )),
                                         optionHeight: 32.0,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
