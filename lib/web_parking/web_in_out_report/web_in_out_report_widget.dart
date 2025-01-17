@@ -142,13 +142,6 @@ class _WebInOutReportWidgetState extends State<WebInOutReportWidget> {
                             );
                             _shouldSetState = true;
                             if (_model.printer!) {
-                              await actions.printVehicleInOutReport(
-                                FFAppState().printerDevice,
-                                FFAppState().isPrinterConnected,
-                                FFAppState().printerName,
-                                FFAppState().paperSize,
-                                webInOutReportInvoiceRecordList.toList(),
-                              );
                             } else {
                               await showDialog(
                                 context: context,

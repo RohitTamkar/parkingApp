@@ -33,6 +33,7 @@ Future printVehicleInOutReport(
   String statusName,
   String printerSize,
   List<InvoiceRecord> dataDocument,
+  bool radioButton,
 ) async {
   // Add your function code here!
   int size = 32;
@@ -72,12 +73,19 @@ Future printVehicleInOutReport(
     if (dataDocument!.isNotEmpty) {
       obj = dataDocument[0];
 
-      bytes += generator.text("In-Out Report",
-          styles: PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              align: PosAlign.center));
-
+      if (radioButton) {
+        bytes += generator.text("In Report",
+            styles: PosStyles(
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                align: PosAlign.center));
+      } else {
+        bytes += generator.text("Out Report",
+            styles: PosStyles(
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                align: PosAlign.center));
+      }
       QuerySnapshot querySnapshot;
       querySnapshot = await FirebaseFirestore.instance
           .collection('OUTLET')

@@ -1655,6 +1655,24 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 '0',
                                               ),
                                             ));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Check In Successfull !',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
+                                            );
                                           } else {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
@@ -2150,6 +2168,24 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                 r'''$.paymentJson''',
                                               ).toString(),
                                             ));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Check In Successfull !',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
+                                            );
                                             await actions.removeFromAllBillList(
                                               FFAppState().selBill,
                                             );

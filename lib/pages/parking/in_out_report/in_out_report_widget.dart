@@ -162,6 +162,7 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                           .where((e) => e.checkOutTime != 0)
                                           .toList())
                                   .toList(),
+                              _model.radioButtonValue == 'In',
                             );
                           } else {
                             await showDialog(
