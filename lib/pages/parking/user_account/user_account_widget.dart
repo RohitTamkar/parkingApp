@@ -539,7 +539,7 @@ class _UserAccountWidgetState extends State<UserAccountWidget> {
                                                                               .where(
                                                                     'mobile',
                                                                     isEqualTo:
-                                                                        widget!
+                                                                        listItem
                                                                             .mobile,
                                                                   ),
                                                                   singleRecord:
