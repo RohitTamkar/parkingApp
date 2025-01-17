@@ -902,22 +902,17 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                                     decoration: BoxDecoration(),
                                     child: Builder(
                                       builder: (context) {
-                                        final billWiseSaleReportVar = () {
-                                          if (_model.radioButtonValue == 'In') {
-                                            return inOutReportInvoiceRecordList
-                                                .where(
-                                                    (e) => e.checkOutTime == 0)
-                                                .toList();
-                                          } else if (_model.radioButtonValue ==
-                                              'Out') {
-                                            return inOutReportInvoiceRecordList
-                                                .where(
-                                                    (e) => e.checkOutTime != 0)
-                                                .toList();
-                                          } else {
-                                            return inOutReportInvoiceRecordList;
-                                          }
-                                        }()
+                                        final billWiseSaleReportVar = (_model
+                                                        .radioButtonValue ==
+                                                    'In'
+                                                ? inOutReportInvoiceRecordList
+                                                    .where((e) =>
+                                                        e.checkOutTime == 0)
+                                                    .toList()
+                                                : inOutReportInvoiceRecordList
+                                                    .where((e) =>
+                                                        e.checkOutTime != 0)
+                                                    .toList())
                                             .toList();
                                         if (billWiseSaleReportVar.isEmpty) {
                                           return Center(

@@ -292,6 +292,9 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                           if (getCurrentTimestamp
                                                   .millisecondsSinceEpoch <=
                                               _model.getinvout!.passEndDate) {
+                                            FFAppState().newcount =
+                                                FFAppState().newcount + 1;
+                                            safeSetState(() {});
                                             _model.invoiceParty =
                                                 await queryPartyRecordOnce(
                                               parent: FFAppState().outletIdRef,
