@@ -154,19 +154,13 @@ class _InOutReportWidgetState extends State<InOutReportWidget> {
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
                               FFAppState().paperSize,
-                              () {
-                                if (_model.radioButtonValue == 'In') {
-                                  return inOutReportInvoiceRecordList
-                                      .where((e) => e.checkOutTime == 0)
-                                      .toList();
-                                } else if (_model.radioButtonValue == 'Out') {
-                                  return inOutReportInvoiceRecordList
-                                      .where((e) => e.checkOutTime != 0)
-                                      .toList();
-                                } else {
-                                  return inOutReportInvoiceRecordList;
-                                }
-                              }()
+                              (_model.radioButtonValue == 'In'
+                                      ? inOutReportInvoiceRecordList
+                                          .where((e) => e.checkOutTime == 0)
+                                          .toList()
+                                      : inOutReportInvoiceRecordList
+                                          .where((e) => e.checkOutTime != 0)
+                                          .toList())
                                   .toList(),
                             );
                           } else {
