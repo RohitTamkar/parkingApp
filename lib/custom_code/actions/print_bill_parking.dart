@@ -303,7 +303,8 @@ Future printBillParking(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
                 align: PosAlign.left));
-        bytes += generator.text("Amount :" + invoiceDetails.billAmt.toString(),
+        bytes += generator.text(
+            "Amount :" + invoiceDetails.finalBillAmt.toString(),
             styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,
@@ -678,7 +679,8 @@ Future printBillParking(
                 width: PosTextSize.size1,
                 align: PosAlign.left));
 
-        bytes += generator.text("Amount :" + invoiceDetails.billAmt.toString(),
+        bytes += generator.text(
+            "Amount :" + invoiceDetails.finalBillAmt.toString(),
             styles: PosStyles(
                 height: PosTextSize.size1,
                 width: PosTextSize.size1,

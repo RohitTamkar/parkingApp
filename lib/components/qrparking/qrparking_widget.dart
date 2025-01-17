@@ -223,7 +223,7 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                                           .millisecondsSinceEpoch),
                                               widget!.invdoc?.advancePaid)
                                           .toString(),
-                                      '0',
+                                      '1',
                                     )}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
@@ -483,75 +483,58 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   .update(createInvoiceRecordData(
                                 checkOutTime:
                                     getCurrentTimestamp.millisecondsSinceEpoch,
-                                billAmt: _model
-                                            .paymentModeModel.dropDownValue ==
-                                        'COMPLEMENTARY'
-                                    ? 0.0
-                                    : (widget!.settings!.settingList
-                                            .where(
-                                                (e) =>
-                                                    e.title ==
-                                                    'calculateHourlyCharges')
-                                            .toList()
-                                            .firstOrNull!
-                                            .value
-                                        ? functions.calculateParkingCharges2(
-                                            widget!.invdoc?.vechicleType,
-                                            widget!.invdoc?.checkInTime,
-                                            getCurrentTimestamp
-                                                .millisecondsSinceEpoch,
-                                            VehicleBillStruct(
-                                              baseRate: widget!.productDoc
-                                                  ?.parkingCharges?.baseRate,
-                                              baseDuration: widget!
-                                                  .productDoc
-                                                  ?.parkingCharges
-                                                  ?.baseDuration,
-                                              hourlyRate: widget!.productDoc
-                                                  ?.parkingCharges?.hourlyRate,
-                                              freeMinutes: widget!.productDoc
-                                                  ?.parkingCharges?.freeMinutes,
-                                            ))
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
-                                finalBillAmt: _model
-                                            .paymentModeModel.dropDownValue ==
-                                        'COMPLEMENTARY'
-                                    ? 0.0
-                                    : (widget!.settings!.settingList
-                                            .where((e) =>
-                                                e.title ==
-                                                'calculateHourlyCharges')
-                                            .toList()
-                                            .firstOrNull!
-                                            .value
-                                        ? functions.calculateParkingCharges2(
-                                            widget!.invdoc?.vechicleType,
-                                            widget!.invdoc?.checkInTime,
-                                            getCurrentTimestamp
-                                                .millisecondsSinceEpoch,
-                                            VehicleBillStruct(
-                                              baseRate: widget!.productDoc
-                                                  ?.parkingCharges?.baseRate,
-                                              baseDuration: widget!
-                                                  .productDoc
-                                                  ?.parkingCharges
-                                                  ?.baseDuration,
-                                              hourlyRate: widget!.productDoc
-                                                  ?.parkingCharges?.hourlyRate,
-                                              freeMinutes: widget!.productDoc
-                                                  ?.parkingCharges?.freeMinutes,
-                                            ))
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
+                                billAmt: widget!.settings!.settingList
+                                        .where((e) =>
+                                            e.title == 'calculateHourlyCharges')
+                                        .toList()
+                                        .firstOrNull!
+                                        .value
+                                    ? functions.calculateParkingCharges2(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch,
+                                        VehicleBillStruct(
+                                          baseRate: widget!.productDoc
+                                              ?.parkingCharges?.baseRate,
+                                          baseDuration: widget!.productDoc
+                                              ?.parkingCharges?.baseDuration,
+                                          hourlyRate: widget!.productDoc
+                                              ?.parkingCharges?.hourlyRate,
+                                          freeMinutes: widget!.productDoc
+                                              ?.parkingCharges?.freeMinutes,
+                                        ))
+                                    : functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
+                                finalBillAmt: widget!.settings!.settingList
+                                        .where((e) =>
+                                            e.title == 'calculateHourlyCharges')
+                                        .toList()
+                                        .firstOrNull!
+                                        .value
+                                    ? functions.calculateParkingCharges2(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch,
+                                        VehicleBillStruct(
+                                          baseRate: widget!.productDoc
+                                              ?.parkingCharges?.baseRate,
+                                          baseDuration: widget!.productDoc
+                                              ?.parkingCharges?.baseDuration,
+                                          hourlyRate: widget!.productDoc
+                                              ?.parkingCharges?.hourlyRate,
+                                          freeMinutes: widget!.productDoc
+                                              ?.parkingCharges?.freeMinutes,
+                                        ))
+                                    : functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
                                 duration: valueOrDefault<double>(
                                   functions.calculateHour(
                                       widget!.invdoc?.checkInTime,
@@ -1225,75 +1208,58 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   .update(createInvoiceRecordData(
                                 checkOutTime:
                                     getCurrentTimestamp.millisecondsSinceEpoch,
-                                billAmt: _model
-                                            .paymentModeModel.dropDownValue ==
-                                        'COMPLEMENTARY'
-                                    ? 0.0
-                                    : (widget!.settings!.settingList
-                                            .where(
-                                                (e) =>
-                                                    e.title ==
-                                                    'calculateHourlyCharges')
-                                            .toList()
-                                            .firstOrNull!
-                                            .value
-                                        ? functions.calculateParkingCharges2(
-                                            widget!.invdoc?.vechicleType,
-                                            widget!.invdoc?.checkInTime,
-                                            getCurrentTimestamp
-                                                .millisecondsSinceEpoch,
-                                            VehicleBillStruct(
-                                              baseRate: widget!.productDoc
-                                                  ?.parkingCharges?.baseRate,
-                                              baseDuration: widget!
-                                                  .productDoc
-                                                  ?.parkingCharges
-                                                  ?.baseDuration,
-                                              hourlyRate: widget!.productDoc
-                                                  ?.parkingCharges?.hourlyRate,
-                                              freeMinutes: widget!.productDoc
-                                                  ?.parkingCharges?.freeMinutes,
-                                            ))
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
-                                finalBillAmt: _model
-                                            .paymentModeModel.dropDownValue ==
-                                        'COMPLEMENTARY'
-                                    ? 0.0
-                                    : (widget!.settings!.settingList
-                                            .where((e) =>
-                                                e.title ==
-                                                'calculateHourlyCharges')
-                                            .toList()
-                                            .firstOrNull!
-                                            .value
-                                        ? functions.calculateParkingCharges2(
-                                            widget!.invdoc?.vechicleType,
-                                            widget!.invdoc?.checkInTime,
-                                            getCurrentTimestamp
-                                                .millisecondsSinceEpoch,
-                                            VehicleBillStruct(
-                                              baseRate: widget!.productDoc
-                                                  ?.parkingCharges?.baseRate,
-                                              baseDuration: widget!
-                                                  .productDoc
-                                                  ?.parkingCharges
-                                                  ?.baseDuration,
-                                              hourlyRate: widget!.productDoc
-                                                  ?.parkingCharges?.hourlyRate,
-                                              freeMinutes: widget!.productDoc
-                                                  ?.parkingCharges?.freeMinutes,
-                                            ))
-                                        : functions
-                                            .calculateParkingCharges12hours(
-                                                widget!.invdoc?.vechicleType,
-                                                widget!.invdoc?.checkInTime,
-                                                getCurrentTimestamp
-                                                    .millisecondsSinceEpoch)),
+                                billAmt: widget!.settings!.settingList
+                                        .where((e) =>
+                                            e.title == 'calculateHourlyCharges')
+                                        .toList()
+                                        .firstOrNull!
+                                        .value
+                                    ? functions.calculateParkingCharges2(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch,
+                                        VehicleBillStruct(
+                                          baseRate: widget!.productDoc
+                                              ?.parkingCharges?.baseRate,
+                                          baseDuration: widget!.productDoc
+                                              ?.parkingCharges?.baseDuration,
+                                          hourlyRate: widget!.productDoc
+                                              ?.parkingCharges?.hourlyRate,
+                                          freeMinutes: widget!.productDoc
+                                              ?.parkingCharges?.freeMinutes,
+                                        ))
+                                    : functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
+                                finalBillAmt: widget!.settings!.settingList
+                                        .where((e) =>
+                                            e.title == 'calculateHourlyCharges')
+                                        .toList()
+                                        .firstOrNull!
+                                        .value
+                                    ? functions.calculateParkingCharges2(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch,
+                                        VehicleBillStruct(
+                                          baseRate: widget!.productDoc
+                                              ?.parkingCharges?.baseRate,
+                                          baseDuration: widget!.productDoc
+                                              ?.parkingCharges?.baseDuration,
+                                          hourlyRate: widget!.productDoc
+                                              ?.parkingCharges?.hourlyRate,
+                                          freeMinutes: widget!.productDoc
+                                              ?.parkingCharges?.freeMinutes,
+                                        ))
+                                    : functions.calculateParkingCharges12hours(
+                                        widget!.invdoc?.vechicleType,
+                                        widget!.invdoc?.checkInTime,
+                                        getCurrentTimestamp
+                                            .millisecondsSinceEpoch),
                                 duration: valueOrDefault<double>(
                                   functions.calculateHour(
                                       widget!.invdoc?.checkInTime,
