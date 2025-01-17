@@ -343,15 +343,16 @@ Future printVehicleInOutReport(
         ]);
       }
 
-      //row2
-      bytes += generator.text("--------------------------------",
-          styles: const PosStyles(
-              height: PosTextSize.size1,
-              width: PosTextSize.size1,
-              bold: false,
-              align: PosAlign.center));
       if (radioButton) {
       } else {
+        //row2
+        bytes += generator.text("--------------------------------",
+            styles: const PosStyles(
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: false,
+                align: PosAlign.center));
+
         bytes += generator.row([
           PosColumn(
             text: "Total Amt:",
