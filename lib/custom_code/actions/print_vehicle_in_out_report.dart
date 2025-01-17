@@ -350,28 +350,31 @@ Future printVehicleInOutReport(
               width: PosTextSize.size1,
               bold: false,
               align: PosAlign.center));
-      bytes += generator.row([
-        PosColumn(
-          text: "Total Amt:",
-          width: 9,
-          styles: PosStyles(
+      if (radioButton) {
+      } else {
+        bytes += generator.row([
+          PosColumn(
+            text: "Total Amt:",
+            width: 9,
+            styles: PosStyles(
+                fontType: PosFontType.fontA,
+                height: PosTextSize.size1,
+                width: PosTextSize.size1,
+                bold: true,
+                align: PosAlign.left),
+          ),
+          PosColumn(
+            text: totalAmt.toString(),
+            width: 3,
+            styles: PosStyles(
               fontType: PosFontType.fontA,
               height: PosTextSize.size1,
               width: PosTextSize.size1,
-              bold: true,
-              align: PosAlign.left),
-        ),
-        PosColumn(
-          text: totalAmt.toString(),
-          width: 3,
-          styles: PosStyles(
-            fontType: PosFontType.fontA,
-            height: PosTextSize.size1,
-            width: PosTextSize.size1,
-            bold: false,
-          ),
-        )
-      ]);
+              bold: false,
+            ),
+          )
+        ]);
+      }
 
       bytes += generator.text("--------------------------------",
           styles: const PosStyles(
