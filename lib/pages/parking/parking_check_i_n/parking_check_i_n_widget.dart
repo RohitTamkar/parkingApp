@@ -1753,6 +1753,29 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                   .dropDownvechicleValueController
                                                   ?.value = 'Vehicle Type';
                                             });
+
+                                            context.goNamed(
+                                              'VehicleEntry',
+                                              queryParameters: {
+                                                'shiftDoc': serializeParam(
+                                                  widget!.shiftDoc,
+                                                  ParamType.JSON,
+                                                ),
+                                                'userRef': serializeParam(
+                                                  widget!.userRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
+                                            );
+
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;
@@ -2147,6 +2170,29 @@ class _ParkingCheckINWidgetState extends State<ParkingCheckINWidget> {
                                                   .dropDownvechicleValueController
                                                   ?.value = 'Vehicle Type';
                                             });
+
+                                            context.goNamed(
+                                              'VehicleEntry',
+                                              queryParameters: {
+                                                'shiftDoc': serializeParam(
+                                                  widget!.shiftDoc,
+                                                  ParamType.JSON,
+                                                ),
+                                                'userRef': serializeParam(
+                                                  widget!.userRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'appSetting': serializeParam(
+                                                  widget!.appSetting,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'appSetting':
+                                                    widget!.appSetting,
+                                              },
+                                            );
+
                                             if (_shouldSetState)
                                               safeSetState(() {});
                                             return;
