@@ -700,22 +700,18 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                   ),
                                                             ),
                                                             Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                widget!.docRef
-                                                                    ?.productSaleList
-                                                                    ?.where((e) =>
-                                                                        (listItem.vechicleType ==
-                                                                            listItem
-                                                                                .vechicleType) &&
-                                                                        ((listItem.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
-                                                                            (listItem.checkOutTime <=
-                                                                                FFAppState().endDate!.millisecondsSinceEpoch)))
-                                                                    .toList()
-                                                                    ?.length
-                                                                    ?.toString(),
-                                                                '0',
-                                                              ),
+                                                              shiftSummaryReportInvoiceRecordList
+                                                                  .where((e) =>
+                                                                      (listItem
+                                                                              .vechicleType ==
+                                                                          listItem
+                                                                              .vechicleType) &&
+                                                                      ((listItem.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                          (listItem.checkOutTime <=
+                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
+                                                                  .toList()
+                                                                  .length
+                                                                  .toString(),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelLarge
