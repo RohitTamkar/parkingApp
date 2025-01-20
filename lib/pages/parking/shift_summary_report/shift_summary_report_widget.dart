@@ -640,7 +640,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                               widget!
                                                                                   .docRef!.startTime) &&
                                                                           (e.checkInTime <=
-                                                                              widget!.docRef!.startTime)))
+                                                                              widget!.docRef!.endTime)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
@@ -707,11 +707,9 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       (e.vechicleType ==
                                                                           listItem
                                                                               .vechicleType) &&
-                                                                      ((e.checkOutTime >=
-                                                                              widget!
-                                                                                  .docRef!.startTime) &&
+                                                                      ((e.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
                                                                           (e.checkOutTime <=
-                                                                              widget!.docRef!.startTime)))
+                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
