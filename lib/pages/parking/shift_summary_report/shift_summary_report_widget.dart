@@ -705,8 +705,8 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       (e.vechicleType ==
                                                                           listItem
                                                                               .vechicleType) &&
-                                                                      ((listItem.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
-                                                                          (listItem.checkOutTime <=
+                                                                      ((e.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                          (e.checkOutTime <=
                                                                               FFAppState().endDate!.millisecondsSinceEpoch)))
                                                                   .toList()
                                                                   .length
