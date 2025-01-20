@@ -913,6 +913,21 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     }
                                   }
                                 } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('test'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
                                   _model.shiftupdate =
                                       await actions.calShiftSummary(
                                     _model.docinvqr2!,
