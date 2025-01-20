@@ -705,7 +705,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                 widget!.docRef
                                                                     ?.productSaleList
                                                                     ?.unique((e) =>
-                                                                        (e.vechicleType ==
+                                                                        (listItem.vechicleType ==
                                                                             listItem
                                                                                 .vechicleType) &&
                                                                         ((listItem.checkOutTime >= getCurrentTimestamp.millisecondsSinceEpoch) &&
