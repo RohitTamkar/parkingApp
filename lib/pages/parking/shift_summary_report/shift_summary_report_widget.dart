@@ -636,9 +636,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       (e.vechicleType ==
                                                                           listItem
                                                                               .vechicleType) &&
-                                                                      ((e.checkInTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                      ((e.checkInTime >=
+                                                                              widget!
+                                                                                  .docRef!.startTime) &&
                                                                           (e.checkInTime <=
-                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
+                                                                              widget!.docRef!.startTime)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
@@ -705,9 +707,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       (e.vechicleType ==
                                                                           listItem
                                                                               .vechicleType) &&
-                                                                      ((e.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                      ((e.checkOutTime >=
+                                                                              widget!
+                                                                                  .docRef!.startTime) &&
                                                                           (e.checkOutTime <=
-                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
+                                                                              widget!.docRef!.startTime)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
