@@ -623,10 +623,6 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                         _model.shiftSummarRkiosk23,
                                         r'''$.paymentJson''',
                                       ).toString(),
-                                      shiftId: getJsonField(
-                                        widget!.shiftdoc,
-                                        r'''$.shiftId''',
-                                      ).toString(),
                                     ));
                                     if (!functions.isPrinterSelected(
                                         FFAppState().printerDevice)!) {
@@ -799,10 +795,6 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                         _model.shiftupdatenew,
                                         r'''$.paymentJson''',
                                       ).toString(),
-                                      shiftId: getJsonField(
-                                        widget!.shiftdoc,
-                                        r'''$.shiftId''',
-                                      ).toString(),
                                     ));
                                     if (!functions.isPrinterSelected(
                                         FFAppState().printerDevice)!) {
@@ -972,10 +964,6 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                     paymentJson: getJsonField(
                                       _model.shiftupdate,
                                       r'''$.paymentJson''',
-                                    ).toString(),
-                                    shiftId: getJsonField(
-                                      widget!.shiftdoc,
-                                      r'''$.shiftId''',
                                     ).toString(),
                                   ));
                                   if (!functions.isPrinterSelected(
