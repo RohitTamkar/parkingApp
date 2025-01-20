@@ -543,6 +543,10 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   0.0,
                                 ),
                                 checkOutTerminal: FFAppState().terminalNo,
+                                shiftId: getJsonField(
+                                  widget!.shiftdoc,
+                                  r'''$.shiftId''',
+                                ).toString(),
                               ));
                               _model.docinvqr2 = await queryInvoiceRecordOnce(
                                 parent: FFAppState().outletIdRef,
@@ -1283,6 +1287,10 @@ class _QrparkingWidgetState extends State<QrparkingWidget> {
                                   0.0,
                                 ),
                                 checkOutTerminal: FFAppState().terminalNo,
+                                shiftId: getJsonField(
+                                  widget!.shiftdoc,
+                                  r'''$.shiftId''',
+                                ).toString(),
                               ));
                               _model.savebill = await queryInvoiceRecordOnce(
                                 parent: FFAppState().outletIdRef,
