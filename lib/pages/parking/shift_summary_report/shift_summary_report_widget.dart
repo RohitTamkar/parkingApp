@@ -772,9 +772,10 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                         (e.vechicleType ==
                                                                             listItem
                                                                                 .vechicleType) &&
-                                                                        (e.shiftId ==
-                                                                            widget!
-                                                                                .docRef?.shiftId))
+                                                                        ((e.checkOutTime >= widget!.docRef!.startTime) &&
+                                                                            (e.checkOutTime <=
+                                                                                widget!
+                                                                                    .docRef!.endTime)))
                                                                     .toList()
                                                                     .map((e) =>
                                                                         e.finalBillAmt)
