@@ -99,7 +99,7 @@ class _SearchHiveprd2State extends State<SearchHiveprd2> {
               subtitle: Text('\₹${product.sellingPrice.toStringAsFixed(2)}'),
             );
           },
-          /* loadingBuilder: (BuildContext context) {
+          /*loadingBuilder: (BuildContext context) {
               return SizedBox(
                 width: 24,
                 height: 24,
