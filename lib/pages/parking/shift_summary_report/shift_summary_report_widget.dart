@@ -652,8 +652,8 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       ((e.checkInTime >=
                                                                               widget!
                                                                                   .docRef!.startTime) &&
-                                                                          (e.checkInTime ==
-                                                                              (widget!.docRef?.endTime == 0 ? widget!.docRef?.lastBillTime : widget!.docRef?.endTime))))
+                                                                          (e.checkInTime <=
+                                                                              widget!.docRef!.endTime)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
