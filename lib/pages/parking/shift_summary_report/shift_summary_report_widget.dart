@@ -769,9 +769,12 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                             functions
                                                                 .returntoatlamt(shiftSummaryReportInvoiceRecordList
                                                                     .where((e) =>
-                                                                        e.vechicleType ==
-                                                                        listItem
-                                                                            .vechicleType)
+                                                                        (e.vechicleType ==
+                                                                            listItem
+                                                                                .vechicleType) &&
+                                                                        (e.shiftId ==
+                                                                            widget!
+                                                                                .docRef?.shiftId))
                                                                     .toList()
                                                                     .map((e) =>
                                                                         e.finalBillAmt)
