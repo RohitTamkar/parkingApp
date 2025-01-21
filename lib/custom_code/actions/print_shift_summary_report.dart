@@ -289,12 +289,22 @@ Future printShiftSummaryReport(
       for (var inv in uniquelist) {
         String Vechicltype = '';
         totalAmt2 += functions.returntoatlamt(dataDocument
-            .where((e) => e.vechicleType == inv.vechicleType)
+            .where((e) =>
+                (e.vechicleType == inv.vechicleType) &&
+                ((e.checkInTime >=
+                        FFAppState().startDate!.millisecondsSinceEpoch) &&
+                    (e.checkInTime <=
+                        FFAppState().endDate!.millisecondsSinceEpoch)))
             .toList()
             .map((e) => e.finalBillAmt)
             .toList());
         totalAmt = functions.returntoatlamt(dataDocument
-            .where((e) => e.vechicleType == inv.vechicleType)
+            .where((e) =>
+                (e.vechicleType == inv.vechicleType) &&
+                ((e.checkInTime >=
+                        FFAppState().startDate!.millisecondsSinceEpoch) &&
+                    (e.checkInTime <=
+                        FFAppState().endDate!.millisecondsSinceEpoch)))
             .toList()
             .map((e) => e.finalBillAmt)
             .toList());
