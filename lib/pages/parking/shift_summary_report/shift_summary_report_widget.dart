@@ -141,6 +141,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                               shiftSummaryReportInvoiceRecordList.toList(),
                               shiftSummaryReportInvoiceRecordList
                                   .unique((e) => e.vechicleType)
+                                  .where((e) =>
+                                      (e.checkOutTime >=
+                                          widget!.docRef!.startTime) &&
+                                      (e.checkOutTime <=
+                                          widget!.docRef!.endTime))
                                   .toList(),
                               widget!.docRef!.shiftId,
                             );
