@@ -133,15 +133,25 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                           );
                           _shouldSetState = true;
                           if (_model.printer!) {
+                            FFAppState().startDate =
+                                DateTime.fromMillisecondsSinceEpoch(
+                                    valueOrDefault<int>(
+                              widget!.docRef?.startTime,
+                              0,
+                            ));
+                            FFAppState().endDate =
+                                DateTime.fromMillisecondsSinceEpoch(
+                                    valueOrDefault<int>(
+                              widget!.docRef?.endTime,
+                              0,
+                            ));
+                            safeSetState(() {});
                             await actions.printShiftSummaryReport(
                               FFAppState().printerDevice,
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
                               FFAppState().paperSize,
-                              shiftSummaryReportInvoiceRecordList
-                                  .where((e) =>
-                                      e.shiftId == widget!.docRef?.shiftId)
-                                  .toList(),
+                              shiftSummaryReportInvoiceRecordList.toList(),
                               shiftSummaryReportInvoiceRecordList
                                   .unique((e) => e.vechicleType)
                                   .toList(),
