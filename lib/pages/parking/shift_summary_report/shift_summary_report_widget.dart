@@ -142,7 +142,9 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                             FFAppState().endDate =
                                 DateTime.fromMillisecondsSinceEpoch(
                                     valueOrDefault<int>(
-                              widget!.docRef?.endTime,
+                              widget!.docRef?.endTime == 0
+                                  ? widget!.docRef?.lastBillTime
+                                  : widget!.docRef?.endTime,
                               0,
                             ));
                             safeSetState(() {});
