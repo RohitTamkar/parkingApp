@@ -138,7 +138,10 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                               FFAppState().isPrinterConnected,
                               FFAppState().printerName,
                               FFAppState().paperSize,
-                              shiftSummaryReportInvoiceRecordList.toList(),
+                              shiftSummaryReportInvoiceRecordList
+                                  .where((e) =>
+                                      e.shiftId == widget!.docRef?.shiftId)
+                                  .toList(),
                               shiftSummaryReportInvoiceRecordList
                                   .unique((e) => e.vechicleType)
                                   .where((e) =>
