@@ -707,9 +707,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       (e.vechicleType ==
                                                                           listItem
                                                                               .vechicleType) &&
-                                                                      ((e.checkOutTime >= FFAppState().startDate!.millisecondsSinceEpoch) &&
+                                                                      ((e.checkOutTime >=
+                                                                              widget!
+                                                                                  .docRef!.startTime) &&
                                                                           (e.checkOutTime <=
-                                                                              FFAppState().endDate!.millisecondsSinceEpoch)))
+                                                                              widget!.docRef!.endTime)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
@@ -764,7 +766,12 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                 ),
                                                           ),
                                                           Text(
-                                                            '₹ ${functions.returntoatlamt(shiftSummaryReportInvoiceRecordList.where((e) => e.vechicleType == listItem.vechicleType).toList().map((e) => e.finalBillAmt).toList()).toString()}',
+                                                            '₹ ${valueOrDefault<String>(
+                                                              widget!.docRef
+                                                                  ?.totalSale
+                                                                  ?.toString(),
+                                                              '0',
+                                                            )}',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelLarge
