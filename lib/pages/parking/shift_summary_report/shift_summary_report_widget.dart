@@ -649,10 +649,10 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                       (e.vechicleType ==
                                                                           listItem
                                                                               .vechicleType) &&
-                                                                      ((e.checkOutTime >=
+                                                                      ((e.checkInTime >=
                                                                               widget!
                                                                                   .docRef!.startTime) &&
-                                                                          (e.checkOutTime <=
+                                                                          (e.checkInTime <=
                                                                               widget!.docRef!.endTime)))
                                                                   .toList()
                                                                   .length
