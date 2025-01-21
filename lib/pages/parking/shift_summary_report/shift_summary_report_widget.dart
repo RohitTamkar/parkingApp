@@ -724,7 +724,7 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                               widget!
                                                                                   .docRef!.startTime) &&
                                                                           (e.checkOutTime <=
-                                                                              (widget!.docRef?.endTime == 0 ? getCurrentTimestamp.millisecondsSinceEpoch : widget!.docRef!.endTime))))
+                                                                              widget!.docRef!.endTime)))
                                                                   .toList()
                                                                   .length
                                                                   .toString(),
@@ -787,9 +787,11 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                                 .vechicleType) &&
                                                                         ((e.checkOutTime >= widget!.docRef!.startTime) &&
                                                                             (e.checkOutTime <=
-                                                                                (widget!.docRef?.endTime == 0 ? getCurrentTimestamp.millisecondsSinceEpoch : widget!.docRef!.endTime))))
+                                                                                widget!
+                                                                                    .docRef!.endTime)))
                                                                     .toList()
-                                                                    .map((e) => e.finalBillAmt)
+                                                                    .map((e) =>
+                                                                        e.finalBillAmt)
                                                                     .toList())
                                                                 .toString(),
                                                             style: FlutterFlowTheme

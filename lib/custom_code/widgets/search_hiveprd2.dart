@@ -16,7 +16,7 @@ import 'package:flutter/scheduler.dart';
 import '/custom_code/actions/index.dart' as actions;
 
 import '/flutter_flow/custom_functions.dart' as functions;
-// Imports other custom widgets
+//  Imports other custom widgets
 import '/flutter_flow/custom_functions.dart' as functions;
 import '../actions/setup_item_hive.dart';
 

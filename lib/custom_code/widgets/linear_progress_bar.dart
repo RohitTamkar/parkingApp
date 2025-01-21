@@ -46,7 +46,7 @@ class _LinearProgressBarState extends State<LinearProgressBar> {
         timer.cancel();
       }
       setState(() {});
-      //mytimer.cancel() //to terminate this timer
+      // mytimer.cancel() //to terminate this timer
     });
     super.initState();
   }
