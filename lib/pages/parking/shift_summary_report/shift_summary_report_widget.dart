@@ -766,12 +766,17 @@ class _ShiftSummaryReportWidgetState extends State<ShiftSummaryReportWidget> {
                                                                 ),
                                                           ),
                                                           Text(
-                                                            '₹ ${valueOrDefault<String>(
-                                                              widget!.docRef
-                                                                  ?.totalSale
-                                                                  ?.toString(),
-                                                              '0',
-                                                            )}',
+                                                            functions
+                                                                .returntoatlamt(shiftSummaryReportInvoiceRecordList
+                                                                    .where((e) =>
+                                                                        e.vechicleType ==
+                                                                        listItem
+                                                                            .vechicleType)
+                                                                    .toList()
+                                                                    .map((e) =>
+                                                                        e.finalBillAmt)
+                                                                    .toList())
+                                                                .toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelLarge
